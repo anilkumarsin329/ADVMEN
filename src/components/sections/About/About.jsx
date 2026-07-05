@@ -163,8 +163,8 @@ const About = () => {
       ref={sectionRef}
       className="relative w-full overflow-hidden"
       style={{
-        paddingTop: 'var(--section-padding-y)',
-        paddingBottom: 'var(--section-padding-y)',
+        paddingTop: 'clamp(2rem, 5vw, 4rem)',
+        paddingBottom: 'clamp(2rem, 5vw, 4rem)',
         background: 'var(--color-black)',
       }}
       aria-label="About ADVMEN Technologies"
@@ -174,7 +174,7 @@ const About = () => {
       <div className="relative container" style={{ zIndex: 1 }}>
         <div className="grid grid-cols-1 lg:grid-cols-[45fr_55fr] gap-8 sm:gap-10 lg:gap-12 items-start lg:items-center">
           {/* LEFT COLUMN */}
-          <div ref={leftRef} className="flex flex-col" style={{ gap: 'clamp(1.25rem, 3vh, 2rem)' }}>
+          <div ref={leftRef} className="flex flex-col w-full" style={{ gap: 'clamp(1.25rem, 3vh, 2rem)' }}>
             {/* Eyebrow */}
             <div className="flex items-center gap-3">
               <span
@@ -192,7 +192,7 @@ const About = () => {
                 className="about-eyebrow-text"
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: 'var(--text-caption)',
+                  fontSize: 'clamp(0.65rem, 1vw, 0.75rem)',
                   fontWeight: 'var(--weight-medium)',
                   letterSpacing: '0.22em',
                   textTransform: 'uppercase',
@@ -240,7 +240,7 @@ const About = () => {
             </div>
 
             {/* Description */}
-            <div className="flex flex-col" style={{ gap: '0.75rem', maxWidth: '500px' }}>
+            <div className="flex flex-col w-full" style={{ gap: '0.75rem', maxWidth: '500px' }}>
               <p
                 className="about-desc"
                 style={{
@@ -266,7 +266,7 @@ const About = () => {
             </div>
 
             {/* Service pillars */}
-            <div className="flex flex-wrap" style={{ gap: '0.5rem' }}>
+            <div className="flex flex-wrap w-full" style={{ gap: '0.5rem' }}>
               {pillars.map((p) => (
                 <span
                   key={p}
@@ -275,7 +275,7 @@ const About = () => {
                     background: 'rgba(255,107,0,0.07)',
                     border: '1px solid rgba(255,107,0,0.18)',
                     fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-caption)',
+                    fontSize: 'clamp(0.6rem, 0.9vw, 0.75rem)',
                     color: 'var(--color-orange-light)',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
@@ -300,7 +300,7 @@ const About = () => {
 
             {/* Divider */}
             <div
-              className="about-divider"
+              className="about-divider w-full"
               style={{
                 height: '1px',
                 background: 'linear-gradient(90deg, rgba(255,107,0,0.2), rgba(255,255,255,0.05) 60%, transparent)',
@@ -312,7 +312,7 @@ const About = () => {
             <AboutStats />
 
             {/* CTA */}
-            <div className="about-cta">
+            <div className="about-cta w-full">
               <MagneticButton strength={0.28}>
                 <Link
                   ref={ctaRef}
@@ -320,7 +320,7 @@ const About = () => {
                   onClick={handleCtaClick}
                   className="btn-primary btn-lg shine"
                   data-cursor="hover"
-                  style={{ position: 'relative', overflow: 'hidden' }}
+                  style={{ position: 'relative', overflow: 'hidden', width: '100%', justifyContent: 'center' }}
                 >
                   Our Story
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -332,7 +332,7 @@ const About = () => {
           </div>
 
           {/* RIGHT COLUMN */}
-          <div className="relative w-full flex items-center justify-center lg:justify-end">
+          <div className="relative w-full flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
             <AboutVisual />
           </div>
         </div>

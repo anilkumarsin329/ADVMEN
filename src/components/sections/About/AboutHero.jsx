@@ -1,5 +1,5 @@
 /**
- * AboutHero.jsx — Premium Intro Section
+ * AboutHero.jsx — Premium Intro Section (Responsive)
  */
 
 import { useEffect, useRef } from 'react'
@@ -30,20 +30,26 @@ const AboutHero = () => {
       ref={containerRef}
       className="relative w-full overflow-hidden"
       style={{
-        paddingTop: 'calc(var(--navbar-height) + 4rem)',
-        paddingBottom: '4rem',
+        paddingTop: 'calc(var(--navbar-height) + clamp(2rem, 5vw, 4rem))',
+        paddingBottom: 'clamp(2rem, 5vw, 4rem)',
         background: 'var(--color-black)',
       }}
       aria-label="About Hero"
     >
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
           
           {/* Left Column — Text */}
           <div className="col-span-12 lg:col-span-7 flex flex-col gap-6">
             <div className="about-hero-stagger flex items-center gap-3">
               <span className="w-8 h-px bg-[var(--color-orange)]" />
-              <span className="type-eyebrow" style={{ color: 'var(--color-orange)' }}>
+              <span 
+                className="type-eyebrow" 
+                style={{ 
+                  color: 'var(--color-orange)',
+                  fontSize: 'clamp(0.65rem, 1vw, 0.75rem)',
+                }}
+              >
                 About ADVMEN
               </span>
             </div>
@@ -51,7 +57,7 @@ const AboutHero = () => {
             <h1
               className="about-hero-stagger section-title"
               style={{
-                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                fontSize: 'clamp(2rem, 5vw, 4.5rem)',
                 lineHeight: 1.1,
                 fontWeight: 'var(--weight-bold)',
                 letterSpacing: '-0.02em',
@@ -66,6 +72,7 @@ const AboutHero = () => {
                 color: 'var(--color-text-secondary)',
                 lineHeight: 'var(--leading-relaxed)',
                 maxWidth: '600px',
+                fontSize: 'clamp(0.875rem, 1.2vw, 1.125rem)',
               }}
             >
               ADVMEN Technologies is a premium creative engineering agency. We blend bold design aesthetics 
@@ -75,7 +82,7 @@ const AboutHero = () => {
           </div>
 
           {/* Right Column — Premium Floating Orb */}
-          <div className="col-span-12 lg:col-span-5 flex justify-center lg:justify-end">
+          <div className="col-span-12 lg:col-span-5 flex justify-center lg:justify-end mt-8 lg:mt-0">
             <motion.div
               animate={{
                 y: [-12, 12, -12],
@@ -86,8 +93,10 @@ const AboutHero = () => {
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full flex items-center justify-center"
+              className="relative rounded-full flex items-center justify-center"
               style={{
+                width: 'clamp(200px, 50vw, 320px)',
+                height: 'clamp(200px, 50vw, 320px)',
                 background: 'radial-gradient(circle at 30% 30%, rgba(255,107,0,0.15) 0%, transparent 60%)',
                 border: '1px solid rgba(255,107,0,0.12)',
                 boxShadow: 'inset 0 0 24px rgba(255,107,0,0.05)',
@@ -96,8 +105,10 @@ const AboutHero = () => {
             >
               {/* Core solid glow */}
               <div
-                className="absolute w-24 h-24 rounded-full"
+                className="absolute rounded-full"
                 style={{
+                  width: 'clamp(60px, 15vw, 96px)',
+                  height: 'clamp(60px, 15vw, 96px)',
                   background: 'var(--color-orange)',
                   filter: 'blur(40px)',
                   opacity: 0.35,
@@ -108,14 +119,20 @@ const AboutHero = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                className="absolute inset-4 rounded-full border border-dashed border-[rgba(255,255,255,0.08)]"
+                className="absolute rounded-full border border-dashed border-[rgba(255,255,255,0.08)]"
+                style={{
+                  inset: 'clamp(0.5rem, 2vw, 1rem)',
+                }}
               />
 
               {/* Glass Ring 2 */}
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-                className="absolute inset-10 rounded-full border border-double border-[rgba(255,107,0,0.15)]"
+                className="absolute rounded-full border border-double border-[rgba(255,107,0,0.15)]"
+                style={{
+                  inset: 'clamp(1.5rem, 4vw, 2.5rem)',
+                }}
               />
 
               {/* Subtle Tech Brand Initials */}
@@ -123,7 +140,7 @@ const AboutHero = () => {
                 style={{
                   fontFamily: 'var(--font-display)',
                   fontWeight: 'var(--weight-bold)',
-                  fontSize: '3rem',
+                  fontSize: 'clamp(1.5rem, 4vw, 3rem)',
                   color: 'var(--color-white)',
                   opacity: 0.18,
                   letterSpacing: '0.05em',

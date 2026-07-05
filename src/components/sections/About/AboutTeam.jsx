@@ -1,5 +1,5 @@
 /**
- * AboutTeam.jsx — Core leadership team cards
+ * AboutTeam.jsx — Core leadership team cards (Responsive)
  */
 
 import { motion } from 'framer-motion'
@@ -42,8 +42,10 @@ const teamData = [
 const AboutTeam = () => {
   return (
     <section
-      className="relative w-full py-24"
+      className="relative w-full overflow-hidden"
       style={{
+        paddingTop: 'clamp(2rem, 5vw, 4rem)',
+        paddingBottom: 'clamp(2rem, 5vw, 4rem)',
         background: 'var(--color-black)',
       }}
       aria-label="Core Team"
@@ -51,13 +53,27 @@ const AboutTeam = () => {
       <div className="container relative z-10">
         
         {/* Title */}
-        <div className="mb-16">
-          <span className="eyebrow">Our Crew</span>
-          <h2 className="section-title mt-4">The Minds Behind ADVMEN</h2>
+        <div className="mb-12 sm:mb-16">
+          <span 
+            className="eyebrow"
+            style={{
+              fontSize: 'clamp(0.65rem, 1vw, 0.75rem)',
+            }}
+          >
+            Our Crew
+          </span>
+          <h2 
+            className="section-title mt-4"
+            style={{
+              fontSize: 'clamp(1.75rem, 4vw, 3rem)',
+            }}
+          >
+            The Minds Behind ADVMEN
+          </h2>
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {teamData.map((member, i) => (
             <motion.div
               key={member.name}
@@ -96,7 +112,7 @@ const AboutTeam = () => {
                   style={{
                     fontFamily: 'var(--font-display)',
                     fontWeight: 'var(--weight-bold)',
-                    fontSize: '3rem',
+                    fontSize: 'clamp(1.5rem, 4vw, 3rem)',
                     color: 'var(--color-white)',
                     opacity: 0.25,
                     textShadow: '0 2px 10px rgba(0,0,0,0.3)',
@@ -121,7 +137,7 @@ const AboutTeam = () => {
                 <h3
                   style={{
                     fontFamily: 'var(--font-display)',
-                    fontSize: '1.25rem',
+                    fontSize: 'clamp(1rem, 2vw, 1.25rem)',
                     fontWeight: 'var(--weight-bold)',
                     color: 'var(--color-text-primary)',
                     marginBottom: '0.25rem',
@@ -132,7 +148,7 @@ const AboutTeam = () => {
                 <p
                   style={{
                     fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-caption)',
+                    fontSize: 'clamp(0.6rem, 0.9vw, 0.75rem)',
                     color: 'var(--color-orange)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.06em',
@@ -144,7 +160,7 @@ const AboutTeam = () => {
               </div>
 
               {/* Social Links Popover */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-wrap">
                 {Object.keys(member.socials).map((platform) => (
                   <a
                     key={platform}
@@ -152,7 +168,12 @@ const AboutTeam = () => {
                     className="p-2 rounded-full border border-[var(--color-border-subtle)] text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] hover:border-[var(--color-orange)] transition-colors duration-300"
                     aria-label={`${member.name} ${platform}`}
                   >
-                    <span className="text-[0.68rem] font-mono uppercase tracking-wider">
+                    <span 
+                      className="text-[0.6rem] font-mono uppercase tracking-wider"
+                      style={{
+                        fontSize: 'clamp(0.55rem, 0.8vw, 0.68rem)',
+                      }}
+                    >
                       {platform}
                     </span>
                   </a>

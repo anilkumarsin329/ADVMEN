@@ -1,6 +1,6 @@
 /**
- * Portfolio.jsx — Phase 5
- * Premium portfolio showcase with filtering and animations
+ * Portfolio.jsx — Enhanced with Premium Graphics
+ * Better animations, visual hierarchy, and interactive elements
  */
 
 import { useRef, useEffect, useState } from 'react'
@@ -97,7 +97,7 @@ const Portfolio = () => {
       }}
       aria-label="Our Portfolio"
     >
-      {/* Background glow */}
+      {/* Animated background glows */}
       <div
         aria-hidden="true"
         style={{
@@ -105,18 +105,31 @@ const Portfolio = () => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '800px',
-          height: '800px',
+          width: '900px',
+          height: '900px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)',
-          filter: 'blur(60px)',
+          background: 'radial-gradient(circle, rgba(255,107,0,0.07) 0%, transparent 70%)',
+          filter: 'blur(100px)',
           pointerEvents: 'none',
+          animation: 'pulse-slow 6s ease-in-out infinite',
         }}
       />
 
       <div className="relative container" style={{ zIndex: 1 }}>
         {/* Header */}
-        <div className="max-w-2xl mb-12 sm:mb-16">
+        <div className="max-w-3xl mb-12 sm:mb-16">
+          <div className="inline-block mb-4">
+            <span
+              className="px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
+              style={{
+                background: 'rgba(255, 107, 0, 0.1)',
+                border: '1px solid rgba(255, 107, 0, 0.3)',
+                color: 'var(--color-orange)',
+              }}
+            >
+              🎯 Case Studies
+            </span>
+          </div>
           <h2
             className="portfolio-headline font-display font-bold"
             style={{
@@ -148,36 +161,42 @@ const Portfolio = () => {
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
-              className="portfolio-filter-btn transition-all duration-300"
+              className="portfolio-filter-btn transition-all duration-300 group"
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.75rem',
                 fontWeight: 'var(--weight-semibold)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
-                padding: '0.6rem 1.2rem',
-                borderRadius: '8px',
+                padding: '0.7rem 1.4rem',
+                borderRadius: '12px',
                 border: activeCategory === category.id
-                  ? '1px solid rgba(255,107,0,0.6)'
-                  : '1px solid rgba(255,255,255,0.1)',
+                  ? '1.5px solid rgba(255,107,0,0.8)'
+                  : '1.5px solid rgba(255,255,255,0.15)',
                 background: activeCategory === category.id
-                  ? 'rgba(255,107,0,0.15)'
-                  : 'transparent',
+                  ? 'rgba(255,107,0,0.2)'
+                  : 'rgba(255,255,255,0.02)',
                 color: activeCategory === category.id
                   ? 'var(--color-orange)'
                   : 'var(--color-text-secondary)',
                 cursor: 'pointer',
+                backdropFilter: 'blur(10px)',
+                boxShadow: activeCategory === category.id
+                  ? '0 0 20px rgba(255,107,0,0.15)'
+                  : 'none',
               }}
               onMouseEnter={(e) => {
                 if (activeCategory !== category.id) {
-                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.3)'
-                  e.currentTarget.style.background = 'rgba(255,107,0,0.05)'
+                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.4)'
+                  e.currentTarget.style.background = 'rgba(255,107,0,0.08)'
+                  e.currentTarget.style.color = 'var(--color-text-primary)'
                 }
               }}
               onMouseLeave={(e) => {
                 if (activeCategory !== category.id) {
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
-                  e.currentTarget.style.background = 'transparent'
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.02)'
+                  e.currentTarget.style.color = 'var(--color-text-secondary)'
                 }
               }}
             >
@@ -189,8 +208,30 @@ const Portfolio = () => {
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProjects.map((project) => (
-            <div key={project.id} className="portfolio-card">
-              <PortfolioCard project={project} />
+            <div key={project.id} className="portfolio-card group">
+              <div
+                className="relative h-full rounded-2xl overflow-hidden cursor-pointer"
+                style={{
+                  background: 'rgba(255,255,255,0.02)',
+                  border: '1px solid rgba(255,107,0,0.15)',
+                  backdropFilter: 'blur(10px)',
+                  transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.4)'
+                  e.currentTarget.style.background = 'rgba(255,107,0,0.05)'
+                  e.currentTarget.style.boxShadow = '0 20px 60px rgba(255,107,0,0.2)'
+                  e.currentTarget.style.transform = 'translateY(-8px)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.15)'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.02)'
+                  e.currentTarget.style.boxShadow = 'none'
+                  e.currentTarget.style.transform = 'translateY(0)'
+                }}
+              >
+                <PortfolioCard project={project} />
+              </div>
             </div>
           ))}
         </div>
@@ -210,6 +251,13 @@ const Portfolio = () => {
           </div>
         )}
       </div>
+
+      <style>{`
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 1; }
+        }
+      `}</style>
     </section>
   )
 }
