@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiMessageCircle, FiX, FiSend } from 'react-icons/fi'
+import { FiMessageCircle, FiX, FiSend, FiPhone, FiMessageSquare } from 'react-icons/fi'
+import { SiWhatsapp } from 'react-icons/si'
 
 const ChatWidget = () => {
   const [showMenu, setShowMenu] = useState(false)
@@ -36,16 +37,22 @@ const ChatWidget = () => {
     // Mock AI responses
     setTimeout(() => {
       const msg = userInput.toLowerCase()
-      let response = 'Thanks for reaching out! For more details, contact us at hello@advmen.com or call +91 00000 00000'
+      let response = 'Thanks for reaching out! For more details, contact us at hello@advmen.com or call +91 83750 08009'
       
-      if (msg.includes('service')) response = 'We offer: Branding, Web Development, App Development, Digital Marketing, SEO, Content Creation, Media Production, Political Campaigns, and Advertising.'
-      else if (msg.includes('price') || msg.includes('cost')) response = 'Pricing varies based on project scope. Contact us at hello@advmen.com for a custom quote.'
-      else if (msg.includes('contact') || msg.includes('email')) response = 'Email: hello@advmen.com | Phone: +91 00000 00000 | WhatsApp available in menu'
-      else if (msg.includes('portfolio') || msg.includes('project')) response = 'We have completed 150+ projects for clients worldwide. Visit our portfolio page!'
-      else if (msg.includes('team')) response = 'Our team has 25+ experienced professionals including designers, developers, and strategists.'
-      else if (msg.includes('process') || msg.includes('how')) response = 'Our process: Discovery → Strategy → Design → Development → Testing → Launch → Support'
-      else if (msg.includes('hello') || msg.includes('hi')) response = 'Hello! Welcome to ADVMEN Technologies. How can we assist you today?'
-      else if (msg.includes('thank')) response = 'You\'re welcome! Feel free to ask any other questions about our services.'
+      if (msg.includes('service') || msg.includes('what do you')) response = 'We offer: 🎨 Branding, 💻 Web Development, 📱 App Development, 📊 Digital Marketing, 🔍 SEO, ✍️ Content Creation, 🎬 Media Production, 🗳️ Political Campaigns, and 📢 Advertising.'
+      else if (msg.includes('price') || msg.includes('cost') || msg.includes('how much')) response = 'Pricing varies based on project scope and requirements. Contact us at hello@advmen.com or WhatsApp +91 83750 08009 for a custom quote.'
+      else if (msg.includes('contact') || msg.includes('email') || msg.includes('phone')) response = '📧 Email: hello@advmen.com\n📞 Phone: +91 83750 08009\n💬 WhatsApp: Available in the menu above'
+      else if (msg.includes('portfolio') || msg.includes('project') || msg.includes('work')) response = 'We have completed 150+ projects for clients worldwide. Visit our portfolio page to see our latest work!'
+      else if (msg.includes('team') || msg.includes('who')) response = 'Our team has 25+ experienced professionals including designers, developers, strategists, and marketers.'
+      else if (msg.includes('process') || msg.includes('how do you work')) response = 'Our process: 1️⃣ Discovery → 2️⃣ Strategy → 3️⃣ Design → 4️⃣ Development → 5️⃣ Testing → 6️⃣ Launch → 7️⃣ Support'
+      else if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) response = 'Hello! 👋 Welcome to ADVMEN Technologies. How can we assist you today?'
+      else if (msg.includes('thank')) response = 'You\'re welcome! 😊 Feel free to ask any other questions about our services.'
+      else if (msg.includes('web') || msg.includes('website')) response = 'We specialize in creating stunning, high-performance websites that convert visitors into customers. Want to know more?'
+      else if (msg.includes('app') || msg.includes('mobile')) response = 'We develop iOS and Android apps with beautiful UI/UX and robust backend. Let\'s discuss your app idea!'
+      else if (msg.includes('marketing') || msg.includes('seo')) response = 'Our digital marketing and SEO services help your business rank higher and reach more customers online.'
+      else if (msg.includes('branding') || msg.includes('logo')) response = 'We create memorable brand identities including logos, brand guidelines, and complete visual systems.'
+      else if (msg.includes('timeline') || msg.includes('how long')) response = 'Project timelines vary based on complexity. Typically: Small projects 2-4 weeks, Medium 4-8 weeks, Large 8+ weeks.'
+      else if (msg.includes('support') || msg.includes('maintenance')) response = 'We provide ongoing support and maintenance for all our projects. Your success is our priority!'
       
       const botMessage = {
         id: Date.now() + 1,
@@ -54,7 +61,7 @@ const ChatWidget = () => {
       }
       setMessages((prev) => [...prev, botMessage])
       setIsLoading(false)
-    }, 1000)
+    }, 800)
   }
 
   return (
@@ -68,32 +75,40 @@ const ChatWidget = () => {
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
             className="absolute bottom-16 left-0 rounded-2xl shadow-lg backdrop-blur-md p-3 space-y-2"
             style={{
-              background: 'rgba(15, 15, 15, 0.7)',
+              background: 'rgba(15, 15, 15, 0.8)',
               border: '1.5px solid rgba(255, 107, 0, 0.4)',
             }}
           >
+            {/* Chat with AI */}
             <button
               onClick={() => {
                 setIsChatOpen(true)
                 setShowMenu(false)
               }}
-              className="w-full px-4 py-2 rounded-lg text-white font-semibold text-sm whitespace-nowrap hover:bg-orange-500/20 transition-all border border-orange-400/30"
+              className="w-full px-4 py-2.5 rounded-lg text-white font-semibold text-sm whitespace-nowrap hover:bg-orange-500/20 transition-all border border-orange-400/30 flex items-center gap-2 justify-center"
             >
-              💬 Chat with AI
+              <FiMessageSquare size={18} />
+              Chat with AI
             </button>
+
+            {/* WhatsApp */}
             <a
               href="https://wa.me/918375008009?text=Hi%20ADVMEN%20Technologies%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full px-4 py-2 rounded-lg text-white font-semibold text-sm whitespace-nowrap hover:bg-green-500/20 transition-all border border-green-400/30 text-center block"
+              className="w-full px-4 py-2.5 rounded-lg text-white font-semibold text-sm whitespace-nowrap hover:bg-green-500/20 transition-all border border-green-400/30 text-center flex items-center gap-2 justify-center"
             >
-              📱 WhatsApp
+              <SiWhatsapp size={18} />
+              WhatsApp
             </a>
+
+            {/* Call Us */}
             <a
               href="tel:+918375008009"
-              className="w-full px-4 py-2 rounded-lg text-white font-semibold text-sm whitespace-nowrap hover:bg-blue-500/20 transition-all border border-blue-400/30 text-center block"
+              className="w-full px-4 py-2.5 rounded-lg text-white font-semibold text-sm whitespace-nowrap hover:bg-blue-500/20 transition-all border border-blue-400/30 text-center flex items-center gap-2 justify-center"
             >
-              ☎️ Call Us
+              <FiPhone size={18} />
+              Call Us
             </a>
           </motion.div>
         )}
@@ -119,12 +134,15 @@ const ChatWidget = () => {
               style={{ borderColor: 'rgba(255,107,0,0.15)' }}
             >
               <div>
-                <h3 className="font-bold text-white text-lg">Let's Talk</h3>
-                <p className="text-xs text-gray-400 mt-1">ADVMEN Support</p>
+                <h3 className="font-bold text-white text-lg flex items-center gap-2">
+                  <FiMessageCircle size={20} className="text-orange-500" />
+                  Let's Talk
+                </h3>
+                <p className="text-xs text-gray-400 mt-1">ADVMEN AI Support</p>
               </div>
               <button
                 onClick={() => setIsChatOpen(false)}
-                className="text-white hover:text-orange-500"
+                className="text-white hover:text-orange-500 transition-colors"
               >
                 <FiX size={20} />
               </button>
@@ -140,7 +158,7 @@ const ChatWidget = () => {
                   className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-xs px-3 py-2 rounded-lg text-sm leading-relaxed ${
+                    className={`max-w-xs px-3 py-2 rounded-lg text-sm leading-relaxed whitespace-pre-wrap ${
                       msg.type === 'user'
                         ? 'bg-orange-500 text-white'
                         : 'bg-gray-800 text-gray-200 border border-orange-500/20'
@@ -176,12 +194,12 @@ const ChatWidget = () => {
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Type message..."
                 disabled={isLoading}
-                className="flex-1 bg-gray-800 border border-orange-500/20 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
+                className="flex-1 bg-gray-800 border border-orange-500/20 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
               />
               <button
                 onClick={handleSendMessage}
                 disabled={isLoading || !input.trim()}
-                className="p-2 rounded-lg bg-orange-500 text-white hover:bg-orange-600 disabled:opacity-50"
+                className="p-2 rounded-lg bg-orange-500 text-white hover:bg-orange-600 disabled:opacity-50 transition-colors"
               >
                 <FiSend size={16} />
               </button>
