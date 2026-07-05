@@ -1,52 +1,28 @@
 /**
- * HeroBackground.jsx — Optimized video background
- * Smooth playback, fast loading, mobile responsive
+ * HeroBackground.jsx — Video background with proper absolute positioning
+ * Positioned absolutely within Hero section for correct layout flow
  */
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 const HeroBackground = () => {
   const videoRef = useRef(null)
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    // Check if mobile
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
 
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
-    // Ensure video plays on mobile
     const playVideo = () => {
-      video.play().catch(() => {
-        console.log('Autoplay prevented, waiting for user interaction')
+      video.play().catch((err) => {
+        console.log('Video autoplay failed:', err)
       })
     }
 
-    // Try to play immediately
+    video.addEventListener('loadedmetadata', playVideo)
     playVideo()
 
-    // Retry on user interaction
-    const handleInteraction = () => {
-      playVideo()
-      document.removeEventListener('click', handleInteraction)
-      document.removeEventListener('touchstart', handleInteraction)
-    }
-
-    document.addEventListener('click', handleInteraction, { once: true })
-    document.addEventListener('touchstart', handleInteraction, { once: true })
-
     return () => {
-      document.removeEventListener('click', handleInteraction)
-      document.removeEventListener('touchstart', handleInteraction)
+      video.removeEventListener('loadedmetadata', playVideo)
     }
   }, [])
 
@@ -54,17 +30,27 @@ const HeroBackground = () => {
     <div
       aria-hidden="true"
       style={{
-        position: 'fixed',
+        position: 'absolute',
         top: 0,
         left: 0,
         width: '100%',
         height: '100%',
-        overflow: 'hidden',
         zIndex: 0,
         pointerEvents: 'none',
-        background: '#000',
+        overflow: 'hidden',
       }}
     >
+      {/* Fallback gradient background */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%)',
+          zIndex: 0,
+        }}
+      />
+
+      {/* Video element */}
       <video
         ref={videoRef}
         autoPlay
@@ -74,49 +60,29 @@ const HeroBackground = () => {
         preload="metadata"
         style={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          display: 'block',
-          WebkitBackfaceVisibility: 'hidden',
-          backfaceVisibility: 'hidden',
-        }}
-      >
-        <source src="/videos/hero section animation vedio.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      {/* Fallback gradient background */}
-      <div
-        style={{
-          position: 'absolute',
           top: 0,
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)',
-          zIndex: -1,
+          objectFit: 'cover',
+          objectPosition: 'center',
+          zIndex: 1,
+          display: 'block',
+        }}
+      >
+        <source src="/videos/hero section animation vedio.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark overlay for text readability (40-50% opacity) */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'rgba(0, 0, 0, 0.45)',
+          zIndex: 2,
+          pointerEvents: 'none',
         }}
       />
-
-      {/* Mobile overlay for better content visibility */}
-      {isMobile && (
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            background: 'rgba(0, 0, 0, 0.4)',
-            zIndex: 1,
-            pointerEvents: 'none',
-          }}
-        />
-      )}
     </div>
   )
 }

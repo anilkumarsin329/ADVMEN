@@ -89,6 +89,7 @@ const Hero = () => {
       className="relative w-full hero-section-responsive"
       style={{
         minHeight: '100vh',
+        height: '100vh',
         overflow: 'hidden',
         position: 'relative',
       }}
@@ -101,12 +102,12 @@ const Hero = () => {
         ref={leftRef}
         className="relative container hero-container-responsive"
         style={{
-          zIndex: 2,
+          zIndex: 10,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           position: 'relative',
-          minHeight: '100vh',
+          height: '100%',
           paddingTop: 'clamp(2rem, 5vw, 4rem)',
           paddingBottom: 'clamp(2rem, 5vw, 4rem)',
         }}
@@ -207,7 +208,7 @@ const Hero = () => {
       {/* ── Scroll indicator ────────────────────────────────── */}
       <div
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex"
-        style={{ zIndex: 3 }}
+        style={{ zIndex: 10 }}
       >
         <HeroScrollIndicator />
       </div>
