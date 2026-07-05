@@ -311,6 +311,22 @@ const About = () => {
             {/* Stats */}
             <AboutStats />
 
+            {/* Since Badge */}
+            <div
+              className="about-cta"
+              style={{
+                textAlign: 'center',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 'clamp(0.75rem, 1.2vw, 0.9rem)',
+                color: 'var(--color-text-secondary)',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                marginTop: '0.5rem',
+              }}
+            >
+              Since 2019
+            </div>
+
             {/* CTA */}
             <div className="about-cta w-full">
               <MagneticButton strength={0.28}>
