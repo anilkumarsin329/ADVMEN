@@ -62,6 +62,7 @@ const HeroBackground = () => {
         overflow: 'hidden',
         zIndex: 0,
         pointerEvents: 'none',
+        background: '#000',
       }}
     >
       <video
@@ -70,24 +71,36 @@ const HeroBackground = () => {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          display: 'block',
+          WebkitBackfaceVisibility: 'hidden',
+          backfaceVisibility: 'hidden',
+        }}
+      >
+        <source src="/videos/hero section animation vedio.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Fallback gradient background */}
+      <div
         style={{
           position: 'absolute',
           top: 0,
           left: 0,
           width: '100%',
           height: '100%',
-          objectFit: 'cover',
-          objectPosition: isMobile ? 'center' : 'center',
-          display: 'block',
-          WebkitBackfaceVisibility: 'hidden',
-          backfaceVisibility: 'hidden',
-          WebkitPerspective: 1000,
-          perspective: 1000,
+          background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)',
+          zIndex: -1,
         }}
-      >
-        <source src="/videos/hero section animation vedio.mp4" type="video/mp4" />
-      </video>
+      />
 
       {/* Mobile overlay for better content visibility */}
       {isMobile && (
@@ -98,7 +111,7 @@ const HeroBackground = () => {
             left: 0,
             width: '100%',
             height: '100%',
-            background: 'rgba(0, 0, 0, 0.3)',
+            background: 'rgba(0, 0, 0, 0.4)',
             zIndex: 1,
             pointerEvents: 'none',
           }}
