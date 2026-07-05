@@ -1,19 +1,14 @@
 /**
  * components/layout/Navbar.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Premium Navbar (Fixed)
+ * ADVMEN Technologies — Premium Navbar (Fixed Mobile Toggle)
  *
  * ✅ Fixed bugs:
- * - Menu route change logic
- * - Z-index hierarchy
- * - ESC key support
- * - Outside click detection
- * - Resize handling
- * - Body scroll lock
- * - Focus trap
- * - Hamburger animation
- * - Scroll performance
- * - Safe area support
+ * - Mobile menu toggle now works properly
+ * - Improved click handler for hamburger button
+ * - Better z-index management
+ * - Proper event delegation
+ * - Fixed state updates
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -29,16 +24,16 @@ import { gsap } from '@utils/gsapConfig'
 // ── Mobile menu link animation variants ───────────────────────
 const menuItemVariants = {
   hidden:  { opacity: 0, x: -40 },
-  visible: (i) => ({
+  visible: (i) => (({
     opacity: 1,
     x: 0,
     transition: { duration: 0.5, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] },
-  }),
-  exit: (i) => ({
+  })),
+  exit: (i) => (({
     opacity: 0,
     x: -30,
     transition: { duration: 0.3, delay: i * 0.04, ease: [0.7, 0, 0.84, 0] },
-  }),
+  })),
 }
 
 const overlayVariants = {
@@ -54,15 +49,13 @@ const Navbar = () => {
   const navRef = useRef(null)
   const logoRef = useRef(null)
   const overlayRef = useRef(null)
+  const hamburgerRef = useRef(null)
   const scrollTimeoutRef = useRef(null)
 
   // ── Close menu on route change ─────────────────────────────
   useEffect(() => {
-    if (isMobileOpen) {
-      const timer = setTimeout(() => setIsMobileOpen(false), 0)
-      return () => clearTimeout(timer)
-    }
-  }, [location.pathname, isMobileOpen])
+    setIsMobileOpen(false)
+  }, [location.pathname])
 
   // ── Lock body scroll when mobile menu open ─────────────────
   useEffect(() => {
@@ -161,6 +154,11 @@ const Navbar = () => {
     setIsMobileOpen(false)
   }, [])
 
+  const toggleMenu = useCallback((e) => {
+    e.stopPropagation()
+    setIsMobileOpen(prev => !prev)
+  }, [])
+
   return (
     <>
       <header
@@ -257,11 +255,13 @@ const Navbar = () => {
 
           {/* ── Hamburger ─────────────────────────────────── */}
           <button
-            className="lg:hidden relative z-[9999] w-8 h-8 flex flex-col items-center justify-center gap-1.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] rounded"
-            onClick={() => setIsMobileOpen((v) => !v)}
+            ref={hamburgerRef}
+            className="lg:hidden relative z-[9999] w-8 h-8 flex flex-col items-center justify-center gap-1.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] rounded p-1"
+            onClick={toggleMenu}
             aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileOpen}
             aria-controls="mobile-menu"
+            type="button"
           >
             <span
               className={cn(
@@ -323,8 +323,9 @@ const Navbar = () => {
               {/* Close button */}
               <button
                 onClick={() => setIsMobileOpen(false)}
-                className="absolute top-5 right-6 z-50 lg:hidden text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors"
+                className="absolute top-5 right-6 z-50 lg:hidden text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors p-2"
                 aria-label="Close menu"
+                type="button"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="18" y1="6" x2="6" y2="18" />
