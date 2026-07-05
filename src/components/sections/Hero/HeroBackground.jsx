@@ -70,7 +70,7 @@ const HeroBackground = () => {
           display: 'block',
         }}
       >
-        <source src="/videos/hero section animation vedio.mp4" type="video/mp4" />
+        <source src="/videos/Hero section vedio.mp4" type="video/mp4" />
       </video>
 
       {/* Dark overlay for text readability (40-50% opacity) */}
