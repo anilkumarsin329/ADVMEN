@@ -10,7 +10,7 @@ import { LoaderContext } from '@context/LoaderContext'
 import { gsap } from '@utils/gsapConfig'
 
 const PreloaderInner = () => {
-  const { isLoading, progress, updateProgress, setLoadingComplete } = useContext(LoaderContext)
+  const { isLoading, progress, updateProgress, setLoadingComplete, setStartEntrance } = useContext(LoaderContext)
 
   const wrapperRef  = useRef(null)
   const curtainRef  = useRef(null)
@@ -35,14 +35,14 @@ const PreloaderInner = () => {
     if (!isLoading) return
     let current = 0
     const interval = setInterval(() => {
-      current += Math.random() * 12 + 3
+      current += Math.random() * 15 + 5
       if (current >= 100) {
         updateProgress(100)
         clearInterval(interval)
       } else {
         updateProgress(Math.floor(current))
       }
-    }, 100)
+    }, 60)
     return () => clearInterval(interval)
   }, [isLoading, updateProgress])
 
@@ -79,11 +79,15 @@ const PreloaderInner = () => {
   useEffect(() => {
     if (progress < 100 || hasExited.current) return
     const elapsed  = Date.now() - startTime.current
-    const minDelay = Math.max(0, 2000 - elapsed)
+    const minDelay = Math.max(0, 800 - elapsed)
 
     const timer = setTimeout(() => {
       hasExited.current = true
       document.body.style.overflow = ''
+
+      if (setStartEntrance) {
+        setStartEntrance(true)
+      }
 
       gsap.timeline({ onComplete: () => setLoadingComplete() })
         .to(curtainRef.current, { scaleY: 1, duration: 0.7, ease: 'expo.inOut', transformOrigin: 'bottom' })
@@ -92,7 +96,7 @@ const PreloaderInner = () => {
     }, minDelay)
 
     return () => clearTimeout(timer)
-  }, [progress, setLoadingComplete])
+  }, [progress, setLoadingComplete, setStartEntrance])
 
   if (!isLoading) return null
 

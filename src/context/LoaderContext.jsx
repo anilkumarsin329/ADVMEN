@@ -15,13 +15,14 @@ import { createContext, useState, useCallback } from 'react'
 export const LoaderContext = createContext(null)
 
 export const LoaderProvider = ({ children }) => {
-  const [isLoading,   setIsLoading]   = useState(true)
-  const [progress,    setProgress]    = useState(0)
+  const [isLoading,     setIsLoading]     = useState(true)
+  const [progress,      setProgress]      = useState(0)
+  const [startEntrance, setStartEntrance] = useState(false)
 
   const setLoadingComplete = useCallback(() => {
     setProgress(100)
     // Small delay so the 100% state is visible before dismissal
-    setTimeout(() => setIsLoading(false), 600)
+    setTimeout(() => setIsLoading(false), 200)
   }, [])
 
   const updateProgress = useCallback((value) => {
@@ -29,7 +30,16 @@ export const LoaderProvider = ({ children }) => {
   }, [])
 
   return (
-    <LoaderContext.Provider value={{ isLoading, progress, setLoadingComplete, updateProgress }}>
+    <LoaderContext.Provider
+      value={{
+        isLoading,
+        progress,
+        setLoadingComplete,
+        updateProgress,
+        startEntrance,
+        setStartEntrance,
+      }}
+    >
       {children}
     </LoaderContext.Provider>
   )

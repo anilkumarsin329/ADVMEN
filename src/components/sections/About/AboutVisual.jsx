@@ -1,13 +1,4 @@
-/**
- * AboutVisual.jsx
- * Premium right-side visual composition.
- * Layered glassmorphism cards with service icons + floating animation.
- * GSAP stagger reveal on scroll entry.
- */
-
-import { useRef, useEffect } from 'react'
-import { gsap } from '@utils/gsapConfig'
-
+import { useRef } from 'react'
 // Service capability cards
 const capabilities = [
   {
@@ -72,219 +63,128 @@ const capabilities = [
   },
 ]
 
-// Central brand badge
-const BrandBadge = () => (
-  <div
-    className="about-visual-badge flex flex-col items-center justify-center gap-3"
-    style={{
-      width:        'clamp(120px, 25vw, 160px)',
-      height:       'clamp(120px, 25vw, 160px)',
-      borderRadius: '50%',
-      background:   'radial-gradient(circle at 40% 35%, rgba(255,107,0,0.18) 0%, rgba(255,107,0,0.06) 50%, rgba(10,10,10,0.9) 100%)',
-      border:       '1px solid rgba(255,107,0,0.25)',
-      boxShadow:    '0 0 40px rgba(255,107,0,0.12), inset 0 0 30px rgba(255,107,0,0.05)',
-      backdropFilter: 'blur(20px)',
-      flexShrink:   0,
-    }}
-  >
-    <img
-      src="/ADVMEN logo.png"
-      alt="ADVMEN"
-      draggable="false"
-      style={{ width: 'clamp(40px, 8vw, 56px)', height: 'clamp(40px, 8vw, 56px)', objectFit: 'contain', filter: 'drop-shadow(0 0 10px rgba(255,107,0,0.4))' }}
-    />
-    <span
-      style={{
-        fontFamily:    'var(--font-mono)',
-        fontSize:      'clamp(0.5rem, 1vw, 0.6rem)',
-        letterSpacing: '0.2em',
-        textTransform: 'uppercase',
-        color:         'var(--color-orange)',
-      }}
-    >
-      Since 2019
-    </span>
-  </div>
-)
-
 // Single capability card
-const CapabilityCard = ({ icon, label, desc, style, className }) => (
-  <div
-    className={`about-cap-card ${className || ''}`}
-    style={{
-      display:        'flex',
-      alignItems:     'center',
-      gap:            'clamp(0.5rem, 1.5vw, 0.75rem)',
-      padding:        'clamp(0.625rem, 1.5vw, 0.875rem) clamp(0.75rem, 2vw, 1.125rem)',
-      borderRadius:   '14px',
-      background:     'rgba(255,255,255,0.04)',
-      border:         '1px solid rgba(255,255,255,0.07)',
-      backdropFilter: 'blur(16px)',
-      boxShadow:      '0 4px 24px rgba(0,0,0,0.3)',
-      cursor:         'default',
-      transition:     'border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease',
-      minWidth:       0,
-      ...style,
-    }}
-    onMouseEnter={e => {
-      e.currentTarget.style.borderColor = 'rgba(255,107,0,0.3)'
-      e.currentTarget.style.boxShadow   = '0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(255,107,0,0.08)'
-      e.currentTarget.style.transform   = 'translateY(-3px)'
-    }}
-    onMouseLeave={e => {
-      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'
-      e.currentTarget.style.boxShadow   = '0 4px 24px rgba(0,0,0,0.3)'
-      e.currentTarget.style.transform   = 'translateY(0)'
-    }}
-  >
-    <div
-      style={{
-        width:        'clamp(32px, 6vw, 38px)',
-        height:       'clamp(32px, 6vw, 38px)',
-        borderRadius: '10px',
-        background:   'rgba(255,107,0,0.1)',
-        border:       '1px solid rgba(255,107,0,0.15)',
-        display:      'flex',
-        alignItems:   'center',
-        justifyContent: 'center',
-        color:        'var(--color-orange)',
-        flexShrink:   0,
-      }}
-    >
-      {icon}
-    </div>
-    <div style={{ minWidth: 0, flex: 1 }}>
-      <p
-        style={{
-          fontFamily:  'var(--font-display)',
-          fontWeight:  600,
-          fontSize:    'clamp(0.75rem, 1.5vw, 0.875rem)',
-          color:       'var(--color-text-primary)',
-          lineHeight:  1.2,
-          wordBreak:   'break-word',
-        }}
-      >
-        {label}
-      </p>
-      <p
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize:   'clamp(0.65rem, 1.2vw, 0.75rem)',
-          color:      'var(--color-text-tertiary)',
-          marginTop:  '2px',
-          wordBreak:  'break-word',
-        }}
-      >
-        {desc}
-      </p>
-    </div>
-  </div>
-)
-
-const AboutVisual = () => {
-  const containerRef = useRef(null)
-  const hasAnimated  = useRef(false)
-
-  useEffect(() => {
-    if (hasAnimated.current || !containerRef.current) return
-
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting || hasAnimated.current) return
-        hasAnimated.current = true
-        obs.disconnect()
-
-        const ctx = gsap.context(() => {
-          // Badge entrance
-          gsap.from('.about-visual-badge', {
-            scale:    0.6,
-            opacity:  0,
-            duration: 1.0,
-            ease:     'back.out(1.4)',
-            delay:    0.1,
-          })
-
-          // Cards stagger
-          gsap.from('.about-cap-card', {
-            opacity:  0,
-            y:        30,
-            scale:    0.92,
-            duration: 0.7,
-            ease:     'expo.out',
-            stagger:  0.07,
-            delay:    0.2,
-          })
-
-          // Floating badge animation
-          gsap.to('.about-visual-badge', {
-            y:        -10,
-            duration: 3.5,
-            ease:     'sine.inOut',
-            repeat:   -1,
-            yoyo:     true,
-            delay:    1.2,
-          })
-        }, containerRef)
-
-        return () => ctx.revert()
-      },
-      { threshold: 0.2 }
-    )
-
-    obs.observe(containerRef.current)
-    return () => obs.disconnect()
-  }, [])
+const CapabilityCard = ({ icon, label, desc, className }) => {
+  const cardRef = useRef(null)
 
   return (
     <div
-      ref={containerRef}
-      className="relative w-full flex items-center justify-center"
-      style={{ minHeight: 'clamp(400px, 80vh, 520px)' }}
+      ref={cardRef}
+      className={`about-cap-card ${className || ''}`}
+      style={{
+        display:        'flex',
+        alignItems:     'center',
+        gap:            '0.75rem',
+        padding:        '0.875rem 1.125rem',
+        borderRadius:   '16px',
+        background:     'var(--color-surface-1)',
+        border:         '1px solid rgba(255, 255, 255, 0.015)',
+        boxShadow:      'var(--shadow-neu-convex)',
+        cursor:         'default',
+        transition:     'border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease',
+        width:          '100%',
+        minWidth:       0,
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.borderColor = 'rgba(255,107,0,0.2)'
+        e.currentTarget.style.boxShadow   = 'var(--shadow-neu-inset)'
+        e.currentTarget.style.transform   = 'scale(0.98)'
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.015)'
+        e.currentTarget.style.boxShadow   = 'var(--shadow-neu-convex)'
+        e.currentTarget.style.transform   = 'scale(1)'
+      }}
+    >
+      <div
+        style={{
+          width:        '40px',
+          height:       '40px',
+          borderRadius: '12px',
+          background:   'var(--color-surface-4)',
+          boxShadow:    'var(--shadow-neu-inset)',
+          display:      'flex',
+          alignItems:   'center',
+          justifyContent: 'center',
+          color:        'var(--color-orange)',
+          flexShrink:   0,
+        }}
+      >
+        {icon}
+      </div>
+      <div style={{ minWidth: 0, flex: 1 }}>
+        <p
+          style={{
+            fontFamily:  'var(--font-display)',
+            fontWeight:  600,
+            fontSize:    '0.875rem',
+            color:       'var(--color-text-primary)',
+            lineHeight:  1.2,
+            textShadow:  '1px 1px 2px rgba(0, 0, 0, 0.6)',
+          }}
+        >
+          {label}
+        </p>
+        <p
+          style={{
+            fontFamily: 'var(--font-body)',
+            fontSize:   '0.75rem',
+            color:      'var(--color-text-secondary)',
+            marginTop:  '3px',
+            textShadow:  '1px 1px 2px rgba(0, 0, 0, 0.5)',
+          }}
+        >
+          {desc}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+const AboutVisual = () => {
+  return (
+    <div
+      className="relative w-full flex items-start justify-center"
+      style={{ minHeight: 'auto' }}
     >
       {/* Soft glow behind composition */}
       <div
         aria-hidden="true"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[380px] h-[280px] sm:h-[380px] rounded-full pointer-events-none filter blur-[40px]"
         style={{
-          position:     'absolute',
-          top:          '50%',
-          left:         '50%',
-          transform:    'translate(-50%, -50%)',
-          width:        'clamp(280px, 70vw, 380px)',
-          height:       'clamp(280px, 70vw, 380px)',
-          borderRadius: '50%',
-          background:   'radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%)',
-          filter:       'blur(40px)',
-          pointerEvents:'none',
+          background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)',
         }}
       />
 
-      {/* Grid layout: responsive */}
+      {/* Mobile/Tablet layout: Grid of cards */}
+      <div className="flex flex-col lg:hidden items-center gap-6 w-full max-w-[600px] px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+          {capabilities.map((cap, i) => (
+            <CapabilityCard key={i} {...cap} />
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop layout: 2-column Grid (lg and up) */}
       <div
+        className="hidden lg:grid"
         style={{
-          display:             'grid',
-          gridTemplateColumns: 'clamp(0px, (100% - 180px) / 2, 1fr) auto clamp(0px, (100% - 180px) / 2, 1fr)',
-          gridTemplateRows:    'repeat(3, auto)',
-          gap:                 'clamp(8px, 2vw, 12px)',
+          gridTemplateColumns: '1fr 1fr',
+          gap:                 '16px',
           alignItems:          'center',
           width:               '100%',
-          maxWidth:            'clamp(320px, 90vw, 580px)',
-          padding:             '0 clamp(1rem, 3vw, 2rem)',
+          maxWidth:            '640px',
         }}
       >
         {/* Left column — cards 0, 2, 4 */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(8px, 2vw, 12px)', alignItems: 'flex-end' }}>
+        <div className="flex flex-col gap-4 w-full">
           <CapabilityCard {...capabilities[0]} />
           <CapabilityCard {...capabilities[2]} />
           <CapabilityCard {...capabilities[4]} />
         </div>
 
-        {/* Center — brand badge */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 'clamp(0px, 2vw, 16px)' }}>
-          <BrandBadge />
-        </div>
-
         {/* Right column — cards 1, 3, 5 */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(8px, 2vw, 12px)', alignItems: 'flex-start' }}>
+        <div className="flex flex-col gap-4 w-full">
           <CapabilityCard {...capabilities[1]} />
           <CapabilityCard {...capabilities[3]} />
           <CapabilityCard {...capabilities[5]} />

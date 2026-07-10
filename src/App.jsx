@@ -28,7 +28,6 @@ import '@/utils/gsapConfig'
 // ── Layout ────────────────────────────────────────────────────
 import Layout        from '@components/layout/Layout'
 import Preloader     from '@components/common/Preloader'
-import CustomCursor  from '@components/common/CustomCursor'
 import GlobalEffects from '@components/common/GlobalEffects'
 
 // ── Pages (lazy loaded) ───────────────────────────────────────
@@ -101,9 +100,6 @@ const App = () => (
 
             {/* Preloader — covers viewport on first load */}
             <Preloader />
-
-            {/* Custom cursor — desktop only */}
-            <CustomCursor />
 
             {/* Main app shell */}
             <Layout>

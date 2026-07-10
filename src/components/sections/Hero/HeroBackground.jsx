@@ -38,6 +38,8 @@ const HeroBackground = () => {
         zIndex: 0,
         pointerEvents: 'none',
         overflow: 'hidden',
+        willChange: 'transform',
+        transform: 'translate3d(0, 0, 0)',
       }}
     >
       {/* Fallback gradient background */}
@@ -68,9 +70,11 @@ const HeroBackground = () => {
           objectPosition: 'center',
           zIndex: 1,
           display: 'block',
+          willChange: 'transform',
+          transform: 'translate3d(0, 0, 0)',
         }}
       >
-        <source src="/videos/Hero section vedio.mp4" type="video/mp4" />
+        <source src="/videos/New hero section vedio.mp4" type="video/mp4"></source>
       </video>
 
       {/* Dark overlay for text readability (40-50% opacity) */}

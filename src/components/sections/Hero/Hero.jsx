@@ -8,8 +8,9 @@
  * Spacing: Professional 8px spacing scale.
  */
 
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useCallback, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { LoaderContext } from '@context/LoaderContext'
 import { gsap } from '@utils/gsapConfig'
 
 import HeroBackground      from './HeroBackground'
@@ -66,8 +67,11 @@ const RippleButton = ({ children, className, to, primary }) => {
 const Hero = () => {
   const sectionRef = useRef(null)
   const leftRef    = useRef(null)
+  const { startEntrance } = useContext(LoaderContext)
 
   useEffect(() => {
+    if (!startEntrance) return
+
     const ctx = gsap.context(() => {
       gsap.from('.hero-stagger', {
         opacity: 0,
@@ -76,12 +80,12 @@ const Hero = () => {
         duration: 1.0,
         stagger: 0.13,
         ease: 'expo.out',
-        delay: 0.5,
+        delay: 0.35,
         clearProps: 'filter',
       })
     }, leftRef)
     return () => ctx.revert()
-  }, [])
+  }, [startEntrance])
 
   return (
     <section
@@ -110,6 +114,7 @@ const Hero = () => {
           height: '100%',
           paddingTop: 'clamp(2rem, 5vw, 4rem)',
           paddingBottom: 'clamp(2rem, 5vw, 4rem)',
+          opacity: startEntrance ? 1 : 0,
         }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center w-full h-full">

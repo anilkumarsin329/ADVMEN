@@ -145,7 +145,18 @@ const About = () => {
             ease: 'expo.out',
             delay: 1.05,
           })
-        }, leftRef)
+
+          // Capability Cards (Right Column)
+          gsap.from('.about-cap-card', {
+            opacity:  0,
+            y:        30,
+            scale:    0.92,
+            duration: 0.7,
+            ease:     'expo.out',
+            stagger:  0.07,
+            delay:    0.7,
+          })
+        }, sectionRef)
 
         return () => ctx.revert()
       },
@@ -172,7 +183,7 @@ const About = () => {
       <AboutBackground />
 
       <div className="relative container" style={{ zIndex: 1 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-[45fr_55fr] gap-8 sm:gap-10 lg:gap-12 items-start lg:items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[45fr_55fr] gap-8 sm:gap-10 lg:gap-12 items-start">
           {/* LEFT COLUMN */}
           <div ref={leftRef} className="flex flex-col w-full" style={{ gap: 'clamp(1.25rem, 3vh, 2rem)' }}>
             {/* Eyebrow */}
@@ -266,14 +277,15 @@ const About = () => {
             </div>
 
             {/* Service pillars */}
-            <div className="flex flex-wrap w-full" style={{ gap: '0.5rem' }}>
+            <div className="flex flex-wrap w-full" style={{ gap: '0.625rem' }}>
               {pillars.map((p) => (
                 <span
                   key={p}
-                  className="about-pillar inline-flex items-center gap-2 px-3 py-1.5 rounded-full transition-all duration-300 hover:border-[rgba(255,107,0,0.3)] hover:bg-[rgba(255,107,0,0.1)]"
+                  className="about-pillar inline-flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300"
                   style={{
-                    background: 'rgba(255,107,0,0.07)',
-                    border: '1px solid rgba(255,107,0,0.18)',
+                    background: 'var(--color-surface-1)',
+                    border: '1px solid rgba(255, 255, 255, 0.015)',
+                    boxShadow: '3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(255, 255, 255, 0.015)',
                     fontFamily: 'var(--font-mono)',
                     fontSize: 'clamp(0.6rem, 0.9vw, 0.75rem)',
                     color: 'var(--color-orange-light)',
@@ -281,6 +293,15 @@ const About = () => {
                     textTransform: 'uppercase',
                     whiteSpace: 'nowrap',
                     cursor: 'default',
+                    textShadow: '1px 1px 1px rgba(0, 0, 0, 0.8)',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderColor = 'rgba(255,107,0,0.2)'
+                    e.currentTarget.style.boxShadow = 'inset 2px 2px 4px rgba(0,0,0,0.5)'
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.015)'
+                    e.currentTarget.style.boxShadow = '3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(255, 255, 255, 0.015)'
                   }}
                 >
                   <span
@@ -298,36 +319,7 @@ const About = () => {
               ))}
             </div>
 
-            {/* Divider */}
-            <div
-              className="about-divider w-full"
-              style={{
-                height: '1px',
-                background: 'linear-gradient(90deg, rgba(255,107,0,0.2), rgba(255,255,255,0.05) 60%, transparent)',
-              }}
-              aria-hidden="true"
-            />
-
-            {/* Stats */}
-            <AboutStats />
-
-            {/* Since Badge */}
-            <div
-              className="about-cta"
-              style={{
-                textAlign: 'center',
-                fontFamily: 'var(--font-mono)',
-                fontSize: 'clamp(0.75rem, 1.2vw, 0.9rem)',
-                color: 'var(--color-text-secondary)',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                marginTop: '0.5rem',
-              }}
-            >
-              Since 2019
-            </div>
-
-            {/* CTA */}
+             {/* CTA */}
             <div className="about-cta w-full">
               <MagneticButton strength={0.28}>
                 <Link
@@ -351,6 +343,38 @@ const About = () => {
           <div className="relative w-full flex items-center justify-center lg:justify-end mt-8 lg:mt-0">
             <AboutVisual />
           </div>
+        </div>
+
+        {/* Divider spanning full width */}
+        <div
+          className="about-divider w-full"
+          style={{
+            height: '1px',
+            background: 'linear-gradient(90deg, rgba(255,107,0,0.15), rgba(255,255,255,0.02) 60%, transparent)',
+            marginTop: 'clamp(1.25rem, 2.5vw, 2rem)',
+            marginBottom: 'clamp(1rem, 2vw, 1.5rem)',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Full-width Stats */}
+        <div className="w-full">
+          <AboutStats />
+        </div>
+
+        {/* Centered Since Badge */}
+        <div
+          className="about-cta w-full text-center"
+          style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: 'clamp(0.7rem, 1.1vw, 0.8rem)',
+            color: 'var(--color-text-secondary)',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            marginTop: '1.5rem',
+          }}
+        >
+          Since 2019
         </div>
       </div>
     </section>

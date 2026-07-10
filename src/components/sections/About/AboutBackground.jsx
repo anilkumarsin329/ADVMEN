@@ -13,7 +13,7 @@ const AboutBackground = () => (
     {/* Base */}
     <div
       className="absolute inset-0"
-      style={{ background: 'linear-gradient(180deg, #0A0A0A 0%, #0d0602 50%, #0A0A0A 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #121215 0%, #160f0c 50%, #121215 100%)' }}
     />
 
     {/* Subtle grid */}

@@ -69,15 +69,26 @@ const AboutStats = ({ isPage = false }) => {
             {statsData.map((stat) => (
               <div
                 key={stat.label}
-                className="about-stat-item flex flex-col items-center justify-center p-6 text-center rounded-2xl"
+                className="about-stat-item flex flex-col items-center justify-center p-6 text-center rounded-2xl transition-[border-color,background-color,box-shadow,transform] duration-300"
                 style={{
-                  background: 'rgba(255,255,255,0.01)',
-                  border: '1px solid rgba(255,255,255,0.03)',
-                  backdropFilter: 'blur(12px)',
+                  background: 'var(--color-surface-1)',
+                  border: '1px solid rgba(255, 255, 255, 0.015)',
+                  boxShadow: 'var(--shadow-neu-convex)',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = 'rgba(255, 107, 0, 0.2)'
+                  e.currentTarget.style.boxShadow = 'var(--shadow-neu-convex-lg)'
+                  e.currentTarget.style.transform = 'translateY(-2px)'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.015)'
+                  e.currentTarget.style.boxShadow = 'var(--shadow-neu-convex)'
+                  e.currentTarget.style.transform = 'translateY(0)'
                 }}
               >
                 <h2
                   className="text-[3.25rem] lg:text-[4rem] font-bold tracking-tight text-[var(--color-text-primary)] leading-none mb-3"
+                  style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(255, 255, 255, 0.05)' }}
                 >
                   <Counter value={stat.value} suffix={stat.suffix} />
                 </h2>
@@ -88,6 +99,7 @@ const AboutStats = ({ isPage = false }) => {
                     color: 'var(--color-text-tertiary)',
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
+                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
                   }}
                 >
                   {stat.label}
@@ -102,18 +114,31 @@ const AboutStats = ({ isPage = false }) => {
 
   // Inline layout for Homepage About block
   return (
-    <div className="grid grid-cols-2 gap-6 mt-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-4">
       {statsData.map((stat) => (
         <div
           key={stat.label}
-          className="about-stat-item flex flex-col gap-2 p-5 rounded-xl"
+          className="about-stat-item flex flex-col gap-2 p-5 rounded-2xl transition-[border-color,background-color,box-shadow,transform] duration-300"
           style={{
-            background: 'rgba(255,255,255,0.01)',
-            border: '1px solid rgba(255,255,255,0.03)',
-            backdropFilter: 'blur(12px)',
+            background: 'var(--color-surface-1)',
+            border: '1px solid rgba(255, 255, 255, 0.015)',
+            boxShadow: 'var(--shadow-neu-convex)',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.borderColor = 'rgba(255, 107, 0, 0.2)'
+            e.currentTarget.style.boxShadow = 'var(--shadow-neu-convex-lg)'
+            e.currentTarget.style.transform = 'translateY(-2px)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.015)'
+            e.currentTarget.style.boxShadow = 'var(--shadow-neu-convex)'
+            e.currentTarget.style.transform = 'translateY(0)'
           }}
         >
-          <span className="text-3xl font-extrabold text-[var(--color-orange)]">
+          <span
+            className="text-3xl font-extrabold text-[var(--color-orange)]"
+            style={{ textShadow: '0 0 10px rgba(255, 107, 0, 0.25), 1px 1px 2px rgba(0, 0, 0, 0.8)' }}
+          >
             <Counter value={stat.value} suffix={stat.suffix} />
           </span>
           <span
@@ -123,6 +148,7 @@ const AboutStats = ({ isPage = false }) => {
               color: 'var(--color-text-secondary)',
               textTransform: 'uppercase',
               letterSpacing: '0.08em',
+              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
             }}
           >
             {stat.label}

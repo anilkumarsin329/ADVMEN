@@ -9,7 +9,7 @@
 :root {
 
   /* ── Primary Brand Colors ─────────────────────────────── */
-  --color-black:           #0A0A0A;
+  --color-black:           #121215;   /* Neumorphic soft off-black background */
   --color-orange:          #FF6B00;
   --color-orange-light:    #FF8C38;
   --color-orange-dark:     #CC5500;
@@ -18,11 +18,11 @@
   --color-white-pure:      #FFFFFF;
 
   /* ── Surface Colors ───────────────────────────────────── */
-  --color-surface-0:       #0A0A0A;   /* page bg */
-  --color-surface-1:       #111111;   /* card bg */
-  --color-surface-2:       #161616;   /* elevated card */
-  --color-surface-3:       #1A1A1A;   /* modal / overlay */
-  --color-surface-4:       #222222;   /* input bg */
+  --color-surface-0:       #121215;   /* page bg */
+  --color-surface-1:       #16161b;   /* convex card bg */
+  --color-surface-2:       #1d1d23;   /* elevated beveled surface */
+  --color-surface-3:       #222228;   /* overlay panel */
+  --color-surface-4:       #0d0d10;   /* sunken field bg */
 
   /* ── Neutral Grays ────────────────────────────────────── */
   --color-gray-950:        #080808;
@@ -191,6 +191,12 @@
   --shadow-xl:             0 16px 48px rgba(0, 0, 0, 0.7);
   --shadow-2xl:            0 24px 64px rgba(0, 0, 0, 0.8);
 
+  /* ── Neumorphic Shadow System ─────────────────────────── */
+  --shadow-neu-convex:     6px 6px 16px rgba(0, 0, 0, 0.45), -6px -6px 16px rgba(255, 255, 255, 0.022);
+  --shadow-neu-convex-lg:  10px 10px 24px rgba(0, 0, 0, 0.55), -10px -10px 24px rgba(255, 255, 255, 0.035);
+  --shadow-neu-inset:      inset 4px 4px 8px rgba(0, 0, 0, 0.6), inset -4px -4px 8px rgba(255, 255, 255, 0.02);
+  --shadow-neu-inset-glow: inset 4px 4px 8px rgba(0, 0, 0, 0.65), inset -4px -4px 8px rgba(255, 255, 255, 0.015), 0 0 15px rgba(255, 107, 0, 0.15);
+
   /* ── Glow Shadows ─────────────────────────────────────── */
   --shadow-glow-orange-xs: 0 0 12px rgba(255, 107, 0, 0.20);
   --shadow-glow-orange:    0 0 30px rgba(255, 107, 0, 0.30);
@@ -199,9 +205,9 @@
   --shadow-glow-white:     0 0 30px rgba(255, 255, 255, 0.08);
 
   /* ── Card Shadows ─────────────────────────────────────── */
-  --shadow-card:           0 2px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.04);
-  --shadow-card-hover:     0 8px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,107,0,0.15);
-  --shadow-card-orange:    0 4px 24px rgba(255, 107, 0, 0.15), 0 0 0 1px rgba(255,107,0,0.12);
+  --shadow-card:           var(--shadow-neu-convex), inset 1px 1px 0px rgba(255,255,255,0.03);
+  --shadow-card-hover:     var(--shadow-neu-convex-lg), inset 1px 1px 0px rgba(255,255,255,0.05), 0 0 20px rgba(255,107,0,0.1);
+  --shadow-card-orange:    var(--shadow-neu-convex), inset 2px 2px 4px rgba(255, 107, 0, 0.15);
   --shadow-inner-glow:     inset 0 0 30px rgba(255, 107, 0, 0.08);
   --shadow-inner-subtle:   inset 0 1px 0 rgba(255, 255, 255, 0.06);
 

@@ -12,10 +12,11 @@
  * ─────────────────────────────────────────────────────────────
  */
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiShoppingCart } from 'react-icons/fi'
+import { LoaderContext } from '@context/LoaderContext'
 import { navLinks } from '@data/navigation'
 import { COMPANY } from '@utils/constants'
 import { cn } from '@utils/formatters'
@@ -54,6 +55,7 @@ const Navbar = () => {
 
   // ── Close menu on route change ─────────────────────────────
   useEffect(() => {
+    // eslint-disable-next-line
     setIsMobileOpen(false)
   }, [location.pathname])
 
@@ -133,19 +135,23 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [isMobileOpen])
 
+  const { startEntrance } = useContext(LoaderContext)
+
   // ── GSAP entrance animation ───────────────────────────────
   useEffect(() => {
+    if (!startEntrance) return
+
     const ctx = gsap.context(() => {
       gsap.from(navRef.current, {
         y: -80,
         opacity: 0,
         duration: 1,
         ease: 'expo.out',
-        delay: 0.1,
+        delay: 0.15,
       })
     })
     return () => ctx.revert()
-  }, [])
+  }, [startEntrance])
 
   const isActive = (href) =>
     href === '/' ? location.pathname === '/' : location.pathname.startsWith(href)
@@ -165,7 +171,7 @@ const Navbar = () => {
         ref={navRef}
         className={cn(
           'fixed top-0 left-0 right-0 z-[1000]',
-          'transition-all duration-500 ease-[var(--ease-out-expo)]',
+          'transition-[padding,background-color,border-color,backdrop-filter] duration-500 ease-[var(--ease-out-expo)]',
           isScrolled
             ? 'py-3 bg-[rgba(10,10,10,0.85)] backdrop-blur-[20px] saturate-150 border-b border-[var(--color-border-subtle)]'
             : 'py-5 bg-transparent'
@@ -173,6 +179,7 @@ const Navbar = () => {
         style={{
           paddingTop: `max(1.25rem, env(safe-area-inset-top))`,
           pointerEvents: 'auto',
+          opacity: startEntrance ? 1 : 0,
         }}
       >
         <div className="container flex items-center justify-between">
