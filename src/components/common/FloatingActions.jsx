@@ -136,29 +136,64 @@ const FloatingActions = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed bottom-6 right-5 z-[var(--z-toast)] flex flex-col items-end gap-3"
+      className="fixed bottom-6 right-5 z-[var(--z-toast)] flex flex-col items-end gap-4"
       aria-label="Quick contact actions"
     >
-      {/* Scroll to top — conditional */}
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.div
-            className="fab-item"
-            initial={{ opacity: 0, scale: 0.5, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.5, y: 20 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <FAB
-              icon={<ArrowUpIcon />}
-              label="Back to Top"
-              onClick={scrollToTop}
-              color="var(--color-surface-3)"
-              className="text-[var(--color-text-primary)]"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* WhatsApp button - Top */}
+      <motion.div
+        className="fab-item"
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, ease: 'expo.out', delay: 2.6 }}
+      >
+        <FAB
+          icon={<WhatsAppIcon />}
+          label="WhatsApp"
+          href={whatsappUrl}
+          color="#25D366"
+          className="text-white"
+        />
+      </motion.div>
+
+      {/* Bottom row: Back to top + Phone */}
+      <div className="flex items-center gap-3">
+        {/* Scroll to top — conditional */}
+        <AnimatePresence>
+          {showScrollTop && (
+            <motion.div
+              className="fab-item"
+              initial={{ opacity: 0, scale: 0.5, x: 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.5, x: 20 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <FAB
+                icon={<ArrowUpIcon />}
+                label="Back to Top"
+                onClick={scrollToTop}
+                color="var(--color-surface-3)"
+                className="text-[var(--color-text-primary)]"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Phone button */}
+        <motion.div
+          className="fab-item"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: 'expo.out', delay: 2.7 }}
+        >
+          <FAB
+            icon={<PhoneIcon />}
+            label="Call Us"
+            href={callUrl}
+            color="var(--color-orange)"
+            className="text-white"
+          />
+        </motion.div>
+      </div>
     </div>
   )
 }

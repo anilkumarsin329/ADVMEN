@@ -59,8 +59,13 @@ export default defineConfig({
         },
       },
     },
-    // Three.js is inherently large (~240 kB gzip) — raise limit accordingly
     chunkSizeWarningLimit: 1000,
+    assetsInlineLimit: 4096,
+  },
+
+  // ── Optimisation ────────────────────────────────────────────
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
   },
 
   // ── Dev server ────────────────────────────────────────────

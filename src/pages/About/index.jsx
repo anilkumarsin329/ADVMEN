@@ -12,6 +12,7 @@ import PageTransition from '@components/common/PageTransition'
 import AboutHero     from '@components/sections/About/AboutHero'
 import AboutStats    from '@components/sections/About/AboutStats'
 import AboutStory    from '@components/sections/About/AboutStory'
+import AboutValues   from '@components/sections/About/AboutValues'
 import AboutTimeline from '@components/sections/About/AboutTimeline'
 import AboutTeam     from '@components/sections/About/AboutTeam'
 import AboutOffice   from '@components/sections/About/AboutOffice'
@@ -28,6 +29,7 @@ const About = () => {
       <AboutHero />
       <AboutStats isPage />
       <AboutStory />
+      <AboutValues />
       <AboutTimeline />
       <AboutTeam />
       <AboutOffice />

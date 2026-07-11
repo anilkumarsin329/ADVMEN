@@ -24,6 +24,7 @@ const SEOHead = ({
   ogImage     = SEO_DEFAULTS.ogImage,
   canonical,
   noIndex     = false,
+  schemaType  = 'Organization',
 }) => {
   const fullTitle = title
     ? `${title} | ${COMPANY.shortName}`
@@ -59,13 +60,75 @@ const SEOHead = ({
           name:         COMPANY.name,
           url:          COMPANY.website,
           logo:         `${COMPANY.website}/ADVMEN logo.png`,
+          description:  COMPANY.description,
+          sameAs:       [
+            'https://www.linkedin.com/company/advmen-technologies',
+            'https://www.instagram.com/advmen.tech',
+            'https://twitter.com/advmen_tech',
+          ],
           contactPoint: {
             '@type':       'ContactPoint',
             telephone:     COMPANY.phone,
             contactType:   'customer service',
+            email:         'hello@advmen.com',
+          },
+          address: {
+            '@type':           'PostalAddress',
+            streetAddress:     'Jharsa Village, Sector 38',
+            addressLocality:   'Gurugram',
+            addressRegion:     'Haryana',
+            postalCode:        '122001',
+            addressCountry:    'IN',
           },
         })}
       </script>
+
+      {/* ── JSON-LD LocalBusiness Schema ────────────────── */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context':     'https://schema.org',
+          '@type':        'LocalBusiness',
+          name:           COMPANY.name,
+          image:          `${COMPANY.website}/ADVMEN logo.png`,
+          description:    description,
+          url:            COMPANY.website,
+          telephone:      COMPANY.phone,
+          priceRange:     '$$',
+          areaServed:     ['IN', 'US', 'UK', 'CA', 'AU'],
+          address: {
+            '@type':           'PostalAddress',
+            streetAddress:     'Jharsa Village, Sector 38',
+            addressLocality:   'Gurugram',
+            addressRegion:     'Haryana',
+            postalCode:        '122001',
+            addressCountry:    'IN',
+          },
+        })}
+      </script>
+
+      {/* ── JSON-LD BreadcrumbList Schema ──────────────── */}
+      {canonical && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context':   'https://schema.org',
+            '@type':      'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type':    'ListItem',
+                position:   1,
+                name:       'Home',
+                item:       COMPANY.website,
+              },
+              {
+                '@type':    'ListItem',
+                position:   2,
+                name:       title || 'Page',
+                item:       canonical,
+              },
+            ],
+          })}
+        </script>
+      )}
     </Helmet>
   )
 }

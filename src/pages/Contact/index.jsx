@@ -28,6 +28,11 @@ const Contact = () => {
     email: '',
     phone: '',
     subject: '',
+    budget: '',
+    timeline: '',
+    industry: '',
+    projectType: '',
+    goals: '',
     message: '',
   })
   const [errors, setErrors] = useState({})
@@ -68,6 +73,8 @@ const Contact = () => {
       newErrors.email = 'Please enter a valid email address'
     }
     if (!formData.message.trim()) newErrors.message = 'Message text is required'
+    if (!formData.budget) newErrors.budget = 'Budget range is required'
+    if (!formData.timeline) newErrors.timeline = 'Timeline is required'
     return newErrors
   }
 
@@ -91,6 +98,11 @@ const Contact = () => {
           from_email: formData.email,
           phone: formData.phone || 'Not provided',
           subject: formData.subject || 'General Inquiry',
+          budget: formData.budget || 'Not specified',
+          timeline: formData.timeline || 'Not specified',
+          industry: formData.industry || 'Not specified',
+          projectType: formData.projectType || 'Not specified',
+          goals: formData.goals || 'Not specified',
           message: formData.message,
           to_email: 'hello@advmen.com',
         }
@@ -103,6 +115,11 @@ const Contact = () => {
         email: '',
         phone: '',
         subject: '',
+        budget: '',
+        timeline: '',
+        industry: '',
+        projectType: '',
+        goals: '',
         message: '',
       })
       setTimeout(() => setSubmitSuccess(false), 5000)
@@ -301,6 +318,118 @@ const Contact = () => {
                     required
                   />
                   {errors.email && <span className="text-red-500 text-xs font-body font-medium mt-1">{errors.email}</span>}
+                </div>
+
+                {/* Budget & Timeline */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="budget" className="font-body text-xs font-semibold uppercase tracking-wider text-[var(--color-text-secondary)]">
+                      Budget Range <span className="text-[var(--color-orange)]">*</span>
+                    </label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleInputChange}
+                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      required
+                    >
+                      <option value="">Select budget range</option>
+                      <option value="under-50k">Under ₹50,000</option>
+                      <option value="50k-100k">₹50,000 - ₹1,00,000</option>
+                      <option value="100k-500k">₹1,00,000 - ₹5,00,000</option>
+                      <option value="500k-1m">₹5,00,000 - ₹10,00,000</option>
+                      <option value="above-1m">Above ₹10,00,000</option>
+                    </select>
+                    {errors.budget && <span className="text-red-500 text-xs font-body font-medium mt-1">{errors.budget}</span>}
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="timeline" className="font-body text-xs font-semibold uppercase tracking-wider text-[var(--color-text-secondary)]">
+                      Timeline <span className="text-[var(--color-orange)]">*</span>
+                    </label>
+                    <select
+                      id="timeline"
+                      name="timeline"
+                      value={formData.timeline}
+                      onChange={handleInputChange}
+                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      required
+                    >
+                      <option value="">Select timeline</option>
+                      <option value="asap">ASAP (1-2 weeks)</option>
+                      <option value="1-month">1 Month</option>
+                      <option value="2-3-months">2-3 Months</option>
+                      <option value="3-6-months">3-6 Months</option>
+                      <option value="6-plus-months">6+ Months</option>
+                    </select>
+                    {errors.timeline && <span className="text-red-500 text-xs font-body font-medium mt-1">{errors.timeline}</span>}
+                  </div>
+                </div>
+
+                {/* Industry & Project Type */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="industry" className="font-body text-xs font-semibold uppercase tracking-wider text-[var(--color-text-secondary)]">
+                      Industry
+                    </label>
+                    <select
+                      id="industry"
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleInputChange}
+                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                    >
+                      <option value="">Select industry</option>
+                      <option value="tech">Technology</option>
+                      <option value="ecommerce">E-Commerce</option>
+                      <option value="healthcare">Healthcare</option>
+                      <option value="finance">Finance</option>
+                      <option value="education">Education</option>
+                      <option value="real-estate">Real Estate</option>
+                      <option value="hospitality">Hospitality</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="projectType" className="font-body text-xs font-semibold uppercase tracking-wider text-[var(--color-text-secondary)]">
+                      Project Type
+                    </label>
+                    <select
+                      id="projectType"
+                      name="projectType"
+                      value={formData.projectType}
+                      onChange={handleInputChange}
+                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                    >
+                      <option value="">Select project type</option>
+                      <option value="web-design">Web Design</option>
+                      <option value="web-development">Web Development</option>
+                      <option value="app-development">App Development</option>
+                      <option value="branding">Branding</option>
+                      <option value="digital-marketing">Digital Marketing</option>
+                      <option value="seo">SEO</option>
+                      <option value="content">Content Creation</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Goals */}
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="goals" className="font-body text-xs font-semibold uppercase tracking-wider text-[var(--color-text-secondary)]">
+                    Project Goals
+                  </label>
+                  <textarea
+                    id="goals"
+                    name="goals"
+                    value={formData.goals}
+                    onChange={handleInputChange}
+                    rows="3"
+                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300 resize-none"
+                    placeholder="What are your main goals for this project?"
+                  />
                 </div>
 
                 {/* Phone & Subject split */}

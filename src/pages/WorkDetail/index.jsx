@@ -2,11 +2,10 @@
  * pages/WorkDetail/index.jsx
  * ─────────────────────────────────────────────────────────────
  * ADVMEN Technologies — Case Study / Work Details Page
- * Updated to render optimized Unsplash HD images and Link components.
  * ─────────────────────────────────────────────────────────────
  */
 
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { gsap } from '@utils/gsapConfig'
@@ -17,127 +16,115 @@ import { portfolioItems } from '@data/portfolio'
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi'
 
 const caseStudyDetails = {
-  'luxe-fashion-brand': {
-    tagline: 'Crafting a unified visual identity and digital storefront for an editorial fashion house.',
-    challenge: 'The brand struggled to translate its physical luxury presence into a digital platform, experiencing high checkout drops and disjointed social identity.',
-    solution: 'We developed an immersive layout, integrated a custom typography system, and mapped out a high-conversion checkout pipeline.',
+  'case-study-1': {
+    tagline: 'E-Commerce Platform Redesign - Complete transformation with modern UI and optimized checkout flow.',
+    challenge: 'High bounce rate (68%) and low conversion rate (1.2%) due to outdated UI and poor user experience.',
+    solution: 'Complete redesign with modern Neomorphism UI, optimized checkout flow, and mobile-first approach.',
     results: [
-      { metric: '+240%', label: 'Mobile Sales' },
-      { metric: '2.8x', label: 'ROAS Increase' },
-      { metric: '100%', label: 'Brand Alignment' },
+      { metric: '+300%', label: 'Conversion Rate' },
+      { metric: '+260%', label: 'Revenue Growth' },
+      { metric: '-53%', label: 'Bounce Rate' },
     ],
-    tech: ['Figma', 'Shopify Liquid', 'Brand Strategy', 'Visual Identity'],
-    client: 'Luxe Editorial Group',
-    duration: '6 Weeks',
-  },
-  'fintech-saas': {
-    tagline: 'A super-charged, performance-focused React analytics corporate platform.',
-    challenge: 'Legacy system dashboards suffered from slow loading times, high data rendering delays, and security compliance issues.',
-    solution: 'We engineered a headless dashboard front-end utilizing modular React components and deployed on highly secure serverless static layers.',
-    results: [
-      { metric: '0.4s', label: 'Load Duration' },
-      { metric: '99%', label: 'Lighthouse Score' },
-      { metric: '+120%', label: 'Active Signups' },
-    ],
-    tech: ['React', 'Vite', 'Tailwind CSS', 'Vercel', 'Highcharts'],
-    client: 'Apex Fintech Corp',
+    tech: ['React', 'Tailwind CSS', 'Figma', 'Performance Optimization'],
+    client: 'TechStore Inc.',
     duration: '8 Weeks',
   },
-  'real-estate-marketplace': {
-    tagline: 'A seamless, interactive property listings marketplace connecting buyers and brokers.',
-    challenge: 'Users struggled with slow search indexing, messy filtering options, and inaccurate property map positioning.',
-    solution: 'We integrated instant Algolia search indexing, customized map layers, and simplified scheduling forms.',
+  'case-study-2': {
+    tagline: 'Digital Marketing Campaign - Integrated strategy with targeted social campaigns and influencer partnerships.',
+    challenge: 'Low brand awareness and minimal social media engagement despite large marketing budget.',
+    solution: 'Integrated digital marketing strategy with targeted social campaigns, influencer partnerships, and content marketing.',
     results: [
-      { metric: '-40%', label: 'Search Latency' },
-      { metric: '+85%', label: 'Lead Conversions' },
-      { metric: '24/7', label: 'Uptime Monitoring' },
+      { metric: '+800%', label: 'Lead Generation' },
+      { metric: '+733%', label: 'Follower Growth' },
+      { metric: '+495%', label: 'Engagement Rate' },
     ],
-    tech: ['Next.js', 'Algolia API', 'Google Maps API', 'Node.js'],
-    client: 'Villas & Co',
-    duration: '10 Weeks',
+    tech: ['Meta Ads API', 'Analytics', 'Content Strategy', 'Influencer Outreach'],
+    client: 'Fashion Brand Co.',
+    duration: '6 Weeks',
   },
-  'health-wellness-app': {
-    tagline: 'Cross-platform mobile application optimized for tracking health goals and daily workouts.',
-    challenge: 'High user churn due to complex menu patterns and sluggish performance on mid-range Android devices.',
-    solution: 'We simplified user navigation paths, streamlined local state management, and optimized native assets compilation.',
+  'case-study-3': {
+    tagline: 'Mobile App Development - Cross-platform fitness app with real-time tracking and social features.',
+    challenge: 'Needed a cross-platform fitness app with real-time tracking and social features.',
+    solution: 'Built React Native app with Firebase backend, real-time analytics, and community features.',
     results: [
-      { metric: '4.9★', label: 'App Store Rating' },
-      { metric: '-30%', label: 'User Churn Rate' },
-      { metric: '1M+', label: 'Active Users' },
+      { metric: '50K+', label: 'Downloads' },
+      { metric: '4.8/5', label: 'App Rating' },
+      { metric: '65%', label: 'Retention Rate' },
     ],
-    tech: ['React Native', 'Redux Toolkit', 'Node.js', 'MongoDB'],
-    client: 'VitaLife Health',
+    tech: ['React Native', 'Firebase', 'Redux', 'Node.js'],
+    client: 'FitLife Technologies',
     duration: '12 Weeks',
   },
-  'corporate-branding': {
-    tagline: 'Standardizing corporate assets and brand kits for global scale expansion.',
-    challenge: 'Inconsistent brand representation across multiple regional branches, weakening brand equity.',
-    solution: 'We designed a modern visual system guidelines kit covering decks, prints, signs, and web stylesheets.',
+  'case-study-4': {
+    tagline: 'SEO & Content Strategy - Comprehensive optimization driving massive organic traffic growth.',
+    challenge: 'Ranked on page 5+ for target keywords with minimal organic traffic and poor content structure.',
+    solution: 'Comprehensive SEO audit, keyword research, content optimization, and technical SEO improvements.',
     results: [
-      { metric: '100%', label: 'Brand Compliance' },
-      { metric: '-50%', label: 'Asset Design Time' },
-      { metric: '15+', label: 'Offices Aligned' },
+      { metric: '+1650%', label: 'Organic Traffic' },
+      { metric: 'Page 1', label: 'Ranking Position' },
+      { metric: '+1767%', label: 'Lead Generation' },
     ],
-    tech: ['Visual Systems', 'Deck Templates', 'Typography Guides', 'Asset Libraries'],
-    client: 'OmniCorp Global',
+    tech: ['SEO Audit', 'Keyword Research', 'Content Optimization', 'Technical SEO'],
+    client: 'Global Tech Solutions',
+    duration: '10 Weeks',
+  },
+  'case-study-5': {
+    tagline: 'Brand Identity & Design System - Complete visual identity for startup market launch.',
+    challenge: 'New startup needed complete brand identity, logo, and design system for market launch.',
+    solution: 'Created comprehensive brand guidelines, logo design, color palette, typography system, and UI kit.',
+    results: [
+      { metric: '100%', label: 'Brand Consistency' },
+      { metric: '78%', label: 'Brand Recognition' },
+      { metric: '$2.5M', label: 'Brand Value' },
+    ],
+    tech: ['Figma', 'Brand Strategy', 'Design Systems', 'Visual Identity'],
+    client: 'StartUp Ventures Inc.',
     duration: '4 Weeks',
   },
-  'political-campaign': {
-    tagline: 'Strategic voter outreach and digital campaigning platform.',
-    challenge: 'Scattered voter communication channels leading to low campaign turnout and community engagement.',
-    solution: 'We developed customized regional landing pages, set up voter survey funnels, and ran optimized social ads.',
+  'case-study-6': {
+    tagline: 'Video Production & Media - Professional content creation driving massive engagement.',
+    challenge: 'Needed high-quality promotional videos and product photography for e-commerce and social media.',
+    solution: 'Professional video production, product photography, editing, and social media content creation.',
     results: [
-      { metric: '+300%', label: 'Voter Engagement' },
-      { metric: '500K+', label: 'Inquiries Received' },
-      { metric: '4.8x', label: 'Media ROI' },
+      { metric: '+4900%', label: 'Video Views' },
+      { metric: '+900%', label: 'Social Reach' },
+      { metric: '+224%', label: 'Conversion Lift' },
     ],
-    tech: ['Funnel Design', 'Meta Ads API', 'SMS Integrations', 'Analytics Panels'],
-    client: 'Alliance for Progress',
-    duration: '5 Weeks',
-  },
-  'media-studio': {
-    tagline: 'An immersive digital portal showcasing media productions, documentaries, and creative clips.',
-    challenge: 'Slow loading times on high-resolution video thumbnails, leading to high bounce rates.',
-    solution: 'We optimized video compression settings, developed custom lazy-loaded video cards, and added smooth canvas transitions.',
-    results: [
-      { metric: '-60%', label: 'Bounce Rate' },
-      { metric: '+140%', label: 'Play Sessions' },
-      { metric: '0.6s', label: 'Thumb Load Time' },
-    ],
-    tech: ['HTML5 Video API', 'GSAP', 'Cloudinary CDN', 'React'],
-    client: 'Focus Frame Studios',
-    duration: '7 Weeks',
-  },
-  'e-learning-platform': {
-    tagline: 'A collaborative, highly accessible portal providing structured online courses.',
-    challenge: 'Low course completion rates due to poor desktop UI layout responsiveness.',
-    solution: 'We refactored user course views, added progress track badges, and integrated real-time quiz feedback panels.',
-    results: [
-      { metric: '+80%', label: 'Course Completions' },
-      { metric: '4.8/5', label: 'User Feedback' },
-      { metric: '10K+', label: 'Enrolled Students' },
-    ],
-    tech: ['React', 'Next.js', 'PostgreSQL', 'Tailwind CSS'],
-    client: 'EduCore Academy',
-    duration: '9 Weeks',
+    tech: ['Video Production', 'Photography', 'Post-Production', 'Social Media'],
+    client: 'Premium Lifestyle Brand',
+    duration: '6 Weeks',
   },
 }
 
 const WorkDetail = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
-  const project = portfolioItems.find((p) => p.slug === slug)
+  const location = useLocation()
   const details = caseStudyDetails[slug]
   const containerRef = useRef(null)
 
-  useEffect(() => {
-    if (!project) {
-      navigate('/404')
+  const handleBackClick = () => {
+    if (location.state?.from === 'case-studies') {
+      navigate('/', { state: { scrollTo: 'case-studies-section' } })
+      setTimeout(() => {
+        const caseStudiesSection = document.getElementById('case-studies-section')
+        if (caseStudiesSection) {
+          caseStudiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 500)
+    } else {
+      navigate(-1)
     }
-  }, [project, navigate])
+  }
 
   useEffect(() => {
-    if (!project) return
+    if (!details) {
+      navigate('/404')
+    }
+  }, [details, navigate])
+
+  useEffect(() => {
+    if (!details) return
     const ctx = gsap.context(() => {
       gsap.from('.case-stagger', {
         opacity: 0,
@@ -151,19 +138,14 @@ const WorkDetail = () => {
       })
     }, containerRef)
     return () => ctx.revert()
-  }, [project])
+  }, [details])
 
-  if (!project || !details) return null
-
-  // Get related projects
-  const relatedProjects = portfolioItems
-    .filter((p) => p.category === project.category && p.id !== project.id)
-    .slice(0, 3)
+  if (!details) return null
 
   return (
     <PageTransition>
       <SEOHead
-        title={`${project.title} — ADVMEN Portfolio`}
+        title={`${details.client} Case Study — ADVMEN`}
         description={details.tagline}
       />
 
@@ -182,7 +164,7 @@ const WorkDetail = () => {
         >
           <div className="container">
             <button
-              onClick={() => navigate(-1)}
+              onClick={handleBackClick}
               className="case-stagger flex items-center gap-2 transition-all duration-300 hover:gap-3"
               style={{
                 fontFamily: 'var(--font-body)',
@@ -196,7 +178,7 @@ const WorkDetail = () => {
               data-cursor="hover"
             >
               <FiArrowLeft size={18} />
-              Back to Portfolio
+              Back to Case Studies
             </button>
           </div>
         </div>
@@ -216,7 +198,7 @@ const WorkDetail = () => {
                   letterSpacing: '0.12em',
                 }}
               >
-                {project.category}
+                Case Study
               </span>
 
               {/* Title */}
@@ -230,7 +212,7 @@ const WorkDetail = () => {
                   letterSpacing: '-0.02em',
                 }}
               >
-                {project.title}
+                {details.client}
               </h1>
 
               {/* Description */}
@@ -246,56 +228,7 @@ const WorkDetail = () => {
               >
                 {details.tagline}
               </p>
-
-              {/* Tags */}
-              <div className="case-stagger flex flex-wrap gap-2 mt-4">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.68rem',
-                      color: 'var(--color-text-tertiary)',
-                      background: 'rgba(255,107,0,0.05)',
-                      border: '1px solid rgba(255,107,0,0.1)',
-                      padding: '0.4rem 0.8rem',
-                      borderRadius: '4px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
-          </div>
-        </section>
-
-        {/* Featured Image Section */}
-        <section style={{ paddingBottom: '4rem' }}>
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 1.0, ease: 'easeOut' }}
-              style={{
-                width: '100%',
-                aspectRatio: '16 / 9',
-                borderRadius: '1.5rem',
-                overflow: 'hidden',
-                background: 'linear-gradient(135deg, rgba(255,107,0,0.05) 0%, rgba(255,107,0,0.02) 100%)',
-                border: '1px solid rgba(255,107,0,0.12)',
-              }}
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                loading="lazy"
-                className="w-full h-full object-cover opacity-85 hover:opacity-100 hover:scale-102 transition-all duration-750 pointer-events-none"
-              />
-            </motion.div>
           </div>
         </section>
 
@@ -475,29 +408,6 @@ const WorkDetail = () => {
                         {details.duration}
                       </div>
                     </div>
-                    <div>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-mono)',
-                          fontSize: '0.7rem',
-                          color: 'var(--color-text-tertiary)',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.05em',
-                          marginBottom: '0.25rem',
-                        }}
-                      >
-                        Year
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '0.92rem',
-                          color: 'var(--color-text-primary)',
-                        }}
-                      >
-                        {project.year}
-                      </div>
-                    </div>
                   </div>
                 </div>
 
@@ -552,78 +462,6 @@ const WorkDetail = () => {
             </div>
           </div>
         </section>
-
-        {/* Related Projects */}
-        {relatedProjects.length > 0 && (
-          <section
-            style={{
-              paddingTop: '6rem',
-              paddingBottom: '6rem',
-              borderTop: '1px solid rgba(255,107,0,0.1)',
-            }}
-          >
-            <div className="container">
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '2rem',
-                  fontWeight: 'var(--weight-bold)',
-                  color: 'var(--color-text-primary)',
-                  marginBottom: '2.5rem',
-                }}
-              >
-                Related Projects
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {relatedProjects.map((related) => (
-                  <Link
-                    key={related.id}
-                    to={`/work/${related.slug}`}
-                    className="group p-6 rounded-2xl flex flex-col justify-between"
-                    style={{
-                      background: 'rgba(255,255,255,0.015)',
-                      border: '1px solid rgba(255,255,255,0.03)',
-                      backdropFilter: 'blur(12px)',
-                      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                      minHeight: '200px',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(255,107,0,0.25)'
-                      e.currentTarget.style.transform = 'translateY(-4px)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.03)'
-                      e.currentTarget.style.transform = 'translateY(0)'
-                    }}
-                    data-cursor="hover"
-                  >
-                    <div>
-                      <span className="font-mono text-[0.65rem] uppercase tracking-widest text-[var(--color-orange)]">
-                        {related.category}
-                      </span>
-                      <h3
-                        className="group-hover:text-[var(--color-orange)] transition-colors duration-300 mt-2"
-                        style={{
-                          fontFamily: 'var(--font-display)',
-                          fontSize: '1.25rem',
-                          fontWeight: 'var(--weight-bold)',
-                          color: 'var(--color-text-primary)',
-                          lineHeight: '1.3',
-                        }}
-                      >
-                        {related.title}
-                      </h3>
-                    </div>
-
-                    <span className="font-mono text-[0.68rem] text-[var(--color-text-tertiary)] uppercase tracking-wider mt-4">
-                      Year: {related.year}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
 
       </div>
     </PageTransition>

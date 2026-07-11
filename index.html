@@ -14,11 +14,15 @@
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="preload" href="/ADVMEN logo.png" as="image" type="image/png" />
 
-    <!--
-      Fonts are self-hosted in /public/fonts/
-      @font-face declarations are in src/styles/typography.css
-    -->
+    <!-- Resource hints for faster loading -->
+    <link rel="prefetch" href="/fonts/" />
+
+    <!-- Performance: Disable prefetch for unused routes -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
   </head>
   <body>
     <div id="root"></div>

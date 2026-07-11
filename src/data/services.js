@@ -2,7 +2,7 @@
  * data/services.js
  * ─────────────────────────────────────────────────────────────
  * ADVMEN Technologies — Services Data
- * Updated with optimized Unsplash HD Image URLs.
+ * CORRECTED IMAGE MAPPING based on actual image content analysis
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -15,7 +15,7 @@ export const services = [
     description: 'We craft brand identities that are impossible to ignore — from logo systems and visual language to brand strategy and guidelines.',
     icon:        'brand',
     color:       '#FF6B00',
-    image:       'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop&q=80',
+    image:       '/Image/advmen_service4.jpeg',
     features:    ['Logo Design', 'Brand Strategy', 'Visual Identity', 'Brand Guidelines', 'Packaging Design'],
   },
   {
@@ -26,7 +26,7 @@ export const services = [
     description: 'Data-driven digital marketing campaigns that convert audiences into loyal customers across every platform.',
     icon:        'marketing',
     color:       '#FF6B00',
-    image:       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80',
+    image:       '/Image/advmen_service6.jpeg',
     features:    ['Social Media Marketing', 'Email Campaigns', 'PPC Advertising', 'Analytics & Reporting', 'Conversion Optimisation'],
   },
   {
@@ -37,7 +37,7 @@ export const services = [
     description: 'Premium, performance-first websites built with cutting-edge technology that impress visitors and drive conversions.',
     icon:        'web',
     color:       '#FF6B00',
-    image:       'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&q=80',
+    image:       '/Image/advmen_service3.jpeg',
     features:    ['Custom Web Design', 'React / Next.js', 'E-Commerce', 'CMS Integration', 'Performance Optimisation'],
   },
   {
@@ -48,7 +48,7 @@ export const services = [
     description: 'Native and cross-platform mobile applications built for scale, performance, and exceptional user experience.',
     icon:        'app',
     color:       '#FF6B00',
-    image:       'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop&q=80',
+    image:       '/Image/advmen_service1.jpeg',
     features:    ['iOS Development', 'Android Development', 'React Native', 'UI/UX Design', 'App Store Optimisation'],
   },
   {
@@ -59,7 +59,7 @@ export const services = [
     description: 'Strategic political communication, digital outreach, and campaign management that connects candidates with constituents.',
     icon:        'political',
     color:       '#FF6B00',
-    image:       'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop&q=80',
+    image:       '/Image/advmen_service5.jpeg',
     features:    ['Campaign Strategy', 'Digital Outreach', 'Voter Targeting', 'Media Production', 'Social Media Management'],
   },
   {
@@ -70,7 +70,7 @@ export const services = [
     description: 'High-production video content, photography, and multimedia that elevates your brand narrative.',
     icon:        'media',
     color:       '#FF6B00',
-    image:       'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&h=600&fit=crop&q=80',
+    image:       '/Image/advmen_service5.jpeg',
     features:    ['Video Production', 'Photography', 'Motion Graphics', 'Drone Footage', 'Post Production'],
   },
   {
@@ -81,7 +81,7 @@ export const services = [
     description: 'Strategic content that educates, entertains, and converts — crafted for every platform and audience.',
     icon:        'content',
     color:       '#FF6B00',
-    image:       'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&h=600&fit=crop&q=80',
+    image:       '/Image/advmen_service7.jpeg',
     features:    ['Copywriting', 'Blog Articles', 'Social Content', 'Script Writing', 'Content Strategy'],
   },
   {
@@ -92,7 +92,7 @@ export const services = [
     description: 'Technical and content SEO strategies that put your business at the top of search results and keep it there.',
     icon:        'seo',
     color:       '#FF6B00',
-    image:       'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=800&h=600&fit=crop&q=80',
+    image:       '/Image/advmen_service9.jpeg',
     features:    ['Technical SEO', 'On-Page Optimisation', 'Link Building', 'Local SEO', 'SEO Audits'],
   },
   {
@@ -103,7 +103,7 @@ export const services = [
     description: 'Creative advertising campaigns across digital and traditional channels that deliver measurable ROI.',
     icon:        'advertising',
     color:       '#FF6B00',
-    image:       'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&h=600&fit=crop&q=80',
+    image:       '/Image/advmen_service8.jpeg',
     features:    ['Google Ads', 'Meta Ads', 'Display Advertising', 'OOH Advertising', 'Campaign Analytics'],
   },
 ]

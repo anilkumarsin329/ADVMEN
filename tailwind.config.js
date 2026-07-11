@@ -12,6 +12,11 @@ export default {
     './index.html',
     './src/**/*.{js,jsx,ts,tsx}',
   ],
+  safelist: [
+    'animate-pulse',
+    'opacity-0',
+    'opacity-100',
+  ],
 
   theme: {
     extend: {
@@ -293,4 +298,8 @@ export default {
   },
 
   plugins: [],
+  // Performance optimizations
+  corePlugins: {
+    preflight: true,
+  },
 }
