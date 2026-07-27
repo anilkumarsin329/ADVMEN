@@ -104,7 +104,7 @@ const Contact = () => {
           projectType: formData.projectType || 'Not specified',
           goals: formData.goals || 'Not specified',
           message: formData.message,
-          to_email: 'hello@advmen.com',
+          to_email: 'info@advmen.com',
         }
       )
 
@@ -214,10 +214,10 @@ const Contact = () => {
                 </h3>
                 <div className="flex flex-col gap-4">
                   <a
-                    href="mailto:hello@advmen.com"
+                    href="mailto:info@advmen.com"
                     className="flex justify-between items-center group font-body text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300"
                   >
-                    <span>hello@advmen.com</span>
+                    <span>info@advmen.com</span>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-1 transition-transform duration-300">
                       <path d="M3.5 7h7M8.5 4.5l2.5 2.5-2.5 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>

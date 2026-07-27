@@ -13,7 +13,7 @@ export const COMPANY = {
   name:        'ADVMEN Technologies Pvt. Ltd.',
   shortName:   'ADVMEN',
   tagline:     'We Build Brands That Dominate.',
-  email:       'hello@advmen.com',
+  email:       'info@advmen.com',
   phone:       '+91 83750 08009',
   address:     'India',
   website:     'https://advmen.com',
