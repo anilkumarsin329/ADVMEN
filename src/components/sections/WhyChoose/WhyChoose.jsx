@@ -4,7 +4,7 @@
  */
 
 import { motion } from 'framer-motion'
-import { FiZap, FiTarget, FiEye, FiTrendingUp } from 'react-icons/fi'
+import { FiZap, FiTarget, FiEye, FiTrendingUp, FiAward } from 'react-icons/fi'
 
 const values = [
   {
@@ -88,14 +88,14 @@ const WhyChoose = () => {
         <div className="max-w-3xl mb-16">
           <div className="inline-block mb-4">
             <span
-              className="px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
+              className="px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase inline-flex items-center gap-1.5"
               style={{
                 background: 'rgba(255, 107, 0, 0.1)',
                 border: '1px solid rgba(255, 107, 0, 0.3)',
                 color: 'var(--color-orange)',
               }}
             >
-              💎 Our Values
+              <FiAward size={14} /> Our Values
             </span>
           </div>
           <h2 className="section-title mt-4">Why Ambitious Brands Partner with Us</h2>

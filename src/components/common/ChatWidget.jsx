@@ -7,7 +7,7 @@ const ChatWidget = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [isChatOpen, setIsChatOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { id: 1, type: 'bot', text: 'Hi! 👋 How can we help you today?' }
+    { id: 1, type: 'bot', text: 'Welcome! How can we help you today?' }
   ])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -39,14 +39,14 @@ const ChatWidget = () => {
       const msg = userInput.toLowerCase()
       let response = 'Thanks for reaching out! For more details, contact us at hello@advmen.com or call +91 83750 08009'
       
-      if (msg.includes('service') || msg.includes('what do you')) response = 'We offer: 🎨 Branding, 💻 Web Development, 📱 App Development, 📊 Digital Marketing, 🔍 SEO, ✍️ Content Creation, 🎬 Media Production, 🗳️ Political Campaigns, and 📢 Advertising.'
+      if (msg.includes('service') || msg.includes('what do you')) response = 'We offer: Branding, Web Development, App Development, Digital Marketing, SEO, Content Creation, Media Production, Political Campaigns, and Advertising.'
       else if (msg.includes('price') || msg.includes('cost') || msg.includes('how much')) response = 'Pricing varies based on project scope and requirements. Contact us at hello@advmen.com or WhatsApp +91 83750 08009 for a custom quote.'
-      else if (msg.includes('contact') || msg.includes('email') || msg.includes('phone')) response = '📧 Email: hello@advmen.com\n📞 Phone: +91 83750 08009\n💬 WhatsApp: Available in the menu above'
+      else if (msg.includes('contact') || msg.includes('email') || msg.includes('phone')) response = 'Email: hello@advmen.com\nPhone: +91 83750 08009\nWhatsApp: Available in the menu above'
       else if (msg.includes('portfolio') || msg.includes('project') || msg.includes('work')) response = 'We have completed 150+ projects for clients worldwide. Visit our portfolio page to see our latest work!'
       else if (msg.includes('team') || msg.includes('who')) response = 'Our team has 25+ experienced professionals including designers, developers, strategists, and marketers.'
-      else if (msg.includes('process') || msg.includes('how do you work')) response = 'Our process: 1️⃣ Discovery → 2️⃣ Strategy → 3️⃣ Design → 4️⃣ Development → 5️⃣ Testing → 6️⃣ Launch → 7️⃣ Support'
-      else if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) response = 'Hello! 👋 Welcome to ADVMEN Technologies. How can we assist you today?'
-      else if (msg.includes('thank')) response = 'You\'re welcome! 😊 Feel free to ask any other questions about our services.'
+      else if (msg.includes('process') || msg.includes('how do you work')) response = 'Our process: 1. Discovery → 2. Strategy → 3. Design → 4. Development → 5. Testing → 6. Launch → 7. Support'
+      else if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) response = 'Hello! Welcome to ADVMEN Technologies. How can we assist you today?'
+      else if (msg.includes('thank')) response = 'You\'re welcome! Feel free to ask any other questions about our services.'
       else if (msg.includes('web') || msg.includes('website')) response = 'We specialize in creating stunning, high-performance websites that convert visitors into customers. Want to know more?'
       else if (msg.includes('app') || msg.includes('mobile')) response = 'We develop iOS and Android apps with beautiful UI/UX and robust backend. Let\'s discuss your app idea!'
       else if (msg.includes('marketing') || msg.includes('seo')) response = 'Our digital marketing and SEO services help your business rank higher and reach more customers online.'

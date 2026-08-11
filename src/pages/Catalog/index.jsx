@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FiShoppingCart, FiX, FiPlus, FiMinus } from 'react-icons/fi'
+import { FiShoppingCart, FiX, FiPlus, FiMinus, FiCheck } from 'react-icons/fi'
 import { catalogItems, categories } from '@data/catalog'
 import './Catalog.css'
 
@@ -100,7 +100,7 @@ const Catalog = () => {
                       <p className="description">{item.description}</p>
                       <ul className="features">
                         {item.features.slice(0, 2).map((feature, idx) => (
-                          <li key={idx}>✓ {feature}</li>
+                          <li key={idx} className="flex items-center gap-1.5"><FiCheck size={12} className="text-[var(--color-orange)] shrink-0" /> {feature}</li>
                         ))}
                       </ul>
                       <div className="product-footer">

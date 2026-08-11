@@ -147,19 +147,13 @@ const PortfolioDetail = () => {
       >
         <div className="container">
           <div
-            style={{
-              width: '100%',
-              aspectRatio: '16 / 9',
-              borderRadius: '1.5rem',
-              overflow: 'hidden',
-              background: 'linear-gradient(135deg, rgba(255,107,0,0.1) 0%, rgba(255,107,0,0.05) 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid rgba(255,107,0,0.15)',
-            }}
+            className="w-full aspect-video rounded-2xl overflow-hidden relative border border-[rgba(255,107,0,0.15)] shadow-2xl bg-gray-900"
           >
-            <div style={{ fontSize: '4rem', opacity: 0.2 }}>📸</div>
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>

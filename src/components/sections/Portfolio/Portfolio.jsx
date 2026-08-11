@@ -4,6 +4,7 @@
  */
 
 import { useRef, useEffect, useState } from 'react'
+import { FiBriefcase } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
 import { portfolioProjects, portfolioCategories } from '@data/portfolio'
 import PortfolioCard from './PortfolioCard'
@@ -120,14 +121,14 @@ const Portfolio = () => {
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="inline-block mb-4">
             <span
-              className="px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
+              className="px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase inline-flex items-center gap-1.5"
               style={{
                 background: 'rgba(255, 107, 0, 0.1)',
                 border: '1px solid rgba(255, 107, 0, 0.3)',
                 color: 'var(--color-orange)',
               }}
             >
-              🎯 Case Studies
+              <FiBriefcase size={14} /> Case Studies
             </span>
           </div>
           <h2

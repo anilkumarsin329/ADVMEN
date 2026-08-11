@@ -3,38 +3,39 @@
  */
 
 import { motion } from 'framer-motion'
+import { FiAward, FiZap, FiShield, FiTarget, FiTrendingUp, FiFeather } from 'react-icons/fi'
 
 const AboutValues = () => {
   const values = [
     {
       title: 'Excellence',
       description: 'We pursue perfection in every pixel, every line of code, and every interaction. Quality is non-negotiable.',
-      icon: '✨',
+      icon: FiAward,
     },
     {
       title: 'Innovation',
       description: 'We stay ahead of trends, experiment boldly, and push the boundaries of what\'s possible in digital design.',
-      icon: '🚀',
+      icon: FiZap,
     },
     {
       title: 'Integrity',
       description: 'We build trust through transparency, honest communication, and delivering on our promises consistently.',
-      icon: '🤝',
+      icon: FiShield,
     },
     {
       title: 'Collaboration',
       description: 'We believe the best solutions emerge from diverse perspectives working together toward a shared vision.',
-      icon: '🎯',
+      icon: FiTarget,
     },
     {
       title: 'Impact',
       description: 'We measure success by the tangible results we deliver—growth, engagement, and lasting value for our partners.',
-      icon: '📈',
+      icon: FiTrendingUp,
     },
     {
       title: 'Craft',
       description: 'We take pride in our work, treating every project as an opportunity to create something remarkable and timeless.',
-      icon: '🎨',
+      icon: FiFeather,
     },
   ]
 
@@ -102,8 +103,8 @@ const AboutValues = () => {
                 transition: 'all 0.4s ease',
               }}
             >
-              <div className="text-3xl sm:text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {value.icon}
+              <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
+                <value.icon size={32} className="text-[var(--color-orange)]" />
               </div>
               <h3
                 style={{

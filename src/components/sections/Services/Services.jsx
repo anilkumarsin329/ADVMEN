@@ -5,6 +5,7 @@
  */
 
 import { useRef, useEffect } from 'react'
+import { FiLayers } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
 import { services } from '@data/services'
 
@@ -111,14 +112,14 @@ const Services = () => {
         <div className="max-w-3xl mb-12 sm:mb-14 md:mb-16 lg:mb-20">
           <div className="inline-block mb-3 sm:mb-4">
             <span
-              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold tracking-widest uppercase inline-flex items-center gap-1.5"
               style={{
                 background: 'rgba(255, 107, 0, 0.1)',
                 border: '1px solid rgba(255, 107, 0, 0.3)',
                 color: 'var(--color-orange)',
               }}
             >
-              ✨ Our Expertise
+              <FiLayers size={14} /> Our Expertise
             </span>
           </div>
           <h2

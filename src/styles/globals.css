@@ -478,13 +478,14 @@
 
 @media (max-width: 1023px) {
   .hero-section-responsive {
-    min-height: 100svh;
+    min-height: auto;
     height: auto;
   }
 
   .hero-container-responsive {
-    padding-top: calc(var(--navbar-height, 64px) + clamp(1.25rem, 3vh, 2rem));
-    padding-bottom: clamp(1.75rem, 4vh, 2.75rem);
+    justify-content: flex-start !important;
+    padding-top: calc(var(--navbar-height, 64px) + 0.75rem) !important;
+    padding-bottom: 2rem !important;
   }
 
   .hero-bg-image {

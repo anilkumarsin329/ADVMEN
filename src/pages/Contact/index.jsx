@@ -9,6 +9,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import emailjs from '@emailjs/browser'
+import { FiAlertTriangle, FiTool, FiMail, FiMessageSquare } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
 import { EMAILJS } from '@utils/constants'
 
@@ -525,12 +526,13 @@ const Contact = () => {
                     }}
                   >
                     <div className="flex items-start gap-2 text-orange-400 font-semibold">
-                      <span>⚠️ {errors.submit}</span>
+                      <FiAlertTriangle className="mt-0.5 shrink-0" size={16} />
+                      <span>{errors.submit}</span>
                     </div>
 
                     {submitErrorDetails?.isInvalidGrant && (
                       <div className="text-xs text-gray-300 bg-[rgba(0,0,0,0.3)] p-3 rounded-lg border border-[rgba(255,107,0,0.2)] font-mono">
-                        <strong className="text-[var(--color-orange)]">🔧 Admin Fix for EmailJS 412 Error:</strong><br />
+                        <strong className="text-[var(--color-orange)] inline-flex items-center gap-1.5"><FiTool size={12} /> Admin Fix for EmailJS 412 Error:</strong><br />
                         1. Go to <a href="https://dashboard.emailjs.com/admin" target="_blank" rel="noopener noreferrer" className="underline text-[var(--color-orange)]">EmailJS Dashboard</a><br />
                         2. Click <strong>Email Services</strong> &gt; Select service ({EMAILJS.serviceId || 'service_nnmi1sq'})<br />
                         3. Click <strong>Reconnect Account</strong> to re-authorize Gmail OAuth.
@@ -545,7 +547,7 @@ const Contact = () => {
                           )}`}
                           className="px-4 py-2 rounded-lg bg-[var(--color-orange)] text-white font-semibold text-xs transition-all hover:opacity-90 inline-flex items-center gap-1.5"
                         >
-                          ✉️ Send Direct Email (info@advmen.com)
+                          <FiMail size={14} /> Send Direct Email (info@advmen.com)
                         </a>
                         <a
                           href={`https://wa.me/918375008009?text=${encodeURIComponent(
@@ -555,7 +557,7 @@ const Contact = () => {
                           rel="noopener noreferrer"
                           className="px-4 py-2 rounded-lg bg-[#25D366] text-white font-semibold text-xs transition-all hover:opacity-90 inline-flex items-center gap-1.5"
                         >
-                          💬 Send via WhatsApp
+                          <FiMessageSquare size={14} /> Send via WhatsApp
                         </a>
                       </div>
                     )}

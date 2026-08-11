@@ -135,19 +135,15 @@ const AboutHero = () => {
                 }}
               />
 
-              {/* Subtle Tech Brand Initials */}
-              <span
+              {/* ADVMEN Logo */}
+              <img
+                src="/ADVMEN logo.png"
+                alt="ADVMEN Logo"
+                className="w-1/2 h-1/2 object-contain relative z-10 transition-transform duration-500 hover:scale-105"
                 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 'var(--weight-bold)',
-                  fontSize: 'clamp(1.5rem, 4vw, 3rem)',
-                  color: 'var(--color-white)',
-                  opacity: 0.18,
-                  letterSpacing: '0.05em',
+                  filter: 'drop-shadow(0 0 20px rgba(255, 107, 0, 0.45))',
                 }}
-              >
-                AM
-              </span>
+              />
             </motion.div>
           </div>
 

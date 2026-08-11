@@ -2,6 +2,7 @@
  * data/blog.js
  * ─────────────────────────────────────────────────────────────
  * ADVMEN Technologies — Blog Articles Data
+ * Updated with HD Google/Unsplash tech images for every article.
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -11,6 +12,7 @@ export const blogArticles = [
     slug: 'react-19-performance-optimization',
     title: 'React 19 Performance Optimization: A Complete Guide',
     excerpt: 'Learn advanced techniques to optimize React 19 applications for maximum performance, including code splitting, lazy loading, and memoization strategies.',
+    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1200&h=675&fit=crop&q=80',
     content: `React 19 brings significant performance improvements, but optimization is still crucial. This guide covers:
 
 1. Code Splitting with React.lazy()
@@ -42,6 +44,7 @@ Performance metrics to track:
     slug: 'web-design-trends-2025',
     title: 'Web Design Trends 2025: What\'s Next?',
     excerpt: 'Explore the latest web design trends for 2025, from glassmorphism to AI-powered personalization and immersive 3D experiences.',
+    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=675&fit=crop&q=80',
     content: `2025 brings exciting new design trends:
 
 1. Glassmorphism Evolution
@@ -85,6 +88,7 @@ Design tools to master:
     slug: 'seo-strategy-2025',
     title: 'SEO Strategy 2025: Beyond Keywords',
     excerpt: 'Modern SEO goes beyond keywords. Learn about E-E-A-T, Core Web Vitals, and AI-driven content strategies for 2025.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop&q=80',
     content: `SEO in 2025 requires a holistic approach:
 
 1. E-E-A-T Framework
@@ -129,6 +133,7 @@ Tools for SEO:
     slug: 'building-scalable-saas-platforms',
     title: 'Building Scalable SaaS Platforms: Architecture Guide',
     excerpt: 'A comprehensive guide to architecting scalable SaaS platforms with microservices, databases, and cloud infrastructure.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=675&fit=crop&q=80',
     content: `Building scalable SaaS requires careful architecture:
 
 1. Microservices Architecture
@@ -173,6 +178,7 @@ Scalability checklist:
     slug: 'brand-identity-design-process',
     title: 'The Complete Brand Identity Design Process',
     excerpt: 'Step-by-step guide to creating a cohesive brand identity from research to implementation across all touchpoints.',
+    image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=1200&h=675&fit=crop&q=80',
     content: `Creating a strong brand identity:
 
 1. Discovery & Research
@@ -223,6 +229,7 @@ Brand identity elements:
     slug: 'digital-marketing-automation',
     title: 'Digital Marketing Automation: Tools & Strategies',
     excerpt: 'Automate your marketing workflows with email marketing, CRM integration, and lead nurturing strategies.',
+    image: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=1200&h=675&fit=crop&q=80',
     content: `Marketing automation drives efficiency:
 
 1. Email Marketing Automation
@@ -271,6 +278,7 @@ Popular tools:
     slug: 'mobile-app-development-best-practices',
     title: 'Mobile App Development: Best Practices 2025',
     excerpt: 'Learn best practices for developing high-performance mobile apps with React Native, Flutter, and native technologies.',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=675&fit=crop&q=80',
     content: `Mobile app development best practices:
 
 1. Cross-Platform Development
@@ -320,6 +328,7 @@ Development tools:
     slug: 'web-accessibility-wcag-guide',
     title: 'Web Accessibility: WCAG 2.1 Compliance Guide',
     excerpt: 'Comprehensive guide to making your website accessible to all users with WCAG 2.1 AA compliance standards.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=675&fit=crop&q=80',
     content: `Web accessibility is essential:
 
 1. WCAG 2.1 Standards
@@ -369,6 +378,7 @@ Tools for accessibility:
     slug: 'e-commerce-conversion-optimization',
     title: 'E-Commerce Conversion Optimization: Complete Playbook',
     excerpt: 'Strategies to increase e-commerce conversions through UX optimization, A/B testing, and customer psychology.',
+    image: 'https://images.unsplash.com/photo-1556742049-0a67daf4005a?w=1200&h=675&fit=crop&q=80',
     content: `Optimizing e-commerce conversions:
 
 1. User Experience
@@ -418,6 +428,7 @@ Conversion metrics:
     slug: 'future-of-web-development',
     title: 'The Future of Web Development: AI, Web3 & Beyond',
     excerpt: 'Exploring emerging technologies shaping web development: AI integration, Web3, edge computing, and quantum computing.',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&h=675&fit=crop&q=80',
     content: `The future of web development:
 
 1. AI Integration

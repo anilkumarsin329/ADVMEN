@@ -106,24 +106,19 @@ const Blog = () => {
                 }}
               >
                 <div>
-                  {/* Decorative Thumbnail Box */}
+                  {/* Article Thumbnail Image */}
                   <div
-                    className="relative w-full aspect-[16/10] rounded-xl overflow-hidden mb-6 flex items-center justify-center"
-                    style={{
-                      background: 'linear-gradient(135deg, #0f0f0f 0%, #150800 100%)',
-                      border: '1px solid rgba(255,255,255,0.03)',
-                    }}
+                    className="relative w-full aspect-[16/10] rounded-xl overflow-hidden mb-6 bg-gray-900 border border-[rgba(255,107,0,0.12)]"
                   >
-                    <div
-                      className="absolute inset-0 opacity-20 group-hover:scale-105 transition-transform duration-700"
-                      style={{
-                        background: 'radial-gradient(circle, var(--color-orange) 0%, transparent 60%)',
-                        filter: 'blur(30px)',
-                      }}
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <span className="font-mono text-xs uppercase tracking-widest text-[rgba(255,255,255,0.12)]">
+                    <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded bg-[rgba(18,18,21,0.85)] border border-[rgba(255,107,0,0.3)] backdrop-blur-sm text-[0.65rem] font-mono text-[var(--color-orange)] uppercase tracking-wider">
                       {article.category}
-                    </span>
+                    </div>
                   </div>
 
                   {/* Metadata line */}
