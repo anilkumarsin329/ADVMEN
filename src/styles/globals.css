@@ -443,11 +443,13 @@
   }
 }
 
-/* ── Hero Section Responsive Layout ───────────────────────── */
+/* ── Enterprise Hero Section Layout & Overlays ─────────────── */
 .hero-section-responsive {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -459,16 +461,44 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: calc(var(--navbar-height, 80px) + clamp(1.25rem, 3vh, 2.5rem));
+  padding-bottom: clamp(1.5rem, 3.5vh, 2.5rem);
+}
+
+.hero-bg-overlay {
+  background: linear-gradient(
+    90deg,
+    #121215 0%,
+    rgba(18, 18, 21, 0.97) 42%,
+    rgba(18, 18, 21, 0.84) 62%,
+    rgba(18, 18, 21, 0.45) 85%,
+    rgba(18, 18, 21, 0.30) 100%
+  );
 }
 
 @media (max-width: 1023px) {
   .hero-section-responsive {
-    height: 100vh;
-    min-height: 100vh;
+    min-height: 100svh;
+    height: auto;
   }
 
   .hero-container-responsive {
-    height: 100%;
-    padding-top: calc(var(--navbar-height) + 1rem);
+    padding-top: calc(var(--navbar-height, 64px) + clamp(1.25rem, 3vh, 2rem));
+    padding-bottom: clamp(1.75rem, 4vh, 2.75rem);
+  }
+
+  .hero-bg-image {
+    object-position: 70% center !important;
+  }
+
+  .hero-bg-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(18, 18, 21, 0.96) 0%,
+      rgba(18, 18, 21, 0.88) 55%,
+      rgba(18, 18, 21, 0.55) 100%
+    ) !important;
   }
 }
+
+

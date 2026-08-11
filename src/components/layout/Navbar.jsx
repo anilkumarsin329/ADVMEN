@@ -194,10 +194,10 @@ const Navbar = () => {
             <img
               src="/ADVMEN logo.png"
               alt={COMPANY.shortName}
-              className="h-7 sm:h-8 lg:h-9 w-auto object-contain transition-all duration-300 group-hover:opacity-80"
+              className="h-9 sm:h-10 lg:h-11 w-auto object-contain transition-all duration-300 group-hover:opacity-80"
               draggable="false"
             />
-            <span className="hidden lg:inline font-display font-bold text-sm text-[var(--color-text-primary)] tracking-wide">
+            <span className="font-display font-bold text-base sm:text-lg text-[var(--color-text-primary)] tracking-wider">
               {COMPANY.shortName}
             </span>
           </Link>

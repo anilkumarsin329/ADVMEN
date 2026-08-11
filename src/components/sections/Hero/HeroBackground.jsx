@@ -1,34 +1,13 @@
 /**
- * HeroBackground.jsx — Video background with proper absolute positioning
- * Positioned absolutely within Hero section for correct layout flow
+ * HeroBackground.jsx — High-Performance Enterprise Hero Background
+ * Optimized LCP image loading + smooth responsive gradient overlay
  */
 
-import { useEffect, useRef } from 'react'
-
 const HeroBackground = () => {
-  const videoRef = useRef(null)
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const playVideo = () => {
-      video.play().catch((err) => {
-        console.log('Video autoplay failed:', err)
-      })
-    }
-
-    video.addEventListener('loadedmetadata', playVideo)
-    playVideo()
-
-    return () => {
-      video.removeEventListener('loadedmetadata', playVideo)
-    }
-  }, [])
-
   return (
     <div
       aria-hidden="true"
+      className="hero-bg-wrapper"
       style={{
         position: 'absolute',
         top: 0,
@@ -38,52 +17,75 @@ const HeroBackground = () => {
         zIndex: 0,
         pointerEvents: 'none',
         overflow: 'hidden',
-        willChange: 'transform',
-        transform: 'translate3d(0, 0, 0)',
       }}
     >
-      {/* Fallback gradient background */}
+      {/* Dark surface fallback */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%)',
+          background: 'var(--color-surface-0, #121215)',
           zIndex: 0,
         }}
       />
 
-      {/* Video element */}
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
+      {/* High-priority enterprise 3D hero visual image */}
+      <img
+        src="/Hero%20section%20iamge.png"
+        alt=""
+        fetchPriority="high"
+        decoding="async"
+        loading="eager"
+        width="1920"
+        height="1080"
+        className="hero-bg-image"
         style={{
           position: 'absolute',
           top: 0,
-          left: 0,
+          right: 0,
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          objectPosition: 'center',
+          objectPosition: '85% center',
           zIndex: 1,
           display: 'block',
-          willChange: 'transform',
-          transform: 'translate3d(0, 0, 0)',
         }}
-      >
-        <source src="/videos/New hero section vedio.mp4" type="video/mp4"></source>
-      </video>
+      />
 
-      {/* Dark overlay for text readability (40-50% opacity) */}
+      {/* Dark gradient overlay for crystal-clear readability */}
+      <div
+        className="hero-bg-overlay"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 2,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Top & bottom subtle darkening vignette */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'rgba(0, 0, 0, 0.45)',
+          background: 'linear-gradient(180deg, rgba(18, 18, 21, 0.35) 0%, transparent 20%, transparent 80%, rgba(18, 18, 21, 0.5) 100%)',
           zIndex: 2,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Subtle ambient orange brand glow */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '25%',
+          left: '-5%',
+          width: '45vw',
+          height: '45vw',
+          maxHeight: '520px',
+          maxWidth: '520px',
+          background: 'radial-gradient(circle, rgba(255, 107, 0, 0.08) 0%, rgba(255, 107, 0, 0) 70%)',
+          zIndex: 3,
           pointerEvents: 'none',
         }}
       />
@@ -92,3 +94,5 @@ const HeroBackground = () => {
 }
 
 export default HeroBackground
+
+

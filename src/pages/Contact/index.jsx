@@ -78,6 +78,8 @@ const Contact = () => {
     return newErrors
   }
 
+  const [submitErrorDetails, setSubmitErrorDetails] = useState(null)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formErrors = validateForm()
@@ -87,6 +89,7 @@ const Contact = () => {
     }
 
     setIsSubmitting(true)
+    setSubmitErrorDetails(null)
 
     try {
       // Send email via EmailJS
@@ -94,17 +97,16 @@ const Contact = () => {
         EMAILJS.serviceId,
         EMAILJS.templateId,
         {
-          from_name: formData.name,
-          from_email: formData.email,
+          name: formData.name,
+          email: formData.email,
+          title: formData.subject || 'General Inquiry',
           phone: formData.phone || 'Not provided',
-          subject: formData.subject || 'General Inquiry',
           budget: formData.budget || 'Not specified',
           timeline: formData.timeline || 'Not specified',
           industry: formData.industry || 'Not specified',
           projectType: formData.projectType || 'Not specified',
           goals: formData.goals || 'Not specified',
           message: formData.message,
-          to_email: 'info@advmen.com',
         }
       )
 
@@ -126,7 +128,17 @@ const Contact = () => {
     } catch (error) {
       console.error('EmailJS Error:', error)
       setIsSubmitting(false)
-      setErrors({ submit: 'Failed to send message. Please try again.' })
+
+      const isInvalidGrant = error?.status === 412 || error?.text?.includes('Invalid grant')
+      const errorMessage = isInvalidGrant
+        ? 'EmailJS Service Error (412: Gmail_API Invalid grant). Account needs reconnection in EmailJS Dashboard.'
+        : 'Failed to send message via EmailJS. Please use the direct links below.'
+
+      setErrors({ submit: errorMessage })
+      setSubmitErrorDetails({
+        isInvalidGrant,
+        formData: { ...formData },
+      })
     }
   }
 
@@ -504,15 +516,49 @@ const Contact = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-4 rounded-xl text-sm text-center font-body font-medium"
+                    className="p-4 rounded-xl text-sm font-body font-medium flex flex-col gap-3"
                     style={{
-                      background: 'rgba(255,0,0,0.08)',
-                      border: '1px solid #ff4444',
-                      color: '#ff4444',
+                      background: 'rgba(255,107,0,0.08)',
+                      border: '1px solid rgba(255,107,0,0.4)',
+                      color: '#F5F5F5',
                       boxShadow: 'var(--shadow-neu-inset)',
                     }}
                   >
-                    {errors.submit}
+                    <div className="flex items-start gap-2 text-orange-400 font-semibold">
+                      <span>⚠️ {errors.submit}</span>
+                    </div>
+
+                    {submitErrorDetails?.isInvalidGrant && (
+                      <div className="text-xs text-gray-300 bg-[rgba(0,0,0,0.3)] p-3 rounded-lg border border-[rgba(255,107,0,0.2)] font-mono">
+                        <strong className="text-[var(--color-orange)]">🔧 Admin Fix for EmailJS 412 Error:</strong><br />
+                        1. Go to <a href="https://dashboard.emailjs.com/admin" target="_blank" rel="noopener noreferrer" className="underline text-[var(--color-orange)]">EmailJS Dashboard</a><br />
+                        2. Click <strong>Email Services</strong> &gt; Select service ({EMAILJS.serviceId || 'service_nnmi1sq'})<br />
+                        3. Click <strong>Reconnect Account</strong> to re-authorize Gmail OAuth.
+                      </div>
+                    )}
+
+                    {submitErrorDetails?.formData && (
+                      <div className="flex flex-wrap gap-2 pt-1">
+                        <a
+                          href={`mailto:info@advmen.com?subject=${encodeURIComponent(submitErrorDetails.formData.subject || `Inquiry from ${submitErrorDetails.formData.name}`)}&body=${encodeURIComponent(
+                            `Name: ${submitErrorDetails.formData.name}\nEmail: ${submitErrorDetails.formData.email}\nPhone: ${submitErrorDetails.formData.phone}\nBudget: ${submitErrorDetails.formData.budget}\nTimeline: ${submitErrorDetails.formData.timeline}\nIndustry: ${submitErrorDetails.formData.industry}\nProject Type: ${submitErrorDetails.formData.projectType}\nGoals: ${submitErrorDetails.formData.goals}\n\nMessage:\n${submitErrorDetails.formData.message}`
+                          )}`}
+                          className="px-4 py-2 rounded-lg bg-[var(--color-orange)] text-white font-semibold text-xs transition-all hover:opacity-90 inline-flex items-center gap-1.5"
+                        >
+                          ✉️ Send Direct Email (info@advmen.com)
+                        </a>
+                        <a
+                          href={`https://wa.me/918375008009?text=${encodeURIComponent(
+                            `Hi ADVMEN, I submitted a contact inquiry.\nName: ${submitErrorDetails.formData.name}\nEmail: ${submitErrorDetails.formData.email}\nMessage: ${submitErrorDetails.formData.message}`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-4 py-2 rounded-lg bg-[#25D366] text-white font-semibold text-xs transition-all hover:opacity-90 inline-flex items-center gap-1.5"
+                        >
+                          💬 Send via WhatsApp
+                        </a>
+                      </div>
+                    )}
                   </motion.div>
                 )}
 

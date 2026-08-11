@@ -62,8 +62,8 @@ const StatItem = ({ stat, index, inView }) => {
           fontFamily: 'var(--font-mono)',
           fontSize: 'var(--text-caption)',
           textTransform: 'uppercase',
-          letterSpacing: '0.14em',
-          color: 'var(--color-text-tertiary)',
+          letterSpacing: '0.12em',
+          color: 'rgba(245, 245, 245, 0.65)',
         }}
       >
         {stat.label}
