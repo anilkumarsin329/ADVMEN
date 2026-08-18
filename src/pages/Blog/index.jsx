@@ -14,6 +14,7 @@ import { gsap } from '@utils/gsapConfig'
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { blogArticles } from '@data/blog'
+import { API_BASE_URL } from '@utils/constants'
 
 const Blog = () => {
   const headerRef = useRef(null)
@@ -22,7 +23,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/blog')
+        const res = await fetch(`${API_BASE_URL}/api/blog`)
         if (res.ok) {
           const data = await res.json()
           if (Array.isArray(data) && data.length > 0) {

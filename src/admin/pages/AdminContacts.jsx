@@ -27,6 +27,7 @@ import {
   FiBriefcase
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
+import { API_BASE_URL } from '@utils/constants'
 
 const AdminContacts = () => {
   const { token } = useAdminAuth()
@@ -51,7 +52,7 @@ const AdminContacts = () => {
   const fetchContactsData = async () => {
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       if (response.ok) {
@@ -92,7 +93,7 @@ const AdminContacts = () => {
   const handleUpdateStatus = async (item, newStatus) => {
     setActiveDropdownId(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/contact/${item.id}/status`, {
+      const res = await fetch(`${API_BASE_URL}/api/contact/${item.id}/status`, {
         method: 'PATCH',
         headers: { 
           'Content-Type': 'application/json',
@@ -114,7 +115,7 @@ const AdminContacts = () => {
   const handleToggleStar = async (item) => {
     setActiveDropdownId(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/contact/${item.id}/star`, {
+      const res = await fetch(`${API_BASE_URL}/api/contact/${item.id}/star`, {
         method: 'PATCH',
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -132,7 +133,7 @@ const AdminContacts = () => {
   const confirmDelete = async () => {
     if (!deleteItemTarget) return
     try {
-      const res = await fetch(`http://localhost:5000/api/contact/${deleteItemTarget.id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/contact/${deleteItemTarget.id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       })

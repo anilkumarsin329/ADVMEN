@@ -33,6 +33,7 @@ import {
 
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
+import { API_BASE_URL } from '@utils/constants'
 
 const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/FyTxa7MaOOkC2qXelS2kzj?s=cl&p=a&mlu=4'
 
@@ -219,7 +220,7 @@ const CareerDetail = () => {
     const fetchJobDetail = async () => {
       setLoading(true)
       try {
-        const res = await fetch(`http://localhost:5000/api/careers/${id}`)
+        const res = await fetch(`${API_BASE_URL}/api/careers/${id}`)
         if (res.ok) {
           const data = await res.json()
           if (data && (data._id || data.id)) {
@@ -261,7 +262,7 @@ const CareerDetail = () => {
     setFormError('')
 
     try {
-      const res = await fetch('http://localhost:5000/api/applications/upload', {
+      const res = await fetch(`${API_BASE_URL}/api/applications/upload`, {
         method: 'POST',
         body: formData,
       })
@@ -319,7 +320,7 @@ const CareerDetail = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/applications', {
+      const res = await fetch(`${API_BASE_URL}/api/applications`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

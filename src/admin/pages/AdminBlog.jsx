@@ -28,6 +28,7 @@ import {
   FiCalendar
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
+import { API_BASE_URL } from '@utils/constants'
 
 const AdminBlog = () => {
   const { token } = useAdminAuth()
@@ -75,7 +76,7 @@ const AdminBlog = () => {
   const fetchBlogData = async () => {
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/api/blog/all', {
+      const response = await fetch(`${API_BASE_URL}/api/blog/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       if (response.ok) {
@@ -140,7 +141,7 @@ const AdminBlog = () => {
         setUploadProgress(prev => (prev >= 90 ? 90 : prev + 15))
       }, 150)
 
-      const response = await fetch('http://localhost:5000/api/media/upload', {
+      const response = await fetch(`${API_BASE_URL}/api/media/upload`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: formData,
@@ -225,8 +226,8 @@ const AdminBlog = () => {
 
     try {
       const url = currentItem 
-        ? `http://localhost:5000/api/blog/${currentItem.id}`
-        : 'http://localhost:5000/api/blog'
+        ? `${API_BASE_URL}/api/blog/${currentItem.id}`
+        : `${API_BASE_URL}/api/blog`
       
       const method = currentItem ? 'PUT' : 'POST'
 
@@ -257,7 +258,7 @@ const AdminBlog = () => {
   const handleToggleActive = async (item) => {
     setActiveDropdownId(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/blog/${item.id}/toggle`, {
+      const res = await fetch(`${API_BASE_URL}/api/blog/${item.id}/toggle`, {
         method: 'PATCH',
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -275,7 +276,7 @@ const AdminBlog = () => {
   const confirmDelete = async () => {
     if (!deleteItemTarget) return
     try {
-      const res = await fetch(`http://localhost:5000/api/blog/${deleteItemTarget.id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/blog/${deleteItemTarget.id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       })

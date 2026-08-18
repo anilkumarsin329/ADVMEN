@@ -29,6 +29,7 @@ import {
   FiUploadCloud
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
+import { API_BASE_URL } from '@utils/constants'
 
 const defaultCategories = [
   'Branding',
@@ -85,7 +86,7 @@ const AdminCatalog = () => {
   const fetchCatalogData = async () => {
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/api/catalog')
+      const response = await fetch(`${API_BASE_URL}/api/catalog`)
       if (response.ok) {
         const data = await response.json()
         if (Array.isArray(data)) {
@@ -161,7 +162,7 @@ const AdminCatalog = () => {
         })
       }, 150)
 
-      const response = await fetch('http://localhost:5000/api/media/upload', {
+      const response = await fetch(`${API_BASE_URL}/api/media/upload`, {
         method: 'POST',
         headers: authHeader,
         body: formData,
@@ -307,7 +308,7 @@ const AdminCatalog = () => {
     try {
       if (currentItem) {
         // Edit Mode
-        const response = await fetch(`http://localhost:5000/api/catalog/${currentItem.id || currentItem._id}`, {
+        const response = await fetch(`${API_BASE_URL}/api/catalog/${currentItem.id || currentItem._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -327,7 +328,7 @@ const AdminCatalog = () => {
         }
       } else {
         // Create Mode
-        const response = await fetch('http://localhost:5000/api/catalog', {
+        const response = await fetch(`${API_BASE_URL}/api/catalog`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -387,7 +388,7 @@ const AdminCatalog = () => {
     const authHeader = token ? { 'Authorization': `Bearer ${token}` } : {}
 
     try {
-      const response = await fetch(`http://localhost:5000/api/catalog/${item.id || item._id}/toggle`, {
+      const response = await fetch(`${API_BASE_URL}/api/catalog/${item.id || item._id}/toggle`, {
         method: 'PATCH',
         headers: authHeader,
       })
@@ -418,7 +419,7 @@ const AdminCatalog = () => {
     const authHeader = token ? { 'Authorization': `Bearer ${token}` } : {}
 
     try {
-      const response = await fetch(`http://localhost:5000/api/catalog/${deleteItemTarget.id || deleteItemTarget._id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/catalog/${deleteItemTarget.id || deleteItemTarget._id}`, {
         method: 'DELETE',
         headers: authHeader,
       })

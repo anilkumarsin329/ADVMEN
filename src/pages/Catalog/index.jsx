@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiShoppingCart, FiX, FiPlus, FiMinus, FiCheck } from 'react-icons/fi'
 import { catalogItems as staticCatalogItems, categories as staticCategories } from '@data/catalog'
+import { API_BASE_URL } from '@utils/constants'
 import './Catalog.css'
-
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 const Catalog = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -17,7 +16,7 @@ const Catalog = () => {
   useEffect(() => {
     const fetchCatalog = async () => {
       try {
-        const response = await fetch(`${API_BASE}/api/catalog`)
+        const response = await fetch(`${API_BASE_URL}/api/catalog`)
         if (response.ok) {
           const data = await response.json()
           if (Array.isArray(data) && data.length > 0) {

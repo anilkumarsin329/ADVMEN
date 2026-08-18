@@ -14,10 +14,33 @@ export const COMPANY = {
   shortName:   'ADVMEN',
   tagline:     'We Build Brands That Dominate.',
   email:       'info@advmen.com',
-  phone:       '+91 83750 08009',
+  phone:       '+91 95196 02401',
   address:     'India',
   website:     'https://advmen.com',
   founded:     '2020',
+}
+
+// ── API Configuration ─────────────────────────────────────────
+export const getApiBaseUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL.replace(/\/$/, '')
+  }
+  if (typeof window !== 'undefined') {
+    const { protocol, hostname } = window.location
+    if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
+      return `${protocol}//${hostname}`
+    }
+  }
+  return 'http://localhost:5000'
+}
+
+export const API_BASE_URL = getApiBaseUrl()
+
+export const getImageUrl = (path) => {
+  if (!path) return ''
+  if (path.startsWith('http://') || path.startsWith('https://')) return path
+  const cleanPath = path.startsWith('/') ? path : `/${path}`
+  return `${API_BASE_URL}${cleanPath}`
 }
 
 // ── Social Links ─────────────────────────────────────────────

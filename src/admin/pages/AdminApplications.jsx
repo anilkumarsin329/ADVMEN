@@ -29,6 +29,7 @@ import {
   FiXCircle
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
 const AdminApplications = () => {
   const { token } = useAdminAuth()
@@ -47,7 +48,7 @@ const AdminApplications = () => {
   const fetchApplications = async () => {
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:5000/api/applications', {
+      const res = await fetch(`${API_BASE_URL}/api/applications`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       if (res.ok) {
@@ -105,7 +106,7 @@ const AdminApplications = () => {
   const handleUpdateStatus = async (item, newStatus) => {
     setActiveDropdownId(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/applications/${item.id}/status`, {
+      const res = await fetch(`${API_BASE_URL}/api/applications/${item.id}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -127,7 +128,7 @@ const AdminApplications = () => {
   const handleToggleStar = async (item) => {
     setActiveDropdownId(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/applications/${item.id}/star`, {
+      const res = await fetch(`${API_BASE_URL}/api/applications/${item.id}/star`, {
         method: 'PATCH',
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -143,7 +144,7 @@ const AdminApplications = () => {
   const handleDelete = async () => {
     if (!targetItem) return
     try {
-      const res = await fetch(`http://localhost:5000/api/applications/${targetItem.id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/applications/${targetItem.id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -447,7 +448,7 @@ const AdminApplications = () => {
                 <div className="flex items-center gap-3">
                   {targetItem.profilePhoto ? (
                     <img
-                      src={targetItem.profilePhoto.startsWith('/') ? `http://localhost:5000${targetItem.profilePhoto}` : targetItem.profilePhoto}
+                      src={getImageUrl(targetItem.profilePhoto)}
                       alt={targetItem.name}
                       className="w-12 h-12 rounded-full object-cover border-2 border-orange-500 shadow-md"
                     />
@@ -499,7 +500,7 @@ const AdminApplications = () => {
                   <div>
                     <span className="font-bold text-slate-400 uppercase text-[10px] block mb-1">Uploaded Resume File</span>
                     <a
-                      href={targetItem.resume.startsWith('/') ? `http://localhost:5000${targetItem.resume}` : targetItem.resume}
+                      href={getImageUrl(targetItem.resume)}
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-50 text-blue-700 font-bold border border-blue-200 hover:bg-blue-100 transition-all text-xs"

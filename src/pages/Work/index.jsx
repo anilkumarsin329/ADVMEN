@@ -14,6 +14,7 @@ import { gsap } from '@utils/gsapConfig'
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { portfolioItems, getPortfolioCategories } from '@data/portfolioItems'
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
 const categories = getPortfolioCategories()
 
@@ -26,7 +27,7 @@ const Work = () => {
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/portfolio')
+        const res = await fetch(`${API_BASE_URL}/api/portfolio`)
         if (res.ok) {
           const data = await res.json()
           if (Array.isArray(data) && data.length > 0) {
@@ -161,7 +162,7 @@ const Work = () => {
                     >
                       {item.image ? (
                         <img 
-                          src={item.image} 
+                          src={getImageUrl(item.image)} 
                           alt={item.title} 
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />

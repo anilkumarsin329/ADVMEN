@@ -6,6 +6,7 @@
  */
 
 import { createContext, useContext, useReducer, useEffect } from 'react'
+import { API_BASE_URL } from '@utils/constants'
 
 const AdminAuthContext = createContext(null)
 
@@ -63,7 +64,7 @@ export const AdminAuthProvider = ({ children }) => {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/admin/me', {
+        const response = await fetch(`${API_BASE_URL}/api/admin/me`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${storedToken}`,
@@ -99,7 +100,7 @@ export const AdminAuthProvider = ({ children }) => {
   const login = async (email, password) => {
     dispatch({ type: 'SET_LOADING', payload: true })
     try {
-      const response = await fetch('http://localhost:5000/api/admin/login', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

@@ -13,7 +13,7 @@ import { gsap } from '@utils/gsapConfig'
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi'
-
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
 const WorkDetail = () => {
   const { slug } = useParams()
@@ -26,7 +26,7 @@ const WorkDetail = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/portfolio/${slug}`)
+        const res = await fetch(`${API_BASE_URL}/api/portfolio/${slug}`)
         if (res.ok) {
           const data = await res.json()
           setDetails(data)
@@ -154,7 +154,7 @@ const WorkDetail = () => {
                   letterSpacing: '-0.02em',
                 }}
               >
-                {details.client}
+                {details.title || details.client}
               </h1>
 
               {/* Description */}
@@ -168,8 +168,19 @@ const WorkDetail = () => {
                   maxWidth: '700px',
                 }}
               >
-                {details.tagline}
+                {details.tagline || details.description}
               </p>
+
+              {/* Hero Cover Image Banner */}
+              {details.image && (
+                <div className="case-stagger w-full mt-6 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[16/9] max-h-[500px]">
+                  <img
+                    src={getImageUrl(details.image)}
+                    alt={details.title || details.client}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -350,6 +361,20 @@ const WorkDetail = () => {
                         {details.duration}
                       </div>
                     </div>
+
+                    {(details.projectLink || details.projectUrl || details.link) && (
+                      <div className="pt-2">
+                        <a
+                          href={details.projectLink || details.projectUrl || details.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full px-4 py-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg"
+                        >
+                          <span>View Live Project</span>
+                          <FiExternalLink size={14} />
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
 

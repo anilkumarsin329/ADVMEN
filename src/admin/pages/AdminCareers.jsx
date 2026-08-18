@@ -27,6 +27,7 @@ import {
   FiUploadCloud
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
+import { API_BASE_URL } from '@utils/constants'
 
 const AdminCareers = () => {
   const { token } = useAdminAuth()
@@ -74,7 +75,7 @@ const AdminCareers = () => {
   const fetchCareersData = async () => {
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/api/careers/all', {
+      const response = await fetch(`${API_BASE_URL}/api/careers/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       if (response.ok) {
@@ -129,7 +130,7 @@ const AdminCareers = () => {
         setUploadProgress(prev => (prev >= 90 ? 90 : prev + 15))
       }, 150)
 
-      const response = await fetch('http://localhost:5000/api/media/upload', {
+      const response = await fetch(`${API_BASE_URL}/api/media/upload`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: formData,
@@ -224,8 +225,8 @@ const AdminCareers = () => {
 
     try {
       const url = currentItem 
-        ? `http://localhost:5000/api/careers/${currentItem.id}`
-        : 'http://localhost:5000/api/careers'
+        ? `${API_BASE_URL}/api/careers/${currentItem.id}`
+        : `${API_BASE_URL}/api/careers`
       
       const method = currentItem ? 'PUT' : 'POST'
 
@@ -256,7 +257,7 @@ const AdminCareers = () => {
   const handleToggleActive = async (item) => {
     setActiveDropdownId(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/careers/${item.id}/toggle`, {
+      const res = await fetch(`${API_BASE_URL}/api/careers/${item.id}/toggle`, {
         method: 'PATCH',
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -274,7 +275,7 @@ const AdminCareers = () => {
   const confirmDelete = async () => {
     if (!deleteItemTarget) return
     try {
-      const res = await fetch(`http://localhost:5000/api/careers/${deleteItemTarget.id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/careers/${deleteItemTarget.id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       })

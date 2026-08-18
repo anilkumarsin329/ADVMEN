@@ -20,6 +20,7 @@ import {
   FiAward
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
+import { API_BASE_URL } from '@utils/constants'
 
 const AdminDashboard = () => {
   const { token } = useAdminAuth()
@@ -44,7 +45,7 @@ const AdminDashboard = () => {
 
     try {
       // 1. Fetch Contact Inquiries
-      const contactsRes = await fetch('http://localhost:5000/api/contact', { headers })
+      const contactsRes = await fetch(`${API_BASE_URL}/api/contact`, { headers })
       if (contactsRes.ok) {
         const result = await contactsRes.json()
         const data = result.data || result
@@ -59,7 +60,7 @@ const AdminDashboard = () => {
 
     try {
       // 2. Fetch Job Applications (REAL LIVE DATA)
-      const appsRes = await fetch('http://localhost:5000/api/applications', { headers })
+      const appsRes = await fetch(`${API_BASE_URL}/api/applications`, { headers })
       if (appsRes.ok) {
         const result = await appsRes.json()
         const data = result.data || result
@@ -74,7 +75,7 @@ const AdminDashboard = () => {
 
     try {
       // 3. Fetch Job Openings (Careers)
-      const careersRes = await fetch('http://localhost:5000/api/careers/all', { headers })
+      const careersRes = await fetch(`${API_BASE_URL}/api/careers/all`, { headers })
       if (careersRes.ok) {
         const data = await careersRes.json()
         if (Array.isArray(data)) {
@@ -88,7 +89,7 @@ const AdminDashboard = () => {
 
     try {
       // 4. Fetch Blog Articles
-      const blogsRes = await fetch('http://localhost:5000/api/blog/all', { headers })
+      const blogsRes = await fetch(`${API_BASE_URL}/api/blog/all`, { headers })
       if (blogsRes.ok) {
         const data = await blogsRes.json()
         if (Array.isArray(data)) {
@@ -101,7 +102,7 @@ const AdminDashboard = () => {
 
     try {
       // 5. Fetch Portfolio Projects
-      const portfolioRes = await fetch('http://localhost:5000/api/portfolio/all', { headers })
+      const portfolioRes = await fetch(`${API_BASE_URL}/api/portfolio/all`, { headers })
       if (portfolioRes.ok) {
         const data = await portfolioRes.json()
         if (Array.isArray(data)) {

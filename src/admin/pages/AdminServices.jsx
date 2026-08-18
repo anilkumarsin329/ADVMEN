@@ -29,6 +29,7 @@ import {
   FiUploadCloud
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
 const defaultCategories = [
   'Branding',
@@ -86,7 +87,7 @@ const AdminServices = () => {
   const fetchservicesData = async () => {
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/api/services/all', {
+      const response = await fetch(`${API_BASE_URL}/api/services/all`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -165,7 +166,7 @@ const AdminServices = () => {
         })
       }, 150)
 
-      const response = await fetch('http://localhost:5000/api/media/upload', {
+      const response = await fetch(`${API_BASE_URL}/api/media/upload`, {
         method: 'POST',
         headers: authHeader,
         body: formData,
@@ -306,7 +307,7 @@ const AdminServices = () => {
     try {
       if (currentItem) {
         // Edit Mode
-        const response = await fetch(`http://localhost:5000/api/services/${currentItem.id || currentItem._id}`, {
+        const response = await fetch(`${API_BASE_URL}/api/services/${currentItem.id || currentItem._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -326,7 +327,7 @@ const AdminServices = () => {
         }
       } else {
         // Create Mode
-        const response = await fetch('http://localhost:5000/api/services', {
+        const response = await fetch(`${API_BASE_URL}/api/services`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -386,7 +387,7 @@ const AdminServices = () => {
     const authHeader = token ? { 'Authorization': `Bearer ${token}` } : {}
 
     try {
-      const response = await fetch(`http://localhost:5000/api/services/${item.id || item._id}/toggle`, {
+      const response = await fetch(`${API_BASE_URL}/api/services/${item.id || item._id}/toggle`, {
         method: 'PATCH',
         headers: authHeader,
       })
@@ -417,7 +418,7 @@ const AdminServices = () => {
     const authHeader = token ? { 'Authorization': `Bearer ${token}` } : {}
 
     try {
-      const response = await fetch(`http://localhost:5000/api/services/${deleteItemTarget.id || deleteItemTarget._id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/services/${deleteItemTarget.id || deleteItemTarget._id}`, {
         method: 'DELETE',
         headers: authHeader,
       })

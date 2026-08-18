@@ -8,6 +8,7 @@ import { useRef, useEffect, useState } from 'react'
 import { FiLayers } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
 import { services as staticServices } from '@data/services'
+import { API_BASE_URL } from '@utils/constants'
 
 const Services = () => {
   const sectionRef = useRef(null)
@@ -19,7 +20,7 @@ const Services = () => {
   useEffect(() => {
     const loadServices = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/services')
+        const res = await fetch(`${API_BASE_URL}/api/services`)
         if (res.ok) {
           const data = await res.json()
           if (Array.isArray(data) && data.length > 0) {

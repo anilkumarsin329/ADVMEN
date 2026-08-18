@@ -15,6 +15,7 @@ import { gsap } from '@utils/gsapConfig'
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { services } from '@data/services'
+import { API_BASE_URL } from '@utils/constants'
 
 const Services = () => {
   const headerRef = useRef(null)
@@ -26,7 +27,7 @@ const Services = () => {
   useEffect(() => {
     const loadServices = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/services')
+        const res = await fetch(`${API_BASE_URL}/api/services`)
         if (res.ok) {
           const data = await res.json()
           if (Array.isArray(data) && data.length > 0) {

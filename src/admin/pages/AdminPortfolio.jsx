@@ -23,9 +23,11 @@ import {
   FiRefreshCw,
   FiSettings,
   FiEye,
-  FiXCircle
+  FiXCircle,
+  FiExternalLink
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
 const AdminPortfolio = () => {
   const { token } = useAdminAuth()
@@ -69,6 +71,7 @@ const AdminPortfolio = () => {
     client: '',
     duration: '',
     image: '',
+    projectLink: '',
     isActive: true,
   })
   const [formErrors, setFormErrors] = useState({})
@@ -77,7 +80,7 @@ const AdminPortfolio = () => {
   const fetchPortfolioData = async () => {
     setLoading(true)
     try {
-      const response = await fetch('http://localhost:5000/api/portfolio/all', {
+      const response = await fetch(`${API_BASE_URL}/api/portfolio/all`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       if (response.ok) {
@@ -132,7 +135,7 @@ const AdminPortfolio = () => {
         setUploadProgress(prev => (prev >= 90 ? 90 : prev + 15))
       }, 150)
 
-      const response = await fetch('http://localhost:5000/api/media/upload', {
+      const response = await fetch(`${API_BASE_URL}/api/media/upload`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: formData,
@@ -162,7 +165,7 @@ const AdminPortfolio = () => {
     setCurrentItem(null)
     setFormValues({
       title: '', slug: '', category: '', year: '', tagsString: '', description: '',
-      tagline: '', challenge: '', solution: '', resultsString: '', techString: '', client: '', duration: '', image: '', isActive: true
+      tagline: '', challenge: '', solution: '', resultsString: '', techString: '', client: '', duration: '', image: '', projectLink: '', isActive: true
     })
     setFormErrors({})
     setIsModalOpen(true)
@@ -185,6 +188,7 @@ const AdminPortfolio = () => {
       client: item.client || '',
       duration: item.duration || '',
       image: item.image || '',
+      projectLink: item.projectLink || item.projectUrl || item.link || '',
       isActive: item.isActive !== false,
     })
     setFormErrors({})
@@ -220,9 +224,9 @@ const AdminPortfolio = () => {
     }
 
     try {
-      const url = currentItem 
-        ? `http://localhost:5000/api/portfolio/${currentItem.id}`
-        : 'http://localhost:5000/api/portfolio'
+      const url = currentItem
+        ? `${API_BASE_URL}/api/portfolio/${currentItem.id}`
+        : `${API_BASE_URL}/api/portfolio`
       
       const method = currentItem ? 'PUT' : 'POST'
 
@@ -253,7 +257,7 @@ const AdminPortfolio = () => {
   const handleToggleActive = async (item) => {
     setActiveDropdownId(null)
     try {
-      const res = await fetch(`http://localhost:5000/api/portfolio/${item.id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/portfolio/${item.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -275,7 +279,7 @@ const AdminPortfolio = () => {
   const confirmDelete = async () => {
     if (!deleteItemTarget) return
     try {
-      const res = await fetch(`http://localhost:5000/api/portfolio/${deleteItemTarget.id}`, {
+      const res = await fetch(`${API_BASE_URL}/api/portfolio/${deleteItemTarget.id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -493,7 +497,7 @@ const AdminPortfolio = () => {
                         <div className="flex items-center gap-3">
                           {item.image ? (
                             <img 
-                              src={item.image} 
+                              src={getImageUrl(item.image)} 
                               alt={item.title} 
                               className="w-10 h-10 rounded-xl object-cover border border-slate-200 shadow-sm flex-shrink-0"
                             />
@@ -745,6 +749,18 @@ const AdminPortfolio = () => {
                   </div>
                 </div>
 
+                {/* Project Live Link */}
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Project Link / Live URL</label>
+                  <input
+                    type="url"
+                    placeholder="e.g. https://savitramfoundation.org or https://myproject.com"
+                    value={formValues.projectLink}
+                    onChange={(e) => setFormValues({ ...formValues, projectLink: e.target.value, projectUrl: e.target.value })}
+                    className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all font-mono"
+                  />
+                </div>
+
                 {/* Tags & Tech Stack */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -873,7 +889,11 @@ const AdminPortfolio = () => {
               <div className="p-6 space-y-5">
                 {viewItemTarget.image && (
                   <div className="w-full h-48 rounded-xl overflow-hidden border border-slate-200 shadow-sm">
-                    <img src={viewItemTarget.image} alt={viewItemTarget.title} className="w-full h-full object-cover" />
+                    <img
+                      src={getImageUrl(viewItemTarget.image)}
+                      alt={viewItemTarget.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 )}
 
@@ -897,6 +917,21 @@ const AdminPortfolio = () => {
                     </span>
                   </div>
                 </div>
+
+                {(viewItemTarget.projectLink || viewItemTarget.projectUrl || viewItemTarget.link) && (
+                  <div>
+                    <span className="text-[10px] font-bold uppercase text-slate-400 block mb-1">Live Project Link</span>
+                    <a
+                      href={viewItemTarget.projectLink || viewItemTarget.projectUrl || viewItemTarget.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-600 hover:text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-100"
+                    >
+                      <span>{viewItemTarget.projectLink || viewItemTarget.projectUrl || viewItemTarget.link}</span>
+                      <FiExternalLink size={12} />
+                    </a>
+                  </div>
+                )}
 
                 <div>
                   <span className="text-[10px] font-bold uppercase text-slate-400 block mb-1">Description</span>
