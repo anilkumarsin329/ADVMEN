@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiMessageCircle, FiX, FiSend } from 'react-icons/fi'
 import { API_BASE_URL } from '@utils/constants'
 
-const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || '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'
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || ''
 
 const SYSTEM_PROMPT = `You are ADVMEN AI, the official AI customer support & technology consultant for ADVMEN Technologies.
 ADVMEN Technologies is a premier IT solutions and digital agency offering:
