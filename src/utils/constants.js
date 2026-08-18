@@ -22,24 +22,38 @@ export const COMPANY = {
 
 // ── API Configuration ─────────────────────────────────────────
 export const getApiBaseUrl = () => {
+  let url = ''
   if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL.replace(/\/$/, '')
-  }
-  if (typeof window !== 'undefined') {
+    url = import.meta.env.VITE_API_URL.replace(/\/$/, '')
+  } else if (typeof window !== 'undefined') {
     const { protocol, hostname } = window.location
     if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
-      return `${protocol}//${hostname}`
+      url = `${protocol}//${hostname}`
     }
   }
-  return 'http://localhost:5000'
+  
+  if (!url) url = 'http://localhost:5000'
+
+  // CRITICAL: Prevent Mixed Content blocking when page is served via HTTPS
+  if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
+    url = url.replace(/^http:\/\//i, 'https://')
+  }
+
+  return url
 }
 
 export const API_BASE_URL = getApiBaseUrl()
 
 export const getImageUrl = (path) => {
   if (!path) return ''
-  if (path.startsWith('http://') || path.startsWith('https://')) return path
-  const cleanPath = path.startsWith('/') ? path : `/${path}`
+  let finalPath = path
+  if (finalPath.startsWith('http://') || finalPath.startsWith('https://')) {
+    if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
+      finalPath = finalPath.replace(/^http:\/\//i, 'https://')
+    }
+    return finalPath
+  }
+  const cleanPath = finalPath.startsWith('/') ? finalPath : `/${finalPath}`
   return `${API_BASE_URL}${cleanPath}`
 }
 
