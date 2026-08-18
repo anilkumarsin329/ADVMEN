@@ -18,7 +18,8 @@ import {
   FiUser,
   FiHelpCircle,
   FiBookOpen,
-  FiBriefcase
+  FiBriefcase,
+  FiUsers
 } from 'react-icons/fi'
 
 const navigationItems = [
@@ -27,6 +28,7 @@ const navigationItems = [
   { label: 'Service',   href: '/admin/services',  icon: FiSettings },
   { label: 'Work',      href: '/admin/portfolio', icon: FiLayers },
   { label: 'Careers',   href: '/admin/careers',   icon: FiBriefcase },
+  { label: 'Applications', href: '/admin/applications', icon: FiUsers },
   { label: 'Blog',      href: '/admin/blog',      icon: FiFileText },
   { label: 'Contact',   href: '/admin/contacts',  icon: FiMail },
 ]

@@ -155,11 +155,17 @@ const AdminCareers = () => {
     }
   }
 
+  // Custom Department State
+  const [customDepartment, setCustomDepartment] = useState('')
+  const [isCustomDept, setIsCustomDept] = useState(false)
+
   const handleOpenAddModal = () => {
     setCurrentItem(null)
+    setCustomDepartment('')
+    setIsCustomDept(false)
     setFormValues({
-      title: '', department: '', location: 'Gurugram / Remote', type: 'Full-Time',
-      experienceString: '', skillsString: '', responsibilitiesString: '', requirementsString: '', salary: '', image: '', isActive: true
+      title: '', department: 'Engineering', location: 'Gurugram / Remote', type: 'Full-Time',
+      experienceString: 'Junior (1-3 yrs), Senior (3+ yrs)', skillsString: '', responsibilitiesString: '', requirementsString: '', salary: '', image: '', isActive: true
     })
     setFormErrors({})
     setIsModalOpen(true)
@@ -167,9 +173,14 @@ const AdminCareers = () => {
 
   const handleOpenEditModal = (item) => {
     setCurrentItem(item)
+    const standardDepts = ['Engineering', 'Design', 'Sales', 'Marketing', 'Management']
+    const isCustom = item.department && !standardDepts.includes(item.department)
+    setIsCustomDept(isCustom)
+    setCustomDepartment(isCustom ? item.department : '')
+
     setFormValues({
       title: item.title || '',
-      department: item.department || '',
+      department: isCustom ? '__add_new__' : (item.department || 'Engineering'),
       location: item.location || 'Gurugram / Remote',
       type: item.type || 'Full-Time',
       experienceString: item.experience ? item.experience.join(', ') : '',
@@ -187,7 +198,8 @@ const AdminCareers = () => {
   const validateForm = () => {
     const errors = {}
     if (!formValues.title?.trim()) errors.title = 'Job title is required'
-    if (!formValues.department?.trim()) errors.department = 'Department is required'
+    const activeDept = isCustomDept ? customDepartment : formValues.department
+    if (!activeDept?.trim() || activeDept === '__add_new__') errors.department = 'Department is required'
     setFormErrors(errors)
     return Object.keys(errors).length === 0
   }
@@ -199,8 +211,11 @@ const AdminCareers = () => {
     const parseCommaString = (str) => str ? str.split(',').map(s => s.trim()).filter(Boolean) : []
     const parseLineString = (str) => str ? str.split('\n').map(s => s.trim()).filter(Boolean) : []
 
+    const finalDepartment = isCustomDept ? customDepartment.trim() : formValues.department
+
     const payload = {
       ...formValues,
+      department: finalDepartment,
       experience: parseCommaString(formValues.experienceString),
       skills: parseCommaString(formValues.skillsString),
       responsibilities: parseLineString(formValues.responsibilitiesString),
@@ -685,9 +700,17 @@ const AdminCareers = () => {
                   <div>
                     <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Department *</label>
                     <select
-                      value={formValues.department}
-                      onChange={(e) => setFormValues({ ...formValues, department: e.target.value })}
-                      className={`w-full px-4 py-2.5 rounded-lg text-sm bg-white border ${formErrors.department ? 'border-red-500' : 'border-gray-300'} outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all`}
+                      value={isCustomDept ? '__add_new__' : formValues.department}
+                      onChange={(e) => {
+                        if (e.target.value === '__add_new__') {
+                          setIsCustomDept(true)
+                          setFormValues({ ...formValues, department: '' })
+                        } else {
+                          setIsCustomDept(false)
+                          setFormValues({ ...formValues, department: e.target.value })
+                        }
+                      }}
+                      className={`w-full px-4 py-2.5 rounded-lg text-sm bg-white border ${formErrors.department ? 'border-red-500' : 'border-gray-300'} outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all font-medium`}
                     >
                       <option value="">Select Department</option>
                       <option value="Engineering">Engineering</option>
@@ -695,7 +718,23 @@ const AdminCareers = () => {
                       <option value="Sales">Sales</option>
                       <option value="Marketing">Marketing</option>
                       <option value="Management">Management</option>
+                      {uniqueDepartments.filter(d => d !== 'All' && !['Engineering', 'Design', 'Sales', 'Marketing', 'Management'].includes(d)).map(d => (
+                        <option key={d} value={d}>{d}</option>
+                      ))}
+                      <option value="__add_new__" className="font-bold text-orange-600">+ Add New Department...</option>
                     </select>
+
+                    {isCustomDept && (
+                      <div className="mt-2">
+                        <input
+                          type="text"
+                          placeholder="Enter Custom Department Name *"
+                          value={customDepartment}
+                          onChange={(e) => setCustomDepartment(e.target.value)}
+                          className="w-full px-3.5 py-2 rounded-lg text-xs bg-orange-50/60 border border-orange-300 text-slate-800 outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 font-semibold"
+                        />
+                      </div>
+                    )}
                   </div>
                   <div>
                     <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Location</label>
@@ -709,26 +748,33 @@ const AdminCareers = () => {
                   </div>
                 </div>
 
-                {/* Job Type & Salary */}
+                {/* Job Level / Track & Salary */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Employment Type</label>
+                    <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Job Level / Track *</label>
                     <select
                       value={formValues.type}
-                      onChange={(e) => setFormValues({ ...formValues, type: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
+                      onChange={(e) => {
+                        const val = e.target.value
+                        setFormValues(prev => ({
+                          ...prev,
+                          type: val,
+                          experienceString: prev.experienceString || (val === 'Internship' ? 'Internship (0-6 mos), Fresher (0-1 yr)' : 'Junior (1-3 yrs), Senior (3+ yrs)')
+                        }))
+                      }}
+                      className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all font-semibold"
                     >
-                      <option value="Full-Time">Full-Time</option>
+                      <option value="Full-Time">Full-Time (Experienced)</option>
+                      <option value="Internship">Internship (Entry-Level / Student)</option>
                       <option value="Part-Time">Part-Time</option>
                       <option value="Contract">Contract</option>
-                      <option value="Internship">Internship</option>
                     </select>
                   </div>
                   <div>
                     <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Salary Range / Package</label>
                     <input
                       type="text"
-                      placeholder="e.g. ₹6 - ₹12 LPA or Best in Industry"
+                      placeholder="e.g. ₹6 - ₹12 LPA or Stipend: ₹15k/mo"
                       value={formValues.salary}
                       onChange={(e) => setFormValues({ ...formValues, salary: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"

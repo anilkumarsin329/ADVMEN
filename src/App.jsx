@@ -43,6 +43,7 @@ const BlogPost       = lazy(() => import('@pages/BlogPost'))
 const Catalog        = lazy(() => import('@pages/Catalog'))
 const Contact        = lazy(() => import('@pages/Contact'))
 const Careers        = lazy(() => import('@pages/Careers'))
+const CareerDetail   = lazy(() => import('@pages/CareerDetail'))
 const PrivacyPolicy  = lazy(() => import('@pages/PrivacyPolicy'))
 const TermsOfService = lazy(() => import('@pages/TermsOfService'))
 const NotFound       = lazy(() => import('@pages/NotFound'))
@@ -55,6 +56,7 @@ const AdminLogin     = lazy(() => import('@/admin/pages/AdminLogin'))
 const AdminDashboard = lazy(() => import('@/admin/pages/AdminDashboard'))
 const AdminContacts  = lazy(() => import('@/admin/pages/AdminContacts'))
 const AdminCareers   = lazy(() => import('@/admin/pages/AdminCareers'))
+const AdminApplications = lazy(() => import('@/admin/pages/AdminApplications'))
 const AdminBlog      = lazy(() => import('@/admin/pages/AdminBlog'))
 const AdminPortfolio = lazy(() => import('@/admin/pages/AdminPortfolio'))
 const AdminServices  = lazy(() => import('@/admin/pages/AdminServices'))
@@ -95,6 +97,7 @@ const PublicRoutes = () => {
         <Route path="/catalog"          element={<Catalog />} />
         <Route path="/contact"          element={<Contact />} />
         <Route path="/careers"          element={<Careers />} />
+        <Route path="/careers/:id"      element={<CareerDetail />} />
         <Route path="/privacy-policy"   element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="*"                 element={<NotFound />} />
@@ -109,16 +112,17 @@ const AdminRoutes = () => (
     <Route path="/admin/login" element={<AdminLogin />} />
     <Route path="/admin" element={<AdminProtectedRoute />}>
       <Route index element={<Navigate to="/admin/dashboard" replace />} />
-      <Route path="dashboard"  element={<AdminLayout><AdminDashboard /></AdminLayout>} />
-      <Route path="contacts"   element={<AdminLayout><AdminContacts /></AdminLayout>} />
-      <Route path="careers"    element={<AdminLayout><AdminCareers /></AdminLayout>} />
-      <Route path="blog"       element={<AdminLayout><AdminBlog /></AdminLayout>} />
-      <Route path="portfolio"  element={<AdminLayout><AdminPortfolio /></AdminLayout>} />
-      <Route path="services"   element={<AdminLayout><AdminServices /></AdminLayout>} />
-      <Route path="settings"   element={<AdminLayout><AdminSettings /></AdminLayout>} />
-      <Route path="profile"    element={<AdminLayout><AdminProfile /></AdminLayout>} />
-      <Route path="help"       element={<AdminLayout><AdminHelp /></AdminLayout>} />
-      <Route path="catalog"    element={<AdminLayout><AdminCatalog /></AdminLayout>} />
+      <Route path="dashboard"    element={<AdminLayout><AdminDashboard /></AdminLayout>} />
+      <Route path="contacts"     element={<AdminLayout><AdminContacts /></AdminLayout>} />
+      <Route path="careers"      element={<AdminLayout><AdminCareers /></AdminLayout>} />
+      <Route path="applications" element={<AdminLayout><AdminApplications /></AdminLayout>} />
+      <Route path="blog"         element={<AdminLayout><AdminBlog /></AdminLayout>} />
+      <Route path="portfolio"    element={<AdminLayout><AdminPortfolio /></AdminLayout>} />
+      <Route path="services"     element={<AdminLayout><AdminServices /></AdminLayout>} />
+      <Route path="settings"     element={<AdminLayout><AdminSettings /></AdminLayout>} />
+      <Route path="profile"      element={<AdminLayout><AdminProfile /></AdminLayout>} />
+      <Route path="help"         element={<AdminLayout><AdminHelp /></AdminLayout>} />
+      <Route path="catalog"      element={<AdminLayout><AdminCatalog /></AdminLayout>} />
     </Route>
   </Routes>
 )
