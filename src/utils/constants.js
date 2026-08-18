@@ -34,9 +34,11 @@ export const getApiBaseUrl = () => {
   
   if (!url) url = 'http://localhost:5000'
 
-  // CRITICAL: Prevent Mixed Content blocking when page is served via HTTPS
+  // Upgrade HTTP to HTTPS on live production domains (except local dev servers)
   if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
-    url = url.replace(/^http:\/\//i, 'https://')
+    if (!url.includes('localhost') && !url.includes('127.0.0.1')) {
+      url = url.replace(/^http:\/\//i, 'https://')
+    }
   }
 
   return url
@@ -49,7 +51,9 @@ export const getImageUrl = (path) => {
   let finalPath = path
   if (finalPath.startsWith('http://') || finalPath.startsWith('https://')) {
     if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
-      finalPath = finalPath.replace(/^http:\/\//i, 'https://')
+      if (!finalPath.includes('localhost') && !finalPath.includes('127.0.0.1')) {
+        finalPath = finalPath.replace(/^http:\/\//i, 'https://')
+      }
     }
     return finalPath
   }
