@@ -28,7 +28,11 @@ export const getApiBaseUrl = () => {
   } else if (typeof window !== 'undefined') {
     const { protocol, hostname } = window.location
     if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
-      url = `${protocol}//${hostname}`
+      if (hostname === 'www.advmen.com' || hostname === 'advmen.com') {
+        url = `${protocol}//api.advmen.com`
+      } else {
+        url = `${protocol}//${hostname}`
+      }
     }
   }
   
@@ -49,6 +53,17 @@ export const API_BASE_URL = getApiBaseUrl()
 export const getImageUrl = (path) => {
   if (!path) return ''
   let finalPath = path
+
+  // Replace legacy/stored localhost:5000 URLs with actual API_BASE_URL when on production
+  if (finalPath.includes('localhost:5000') || finalPath.includes('127.0.0.1:5000')) {
+    if (typeof window !== 'undefined') {
+      const { hostname } = window.location
+      if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
+        finalPath = finalPath.replace(/^https?:\/\/(localhost|127\.0\.0\.1):5000/i, API_BASE_URL)
+      }
+    }
+  }
+
   if (finalPath.startsWith('http://') || finalPath.startsWith('https://')) {
     if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
       if (!finalPath.includes('localhost') && !finalPath.includes('127.0.0.1')) {
@@ -57,6 +72,7 @@ export const getImageUrl = (path) => {
     }
     return finalPath
   }
+
   const cleanPath = finalPath.startsWith('/') ? finalPath : `/${finalPath}`
   return `${API_BASE_URL}${cleanPath}`
 }
