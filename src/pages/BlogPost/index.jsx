@@ -4,7 +4,7 @@
  */
 
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { getBlogBySlug, blogArticles } from '@data/blog'
@@ -13,13 +13,33 @@ import { FiArrowLeft, FiShare2, FiCopy } from 'react-icons/fi'
 const BlogPost = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
-  const article = getBlogBySlug(slug)
+  const [article, setArticle] = useState(() => getBlogBySlug(slug))
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!article) {
+    const fetchArticle = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/blog/${slug}`)
+        if (response.ok) {
+          const data = await response.json()
+          if (data && data.title) {
+            setArticle({ ...data, id: data._id || data.id })
+          }
+        }
+      } catch (err) {
+        console.warn('API error fetching post by slug:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchArticle()
+  }, [slug])
+
+  useEffect(() => {
+    if (!loading && !article) {
       navigate('/404')
     }
-  }, [article, navigate])
+  }, [loading, article, navigate])
 
   if (!article) return null
 

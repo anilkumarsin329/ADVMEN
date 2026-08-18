@@ -4,17 +4,42 @@
  * Smaller card sizes
  */
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { FiLayers } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
-import { services } from '@data/services'
+import { services as staticServices } from '@data/services'
 
 const Services = () => {
   const sectionRef = useRef(null)
   const hasAnimated = useRef(false)
+  const [servicesData, setServicesData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Fetch dynamic services
+  useEffect(() => {
+    const loadServices = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/services')
+        if (res.ok) {
+          const data = await res.json()
+          if (Array.isArray(data) && data.length > 0) {
+            setServicesData(data)
+            return
+          }
+        }
+        throw new Error('No services returned or bad response')
+      } catch (err) {
+        console.warn('API connection failed for Services, falling back to local static data:', err)
+        setServicesData(staticServices)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    loadServices()
+  }, [])
 
   useEffect(() => {
-    if (hasAnimated.current || !sectionRef.current) return
+    if (isLoading || hasAnimated.current || !sectionRef.current) return
 
     const obs = new IntersectionObserver(
       ([entry]) => {
@@ -56,7 +81,7 @@ const Services = () => {
 
     obs.observe(sectionRef.current)
     return () => obs.disconnect()
-  }, [])
+  }, [isLoading])
 
   return (
     <section
@@ -150,8 +175,8 @@ const Services = () => {
 
         {/* Services Grid - Fully Responsive */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-          {services.map((service, idx) => (
-            <div key={service.id} className="service-card group">
+          {servicesData.map((service, idx) => (
+            <div key={service.id || service._id} className="service-card group">
               <div
                 className="relative rounded-lg sm:rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer flex flex-col h-full"
                 style={{

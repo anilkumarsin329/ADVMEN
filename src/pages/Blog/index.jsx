@@ -6,7 +6,7 @@
  * ─────────────────────────────────────────────────────────────
  */
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { gsap } from '@utils/gsapConfig'
@@ -17,6 +17,24 @@ import { blogArticles } from '@data/blog'
 
 const Blog = () => {
   const headerRef = useRef(null)
+  const [articles, setArticles] = useState(blogArticles)
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/blog')
+        if (res.ok) {
+          const data = await res.json()
+          if (Array.isArray(data) && data.length > 0) {
+            setArticles(data.map(item => ({ ...item, id: item._id || item.id })))
+          }
+        }
+      } catch (err) {
+        console.warn('Backend blog API error:', err)
+      }
+    }
+    fetchArticles()
+  }, [])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -88,7 +106,7 @@ const Blog = () => {
 
           {/* Articles Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogArticles.map((article, i) => (
+            {articles.map((article, i) => (
               <motion.div
                 key={article.id}
                 initial={{ opacity: 0, y: 30 }}

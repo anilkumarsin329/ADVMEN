@@ -19,7 +19,31 @@ const categories = getPortfolioCategories()
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [portfolioData, setPortfolioData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const headerRef = useRef(null)
+
+  useEffect(() => {
+    const fetchPortfolio = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/portfolio')
+        if (res.ok) {
+          const data = await res.json()
+          if (Array.isArray(data) && data.length > 0) {
+            setPortfolioData(data)
+            return
+          }
+        }
+        setPortfolioData(portfolioItems)
+      } catch (err) {
+        console.warn('API error, falling back to static:', err)
+        setPortfolioData(portfolioItems)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchPortfolio()
+  }, [])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -38,8 +62,8 @@ const Work = () => {
   }, [])
 
   const filteredItems = activeCategory === 'All'
-    ? portfolioItems
-    : portfolioItems.filter(item => item.category === activeCategory)
+    ? portfolioData
+    : portfolioData.filter(item => item.category === activeCategory)
 
   return (
     <PageTransition>
@@ -135,27 +159,37 @@ const Work = () => {
                         border: '1px solid rgba(255,255,255,0.04)',
                       }}
                     >
-                      {/* Scale inner design on hover */}
-                      <div className="absolute inset-0 opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-700 bg-radial-gradient"
-                        style={{
-                          background: 'radial-gradient(circle, var(--color-orange) 0%, transparent 70%)',
-                          filter: 'blur(40px)',
-                        }}
-                      />
+                      {item.image ? (
+                        <img 
+                          src={item.image} 
+                          alt={item.title} 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      ) : (
+                        <>
+                          {/* Scale inner design on hover */}
+                          <div className="absolute inset-0 opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-700 bg-radial-gradient"
+                            style={{
+                              background: 'radial-gradient(circle, var(--color-orange) 0%, transparent 70%)',
+                              filter: 'blur(40px)',
+                            }}
+                          />
 
-                      {/* Floating Text initials placeholder */}
-                      <span
-                        style={{
-                          fontFamily: 'var(--font-display)',
-                          fontWeight: 'var(--weight-black)',
-                          fontSize: '3.5rem',
-                          color: 'var(--color-white)',
-                          opacity: 0.12,
-                          letterSpacing: '0.05em',
-                        }}
-                      >
-                        {item.title.split(' ').map(n => n[0]).join('')}
-                      </span>
+                          {/* Floating Text initials placeholder */}
+                          <span
+                            style={{
+                              fontFamily: 'var(--font-display)',
+                              fontWeight: 'var(--weight-black)',
+                              fontSize: '3.5rem',
+                              color: 'var(--color-white)',
+                              opacity: 0.12,
+                              letterSpacing: '0.05em',
+                            }}
+                          >
+                            {item.title.split(' ').map(n => n[0]).join('')}
+                          </span>
+                        </>
+                      )}
                     </div>
 
                     {/* Metadata tags */}

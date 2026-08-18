@@ -13,7 +13,7 @@
  */
 
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { HelmetProvider } from 'react-helmet-async'
 
@@ -47,6 +47,22 @@ const PrivacyPolicy  = lazy(() => import('@pages/PrivacyPolicy'))
 const TermsOfService = lazy(() => import('@pages/TermsOfService'))
 const NotFound       = lazy(() => import('@pages/NotFound'))
 
+// ── Admin Pages & Route Protections ───────────────────────────
+import AdminProtectedRoute from '@/admin/routes/AdminProtectedRoute'
+import { AdminAuthProvider } from '@/admin/context/AdminAuthContext'
+import AdminLayout from '@/admin/components/AdminLayout'
+const AdminLogin     = lazy(() => import('@/admin/pages/AdminLogin'))
+const AdminDashboard = lazy(() => import('@/admin/pages/AdminDashboard'))
+const AdminContacts  = lazy(() => import('@/admin/pages/AdminContacts'))
+const AdminCareers   = lazy(() => import('@/admin/pages/AdminCareers'))
+const AdminBlog      = lazy(() => import('@/admin/pages/AdminBlog'))
+const AdminPortfolio = lazy(() => import('@/admin/pages/AdminPortfolio'))
+const AdminServices  = lazy(() => import('@/admin/pages/AdminServices'))
+const AdminSettings  = lazy(() => import('@/admin/pages/AdminSettings'))
+const AdminProfile   = lazy(() => import('@/admin/pages/AdminProfile'))
+const AdminHelp      = lazy(() => import('@/admin/pages/AdminHelp'))
+const AdminCatalog   = lazy(() => import('@/admin/pages/AdminCatalog'))
+
 // ── Page loading fallback ─────────────────────────────────────
 const PageFallback = () => (
   <div
@@ -61,10 +77,9 @@ const PageFallback = () => (
   </div>
 )
 
-// ── Animated Routes ───────────────────────────────────────────
-const AnimatedRoutes = () => {
+// ── Public Animated Routes (with Navbar/Footer Layout) ────────
+const PublicRoutes = () => {
   const location = useLocation()
-
   return (
     <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>
@@ -88,30 +103,65 @@ const AnimatedRoutes = () => {
   )
 }
 
+// ── Admin Routes (NO public Navbar/Footer) ─────────────────────
+const AdminRoutes = () => (
+  <Routes>
+    <Route path="/admin/login" element={<AdminLogin />} />
+    <Route path="/admin" element={<AdminProtectedRoute />}>
+      <Route index element={<Navigate to="/admin/dashboard" replace />} />
+      <Route path="dashboard"  element={<AdminLayout><AdminDashboard /></AdminLayout>} />
+      <Route path="contacts"   element={<AdminLayout><AdminContacts /></AdminLayout>} />
+      <Route path="careers"    element={<AdminLayout><AdminCareers /></AdminLayout>} />
+      <Route path="blog"       element={<AdminLayout><AdminBlog /></AdminLayout>} />
+      <Route path="portfolio"  element={<AdminLayout><AdminPortfolio /></AdminLayout>} />
+      <Route path="services"   element={<AdminLayout><AdminServices /></AdminLayout>} />
+      <Route path="settings"   element={<AdminLayout><AdminSettings /></AdminLayout>} />
+      <Route path="profile"    element={<AdminLayout><AdminProfile /></AdminLayout>} />
+      <Route path="help"       element={<AdminLayout><AdminHelp /></AdminLayout>} />
+      <Route path="catalog"    element={<AdminLayout><AdminCatalog /></AdminLayout>} />
+    </Route>
+  </Routes>
+)
+
+// ── Root Router — splits admin vs public ──────────────────────
+const RootRouter = () => {
+  const location = useLocation()
+  const isAdmin = location.pathname.startsWith('/admin')
+
+  if (isAdmin) {
+    return (
+      <Suspense fallback={<PageFallback />}>
+        <AdminRoutes />
+      </Suspense>
+    )
+  }
+
+  return (
+    <Layout>
+      <Suspense fallback={<PageFallback />}>
+        <PublicRoutes />
+      </Suspense>
+    </Layout>
+  )
+}
+
 // ── Root App ──────────────────────────────────────────────────
 const App = () => (
-  <HelmetProvider>
-    <LoaderProvider>
-      <CursorProvider>
-        <ThemeProvider>
-          <BrowserRouter>
-            {/* Global background effects — behind everything */}
-            <GlobalEffects />
-
-            {/* Preloader — covers viewport on first load */}
-            <Preloader />
-
-            {/* Main app shell */}
-            <Layout>
-              <Suspense fallback={<PageFallback />}>
-                <AnimatedRoutes />
-              </Suspense>
-            </Layout>
-          </BrowserRouter>
-        </ThemeProvider>
-      </CursorProvider>
-    </LoaderProvider>
-  </HelmetProvider>
+  <AdminAuthProvider>
+    <HelmetProvider>
+      <LoaderProvider>
+        <CursorProvider>
+          <ThemeProvider>
+            <BrowserRouter>
+              <GlobalEffects />
+              <Preloader />
+              <RootRouter />
+            </BrowserRouter>
+          </ThemeProvider>
+        </CursorProvider>
+      </LoaderProvider>
+    </HelmetProvider>
+  </AdminAuthProvider>
 )
 
 export default App

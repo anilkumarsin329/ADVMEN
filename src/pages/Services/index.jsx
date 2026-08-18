@@ -7,7 +7,7 @@
  * ─────────────────────────────────────────────────────────────
  */
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { gsap } from '@utils/gsapConfig'
@@ -19,9 +19,34 @@ import { services } from '@data/services'
 const Services = () => {
   const headerRef = useRef(null)
   const hasAnimated = useRef(false)
+  const [servicesData, setServicesData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Fetch dynamic services
+  useEffect(() => {
+    const loadServices = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/services')
+        if (res.ok) {
+          const data = await res.json()
+          if (Array.isArray(data) && data.length > 0) {
+            setServicesData(data)
+            return
+          }
+        }
+        throw new Error('No services returned or bad response')
+      } catch (err) {
+        console.warn('API connection failed for Services, falling back to local static data:', err)
+        setServicesData(services)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    loadServices()
+  }, [])
 
   useEffect(() => {
-    if (hasAnimated.current || !headerRef.current) return
+    if (isLoading || hasAnimated.current || !headerRef.current) return
 
     const obs = new IntersectionObserver(
       ([entry]) => {
@@ -59,7 +84,7 @@ const Services = () => {
 
     obs.observe(headerRef.current)
     return () => obs.disconnect()
-  }, [])
+  }, [isLoading])
 
   return (
     <PageTransition>
@@ -157,8 +182,12 @@ const Services = () => {
 
           {/* Services Grid - Fully Responsive */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-12 sm:mb-14 md:mb-16 lg:mb-20">
-            {services.map((service, idx) => (
-              <div key={service.id} className="service-card-neo group">
+            {isLoading ? (
+              <div className="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-center py-20">
+                <div className="w-8 h-8 rounded-full border-2 border-[var(--color-orange)] border-t-transparent animate-spin" />
+              </div>
+            ) : servicesData.map((service, idx) => (
+              <div key={service.id || service._id} className="service-card-neo group">
                 <Link
                   to={`/services/${service.slug}`}
                   className="block h-full"
@@ -256,7 +285,7 @@ const Services = () => {
 
                       {/* Features - Responsive */}
                       <div className="space-y-1 sm:space-y-1.5 mb-2 sm:mb-3 pt-2 sm:pt-3 border-t border-[rgba(255,255,255,0.05)]">
-                        {service.features.slice(0, 3).map((feature, i) => (
+                        {service.features && Array.isArray(service.features) && service.features.slice(0, 3).map((feature, i) => (
                           <div key={i} className="flex items-start gap-2 text-xs">
                             <span
                               className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-125 mt-0.5"

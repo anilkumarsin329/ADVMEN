@@ -93,6 +93,17 @@ const Contact = () => {
     setSubmitErrorDetails(null)
 
     try {
+      // Save contact submission to backend database
+      try {
+        await fetch('http://localhost:5000/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        })
+      } catch (dbErr) {
+        console.warn('Backend DB contact save error:', dbErr)
+      }
+
       // Send email via EmailJS
       await emailjs.send(
         EMAILJS.serviceId,

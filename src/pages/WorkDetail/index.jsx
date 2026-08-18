@@ -6,102 +6,42 @@
  */
 
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { gsap } from '@utils/gsapConfig'
 
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
-import { portfolioItems } from '@data/portfolio'
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi'
 
-const caseStudyDetails = {
-  'case-study-1': {
-    tagline: 'E-Commerce Platform Redesign - Complete transformation with modern UI and optimized checkout flow.',
-    challenge: 'High bounce rate (68%) and low conversion rate (1.2%) due to outdated UI and poor user experience.',
-    solution: 'Complete redesign with modern Neomorphism UI, optimized checkout flow, and mobile-first approach.',
-    results: [
-      { metric: '+300%', label: 'Conversion Rate' },
-      { metric: '+260%', label: 'Revenue Growth' },
-      { metric: '-53%', label: 'Bounce Rate' },
-    ],
-    tech: ['React', 'Tailwind CSS', 'Figma', 'Performance Optimization'],
-    client: 'TechStore Inc.',
-    duration: '8 Weeks',
-  },
-  'case-study-2': {
-    tagline: 'Digital Marketing Campaign - Integrated strategy with targeted social campaigns and influencer partnerships.',
-    challenge: 'Low brand awareness and minimal social media engagement despite large marketing budget.',
-    solution: 'Integrated digital marketing strategy with targeted social campaigns, influencer partnerships, and content marketing.',
-    results: [
-      { metric: '+800%', label: 'Lead Generation' },
-      { metric: '+733%', label: 'Follower Growth' },
-      { metric: '+495%', label: 'Engagement Rate' },
-    ],
-    tech: ['Meta Ads API', 'Analytics', 'Content Strategy', 'Influencer Outreach'],
-    client: 'Fashion Brand Co.',
-    duration: '6 Weeks',
-  },
-  'case-study-3': {
-    tagline: 'Mobile App Development - Cross-platform fitness app with real-time tracking and social features.',
-    challenge: 'Needed a cross-platform fitness app with real-time tracking and social features.',
-    solution: 'Built React Native app with Firebase backend, real-time analytics, and community features.',
-    results: [
-      { metric: '50K+', label: 'Downloads' },
-      { metric: '4.8/5', label: 'App Rating' },
-      { metric: '65%', label: 'Retention Rate' },
-    ],
-    tech: ['React Native', 'Firebase', 'Redux', 'Node.js'],
-    client: 'FitLife Technologies',
-    duration: '12 Weeks',
-  },
-  'case-study-4': {
-    tagline: 'SEO & Content Strategy - Comprehensive optimization driving massive organic traffic growth.',
-    challenge: 'Ranked on page 5+ for target keywords with minimal organic traffic and poor content structure.',
-    solution: 'Comprehensive SEO audit, keyword research, content optimization, and technical SEO improvements.',
-    results: [
-      { metric: '+1650%', label: 'Organic Traffic' },
-      { metric: 'Page 1', label: 'Ranking Position' },
-      { metric: '+1767%', label: 'Lead Generation' },
-    ],
-    tech: ['SEO Audit', 'Keyword Research', 'Content Optimization', 'Technical SEO'],
-    client: 'Global Tech Solutions',
-    duration: '10 Weeks',
-  },
-  'case-study-5': {
-    tagline: 'Brand Identity & Design System - Complete visual identity for startup market launch.',
-    challenge: 'New startup needed complete brand identity, logo, and design system for market launch.',
-    solution: 'Created comprehensive brand guidelines, logo design, color palette, typography system, and UI kit.',
-    results: [
-      { metric: '100%', label: 'Brand Consistency' },
-      { metric: '78%', label: 'Brand Recognition' },
-      { metric: '$2.5M', label: 'Brand Value' },
-    ],
-    tech: ['Figma', 'Brand Strategy', 'Design Systems', 'Visual Identity'],
-    client: 'StartUp Ventures Inc.',
-    duration: '4 Weeks',
-  },
-  'case-study-6': {
-    tagline: 'Video Production & Media - Professional content creation driving massive engagement.',
-    challenge: 'Needed high-quality promotional videos and product photography for e-commerce and social media.',
-    solution: 'Professional video production, product photography, editing, and social media content creation.',
-    results: [
-      { metric: '+4900%', label: 'Video Views' },
-      { metric: '+900%', label: 'Social Reach' },
-      { metric: '+224%', label: 'Conversion Lift' },
-    ],
-    tech: ['Video Production', 'Photography', 'Post-Production', 'Social Media'],
-    client: 'Premium Lifestyle Brand',
-    duration: '6 Weeks',
-  },
-}
 
 const WorkDetail = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
   const location = useLocation()
-  const details = caseStudyDetails[slug]
+  const [details, setDetails] = useState(null)
+  const [loading, setLoading] = useState(true)
   const containerRef = useRef(null)
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/portfolio/${slug}`)
+        if (res.ok) {
+          const data = await res.json()
+          setDetails(data)
+        } else {
+          navigate('/404')
+        }
+      } catch (err) {
+        console.warn('API error, redirecting to 404:', err)
+        navigate('/404')
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchDetails()
+  }, [slug, navigate])
 
   const handleBackClick = () => {
     if (location.state?.from === 'case-studies') {
@@ -118,13 +58,7 @@ const WorkDetail = () => {
   }
 
   useEffect(() => {
-    if (!details) {
-      navigate('/404')
-    }
-  }, [details, navigate])
-
-  useEffect(() => {
-    if (!details) return
+    if (loading || !details) return
     const ctx = gsap.context(() => {
       gsap.from('.case-stagger', {
         opacity: 0,
@@ -138,7 +72,15 @@ const WorkDetail = () => {
       })
     }, containerRef)
     return () => ctx.revert()
-  }, [details])
+  }, [details, loading])
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center bg-[var(--color-black)]">
+        <div className="w-8 h-8 rounded-full border-2 border-[var(--color-orange)] border-t-transparent animate-spin" />
+      </div>
+    )
+  }
 
   if (!details) return null
 

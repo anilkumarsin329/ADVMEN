@@ -408,7 +408,7 @@ const Navbar = () => {
                   Start a Project
                 </Link>
                 <p className="type-caption text-center text-[var(--color-text-tertiary)]">
-                  hello@advmen.com
+                  info@advmen.com
                 </p>
               </motion.div>
             </div>
