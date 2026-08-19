@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiShoppingCart, FiX, FiPlus, FiMinus, FiCheck } from 'react-icons/fi'
-import { catalogItems as staticCatalogItems, categories as staticCategories } from '@data/catalog'
-import { API_BASE_URL } from '@utils/constants'
+// removed static imports
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 import './Catalog.css'
 
 const Catalog = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [cart, setCart] = useState([])
   const [showCart, setShowCart] = useState(false)
-  const [items, setItems] = useState(staticCatalogItems)
-  const [categoriesList, setCategoriesList] = useState(staticCategories)
+  const [items, setItems] = useState([])
+  const [categoriesList, setCategoriesList] = useState(['All'])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Catalog = () => {
         const response = await fetch(`${API_BASE_URL}/api/catalog`)
         if (response.ok) {
           const data = await response.json()
-          if (Array.isArray(data) && data.length > 0) {
+          if (Array.isArray(data)) {
             const formattedData = data.map(item => ({ ...item, id: item._id || item.id }))
             setItems(formattedData)
             const uniqueCats = ['All', ...new Set(formattedData.map(item => item.category))]
@@ -123,7 +123,7 @@ const Catalog = () => {
                       className="product-card"
                     >
                       <div className="product-image">
-                        <img src={item.image} alt={item.name} loading="lazy" />
+                        <img src={item.image.startsWith('/') ? getImageUrl(item.image) : item.image} alt={item.name} loading="lazy" />
                         <span className="category-badge">{item.category}</span>
                       </div>
                       <div className="product-info">

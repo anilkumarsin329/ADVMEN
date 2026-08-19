@@ -14,8 +14,8 @@ import { gsap } from '@utils/gsapConfig'
 
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
-import { services } from '@data/services'
-import { API_BASE_URL } from '@utils/constants'
+// removed static imports
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
 const Services = () => {
   const headerRef = useRef(null)
@@ -37,8 +37,8 @@ const Services = () => {
         }
         throw new Error('No services returned or bad response')
       } catch (err) {
-        console.warn('API connection failed for Services, falling back to local static data:', err)
-        setServicesData(services)
+        console.warn('API connection failed for Services:', err)
+        setServicesData([])
       } finally {
         setIsLoading(false)
       }
@@ -225,7 +225,7 @@ const Services = () => {
                       }}
                     >
                       <img
-                        src={service.image}
+                        src={service.image && service.image.startsWith('/') ? getImageUrl(service.image) : service.image}
                         alt={service.title}
                         className="transition-transform duration-500 group-hover:scale-105"
                         style={{

@@ -13,14 +13,13 @@ import { gsap } from '@utils/gsapConfig'
 
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
-import { portfolioItems, getPortfolioCategories } from '@data/portfolioItems'
+// removed static imports
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
-
-const categories = getPortfolioCategories()
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState('All')
   const [portfolioData, setPortfolioData] = useState([])
+  const [categories, setCategories] = useState(['All'])
   const [isLoading, setIsLoading] = useState(true)
   const headerRef = useRef(null)
 
@@ -30,15 +29,16 @@ const Work = () => {
         const res = await fetch(`${API_BASE_URL}/api/portfolio`)
         if (res.ok) {
           const data = await res.json()
-          if (Array.isArray(data) && data.length > 0) {
+          if (Array.isArray(data)) {
             setPortfolioData(data)
+            const uniqueCats = ['All', ...new Set(data.map(item => item.category))]
+            setCategories(uniqueCats)
             return
           }
         }
-        setPortfolioData(portfolioItems)
       } catch (err) {
-        console.warn('API error, falling back to static:', err)
-        setPortfolioData(portfolioItems)
+        console.warn('API error:', err)
+        setPortfolioData([])
       } finally {
         setIsLoading(false)
       }

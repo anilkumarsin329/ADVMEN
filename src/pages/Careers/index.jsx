@@ -35,96 +35,11 @@ import {
 
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
-import { API_BASE_URL } from '@utils/constants'
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
 const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/FyTxa7MaOOkC2qXelS2kzj?s=cl&p=a&mlu=4'
 
-const defaultPositions = [
-  { 
-    id: '1', 
-    title: 'MERN Stack Developer', 
-    department: 'Engineering', 
-    experience: ['Junior (1-3 yrs)', 'Senior (3+ yrs)'], 
-    location: 'Gurugram / Remote', 
-    type: 'Full-Time', 
-    skills: ['MongoDB', 'Express', 'React', 'Node.js', 'REST APIs'], 
-    responsibilities: ['Build scalable web apps', 'Write clean reusable code', 'Collaborate with design team', 'API integration'], 
-    requirements: ['Strong JS fundamentals', 'Git proficiency', 'Problem solving skills'],
-    salary: '₹6 - ₹12 LPA',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-  { 
-    id: '2', 
-    title: 'Web & UI/UX Design Intern', 
-    department: 'Design', 
-    experience: ['Internship (0-6 mos)', 'Fresher (0-1 yr)'], 
-    location: 'Gurugram / Hybrid', 
-    type: 'Internship', 
-    skills: ['Figma', 'Prototyping', 'UI Design', 'Wireframing'], 
-    responsibilities: ['Assist in designing web layouts', 'Create UI components in Figma', 'Participate in design reviews'], 
-    requirements: ['Basic Figma knowledge', 'Portfolio or design samples', 'Eagerness to learn'],
-    salary: 'Stipend: ₹12,000 / month',
-    image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-  { 
-    id: '3', 
-    title: 'Frontend Development Intern', 
-    department: 'Engineering', 
-    experience: ['Internship (0-6 mos)', 'Fresher (0-1 yr)'], 
-    location: 'Gurugram / Remote', 
-    type: 'Internship', 
-    skills: ['HTML', 'CSS', 'JavaScript', 'React Basics'], 
-    responsibilities: ['Build responsive web pages', 'Fix frontend bugs', 'Work with React & Tailwind'], 
-    requirements: ['Solid HTML/CSS/JS basics', 'Good problem solving skills', 'Personal projects'],
-    salary: 'Stipend: ₹15,000 / month',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-  { 
-    id: '4', 
-    title: 'UI/UX Designer (Senior)', 
-    department: 'Design', 
-    experience: ['Junior (1-3 yrs)', 'Senior (3+ yrs)'], 
-    location: 'Gurugram / Hybrid', 
-    type: 'Full-Time', 
-    skills: ['Figma', 'Adobe XD', 'Motion Design', 'Design Systems'], 
-    responsibilities: ['Design pixel-perfect UI', 'Create design systems', 'Motion mockups', 'User research'], 
-    requirements: ['Strong Figma skills', 'Portfolio required', 'Eye for detail'],
-    salary: '₹8 - ₹14 LPA',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-  { 
-    id: '5', 
-    title: 'Digital Marketing & Growth Intern', 
-    department: 'Marketing', 
-    experience: ['Internship (0-6 mos)', 'Fresher (0-1 yr)'], 
-    location: 'Gurugram / Remote', 
-    type: 'Internship', 
-    skills: ['Social Media', 'Content Writing', 'SEO Basics', 'Canva'], 
-    responsibilities: ['Create social posts', 'Assist in SEO optimization', 'Draft outreach emails'], 
-    requirements: ['Good written communication', 'Active social media user', 'Creative mindset'],
-    salary: 'Stipend: ₹10,000 / month',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-  { 
-    id: '6', 
-    title: 'Sales & Client Acquisition Executive', 
-    department: 'Sales', 
-    experience: ['Junior (1-3 yrs)', 'Senior (3+ yrs)'], 
-    location: 'Gurugram', 
-    type: 'Full-Time', 
-    skills: ['B2B Sales', 'Client Acquisition', 'CRM', 'Negotiation'], 
-    responsibilities: ['Generate leads', 'Client meetings', 'Close deals', 'Maintain CRM'], 
-    requirements: ['Good communication', 'Target driven', 'Prior sales experience preferred'],
-    salary: '₹5 - ₹10 LPA + Incentives',
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-]
+const defaultPositions = []
 
 const perks = [
   { icon: FiGlobe, title: 'Remote Friendly', desc: 'Work from anywhere' },
@@ -330,7 +245,7 @@ const Careers = () => {
     let img = pos.image || pos.imageUrl || ''
     if (img && typeof img === 'string') {
       if (img.startsWith('/uploads') || img.startsWith('/api/media')) {
-        return `http://localhost:5000${img}`
+        return getImageUrl(img)
       }
       if (img.startsWith('http://') || img.startsWith('https://')) {
         return img

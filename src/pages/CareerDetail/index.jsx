@@ -33,153 +33,11 @@ import {
 
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
-import { API_BASE_URL } from '@utils/constants'
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
 const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/FyTxa7MaOOkC2qXelS2kzj?s=cl&p=a&mlu=4'
 
-const defaultPositions = [
-  { 
-    id: '1', 
-    title: 'MERN Stack Developer', 
-    department: 'Engineering', 
-    experience: ['Junior (1-3 yrs)', 'Senior (3+ yrs)'], 
-    location: 'Gurugram / Remote', 
-    type: 'Full-Time', 
-    skills: ['MongoDB', 'Express', 'React', 'Node.js', 'REST APIs', 'TypeScript', 'Tailwind CSS'], 
-    responsibilities: [
-      'Architect, develop, and maintain high-performance MERN stack web applications.',
-      'Write clean, modular, and reusable code following industry best practices.',
-      'Collaborate closely with UI/UX designers, backend engineers, and project leads.',
-      'Design and integrate RESTful APIs and microservices.',
-      'Optimize database queries in MongoDB for maximum speed and scalability.'
-    ], 
-    requirements: [
-      'Strong proficiency in JavaScript (ES6+), React.js, Node.js, and Express.',
-      'Solid understanding of MongoDB database indexing and schema design.',
-      'Proficiency with Git version control and GitHub workflows.',
-      'Demonstrated problem-solving abilities and debugging skills.',
-      'Prior experience with AWS or cloud deployments is a plus.'
-    ],
-    salary: '₹6 - ₹12 LPA',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-  { 
-    id: '2', 
-    title: 'Web & UI/UX Design Intern', 
-    department: 'Design', 
-    experience: ['Internship (0-6 mos)', 'Fresher (0-1 yr)'], 
-    location: 'Gurugram / Hybrid', 
-    type: 'Internship', 
-    skills: ['Figma', 'Prototyping', 'UI Design', 'Wireframing', 'User Research'], 
-    responsibilities: [
-      'Assist in designing pixel-perfect web and mobile app interfaces in Figma.',
-      'Create interactive prototypes, wireframes, and design components.',
-      'Participate in design review sessions and iterate based on feedback.',
-      'Build and update ADVMEN design system components.'
-    ], 
-    requirements: [
-      'Basic to intermediate knowledge of Figma or Adobe XD.',
-      'Strong visual design sense with attention to alignment, grid, and typography.',
-      'Portfolio or design samples showcasing web/mobile concepts.',
-      'Enthusiastic to learn modern design trends and user experiences.'
-    ],
-    salary: 'Stipend: ₹12,000 / month',
-    image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-  { 
-    id: '3', 
-    title: 'App Development Intern', 
-    department: 'Engineering', 
-    experience: ['Internship (0-6 mos)', 'Fresher (0-1 yr)'], 
-    location: 'Jharsa Village, Sector 38, Gurugram / Remote', 
-    type: 'Internship', 
-    skills: ['React Native', 'Flutter', 'JavaScript', 'REST APIs', 'Firebase'], 
-    responsibilities: [
-      'Assist in developing cross-platform mobile applications for Android and iOS.',
-      'Build responsive and user-friendly mobile user interfaces.',
-      'Integrate REST APIs and third-party services in React Native or Flutter.',
-      'Fix UI bugs, test mobile components, and optimize performance under senior guidance.'
-    ], 
-    requirements: [
-      'Basic experience with React Native, Flutter, or mobile web development.',
-      'Familiarity with JavaScript / Dart fundamentals.',
-      'Understanding of API integration and Git version control.',
-      'Eagerness to work on live client products.'
-    ],
-    salary: 'Project + Performance Incentives (Stipend: ₹15,000/mo)',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-  { 
-    id: '4', 
-    title: 'UI/UX Designer (Senior)', 
-    department: 'Design', 
-    experience: ['Junior (1-3 yrs)', 'Senior (3+ yrs)'], 
-    location: 'Gurugram / Hybrid', 
-    type: 'Full-Time', 
-    skills: ['Figma', 'Adobe XD', 'Motion Design', 'Design Systems', 'Micro-Interactions'], 
-    responsibilities: [
-      'Lead end-to-end design strategy for high-impact web and app client products.',
-      'Establish brand guidelines, design systems, and component libraries.',
-      'Create high-fidelity interactive motion prototypes.',
-      'Conduct user testing and convert complex workflows into intuitive UIs.'
-    ], 
-    requirements: [
-      '3+ years of professional UI/UX design experience in an agency or product startup.',
-      'Exceptional Figma portfolio demonstrating SaaS, mobile, or web products.',
-      'Strong understanding of design tokens, responsive grids, and design handoff.'
-    ],
-    salary: '₹8 - ₹14 LPA',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-  { 
-    id: '5', 
-    title: 'Digital Marketing & Growth Intern', 
-    department: 'Marketing', 
-    experience: ['Internship (0-6 mos)', 'Fresher (0-1 yr)'], 
-    location: 'Gurugram / Remote', 
-    type: 'Internship', 
-    skills: ['Social Media', 'Content Writing', 'SEO Basics', 'Meta Ads', 'Canva'], 
-    responsibilities: [
-      'Create engaging social media content and creatives for ADVMEN & client accounts.',
-      'Assist in SEO keyword research and blog content drafting.',
-      'Monitor campaign metrics and prepare performance reports.'
-    ], 
-    requirements: [
-      'Strong written communication skills in English.',
-      'Active social media user with creative mindset.',
-      'Basic familiarity with Canva or graphic design tools.'
-    ],
-    salary: 'Stipend: ₹10,000 / month',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-  { 
-    id: '6', 
-    title: 'Sales & Client Acquisition Executive', 
-    department: 'Sales', 
-    experience: ['Junior (1-3 yrs)', 'Senior (3+ yrs)'], 
-    location: 'Gurugram', 
-    type: 'Full-Time', 
-    skills: ['B2B Sales', 'Client Acquisition', 'CRM', 'Negotiation', 'Lead Generation'], 
-    responsibilities: [
-      'Identify and acquire B2B clients for software, web, and branding solutions.',
-      'Conduct discovery calls, present pitch decks, and close deals.',
-      'Maintain pipeline metrics in CRM and nurture long-term client relationships.'
-    ], 
-    requirements: [
-      '1+ years of B2B IT/Agency sales experience.',
-      'Outstanding verbal and written negotiation skills.',
-      'Self-motivated with proven track record of target achievement.'
-    ],
-    salary: '₹5 - ₹10 LPA + High Incentives',
-    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=675&fit=crop&q=80',
-    isActive: true,
-  },
-]
+const defaultPositions = []
 
 const isInternRole = (pos) => {
   if (!pos) return false
@@ -442,7 +300,7 @@ const CareerDetail = () => {
               {job.image && (
                 <div className="w-full h-72 sm:h-96 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative bg-black">
                   <img 
-                    src={job.image.startsWith('/') ? `http://localhost:5000${job.image}` : job.image} 
+                    src={job.image.startsWith('/') ? getImageUrl(job.image) : job.image} 
                     alt={job.title} 
                     className="w-full h-full object-cover object-center"
                     onError={(e) => {

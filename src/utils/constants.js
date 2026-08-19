@@ -23,9 +23,8 @@ export const COMPANY = {
 // ── API Configuration ─────────────────────────────────────────
 export const getApiBaseUrl = () => {
   let url = ''
-  if (import.meta.env.VITE_API_URL) {
-    url = import.meta.env.VITE_API_URL.replace(/\/$/, '')
-  } else if (typeof window !== 'undefined') {
+
+  if (typeof window !== 'undefined') {
     const { protocol, hostname } = window.location
     if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
       if (hostname === 'www.advmen.com' || hostname === 'advmen.com') {
@@ -35,8 +34,14 @@ export const getApiBaseUrl = () => {
       }
     }
   }
-  
-  if (!url) url = 'http://localhost:5000'
+
+  if (!url) {
+    if (import.meta.env.VITE_API_URL) {
+      url = import.meta.env.VITE_API_URL.replace(/\/$/, '')
+    } else {
+      url = 'http://localhost:5000'
+    }
+  }
 
   // Upgrade HTTP to HTTPS on live production domains (except local dev servers)
   if (typeof window !== 'undefined' && window.location.protocol === 'https:') {

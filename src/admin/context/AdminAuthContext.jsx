@@ -56,12 +56,7 @@ export const AdminAuthProvider = ({ children }) => {
         return
       }
 
-      if (storedToken === 'mock_advmen_admin_token_xyz123') {
-        const mockUser = { name: 'Super Admin', email: 'superadmin@gmail.com', role: 'Super Admin' }
-        dispatch({ type: 'LOGIN', payload: { user: mockUser, token: storedToken } })
-        dispatch({ type: 'SET_LOADING', payload: false })
-        return
-      }
+      // Mock token check removed
 
       try {
         const response = await fetch(`${API_BASE_URL}/api/admin/me`, {
@@ -79,16 +74,16 @@ export const AdminAuthProvider = ({ children }) => {
           localStorage.removeItem('advmen_admin_token')
           dispatch({ type: 'LOGOUT' })
         } else {
-          // Endpoint not implemented (404) or server issue -> fallback to mock session
-          console.warn(`verifySession returned status ${response.status}. Falling back to mock session.`)
-          const mockUser = { name: 'Super Admin', email: 'superadmin@gmail.com', role: 'Super Admin' }
-          dispatch({ type: 'LOGIN', payload: { user: mockUser, token: storedToken } })
+          // Endpoint not implemented (404) or server issue
+          console.warn(`verifySession returned status ${response.status}.`)
+          localStorage.removeItem('advmen_admin_token')
+          dispatch({ type: 'LOGOUT' })
         }
       } catch (err) {
-        console.warn('Network error during verifySession. Falling back to mock session:', err)
-        // Backend offline -> fallback to mock session to preserve localStorage token
-        const mockUser = { name: 'Super Admin', email: 'superadmin@gmail.com', role: 'Super Admin' }
-        dispatch({ type: 'LOGIN', payload: { user: mockUser, token: storedToken } })
+        console.warn('Network error during verifySession:', err)
+        // Backend offline or unreachable
+        localStorage.removeItem('advmen_admin_token')
+        dispatch({ type: 'LOGOUT' })
       } finally {
         dispatch({ type: 'SET_LOADING', payload: false })
       }
@@ -116,19 +111,7 @@ export const AdminAuthProvider = ({ children }) => {
         throw new Error(errorData.message || 'Invalid credentials')
       }
     } catch (err) {
-      console.warn('API login failed, attempting local mock check:', err)
-      
-      const isMockEmail = email === 'admin@advmen.com' || email === 'superadmin@gmail.com'
-      const isMockPassword = password === 'password123' || password === 'Advmen@2025#Secure' || password === 'admin123'
-      
-      if (isMockEmail && isMockPassword) {
-        const mockToken = 'mock_advmen_admin_token_xyz123'
-        const mockUser = { name: 'Super Admin', email: email, role: 'Super Admin' }
-        localStorage.setItem('advmen_admin_token', mockToken)
-        dispatch({ type: 'LOGIN', payload: { user: mockUser, token: mockToken } })
-        return { success: true }
-      }
-      
+      console.warn('API login failed:', err)
       throw new Error(err.message || 'Authentication failed. Incorrect email or password.')
     } finally {
       dispatch({ type: 'SET_LOADING', payload: false })
