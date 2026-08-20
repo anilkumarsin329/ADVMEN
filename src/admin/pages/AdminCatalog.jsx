@@ -7,13 +7,13 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  FiBookOpen, 
-  FiPlus, 
-  FiEdit2, 
-  FiTrash2, 
-  FiX, 
-  FiCheck, 
+import {
+  FiBookOpen,
+  FiPlus,
+  FiEdit2,
+  FiTrash2,
+  FiX,
+  FiCheck,
   FiAlertCircle,
   FiSearch,
   FiFolder,
@@ -46,7 +46,7 @@ const AdminCatalog = () => {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
-  
+
   // Custom Category States
   const [isCustomCategory, setIsCustomCategory] = useState(false)
   const [customCategoryValue, setCustomCategoryValue] = useState('')
@@ -61,7 +61,7 @@ const AdminCatalog = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isViewModalOpen, setIsViewModalOpen] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
-  
+
   const [currentItem, setCurrentItem] = useState(null) // null for create, object for edit
   const [viewItemTarget, setViewItemTarget] = useState(null)
   const [deleteItemTarget, setDeleteItemTarget] = useState(null)
@@ -128,8 +128,8 @@ const AdminCatalog = () => {
   // Calculate Statistics
   const totalItems = items.length
   const uniqueCategories = ['All', ...new Set(items.map(item => item.category))]
-  const averagePrice = totalItems > 0 
-    ? Math.round(items.reduce((sum, item) => sum + Number(item.price), 0) / totalItems) 
+  const averagePrice = totalItems > 0
+    ? Math.round(items.reduce((sum, item) => sum + Number(item.price), 0) / totalItems)
     : 0
 
   // Handle Image File Upload to R2 Backend
@@ -267,7 +267,7 @@ const AdminCatalog = () => {
     const errors = {}
     if (!formValues.name.trim()) errors.name = 'Name is required'
     if (!formValues.category.trim()) errors.category = 'Category is required'
-    
+
     const priceNum = Number(formValues.price)
     if (!formValues.price.trim()) {
       errors.price = 'Price is required'
@@ -381,7 +381,7 @@ const AdminCatalog = () => {
   // Handle Toggle Active/Inactive Status
   const handleToggleStatus = async (item) => {
     setActiveDropdownId(null)
-    
+
     const updatedStatus = !item.isActive
     setItems(items.map(i => (i.id === item.id ? { ...i, isActive: updatedStatus } : i)))
 
@@ -443,8 +443,8 @@ const AdminCatalog = () => {
 
   // Filter and Search items
   const filteredItems = items.filter(item => {
-    const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          item.description.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory
     return matchesSearch && matchesCategory
   })
@@ -452,7 +452,8 @@ const AdminCatalog = () => {
   return (
     <div className="admin-catalog-container w-full space-y-8 pb-10" style={{ color: 'var(--admin-text-primary)' }}>
       {/* Dynamic light-theme visual style overrides to prevent dark-theme white text inheritance */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .admin-catalog-container h2 {
           color: #121215 !important;
         }
@@ -484,7 +485,7 @@ const AdminCatalog = () => {
           scrollbar-width: none !important;
         }
       `}} />
-      
+
       {/* Toast Notification Container */}
       <AnimatePresence>
         {toast && (
@@ -529,7 +530,7 @@ const AdminCatalog = () => {
       {/* Statistics Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {/* Total Items */}
-        <motion.div 
+        <motion.div
           whileHover={{ y: -2 }}
           className="p-6 rounded-2xl flex flex-col justify-between"
           style={{
@@ -551,7 +552,7 @@ const AdminCatalog = () => {
         </motion.div>
 
         {/* Categories Count */}
-        <motion.div 
+        <motion.div
           whileHover={{ y: -2 }}
           className="p-6 rounded-2xl flex flex-col justify-between"
           style={{
@@ -573,7 +574,7 @@ const AdminCatalog = () => {
         </motion.div>
 
         {/* Average Price */}
-        <motion.div 
+        <motion.div
           whileHover={{ y: -2 }}
           className="p-6 rounded-2xl flex flex-col justify-between"
           style={{
@@ -596,7 +597,7 @@ const AdminCatalog = () => {
       </div>
 
       {/* Main Filter & Content Card */}
-      <div 
+      <div
         className="rounded-2xl border overflow-hidden"
         style={{
           background: 'var(--admin-card-bg)',
@@ -604,7 +605,7 @@ const AdminCatalog = () => {
           boxShadow: 'var(--admin-shadow-sm)',
         }}
       >
-        
+
         {/* Search, Filter Categories Header Bar */}
         <div className="p-6 border-b flex flex-col md:flex-row justify-between items-start md:items-center gap-4 overflow-hidden w-full" style={{ borderColor: 'var(--admin-border)' }}>
           {/* Search Input */}
@@ -630,11 +631,10 @@ const AdminCatalog = () => {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`flex-shrink-0 px-3.5 py-1.5 rounded-lg font-mono text-[9px] uppercase tracking-wider transition-all cursor-pointer ${
-                  selectedCategory === cat
+                className={`flex-shrink-0 px-3.5 py-1.5 rounded-lg font-mono text-[9px] uppercase tracking-wider transition-all cursor-pointer ${selectedCategory === cat
                     ? 'bg-[var(--color-orange)] text-white shadow-md'
                     : 'bg-[var(--admin-bg)] border text-[var(--admin-text-secondary)] hover:bg-orange-50 hover:text-[var(--color-orange)]'
-                }`}
+                  }`}
                 style={{ borderColor: selectedCategory === cat ? 'transparent' : 'var(--admin-border)' }}
                 data-cursor="hover"
               >
@@ -684,8 +684,8 @@ const AdminCatalog = () => {
               </thead>
               <tbody>
                 {filteredItems.map((item) => (
-                  <tr 
-                    key={item.id} 
+                  <tr
+                    key={item.id}
                     className={`border-b hover:bg-[rgba(0,0,0,0.01)] transition-all ${item.isActive === false ? 'opacity-65 bg-gray-50/50' : ''}`}
                     style={{ borderColor: 'var(--admin-border)' }}
                   >
@@ -771,7 +771,7 @@ const AdminCatalog = () => {
                         {activeDropdownId === item.id && (
                           <>
                             {/* Backdrop click dismisser */}
-                            <div 
+                            <div
                               className="fixed inset-0 z-30 bg-transparent cursor-default"
                               onClick={() => setActiveDropdownId(null)}
                             />
@@ -895,168 +895,168 @@ const AdminCatalog = () => {
               <form onSubmit={handleSaveItem} className="flex flex-col flex-1 overflow-hidden">
                 {/* Scrollable Fields Wrapper */}
                 <div className="flex-1 overflow-y-auto pr-1.5 space-y-4 max-h-[50vh] sm:max-h-[400px] no-scrollbar">
-                
-                {/* Package Name */}
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
-                    Package Name *
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Website Development"
-                    value={formValues.name}
-                    onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)]"
-                    style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
-                  />
-                  {formErrors.name && (
-                    <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.name}</span>
-                  )}
-                </div>
 
-                {/* Category & Price Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Category */}
+                  {/* Package Name */}
                   <div className="flex flex-col gap-1.5">
                     <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
-                      Category *
-                    </label>
-                    <select
-                      value={isCustomCategory ? 'ADD_NEW_CATEGORY' : formValues.category}
-                      onChange={handleCategorySelectChange}
-                      className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)]"
-                      style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
-                    >
-                      <option value="" disabled hidden>Select Category</option>
-                      {Array.from(new Set([...defaultCategories, ...items.map(i => i.category)])).map(cat => (
-                        <option key={cat} value={cat}>{cat}</option>
-                      ))}
-                      <option value="ADD_NEW_CATEGORY" className="font-bold" style={{ color: 'var(--color-orange)' }}>+ Add New Category</option>
-                    </select>
-
-                    {isCustomCategory && (
-                      <input
-                        type="text"
-                        placeholder="Enter custom category name..."
-                        value={customCategoryValue}
-                        onChange={(e) => {
-                          setCustomCategoryValue(e.target.value)
-                          setFormValues({ ...formValues, category: e.target.value })
-                        }}
-                        className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)] mt-2"
-                        style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
-                      />
-                    )}
-                    {formErrors.category && (
-                      <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.category}</span>
-                    )}
-                  </div>
-
-                  {/* Price */}
-                  <div className="flex flex-col gap-1.5">
-                    <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
-                      Price (₹) *
+                      Package Name *
                     </label>
                     <input
-                      type="number"
-                      placeholder="e.g. 25000"
-                      value={formValues.price}
-                      onChange={(e) => setFormValues({ ...formValues, price: e.target.value })}
+                      type="text"
+                      placeholder="e.g. Website Development"
+                      value={formValues.name}
+                      onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)]"
                       style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
                     />
-                    {formErrors.price && (
-                      <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.price}</span>
+                    {formErrors.name && (
+                      <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.name}</span>
                     )}
                   </div>
-                </div>
 
-                {/* Image Upload Input */}
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
-                    Cover Image *
-                  </label>
-                  
-                  <div className="flex items-center gap-4 p-4 rounded-xl border border-dashed" style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)' }}>
-                    {/* Thumbnail Preview */}
-                    <div className="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 border bg-white flex items-center justify-center" style={{ borderColor: 'var(--admin-border)' }}>
-                      {formValues.image ? (
-                        <img src={formValues.image} alt="Preview" className="w-full h-full object-cover" />
-                      ) : (
-                        <FiImage className="text-[var(--admin-text-tertiary)]" size={24} />
+                  {/* Category & Price Row */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Category */}
+                    <div className="flex flex-col gap-1.5">
+                      <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
+                        Category *
+                      </label>
+                      <select
+                        value={isCustomCategory ? 'ADD_NEW_CATEGORY' : formValues.category}
+                        onChange={handleCategorySelectChange}
+                        className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)]"
+                        style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
+                      >
+                        <option value="" disabled hidden>Select Category</option>
+                        {Array.from(new Set([...defaultCategories, ...items.map(i => i.category)])).map(cat => (
+                          <option key={cat} value={cat}>{cat}</option>
+                        ))}
+                        <option value="ADD_NEW_CATEGORY" className="font-bold" style={{ color: 'var(--color-orange)' }}>+ Add New Category</option>
+                      </select>
+
+                      {isCustomCategory && (
+                        <input
+                          type="text"
+                          placeholder="Enter custom category name..."
+                          value={customCategoryValue}
+                          onChange={(e) => {
+                            setCustomCategoryValue(e.target.value)
+                            setFormValues({ ...formValues, category: e.target.value })
+                          }}
+                          className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)] mt-2"
+                          style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
+                        />
                       )}
-                      {uploading && (
-                        <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-                          <div className="w-5 h-5 rounded-full border border-t-transparent border-white animate-spin" />
-                        </div>
+                      {formErrors.category && (
+                        <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.category}</span>
                       )}
                     </div>
 
-                    {/* Upload Action controls */}
-                    <div className="flex-1 flex flex-col gap-1">
-                      <span className="font-body text-[11px] font-bold text-[var(--admin-text-secondary)]">
-                        {uploading ? `Uploading... ${uploadProgress}%` : 'Upload package cover image'}
-                      </span>
-                      <span className="font-mono text-[9px] text-[var(--admin-text-tertiary)] uppercase">
-                        Supports PNG, JPG, GIF up to 5MB
-                      </span>
-                      
-                      {/* File Input */}
-                      <div className="flex items-center gap-2 mt-1">
-                        <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-body text-[10px] font-bold uppercase tracking-wider bg-white hover:bg-[var(--admin-bg)] hover:text-[var(--color-orange)] transition-all cursor-pointer select-none" style={{ borderColor: 'var(--admin-border)' }} data-cursor="hover">
-                          <FiUpload size={12} />
-                          Browse File
-                          <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" disabled={uploading} />
-                        </label>
-                        {formValues.image && !uploading && (
-                          <span className="text-[9px] text-green-500 font-bold flex items-center gap-1">
-                            <FiCheck size={12} /> Ready
-                          </span>
-                        )}
-                      </div>
+                    {/* Price */}
+                    <div className="flex flex-col gap-1.5">
+                      <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
+                        Price (₹) *
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="e.g. 25000"
+                        value={formValues.price}
+                        onChange={(e) => setFormValues({ ...formValues, price: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)]"
+                        style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
+                      />
+                      {formErrors.price && (
+                        <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.price}</span>
+                      )}
                     </div>
                   </div>
-                  
-                  {formErrors.image && (
-                    <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.image}</span>
-                  )}
-                </div>
 
-                {/* Description */}
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
-                    Description Summary *
-                  </label>
-                  <textarea
-                    rows={2}
-                    placeholder="Provide a brief summary of the package details..."
-                    value={formValues.description}
-                    onChange={(e) => setFormValues({ ...formValues, description: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)] resize-none"
-                    style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
-                  />
-                  {formErrors.description && (
-                    <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.description}</span>
-                  )}
-                </div>
+                  {/* Image Upload Input */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
+                      Cover Image *
+                    </label>
 
-                {/* Features (Comma Separated) */}
-                <div className="flex flex-col gap-1.5">
-                  <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
-                    Key Features * (comma separated values)
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Responsive Design, SEO Optimized, Mobile Friendly"
-                    value={formValues.featuresString}
-                    onChange={(e) => setFormValues({ ...formValues, featuresString: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)]"
-                    style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
-                  />
-                  {formErrors.featuresString && (
-                    <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.featuresString}</span>
-                  )}
-                </div>
+                    <div className="flex items-center gap-4 p-4 rounded-xl border border-dashed" style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)' }}>
+                      {/* Thumbnail Preview */}
+                      <div className="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 border bg-white flex items-center justify-center" style={{ borderColor: 'var(--admin-border)' }}>
+                        {formValues.image ? (
+                          <img src={formValues.image} alt="Preview" className="w-full h-full object-cover" />
+                        ) : (
+                          <FiImage className="text-[var(--admin-text-tertiary)]" size={24} />
+                        )}
+                        {uploading && (
+                          <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                            <div className="w-5 h-5 rounded-full border border-t-transparent border-white animate-spin" />
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Upload Action controls */}
+                      <div className="flex-1 flex flex-col gap-1">
+                        <span className="font-body text-[11px] font-bold text-[var(--admin-text-secondary)]">
+                          {uploading ? `Uploading... ${uploadProgress}%` : 'Upload package cover image'}
+                        </span>
+                        <span className="font-mono text-[9px] text-[var(--admin-text-tertiary)] uppercase">
+                          Supports PNG, JPG, GIF up to 5MB
+                        </span>
+
+                        {/* File Input */}
+                        <div className="flex items-center gap-2 mt-1">
+                          <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-body text-[10px] font-bold uppercase tracking-wider bg-white hover:bg-[var(--admin-bg)] hover:text-[var(--color-orange)] transition-all cursor-pointer select-none" style={{ borderColor: 'var(--admin-border)' }} data-cursor="hover">
+                            <FiUpload size={12} />
+                            Browse File
+                            <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" disabled={uploading} />
+                          </label>
+                          {formValues.image && !uploading && (
+                            <span className="text-[9px] text-green-500 font-bold flex items-center gap-1">
+                              <FiCheck size={12} /> Ready
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {formErrors.image && (
+                      <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.image}</span>
+                    )}
+                  </div>
+
+                  {/* Description */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
+                      Description Summary *
+                    </label>
+                    <textarea
+                      rows={2}
+                      placeholder="Provide a brief summary of the package details..."
+                      value={formValues.description}
+                      onChange={(e) => setFormValues({ ...formValues, description: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)] resize-none"
+                      style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
+                    />
+                    {formErrors.description && (
+                      <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.description}</span>
+                    )}
+                  </div>
+
+                  {/* Features (Comma Separated) */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
+                      Key Features * (comma separated values)
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Responsive Design, SEO Optimized, Mobile Friendly"
+                      value={formValues.featuresString}
+                      onChange={(e) => setFormValues({ ...formValues, featuresString: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl border text-xs font-body focus:outline-none focus:border-[var(--color-orange)]"
+                      style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}
+                    />
+                    {formErrors.featuresString && (
+                      <span className="text-[10px] text-red-500 font-bold tracking-wide mt-0.5">{formErrors.featuresString}</span>
+                    )}
+                  </div>
 
                 </div> {/* End scrollable fields wrapper */}
 
