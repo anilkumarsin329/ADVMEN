@@ -14,7 +14,6 @@ import { gsap } from '@utils/gsapConfig'
 
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
-// removed static imports
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
 const Services = () => {
@@ -30,12 +29,10 @@ const Services = () => {
         const res = await fetch(`${API_BASE_URL}/api/services`)
         if (res.ok) {
           const data = await res.json()
-          if (Array.isArray(data) && data.length > 0) {
-            setServicesData(data)
-            return
-          }
+          setServicesData(Array.isArray(data) ? data : [])
+        } else {
+          setServicesData([])
         }
-        throw new Error('No services returned or bad response')
       } catch (err) {
         console.warn('API connection failed for Services:', err)
         setServicesData([])
@@ -56,26 +53,32 @@ const Services = () => {
         obs.disconnect()
 
         const ctx = gsap.context(() => {
-          gsap.from('.services-stagger', {
-            opacity: 0,
-            y: 35,
-            filter: 'blur(8px)',
-            duration: 1.0,
-            stagger: 0.12,
-            ease: 'expo.out',
-            delay: 0.15,
-            clearProps: 'all',
-          })
+          const staggerEls = headerRef.current.querySelectorAll('.services-stagger')
+          if (staggerEls.length > 0) {
+            gsap.from(staggerEls, {
+              opacity: 0,
+              y: 35,
+              filter: 'blur(8px)',
+              duration: 1.0,
+              stagger: 0.12,
+              ease: 'expo.out',
+              delay: 0.15,
+              clearProps: 'all',
+            })
+          }
 
-          gsap.from('.service-card-neo', {
-            opacity: 0,
-            y: 40,
-            scale: 0.95,
-            duration: 0.7,
-            ease: 'expo.out',
-            stagger: 0.08,
-            delay: 0.3,
-          })
+          const cardEls = headerRef.current.querySelectorAll('.service-card-neo')
+          if (cardEls.length > 0) {
+            gsap.from(cardEls, {
+              opacity: 0,
+              y: 40,
+              scale: 0.95,
+              duration: 0.7,
+              ease: 'expo.out',
+              stagger: 0.08,
+              delay: 0.3,
+            })
+          }
         }, headerRef)
 
         return () => ctx.revert()
@@ -85,7 +88,7 @@ const Services = () => {
 
     obs.observe(headerRef.current)
     return () => obs.disconnect()
-  }, [isLoading])
+  }, [isLoading, servicesData])
 
   return (
     <PageTransition>

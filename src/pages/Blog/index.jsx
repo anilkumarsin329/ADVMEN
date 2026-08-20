@@ -18,7 +18,7 @@ import { API_BASE_URL } from '@utils/constants'
 
 const Blog = () => {
   const headerRef = useRef(null)
-  const [articles, setArticles] = useState(blogArticles)
+  const [articles, setArticles] = useState([])
 
   useEffect(() => {
     const fetchArticles = async () => {
