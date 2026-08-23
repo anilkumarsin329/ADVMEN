@@ -449,6 +449,41 @@ const CareerDetail = () => {
                     <span className="font-bold text-emerald-400 font-mono text-sm">{job.salary || 'Best in Industry'}</span>
                   </div>
 
+                  {isIntern && job.duration && (
+                    <div>
+                      <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Duration</span>
+                      <span className="font-bold text-white text-sm">{job.duration}</span>
+                    </div>
+                  )}
+
+                  {isIntern && job.stipend && (
+                    <div>
+                      <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Stipend</span>
+                      <span className="font-bold text-emerald-400 font-mono text-sm">{job.stipend}</span>
+                    </div>
+                  )}
+
+                  {isIntern && job.certificate && (
+                    <div>
+                      <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Certificate</span>
+                      <span className="font-bold text-white text-sm">{job.certificate}</span>
+                    </div>
+                  )}
+
+                  {isIntern && job.workMode && (
+                    <div>
+                      <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Work Mode</span>
+                      <span className="font-bold text-white text-sm">{job.workMode}</span>
+                    </div>
+                  )}
+
+                  {isIntern && job.registrationFee && (
+                    <div>
+                      <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Registration Fee</span>
+                      <span className="font-bold text-white text-sm">{job.registrationFee}</span>
+                    </div>
+                  )}
+
                   <div>
                     <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Experience Range</span>
                     <div className="flex flex-wrap gap-1 mt-1">
@@ -680,38 +715,32 @@ const CareerDetail = () => {
                       </p>
                     </div>
 
-                    {/* WHATSAPP GROUP INTEGRATION FOR INTERNS */}
-                    {isInternRole(job) ? (
-                      <div className="p-6 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-left space-y-4 shadow-xl">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl flex-shrink-0">
-                            <FiMessageSquare />
-                          </div>
-                          <div>
-                            <h4 className="font-bold text-sm text-emerald-300">Join Official ADVMEN Interns WhatsApp Group</h4>
-                            <span className="text-[10px] text-emerald-400 font-mono uppercase tracking-wider block">Exclusive for Intern Candidates</span>
-                          </div>
+                    {/* WHATSAPP GROUP LINK — shown for all applicants */}
+                    <div className="p-6 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-left space-y-4 shadow-xl">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl flex-shrink-0">
+                          <FiMessageSquare />
                         </div>
-
-                        <p className="text-xs text-slate-300 leading-relaxed">
-                          Please join our official WhatsApp group for instant onboarding updates, task assignments, and direct communication with mentors:
-                        </p>
-
-                        <a
-                          href={WHATSAPP_GROUP_LINK}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 text-center cursor-pointer"
-                        >
-                          <FiExternalLink size={16} />
-                          <span>Join Official WhatsApp Group Now</span>
-                        </a>
+                        <div>
+                          <h4 className="font-bold text-sm text-emerald-300">Join Official ADVMEN WhatsApp Group</h4>
+                          <span className="text-[10px] text-emerald-400 font-mono uppercase tracking-wider block">For Updates & Onboarding</span>
+                        </div>
                       </div>
-                    ) : (
-                      <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-xs text-slate-300">
-                        Our HR team will review your application and contact you via email or phone shortly for the next interview rounds.
-                      </div>
-                    )}
+
+                      <p className="text-xs text-slate-300 leading-relaxed">
+                        Please join our official WhatsApp group for instant onboarding updates, task assignments, and direct communication with mentors:
+                      </p>
+
+                      <a
+                        href={WHATSAPP_GROUP_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 text-center cursor-pointer"
+                      >
+                        <FiExternalLink size={16} />
+                        <span>Join Official WhatsApp Group Now</span>
+                      </a>
+                    </div>
 
                     <button
                       onClick={() => setIsApplyModalOpen(false)}

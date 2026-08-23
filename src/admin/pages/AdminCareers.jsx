@@ -66,6 +66,11 @@ const AdminCareers = () => {
     responsibilitiesString: '',
     requirementsString: '',
     salary: '',
+    duration: '',
+    stipend: '',
+    certificate: '',
+    workMode: '',
+    registrationFee: '',
     image: '',
     isActive: true,
   })
@@ -166,7 +171,7 @@ const AdminCareers = () => {
     setIsCustomDept(false)
     setFormValues({
       title: '', department: 'Engineering', location: 'Gurugram / Remote', type: 'Full-Time',
-      experienceString: 'Junior (1-3 yrs), Senior (3+ yrs)', skillsString: '', responsibilitiesString: '', requirementsString: '', salary: '', image: '', isActive: true
+      experienceString: 'Junior (1-3 yrs), Senior (3+ yrs)', skillsString: '', responsibilitiesString: '', requirementsString: '', salary: '', duration: '', stipend: '', certificate: '', workMode: '', registrationFee: '', image: '', isActive: true
     })
     setFormErrors({})
     setIsModalOpen(true)
@@ -189,6 +194,11 @@ const AdminCareers = () => {
       responsibilitiesString: item.responsibilities ? item.responsibilities.join('\n') : '',
       requirementsString: item.requirements ? item.requirements.join('\n') : '',
       salary: item.salary || '',
+      duration: item.duration || '',
+      stipend: item.stipend || '',
+      certificate: item.certificate || '',
+      workMode: item.workMode || '',
+      registrationFee: item.registrationFee || '',
       image: item.image || '',
       isActive: item.isActive !== false,
     })
@@ -806,6 +816,65 @@ const AdminCareers = () => {
                     />
                   </div>
                 </div>
+
+                {/* Internship-specific fields */}
+                {formValues.type === 'Internship' && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-xl bg-amber-50 border border-amber-200">
+                    <div className="col-span-2">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600">Internship Details</span>
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Duration</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. 45 Days"
+                        value={formValues.duration}
+                        onChange={(e) => setFormValues({ ...formValues, duration: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Stipend</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Unpaid / ₹5000/mo"
+                        value={formValues.stipend}
+                        onChange={(e) => setFormValues({ ...formValues, stipend: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Certificate</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Yes — Successful Completion"
+                        value={formValues.certificate}
+                        onChange={(e) => setFormValues({ ...formValues, certificate: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Work Mode</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Hybrid / Remote / On-site"
+                        value={formValues.workMode}
+                        onChange={(e) => setFormValues({ ...formValues, workMode: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
+                      />
+                    </div>
+                    <div className="col-span-2">
+                      <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Registration Fee</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. No / ₹499 one-time"
+                        value={formValues.registrationFee}
+                        onChange={(e) => setFormValues({ ...formValues, registrationFee: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
+                      />
+                    </div>
+                  </div>
+                )}
 
                 {/* Responsibilities */}
                 <div>
