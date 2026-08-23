@@ -192,66 +192,96 @@ const WorkDetail = () => {
               
               {/* Main Content */}
               <div className="lg:col-span-2 flex flex-col gap-12">
-                {/* Overview */}
-                <div className="flex flex-col gap-4">
-                  <h2
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '1.5rem',
-                      fontWeight: 'var(--weight-bold)',
-                      color: 'var(--color-text-primary)',
-                    }}
-                  >
-                    The Challenge
-                  </h2>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '1rem',
-                      color: 'var(--color-text-secondary)',
-                      lineHeight: '1.75',
-                    }}
-                  >
-                    {details.challenge}
-                  </p>
-                </div>
+                {details.description && (
+                  <div className="flex flex-col gap-4">
+                    <h2
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '1.5rem',
+                        fontWeight: 'var(--weight-bold)',
+                        color: 'var(--color-text-primary)',
+                      }}
+                    >
+                      Project Overview
+                    </h2>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '1rem',
+                        color: 'var(--color-text-secondary)',
+                        lineHeight: '1.75',
+                      }}
+                    >
+                      {details.description}
+                    </p>
+                  </div>
+                )}
+
+                {/* Challenge */}
+                {details.challenge && (
+                  <div className="flex flex-col gap-4">
+                    <h2
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '1.5rem',
+                        fontWeight: 'var(--weight-bold)',
+                        color: 'var(--color-text-primary)',
+                      }}
+                    >
+                      The Challenge
+                    </h2>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '1rem',
+                        color: 'var(--color-text-secondary)',
+                        lineHeight: '1.75',
+                      }}
+                    >
+                      {details.challenge}
+                    </p>
+                  </div>
+                )}
 
                 {/* Solution */}
-                <div className="flex flex-col gap-4">
-                  <h2
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '1.5rem',
-                      fontWeight: 'var(--weight-bold)',
-                      color: 'var(--color-text-primary)',
-                    }}
-                  >
-                    The Solution
-                  </h2>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '1rem',
-                      color: 'var(--color-text-secondary)',
-                      lineHeight: '1.75',
-                    }}
-                  >
-                    {details.solution}
-                  </p>
-                </div>
+                {details.solution && (
+                  <div className="flex flex-col gap-4">
+                    <h2
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '1.5rem',
+                        fontWeight: 'var(--weight-bold)',
+                        color: 'var(--color-text-primary)',
+                      }}
+                    >
+                      The Solution
+                    </h2>
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '1rem',
+                        color: 'var(--color-text-secondary)',
+                        lineHeight: '1.75',
+                      }}
+                    >
+                      {details.solution}
+                    </p>
+                  </div>
+                )}
 
                 {/* Results Grid */}
-                <div className="flex flex-col gap-6">
-                  <h2
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '1.5rem',
-                      fontWeight: 'var(--weight-bold)',
-                      color: 'var(--color-text-primary)',
-                    }}
-                  >
-                    Results & Impact
-                  </h2>
+                {details.results && details.results.length > 0 && (
+                  <div className="flex flex-col gap-6">
+                    <h2
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '1.5rem',
+                        fontWeight: 'var(--weight-bold)',
+                        color: 'var(--color-text-primary)',
+                      }}
+                    >
+                      Results & Impact
+                    </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     {details.results.map((res, idx) => (
                       <div
@@ -290,6 +320,7 @@ const WorkDetail = () => {
                     ))}
                   </div>
                 </div>
+                )}
               </div>
 
               {/* Sidebar */}
@@ -315,52 +346,56 @@ const WorkDetail = () => {
                     Project Details
                   </h3>
                   <div className="flex flex-col gap-5">
-                    <div>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-mono)',
-                          fontSize: '0.7rem',
-                          color: 'var(--color-text-tertiary)',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.05em',
-                          marginBottom: '0.25rem',
-                        }}
-                      >
-                        Client
+                    {details.client && (
+                      <div>
+                        <div
+                          style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '0.7rem',
+                            color: 'var(--color-text-tertiary)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.05em',
+                            marginBottom: '0.25rem',
+                          }}
+                        >
+                          Client
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: 'var(--font-body)',
+                            fontSize: '0.92rem',
+                            color: 'var(--color-text-primary)',
+                          }}
+                        >
+                          {details.client}
+                        </div>
                       </div>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '0.92rem',
-                          color: 'var(--color-text-primary)',
-                        }}
-                      >
-                        {details.client}
+                    )}
+                    {(details.duration || details.year) && (
+                      <div>
+                        <div
+                          style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '0.7rem',
+                            color: 'var(--color-text-tertiary)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.05em',
+                            marginBottom: '0.25rem',
+                          }}
+                        >
+                          Duration / Year
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: 'var(--font-body)',
+                            fontSize: '0.92rem',
+                            color: 'var(--color-text-primary)',
+                          }}
+                        >
+                          {details.duration || details.year}
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-mono)',
-                          fontSize: '0.7rem',
-                          color: 'var(--color-text-tertiary)',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.05em',
-                          marginBottom: '0.25rem',
-                        }}
-                      >
-                        Duration
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '0.92rem',
-                          color: 'var(--color-text-primary)',
-                        }}
-                      >
-                        {details.duration}
-                      </div>
-                    </div>
+                    )}
 
                     {(details.projectLink || details.projectUrl || details.link) && (
                       <div className="pt-2">
@@ -379,41 +414,82 @@ const WorkDetail = () => {
                 </div>
 
                 {/* Tech Stack */}
-                <div
-                  className="p-8 rounded-2xl cursor-default"
-                  style={{
-                    background: 'rgba(255,255,255,0.01)',
-                    border: '1px solid rgba(255,255,255,0.04)',
-                    backdropFilter: 'blur(16px)',
-                  }}
-                >
-                  <h3
+                {details.tech && details.tech.length > 0 && (
+                  <div
+                    className="p-8 rounded-2xl cursor-default"
                     style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '1.2rem',
-                      fontWeight: 'var(--weight-bold)',
-                      color: 'var(--color-text-primary)',
-                      marginBottom: '1.25rem',
+                      background: 'rgba(255,255,255,0.01)',
+                      border: '1px solid rgba(255,255,255,0.04)',
+                      backdropFilter: 'blur(16px)',
                     }}
                   >
-                    Tech Stack
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {details.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="px-3 py-1 rounded-full font-mono text-[0.68rem] uppercase"
-                        style={{
-                          background: 'rgba(255,255,255,0.03)',
-                          border: '1px solid rgba(255,255,255,0.06)',
-                          color: 'var(--color-text-secondary)',
-                        }}
-                      >
-                        {t}
-                      </span>
-                    ))}
+                    <h3
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '1.2rem',
+                        fontWeight: 'var(--weight-bold)',
+                        color: 'var(--color-text-primary)',
+                        marginBottom: '1.25rem',
+                      }}
+                    >
+                      Tech Stack
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {details.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="px-3 py-1 rounded-full font-mono text-[0.68rem] uppercase"
+                          style={{
+                            background: 'rgba(255,255,255,0.03)',
+                            border: '1px solid rgba(255,255,255,0.06)',
+                            color: 'var(--color-text-secondary)',
+                          }}
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {/* Tags */}
+                {details.tags && details.tags.length > 0 && (
+                  <div
+                    className="p-8 rounded-2xl cursor-default"
+                    style={{
+                      background: 'rgba(255,255,255,0.01)',
+                      border: '1px solid rgba(255,255,255,0.04)',
+                      backdropFilter: 'blur(16px)',
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '1.2rem',
+                        fontWeight: 'var(--weight-bold)',
+                        color: 'var(--color-text-primary)',
+                        marginBottom: '1.25rem',
+                      }}
+                    >
+                      Tags
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {details.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="px-3 py-1 rounded-full font-mono text-[0.68rem] uppercase"
+                          style={{
+                            background: 'rgba(255,255,255,0.03)',
+                            border: '1px solid rgba(255,255,255,0.06)',
+                            color: 'var(--color-text-secondary)',
+                          }}
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Start Similar Project CTA */}
                 <Link
