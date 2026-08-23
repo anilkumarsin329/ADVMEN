@@ -993,6 +993,45 @@ const AdminCareers = () => {
                   </div>
                 </div>
 
+                {/* Internship Details */}
+                {viewItemTarget.type === 'Internship' && (viewItemTarget.duration || viewItemTarget.stipend || viewItemTarget.certificate || viewItemTarget.workMode || viewItemTarget.registrationFee) && (
+                  <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-3">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 block">Internship Details</span>
+                    <div className="grid grid-cols-2 gap-3">
+                      {viewItemTarget.duration && (
+                        <div>
+                          <span className="text-[10px] font-bold uppercase text-slate-400 block">Duration</span>
+                          <span className="text-xs font-semibold text-slate-700">{viewItemTarget.duration}</span>
+                        </div>
+                      )}
+                      {viewItemTarget.stipend && (
+                        <div>
+                          <span className="text-[10px] font-bold uppercase text-slate-400 block">Stipend</span>
+                          <span className="text-xs font-semibold text-slate-700">{viewItemTarget.stipend}</span>
+                        </div>
+                      )}
+                      {viewItemTarget.certificate && (
+                        <div>
+                          <span className="text-[10px] font-bold uppercase text-slate-400 block">Certificate</span>
+                          <span className="text-xs font-semibold text-slate-700">{viewItemTarget.certificate}</span>
+                        </div>
+                      )}
+                      {viewItemTarget.workMode && (
+                        <div>
+                          <span className="text-[10px] font-bold uppercase text-slate-400 block">Work Mode</span>
+                          <span className="text-xs font-semibold text-slate-700">{viewItemTarget.workMode}</span>
+                        </div>
+                      )}
+                      {viewItemTarget.registrationFee && (
+                        <div className="col-span-2">
+                          <span className="text-[10px] font-bold uppercase text-slate-400 block">Registration Fee</span>
+                          <span className="text-xs font-semibold text-slate-700">{viewItemTarget.registrationFee}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
                 {Array.isArray(viewItemTarget.skills) && viewItemTarget.skills.length > 0 && (
                   <div>
                     <span className="text-[10px] font-bold uppercase text-slate-400 block mb-2">Required Skills</span>

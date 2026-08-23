@@ -28,7 +28,7 @@ const useCountUp = (target, duration = 1800, start = false) => {
 
 const StatsCard = ({ stat, index = 0, className }) => {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-40px' })
+  const inView = useInView(ref, { once: true, margin: '-40px 0px' })
   const count = useCountUp(stat.value, 1600, inView)
 
   return (

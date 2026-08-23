@@ -178,7 +178,7 @@ const TrustSection = () => {
                 key={m.label}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: '-50px' }}
+                viewport={{ once: true, margin: '-50px 0px' }}
                 transition={{ duration: 0.8, delay: i * 0.1 }}
                 className="trust-metric p-6 sm:p-8 rounded-2xl cursor-default group"
                 style={{

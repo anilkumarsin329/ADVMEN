@@ -10,7 +10,7 @@ const Counter = ({ value, suffix = '', duration = 1.8 }) => {
   const isNumber = !isNaN(end)
   const [count, setCount] = useState(() => (isNumber ? 0 : value))
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, margin: '-50px 0px' })
 
   useEffect(() => {
     if (!isInView || !isNumber) return
@@ -48,10 +48,10 @@ const Counter = ({ value, suffix = '', duration = 1.8 }) => {
 }
 
 const statsData = [
-  { value: '150', suffix: '+', label: 'Projects Delivered' },
-  { value: '50', suffix: '+', label: 'Happy Clients' },
-  { value: '5', suffix: '+', label: 'Years Active' },
-  { value: '99', suffix: '%', label: 'Retention Rate' },
+  { value: '20', suffix: '+', label: 'Projects Delivered' },
+  { value: '15', suffix: '+', label: 'Happy Clients' },
+  { value: '1', suffix: '+', label: 'Years Active' },
+  { value: '100', suffix: '%', label: 'Client Satisfaction' },
 ]
 
 const AboutStats = ({ isPage = false }) => {
