@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { adSpaceAPI, adBookingAPI } from '../../utils/adApi'
+import { getImageUrl } from '../../utils/constants'
 import { useAdAuth } from '../../context/AdAuthContext'
 import SEOHead from '../../components/common/SEOHead'
 import PageTransition from '../../components/common/PageTransition'
@@ -116,7 +117,7 @@ const AdSpaceDetail = () => {
               {/* Main Image */}
               <div className="w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden bg-white/5 border border-white/10">
                 <img 
-                  src={space.photos?.[0] || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=800&fit=crop'} 
+                  src={getImageUrl(space.photos?.[0]) || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=800&fit=crop'} 
                   alt={space.title}
                   className="w-full h-full object-cover"
                 />

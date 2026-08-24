@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAdAuth } from '../../context/AdAuthContext'
 import { adSpaceAPI, adBookingAPI } from '../../utils/adApi'
+import { getImageUrl } from '../../utils/constants'
 import SEOHead from '../../components/common/SEOHead'
 import PageTransition from '../../components/common/PageTransition'
 import { FiPlus, FiBox, FiCheckCircle, FiXCircle } from 'react-icons/fi'
@@ -163,7 +164,7 @@ const AdSpaceOwnerDashboard = () => {
                     <div key={space._id} className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <div className="w-16 h-16 bg-slate-800 rounded-lg overflow-hidden">
-                          <img src={space.photos?.[0]} className="w-full h-full object-cover" alt="" />
+                          <img src={getImageUrl(space.photos?.[0])} className="w-full h-full object-cover" alt="" />
                         </div>
                         <div>
                           <h3 className="font-bold">{space.title}</h3>

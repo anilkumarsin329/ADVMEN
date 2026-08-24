@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { adAdminAPI } from '@utils/adApi'
 import { FiSettings, FiEye, FiCheckCircle, FiXCircle, FiX } from 'react-icons/fi'
+import { getImageUrl } from '@utils/constants'
 
 const AdminAdSpaces = () => {
   const [spaces, setSpaces] = useState([])
@@ -195,7 +196,7 @@ const AdminAdSpaces = () => {
             <div className="p-6 space-y-6">
               {viewModalData.photos && viewModalData.photos.length > 0 && (
                 <div className="w-full h-64 rounded-xl overflow-hidden bg-slate-100 border" style={{ borderColor: 'var(--admin-border)' }}>
-                  <img src={viewModalData.photos[0]} alt="Space" className="w-full h-full object-cover" />
+                  <img src={getImageUrl(viewModalData.photos[0])} alt="Space" className="w-full h-full object-cover" />
                 </div>
               )}
               

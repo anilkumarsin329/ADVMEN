@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { adSpaceAPI } from '../../utils/adApi'
+import { getImageUrl } from '../../utils/constants'
 import SEOHead from '../../components/common/SEOHead'
 import PageTransition from '../../components/common/PageTransition'
 import { FiMapPin, FiFilter, FiDollarSign, FiArrowLeft } from 'react-icons/fi'
@@ -144,7 +145,7 @@ const AdSpaceBrowse = () => {
                     <div key={space._id} className="group flex flex-col rounded-2xl bg-white/5 border border-[rgba(255,107,0,0.15)] overflow-hidden hover:border-orange-500/40 transition-colors">
                       <Link to={`/ad-space/${space._id}`} className="block h-48 bg-slate-800 relative overflow-hidden">
                         <img 
-                          src={space.photos?.[0] || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&q=80'} 
+                          src={getImageUrl(space.photos?.[0]) || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&q=80'} 
                           alt={space.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
