@@ -38,9 +38,8 @@ export const getApiBaseUrl = () => {
   if (!url) {
     if (import.meta.env.VITE_API_URL) {
       url = import.meta.env.VITE_API_URL.replace(/\/$/, '')
-    } else {
-      url = 'http://localhost:5000'
     }
+    // else: empty string → relative URL, Vite proxy forwards /api to localhost:5000
   }
 
   // Upgrade HTTP to HTTPS on live production domains (except local dev servers)

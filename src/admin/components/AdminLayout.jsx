@@ -23,7 +23,7 @@ const AdminLayout = ({ children }) => {
 
   return (
     <div 
-      className="h-screen w-full overflow-hidden flex relative"
+      className="h-screen w-full overflow-hidden flex relative admin-layout-root"
       style={{ 
         '--admin-bg': '#f4f6f8',
         '--admin-card-bg': '#ffffff',

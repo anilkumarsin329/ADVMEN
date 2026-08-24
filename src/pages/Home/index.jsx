@@ -13,6 +13,7 @@ import CaseStudies from '@components/sections/CaseStudies/CaseStudies'
 import TrustSection from '@components/sections/Clients/TrustSection'
 import Testimonials from '@components/sections/Testimonials/Testimonials'
 import FAQSection from '@components/sections/FAQ/FAQSection'
+import AdSpaceSection from '@components/sections/AdSpace/AdSpaceSection'
 
 const Home = () => {
   const location = useLocation()
@@ -39,6 +40,9 @@ const Home = () => {
     <div className="py-10 bg-[var(--color-black)]">
       <HeroMarquee />
     </div>
+
+    {/* Ad Space Module Section */}
+    <AdSpaceSection />
 
     {/* Phase 1: About */}
     <About />

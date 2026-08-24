@@ -32,6 +32,16 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-primary);
 }
 
+/* Override for admin panel headings */
+.admin-layout-root h1, 
+.admin-layout-root h2, 
+.admin-layout-root h3, 
+.admin-layout-root h4, 
+.admin-layout-root h5, 
+.admin-layout-root h6 {
+  color: var(--admin-text-primary, #121215);
+}
+
 h1 { font-size: var(--text-h1); }
 h2 { font-size: var(--text-h2); }
 h3 { font-size: var(--text-h3); }

@@ -21,6 +21,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { LoaderProvider }  from '@context/LoaderContext'
 import { CursorProvider }  from '@context/CursorContext'
 import { ThemeProvider }   from '@context/ThemeContext'
+import { AdAuthProvider }  from './context/AdAuthContext'
 
 // ── Global GSAP setup ─────────────────────────────────────────
 import '@/utils/gsapConfig'
@@ -65,6 +66,25 @@ const AdminProfile   = lazy(() => import('@/admin/pages/AdminProfile'))
 const AdminHelp      = lazy(() => import('@/admin/pages/AdminHelp'))
 const AdminCatalog   = lazy(() => import('@/admin/pages/AdminCatalog'))
 
+const AdminAdSpaces    = lazy(() => import('@/admin/pages/AdminAdSpaces'))
+const AdminAdBookings  = lazy(() => import('@/admin/pages/AdminAdBookings'))
+const AdminAdUsers     = lazy(() => import('@/admin/pages/AdminAdUsers'))
+const AdminAdCommission = lazy(() => import('@/admin/pages/AdminAdCommission'))
+const AdminAdPayouts   = lazy(() => import('@/admin/pages/AdminAdPayouts'))
+const AdminAdAnalytics = lazy(() => import('@/admin/pages/AdminAdAnalytics'))
+
+// ── Ad Space Module Pages ─────────────────────────────────────
+const AdSpaceHome = lazy(() => import('./pages/AdSpaceHome'))
+const AdSpaceBrowse = lazy(() => import('./pages/AdSpaceBrowse'))
+const AdSpaceDetail = lazy(() => import('./pages/AdSpaceDetail'))
+const AdSpaceOwnerRegister = lazy(() => import('./pages/AdSpaceOwnerRegister'))
+const AdSpaceOwnerLogin = lazy(() => import('./pages/AdSpaceOwnerLogin'))
+const AdSpaceAdvertiserRegister = lazy(() => import('./pages/AdSpaceAdvertiserRegister'))
+const AdSpaceAdvertiserLogin = lazy(() => import('./pages/AdSpaceAdvertiserLogin'))
+const AdSpaceOwnerDashboard = lazy(() => import('./pages/AdSpaceOwnerDashboard'))
+const AdSpaceAdvertiserDashboard = lazy(() => import('./pages/AdSpaceAdvertiserDashboard'))
+import AdProtectedRoute from './components/common/AdProtectedRoute'
+
 // ── Page loading fallback ─────────────────────────────────────
 const PageFallback = () => (
   <div
@@ -100,6 +120,24 @@ const PublicRoutes = () => {
         <Route path="/careers/:id"      element={<CareerDetail />} />
         <Route path="/privacy-policy"   element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
+
+        {/* Ad Space Module Routes */}
+        <Route path="/ad-space" element={<AdSpaceHome />} />
+        <Route path="/ad-space/browse" element={<AdSpaceBrowse />} />
+        <Route path="/ad-space/owner/register" element={<AdSpaceOwnerRegister />} />
+        <Route path="/ad-space/owner/login" element={<AdSpaceOwnerLogin />} />
+        <Route path="/ad-space/advertiser/register" element={<AdSpaceAdvertiserRegister />} />
+        <Route path="/ad-space/advertiser/login" element={<AdSpaceAdvertiserLogin />} />
+        <Route path="/ad-space/:id" element={<AdSpaceDetail />} />
+
+        {/* Protected Ad Routes */}
+        <Route element={<AdProtectedRoute allowedRoles={['owner']} />}>
+          <Route path="/ad-space/owner/dashboard" element={<AdSpaceOwnerDashboard />} />
+        </Route>
+        <Route element={<AdProtectedRoute allowedRoles={['advertiser']} />}>
+          <Route path="/ad-space/advertiser/dashboard" element={<AdSpaceAdvertiserDashboard />} />
+        </Route>
+
         <Route path="*"                 element={<NotFound />} />
       </Routes>
     </AnimatePresence>
@@ -123,6 +161,12 @@ const AdminRoutes = () => (
       <Route path="profile"      element={<AdminLayout><AdminProfile /></AdminLayout>} />
       <Route path="help"         element={<AdminLayout><AdminHelp /></AdminLayout>} />
       <Route path="catalog"      element={<AdminLayout><AdminCatalog /></AdminLayout>} />
+      <Route path="ad-spaces"    element={<AdminLayout><AdminAdSpaces /></AdminLayout>} />
+      <Route path="ad-bookings"  element={<AdminLayout><AdminAdBookings /></AdminLayout>} />
+      <Route path="ad-users"     element={<AdminLayout><AdminAdUsers /></AdminLayout>} />
+      <Route path="ad-commission" element={<AdminLayout><AdminAdCommission /></AdminLayout>} />
+      <Route path="ad-payouts"   element={<AdminLayout><AdminAdPayouts /></AdminLayout>} />
+      <Route path="ad-analytics" element={<AdminLayout><AdminAdAnalytics /></AdminLayout>} />
     </Route>
   </Routes>
 )
@@ -154,15 +198,17 @@ const App = () => (
   <AdminAuthProvider>
     <HelmetProvider>
       <LoaderProvider>
-        <CursorProvider>
-          <ThemeProvider>
-            <BrowserRouter>
-              <GlobalEffects />
-              <Preloader />
-              <RootRouter />
-            </BrowserRouter>
-          </ThemeProvider>
-        </CursorProvider>
+        <AdAuthProvider>
+          <CursorProvider>
+            <ThemeProvider>
+              <BrowserRouter>
+                <GlobalEffects />
+                <Preloader />
+                <RootRouter />
+              </BrowserRouter>
+            </ThemeProvider>
+          </CursorProvider>
+        </AdAuthProvider>
       </LoaderProvider>
     </HelmetProvider>
   </AdminAuthProvider>

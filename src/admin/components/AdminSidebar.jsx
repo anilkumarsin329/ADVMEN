@@ -19,7 +19,11 @@ import {
   FiHelpCircle,
   FiBookOpen,
   FiBriefcase,
-  FiUsers
+  FiUsers,
+  FiCalendar,
+  FiPercent,
+  FiDollarSign,
+  FiBarChart2
 } from 'react-icons/fi'
 
 const navigationItems = [
@@ -33,6 +37,15 @@ const navigationItems = [
   { label: 'Contact',   href: '/admin/contacts',  icon: FiMail },
 ]
 
+const adModuleItems = [
+  { label: 'Ad Spaces',     href: '/admin/ad-spaces',     icon: FiGrid },
+  { label: 'Ad Bookings',   href: '/admin/ad-bookings',   icon: FiCalendar },
+  { label: 'Ad Users',      href: '/admin/ad-users',      icon: FiUsers },
+  { label: 'Commission',    href: '/admin/ad-commission', icon: FiPercent },
+  { label: 'Payouts',       href: '/admin/ad-payouts',    icon: FiDollarSign },
+  { label: 'Ad Analytics',  href: '/admin/ad-analytics',  icon: FiBarChart2 },
+]
+
 const bottomNavigationItems = [
   { label: 'Profile',  href: '/admin/profile',  icon: FiUser },
   { label: 'Settings', href: '/admin/settings', icon: FiSettings },
@@ -42,7 +55,7 @@ const bottomNavigationItems = [
 const AdminSidebarContent = ({ isCollapsed, toggleSidebar }) => {
   return (
     <div 
-      className={`h-full flex flex-col justify-between py-6 transition-all duration-300 ${
+      className={`h-full flex flex-col py-6 transition-all duration-300 ${
         isCollapsed ? 'px-2' : 'px-4'
       }`}
       style={{
@@ -50,11 +63,8 @@ const AdminSidebarContent = ({ isCollapsed, toggleSidebar }) => {
         borderRight: '1px solid rgba(255, 255, 255, 0.03)',
       }}
     >
-      {/* Top Section — Logo & Nav Links */}
-      <div className="flex flex-col gap-8">
-        
-        {/* Logo and Mobile Close Button */}
-        <div className={`flex items-center px-2 ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
+      {/* Top Section — Logo & Mobile Close */}
+      <div className={`flex items-center px-2 mb-8 shrink-0 ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
           <div className="flex items-center gap-3">
             <img 
               src="/ADVMEN logo.png" 
@@ -92,8 +102,9 @@ const AdminSidebarContent = ({ isCollapsed, toggleSidebar }) => {
           )}
         </div>
 
-        {/* Nav Links */}
-        <nav className="flex flex-col gap-1.5" role="navigation">
+        {/* Scrollable Nav Area */}
+        <div className="flex-1 overflow-y-auto scrollbar-hide flex flex-col gap-6 pb-4">
+          <nav className="flex flex-col gap-1.5" role="navigation">
           {navigationItems.map((item) => {
             const Icon = item.icon
             return (
@@ -137,11 +148,61 @@ const AdminSidebarContent = ({ isCollapsed, toggleSidebar }) => {
               </NavLink>
             )
           })}
-        </nav>
-      </div>
+          </nav>
+
+          <div className="flex flex-col">
+            {!isCollapsed && (
+              <div className="mt-6 mb-2 px-2 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                Ad Module
+              </div>
+            )}
+            <nav className="flex flex-col gap-1.5" role="navigation">
+              {adModuleItems.map((item) => {
+                const Icon = item.icon
+                return (
+                  <NavLink
+                    key={item.href}
+                    to={item.href}
+                    onClick={() => {
+                      if (window.innerWidth < 1024) toggleSidebar()
+                    }}
+                    className={({ isActive }) => 
+                      `group flex items-center rounded-xl font-body text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+                        isCollapsed ? 'justify-center p-3' : 'justify-between px-4 py-3.5'
+                      } ${
+                        isActive 
+                          ? 'text-[var(--color-orange)] bg-[rgba(255,107,0,0.06)] border-l-2 border-[var(--color-orange)]' 
+                          : 'text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] bg-transparent hover:bg-[var(--color-glass-white-4)]'
+                      }`
+                    }
+                    data-cursor="hover"
+                    title={isCollapsed ? item.label : undefined}
+                  >
+                    {({ isActive }) => (
+                      <>
+                        <div className="flex items-center gap-3.5">
+                          <Icon size={16} className="shrink-0" />
+                          {!isCollapsed && <span>{item.label}</span>}
+                        </div>
+                        {!isCollapsed && (
+                          <FiChevronRight 
+                            size={14} 
+                            className={`shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 ${
+                              isActive ? 'text-[var(--color-orange)] animate-pulse' : 'opacity-40'
+                            }`}
+                          />
+                        )}
+                      </>
+                    )}
+                  </NavLink>
+                )
+              })}
+            </nav>
+          </div>
+        </div>
 
       {/* Bottom Section — Tabs */}
-      <div className="flex flex-col gap-1.5 border-t pt-4" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+      <div className="flex flex-col gap-1.5 border-t pt-4 mt-auto shrink-0" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
         {bottomNavigationItems.map((item) => {
           const Icon = item.icon
           return (

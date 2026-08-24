@@ -101,7 +101,7 @@ const Careers = () => {
         if (res.ok) {
           const data = await res.json()
           if (Array.isArray(data) && data.length > 0) {
-            setPositions(data.map(item => ({ ...item, id: item._id || item.id })))
+            setPositions(data.map((item, idx) => ({ ...item, id: item._id || item.id || `pos-${idx}` })))
           }
         }
       } catch (err) {
@@ -262,7 +262,7 @@ const Careers = () => {
   }
 
   // Render Card Component
-  const renderPositionCard = (pos) => {
+  const renderPositionCard = (pos, index) => {
     const isExpanded = expandedPosId === pos.id
     const isIntern = isInternRole(pos)
     const cardImage = getDisplayImage(pos)
@@ -270,7 +270,7 @@ const Careers = () => {
     return (
       <motion.div
         layout
-        key={pos.id}
+        key={pos.id || `pos-card-${index}`}
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
@@ -658,6 +658,7 @@ const Careers = () => {
           <AnimatePresence>
             {viewModalJob && (
               <motion.div
+                key="view-modal"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -733,6 +734,7 @@ const Careers = () => {
           <AnimatePresence>
             {applyModalJob && (
               <motion.div
+                key="apply-modal"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
