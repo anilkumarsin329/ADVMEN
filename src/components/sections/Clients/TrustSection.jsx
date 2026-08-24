@@ -7,13 +7,14 @@ import { motion } from 'framer-motion'
 import { gsap } from '@utils/gsapConfig'
 import MarqueeLib from 'react-fast-marquee'
 import { FiTrendingUp, FiShield, FiClock, FiCheckCircle, FiArrowRight, FiGitBranch, FiZap, FiAward, FiDollarSign, FiShoppingCart } from 'react-icons/fi'
+import { stats } from '@data/stats'
 
 // Handle both default export and named export
 const Marquee = MarqueeLib?.default || MarqueeLib
 
 const trustMetrics = [
   { value: '99.9%', label: 'Uptime SLA', desc: 'Enterprise-grade hosting setups with high availability and immediate fault recovery.', icon: FiShield },
-  { value: '$20M+', label: 'Client Revenue', desc: 'Direct digital sales, signups, and customer acquisition driven by our platforms.', icon: FiTrendingUp },
+  { value: 'ROI', label: 'Focused Growth', desc: 'Direct digital sales, signups, and customer acquisition driven by our platforms.', icon: FiTrendingUp },
   { value: '24/7', label: 'Tech Monitoring', desc: 'Real-time uptime checking, threat scanning, and database state protection.', icon: FiClock },
   { value: '100%', label: 'Clean Code Audits', desc: 'Semantically built front-ends conforming to modern security and design systems.', icon: FiCheckCircle },
 ]
@@ -346,12 +347,7 @@ const TrustSection = () => {
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-            {[
-              { label: 'Active Clients', value: '50+' },
-              { label: 'Projects Delivered', value: '200+' },
-              { label: 'Team Members', value: '25+' },
-              { label: 'Years Experience', value: '8+' },
-            ].map((stat, i) => (
+            {stats.map((stat, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -385,7 +381,7 @@ const TrustSection = () => {
                     marginBottom: '0.5rem',
                   }}
                 >
-                  {stat.value}
+                  {stat.value}{stat.suffix}
                 </div>
                 <div
                   style={{

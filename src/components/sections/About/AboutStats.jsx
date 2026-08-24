@@ -4,11 +4,13 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
+import { stats } from '../../../data/stats'
 
 const Counter = ({ value, suffix = '', duration = 1.8 }) => {
   const end = parseInt(value, 10)
   const isNumber = !isNaN(end)
-  const [count, setCount] = useState(() => (isNumber ? 0 : value))
+  // Initialize with final value so text scrapers/SEO see the real number
+  const [count, setCount] = useState(() => (isNumber ? end : value))
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px 0px' })
 
@@ -18,6 +20,7 @@ const Counter = ({ value, suffix = '', duration = 1.8 }) => {
     if (start === end) return
 
     const startTime = performance.now()
+    setCount(0) // Snap to 0 right when animation starts for visual effect
 
     const updateCount = (timestamp) => {
       const elapsed = timestamp - startTime
@@ -47,12 +50,11 @@ const Counter = ({ value, suffix = '', duration = 1.8 }) => {
   )
 }
 
-const statsData = [
-  { value: '20', suffix: '+', label: 'Projects Delivered' },
-  { value: '15', suffix: '+', label: 'Happy Clients' },
-  { value: '1', suffix: '+', label: 'Years Active' },
-  { value: '100', suffix: '%', label: 'Client Satisfaction' },
-]
+const statsData = stats.map(s => ({
+  value: s.value.toString(),
+  suffix: s.suffix,
+  label: s.label === 'Years Experience' ? 'Years Active' : s.label
+}))
 
 const AboutStats = ({ isPage = false }) => {
   if (isPage) {
