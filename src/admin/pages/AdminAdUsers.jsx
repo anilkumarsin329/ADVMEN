@@ -49,21 +49,21 @@ const AdminAdUsers = () => {
           <table className="w-full text-left text-sm" style={{ color: "var(--admin-text-primary)" }}>
             <thead className="text-[9px] uppercase tracking-wider bg-[rgba(0,0,0,0.02)] text-slate-500 border-b" style={{ background: "var(--admin-bg)", borderColor: `var(--admin-border)` }}>
               <tr>
-                <th className="px-6 py-4">Name</th>
-                <th className="px-6 py-4">Email</th>
-                <th className="px-6 py-4">Phone</th>
-                <th className="px-6 py-4">Role</th>
-                <th className="px-6 py-4 text-right">Earnings</th>
-                <th className="px-6 py-4 text-right">Joined Date</th>
+                <th className="px-3 py-3 lg:px-4">Name</th>
+                <th className="px-3 py-3 lg:px-4">Email</th>
+                <th className="px-3 py-3 lg:px-4">Phone</th>
+                <th className="px-3 py-3 lg:px-4">Role</th>
+                <th className="px-3 py-3 lg:px-4 text-right">Earnings</th>
+                <th className="px-3 py-3 lg:px-4 text-right">Joined Date</th>
               </tr>
             </thead>
             <tbody>
               {users.map(user => (
                 <tr key={user._id} className="border-b hover:bg-[rgba(0,0,0,0.01)] transition-colors" style={{ background: "var(--admin-bg)", borderColor: `var(--admin-border)` }}>
-                  <td className="px-6 py-4 font-bold" style={{ color: "var(--admin-text-primary)" }}>{user.name}</td>
-                  <td className="px-6 py-4">{user.email}</td>
-                  <td className="px-6 py-4">{user.phone || '-'}</td>
-                  <td className="px-6 py-4">
+                  <td className="px-3 py-3 lg:px-4 font-bold" style={{ color: "var(--admin-text-primary)" }}>{user.name}</td>
+                  <td className="px-3 py-3 lg:px-4">{user.email}</td>
+                  <td className="px-3 py-3 lg:px-4">{user.phone || '-'}</td>
+                  <td className="px-3 py-3 lg:px-4">
                     <span className={`px-2 py-1 text-xs font-bold rounded-md border uppercase ${
                       user.role === 'owner' 
                         ? 'text-orange-400 bg-orange-400/10 border-orange-400/20' 
@@ -72,12 +72,12 @@ const AdminAdUsers = () => {
                       {user.role}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-right font-mono">
+                  <td className="px-3 py-3 lg:px-4 text-right font-mono">
                     {user.role === 'owner' ? (
                       <span className="text-emerald-400 font-bold">₹{user.earnings || 0}</span>
                     ) : '-'}
                   </td>
-                  <td className="px-6 py-4 text-right text-slate-400">
+                  <td className="px-3 py-3 lg:px-4 text-right text-slate-400">
                     {new Date(user.createdAt).toLocaleDateString()}
                   </td>
                 </tr>

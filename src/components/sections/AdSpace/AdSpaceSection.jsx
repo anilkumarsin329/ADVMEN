@@ -85,7 +85,7 @@ const AdSpaceSection = () => {
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
-        <div className="adspace-stagger flex items-center gap-3 mb-6 justify-center">
+        <div className="flex items-center gap-4 mb-6 adspace-stagger relative">
           <span className="w-8 h-px bg-[var(--color-orange)]" />
           <span className="type-eyebrow text-sm font-bold tracking-widest uppercase" style={{ color: 'var(--color-orange)' }}>
             ADVMEN Ad Spaces
@@ -93,21 +93,26 @@ const AdSpaceSection = () => {
           <span className="w-8 h-px bg-[var(--color-orange)]" />
         </div>
 
-        <h2 className="adspace-stagger section-title max-w-4xl mx-auto mb-6 text-white font-display"
-          style={{
-            fontSize: 'clamp(2rem, 5vw, 4rem)',
-            lineHeight: 1.15,
-            fontWeight: 'var(--weight-bold)',
-          }}
-        >
-          Advertise Smarter. <span className="text-orange-gradient">Reach Further.</span>
-        </h2>
+        <div className="relative">
+          {/* Glowing Highlight Orb */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[150px] sm:w-[400px] sm:h-[200px] bg-orange-500/30 blur-[80px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 mix-blend-screen animate-pulse" />
+          
+          <h2 className="adspace-stagger section-title max-w-4xl mx-auto mb-6 text-white font-display relative z-10 drop-shadow-xl"
+            style={{
+              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+              lineHeight: 1.15,
+              fontWeight: 'var(--weight-bold)',
+            }}
+          >
+            Advertise Smarter. <br className="md:hidden" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-400 drop-shadow-[0_0_15px_rgba(255,107,0,0.5)]">Reach Further.</span>
+          </h2>
 
-        <p className="adspace-stagger max-w-2xl mx-auto mb-16 text-slate-300"
-          style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.125rem)' }}
-        >
-          Rent physical and digital ad spaces across India. List your property or launch your next campaign.
-        </p>
+          <p className="adspace-stagger max-w-2xl mx-auto mb-16 text-slate-300 relative z-10 font-medium"
+            style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)' }}
+          >
+            Rent physical and digital ad spaces across India. List your property or launch your next campaign.
+          </p>
+        </div>
 
         {/* Feature Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto mb-16">

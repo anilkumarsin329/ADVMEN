@@ -65,25 +65,25 @@ const AdminAdPayouts = () => {
           <table className="w-full text-left text-sm" style={{ color: "var(--admin-text-primary)" }}>
             <thead className="text-[9px] uppercase tracking-wider bg-[rgba(0,0,0,0.02)] text-slate-500 border-b" style={{ background: "var(--admin-bg)", borderColor: `var(--admin-border)` }}>
               <tr>
-                <th className="px-6 py-4">Owner Name</th>
-                <th className="px-6 py-4">Space Title</th>
-                <th className="px-6 py-4">Campaign</th>
-                <th className="px-6 py-4 text-right">Owner Payout Amount</th>
-                <th className="px-6 py-4 text-right">Completed Date</th>
-                <th className="px-6 py-4 text-center">Payout Status</th>
+                <th className="px-3 py-3 lg:px-4">Owner Name</th>
+                <th className="px-3 py-3 lg:px-4">Space Title</th>
+                <th className="px-3 py-3 lg:px-4">Campaign</th>
+                <th className="px-3 py-3 lg:px-4 text-right">Owner Payout Amount</th>
+                <th className="px-3 py-3 lg:px-4 text-right">Completed Date</th>
+                <th className="px-3 py-3 lg:px-4 text-center">Payout Status</th>
               </tr>
             </thead>
             <tbody>
               {payouts.map(p => (
                 <tr key={p._id} className="border-b hover:bg-[rgba(0,0,0,0.01)] transition-colors" style={{ background: "var(--admin-bg)", borderColor: `var(--admin-border)` }}>
-                  <td className="px-6 py-4 font-bold" style={{ color: "var(--admin-text-primary)" }}>{p.space?.owner?.name || 'Unknown'}</td>
-                  <td className="px-6 py-4 line-clamp-1">{p.space?.title || 'Deleted Space'}</td>
-                  <td className="px-6 py-4">{p.campaign?.name}</td>
-                  <td className="px-6 py-4 text-right text-emerald-400 font-mono font-bold">₹{p.pricing?.ownerPayout}</td>
-                  <td className="px-6 py-4 text-right text-slate-400">
+                  <td className="px-3 py-3 lg:px-4 font-bold" style={{ color: "var(--admin-text-primary)" }}>{p.space?.owner?.name || 'Unknown'}</td>
+                  <td className="px-3 py-3 lg:px-4 line-clamp-1">{p.space?.title || 'Deleted Space'}</td>
+                  <td className="px-3 py-3 lg:px-4">{p.campaign?.name}</td>
+                  <td className="px-3 py-3 lg:px-4 text-right text-emerald-400 font-mono font-bold">₹{p.pricing?.ownerPayout}</td>
+                  <td className="px-3 py-3 lg:px-4 text-right text-slate-400">
                     {new Date(p.updatedAt).toLocaleDateString()}
                   </td>
-                  <td className="px-6 py-4 text-center">
+                  <td className="px-3 py-3 lg:px-4 text-center">
                     <span className="px-3 py-1 text-xs font-bold rounded-md border text-green-400 bg-green-400/10 border-green-400/20 uppercase">
                       Paid
                     </span>

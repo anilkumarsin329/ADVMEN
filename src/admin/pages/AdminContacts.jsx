@@ -568,7 +568,7 @@ const AdminContacts = () => {
 
               </div>
 
-              <div className="sticky bottom-0 px-6 py-4 border-t border-gray-100 flex justify-between items-center bg-white rounded-b-[24px]">
+              <div className="sticky bottom-0 px-3 py-3 lg:px-4 border-t border-gray-100 flex justify-between items-center bg-white rounded-b-[24px]">
                 <a
                   href={`mailto:${viewItemTarget.email}?subject=Re: ${encodeURIComponent(viewItemTarget.subject || 'ADVMEN Inquiry')}`}
                   className="px-5 py-2 rounded-lg text-xs font-bold bg-[#ff6b00] text-white hover:bg-[#e05e00] transition-all flex items-center gap-2 shadow-sm"

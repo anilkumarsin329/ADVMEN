@@ -103,31 +103,31 @@ const AdminAdBookings = () => {
           <table className="w-full text-left text-sm" style={{ color: "var(--admin-text-primary)" }}>
             <thead className="text-[9px] uppercase tracking-wider bg-[rgba(0,0,0,0.02)] text-slate-500 border-b" style={{ background: "var(--admin-bg)", borderColor: `var(--admin-border)` }}>
               <tr>
-                <th className="px-6 py-4">Campaign Name</th>
-                <th className="px-6 py-4">Advertiser</th>
-                <th className="px-6 py-4">Space Title</th>
-                <th className="px-6 py-4 text-right">Total Amount</th>
-                <th className="px-6 py-4 text-right">Commission</th>
-                <th className="px-6 py-4 text-right">Owner Payout</th>
-                <th className="px-6 py-4 text-center">Status</th>
-                <th className="px-6 py-4 text-right">Actions</th>
+                <th className="px-3 py-3 lg:px-4">Campaign Name</th>
+                <th className="px-3 py-3 lg:px-4">Advertiser</th>
+                <th className="px-3 py-3 lg:px-4">Space Title</th>
+                <th className="px-3 py-3 lg:px-4 text-right">Total Amount</th>
+                <th className="px-3 py-3 lg:px-4 text-right">Commission</th>
+                <th className="px-3 py-3 lg:px-4 text-right">Owner Payout</th>
+                <th className="px-3 py-3 lg:px-4 text-center">Status</th>
+                <th className="px-3 py-3 lg:px-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
               {bookings.map(booking => (
                 <tr key={booking._id} className="border-b hover:bg-[rgba(0,0,0,0.01)] transition-colors" style={{ background: "var(--admin-bg)", borderColor: `var(--admin-border)` }}>
-                  <td className="px-6 py-4 font-bold" style={{ color: "var(--admin-text-primary)" }}>{booking.campaign?.name}</td>
-                  <td className="px-6 py-4">{booking.advertiser?.name || 'Unknown'}</td>
-                  <td className="px-6 py-4 line-clamp-1">{booking.space?.title || 'Deleted Space'}</td>
-                  <td className="px-6 py-4 text-right text-emerald-400 font-mono">₹{booking.pricing?.total}</td>
-                  <td className="px-6 py-4 text-right text-slate-300 font-mono">₹{booking.pricing?.platformFee}</td>
-                  <td className="px-6 py-4 text-right text-emerald-400 font-mono font-bold">₹{booking.pricing?.ownerPayout}</td>
-                  <td className="px-6 py-4 text-center">
+                  <td className="px-3 py-3 lg:px-4 font-bold" style={{ color: "var(--admin-text-primary)" }}>{booking.campaign?.name}</td>
+                  <td className="px-3 py-3 lg:px-4">{booking.advertiser?.name || 'Unknown'}</td>
+                  <td className="px-3 py-3 lg:px-4 line-clamp-1">{booking.space?.title || 'Deleted Space'}</td>
+                  <td className="px-3 py-3 lg:px-4 text-right text-emerald-400 font-mono">₹{booking.pricing?.total}</td>
+                  <td className="px-3 py-3 lg:px-4 text-right text-slate-300 font-mono">₹{booking.pricing?.platformFee}</td>
+                  <td className="px-3 py-3 lg:px-4 text-right text-emerald-400 font-mono font-bold">₹{booking.pricing?.ownerPayout}</td>
+                  <td className="px-3 py-3 lg:px-4 text-center">
                     <span className={`px-2 py-1 text-xs font-bold rounded-md border uppercase ${getStatusColor(booking.status)}`}>
                       {booking.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-right space-x-2">
+                  <td className="px-3 py-3 lg:px-4 text-right space-x-2">
                     {booking.status === 'ad_uploaded' && (
                       <button 
                         onClick={() => handleGoLive(booking._id)}

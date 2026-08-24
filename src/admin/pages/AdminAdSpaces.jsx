@@ -105,39 +105,39 @@ const AdminAdSpaces = () => {
           <table className="w-full text-left text-sm" style={{ color: "var(--admin-text-primary)" }}>
             <thead className="text-[9px] uppercase tracking-wider bg-[rgba(0,0,0,0.02)] text-slate-500 border-b" style={{ background: "var(--admin-bg)", borderColor: 'var(--admin-border)' }}>
               <tr>
-                <th className="px-6 py-4">Sr No</th>
-                <th className="px-6 py-4">Space Title</th>
-                <th className="px-6 py-4">Owner Name</th>
-                <th className="px-6 py-4">Space Type</th>
-                <th className="px-6 py-4">City</th>
-                <th className="px-6 py-4">Monthly Price</th>
-                <th className="px-6 py-4">Status</th>
-                <th className="px-6 py-4 text-center">Approved</th>
-                <th className="px-6 py-4 text-right">Actions</th>
+                <th className="px-3 py-3 lg:px-4">Sr No</th>
+                <th className="px-3 py-3 lg:px-4">Space Title</th>
+                <th className="px-3 py-3 lg:px-4">Owner Name</th>
+                <th className="px-3 py-3 lg:px-4">Space Type</th>
+                <th className="px-3 py-3 lg:px-4">City</th>
+                <th className="px-3 py-3 lg:px-4">Monthly Price</th>
+                <th className="px-3 py-3 lg:px-4">Status</th>
+                <th className="px-3 py-3 lg:px-4 text-center">Approved</th>
+                <th className="px-3 py-3 lg:px-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody>
               {spaces.map((space, index) => (
                 <tr key={space._id} className="border-b hover:bg-[rgba(0,0,0,0.01)] transition-colors" style={{ background: "var(--admin-bg)", borderColor: 'var(--admin-border)' }}>
-                  <td className="px-6 py-4 font-bold">{index + 1}</td>
-                  <td className="px-6 py-4 font-bold" style={{ color: "var(--admin-text-primary)" }}>{space.title}</td>
-                  <td className="px-6 py-4">{space.owner?.name || 'Unknown'}</td>
-                  <td className="px-6 py-4">{space.spaceType}</td>
-                  <td className="px-6 py-4">{space.location?.city}</td>
-                  <td className="px-6 py-4 text-emerald-400">₹{space.pricing?.monthly}</td>
-                  <td className="px-6 py-4">
+                  <td className="px-3 py-3 lg:px-4 font-bold">{index + 1}</td>
+                  <td className="px-3 py-3 lg:px-4 font-bold" style={{ color: "var(--admin-text-primary)" }}>{space.title}</td>
+                  <td className="px-3 py-3 lg:px-4">{space.owner?.name || 'Unknown'}</td>
+                  <td className="px-3 py-3 lg:px-4">{space.spaceType}</td>
+                  <td className="px-3 py-3 lg:px-4">{space.location?.city}</td>
+                  <td className="px-3 py-3 lg:px-4 text-emerald-400">₹{space.pricing?.monthly}</td>
+                  <td className="px-3 py-3 lg:px-4">
                     <span className={`px-2 py-1 text-xs font-bold rounded-md border uppercase ${getStatusColor(space.status)}`}>
                       {space.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-center">
+                  <td className="px-3 py-3 lg:px-4 text-center">
                     {space.isApproved ? (
                       <span className="text-emerald-400 font-bold">Approved ✓</span>
                     ) : (
                       <span className="text-slate-500 text-xs">Pending</span>
                     )}
                   </td>
-                  <td className="px-6 py-4 text-right relative">
+                  <td className="px-3 py-3 lg:px-4 text-right relative">
                     <button 
                       onClick={() => toggleDropdown(space._id)}
                       className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors inline-flex items-center justify-center"

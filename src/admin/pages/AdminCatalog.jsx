@@ -493,7 +493,7 @@ const AdminCatalog = () => {
             initial={{ opacity: 0, y: -20, x: '-50%' }}
             animate={{ opacity: 1, y: 0, x: '-50%' }}
             exit={{ opacity: 0, y: -20, x: '-50%' }}
-            className="fixed top-6 left-1/2 z-50 flex items-center gap-3 px-6 py-4 rounded-2xl shadow-lg border"
+            className="fixed top-6 left-1/2 z-50 flex items-center gap-3 px-3 py-3 lg:px-4 rounded-2xl shadow-lg border"
             style={{
               background: toast.type === 'error' ? '#fff5f5' : '#f5fff5',
               borderColor: toast.type === 'error' ? 'rgba(239, 68, 68, 0.2)' : 'rgba(34, 197, 94, 0.2)',
