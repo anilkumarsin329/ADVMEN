@@ -68,6 +68,7 @@ const AdminCatalog = () => {
 
   // Image Uploading State
   const [uploading, setUploading] = useState(false)
+  const [isSaving, setIsSaving] = useState(false)
   const [uploadProgress, setUploadProgress] = useState(0)
 
   // Form Fields State
@@ -265,19 +266,19 @@ const AdminCatalog = () => {
   // Form Validation
   const validateForm = () => {
     const errors = {}
-    if (!formValues.name.trim()) errors.name = 'Name is required'
-    if (!formValues.category.trim()) errors.category = 'Category is required'
+    if (!String(formValues.name || '').trim()) errors.name = 'Name is required'
+    if (!String(formValues.category || '').trim()) errors.category = 'Category is required'
 
     const priceNum = Number(formValues.price)
-    if (!formValues.price.trim()) {
+    if (!String(formValues.price || '').trim()) {
       errors.price = 'Price is required'
     } else if (isNaN(priceNum) || priceNum < 0) {
       errors.price = 'Price must be a valid positive number'
     }
 
-    if (!formValues.image.trim()) errors.image = 'Image upload is required'
-    if (!formValues.description.trim()) errors.description = 'Description is required'
-    if (!formValues.featuresString.trim()) errors.featuresString = 'At least one feature is required'
+    if (!String(formValues.image || '').trim()) errors.image = 'Image upload is required'
+    if (!String(formValues.description || '').trim()) errors.description = 'Description is required'
+    if (!String(formValues.featuresString || '').trim()) errors.featuresString = 'At least one feature is required'
 
     setFormErrors(errors)
     return Object.keys(errors).length === 0
@@ -288,7 +289,8 @@ const AdminCatalog = () => {
     e.preventDefault()
     if (!validateForm()) return
 
-    const featuresArray = formValues.featuresString
+    setIsSaving(true)
+    const featuresArray = String(formValues.featuresString || '')
       .split(',')
       .map(f => f.trim())
       .filter(f => f !== '')
@@ -368,6 +370,8 @@ const AdminCatalog = () => {
         showToast('Catalog item created (local offline mode).')
       }
       setIsModalOpen(false)
+    } finally {
+      setIsSaving(false)
     }
   }
 
@@ -1073,10 +1077,17 @@ const AdminCatalog = () => {
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2.5 rounded-lg text-xs font-body font-bold uppercase tracking-wider bg-[var(--color-orange)] hover:bg-[var(--color-orange-light)] text-white shadow transition-colors cursor-pointer"
-                    data-cursor="hover"
+                    disabled={isSaving}
+                    className={`px-5 py-2.5 rounded-lg text-xs font-body font-bold uppercase tracking-wider text-white shadow transition-colors flex items-center justify-center min-w-[140px] ${isSaving ? 'bg-[var(--color-orange)]/70 cursor-not-allowed' : 'bg-[var(--color-orange)] hover:bg-[var(--color-orange-light)] cursor-pointer'}`}
                   >
-                    Save Changes
+                    {isSaving ? (
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 rounded-full border-2 border-t-transparent border-white animate-spin" />
+                        <span>Saving...</span>
+                      </div>
+                    ) : (
+                      'Save Changes'
+                    )}
                   </button>
                 </div>
 
