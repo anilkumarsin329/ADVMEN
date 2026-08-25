@@ -65,6 +65,7 @@ const AdminSettings  = lazy(() => import('@/admin/pages/AdminSettings'))
 const AdminProfile   = lazy(() => import('@/admin/pages/AdminProfile'))
 const AdminHelp      = lazy(() => import('@/admin/pages/AdminHelp'))
 const AdminCatalog   = lazy(() => import('@/admin/pages/AdminCatalog'))
+const AdminCatalogOrders = lazy(() => import('@/admin/pages/AdminCatalogOrders'))
 
 const AdminAdSpaces    = lazy(() => import('@/admin/pages/AdminAdSpaces'))
 const AdminAdBookings  = lazy(() => import('@/admin/pages/AdminAdBookings'))
@@ -161,6 +162,7 @@ const AdminRoutes = () => (
       <Route path="profile"      element={<AdminLayout><AdminProfile /></AdminLayout>} />
       <Route path="help"         element={<AdminLayout><AdminHelp /></AdminLayout>} />
       <Route path="catalog"      element={<AdminLayout><AdminCatalog /></AdminLayout>} />
+      <Route path="catalog-orders" element={<AdminLayout><AdminCatalogOrders /></AdminLayout>} />
       <Route path="ad-spaces"    element={<AdminLayout><AdminAdSpaces /></AdminLayout>} />
       <Route path="ad-bookings"  element={<AdminLayout><AdminAdBookings /></AdminLayout>} />
       <Route path="ad-users"     element={<AdminLayout><AdminAdUsers /></AdminLayout>} />

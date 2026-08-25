@@ -9,6 +9,15 @@ const Catalog = () => {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [cart, setCart] = useState([])
   const [showCart, setShowCart] = useState(false)
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [checkoutForm, setCheckoutForm] = useState({
+    clientName: '',
+    clientEmail: '',
+    clientPhone: '',
+    clientCompany: '',
+    requirements: ''
+  })
   const [items, setItems] = useState([])
   const [categoriesList, setCategoriesList] = useState(['All'])
   const [loading, setLoading] = useState(true)
@@ -61,6 +70,41 @@ const Catalog = () => {
 
   const totalPrice = cart.reduce((sum, item) => sum + (item.price || 0) * item.quantity, 0)
   const cartCount  = cart.reduce((sum, item) => sum + item.quantity, 0)
+
+  const handleCheckoutSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    const payload = {
+      ...checkoutForm,
+      items: cart.map(item => ({ catalogItemId: item.id, name: item.name, price: item.price, quantity: item.quantity })),
+      totalAmount: totalPrice
+    }
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/catalog-orders`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+
+      if (res.ok) {
+        setCart([])
+        setShowCheckoutModal(false)
+        setShowCart(false)
+        setCheckoutForm({ clientName: '', clientEmail: '', clientPhone: '', clientCompany: '', requirements: '' })
+        alert('Your order has been submitted successfully! We will contact you soon.')
+      } else {
+        const data = await res.json()
+        alert(data.message || 'Failed to submit order. Please try again.')
+      }
+    } catch (err) {
+      console.error(err)
+      alert('Network error. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="catalog-page">
@@ -240,6 +284,7 @@ const Catalog = () => {
                     className="checkout-btn"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={() => setShowCheckoutModal(true)}
                   >
                     Proceed to Checkout
                   </motion.button>
@@ -255,6 +300,112 @@ const Catalog = () => {
               )}
             </motion.div>
           </>
+        )}
+      </AnimatePresence>
+
+      {/* Checkout Modal */}
+      <AnimatePresence>
+        {showCheckoutModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowCheckoutModal(false)}
+            />
+            <motion.div
+              className="relative bg-[var(--color-surface-1)] w-full max-w-lg rounded-2xl p-6 md:p-8 border border-[rgba(255,255,255,0.05)] shadow-2xl"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            >
+              <button 
+                onClick={() => setShowCheckoutModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+              >
+                <FiX size={24} />
+              </button>
+              
+              <h2 className="text-2xl font-bold font-display mb-6 text-white">Complete Your Booking</h2>
+              
+              <form onSubmit={handleCheckoutSubmit} className="flex flex-col gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs uppercase tracking-wider text-gray-400 font-bold">Name *</label>
+                    <input 
+                      type="text" required
+                      value={checkoutForm.clientName}
+                      onChange={e => setCheckoutForm({...checkoutForm, clientName: e.target.value})}
+                      className="bg-[var(--color-black)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[var(--color-orange)]"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs uppercase tracking-wider text-gray-400 font-bold">Email *</label>
+                    <input 
+                      type="email" required
+                      value={checkoutForm.clientEmail}
+                      onChange={e => setCheckoutForm({...checkoutForm, clientEmail: e.target.value})}
+                      className="bg-[var(--color-black)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[var(--color-orange)]"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs uppercase tracking-wider text-gray-400 font-bold">Phone *</label>
+                    <input 
+                      type="tel" required
+                      value={checkoutForm.clientPhone}
+                      onChange={e => setCheckoutForm({...checkoutForm, clientPhone: e.target.value})}
+                      className="bg-[var(--color-black)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[var(--color-orange)]"
+                      placeholder="+91 9876543210"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-xs uppercase tracking-wider text-gray-400 font-bold">Company (Optional)</label>
+                    <input 
+                      type="text"
+                      value={checkoutForm.clientCompany}
+                      onChange={e => setCheckoutForm({...checkoutForm, clientCompany: e.target.value})}
+                      className="bg-[var(--color-black)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[var(--color-orange)]"
+                      placeholder="Your Company"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-xs uppercase tracking-wider text-gray-400 font-bold">Project Requirements *</label>
+                  <textarea 
+                    required rows={3}
+                    value={checkoutForm.requirements}
+                    onChange={e => setCheckoutForm({...checkoutForm, requirements: e.target.value})}
+                    className="bg-[var(--color-black)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[var(--color-orange)] resize-none"
+                    placeholder="Briefly describe your project needs..."
+                  />
+                </div>
+
+                <div className="flex justify-between items-center mt-4 pt-4 border-t border-[rgba(255,255,255,0.05)]">
+                  <div className="text-gray-400 text-sm">Total Amount: <span className="text-white font-bold text-lg">₹{totalPrice.toLocaleString()}</span></div>
+                  <button 
+                    type="submit" disabled={isSubmitting}
+                    className={`px-6 py-3 rounded-lg font-bold uppercase tracking-wider text-xs transition-colors flex items-center justify-center min-w-[140px] ${isSubmitting ? 'bg-[var(--color-orange)]/70 text-white cursor-not-allowed' : 'bg-[var(--color-orange)] hover:bg-[#e65c00] text-white cursor-pointer'}`}
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 rounded-full border-2 border-t-transparent border-white animate-spin" />
+                        <span>Submitting...</span>
+                      </div>
+                    ) : (
+                      'Submit Order'
+                    )}
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>

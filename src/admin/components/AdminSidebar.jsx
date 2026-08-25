@@ -23,12 +23,14 @@ import {
   FiCalendar,
   FiPercent,
   FiDollarSign,
-  FiBarChart2
+  FiBarChart2,
+  FiBox
 } from 'react-icons/fi'
 
 const navigationItems = [
   { label: 'Dashboard', href: '/admin/dashboard', icon: FiGrid },
   { label: 'Catalog',   href: '/admin/catalog',   icon: FiBookOpen },
+  { label: 'Catalog Orders', href: '/admin/catalog-orders', icon: FiBox },
   { label: 'Service',   href: '/admin/services',  icon: FiSettings },
   { label: 'Work',      href: '/admin/portfolio', icon: FiLayers },
   { label: 'Careers',   href: '/admin/careers',   icon: FiBriefcase },
