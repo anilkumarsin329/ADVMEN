@@ -31,59 +31,80 @@ import Layout        from '@components/layout/Layout'
 import Preloader     from '@components/common/Preloader'
 import GlobalEffects from '@components/common/GlobalEffects'
 
+// ── Lazy Load Wrapper with Retry ──────────────────────────────
+// Automatically reloads the page once if a ChunkLoadError occurs 
+// (common after a new production deployment).
+const lazyWithRetry = (componentImport) =>
+  lazy(async () => {
+    const pageHasAlreadyBeenForceRefreshed = JSON.parse(
+      window.sessionStorage.getItem('page-has-been-force-refreshed') || 'false'
+    );
+    try {
+      const component = await componentImport();
+      window.sessionStorage.setItem('page-has-been-force-refreshed', 'false');
+      return component;
+    } catch (error) {
+      if (!pageHasAlreadyBeenForceRefreshed) {
+        window.sessionStorage.setItem('page-has-been-force-refreshed', 'true');
+        return window.location.reload();
+      }
+      throw error;
+    }
+  });
+
 // ── Pages (lazy loaded) ───────────────────────────────────────
-const Home           = lazy(() => import('@pages/Home'))
-const About          = lazy(() => import('@pages/About'))
-const Services       = lazy(() => import('@pages/Services'))
-const ServiceDetail  = lazy(() => import('@pages/ServiceDetail'))
-const Work           = lazy(() => import('@pages/Work'))
-const WorkDetail     = lazy(() => import('@pages/WorkDetail'))
-const PortfolioDetail = lazy(() => import('@pages/PortfolioDetail'))
-const Blog           = lazy(() => import('@pages/Blog'))
-const BlogPost       = lazy(() => import('@pages/BlogPost'))
-const Catalog        = lazy(() => import('@pages/Catalog'))
-const Contact        = lazy(() => import('@pages/Contact'))
-const Careers        = lazy(() => import('@pages/Careers'))
-const CareerDetail   = lazy(() => import('@pages/CareerDetail'))
-const PrivacyPolicy  = lazy(() => import('@pages/PrivacyPolicy'))
-const TermsOfService = lazy(() => import('@pages/TermsOfService'))
-const NotFound       = lazy(() => import('@pages/NotFound'))
+const Home           = lazyWithRetry(() => import('@pages/Home'))
+const About          = lazyWithRetry(() => import('@pages/About'))
+const Services       = lazyWithRetry(() => import('@pages/Services'))
+const ServiceDetail  = lazyWithRetry(() => import('@pages/ServiceDetail'))
+const Work           = lazyWithRetry(() => import('@pages/Work'))
+const WorkDetail     = lazyWithRetry(() => import('@pages/WorkDetail'))
+const PortfolioDetail = lazyWithRetry(() => import('@pages/PortfolioDetail'))
+const Blog           = lazyWithRetry(() => import('@pages/Blog'))
+const BlogPost       = lazyWithRetry(() => import('@pages/BlogPost'))
+const Catalog        = lazyWithRetry(() => import('@pages/Catalog'))
+const Contact        = lazyWithRetry(() => import('@pages/Contact'))
+const Careers        = lazyWithRetry(() => import('@pages/Careers'))
+const CareerDetail   = lazyWithRetry(() => import('@pages/CareerDetail'))
+const PrivacyPolicy  = lazyWithRetry(() => import('@pages/PrivacyPolicy'))
+const TermsOfService = lazyWithRetry(() => import('@pages/TermsOfService'))
+const NotFound       = lazyWithRetry(() => import('@pages/NotFound'))
 
 // ── Admin Pages & Route Protections ───────────────────────────
 import AdminProtectedRoute from '@/admin/routes/AdminProtectedRoute'
 import { AdminAuthProvider } from '@/admin/context/AdminAuthContext'
 import AdminLayout from '@/admin/components/AdminLayout'
-const AdminLogin     = lazy(() => import('@/admin/pages/AdminLogin'))
-const AdminDashboard = lazy(() => import('@/admin/pages/AdminDashboard'))
-const AdminContacts  = lazy(() => import('@/admin/pages/AdminContacts'))
-const AdminCareers   = lazy(() => import('@/admin/pages/AdminCareers'))
-const AdminApplications = lazy(() => import('@/admin/pages/AdminApplications'))
-const AdminBlog      = lazy(() => import('@/admin/pages/AdminBlog'))
-const AdminPortfolio = lazy(() => import('@/admin/pages/AdminPortfolio'))
-const AdminServices  = lazy(() => import('@/admin/pages/AdminServices'))
-const AdminSettings  = lazy(() => import('@/admin/pages/AdminSettings'))
-const AdminProfile   = lazy(() => import('@/admin/pages/AdminProfile'))
-const AdminHelp      = lazy(() => import('@/admin/pages/AdminHelp'))
-const AdminCatalog   = lazy(() => import('@/admin/pages/AdminCatalog'))
-const AdminCatalogOrders = lazy(() => import('@/admin/pages/AdminCatalogOrders'))
+const AdminLogin     = lazyWithRetry(() => import('@/admin/pages/AdminLogin'))
+const AdminDashboard = lazyWithRetry(() => import('@/admin/pages/AdminDashboard'))
+const AdminContacts  = lazyWithRetry(() => import('@/admin/pages/AdminContacts'))
+const AdminCareers   = lazyWithRetry(() => import('@/admin/pages/AdminCareers'))
+const AdminApplications = lazyWithRetry(() => import('@/admin/pages/AdminApplications'))
+const AdminBlog      = lazyWithRetry(() => import('@/admin/pages/AdminBlog'))
+const AdminPortfolio = lazyWithRetry(() => import('@/admin/pages/AdminPortfolio'))
+const AdminServices  = lazyWithRetry(() => import('@/admin/pages/AdminServices'))
+const AdminSettings  = lazyWithRetry(() => import('@/admin/pages/AdminSettings'))
+const AdminProfile   = lazyWithRetry(() => import('@/admin/pages/AdminProfile'))
+const AdminHelp      = lazyWithRetry(() => import('@/admin/pages/AdminHelp'))
+const AdminCatalog   = lazyWithRetry(() => import('@/admin/pages/AdminCatalog'))
+const AdminCatalogOrders = lazyWithRetry(() => import('@/admin/pages/AdminCatalogOrders'))
 
-const AdminAdSpaces    = lazy(() => import('@/admin/pages/AdminAdSpaces'))
-const AdminAdBookings  = lazy(() => import('@/admin/pages/AdminAdBookings'))
-const AdminAdUsers     = lazy(() => import('@/admin/pages/AdminAdUsers'))
-const AdminAdCommission = lazy(() => import('@/admin/pages/AdminAdCommission'))
-const AdminAdPayouts   = lazy(() => import('@/admin/pages/AdminAdPayouts'))
-const AdminAdAnalytics = lazy(() => import('@/admin/pages/AdminAdAnalytics'))
+const AdminAdSpaces    = lazyWithRetry(() => import('@/admin/pages/AdminAdSpaces'))
+const AdminAdBookings  = lazyWithRetry(() => import('@/admin/pages/AdminAdBookings'))
+const AdminAdUsers     = lazyWithRetry(() => import('@/admin/pages/AdminAdUsers'))
+const AdminAdCommission = lazyWithRetry(() => import('@/admin/pages/AdminAdCommission'))
+const AdminAdPayouts   = lazyWithRetry(() => import('@/admin/pages/AdminAdPayouts'))
+const AdminAdAnalytics = lazyWithRetry(() => import('@/admin/pages/AdminAdAnalytics'))
 
 // ── Ad Space Module Pages ─────────────────────────────────────
-const AdSpaceHome = lazy(() => import('./pages/AdSpaceHome'))
-const AdSpaceBrowse = lazy(() => import('./pages/AdSpaceBrowse'))
-const AdSpaceDetail = lazy(() => import('./pages/AdSpaceDetail'))
-const AdSpaceOwnerRegister = lazy(() => import('./pages/AdSpaceOwnerRegister'))
-const AdSpaceOwnerLogin = lazy(() => import('./pages/AdSpaceOwnerLogin'))
-const AdSpaceAdvertiserRegister = lazy(() => import('./pages/AdSpaceAdvertiserRegister'))
-const AdSpaceAdvertiserLogin = lazy(() => import('./pages/AdSpaceAdvertiserLogin'))
-const AdSpaceOwnerDashboard = lazy(() => import('./pages/AdSpaceOwnerDashboard'))
-const AdSpaceAdvertiserDashboard = lazy(() => import('./pages/AdSpaceAdvertiserDashboard'))
+const AdSpaceHome = lazyWithRetry(() => import('./pages/AdSpaceHome'))
+const AdSpaceBrowse = lazyWithRetry(() => import('./pages/AdSpaceBrowse'))
+const AdSpaceDetail = lazyWithRetry(() => import('./pages/AdSpaceDetail'))
+const AdSpaceOwnerRegister = lazyWithRetry(() => import('./pages/AdSpaceOwnerRegister'))
+const AdSpaceOwnerLogin = lazyWithRetry(() => import('./pages/AdSpaceOwnerLogin'))
+const AdSpaceAdvertiserRegister = lazyWithRetry(() => import('./pages/AdSpaceAdvertiserRegister'))
+const AdSpaceAdvertiserLogin = lazyWithRetry(() => import('./pages/AdSpaceAdvertiserLogin'))
+const AdSpaceOwnerDashboard = lazyWithRetry(() => import('./pages/AdSpaceOwnerDashboard'))
+const AdSpaceAdvertiserDashboard = lazyWithRetry(() => import('./pages/AdSpaceAdvertiserDashboard'))
 import AdProtectedRoute from './components/common/AdProtectedRoute'
 
 // ── Page loading fallback ─────────────────────────────────────
