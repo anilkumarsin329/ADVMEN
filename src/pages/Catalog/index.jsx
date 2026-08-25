@@ -82,7 +82,7 @@ const Catalog = () => {
     }
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/catalog-orders`, {
+      const res = await fetch(`${API_BASE_URL}/api/catalog-orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
