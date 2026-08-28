@@ -24,7 +24,9 @@ import {
   FiPercent,
   FiDollarSign,
   FiBarChart2,
-  FiBox
+  FiBox,
+  FiSend,
+  FiAward
 } from 'react-icons/fi'
 
 const navigationItems = [
@@ -33,10 +35,12 @@ const navigationItems = [
   { label: 'Catalog Orders', href: '/admin/catalog-orders', icon: FiBox },
   { label: 'Service',   href: '/admin/services',  icon: FiSettings },
   { label: 'Work',      href: '/admin/portfolio', icon: FiLayers },
+  { label: 'Clients',   href: '/admin/clients',   icon: FiAward },
   { label: 'Careers',   href: '/admin/careers',   icon: FiBriefcase },
   { label: 'Applications', href: '/admin/applications', icon: FiUsers },
   { label: 'Blog',      href: '/admin/blog',      icon: FiFileText },
   { label: 'Contact',   href: '/admin/contacts',  icon: FiMail },
+  { label: 'Newsletter', href: '/admin/newsletter', icon: FiSend },
 ]
 
 const adModuleItems = [

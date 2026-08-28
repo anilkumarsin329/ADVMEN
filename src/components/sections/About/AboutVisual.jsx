@@ -65,41 +65,39 @@ const capabilities = [
 
 // Single capability card
 const CapabilityCard = ({ icon, label, desc, className }) => {
-  const cardRef = useRef(null)
-
   return (
     <div
-      ref={cardRef}
-      className={`about-cap-card ${className || ''}`}
+      className={`about-cap-card group ${className || ''}`}
       style={{
         display:        'flex',
         alignItems:     'center',
-        gap:            '0.75rem',
-        padding:        '0.875rem 1.125rem',
+        gap:            '1rem',
+        padding:        '1rem 1.25rem',
         borderRadius:   '16px',
         background:     'var(--color-surface-1)',
         border:         '1px solid rgba(255, 255, 255, 0.015)',
         boxShadow:      'var(--shadow-neu-convex)',
         cursor:         'default',
-        transition:     'border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease',
+        transition:     'border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease',
         width:          '100%',
-        minWidth:       0,
+        minHeight:      '80px',
       }}
       onMouseEnter={e => {
-        e.currentTarget.style.borderColor = 'rgba(255,107,0,0.2)'
-        e.currentTarget.style.boxShadow   = 'var(--shadow-neu-inset)'
-        e.currentTarget.style.transform   = 'scale(0.98)'
+        e.currentTarget.style.borderColor = 'rgba(255,107,0,0.25)'
+        e.currentTarget.style.boxShadow   = '0 8px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 107, 0, 0.08)'
+        e.currentTarget.style.transform   = 'translateY(-3px)'
       }}
       onMouseLeave={e => {
         e.currentTarget.style.borderColor = 'rgba(255,255,255,0.015)'
         e.currentTarget.style.boxShadow   = 'var(--shadow-neu-convex)'
-        e.currentTarget.style.transform   = 'scale(1)'
+        e.currentTarget.style.transform   = 'translateY(0)'
       }}
     >
       <div
+        className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-110"
         style={{
-          width:        '40px',
-          height:       '40px',
+          width:        '44px',
+          height:       '44px',
           borderRadius: '12px',
           background:   'var(--color-surface-4)',
           boxShadow:    'var(--shadow-neu-inset)',
@@ -117,10 +115,9 @@ const CapabilityCard = ({ icon, label, desc, className }) => {
           style={{
             fontFamily:  'var(--font-display)',
             fontWeight:  600,
-            fontSize:    '0.875rem',
+            fontSize:    '1rem',
             color:       'var(--color-text-primary)',
             lineHeight:  1.2,
-            textShadow:  '1px 1px 2px rgba(0, 0, 0, 0.6)',
           }}
         >
           {label}
@@ -128,10 +125,9 @@ const CapabilityCard = ({ icon, label, desc, className }) => {
         <p
           style={{
             fontFamily: 'var(--font-body)',
-            fontSize:   '0.75rem',
+            fontSize:   '0.8125rem',
             color:      'var(--color-text-secondary)',
-            marginTop:  '3px',
-            textShadow:  '1px 1px 2px rgba(0, 0, 0, 0.5)',
+            marginTop:  '4px',
           }}
         >
           {desc}

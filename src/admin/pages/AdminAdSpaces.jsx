@@ -184,7 +184,7 @@ const AdminAdSpaces = () => {
 
       {/* View Modal */}
       {viewModalData && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto" style={{ background: 'var(--admin-bg)', color: 'var(--admin-text-primary)' }}>
             <div className="flex justify-between items-center p-6 border-b" style={{ borderColor: 'var(--admin-border)' }}>
               <h2 className="text-xl font-bold">Space Details</h2>

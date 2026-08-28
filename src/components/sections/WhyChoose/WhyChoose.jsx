@@ -11,32 +11,24 @@ const values = [
     title: 'Engineering-First',
     desc: 'We write performant, clean React/Next.js architectures with zero bloating, targeting high speeds.',
     icon: FiZap,
-    color: 'from-orange-500/20 to-orange-600/10',
-    borderColor: 'rgba(255, 107, 0, 0.3)',
     number: '01',
   },
   {
     title: 'Design Purity',
     desc: 'We honor your brand guidelines and Figma layouts down to the single pixel, ensuring high-fidelity results.',
     icon: FiEye,
-    color: 'from-blue-500/20 to-blue-600/10',
-    borderColor: 'rgba(59, 130, 246, 0.3)',
     number: '02',
   },
   {
     title: 'Full Transparency',
     desc: 'Work directly with senior developers and creative directors. No account management bloat or hidden overhead.',
     icon: FiTarget,
-    color: 'from-purple-500/20 to-purple-600/10',
-    borderColor: 'rgba(168, 85, 247, 0.3)',
     number: '03',
   },
   {
     title: 'Scale & Performance',
     desc: 'Systems designed to load fast, rank high on search engines, and handle enterprise-level user traffic.',
     icon: FiTrendingUp,
-    color: 'from-green-500/20 to-green-600/10',
-    borderColor: 'rgba(34, 197, 94, 0.3)',
     number: '04',
   },
 ]
@@ -44,7 +36,7 @@ const values = [
 const WhyChoose = () => {
   return (
     <section
-      className="relative w-full py-24 overflow-hidden"
+      className="section"
       style={{
         background: 'var(--color-black)',
       }}
@@ -75,7 +67,7 @@ const WhyChoose = () => {
           width: '400px',
           height: '400px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)',
           filter: 'blur(80px)',
           pointerEvents: 'none',
           animation: 'float 10s ease-in-out infinite reverse',
@@ -85,27 +77,16 @@ const WhyChoose = () => {
       <div className="container relative z-10">
         
         {/* Header Title */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-12 lg:mb-16">
           <div className="inline-block mb-4">
             <span
-              className="px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase inline-flex items-center gap-1.5"
-              style={{
-                background: 'rgba(255, 107, 0, 0.1)',
-                border: '1px solid rgba(255, 107, 0, 0.3)',
-                color: 'var(--color-orange)',
-              }}
+              className="badge-orange"
             >
               <FiAward size={14} /> Our Values
             </span>
           </div>
           <h2 className="section-title mt-4">Why Ambitious Brands Partner with Us</h2>
-          <p
-            className="mt-4 text-lg"
-            style={{
-              color: 'var(--color-text-secondary)',
-              lineHeight: '1.7',
-            }}
-          >
+          <p className="section-subtitle">
             We combine technical excellence with creative vision to deliver results that exceed expectations.
           </p>
         </div>
@@ -121,51 +102,36 @@ const WhyChoose = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.8, delay: i * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="group relative"
+                className="group relative h-full flex flex-col"
               >
                 <div
-                  className="relative h-full p-8 rounded-2xl cursor-default flex flex-col justify-between overflow-hidden transition-all duration-500"
+                  className="card-glass flex flex-col h-full justify-between"
                   style={{
-                    background: `linear-gradient(135deg, ${val.color.split(' ')[1]} 0%, ${val.color.split(' ')[3]} 100%)`,
-                    border: `1.5px solid ${val.borderColor}`,
-                    backdropFilter: 'blur(12px)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-                    minHeight: '300px',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = `0 20px 60px ${val.borderColor}40, inset 0 1px 0 rgba(255, 255, 255, 0.1)`
-                    e.currentTarget.style.borderColor = val.borderColor.replace('0.3', '0.6')
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                    e.currentTarget.style.borderColor = val.borderColor
+                    padding: '2rem 1.5rem',
                   }}
                 >
-                  {/* Animated background */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: `radial-gradient(circle at 50% 50%, ${val.borderColor} 0%, transparent 70%)`,
-                      filter: 'blur(40px)',
-                    }}
-                  />
-
-                  {/* Content */}
-                  <div className="relative z-10 flex flex-col gap-4">
-                    {/* Number Badge */}
+                  <div className="flex flex-col gap-5">
+                    {/* Number Badge & Icon */}
                     <div className="flex items-center justify-between">
                       <div
-                        className="p-3 rounded-xl transition-all duration-300 group-hover:scale-110"
+                        className="transition-transform duration-300 group-hover:scale-110"
                         style={{
-                          background: `${val.borderColor}40`,
-                          border: `1px solid ${val.borderColor}`,
+                          width: '48px',
+                          height: '48px',
+                          borderRadius: '12px',
+                          background: 'var(--color-surface-4)',
+                          boxShadow: 'var(--shadow-neu-inset)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: 'var(--color-orange)',
+                          flexShrink: 0,
                         }}
                       >
-                        <Icon size={24} style={{ color: 'var(--color-orange)' }} />
+                        <Icon size={24} />
                       </div>
                       <span
-                        className="font-mono text-2xl font-extrabold opacity-30 group-hover:opacity-60 transition-opacity duration-300"
+                        className="font-mono text-2xl font-extrabold opacity-20 group-hover:opacity-60 transition-opacity duration-300"
                         style={{ color: 'var(--color-orange)' }}
                       >
                         {val.number}
@@ -181,7 +147,7 @@ const WhyChoose = () => {
                         color: 'var(--color-text-primary)',
                         transition: 'color 0.3s ease',
                       }}
-                      className="group-hover:text-orange-400"
+                      className="group-hover:text-[var(--color-orange-light)]"
                     >
                       {val.title}
                     </h3>
@@ -190,21 +156,13 @@ const WhyChoose = () => {
                     <p
                       style={{
                         fontFamily: 'var(--font-body)',
-                        fontSize: 'var(--text-small)',
+                        fontSize: '0.875rem',
                         color: 'var(--color-text-secondary)',
                         lineHeight: '1.6',
                       }}
                     >
                       {val.desc}
                     </p>
-                  </div>
-
-                  {/* Arrow indicator */}
-                  <div className="relative z-10 mt-6 flex items-center gap-2 text-orange-500 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1">
-                    <span className="text-xs font-semibold">Explore</span>
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
                   </div>
                 </div>
               </motion.div>

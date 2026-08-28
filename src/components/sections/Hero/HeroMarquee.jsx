@@ -10,8 +10,7 @@
 const trustItems = [
   { name: 'Norozz' },
   { name: 'EATOGGY' },
-  { name: 'SAVITRAM' },
-  { name: 'FOUNDATION' },
+  { name: 'SAVITRAM FOUNDATION' },
   { name: 'LEGALWALAS' },
   { name: 'GoIndiaCab' },
   { name: 'aiphlix' },

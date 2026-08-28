@@ -5,13 +5,14 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiArrowUpRight } from 'react-icons/fi'
+import { getImageUrl } from '@utils/constants'
 
 const PortfolioCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
     <Link
-      to={project.caseStudyUrl}
+      to={project.caseStudyUrl || `/work/${project.slug}`}
       className="group relative overflow-hidden rounded-2xl cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -20,7 +21,7 @@ const PortfolioCard = ({ project }) => {
       <div className="relative w-full aspect-video overflow-hidden bg-[rgba(255,255,255,0.02)]">
         {/* Actual Image */}
         <img
-          src={project.image}
+          src={getImageUrl(project.image)}
           alt={project.title}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-500"
@@ -131,7 +132,7 @@ const PortfolioCard = ({ project }) => {
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2">
-          {project.technologies.slice(0, 3).map((tech, i) => (
+          {(project.technologies || project.tech || []).slice(0, 3).map((tech, i) => (
             <span
               key={i}
               style={{
@@ -149,7 +150,7 @@ const PortfolioCard = ({ project }) => {
               {tech}
             </span>
           ))}
-          {project.technologies.length > 3 && (
+          {(project.technologies || project.tech || []).length > 3 && (
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
@@ -158,7 +159,7 @@ const PortfolioCard = ({ project }) => {
                 padding: '0.3rem 0.6rem',
               }}
             >
-              +{project.technologies.length - 3}
+              +{(project.technologies || project.tech || []).length - 3}
             </span>
           )}
         </div>

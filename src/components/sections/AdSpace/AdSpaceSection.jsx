@@ -27,7 +27,7 @@ const AdSpaceSection = () => {
               stagger: 0.15,
               ease: 'expo.out',
               delay: 0.1,
-              clearProps: 'all',
+              clearProps: 'opacity,y,filter',
             })
           }
         }, sectionRef)
@@ -85,32 +85,49 @@ const AdSpaceSection = () => {
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
-        <div className="flex items-center gap-4 mb-6 adspace-stagger relative">
-          <span className="w-8 h-px bg-[var(--color-orange)]" />
-          <span className="type-eyebrow text-sm font-bold tracking-widest uppercase" style={{ color: 'var(--color-orange)' }}>
+        <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 adspace-stagger relative">
+          <span className="w-6 sm:w-8 h-px bg-[var(--color-orange)]" />
+          <span className="type-eyebrow text-[10px] sm:text-sm font-bold tracking-widest uppercase" style={{ color: 'var(--color-orange)' }}>
             ADVMEN Ad Spaces
           </span>
-          <span className="w-8 h-px bg-[var(--color-orange)]" />
+          <span className="w-6 sm:w-8 h-px bg-[var(--color-orange)]" />
         </div>
 
-        <div className="relative w-full text-left md:text-center flex flex-col md:items-center items-start">
+        <div className="relative w-full text-center flex flex-col items-center">
           {/* Subtle Background Orb */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[150px] sm:w-[400px] sm:h-[200px] bg-orange-500/20 blur-[100px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 mix-blend-screen" />
           
-          <h2 className="adspace-stagger section-title max-w-4xl mb-6 text-white font-display relative z-10"
+          <h2 className="adspace-stagger section-title max-w-5xl mb-6 text-white font-display relative z-10 w-full px-4"
             style={{
-              fontSize: 'clamp(3rem, 6vw, 5.5rem)',
+              fontSize: 'clamp(2rem, 4.5vw, 4.2rem)',
               lineHeight: 1.1,
               fontWeight: 900,
-              letterSpacing: '-0.02em'
+              letterSpacing: '-0.02em',
+              textTransform: 'uppercase',
+              textShadow: '0 4px 20px rgba(0,0,0,0.8)'
             }}
           >
             Advertise Smarter.<br />
-            <span className="text-[#f97316]">Reach Further.</span>
+            <span 
+              style={{
+                display: 'inline-block',
+                backgroundImage: 'linear-gradient(135deg, #FF8C38 0%, #FFB775 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Reach Further.
+            </span>
           </h2>
 
-          <p className="adspace-stagger max-w-2xl mb-16 text-slate-300 relative z-10 font-medium"
-            style={{ fontSize: 'clamp(1.1rem, 1.5vw, 1.25rem)' }}
+          <p className="adspace-stagger max-w-3xl mb-12 sm:mb-16 text-slate-300 relative z-10 mx-auto px-2"
+            style={{ 
+              fontFamily: 'var(--font-body)',
+              fontSize: 'clamp(0.95rem, 1.5vw, 1.25rem)',
+              lineHeight: 1.6,
+              fontWeight: 400
+            }}
           >
             Rent physical and digital ad spaces across India. List your property or launch your next campaign.
           </p>

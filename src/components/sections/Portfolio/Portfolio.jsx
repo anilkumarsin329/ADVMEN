@@ -6,18 +6,37 @@
 import { useRef, useEffect, useState } from 'react'
 import { FiBriefcase } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
-import { portfolioProjects, portfolioCategories } from '@data/portfolio'
+import { portfolioCategories } from '@data/portfolio'
+import { API_BASE_URL } from '@utils/constants'
 import PortfolioCard from './PortfolioCard'
 
 const Portfolio = () => {
   const sectionRef = useRef(null)
   const [activeCategory, setActiveCategory] = useState('all')
+  const [projects, setProjects] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const hasAnimated = useRef(false)
+
+  // Fetch portfolio items from database
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/api/portfolio`)
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          setProjects(data)
+        }
+        setIsLoading(false)
+      })
+      .catch(err => {
+        console.error('Error fetching portfolio:', err)
+        setIsLoading(false)
+      })
+  }, [])
 
   // Filter projects on the fly (derived state)
   const filteredProjects = activeCategory === 'all'
-    ? portfolioProjects
-    : portfolioProjects.filter((p) => {
+    ? projects
+    : projects.filter((p) => {
         const categoryMap = {
           'branding': 'Branding',
           'web-development': 'Web Development',
@@ -25,7 +44,9 @@ const Portfolio = () => {
           'political-campaigns': 'Political Campaigns',
           'media-production': 'Media Production',
         }
-        return p.category === categoryMap[activeCategory]
+        const targetCategory = categoryMap[activeCategory]?.toLowerCase()
+        const projectCategory = p.category?.toLowerCase()
+        return projectCategory === targetCategory || projectCategory === activeCategory.toLowerCase()
       })
 
   // GSAP animations
@@ -207,9 +228,14 @@ const Portfolio = () => {
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredProjects.map((project) => (
-            <div key={project.id} className="portfolio-card group">
+        {isLoading ? (
+          <div className="flex justify-center py-20">
+            <div className="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {filteredProjects.map((project) => (
+              <div key={project._id || project.id} className="portfolio-card group">
               <div
                 className="relative h-full rounded-2xl overflow-hidden cursor-pointer"
                 style={{
@@ -234,11 +260,12 @@ const Portfolio = () => {
                 <PortfolioCard project={project} />
               </div>
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Empty State */}
-        {filteredProjects.length === 0 && (
+        {!isLoading && filteredProjects.length === 0 && (
           <div className="text-center py-16">
             <p
               style={{

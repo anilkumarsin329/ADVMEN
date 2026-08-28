@@ -374,7 +374,7 @@ const About = () => {
             marginTop: '1.5rem',
           }}
         >
-          Since 2019
+          Since 2026
         </div>
       </div>
     </section>

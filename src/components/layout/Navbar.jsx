@@ -202,9 +202,8 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* ── Desktop Nav ───────────────────────────────── */}
           <nav
-            className="hidden lg:flex items-center gap-8"
+            className="hidden lg:flex items-center gap-6 xl:gap-10"
             aria-label="Main navigation"
           >
             {navLinks.map((link) => (
@@ -213,10 +212,10 @@ const Navbar = () => {
                 to={link.href}
                 className={cn(
                   'relative font-body text-sm font-medium tracking-wide',
-                  'transition-colors duration-300 py-1 group',
+                  'transition-colors duration-300 py-2 group',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded px-2',
                   isActive(link.href)
-                    ? 'text-[var(--color-orange)]'
+                    ? 'text-[var(--color-text-primary)]'
                     : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
                 )}
               >
@@ -224,12 +223,12 @@ const Navbar = () => {
                 {/* Animated underline */}
                 <span
                   className={cn(
-                    'absolute -bottom-0.5 left-0 h-px rounded-full',
+                    'absolute -bottom-1 left-1/2 -translate-x-1/2 h-px rounded-full',
                     'bg-[var(--color-orange)]',
                     'transition-all duration-300 ease-[var(--ease-out-expo)]',
                     isActive(link.href)
-                      ? 'w-full'
-                      : 'w-0 group-hover:w-full'
+                      ? 'w-full opacity-100'
+                      : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
                   )}
                   aria-hidden="true"
                 />
@@ -250,11 +249,10 @@ const Navbar = () => {
             </Link>
             <Link
               to="/contact"
-              className="btn-primary btn-sm shine focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded"
-              data-cursor="hover"
+              className="btn-primary btn-sm group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-full"
             >
               Get Started
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
                 <path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </Link>

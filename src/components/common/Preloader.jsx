@@ -89,10 +89,14 @@ const PreloaderInner = () => {
         setStartEntrance(true)
       }
 
-      gsap.timeline({ onComplete: () => setLoadingComplete() })
-        .to(curtainRef.current, { scaleY: 1, duration: 0.7, ease: 'expo.inOut', transformOrigin: 'bottom' })
-        .to(wrapperRef.current, { opacity: 0, duration: 0.25 }, '-=0.15')
-        .set(wrapperRef.current, { display: 'none' })
+      if (curtainRef.current && wrapperRef.current) {
+        gsap.timeline({ onComplete: () => setLoadingComplete() })
+          .to(curtainRef.current, { scaleY: 1, duration: 0.7, ease: 'expo.inOut', transformOrigin: 'bottom' })
+          .to(wrapperRef.current, { opacity: 0, duration: 0.25 }, '-=0.15')
+          .set(wrapperRef.current, { display: 'none' })
+      } else {
+        setLoadingComplete()
+      }
     }, minDelay)
 
     return () => clearTimeout(timer)
@@ -185,15 +189,19 @@ const PreloaderInner = () => {
           {/* Logo img — only this element gets GSAP y-animation */}
           <img
             ref={logoImgRef}
-            src="/ADVMEN logo.png"
+            src="/ADVMEN%20logo.png"
             alt="ADVMEN"
             draggable="false"
             style={{
               position:   'relative',
               zIndex:     1,
-              width:      '68px',
-              height:     '68px',
+              width:      '76px',
+              height:     '76px',
               objectFit:  'contain',
+              borderRadius: '50%',
+              border:     '1.5px solid rgba(255, 107, 0, 0.3)',
+              background: 'rgba(255, 107, 0, 0.05)',
+              padding:    '8px',
             }}
           />
         </div>

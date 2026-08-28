@@ -58,20 +58,24 @@ const StatItem = ({ stat, index, inView }) => {
 
       {/* Label */}
       <span
+        className="truncate"
         style={{
           fontFamily: 'var(--font-mono)',
           fontSize: 'var(--text-caption)',
           textTransform: 'uppercase',
-          letterSpacing: '0.12em',
+          letterSpacing: '0.05em',
           color: 'rgba(245, 245, 245, 0.65)',
+          whiteSpace: 'nowrap',
+          maxWidth: '100%',
         }}
+        title={stat.label}
       >
         {stat.label}
       </span>
 
       {/* Hover accent */}
       <div
-        className="h-px w-0 group-hover:w-full transition-all duration-500"
+        className="h-px w-0 group-hover:w-full transition-all duration-500 mt-1"
         style={{ background: 'var(--gradient-orange)' }}
         aria-hidden="true"
       />

@@ -175,23 +175,10 @@ const Services = () => {
           {servicesData.map((service, idx) => (
             <div key={service.id || service._id} className="service-card group">
               <div
-                className="relative rounded-lg sm:rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer flex flex-col h-full"
+                className="relative card-glass flex flex-col h-full"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  border: '1px solid rgba(255, 107, 0, 0.15)',
-                  boxShadow: '0 6px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 107, 0, 0.4)'
-                  e.currentTarget.style.boxShadow = '0 12px 40px rgba(255, 107, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 107, 0, 0.15)'
-                  e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'
+                  minHeight: '400px',
+                  background: 'var(--color-surface-1)',
                 }}
               >
                 {/* Image Container */}

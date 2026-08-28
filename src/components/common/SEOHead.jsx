@@ -63,7 +63,7 @@ const SEOHead = ({
           description:  COMPANY.description,
           sameAs:       [
             'https://www.linkedin.com/company/advmen-technologies',
-            'https://www.instagram.com/advmen.tech',
+            'https://www.instagram.com/advmen.in?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==',
             'https://twitter.com/advmen_tech',
           ],
           contactPoint: {

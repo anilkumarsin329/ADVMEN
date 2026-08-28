@@ -209,23 +209,10 @@ const CaseStudies = () => {
           {caseStudies.map((study) => (
             <div key={study.id} className="case-study-card group flex flex-col h-full">
               <div
-                className="relative rounded-2xl overflow-hidden flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1.5"
+                className="relative card-glass flex flex-col justify-between h-full"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  border: '1px solid rgba(255, 107, 0, 0.15)',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 107, 0, 0.4)'
-                  e.currentTarget.style.boxShadow = '0 16px 44px rgba(255, 107, 0, 0.15)'
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 107, 0, 0.15)'
-                  e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)'
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)'
+                  background: 'var(--color-surface-1)',
+                  minHeight: '460px',
                 }}
               >
                 <div>
@@ -258,7 +245,7 @@ const CaseStudies = () => {
                   </div>
 
                   {/* Content Header & Summary */}
-                  <div className="p-6 flex flex-col gap-2.5">
+                  <div className="p-6 flex flex-col gap-2.5 flex-grow">
                     <div
                       style={{
                         fontSize: '0.725rem',

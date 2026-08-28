@@ -18,13 +18,17 @@ import { COMPANY } from '@utils/constants'
 import { cn } from '@utils/formatters'
 
 // ── Individual FAB ─────────────────────────────────────────────
-const FAB = ({ icon, label, onClick, href, color, className }) => {
+const FAB = ({ icon, label, onClick, href, color, className, size = 'default' }) => {
   const [showTip, setShowTip] = useState(false)
   const Tag = href ? 'a' : 'button'
 
   const props = href
     ? { href, target: '_blank', rel: 'noopener noreferrer' }
     : { onClick, type: 'button' }
+
+  const sizeClasses = size === 'sm' 
+    ? 'w-10 h-10' 
+    : 'w-14 h-14 sm:w-12 sm:h-12'
 
   return (
     <div className="relative flex items-center justify-end">
@@ -59,7 +63,8 @@ const FAB = ({ icon, label, onClick, href, color, className }) => {
         onMouseEnter={() => setShowTip(true)}
         onMouseLeave={() => setShowTip(false)}
         className={cn(
-          'w-14 h-14 sm:w-12 sm:h-12 rounded-full flex items-center justify-center',
+          sizeClasses,
+          'rounded-full flex items-center justify-center',
           'shadow-[var(--shadow-lg)] transition-all duration-300',
           'hover:scale-110 hover:shadow-[var(--shadow-xl)]',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)]',
@@ -89,7 +94,7 @@ const PhoneIcon = () => (
 
 // ── Arrow up icon ──────────────────────────────────────────────
 const ArrowUpIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M12 19V5M5 12l7-7 7 7"/>
   </svg>
 )
@@ -172,7 +177,8 @@ const FloatingActions = () => {
                 label="Back to Top"
                 onClick={scrollToTop}
                 color="var(--color-surface-3)"
-                className="text-[var(--color-text-primary)]"
+                className="text-[var(--color-text-secondary)] opacity-60 hover:opacity-100 hover:text-[var(--color-text-primary)] border border-[var(--color-border-subtle)]"
+                size="sm"
               />
             </motion.div>
           )}

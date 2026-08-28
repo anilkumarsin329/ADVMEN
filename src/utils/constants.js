@@ -83,7 +83,7 @@ export const getImageUrl = (path) => {
 
 // ── Social Links ─────────────────────────────────────────────
 export const SOCIAL = {
-  instagram:  'https://instagram.com/advmen',
+  instagram:  'https://www.instagram.com/advmen.in?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==',
   linkedin:   'https://linkedin.com/company/advmen',
   twitter:    'https://twitter.com/advmen',
   facebook:   'https://facebook.com/advmen',

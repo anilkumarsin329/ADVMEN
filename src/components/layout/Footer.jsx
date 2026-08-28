@@ -9,7 +9,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { footerLinks } from '@data/navigation'
-import { COMPANY, SOCIAL } from '@utils/constants'
+import { API_BASE_URL, COMPANY, SOCIAL } from '@utils/constants'
 import { FiInstagram, FiLinkedin, FiTwitter, FiFacebook, FiYoutube } from 'react-icons/fi'
 
 const socialIcons = [
@@ -23,10 +23,11 @@ const socialIcons = [
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   const [email, setEmail] = useState('')
-  const [success, setSuccess] = useState(false)
+  const [successMsg, setSuccessMsg] = useState('')
   const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault()
     if (!email.trim()) {
       setError('Email address is required')
@@ -37,10 +38,30 @@ const Footer = () => {
       return
     }
 
+    setIsSubmitting(true)
     setError('')
-    setSuccess(true)
-    setEmail('')
-    setTimeout(() => setSuccess(false), 4000)
+    
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/newsletter/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      })
+      
+      const data = await response.json()
+      
+      if (response.ok && data.success) {
+        setSuccessMsg(data.message || 'Subscribed successfully. Welcome to ADVMEN Briefings!')
+        setEmail('')
+        setTimeout(() => setSuccessMsg(''), 5000)
+      } else {
+        setError(data.error || 'Failed to subscribe')
+      }
+    } catch (err) {
+      setError('A network error occurred. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleBackToTop = () => {
@@ -108,7 +129,10 @@ const Footer = () => {
             </h4>
             <form onSubmit={handleSubscribe} className="relative flex flex-col sm:flex-row gap-3 max-w-lg w-full">
               <input
+                id="newsletter-email"
+                name="email"
                 type="email"
+                autoComplete="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => {
@@ -119,16 +143,17 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                className="btn-primary shine py-3 px-6 text-sm whitespace-nowrap"
+                disabled={isSubmitting}
+                className={`btn-primary py-3 px-6 text-sm whitespace-nowrap ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'shine'}`}
                 data-cursor="hover"
               >
-                Join List
+                {isSubmitting ? 'Joining...' : 'Join List'}
               </button>
             </form>
             {error && <span className="font-mono text-xs text-red-500">{error}</span>}
-            {success && (
+            {successMsg && (
               <span className="font-mono text-xs text-[var(--color-orange)]">
-                Subscribed successfully. Welcome to ADVMEN Briefings!
+                {successMsg}
               </span>
             )}
           </div>
@@ -136,56 +161,51 @@ const Footer = () => {
         </div>
 
         {/* Middle Segment: Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-16">
           
-          {/* Company links */}
+          {/* Quick Links */}
           <div className="flex flex-col gap-6">
             <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]">
-              Company
+              Quick Links
             </h4>
-            <ul className="flex flex-col gap-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-col sm:flex-row gap-8 sm:gap-16">
+              <ul className="flex flex-col gap-3">
+                {footerLinks.company.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <ul className="flex flex-col gap-3">
+                {footerLinks.services.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Services links */}
+          {/* Contact */}
           <div className="flex flex-col gap-6">
             <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]">
-              Services
+              Contact
             </h4>
-            <ul className="flex flex-col gap-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Direct channels */}
-          <div className="flex flex-col gap-6">
-            <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]">
-              Inquiries
-            </h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-4">
               <li>
                 <a
                   href={`mailto:${COMPANY.email}`}
-                  className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300"
+                  className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300 block"
                 >
                   {COMPANY.email}
                 </a>
@@ -193,10 +213,17 @@ const Footer = () => {
               <li>
                 <a
                   href={`tel:${COMPANY.phone}`}
-                  className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300"
+                  className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300 block"
                 >
                   {COMPANY.phone}
                 </a>
+              </li>
+              <li>
+                <address className="not-italic font-body text-sm text-[var(--color-text-secondary)] block">
+                  ADVMEN Technology Private Limited<br />
+                  Central Business District<br />
+                  India
+                </address>
               </li>
             </ul>
           </div>

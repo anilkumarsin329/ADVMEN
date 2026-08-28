@@ -227,6 +227,9 @@ const ChatWidget = () => {
               style={{ borderColor: 'rgba(255, 107, 0, 0.2)' }}
             >
               <input
+                id="chat-input"
+                name="chatInput"
+                autoComplete="off"
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}

@@ -76,35 +76,36 @@ const WorkingProcess = () => {
             aria-hidden="true"
           />
 
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-8 lg:gap-10">
             {steps.map((step, index) => {
               const isEven = index % 2 === 0
               return (
                 <div
                   key={step.num}
-                  className="relative flex flex-col lg:flex-row items-start lg:items-center w-full"
+                  className="process-step relative flex flex-col lg:flex-row items-start lg:items-center w-full group"
                 >
                   
                   {/* Bullet Dot */}
                   <div
-                    className="absolute left-6 lg:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full flex items-center justify-center"
+                    className="absolute left-[28px] lg:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-125"
                     style={{
                       background: 'var(--color-black)',
-                      border: '2px solid rgba(255,107,0,0.6)',
+                      border: '2px solid rgba(255,107,0,0.4)',
                       zIndex: 3,
+                      boxShadow: '0 0 10px rgba(255,107,0,0.2)',
                     }}
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-orange)]" />
+                    <div className="w-2 h-2 rounded-full bg-[var(--color-orange)] transition-all duration-300 group-hover:shadow-[0_0_8px_rgba(255,107,0,0.8)]" />
                   </div>
 
-                  {/* Left block (Desktop) */}
+                  {/* Left or Right Content Block */}
                   <div
-                    className={`w-full lg:w-[45%] pl-14 lg:pl-0 ${
-                      isEven ? 'lg:text-right lg:pr-8' : 'lg:order-2 lg:pl-8'
+                    className={`w-full lg:w-[45%] pl-16 lg:pl-0 flex flex-col ${
+                      isEven ? 'lg:items-end lg:text-right lg:pr-10' : 'lg:order-2 lg:items-start lg:pl-10'
                     }`}
                   >
-                    <div className="flex items-baseline justify-start lg:justify-end gap-2 mb-1">
-                      <span className="font-display font-black text-2xl text-[var(--color-orange)]">
+                    <div className={`flex items-baseline justify-start gap-3 mb-2 ${isEven ? 'lg:flex-row-reverse' : ''}`}>
+                      <span className="font-display font-black text-2xl text-[var(--color-orange)] opacity-90">
                         {step.num}
                       </span>
                       <h3
@@ -114,6 +115,7 @@ const WorkingProcess = () => {
                           fontWeight: 'var(--weight-bold)',
                           color: 'var(--color-text-primary)',
                         }}
+                        className="transition-colors duration-300 group-hover:text-[var(--color-orange-light)]"
                       >
                         {step.title}
                       </h3>
@@ -121,19 +123,19 @@ const WorkingProcess = () => {
                     <p
                       style={{
                         fontFamily: 'var(--font-body)',
-                        fontSize: 'var(--text-small)',
+                        fontSize: '0.875rem',
                         color: 'var(--color-text-secondary)',
                         lineHeight: '1.6',
-                        maxWidth: isEven ? 'none' : '400px',
+                        maxWidth: '400px',
                       }}
-                      className={`${isEven ? 'lg:ml-auto lg:max-w-[400px]' : ''}`}
+                      className="transition-opacity duration-300 group-hover:opacity-100 opacity-80"
                     >
                       {step.desc}
                     </p>
                   </div>
 
-                  {/* Right block (Desktop spacer) */}
-                  <div className="hidden lg:block w-[10%]" />
+                  {/* Spacer blocks for desktop grid structure */}
+                  <div className="hidden lg:block w-[10%] flex-shrink-0" />
                   <div className={`hidden lg:block w-[45%] ${isEven ? 'lg:order-2' : ''}`} />
 
                 </div>

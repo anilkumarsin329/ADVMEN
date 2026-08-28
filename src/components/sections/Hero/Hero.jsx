@@ -13,6 +13,7 @@ import { LoaderContext } from '@context/LoaderContext'
 import { gsap } from '@utils/gsapConfig'
 
 import HeroBackground from './HeroBackground'
+import HeroGrowthGraph from './HeroGrowthGraph'
 import HeroStats from './HeroStats'
 import HeroScrollIndicator from './HeroScrollIndicator'
 import MagneticButton from '@components/ui/MagneticButton'
@@ -195,15 +196,16 @@ const Hero = () => {
                   fontFamily: 'var(--font-display)',
                   fontSize: 'clamp(2.15rem, 4.5vw, 4.15rem)',
                   fontWeight: 800,
-                  lineHeight: 1.02,
+                  lineHeight: 1.05,
                   letterSpacing: '-0.025em',
                   color: '#FFFFFF',
-                  maxWidth: '620px',
+                  maxWidth: '700px',
                   marginBottom: '1rem',
+                  textTransform: 'uppercase',
                 }}
               >
-                We Build Brands<br />
-                That<br />
+                We Build Digital<br />
+                Experiences That<br />
                 <span
                   style={{
                     display: 'inline-block',
@@ -213,7 +215,7 @@ const Hero = () => {
                     backgroundClip: 'text',
                   }}
                 >
-                  Dominate Markets
+                  Drive Business Growth.
                 </span>
               </h1>
 
@@ -281,7 +283,11 @@ const Hero = () => {
           </div>
 
           {/* ── RIGHT COLUMN: Visual Anchor Space on Desktop ───── */}
-          <div className="hidden lg:block lg:col-span-6" aria-hidden="true" />
+          <div className="hidden lg:block lg:col-span-6 h-full relative" aria-hidden="true">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <HeroGrowthGraph />
+            </div>
+          </div>
         </div>
       </div>
 
