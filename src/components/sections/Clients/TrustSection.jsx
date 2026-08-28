@@ -35,7 +35,7 @@ const TrustSection = () => {
   }, [])
 
   useEffect(() => {
-    if (loading || !sectionRef.current) return
+    if (hasAnimated.current || !sectionRef.current) return
 
     let ctx
 
@@ -83,7 +83,7 @@ const TrustSection = () => {
       obs.disconnect()
       if (ctx) ctx.revert()
     }
-  }, [loading])
+  }, [])
 
   return (
     <section
