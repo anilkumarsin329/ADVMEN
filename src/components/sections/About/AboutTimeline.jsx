@@ -7,24 +7,24 @@ import { gsap } from '@utils/gsapConfig'
 
 const milestones = [
   {
-    year: '2019',
-    title: 'Company Founding',
-    description: 'ADVMEN was established with a focus on writing high-performance bespoke software and custom CMS platforms.',
-  },
-  {
-    year: '2021',
-    title: 'Global Expansion',
-    description: 'Secured projects across Europe, USA, and Asia, growing our talent pool to include dedicated UX engineers and cloud architects.',
-  },
-  {
-    year: '2023',
-    title: 'Creative Engineering Focus',
-    description: 'Pioneered WebGL, Three.js, and immersive vector animation designs, earning recognition for creative UI/UX excellence.',
+    year: '2024',
+    title: 'Concept & Strategy Formation',
+    description: 'Initial formulation of ADVMEN’s technical strategy, combining modern web engineering, custom CMS architectures, and performance design systems.',
   },
   {
     year: '2025',
-    title: 'Next-Gen Ecosystems Launch',
-    description: 'Shipped high-load enterprise platforms and introduced headless commerce frameworks powered by lightning-fast APIs.',
+    title: 'Product & Client Operations',
+    description: 'Developed bespoke digital solutions, built interactive UI/UX interfaces, and established core engineering workflows across key client projects.',
+  },
+  {
+    year: '2026',
+    title: 'Official Incorporation & Registration',
+    description: 'ADVMEN Technologies was officially registered and incorporated as a full-service creative technology agency with an expanded leadership team.',
+  },
+  {
+    year: '2026+',
+    title: 'Next-Gen Ecosystems & Growth',
+    description: 'Scaling enterprise cloud infrastructure, AI-powered digital ad spaces, and high-performance web applications for ambitious businesses.',
   },
 ]
 
