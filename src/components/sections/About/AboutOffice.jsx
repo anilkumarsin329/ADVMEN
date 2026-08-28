@@ -1,51 +1,69 @@
 /**
- * AboutOffice.jsx — Culture & workspace gallery with Lightbox
+ * AboutOffice.jsx — Culture & Workspace Gallery with Interactive Lightbox
  */
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { FiX, FiMaximize2, FiMapPin } from 'react-icons/fi'
 
-const spacesData = [
+const officePhotos = [
   {
-    title: 'The Design Lab',
-    desc: 'Where UI layout pixels, color models, and interactive mockups are engineered.',
-    initials: 'LAB',
-    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&h=600&fit=crop&q=80',
-    glow: 'radial-gradient(circle at 10% 20%, rgba(255,107,0,0.12) 0%, transparent 60%)',
-    longDesc: 'Our Design Lab is where visual aesthetics meet structural layout logic. Equipped with professional design software, responsive testing rigs, and color-calibrated displays, this space is dedicated to crafting brand guidelines, component designs, and immersive layouts.',
+    id: 1,
+    title: 'Development & Engineering Floor',
+    category: 'Engineering Zone',
+    image: '/about image/Advmen1.jpeg',
+    description: 'High-performance engineering floor equipped for deep software development and system architecture.',
   },
   {
-    title: 'The War Room',
-    desc: 'Strategy mapping, architecture blueprints, and code reviews take place here.',
-    initials: 'WAR',
-    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop&q=80',
-    glow: 'radial-gradient(circle at 90% 80%, rgba(255,61,0,0.12) 0%, transparent 60%)',
-    longDesc: 'The War Room is the collaborative brain of our agency. Equipped with writeable wall surfaces and smart presentation tools, this is where we map API contracts, review codebase architectures, draft database schemas, and align client requirements.',
+    id: 2,
+    title: 'Technology & Tech Stack Suite',
+    category: 'Tech Suite',
+    image: '/about image/Advmen2.jpeg',
+    description: 'Dedicated tech setup for cloud management, backend compiling, and real-time app testing.',
   },
   {
-    title: 'Collaborative Space',
-    desc: 'Open zones for pair programming, brainstorming, and cross-team alignment.',
-    initials: 'COLLAB',
-    image: 'https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=800&h=600&fit=crop&q=80',
-    glow: 'radial-gradient(circle at 20% 80%, rgba(255,140,56,0.1) 0%, transparent 60%)',
-    longDesc: 'Our Open Collaborative Space is designed to break down vertical team silos. It features flexible seating, hot desks, and lounge pods optimized for quick brainstorms, peer programming sessions, and product design walk-throughs.',
+    id: 3,
+    title: 'Creative UI/UX Design Studio',
+    category: 'Design Studio',
+    image: '/about image/Advmen3.jpeg',
+    description: 'Where UI layout mockups, color systems, and brand design prototypes are engineered.',
   },
   {
-    title: 'Deep Focus Zone',
-    desc: 'Quiet pods equipped with multi-monitors optimized for production code compilation.',
-    initials: 'FOCUS',
-    image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=800&h=600&fit=crop&q=80',
-    glow: 'radial-gradient(circle at 80% 20%, rgba(204,85,0,0.12) 0%, transparent 60%)',
-    longDesc: 'The Deep Focus Zone is a quiet sanctuary optimized for intensive coding and debugging cycles. Featuring soundproof partitions, ergonomic setups, and multi-monitor setups, this space ensures developers have zero distractions.',
+    id: 4,
+    title: 'Executive Conference & Strategy Room',
+    category: 'War Room',
+    image: '/about image/Advmen4.jpeg',
+    description: 'High-tech conference environment for client presentations and strategic roadmap planning.',
+  },
+  {
+    id: 5,
+    title: 'Brainstorming & Innovation Pods',
+    category: 'Innovation Zone',
+    image: '/about image/Advmen5.jpeg',
+    description: 'Collaborative open spaces for pair programming and cross-team strategy sessions.',
+  },
+  {
+    id: 6,
+    title: 'Client Collaboration & Media Hub',
+    category: 'Media Hub',
+    image: '/about image/Advmen6.jpeg',
+    description: 'Media production, video editing, and client interaction studio.',
+  },
+  {
+    id: 7,
+    title: 'Operations & Strategy HQ',
+    category: 'Headquarters',
+    image: '/about image/Advmen8.jpeg',
+    description: 'Central operations hub managing project delivery and client growth strategies.',
   },
 ]
 
 const AboutOffice = () => {
-  const [activeSpace, setActiveSpace] = useState(null)
+  const [selectedPhoto, setSelectedPhoto] = useState(null)
 
   return (
     <section
-      className="relative w-full py-24"
+      className="relative w-full py-20 sm:py-24"
       style={{
         background: 'var(--color-black)',
       }}
@@ -53,168 +71,124 @@ const AboutOffice = () => {
     >
       <div className="container relative z-10">
         
-        {/* Title */}
-        <div className="mb-16">
-          <span className="eyebrow">Our Space</span>
-          <h2 className="section-title mt-4">The Creative Ecosystem</h2>
+        {/* Header */}
+        <div className="mb-12 sm:mb-16">
+          <div className="flex items-center gap-2 mb-2">
+            <FiMapPin className="text-[var(--color-orange)]" size={16} />
+            <span className="eyebrow uppercase font-mono tracking-widest text-xs text-[var(--color-orange)]">
+              OUR WORKSPACE & CULTURE
+            </span>
+          </div>
+          <h2 className="section-title mt-2 font-display font-bold text-gray-100 text-2xl sm:text-4xl">
+            Inside the ADVMEN Ecosystem
+          </h2>
+          <p className="text-gray-400 text-sm sm:text-base mt-2 max-w-xl">
+            Explore our state-of-the-art office infrastructure where engineering meets design excellence.
+          </p>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {spacesData.map((space, i) => (
+        {/* Office Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {officePhotos.map((photo, i) => (
             <motion.div
-              key={space.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              key={photo.id}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.8, delay: i * 0.15 }}
-              whileHover={{ y: -6, borderColor: 'rgba(255,107,0,0.2)' }}
-              onClick={() => setActiveSpace(space)}
-              className="group relative h-80 rounded-2xl p-8 overflow-hidden flex flex-col justify-end cursor-pointer"
-              style={{
-                background: 'rgba(255,255,255,0.01)',
-                border: '1px solid rgba(255,255,255,0.03)',
-                backdropFilter: 'blur(16px)',
-                transition: 'border-color 0.4s ease',
-              }}
-              data-cursor="hover"
+              transition={{ duration: 0.6, delay: i * 0.08 }}
+              onClick={() => setSelectedPhoto(photo)}
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer bg-gray-900 border border-white/10 hover:border-orange-500/40 transition-all duration-500"
             >
-              {/* Fallback Glow background */}
-              <div
-                className="absolute inset-0 opacity-40 group-hover:opacity-75 transition-opacity duration-700 pointer-events-none"
-                style={{
-                  background: space.glow,
-                }}
-              />
-
-              {/* Generative Dot Grid visual */}
-              <div
-                className="absolute inset-0 opacity-10 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
-                style={{
-                  backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)',
-                  backgroundSize: '24px 24px',
-                  maskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, black, transparent)',
-                  WebkitMaskImage: 'radial-gradient(ellipse 60% 60% at 50% 50%, black, transparent)',
-                }}
-              />
-
-              {/* The Office Photo (blended with opacity for luxury dark theme) */}
+              {/* Photo */}
               <img
-                src={space.image}
-                alt={space.title}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:opacity-55 group-hover:scale-105 transition-all duration-750 pointer-events-none"
+                src={photo.image}
+                alt={photo.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
 
-              {/* Initials Accent Label */}
-              <div
-                className="absolute top-8 right-8 font-mono text-[var(--color-orange)] opacity-20 group-hover:opacity-40 transition-opacity duration-500 text-3xl font-bold uppercase tracking-widest pointer-events-none"
-              >
-                {space.initials}
+              {/* Gradient Overlay */}
+              <div 
+                className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-90"
+                style={{
+                  background: 'linear-gradient(to top, rgba(18, 18, 21, 0.9) 0%, rgba(18, 18, 21, 0.2) 60%, transparent 100%)',
+                }}
+              />
+
+              {/* Category Pill */}
+              <span className="absolute top-3 left-3 px-3 py-1 bg-black/80 backdrop-blur-md border border-orange-500/30 text-[var(--color-orange)] font-mono text-[10px] font-bold uppercase tracking-wider rounded-full">
+                {photo.category}
+              </span>
+
+              {/* Zoom Icon */}
+              <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <FiMaximize2 size={14} />
               </div>
 
-              {/* Content Panel */}
-              <div className="relative z-10 flex flex-col gap-2 pointer-events-none">
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '1.5rem',
-                    fontWeight: 'var(--weight-bold)',
-                    color: 'var(--color-text-primary)',
-                  }}
-                >
-                  {space.title}
+              {/* Bottom Details */}
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h3 className="font-display font-bold text-base text-gray-100 group-hover:text-[var(--color-orange)] transition-colors line-clamp-1">
+                  {photo.title}
                 </h3>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: 'var(--text-small)',
-                    color: 'var(--color-text-secondary)',
-                    lineHeight: '1.6',
-                    maxWidth: '440px',
-                  }}
-                >
-                  {space.desc}
+                <p className="text-xs text-gray-400 mt-1 line-clamp-1">
+                  {photo.description}
                 </p>
               </div>
-
             </motion.div>
           ))}
         </div>
-
       </div>
 
-      {/* Lightbox Overlay */}
+      {/* Lightbox Modal */}
       <AnimatePresence>
-        {activeSpace && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActiveSpace(null)}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/85 backdrop-blur-2xl"
-          >
-            <motion.div
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-lg w-full p-8 lg:p-10 rounded-3xl overflow-hidden"
-              style={{
-                background: 'rgba(15,15,15,0.7)',
-                border: '1px solid rgba(255,107,0,0.18)',
-                boxShadow: '0 24px 64px rgba(0,0,0,0.8)',
-              }}
+        {selectedPhoto && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedPhoto(null)}
+              className="absolute inset-0 bg-black/85 backdrop-blur-md"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative max-w-4xl w-full bg-gray-900 border border-white/10 rounded-2xl overflow-hidden shadow-2xl z-10 flex flex-col"
             >
-              {/* Blended background image on Lightbox */}
-              <img
-                src={activeSpace.image}
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none"
-              />
-
-              {/* Close Button */}
-              <button
-                onClick={() => setActiveSpace(null)}
-                className="absolute top-6 right-6 p-2 rounded-full border border-[rgba(255,255,255,0.08)] text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] hover:border-[var(--color-orange)] transition-colors duration-300 relative z-10"
-                aria-label="Close Lightbox"
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-
-              {/* Lightbox content */}
-              <div className="flex flex-col gap-5 relative z-10">
-                <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-orange)]">
-                  {activeSpace.initials} Space Overview
-                </span>
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '1.75rem',
-                    fontWeight: 'var(--weight-bold)',
-                    color: 'var(--color-text-primary)',
-                  }}
+              {/* Lightbox Header */}
+              <div className="p-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+                <div>
+                  <span className="text-[var(--color-orange)] font-mono text-xs font-bold uppercase tracking-wider">
+                    {selectedPhoto.category}
+                  </span>
+                  <h3 className="text-white font-bold text-lg">{selectedPhoto.title}</h3>
+                </div>
+                <button 
+                  onClick={() => setSelectedPhoto(null)}
+                  className="p-2 text-gray-400 hover:text-white rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
                 >
-                  {activeSpace.title}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '0.95rem',
-                    color: 'var(--color-text-secondary)',
-                    lineHeight: '1.7',
-                  }}
-                >
-                  {activeSpace.longDesc}
-                </p>
+                  <FiX size={20} />
+                </button>
+              </div>
+
+              {/* Lightbox Image */}
+              <div className="relative aspect-video w-full bg-black">
+                <img 
+                  src={selectedPhoto.image} 
+                  alt={selectedPhoto.title}
+                  className="w-full h-full object-contain" 
+                />
+              </div>
+
+              {/* Lightbox Description */}
+              <div className="p-4 bg-black/60 text-gray-300 text-sm">
+                {selectedPhoto.description}
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
-
     </section>
   )
 }

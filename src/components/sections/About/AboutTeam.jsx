@@ -1,41 +1,64 @@
 /**
- * AboutTeam.jsx — Core leadership team cards (Responsive)
+ * AboutTeam.jsx — Core Leadership & Team Cards (Responsive)
  */
 
 import { motion } from 'framer-motion'
+import { FiLinkedin, FiTwitter, FiGithub, FiUserPlus } from 'react-icons/fi'
 
 const teamData = [
   {
-    name: 'Amritpal Singh',
-    role: 'Co-founder & CEO',
-    initials: 'AS',
+    name: 'Govind Goyal',
+    role: 'Co-Founder & Director',
+    initials: 'GG',
     gradient: 'linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%)',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop&q=80',
-    socials: { linkedin: '#', twitter: '#' },
+    image: '/about image/Advmen Founder.jpeg',
+    bio: '8-9+ years of experience in Media, Technology & Brand Communication. Leads Strategy & Outreach.',
+    isPlaceholder: false,
   },
   {
-    name: 'Abhishek Devrani',
-    role: 'Co-founder & CTO',
-    initials: 'AD',
-    gradient: 'linear-gradient(135deg, #0A0A0A 0%, #FF6B00 100%)',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=800&fit=crop&q=80',
-    socials: { linkedin: '#', github: '#' },
+    name: 'Anil Kumar Singh',
+    role: 'Senior Developer & CIO',
+    initials: 'AS',
+    gradient: 'linear-gradient(135deg, #FF6B00 0%, #E05600 100%)',
+    image: '/about image/Advmen Anil kumar sing Senior Developer & CIO.jpeg',
+    bio: 'Leads core IT infrastructure, cloud architecture, and enterprise software engineering.',
+    isPlaceholder: false,
   },
   {
-    name: 'Sarah Jenkins',
-    role: 'Creative Director',
-    initials: 'SJ',
-    gradient: 'linear-gradient(135deg, #FF8C38 0%, #FF4500 100%)',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=800&fit=crop&q=80',
-    socials: { linkedin: '#', dribbble: '#' },
+    name: 'Divansh',
+    role: 'Business Head',
+    initials: 'D',
+    gradient: 'linear-gradient(135deg, #FF8526 0%, #FF4500 100%)',
+    image: '/about image/Advmen Divansh Business Head.jpeg.jpeg',
+    bio: 'Drives strategic business growth, client partnerships, and agency expansion.',
+    isPlaceholder: false,
   },
   {
-    name: 'Rajesh Kumar',
-    role: 'Technical Lead',
-    initials: 'RK',
-    gradient: 'linear-gradient(135deg, #FF3D00 0%, #FF8C38 100%)',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=800&fit=crop&q=80',
-    socials: { linkedin: '#', github: '#' },
+    name: 'Abhay',
+    role: 'UI/UX Developer',
+    initials: 'A',
+    gradient: 'linear-gradient(135deg, #FF5500 0%, #FF8C38 100%)',
+    image: '/about image/Advmen abhay UI UX developer.png',
+    bio: 'Crafts pixel-perfect digital interfaces, design systems, and modern web user experiences.',
+    isPlaceholder: false,
+  },
+  {
+    name: 'Krishna Kumar',
+    role: 'MERN Stack Developer',
+    initials: 'KK',
+    gradient: 'linear-gradient(135deg, #FF6B00 0%, #FF8526 100%)',
+    image: '/about image/Advmen Krishna kumar Mern stack developer.jpeg',
+    bio: 'Specializes in full-stack JavaScript engineering, Node.js REST APIs, MongoDB schemas, and scalable web apps.',
+    isPlaceholder: false,
+  },
+  {
+    name: 'Aman',
+    role: 'App Developer',
+    initials: 'A',
+    gradient: 'linear-gradient(135deg, #FF8526 0%, #E05600 100%)',
+    image: '/about image/Advmen Aman app developer.png',
+    bio: 'Builds high-performance native & cross-platform mobile applications for iOS and Android ecosystems.',
+    isPlaceholder: false,
   },
 ]
 
@@ -44,8 +67,8 @@ const AboutTeam = () => {
     <section
       className="relative w-full overflow-hidden"
       style={{
-        paddingTop: 'clamp(2rem, 5vw, 4rem)',
-        paddingBottom: 'clamp(2rem, 5vw, 4rem)',
+        paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)',
+        paddingBottom: 'clamp(2.5rem, 5vw, 4.5rem)',
         background: 'var(--color-black)',
       }}
       aria-label="Core Team"
@@ -53,137 +76,96 @@ const AboutTeam = () => {
       <div className="container relative z-10">
         
         {/* Title */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-10 sm:mb-14 text-center sm:text-left">
           <span 
             className="eyebrow"
             style={{
               fontSize: 'clamp(0.65rem, 1vw, 0.75rem)',
+              color: 'var(--color-orange)',
             }}
           >
-            Our Crew
+            OUR LEADERSHIP & TEAM
           </span>
           <h2 
-            className="section-title mt-4"
+            className="section-title mt-2 font-display font-bold text-gray-100"
             style={{
               fontSize: 'clamp(1.75rem, 4vw, 3rem)',
             }}
           >
             The Minds Behind ADVMEN
           </h2>
+          <p className="text-gray-400 text-sm sm:text-base mt-2 max-w-xl">
+            Meet the engineers, strategists, and designers driving innovation and business growth.
+          </p>
         </div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        {/* Team Grid (3 Columns) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {teamData.map((member, i) => (
             <motion.div
-              key={member.name}
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.8, delay: i * 0.12 }}
-              whileHover={{ y: -6, borderColor: 'rgba(255,107,0,0.25)' }}
-              className="group relative flex flex-col p-6 rounded-2xl cursor-default"
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              whileHover={{ y: -6 }}
+              className="group relative flex flex-col p-5 sm:p-6 rounded-2xl cursor-default transition-all duration-300"
               style={{
-                background: 'rgba(255,255,255,0.015)',
-                border: '1px solid rgba(255,255,255,0.03)',
+                background: 'rgba(255,255,255,0.02)',
+                border: '1px solid rgba(255,255,255,0.06)',
                 backdropFilter: 'blur(12px)',
-                transition: 'border-color 0.4s ease',
               }}
             >
               
-              {/* Premium Avatar Container */}
+              {/* Image Container */}
               <div
-                className="relative w-full aspect-square rounded-xl overflow-hidden mb-6 flex items-center justify-center"
-                style={{
-                  background: 'var(--color-surface-1)',
-                  border: '1px solid rgba(255,255,255,0.05)',
-                }}
+                className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-gray-900 flex items-center justify-center border border-white/10"
               >
-                {/* Fallback background flow gradient */}
-                <div
-                  className="absolute inset-0 opacity-80"
-                  style={{
-                    background: member.gradient,
-                  }}
-                />
-
-                {/* Fallback Initials */}
-                <span
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontWeight: 'var(--weight-bold)',
-                    fontSize: 'clamp(1.5rem, 4vw, 3rem)',
-                    color: 'var(--color-white)',
-                    opacity: 0.25,
-                    textShadow: '0 2px 10px rgba(0,0,0,0.3)',
-                    userSelect: 'none',
-                  }}
-                  className="absolute"
-                >
-                  {member.initials}
-                </span>
-
-                {/* Profile headshot image */}
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none"
-                />
-              </div>
-
-              {/* Name & Role */}
-              <div className="flex-1 flex flex-col justify-end">
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-                    fontWeight: 'var(--weight-bold)',
-                    color: 'var(--color-text-primary)',
-                    marginBottom: '0.25rem',
-                  }}
-                >
-                  {member.name}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 'clamp(0.6rem, 0.9vw, 0.75rem)',
-                    color: 'var(--color-orange)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.06em',
-                    marginBottom: '1rem',
-                  }}
-                >
-                  {member.role}
-                </p>
-              </div>
-
-              {/* Social Links Popover */}
-              <div className="flex items-center gap-3 flex-wrap">
-                {Object.keys(member.socials).map((platform) => (
-                  <a
-                    key={platform}
-                    href={member.socials[platform]}
-                    className="p-2 rounded-full border border-[var(--color-border-subtle)] text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] hover:border-[var(--color-orange)] transition-colors duration-300"
-                    aria-label={`${member.name} ${platform}`}
-                  >
-                    <span 
-                      className="text-[0.6rem] font-mono uppercase tracking-wider"
-                      style={{
-                        fontSize: 'clamp(0.55rem, 0.8vw, 0.68rem)',
-                      }}
-                    >
-                      {platform}
+                {member.image ? (
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="flex flex-col items-center justify-center p-6 text-center text-gray-500">
+                    <div className="w-14 h-14 rounded-full bg-orange-500/10 border border-orange-500/20 text-[var(--color-orange)] flex items-center justify-center mb-2">
+                      <FiUserPlus size={24} />
+                    </div>
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-orange-400">
+                      Position Reserved
                     </span>
-                  </a>
-                ))}
+                  </div>
+                )}
+                
+                {/* Subtle gradient vignette */}
+                {member.image && (
+                  <div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: 'linear-gradient(to top, rgba(18, 18, 21, 0.7) 0%, transparent 50%)',
+                    }}
+                  />
+                )}
               </div>
 
+              {/* Info */}
+              <div className="flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 className="text-lg font-bold font-display text-gray-100 group-hover:text-[var(--color-orange)] transition-colors">
+                    {member.name}
+                  </h3>
+                  <div className="text-xs font-mono font-semibold text-[var(--color-orange)] uppercase tracking-wider mt-0.5">
+                    {member.role}
+                  </div>
+                  <p className="text-xs text-gray-400 mt-2.5 leading-relaxed font-body">
+                    {member.bio}
+                  </p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   )
