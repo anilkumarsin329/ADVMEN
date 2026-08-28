@@ -187,18 +187,16 @@ const Navbar = () => {
           <Link
             ref={logoRef}
             to="/"
-            className="relative z-10 flex items-center gap-3 group"
+            className="relative z-10 flex items-center group"
             aria-label="ADVMEN Technologies — Home"
           >
             <img
               src="/ADVMEN logo.png"
               alt={COMPANY.shortName}
-              className="h-9 sm:h-10 lg:h-11 w-auto object-contain transition-all duration-300 group-hover:opacity-80"
+              className="h-10 sm:h-11 lg:h-12 w-auto object-contain transition-all duration-300 group-hover:opacity-85"
+              style={{ mixBlendMode: 'screen' }}
               draggable="false"
             />
-            <span className="font-display font-bold text-base sm:text-lg text-[var(--color-text-primary)] tracking-wider">
-              {COMPANY.shortName}
-            </span>
           </Link>
 
           <nav

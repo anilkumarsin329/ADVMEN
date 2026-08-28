@@ -26,7 +26,7 @@ const teamData = [
   },
   {
     name: 'Divayansh Dhar Dwivedi',
-    role: 'Senior Business Head',
+    role: 'Business Head',
     initials: 'DDD',
     gradient: 'linear-gradient(135deg, #FF8526 0%, #FF4500 100%)',
     image: '/about image/Advmen Divayansh Dhar Dwivedi Head.jpeg.jpeg',
@@ -119,13 +119,14 @@ const AboutTeam = () => {
               
               {/* Image Container */}
               <div
-                className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-gray-900 flex items-center justify-center border border-white/10"
+                className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-black flex items-center justify-center border border-white/10"
+                style={{ background: '#000000' }}
               >
                 {member.image ? (
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 bg-black"
                   />
                 ) : (
                   <div className="flex flex-col items-center justify-center p-6 text-center text-gray-500">
