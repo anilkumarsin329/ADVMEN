@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   FiTrash2, FiEdit2, FiPlus, FiImage, FiBriefcase, 
-  FiX, FiSearch, FiExternalLink, FiEye, FiCheckCircle 
+  FiX, FiSearch, FiExternalLink, FiEye, FiSettings,
+  FiMoreVertical, FiCheckCircle, FiTag, FiCpu
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
@@ -25,8 +26,11 @@ const AdminCaseStudies = () => {
   const [error, setError] = useState('')
   const [searchQuery, setSearchQuery] = useState('')
   
+  // Modals & Dropdowns State
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentItem, setCurrentItem] = useState(null)
+  const [viewItem, setViewItem] = useState(null) // For View Details Modal
+  const [activeDropdown, setActiveDropdown] = useState(null) // ID of card with open gear menu
   
   // Form State
   const [title, setTitle] = useState('')
@@ -54,6 +58,17 @@ const AdminCaseStudies = () => {
   
   const [isSubmitting, setIsSubmitting] = useState(false)
   const fileInputRef = useRef(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (!e.target.closest('.gear-dropdown-container')) {
+        setActiveDropdown(null)
+      }
+    }
+    document.addEventListener('click', handleOutsideClick)
+    return () => document.removeEventListener('click', handleOutsideClick)
+  }, [])
 
   useEffect(() => {
     fetchCaseStudies()
@@ -139,6 +154,7 @@ const AdminCaseStudies = () => {
       setTagsInput('Web Development, UI/UX')
     }
     setIsModalOpen(true)
+    setActiveDropdown(null)
   }
 
   const handleTitleChange = (val) => {
@@ -222,6 +238,7 @@ const AdminCaseStudies = () => {
   }
 
   const handleDelete = async (id) => {
+    setActiveDropdown(null)
     if (!window.confirm('Are you sure you want to delete this Case Study?')) return
 
     try {
@@ -303,13 +320,17 @@ const AdminCaseStudies = () => {
           {filteredItems.map((item) => (
             <div 
               key={item._id}
-              className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow"
+              className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow relative"
             >
               {/* Cover Image Header */}
-              <div className="relative aspect-video w-full bg-gray-100 overflow-hidden group">
+              <div className="relative aspect-video w-full bg-slate-800 overflow-hidden group">
                 <img 
                   src={getImageUrl(item.image)} 
                   alt={item.title} 
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/Image/advmen_service1.jpeg';
+                  }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                 />
                 <span className="absolute top-3 left-3 px-3 py-1 bg-black/70 backdrop-blur-md text-white font-mono text-[10px] font-semibold uppercase tracking-wider rounded-full">
@@ -349,7 +370,7 @@ const AdminCaseStudies = () => {
                 )}
               </div>
 
-              {/* Actions Footer */}
+              {/* Card Footer with Gear Dropdown */}
               <div className="px-5 py-3 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
                 <a 
                   href={`/work/${item.slug}`} 
@@ -360,21 +381,64 @@ const AdminCaseStudies = () => {
                   <FiEye size={14} /> Preview
                 </a>
 
-                <div className="flex items-center gap-2">
+                {/* Gear Settings Icon Dropdown */}
+                <div className="relative gear-dropdown-container">
                   <button 
-                    onClick={() => openModal(item)}
-                    className="p-2 text-gray-600 hover:text-orange-600 hover:bg-white rounded-lg transition-colors"
-                    title="Edit"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setActiveDropdown(activeDropdown === item._id ? null : item._id)
+                    }}
+                    className={`p-2 rounded-lg transition-colors border ${
+                      activeDropdown === item._id 
+                        ? 'bg-orange-50 text-orange-600 border-orange-200' 
+                        : 'text-gray-600 hover:text-orange-600 hover:bg-white border-transparent'
+                    }`}
+                    title="Case Study Actions"
                   >
-                    <FiEdit2 size={16} />
+                    <FiSettings size={17} className={activeDropdown === item._id ? 'rotate-90 transition-transform duration-300' : 'transition-transform duration-300'} />
                   </button>
-                  <button 
-                    onClick={() => handleDelete(item._id)}
-                    className="p-2 text-gray-400 hover:text-red-600 hover:bg-white rounded-lg transition-colors"
-                    title="Delete"
-                  >
-                    <FiTrash2 size={16} />
-                  </button>
+
+                  {/* Dropdown Menu */}
+                  <AnimatePresence>
+                    {activeDropdown === item._id && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: -5 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: -5 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute right-0 bottom-10 w-44 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-30"
+                      >
+                        <button
+                          onClick={() => {
+                            setViewItem(item)
+                            setActiveDropdown(null)
+                          }}
+                          className="w-full px-4 py-2 text-left text-xs font-semibold text-gray-700 hover:bg-orange-50 hover:text-orange-600 flex items-center gap-2 transition-colors"
+                        >
+                          <FiEye size={14} className="text-gray-400 group-hover:text-orange-600" />
+                          View Details
+                        </button>
+
+                        <button
+                          onClick={() => openModal(item)}
+                          className="w-full px-4 py-2 text-left text-xs font-semibold text-gray-700 hover:bg-orange-50 hover:text-orange-600 flex items-center gap-2 transition-colors"
+                        >
+                          <FiEdit2 size={14} className="text-gray-400" />
+                          Edit Case Study
+                        </button>
+
+                        <div className="my-1 border-t border-gray-100" />
+
+                        <button
+                          onClick={() => handleDelete(item._id)}
+                          className="w-full px-4 py-2 text-left text-xs font-semibold text-red-600 hover:bg-red-50 flex items-center gap-2 transition-colors"
+                        >
+                          <FiTrash2 size={14} />
+                          Delete
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
@@ -382,7 +446,176 @@ const AdminCaseStudies = () => {
         </div>
       )}
 
-      {/* Add/Edit Modal */}
+      {/* ── View Details Modal ────────────────────────────────────── */}
+      <AnimatePresence>
+        {viewItem && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setViewItem(null)}
+              className="absolute inset-0 bg-gray-900/50 backdrop-blur-xs"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden max-h-[90vh] flex flex-col"
+            >
+              {/* Header */}
+              <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between shrink-0">
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 bg-orange-100 text-orange-700 font-mono text-[10px] font-bold uppercase rounded-full">
+                    {viewItem.category}
+                  </span>
+                  <h2 className="text-base font-bold text-gray-900">{viewItem.title}</h2>
+                </div>
+                <button 
+                  onClick={() => setViewItem(null)}
+                  className="text-gray-400 hover:text-gray-600 p-1.5 rounded-lg hover:bg-gray-100"
+                >
+                  <FiX size={18} />
+                </button>
+              </div>
+
+              {/* Scrollable Content Body */}
+              <div className="p-6 overflow-y-auto space-y-6 flex-1 text-gray-800">
+                {/* Banner Image */}
+                <div className="w-full h-56 rounded-xl overflow-hidden bg-slate-900 relative">
+                  <img 
+                    src={getImageUrl(viewItem.image)} 
+                    alt={viewItem.title} 
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/Image/advmen_service1.jpeg';
+                    }}
+                    className="w-full h-full object-cover" 
+                  />
+                  <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-lg text-white font-mono text-xs">
+                    Client: <strong>{viewItem.client}</strong>
+                  </div>
+                </div>
+
+                {/* Summary */}
+                <div>
+                  <h4 className="text-xs font-mono font-bold uppercase text-gray-400 tracking-wider mb-1">
+                    Summary Excerpt
+                  </h4>
+                  <p className="text-sm text-gray-700 leading-relaxed font-medium bg-gray-50 p-3.5 rounded-xl border border-gray-100">
+                    {viewItem.summary}
+                  </p>
+                </div>
+
+                {/* Metrics Badges */}
+                {viewItem.metrics && viewItem.metrics.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-mono font-bold uppercase text-gray-400 tracking-wider mb-2">
+                      Key Performance Metrics
+                    </h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {viewItem.metrics.map((m, idx) => (
+                        <div key={idx} className="bg-orange-50 border border-orange-100 p-3 rounded-xl text-center">
+                          <div className="text-lg font-bold text-orange-600">{m.value}</div>
+                          <div className="text-[10px] text-gray-600 font-mono uppercase mt-0.5">{m.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Challenge & Solution */}
+                {(viewItem.challenge || viewItem.solution) && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {viewItem.challenge && (
+                      <div className="bg-red-50/50 border border-red-100 p-4 rounded-xl">
+                        <h4 className="text-xs font-bold text-red-700 uppercase tracking-wider mb-1">
+                          The Challenge
+                        </h4>
+                        <p className="text-xs text-gray-600 leading-relaxed">{viewItem.challenge}</p>
+                      </div>
+                    )}
+                    {viewItem.solution && (
+                      <div className="bg-emerald-50/50 border border-emerald-100 p-4 rounded-xl">
+                        <h4 className="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-1">
+                          Our Solution
+                        </h4>
+                        <p className="text-xs text-gray-600 leading-relaxed">{viewItem.solution}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Tech & Tags */}
+                <div className="flex flex-wrap gap-4 pt-2">
+                  {viewItem.tech && viewItem.tech.length > 0 && (
+                    <div>
+                      <h4 className="text-[10px] font-mono font-bold uppercase text-gray-400 tracking-wider mb-1.5 flex items-center gap-1">
+                        <FiCpu size={12} /> Tech Stack
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {viewItem.tech.map((t, idx) => (
+                          <span key={idx} className="px-2.5 py-1 bg-gray-100 text-gray-700 font-mono text-[11px] rounded-lg">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {viewItem.tags && viewItem.tags.length > 0 && (
+                    <div>
+                      <h4 className="text-[10px] font-mono font-bold uppercase text-gray-400 tracking-wider mb-1.5 flex items-center gap-1">
+                        <FiTag size={12} /> Tags
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {viewItem.tags.map((t, idx) => (
+                          <span key={idx} className="px-2.5 py-1 bg-orange-50 text-orange-700 font-mono text-[11px] rounded-lg">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* View Modal Footer */}
+              <div className="px-6 py-3 bg-gray-50 border-t border-gray-100 flex items-center justify-between shrink-0">
+                <a 
+                  href={`/work/${viewItem.slug}`} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="text-xs text-orange-600 font-semibold hover:underline flex items-center gap-1"
+                >
+                  <FiExternalLink size={14} /> Open Live Page
+                </a>
+
+                <div className="flex items-center gap-3">
+                  <button 
+                    onClick={() => setViewItem(null)}
+                    className="px-4 py-2 bg-gray-200 text-gray-700 rounded-xl text-xs font-semibold hover:bg-gray-300"
+                  >
+                    Close
+                  </button>
+                  <button 
+                    onClick={() => {
+                      const item = viewItem
+                      setViewItem(null)
+                      openModal(item)
+                    }}
+                    className="px-4 py-2 bg-[var(--color-orange)] text-white rounded-xl text-xs font-semibold hover:opacity-90 flex items-center gap-1.5"
+                  >
+                    <FiEdit2 size={14} /> Edit Case Study
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Add/Edit Modal Form ──────────────────────────────────── */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
