@@ -23,17 +23,17 @@ import { gsap } from '@utils/gsapConfig'
 
 // ── Mobile menu link animation variants ───────────────────────
 const menuItemVariants = {
-  hidden:  { opacity: 0, x: -40 },
-  visible: (i) => (({
+  hidden: { opacity: 0, x: -40 },
+  visible: (i) => ({
     opacity: 1,
     x: 0,
     transition: { duration: 0.5, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] },
-  })),
-  exit: (i) => (({
+  }),
+  exit: (i) => ({
     opacity: 0,
     x: -30,
     transition: { duration: 0.3, delay: i * 0.04, ease: [0.7, 0, 0.84, 0] },
-  })),
+  }),
 }
 
 const overlayVariants = {
@@ -385,7 +385,6 @@ const Navbar = () => {
                   onClick={handleMenuItemClick}
                   className="btn-secondary btn-lg w-full justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] rounded flex items-center gap-2"
                 >
-                  <FiShoppingCart size={20} />
                   View Catalog
                 </Link>
                 <Link 
