@@ -36,7 +36,9 @@ const Services = () => {
   }, [])
 
   useEffect(() => {
-    if (isLoading || hasAnimated.current || !sectionRef.current) return
+    if (isLoading || servicesData.length === 0 || !sectionRef.current) return
+
+    let ctx
 
     const obs = new IntersectionObserver(
       ([entry]) => {
@@ -44,41 +46,38 @@ const Services = () => {
         hasAnimated.current = true
         obs.disconnect()
 
-        const ctx = gsap.context(() => {
-          gsap.from('.services-headline', {
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            ease: 'expo.out',
-          })
+        ctx = gsap.context(() => {
+          if (sectionRef.current.querySelector('.services-headline')) {
+            gsap.fromTo('.services-headline',
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' }
+            )
+          }
 
-          gsap.from('.services-desc', {
-            opacity: 0,
-            y: 20,
-            duration: 0.7,
-            ease: 'expo.out',
-            delay: 0.1,
-          })
+          if (sectionRef.current.querySelector('.services-desc')) {
+            gsap.fromTo('.services-desc',
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', delay: 0.1 }
+            )
+          }
 
-          gsap.from('.service-card', {
-            opacity: 0,
-            y: 40,
-            scale: 0.95,
-            duration: 0.7,
-            ease: 'expo.out',
-            stagger: 0.08,
-            delay: 0.2,
-          })
+          if (sectionRef.current.querySelector('.service-card')) {
+            gsap.fromTo('.service-card',
+              { opacity: 0, y: 40, scale: 0.95 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'expo.out', stagger: 0.08, delay: 0.2 }
+            )
+          }
         }, sectionRef)
-
-        return () => ctx.revert()
       },
       { threshold: 0.15 }
     )
 
     obs.observe(sectionRef.current)
-    return () => obs.disconnect()
-  }, [isLoading])
+    return () => {
+      obs.disconnect()
+      if (ctx) ctx.revert()
+    }
+  }, [isLoading, servicesData])
 
   return (
     <section

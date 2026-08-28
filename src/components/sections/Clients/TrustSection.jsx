@@ -35,7 +35,9 @@ const TrustSection = () => {
   }, [])
 
   useEffect(() => {
-    if (hasAnimated.current || !sectionRef.current) return
+    if (loading || !sectionRef.current) return
+
+    let ctx
 
     const obs = new IntersectionObserver(
       ([entry]) => {
@@ -43,36 +45,45 @@ const TrustSection = () => {
         hasAnimated.current = true
         obs.disconnect()
 
-        const ctx = gsap.context(() => {
-          gsap.fromTo('.trust-headline',
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' }
-          )
+        ctx = gsap.context(() => {
+          if (sectionRef.current.querySelector('.trust-headline')) {
+            gsap.fromTo('.trust-headline',
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' }
+            )
+          }
 
-          gsap.fromTo('.trust-desc',
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', delay: 0.1 }
-          )
+          if (sectionRef.current.querySelector('.trust-desc')) {
+            gsap.fromTo('.trust-desc',
+              { opacity: 0, y: 20 },
+              { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', delay: 0.1 }
+            )
+          }
 
-          gsap.fromTo('.trust-metric',
-            { opacity: 0, y: 30, scale: 0.95 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'expo.out', stagger: 0.08, delay: 0.2 }
-          )
+          if (sectionRef.current.querySelector('.trust-metric')) {
+            gsap.fromTo('.trust-metric',
+              { opacity: 0, y: 30, scale: 0.95 },
+              { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'expo.out', stagger: 0.08, delay: 0.2 }
+            )
+          }
 
-          gsap.fromTo('.clients-section',
-            { opacity: 0, y: 40 },
-            { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out', delay: 0.4 }
-          )
+          if (sectionRef.current.querySelector('.clients-section')) {
+            gsap.fromTo('.clients-section',
+              { opacity: 0, y: 40 },
+              { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out', delay: 0.4 }
+            )
+          }
         }, sectionRef)
-
-        return () => ctx.revert()
       },
       { threshold: 0.15 }
     )
 
     obs.observe(sectionRef.current)
-    return () => obs.disconnect()
-  }, [])
+    return () => {
+      obs.disconnect()
+      if (ctx) ctx.revert()
+    }
+  }, [loading])
 
   return (
     <section
