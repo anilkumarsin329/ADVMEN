@@ -15,7 +15,6 @@
 import { useState, useEffect, useRef, useCallback, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiShoppingCart } from 'react-icons/fi'
 import { LoaderContext } from '@context/LoaderContext'
 import { navLinks } from '@data/navigation'
 import { COMPANY } from '@utils/constants'
@@ -238,15 +237,6 @@ const Navbar = () => {
 
           {/* ── Desktop CTA ───────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link
-              to="/catalog"
-              className="relative p-2 text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300 group"
-              aria-label="Catalog"
-              title="View Catalog"
-            >
-              <FiShoppingCart size={24} />
-              <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[var(--color-orange)] group-hover:w-full transition-all duration-300" />
-            </Link>
             <Link
               to="/contact"
               className="btn-primary btn-sm group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-full"
