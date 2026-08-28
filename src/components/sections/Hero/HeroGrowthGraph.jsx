@@ -110,21 +110,6 @@ const HeroGrowthGraph = () => {
             </g>
           ))}
         </svg>
-
-        {/* Max Value Highlight Badge (Very clean, no ugly borders) */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 2.5, type: 'spring' }}
-          className="absolute flex items-center gap-2 bg-gradient-to-r from-[#FF6B00] to-[#FF8526] p-2 px-3 rounded-lg shadow-[0_10px_30px_rgba(255,107,0,0.4)]"
-          style={{ left: '580px', top: 'calc(50px - 40px)', transform: 'translateX(-50%)' }}
-        >
-          <FiTrendingUp className="text-white" size={14} />
-          <div className="flex flex-col">
-            <span className="text-white font-display font-bold text-sm leading-none">+245%</span>
-          </div>
-        </motion.div>
-
       </motion.div>
     </div>
   )
