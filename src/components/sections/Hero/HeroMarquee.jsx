@@ -8,16 +8,13 @@
  */
 
 const trustItems = [
-  { name: 'TechVentures'   },
-  { name: 'NexusCorp'      },
-  { name: 'GreenLeaf'      },
-  { name: 'PrimeMedia'     },
-  { name: 'AlphaBuilders'  },
-  { name: 'SwiftLogistics' },
-  { name: 'BrightFuture'   },
-  { name: 'PeakFinance'    },
-  { name: 'UrbanStyle'     },
-  { name: 'CoreHealth'     },
+  { name: 'Norozz' },
+  { name: 'EATOGGY' },
+  { name: 'SAVITRAM' },
+  { name: 'FOUNDATION' },
+  { name: 'LEGALWALAS' },
+  { name: 'GoIndiaCab' },
+  { name: 'aiphlix' },
 ]
 
 // Duplicate items so the loop is seamless

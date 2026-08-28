@@ -14,7 +14,7 @@ export const COMPANY = {
   shortName:   'ADVMEN',
   tagline:     'We Build Brands That Dominate.',
   email:       'info@advmen.com',
-  phone:       '+91 95196 02401',
+  phone:       '+91 83750 08009',
   address:     'India',
   website:     'https://advmen.com',
   founded:     '2020',

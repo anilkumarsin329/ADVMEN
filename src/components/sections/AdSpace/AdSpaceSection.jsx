@@ -93,22 +93,24 @@ const AdSpaceSection = () => {
           <span className="w-8 h-px bg-[var(--color-orange)]" />
         </div>
 
-        <div className="relative">
-          {/* Glowing Highlight Orb */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[150px] sm:w-[400px] sm:h-[200px] bg-orange-500/30 blur-[80px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 mix-blend-screen animate-pulse" />
+        <div className="relative w-full text-left md:text-center flex flex-col md:items-center items-start">
+          {/* Subtle Background Orb */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[150px] sm:w-[400px] sm:h-[200px] bg-orange-500/20 blur-[100px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 mix-blend-screen" />
           
-          <h2 className="adspace-stagger section-title max-w-4xl mx-auto mb-6 text-white font-display relative z-10 drop-shadow-xl"
+          <h2 className="adspace-stagger section-title max-w-4xl mb-6 text-white font-display relative z-10"
             style={{
-              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-              lineHeight: 1.15,
-              fontWeight: 'var(--weight-bold)',
+              fontSize: 'clamp(3rem, 6vw, 5.5rem)',
+              lineHeight: 1.1,
+              fontWeight: 900,
+              letterSpacing: '-0.02em'
             }}
           >
-            Advertise Smarter. <br className="md:hidden" /><span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-400 drop-shadow-[0_0_15px_rgba(255,107,0,0.5)]">Reach Further.</span>
+            Advertise Smarter.<br />
+            <span className="text-[#f97316]">Reach Further.</span>
           </h2>
 
-          <p className="adspace-stagger max-w-2xl mx-auto mb-16 text-slate-300 relative z-10 font-medium"
-            style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)' }}
+          <p className="adspace-stagger max-w-2xl mb-16 text-slate-300 relative z-10 font-medium"
+            style={{ fontSize: 'clamp(1.1rem, 1.5vw, 1.25rem)' }}
           >
             Rent physical and digital ad spaces across India. List your property or launch your next campaign.
           </p>

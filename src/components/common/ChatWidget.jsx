@@ -23,13 +23,13 @@ ADVMEN Technologies is a premier IT solutions and digital agency offering:
 
 Official Company Contacts:
 - Email: info@advmen.com
-- Phone / WhatsApp: +91 95196 02401
+- Phone / WhatsApp: +91 83750 08009
 - Location: Jharsa Village, Sector 38, Gurugram (Gurgaon), Haryana, India
 
 Guidelines for AI:
 1. Always be polite, professional, concise, and helpful.
 2. Give clean, well-formatted answers (use bullet points when listing services or features).
-3. Always suggest contacting info@advmen.com or +91 95196 02401 for custom quotes or project discussions.`
+3. Always suggest contacting info@advmen.com or +91 83750 08009 for custom quotes or project discussions.`
 
 const ChatWidget = () => {
   const [isChatOpen, setIsChatOpen] = useState(false)
@@ -111,18 +111,18 @@ const ChatWidget = () => {
       return 'Main ADVMEN Technologies ka Smart AI Assistant hu! Main aapko Web/App Development, Digital Marketing, Internships aur hiring processes ke baare me jankari deta hu. Aap kya janna chahte hain?'
     }
     if (msg.includes('service') || msg.includes('kya karte') || msg.includes('what do you do') || msg.includes('work')) {
-      return 'Hum offer karte hain:\n• Web & Web App Development (MERN, React, Next.js)\n• Mobile App Development (iOS & Android)\n• Digital Marketing & SEO\n• Branding & Media Production\n\nContact us: info@advmen.com | +91 95196 02401'
+      return 'Hum offer karte hain:\n• Web & Web App Development (MERN, React, Next.js)\n• Mobile App Development (iOS & Android)\n• Digital Marketing & SEO\n• Branding & Media Production\n\nContact us: info@advmen.com | +91 83750 08009'
     }
     if (msg.includes('contact') || msg.includes('email') || msg.includes('phone') || msg.includes('number') || msg.includes('location')) {
-      return 'Official Contact Details:\n• Email: info@advmen.com\n• Phone/WhatsApp: +91 95196 02401\n• Address: Sector 38, Gurugram, Haryana'
+      return 'Official Contact Details:\n• Email: info@advmen.com\n• Phone/WhatsApp: +91 83750 08009\n• Address: Sector 38, Gurugram, Haryana'
     }
     if (msg.includes('job') || msg.includes('career') || msg.includes('intern') || msg.includes('apply')) {
       return 'Careers page par jaakar Internship aur Full-Time roles ke liye apply karein. Apply karte hi Intern candidates ko official WhatsApp group link milega!'
     }
     if (msg.includes('price') || msg.includes('cost') || msg.includes('rate') || msg.includes('kitna')) {
-      return 'Pricing project requirement ke anusar calculate hoti hai. Custom quote ke liye info@advmen.com par email karein ya +91 95196 02401 par call karein.'
+      return 'Pricing project requirement ke anusar calculate hoti hai. Custom quote ke liye info@advmen.com par email karein ya +91 83750 08009 par call karein.'
     }
-    return 'ADVMEN Technologies me aapka swagat hai! Kisi bhi project inquiry ke liye info@advmen.com par email karein ya +91 95196 02401 par call/WhatsApp karein.'
+    return 'ADVMEN Technologies me aapka swagat hai! Kisi bhi project inquiry ke liye info@advmen.com par email karein ya +91 83750 08009 par call/WhatsApp karein.'
   }
 
   const handleSendMessage = async () => {
