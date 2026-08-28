@@ -75,7 +75,7 @@ const AboutHero = () => {
                   lineHeight: 1.08,
                 }}
               >
-                Govind Goyal
+                Mr. Govind Goyal
               </h1>
               <div className="text-[var(--color-orange)] font-semibold text-lg sm:text-xl font-body">
                 Co-Founder & Director
