@@ -156,22 +156,26 @@ const CaseStudies = () => {
               >
                 <div>
                   {/* Top Image Banner */}
-                  <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-gray-900">
+                  <div className="relative w-full aspect-[16/10] sm:h-60 overflow-hidden bg-gray-950">
                     <img
                       src={getImageUrl(study.image)}
                       alt={study.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/Image/advmen_service1.jpeg';
+                      }}
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     />
                     <div
-                      className="absolute inset-0"
+                      className="absolute inset-0 pointer-events-none"
                       style={{
-                        background: 'linear-gradient(to top, rgba(18, 18, 21, 0.85) 0%, transparent 60%)',
+                        background: 'linear-gradient(to top, rgba(18, 18, 21, 0.5) 0%, transparent 40%)',
                       }}
                     />
 
                     {/* Category Pill */}
                     <span
-                      className="absolute top-3 left-3 px-3 py-1 rounded-full text-[0.7rem] font-bold tracking-wider uppercase"
+                      className="absolute top-3 left-3 px-3 py-1 rounded-full text-[0.675rem] font-bold tracking-wider uppercase z-10"
                       style={{
                         background: 'rgba(18, 18, 21, 0.85)',
                         border: '1px solid rgba(255, 107, 0, 0.4)',
