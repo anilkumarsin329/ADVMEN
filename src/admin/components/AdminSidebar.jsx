@@ -35,6 +35,7 @@ const navigationItems = [
   { label: 'Catalog Orders', href: '/admin/catalog-orders', icon: FiBox },
   { label: 'Service',   href: '/admin/services',  icon: FiSettings },
   { label: 'Work',      href: '/admin/portfolio', icon: FiLayers },
+  { label: 'Case Studies', href: '/admin/case-studies', icon: FiFileText },
   { label: 'Clients',   href: '/admin/clients',   icon: FiAward },
   { label: 'Careers',   href: '/admin/careers',   icon: FiBriefcase },
   { label: 'Applications', href: '/admin/applications', icon: FiUsers },

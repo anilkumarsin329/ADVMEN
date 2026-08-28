@@ -8,92 +8,39 @@
  * - Direct routing to full case study detail views
  */
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiTrendingUp } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
-
-const caseStudies = [
-  {
-    id: 1,
-    title: 'E-Commerce Platform Redesign',
-    client: 'TechStore Inc.',
-    category: 'Web Development',
-    summary: 'Complete e-commerce platform redesign with modern UI, optimized checkout flow, and mobile-first performance.',
-    metrics: [
-      { value: '+15%', label: 'Conversion Rate' },
-      { value: '30%', label: 'Faster Load' },
-    ],
-    image: '/Image/advmen_service3.jpeg',
-  },
-  {
-    id: 2,
-    title: 'Digital Marketing Campaign',
-    client: 'Fashion Brand Co.',
-    category: 'Digital Marketing',
-    summary: 'Integrated digital marketing campaign driving multi-channel lead acquisition and brand awareness.',
-    metrics: [
-      { value: '+40%', label: 'Monthly Leads' },
-      { value: '+25%', label: 'Social Engagement' },
-    ],
-    image: '/Image/advmen_service6.jpeg',
-  },
-  {
-    id: 3,
-    title: 'Mobile App Development',
-    client: 'FitLife Technologies',
-    category: 'App Development',
-    summary: 'Cross-platform fitness mobile application built with real-time tracking and active community features.',
-    metrics: [
-      { value: '500+', label: 'App Downloads' },
-      { value: '4.5/5', label: 'Store Rating' },
-    ],
-    image: '/Image/advmen_service1.jpeg',
-  },
-  {
-    id: 4,
-    title: 'SEO & Content Strategy',
-    client: 'Global Tech Solutions',
-    category: 'SEO & Content',
-    summary: 'Technical SEO overhaul, keyword mapping, and content optimization positioning client on Page 1.',
-    metrics: [
-      { value: '+60%', label: 'Organic Traffic' },
-      { value: 'Page 1', label: 'Keyword Rankings' },
-    ],
-    image: '/Image/advmen_service9.jpeg',
-  },
-  {
-    id: 5,
-    title: 'Brand Identity & Design System',
-    client: 'StartUp Ventures Inc.',
-    category: 'Branding',
-    summary: 'Complete brand guidelines, visual identity design system, and UI kit for high-impact market launch.',
-    metrics: [
-      { value: '5+', label: 'Brand Assets' },
-      { value: '2 Weeks', label: 'Fast Delivery' },
-    ],
-    image: '/Image/advmen_service4.jpeg',
-  },
-  {
-    id: 6,
-    title: 'Video Production & Media',
-    client: 'Premium Lifestyle Brand',
-    category: 'Media Production',
-    summary: 'High-converting video production and lifestyle product photography for social media campaigns.',
-    metrics: [
-      { value: '5K+', label: 'Video Views' },
-      { value: '+20%', label: 'Engagement Lift' },
-    ],
-    image: '/Image/advmen_service5.jpeg',
-  },
-]
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
 const CaseStudies = () => {
   const sectionRef = useRef(null)
   const hasAnimated = useRef(false)
+  const [caseStudies, setCaseStudies] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (hasAnimated.current || !sectionRef.current) return
+    const fetchCaseStudies = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/case-studies`)
+        const data = await response.json()
+        if (response.ok && data.data) {
+          setCaseStudies(data.data)
+        }
+      } catch (err) {
+        console.warn('Failed to fetch case studies:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchCaseStudies()
+  }, [])
+
+  useEffect(() => {
+    if (loading || caseStudies.length === 0 || !sectionRef.current) return
+
+    let ctx
 
     const obs = new IntersectionObserver(
       ([entry]) => {
@@ -101,40 +48,32 @@ const CaseStudies = () => {
         hasAnimated.current = true
         obs.disconnect()
 
-        const ctx = gsap.context(() => {
-          gsap.from('.case-headline', {
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            ease: 'power3.out',
-          })
+        ctx = gsap.context(() => {
+          gsap.fromTo('.case-headline',
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
+          )
 
-          gsap.from('.case-desc', {
-            opacity: 0,
-            y: 20,
-            duration: 0.7,
-            ease: 'power3.out',
-            delay: 0.1,
-          })
+          gsap.fromTo('.case-desc',
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 0.1 }
+          )
 
-          gsap.from('.case-study-card', {
-            opacity: 0,
-            y: 36,
-            duration: 0.75,
-            ease: 'power3.out',
-            stagger: 0.12,
-            delay: 0.2,
-          })
+          gsap.fromTo('.case-study-card',
+            { opacity: 0, y: 36 },
+            { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out', stagger: 0.12, delay: 0.2 }
+          )
         }, sectionRef)
-
-        return () => ctx.revert()
       },
       { threshold: 0.15 }
     )
 
     obs.observe(sectionRef.current)
-    return () => obs.disconnect()
-  }, [])
+    return () => {
+      obs.disconnect()
+      if (ctx) ctx.revert()
+    }
+  }, [loading, caseStudies])
 
   return (
     <section
@@ -207,7 +146,7 @@ const CaseStudies = () => {
         {/* Compact Case Studies Grid (3 Columns) */}
         <div id="case-studies-section" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
           {caseStudies.map((study) => (
-            <div key={study.id} className="case-study-card group flex flex-col h-full">
+            <div key={study._id || study.id} className="case-study-card group flex flex-col h-full">
               <div
                 className="relative card-glass flex flex-col justify-between h-full"
                 style={{
@@ -219,7 +158,7 @@ const CaseStudies = () => {
                   {/* Top Image Banner */}
                   <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-gray-900">
                     <img
-                      src={study.image}
+                      src={getImageUrl(study.image)}
                       alt={study.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -305,7 +244,7 @@ const CaseStudies = () => {
                 {/* Card CTA Footer */}
                 <div className="px-6 pb-6 pt-2">
                   <Link
-                    to={`/work/case-study-${study.id}`}
+                    to={`/work/${study.slug || `case-study-${study.id}`}`}
                     state={{ from: 'case-studies' }}
                     className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold text-white transition-all duration-300"
                     style={{

@@ -53,59 +53,48 @@ const Portfolio = () => {
   useEffect(() => {
     if (hasAnimated.current || !sectionRef.current) return
 
+    let ctx
+
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting || hasAnimated.current) return
         hasAnimated.current = true
         obs.disconnect()
 
-        const ctx = gsap.context(() => {
+        ctx = gsap.context(() => {
           // Headline
-          gsap.from('.portfolio-headline', {
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            ease: 'expo.out',
-          })
+          gsap.fromTo('.portfolio-headline',
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' }
+          )
 
           // Description
-          gsap.from('.portfolio-desc', {
-            opacity: 0,
-            y: 20,
-            duration: 0.7,
-            ease: 'expo.out',
-            delay: 0.1,
-          })
+          gsap.fromTo('.portfolio-desc',
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', delay: 0.1 }
+          )
 
           // Filter buttons
-          gsap.from('.portfolio-filter-btn', {
-            opacity: 0,
-            y: 15,
-            duration: 0.6,
-            ease: 'expo.out',
-            stagger: 0.05,
-            delay: 0.2,
-          })
+          gsap.fromTo('.portfolio-filter-btn',
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'expo.out', stagger: 0.05, delay: 0.2 }
+          )
 
           // Cards
-          gsap.from('.portfolio-card', {
-            opacity: 0,
-            y: 40,
-            scale: 0.95,
-            duration: 0.7,
-            ease: 'expo.out',
-            stagger: 0.08,
-            delay: 0.3,
-          })
+          gsap.fromTo('.portfolio-card',
+            { opacity: 0, y: 40, scale: 0.95 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'expo.out', stagger: 0.08, delay: 0.3 }
+          )
         }, sectionRef)
-
-        return () => ctx.revert()
       },
       { threshold: 0.15 }
     )
 
     obs.observe(sectionRef.current)
-    return () => obs.disconnect()
+    return () => {
+      obs.disconnect()
+      if (ctx) ctx.revert()
+    }
   }, [])
 
   return (

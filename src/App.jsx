@@ -89,6 +89,7 @@ const AdminCatalog   = lazyWithRetry(() => import('@/admin/pages/AdminCatalog'))
 const AdminCatalogOrders = lazyWithRetry(() => import('@/admin/pages/AdminCatalogOrders'))
 const AdminNewsletter = lazyWithRetry(() => import('@/admin/pages/AdminNewsletter'))
 const AdminClients    = lazyWithRetry(() => import('@/admin/pages/AdminClients'))
+const AdminCaseStudies = lazyWithRetry(() => import('@/admin/pages/AdminCaseStudies'))
 
 const AdminAdSpaces    = lazyWithRetry(() => import('@/admin/pages/AdminAdSpaces'))
 const AdminAdBookings  = lazyWithRetry(() => import('@/admin/pages/AdminAdBookings'))
@@ -194,6 +195,7 @@ const AdminRoutes = () => (
       <Route path="ad-analytics" element={<AdminLayout><AdminAdAnalytics /></AdminLayout>} />
       <Route path="newsletter"   element={<AdminLayout><AdminNewsletter /></AdminLayout>} />
       <Route path="clients"      element={<AdminLayout><AdminClients /></AdminLayout>} />
+      <Route path="case-studies"  element={<AdminLayout><AdminCaseStudies /></AdminLayout>} />
     </Route>
   </Routes>
 )

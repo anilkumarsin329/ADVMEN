@@ -15,6 +15,120 @@ import PageTransition from '@components/common/PageTransition'
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
 
+import { portfolioProjects } from '@data/portfolio'
+
+const fallbackCaseStudies = [
+  ...portfolioProjects,
+  {
+    id: 1,
+    slug: 'case-study-1',
+    title: 'E-Commerce Platform Redesign',
+    client: 'TechStore Inc.',
+    category: 'Web Development',
+    tagline: 'Complete e-commerce platform redesign with modern UI, optimized checkout flow, and mobile-first performance.',
+    description: 'Complete e-commerce platform redesign with modern UI, optimized checkout flow, and mobile-first performance.',
+    challenge: 'Legacy e-commerce store was suffering from slow page load speeds, high cart abandonment, and poor mobile user experience.',
+    solution: 'Designed and built a modern headless e-commerce application with React and Next.js, featuring instantaneous page transitions and optimized checkout.',
+    results: [
+      { metric: '+15%', label: 'Conversion Rate' },
+      { metric: '30%', label: 'Faster Load Speed' },
+    ],
+    image: '/Image/advmen_service3.jpeg',
+    tech: ['React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Stripe'],
+    tags: ['E-Commerce', 'Web Development', 'UI/UX']
+  },
+  {
+    id: 2,
+    slug: 'case-study-2',
+    title: 'Digital Marketing Campaign',
+    client: 'Fashion Brand Co.',
+    category: 'Digital Marketing',
+    tagline: 'Integrated digital marketing campaign driving multi-channel lead acquisition and brand awareness.',
+    description: 'Integrated digital marketing campaign driving multi-channel lead acquisition and brand awareness.',
+    challenge: 'Brand lacked multi-channel digital visibility and high customer acquisition cost across paid channels.',
+    solution: 'Implemented targeted social media ad campaigns, influencer marketing partnerships, and data-driven conversion funnel optimization.',
+    results: [
+      { metric: '+40%', label: 'Monthly Leads' },
+      { metric: '+25%', label: 'Social Engagement' },
+    ],
+    image: '/Image/advmen_service6.jpeg',
+    tech: ['Google Ads', 'Meta Ads', 'SEO', 'Analytics', 'Funnel Design'],
+    tags: ['Digital Marketing', 'Growth', 'Lead Gen']
+  },
+  {
+    id: 3,
+    slug: 'case-study-3',
+    title: 'Mobile App Development',
+    client: 'FitLife Technologies',
+    category: 'App Development',
+    tagline: 'Cross-platform fitness mobile application built with real-time tracking and active community features.',
+    description: 'Cross-platform fitness mobile application built with real-time tracking and active community features.',
+    challenge: 'Users needed a seamless, real-time activity tracker with social features that worked offline.',
+    solution: 'Built a cross-platform mobile application using React Native with local caching, health API integrations, and community leaderboards.',
+    results: [
+      { metric: '500+', label: 'App Downloads' },
+      { metric: '4.5/5', label: 'Store Rating' },
+    ],
+    image: '/Image/advmen_service1.jpeg',
+    tech: ['React Native', 'Firebase', 'GraphQL', 'HealthKit'],
+    tags: ['App Development', 'Mobile', 'Fitness']
+  },
+  {
+    id: 4,
+    slug: 'case-study-4',
+    title: 'SEO & Content Strategy',
+    client: 'Global Tech Solutions',
+    category: 'SEO & Content',
+    tagline: 'Technical SEO overhaul, keyword mapping, and content optimization positioning client on Page 1.',
+    description: 'Technical SEO overhaul, keyword mapping, and content optimization positioning client on Page 1.',
+    challenge: 'Low domain authority and organic search visibility compared to established market competitors.',
+    solution: 'Executed a complete technical SEO audit, restructured site architecture, and launched high-converting content hubs.',
+    results: [
+      { metric: '+60%', label: 'Organic Traffic' },
+      { metric: 'Page 1', label: 'Keyword Rankings' },
+    ],
+    image: '/Image/advmen_service9.jpeg',
+    tech: ['Technical SEO', 'Content Strategy', 'Ahrefs', 'Search Console'],
+    tags: ['SEO', 'Content', 'Growth']
+  },
+  {
+    id: 5,
+    slug: 'case-study-5',
+    title: 'Brand Identity & Design System',
+    client: 'StartUp Ventures Inc.',
+    category: 'Branding',
+    tagline: 'Complete brand guidelines, visual identity design system, and UI kit for high-impact market launch.',
+    description: 'Complete brand guidelines, visual identity design system, and UI kit for high-impact market launch.',
+    challenge: 'Inconsistent brand messaging and lack of a structured UI component library for upcoming products.',
+    solution: 'Crafted a holistic brand strategy, logo guidelines, typography, and a comprehensive Figma design system.',
+    results: [
+      { metric: '5+', label: 'Brand Assets' },
+      { metric: '2 Weeks', label: 'Fast Delivery' },
+    ],
+    image: '/Image/advmen_service4.jpeg',
+    tech: ['Figma', 'Brand Strategy', 'UI/UX Design', 'Design Systems'],
+    tags: ['Branding', 'Design System', 'UI/UX']
+  },
+  {
+    id: 6,
+    slug: 'case-study-6',
+    title: 'Video Production & Media',
+    client: 'Premium Lifestyle Brand',
+    category: 'Media Production',
+    tagline: 'High-converting video production and lifestyle product photography for social media campaigns.',
+    description: 'High-converting video production and lifestyle product photography for social media campaigns.',
+    challenge: 'Low ad engagement rates on social channels due to generic stock imagery.',
+    solution: 'Produced high-definition lifestyle promotional videos and commercial product photography tailored for high-converting ads.',
+    results: [
+      { metric: '5K+', label: 'Video Views' },
+      { metric: '+20%', label: 'Engagement Lift' },
+    ],
+    image: '/Image/advmen_service5.jpeg',
+    tech: ['Video Production', '4K Cinema', 'Color Grading', 'Motion Graphics'],
+    tags: ['Media Production', 'Video', 'Creative']
+  }
+]
+
 const WorkDetail = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
@@ -26,16 +140,46 @@ const WorkDetail = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/portfolio/${slug}`)
+        // First try Case Studies API endpoint
+        let res = await fetch(`${API_BASE_URL}/api/case-studies/${slug}`)
+        if (res.ok) {
+          const data = await res.json()
+          if (data.data) {
+            setDetails(data.data)
+            return
+          } else if (data.title) {
+            setDetails(data)
+            return
+          }
+        }
+        
+        // Next try Portfolio API endpoint
+        res = await fetch(`${API_BASE_URL}/api/portfolio/${slug}`)
         if (res.ok) {
           const data = await res.json()
           setDetails(data)
+          return
+        }
+
+        // Fallback to static items
+        const fallback = fallbackCaseStudies.find(
+          item => item.slug === slug || String(item.id) === String(slug) || `case-study-${item.id}` === slug
+        )
+        if (fallback) {
+          setDetails(fallback)
         } else {
           navigate('/404')
         }
       } catch (err) {
-        console.warn('API error, redirecting to 404:', err)
-        navigate('/404')
+        console.warn('API error, checking fallback data:', err)
+        const fallback = fallbackCaseStudies.find(
+          item => item.slug === slug || String(item.id) === String(slug) || `case-study-${item.id}` === slug
+        )
+        if (fallback) {
+          setDetails(fallback)
+        } else {
+          navigate('/404')
+        }
       } finally {
         setLoading(false)
       }
