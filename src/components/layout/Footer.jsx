@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import { footerLinks } from '@data/navigation'
 import { API_BASE_URL, COMPANY, SOCIAL } from '@utils/constants'
 import { FiInstagram, FiLinkedin, FiTwitter, FiFacebook, FiYoutube } from 'react-icons/fi'
+import BrandLogo from '@components/common/BrandLogo'
 
 const socialIcons = [
   { icon: FiInstagram, href: SOCIAL.instagram, label: 'Instagram' },
@@ -95,11 +96,7 @@ const Footer = () => {
           
           <div className="lg:col-span-5 flex flex-col gap-5">
             <Link to="/" className="inline-block" data-cursor="hover">
-              <img
-                src="/ADVMEN logo.png"
-                alt={COMPANY.shortName}
-                className="h-8 w-auto object-contain"
-              />
+              <BrandLogo size="normal" />
             </Link>
             <p
               style={{

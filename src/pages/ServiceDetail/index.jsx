@@ -7,13 +7,16 @@
  */
 
 import { useParams, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import ServiceIcon   from '@components/sections/Services/ServiceIcon'
-import { services } from '@data/services'
+import { getServiceBySlug } from '@data/services'
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { FiX } from 'react-icons/fi'
 
-const workflowSteps = [
+const defaultWorkflowSteps = [
   { step: '01', title: 'Discovery & Mapping', desc: 'We align on requirements, audit existing architectures, and design strategic blueprints.' },
   { step: '02', title: 'Creative Engineering', desc: 'Our visual artists build design systems while engineers code fast, interactive solutions.' },
   { step: '03', title: 'Deploy & Optimize', desc: 'We launch on production servers, run speed test checks, and scale organic search traffic.' },
@@ -21,7 +24,72 @@ const workflowSteps = [
 
 const ServiceDetail = () => {
   const { slug }   = useParams()
-  const service    = services.find((s) => s.slug === slug)
+  let decodedSlug = slug
+  try {
+    decodedSlug = decodeURIComponent(slug || '')
+  } catch (e) {
+    /* ignore decode error */
+  }
+
+  const fallback   = getServiceBySlug(slug) || getServiceBySlug(decodedSlug)
+  const [serviceData, setServiceData] = useState(fallback)
+  const [loading, setLoading]         = useState(!fallback)
+
+  useEffect(() => {
+    let isMounted = true
+    const localMatch = getServiceBySlug(slug) || getServiceBySlug(decodedSlug)
+    if (localMatch) {
+      setServiceData((prev) => prev || localMatch)
+    }
+
+    const fetchServiceData = async () => {
+      try {
+        const fetchSlug = encodeURIComponent(slug || '')
+        const res = await fetch(`${API_BASE_URL}/api/services/${fetchSlug}`)
+        if (res.ok) {
+          const data = await res.json()
+          if (data && (data.title || data.name) && isMounted) {
+            setServiceData({
+              ...localMatch,
+              ...data,
+              title: data.title || data.name || localMatch?.title,
+              features: (Array.isArray(data.features) && data.features.length > 0)
+                ? data.features
+                : (data.featuresString ? data.featuresString.split(',').map(s => s.trim()) : localMatch?.features || []),
+              image: data.image
+                ? (data.image.startsWith('/') ? getImageUrl(data.image) : data.image)
+                : (localMatch?.image || '/Image/advmen_service1.jpeg'),
+              icon: data.icon || localMatch?.icon || 'web',
+              workflow: (Array.isArray(data.workflow) && data.workflow.length > 0)
+                ? data.workflow
+                : (localMatch?.workflow || defaultWorkflowSteps)
+            })
+          }
+        }
+      } catch (err) {
+        console.warn('API error fetching service detail:', err)
+      } finally {
+        if (isMounted) setLoading(false)
+      }
+    }
+
+    fetchServiceData()
+    return () => { isMounted = false }
+  }, [slug])
+
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false)
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsImageModalOpen(false)
+    }
+    if (isImageModalOpen) {
+      window.addEventListener('keydown', handleKeyDown)
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isImageModalOpen])
+
+  const service = serviceData || getServiceBySlug(slug) || getServiceBySlug(decodedSlug)
 
   if (!service) {
     return (
@@ -170,29 +238,52 @@ const ServiceDetail = () => {
 
           </div>
 
-          {/* Featured Image Banner */}
+          {/* Featured Image Banner - Industrial Grand Design (Zero Cropping) */}
           <section className="mb-20">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 1.0, ease: 'easeOut' }}
-              style={{
-                width: '100%',
-                aspectRatio: '21 / 9',
-                borderRadius: '1.5rem',
-                overflow: 'hidden',
-                background: 'linear-gradient(135deg, rgba(255,107,0,0.05) 0%, rgba(255,107,0,0.02) 100%)',
-                border: '1px solid rgba(255,107,0,0.12)',
-              }}
-            >
-              <img
-                src={service.image}
-                alt={service.title}
-                loading="lazy"
-                className="w-full h-full object-cover opacity-75 hover:opacity-90 hover:scale-101 transition-all duration-750 pointer-events-none"
-              />
-            </motion.div>
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                onClick={() => setIsImageModalOpen(true)}
+                className="relative w-full rounded-2xl overflow-hidden border border-[rgba(255,107,0,0.25)] shadow-2xl bg-[#090a0f] flex items-center justify-center p-3 sm:p-6 cursor-pointer group min-h-[260px] max-h-[480px] md:max-h-[520px]"
+                title="Click to expand full image"
+              >
+                {/* Ambient Blurred Glow Background */}
+                {service.image && (
+                  <img
+                    src={service.image}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-30 scale-110 pointer-events-none select-none transition-opacity duration-500 group-hover:opacity-45"
+                  />
+                )}
+
+                {/* Industrial Glass Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none z-0" />
+
+                {/* Main Foreground Image - object-contain prevents ANY cropping */}
+                {service.image ? (
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    loading="lazy"
+                    className="relative z-10 w-full h-auto max-h-[450px] md:max-h-[490px] object-contain mx-auto rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]"
+                  />
+                ) : (
+                  <div className="py-20 text-center text-gray-500 font-mono text-sm relative z-10">No Graphic Image Available</div>
+                )}
+
+                {/* Hover Click-to-Expand Indicator Badge */}
+                <div className="absolute bottom-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-black/80 border border-[rgba(255,107,0,0.3)] text-xs font-mono text-gray-200 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center gap-2 pointer-events-none backdrop-blur-md shadow-lg">
+                  <svg className="w-3.5 h-3.5 text-[var(--color-orange)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                  Click to Expand
+                </div>
+              </motion.div>
+            </div>
           </section>
 
           {/* Execution Timeline / Workflow */}
@@ -203,7 +294,7 @@ const ServiceDetail = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {workflowSteps.map((stepData) => (
+              {(service.workflow || defaultWorkflowSteps).map((stepData) => (
                 <div
                   key={stepData.step}
                   className="p-8 rounded-2xl flex flex-col gap-4"
@@ -290,6 +381,42 @@ const ServiceDetail = () => {
 
         </div>
       </section>
+
+      {/* Fullscreen Image Lightbox Modal */}
+      {isImageModalOpen && service.image && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
+          onClick={() => setIsImageModalOpen(false)}
+        >
+          <div 
+            className="relative max-w-6xl max-h-[92vh] w-full flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsImageModalOpen(false)}
+              className="absolute -top-12 right-0 sm:right-2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 z-10 flex items-center justify-center border border-white/10"
+              title="Close (Esc)"
+            >
+              <FiX size={24} />
+            </button>
+
+            {/* Expanded Full Resolution Image */}
+            <div className="w-full h-full flex items-center justify-center overflow-auto rounded-2xl border border-[rgba(255,107,0,0.3)] bg-black/70 shadow-2xl p-2 sm:p-4">
+              <img
+                src={service.image}
+                alt={service.title}
+                className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-xl shadow-2xl select-none"
+              />
+            </div>
+            
+            {/* Caption */}
+            <div className="mt-3 text-center text-xs font-mono text-gray-400 max-w-xl truncate">
+              {service.title}
+            </div>
+          </div>
+        </div>
+      )}
     </PageTransition>
   )
 }

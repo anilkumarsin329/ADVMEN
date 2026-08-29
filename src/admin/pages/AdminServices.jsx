@@ -292,9 +292,15 @@ const AdminServices = () => {
       .map(f => f.trim())
       .filter(f => f !== '')
 
+    const cleanSlug = (formValues.slug || formValues.title)
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+
     const payload = {
       title: formValues.title,
-      slug: formValues.slug,
+      slug: cleanSlug,
       tagline: formValues.tagline,
       image: formValues.image,
       description: formValues.description,

@@ -104,12 +104,14 @@ const AdminLogin = () => {
               padding: '48px',
             }}
           >
-            {/* Logo */}
-            <img 
-              src="/ADVMEN logo.png" 
-              alt="ADVMEN Logo" 
-              className="h-12 w-auto mb-6 object-contain"
-            />
+            <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center p-2 mb-6 bg-neutral-900 border-2 border-[var(--color-orange)]/40 shadow-[0_0_20px_rgba(255,107,0,0.25)] mx-auto">
+              <img 
+                src="/ADVMEN logo.png" 
+                alt="ADVMEN Logo" 
+                className="w-full h-full object-contain"
+                style={{ mixBlendMode: 'screen' }}
+              />
+            </div>
 
             {/* Headers */}
             <div className="text-center mb-8">

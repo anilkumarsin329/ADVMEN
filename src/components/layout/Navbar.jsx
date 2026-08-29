@@ -20,6 +20,7 @@ import { navLinks } from '@data/navigation'
 import { COMPANY } from '@utils/constants'
 import { cn } from '@utils/formatters'
 import { gsap } from '@utils/gsapConfig'
+import BrandLogo from '@components/common/BrandLogo'
 
 // ── Mobile menu link animation variants ───────────────────────
 const menuItemVariants = {
@@ -190,13 +191,7 @@ const Navbar = () => {
             className="relative z-10 flex items-center group"
             aria-label="ADVMEN Technologies — Home"
           >
-            <img
-              src="/ADVMEN logo.png"
-              alt={COMPANY.shortName}
-              className="h-10 sm:h-11 lg:h-12 w-auto object-contain transition-all duration-300 group-hover:opacity-85"
-              style={{ mixBlendMode: 'screen' }}
-              draggable="false"
-            />
+            <BrandLogo />
           </Link>
 
           <nav

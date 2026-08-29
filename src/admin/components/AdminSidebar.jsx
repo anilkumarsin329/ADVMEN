@@ -73,11 +73,14 @@ const AdminSidebarContent = ({ isCollapsed, toggleSidebar }) => {
       {/* Top Section — Logo & Mobile Close */}
       <div className={`flex items-center px-2 mb-8 shrink-0 ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
           <div className="flex items-center gap-3">
-            <img 
-              src="/ADVMEN logo.png" 
-              alt="ADVMEN Logo" 
-              className="h-8 w-auto object-contain"
-            />
+            <div className="w-9 h-9 rounded-full overflow-hidden flex items-center justify-center p-1 bg-neutral-900 border border-[rgba(255,107,0,0.4)] shadow-md shrink-0">
+              <img 
+                src="/ADVMEN logo.png" 
+                alt="ADVMEN Logo" 
+                className="w-full h-full object-contain"
+                style={{ mixBlendMode: 'screen' }}
+              />
+            </div>
             {!isCollapsed && (
               <div className="flex flex-col">
                 <span 

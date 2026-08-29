@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { getBlogBySlug, blogArticles } from '@data/blog'
-import { FiArrowLeft, FiShare2, FiCopy } from 'react-icons/fi'
+import { FiArrowLeft, FiShare2, FiCopy, FiX, FiMaximize2 } from 'react-icons/fi'
 import { API_BASE_URL } from '@utils/constants'
 
 const BlogPost = () => {
@@ -16,6 +16,7 @@ const BlogPost = () => {
   const navigate = useNavigate()
   const [article, setArticle] = useState(() => getBlogBySlug(slug))
   const [loading, setLoading] = useState(true)
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false)
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -41,6 +42,16 @@ const BlogPost = () => {
       navigate('/404')
     }
   }, [loading, article, navigate])
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsImageModalOpen(false)
+    }
+    if (isImageModalOpen) {
+      window.addEventListener('keydown', handleKeyDown)
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isImageModalOpen])
 
   if (!article) return null
 
@@ -208,17 +219,46 @@ const BlogPost = () => {
       {/* Featured Image */}
       <section
         style={{
-          paddingBottom: '4rem',
+          paddingBottom: '3rem',
           background: 'var(--color-black)',
         }}
       >
         <div className="container">
-          <div className="w-full aspect-video rounded-2xl overflow-hidden relative border border-[rgba(255,107,0,0.15)] shadow-2xl bg-gray-900">
-            <img
-              src={article.image}
-              alt={article.title}
-              className="w-full h-full object-cover"
-            />
+          <div className="max-w-4xl mx-auto">
+            <div 
+              onClick={() => setIsImageModalOpen(true)}
+              className="relative w-full rounded-2xl overflow-hidden border border-[rgba(255,107,0,0.2)] shadow-2xl bg-[#090a0f] flex items-center justify-center p-2 sm:p-4 cursor-pointer group min-h-[240px] max-h-[480px] md:max-h-[520px]"
+              title="Click to view full image"
+            >
+              {/* Ambient blurred glow background */}
+              {article.image && (
+                <img
+                  src={article.image}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-25 scale-110 pointer-events-none select-none transition-opacity duration-300 group-hover:opacity-40"
+                />
+              )}
+
+              {/* Main image with object-contain to prevent cropping */}
+              {article.image ? (
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  className="relative z-10 w-full h-auto max-h-[450px] md:max-h-[490px] object-contain mx-auto rounded-xl transition-transform duration-300 group-hover:scale-[1.01]"
+                />
+              ) : (
+                <div className="py-16 text-center text-gray-500 font-mono text-sm">No Image Available</div>
+              )}
+
+              {/* Hover Badge for zoom hint */}
+              <div className="absolute bottom-3 right-3 z-20 px-3 py-1.5 rounded-lg bg-black/70 border border-white/10 text-xs font-mono text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5 pointer-events-none backdrop-blur-md">
+                <svg className="w-3.5 h-3.5 text-[var(--color-orange)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+                Click to Expand
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -495,6 +535,42 @@ const BlogPost = () => {
           </div>
         </div>
       </section>
+
+      {/* Fullscreen Image Preview Lightbox Modal */}
+      {isImageModalOpen && article.image && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
+          onClick={() => setIsImageModalOpen(false)}
+        >
+          <div 
+            className="relative max-w-6xl max-h-[90vh] w-full flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsImageModalOpen(false)}
+              className="absolute -top-12 right-0 sm:right-2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 z-10 flex items-center justify-center"
+              title="Close (Esc)"
+            >
+              <FiX size={24} />
+            </button>
+
+            {/* Expanded Full Image */}
+            <div className="w-full h-full flex items-center justify-center overflow-auto rounded-2xl border border-white/10 bg-black/50 shadow-2xl p-2">
+              <img
+                src={article.image}
+                alt={article.title}
+                className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-xl shadow-2xl select-none"
+              />
+            </div>
+            
+            {/* Caption */}
+            <div className="mt-3 text-center text-xs font-mono text-gray-400 max-w-xl truncate">
+              {article.title}
+            </div>
+          </div>
+        </div>
+      )}
     </PageTransition>
   )
 }
