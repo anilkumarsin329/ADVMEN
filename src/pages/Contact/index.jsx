@@ -186,9 +186,11 @@ const Contact = () => {
                 </h3>
                 <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
                   ADVMEN Technologies Pvt. Ltd.<br />
-                  Jharsa Village, Sector 38,<br />
-                  Gurugram (Gurgaon), Haryana, India<br />
-                  <span className="text-xs text-[var(--color-text-tertiary)] mt-2 block">Near Medanta – The Medicity</span>
+                  Orchid Center, 3rd Floor, Golf Course Road, SEC-53,<br />
+                  Gurugram, HR - 122002, IND<br />
+                  <span className="text-xs text-[var(--color-text-tertiary)] mt-2 block">
+                    Circle: Gurugram Circle-2 | Division: South City | Sub Division: SEC-56
+                  </span>
                 </p>
                 <div className="flex flex-col gap-3 font-body text-xs text-[var(--color-text-secondary)]">
                   <span>Mon - Fri: 9:00 AM - 6:00 PM (IST)</span>
@@ -253,7 +255,7 @@ const Contact = () => {
               >
                 <div className="w-full h-full rounded-xl overflow-hidden relative">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.2!2d77.0268!3d28.4089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18b0e3b3b3b3%3A0xabcdef1234567890!2sSector%2038%2C%20Gurugram%2C%20Haryana%20122001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.1354!2d77.0984!3d28.4418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18728a3f81e7%3A0x6b4474ab8bc8a4fa!2sOrchid%20Center%2C%20Golf%20Course%20Rd%2C%20Sector%2053%2C%20Gurugram%2C%20Haryana%20122002!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 'none' }}

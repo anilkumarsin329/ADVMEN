@@ -74,10 +74,10 @@ const SEOHead = ({
           },
           address: {
             '@type':           'PostalAddress',
-            streetAddress:     'Jharsa Village, Sector 38',
+            streetAddress:     'Orchid Center, 3rd Floor, Golf Course Road, SEC-53',
             addressLocality:   'Gurugram',
-            addressRegion:     'Haryana',
-            postalCode:        '122001',
+            addressRegion:     'HR',
+            postalCode:        '122002',
             addressCountry:    'IN',
           },
         })}
@@ -97,10 +97,10 @@ const SEOHead = ({
           areaServed:     ['IN', 'US', 'UK', 'CA', 'AU'],
           address: {
             '@type':           'PostalAddress',
-            streetAddress:     'Jharsa Village, Sector 38',
+            streetAddress:     'Orchid Center, 3rd Floor, Golf Course Road, SEC-53',
             addressLocality:   'Gurugram',
-            addressRegion:     'Haryana',
-            postalCode:        '122001',
+            addressRegion:     'HR',
+            postalCode:        '122002',
             addressCountry:    'IN',
           },
         })}

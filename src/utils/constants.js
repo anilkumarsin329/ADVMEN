@@ -16,7 +16,7 @@ export const COMPANY = {
   description: 'ADVMEN Technologies is a premier full-service digital agency specializing in branding, web & app development, digital marketing, and performance campaigns for ambitious businesses across India.',
   email:       'info@advmen.com',
   phone:       '+91 83750 08009',
-  address:     'Jharsa Village, Sector 38, Gurugram, Haryana 122001, India',
+  address:     'Orchid Center, 3rd Floor, Golf Course Road, SEC-53, Gurugram, HR - 122002, IND',
   website:     'https://advmen.com',
   founded:     '2026',
 }

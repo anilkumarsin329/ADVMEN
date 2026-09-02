@@ -213,10 +213,10 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <address className="not-italic font-body text-sm text-[var(--color-text-secondary)] block">
+                <address className="not-italic font-body text-sm text-[var(--color-text-secondary)] block leading-relaxed">
                   ADVMEN Technology Private Limited<br />
-                  Jharsa Village, Sector 38,<br />
-                  Gurugram, Haryana 122001, India
+                  Orchid Center, 3rd Floor, Golf Course Road, SEC-53,<br />
+                  Gurugram, HR - 122002, IND
                 </address>
               </li>
             </ul>

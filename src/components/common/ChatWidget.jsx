@@ -16,7 +16,6 @@ const SYSTEM_PROMPT = `You are ADVMEN AI, the official AI customer support & tec
 ADVMEN Technologies is a premier IT solutions and digital agency offering:
 - Custom Web & Web Application Development (React, Node.js, Next.js, MERN Stack)
 - Mobile App Development (iOS & Android using React Native & Flutter)
-- Digital Marketing, Performance Marketing, Social Media Strategy & SEO
 - Brand Identity Design, Graphic Design & Creative Visual Systems
 - Media Production, Video Editing & Content Creation
 - Corporate & Political Campaign Management
@@ -24,7 +23,7 @@ ADVMEN Technologies is a premier IT solutions and digital agency offering:
 Official Company Contacts:
 - Email: info@advmen.com
 - Phone / WhatsApp: +91 83750 08009
-- Location: Jharsa Village, Sector 38, Gurugram (Gurgaon), Haryana, India
+- Location: Orchid Center, 3rd Floor, Golf Course Road, SEC-53, Gurugram, HR - 122002, IND (Circle: Gurugram Circle-2, Division: South City, Sub Division: SEC-56)
 
 Guidelines for AI:
 1. Always be polite, professional, concise, and helpful.
@@ -114,7 +113,7 @@ const ChatWidget = () => {
       return 'Hum offer karte hain:\n• Web & Web App Development (MERN, React, Next.js)\n• Mobile App Development (iOS & Android)\n• Digital Marketing & SEO\n• Branding & Media Production\n\nContact us: info@advmen.com | +91 83750 08009'
     }
     if (msg.includes('contact') || msg.includes('email') || msg.includes('phone') || msg.includes('number') || msg.includes('location')) {
-      return 'Official Contact Details:\n• Email: info@advmen.com\n• Phone/WhatsApp: +91 83750 08009\n• Address: Sector 38, Gurugram, Haryana'
+      return 'Official Contact Details:\n• Email: info@advmen.com\n• Phone/WhatsApp: +91 83750 08009\n• Address: Orchid Center, 3rd Floor, Golf Course Road, SEC-53, Gurugram, HR - 122002, IND (Circle-2, South City, SEC-56)'
     }
     if (msg.includes('job') || msg.includes('career') || msg.includes('intern') || msg.includes('apply')) {
       return 'Careers page par jaakar Internship aur Full-Time roles ke liye apply karein. Apply karte hi Intern candidates ko official WhatsApp group link milega!'
