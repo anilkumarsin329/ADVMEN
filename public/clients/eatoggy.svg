@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <defs>
+    <linearGradient id="eG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4500"/>
+      <stop offset="100%" stop-color="#FF7A00"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(15, 22)">
+    <circle cx="16" cy="18" r="16" fill="url(#eG)" opacity="0.2"/>
+    <path d="M16 6 C12 12 10 16 10 21 C10 25 12.5 28 16 28 C19.5 28 22 25 22 21 C22 16 20 12 16 6 Z" fill="url(#eG)"/>
+    <text x="42" y="27" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="24" letter-spacing="2.5" fill="#FFFFFF">EATOGGY</text>
+  </g>
+</svg>

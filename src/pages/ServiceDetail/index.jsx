@@ -27,20 +27,16 @@ const ServiceDetail = () => {
   let decodedSlug = slug
   try {
     decodedSlug = decodeURIComponent(slug || '')
-  } catch (e) {
+  } catch {
     /* ignore decode error */
   }
 
-  const fallback   = getServiceBySlug(slug) || getServiceBySlug(decodedSlug)
+  const fallback = getServiceBySlug(slug) || getServiceBySlug(decodedSlug)
   const [serviceData, setServiceData] = useState(fallback)
-  const [loading, setLoading]         = useState(!fallback)
 
   useEffect(() => {
     let isMounted = true
     const localMatch = getServiceBySlug(slug) || getServiceBySlug(decodedSlug)
-    if (localMatch) {
-      setServiceData((prev) => prev || localMatch)
-    }
 
     const fetchServiceData = async () => {
       try {
@@ -68,14 +64,12 @@ const ServiceDetail = () => {
         }
       } catch (err) {
         console.warn('API error fetching service detail:', err)
-      } finally {
-        if (isMounted) setLoading(false)
       }
     }
 
     fetchServiceData()
     return () => { isMounted = false }
-  }, [slug])
+  }, [slug, decodedSlug])
 
   const [isImageModalOpen, setIsImageModalOpen] = useState(false)
 

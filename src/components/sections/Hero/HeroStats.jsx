@@ -12,7 +12,7 @@ const StatItem = ({ stat, index, inView }) => {
   const hasRun = useRef(false)
 
   useEffect(() => {
-    if (!inView || hasRun.current) return
+    if (stat.static || !inView || hasRun.current) return
     hasRun.current = true
     const obj = { val: 0 }
     gsap.to(obj, {
@@ -22,7 +22,7 @@ const StatItem = ({ stat, index, inView }) => {
       ease: 'power3.out',
       onUpdate: () => setCount(Math.floor(obj.val)),
     })
-  }, [inView, stat.value, index])
+  }, [inView, stat.value, stat.static, index])
 
   return (
     <div
@@ -42,7 +42,7 @@ const StatItem = ({ stat, index, inView }) => {
             backgroundClip: 'text',
           }}
         >
-          {count}
+          {stat.static ? stat.value : count}
         </span>
         <span
           className="font-display font-bold"

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <defs>
+    <linearGradient id="nG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B00"/>
+      <stop offset="100%" stop-color="#FF8A00"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(15, 22)">
+    <path d="M0 36 V0 L20 28 V0 H28 V36 L8 8 V36 Z" fill="url(#nG)"/>
+    <text x="42" y="27" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="24" letter-spacing="3" fill="#FFFFFF">NOROZZ</text>
+  </g>
+</svg>

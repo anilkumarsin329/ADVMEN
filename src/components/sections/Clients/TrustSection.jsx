@@ -9,6 +9,7 @@ import MarqueeLib from 'react-fast-marquee'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
 import { FiTrendingUp, FiShield, FiClock, FiCheckCircle, FiArrowRight, FiGitBranch, FiZap, FiAward, FiDollarSign, FiShoppingCart } from 'react-icons/fi'
 import { stats } from '@data/stats'
+import { defaultClients } from '@data/clients'
 
 // Handle both default export and named export
 const Marquee = MarqueeLib?.default || MarqueeLib
@@ -23,13 +24,13 @@ const trustMetrics = [
 const TrustSection = () => {
   const sectionRef = useRef(null)
   const hasAnimated = useRef(false)
-  const [clientLogos, setClientLogos] = useState([])
+  const [clientLogos, setClientLogos] = useState(defaultClients)
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/api/clients`)
       .then(res => res.json())
       .then(data => {
-        if (Array.isArray(data)) setClientLogos(data)
+        if (Array.isArray(data) && data.length > 0) setClientLogos(data)
       })
       .catch(err => console.error(err))
   }, [])

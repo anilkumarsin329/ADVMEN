@@ -9,21 +9,21 @@ import { testimonials } from '@data/testimonials'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
 const initialsMap = {
-  'Rajesh Kumar': 'RK',
-  'Priya Sharma': 'PS',
-  'Arjun Mehta': 'AM',
-  'Vikram Singh': 'VS',
-  'Neha Desai': 'ND',
-  'Amit Patel': 'AP',
+  'Rohit Sharma':        'RS',
+  'Priya Verma':         'PV',
+  'Advocate Suresh Tiwari': 'ST',
+  'Ramesh Goindiacab':   'RG',
+  'Ankit Joshi':         'AJ',
+  'Divya Mishra':        'DM',
 }
 
 const gradientMap = {
-  'Rajesh Kumar': 'linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%)',
-  'Priya Sharma': 'linear-gradient(135deg, #0A0A0A 0%, #FF6B00 100%)',
-  'Arjun Mehta': 'linear-gradient(135deg, #FF3D00 0%, #FF8C38 100%)',
-  'Vikram Singh': 'linear-gradient(135deg, #FF6B00 0%, #FFB366 100%)',
-  'Neha Desai': 'linear-gradient(135deg, #FF8C38 0%, #FF6B00 100%)',
-  'Amit Patel': 'linear-gradient(135deg, #FF6B00 0%, #FF3D00 100%)',
+  'Rohit Sharma':        'linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%)',
+  'Priya Verma':         'linear-gradient(135deg, #0A0A0A 0%, #FF6B00 100%)',
+  'Advocate Suresh Tiwari': 'linear-gradient(135deg, #FF3D00 0%, #FF8C38 100%)',
+  'Ramesh Goindiacab':   'linear-gradient(135deg, #FF6B00 0%, #FFB366 100%)',
+  'Ankit Joshi':         'linear-gradient(135deg, #FF8C38 0%, #FF6B00 100%)',
+  'Divya Mishra':        'linear-gradient(135deg, #FF6B00 0%, #FF3D00 100%)',
 }
 
 const Testimonials = () => {
@@ -144,7 +144,7 @@ const Testimonials = () => {
                 marginBottom: '1rem',
               }}
             >
-              Trusted by Industry Leaders
+              What Our Clients Say
             </h2>
             <p
               className="testimonials-desc"
@@ -309,6 +309,7 @@ const Testimonials = () => {
                       alt={t.name}
                       loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                      style={{ display: t.avatar ? 'block' : 'none' }}
                     />
                   </div>
 
@@ -368,16 +369,21 @@ const Testimonials = () => {
                   key={i}
                   onClick={() => setCurrentIndex(i)}
                   style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '22px',
                     background: i === currentIndex ? 'var(--color-orange)' : 'rgba(255,107,0,0.2)',
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                   aria-label={`Go to testimonial ${i + 1}`}
-                />
+                >
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'inherit', display: 'block' }} />
+                </button>
               ))}
             </div>
             <button

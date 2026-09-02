@@ -8,19 +8,13 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import emailjs from '@emailjs/browser'
-import { FiAlertTriangle, FiTool, FiMail, FiMessageSquare } from 'react-icons/fi'
+import { FiAlertTriangle, FiMail, FiMessageSquare } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
-import { EMAILJS } from '@utils/constants'
+import { API_BASE_URL } from '@utils/constants'
 
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import FAQSection    from '@components/sections/FAQ/FAQSection'
-
-// Initialize EmailJS
-if (EMAILJS.publicKey) {
-  emailjs.init(EMAILJS.publicKey)
-}
 
 const Contact = () => {
   const containerRef = useRef(null)
@@ -93,35 +87,17 @@ const Contact = () => {
     setSubmitErrorDetails(null)
 
     try {
-      // Save contact submission to backend database
-      try {
-        const { API_BASE_URL } = await import('@utils/constants')
-        await fetch(`${API_BASE_URL}/api/contact`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        })
-      } catch (dbErr) {
-        console.warn('Backend DB contact save error:', dbErr)
-      }
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-      // Send email via EmailJS
-      await emailjs.send(
-        EMAILJS.serviceId,
-        EMAILJS.templateId,
-        {
-          name: formData.name,
-          email: formData.email,
-          title: formData.subject || 'General Inquiry',
-          phone: formData.phone || 'Not provided',
-          budget: formData.budget || 'Not specified',
-          timeline: formData.timeline || 'Not specified',
-          industry: formData.industry || 'Not specified',
-          projectType: formData.projectType || 'Not specified',
-          goals: formData.goals || 'Not specified',
-          message: formData.message,
-        }
-      )
+      const data = await response.json()
+
+      if (!response.ok || data.success === false) {
+        throw new Error(data.message || 'Failed to submit inquiry.')
+      }
 
       setIsSubmitting(false)
       setSubmitSuccess(true)
@@ -139,17 +115,12 @@ const Contact = () => {
       })
       setTimeout(() => setSubmitSuccess(false), 5000)
     } catch (error) {
-      console.error('EmailJS Error:', error)
+      console.error('Contact Form Error:', error)
       setIsSubmitting(false)
-
-      const isInvalidGrant = error?.status === 412 || error?.text?.includes('Invalid grant')
-      const errorMessage = isInvalidGrant
-        ? 'EmailJS Service Error (412: Gmail_API Invalid grant). Account needs reconnection in EmailJS Dashboard.'
-        : 'Failed to send message via EmailJS. Please use the direct links below.'
+      const errorMessage = error.message || 'Failed to submit inquiry. Please use direct links below.'
 
       setErrors({ submit: errorMessage })
       setSubmitErrorDetails({
-        isInvalidGrant,
         formData: { ...formData },
       })
     }
@@ -282,7 +253,7 @@ const Contact = () => {
               >
                 <div className="w-full h-full rounded-xl overflow-hidden relative">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.8234567890123!2d77.0592!3d28.4089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce6c6c6c6c6c7%3A0x1234567890abcdef!2sJharsa%20Village%2C%20Sector%2038%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1234567890"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.2!2d77.0268!3d28.4089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18b0e3b3b3b3%3A0xabcdef1234567890!2sSector%2038%2C%20Gurugram%2C%20Haryana%20122001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 'none' }}
@@ -541,15 +512,6 @@ const Contact = () => {
                       <FiAlertTriangle className="mt-0.5 shrink-0" size={16} />
                       <span>{errors.submit}</span>
                     </div>
-
-                    {submitErrorDetails?.isInvalidGrant && (
-                      <div className="text-xs text-gray-300 bg-[rgba(0,0,0,0.3)] p-3 rounded-lg border border-[rgba(255,107,0,0.2)] font-mono">
-                        <strong className="text-[var(--color-orange)] inline-flex items-center gap-1.5"><FiTool size={12} /> Admin Fix for EmailJS 412 Error:</strong><br />
-                        1. Go to <a href="https://dashboard.emailjs.com/admin" target="_blank" rel="noopener noreferrer" className="underline text-[var(--color-orange)]">EmailJS Dashboard</a><br />
-                        2. Click <strong>Email Services</strong> &gt; Select service ({EMAILJS.serviceId || 'service_nnmi1sq'})<br />
-                        3. Click <strong>Reconnect Account</strong> to re-authorize Gmail OAuth.
-                      </div>
-                    )}
 
                     {submitErrorDetails?.formData && (
                       <div className="flex flex-wrap gap-2 pt-1">

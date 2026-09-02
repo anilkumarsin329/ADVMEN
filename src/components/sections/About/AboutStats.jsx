@@ -6,32 +6,27 @@ import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 import { stats } from '../../../data/stats'
 
-const Counter = ({ value, suffix = '', duration = 1.8 }) => {
+const Counter = ({ value, suffix = '', duration = 1.8, isStatic = false }) => {
   const end = parseInt(value, 10)
   const isNumber = !isNaN(end)
-  // Initialize with final value so text scrapers/SEO see the real number
   const [count, setCount] = useState(() => (isNumber ? end : value))
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px 0px' })
 
   useEffect(() => {
-    if (!isInView || !isNumber) return
+    if (isStatic || !isInView || !isNumber) return
     let start = 0
     if (start === end) return
 
     const startTime = performance.now()
-    setCount(0) // Snap to 0 right when animation starts for visual effect
+    setCount(0)
 
     const updateCount = (timestamp) => {
       const elapsed = timestamp - startTime
       const progress = Math.min(elapsed / (duration * 1000), 1)
-      
-      // Ease out quad formula
       const easeProgress = progress * (2 - progress)
       const current = Math.floor(easeProgress * end)
-
       setCount(current)
-
       if (progress < 1) {
         requestAnimationFrame(updateCount)
       } else {
@@ -40,7 +35,7 @@ const Counter = ({ value, suffix = '', duration = 1.8 }) => {
     }
 
     requestAnimationFrame(updateCount)
-  }, [isInView, isNumber, end, duration])
+  }, [isInView, isNumber, isStatic, end, duration])
 
   return (
     <span ref={ref} className="font-display">
@@ -53,7 +48,8 @@ const Counter = ({ value, suffix = '', duration = 1.8 }) => {
 const statsData = stats.map(s => ({
   value: s.value.toString(),
   suffix: s.suffix,
-  label: s.label === 'Years Experience' ? 'Years Active' : s.label
+  label: s.label,
+  isStatic: s.static || false,
 }))
 
 const AboutStats = ({ isPage = false }) => {
@@ -92,7 +88,7 @@ const AboutStats = ({ isPage = false }) => {
                   className="text-[3.25rem] lg:text-[4rem] font-bold tracking-tight text-[var(--color-text-primary)] leading-none mb-3"
                   style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(255, 255, 255, 0.05)' }}
                 >
-                  <Counter value={stat.value} suffix={stat.suffix} />
+                  <Counter value={stat.value} suffix={stat.suffix} isStatic={stat.isStatic} />
                 </h2>
                 <p
                   style={{
@@ -141,7 +137,7 @@ const AboutStats = ({ isPage = false }) => {
             className="text-3xl font-extrabold text-[var(--color-orange)]"
             style={{ textShadow: '0 0 10px rgba(255, 107, 0, 0.25), 1px 1px 2px rgba(0, 0, 0, 0.8)' }}
           >
-            <Counter value={stat.value} suffix={stat.suffix} />
+            <Counter value={stat.value} suffix={stat.suffix} isStatic={stat.isStatic} />
           </span>
           <span
             style={{

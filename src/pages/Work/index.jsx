@@ -128,20 +128,25 @@ const Work = () => {
           </div>
 
           {/* Staggered Portfolio Grid */}
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredItems.map((item) => (
-                <motion.div
-                  key={item.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
-                >
+          {isLoading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="w-8 h-8 rounded-full border-2 border-dashed border-[var(--color-orange)] animate-spin" />
+            </div>
+          ) : (
+            <motion.div
+              layout
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              <AnimatePresence mode="popLayout">
+                {filteredItems.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  >
                   <Link
                     to={`/work/${item.slug}`}
                     className="group relative flex flex-col p-4 rounded-2xl"
@@ -251,6 +256,7 @@ const Work = () => {
               ))}
             </AnimatePresence>
           </motion.div>
+          )}
 
         </div>
       </section>

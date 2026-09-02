@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80">
+  <defs>
+    <linearGradient id="sG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF"/>
+      <stop offset="100%" stop-color="#3A7BD5"/>
+    </linearGradient>
+    <linearGradient id="sAcc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B00"/>
+      <stop offset="100%" stop-color="#FFA800"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(15, 22)">
+    <polygon points="16,2 28,18 16,34 4,18" fill="url(#sG)"/>
+    <polygon points="16,8 23,18 16,28 9,18" fill="url(#sAcc)"/>
+    <text x="42" y="27" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="24" letter-spacing="3" fill="#FFFFFF">SAVITR</text>
+  </g>
+</svg>

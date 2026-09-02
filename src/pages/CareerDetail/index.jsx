@@ -15,9 +15,7 @@ import {
   FiAward, 
   FiCheckCircle, 
   FiArrowLeft, 
-  FiClock, 
   FiDollarSign, 
-  FiShare2, 
   FiSend, 
   FiX, 
   FiAlertCircle, 
@@ -27,8 +25,7 @@ import {
   FiZap,
   FiStar,
   FiTarget,
-  FiUpload,
-  FiFileText
+  FiUpload
 } from 'react-icons/fi'
 
 import SEOHead from '@components/common/SEOHead'
@@ -191,6 +188,7 @@ const CareerDetail = () => {
         setFormError(errData.message || 'Failed to submit application. Please try again.')
       }
     } catch (err) {
+      console.error('Job application submit error:', err)
       setFormError('Network error. Please try again.')
     } finally {
       setSubmitting(false)

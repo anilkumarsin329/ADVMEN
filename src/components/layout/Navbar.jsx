@@ -244,7 +244,7 @@ const Navbar = () => {
           {/* ── Hamburger ─────────────────────────────────── */}
           <button
             ref={hamburgerRef}
-            className="lg:hidden relative z-[9999] w-8 h-8 flex flex-col items-center justify-center gap-1.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] rounded p-1"
+            className="lg:hidden relative z-[9999] w-11 h-11 flex flex-col items-center justify-center gap-1.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] rounded p-1"
             onClick={toggleMenu}
             aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileOpen}

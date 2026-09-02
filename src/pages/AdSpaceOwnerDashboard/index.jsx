@@ -4,7 +4,7 @@ import { adSpaceAPI, adBookingAPI } from '../../utils/adApi'
 import { getImageUrl } from '../../utils/constants'
 import SEOHead from '../../components/common/SEOHead'
 import PageTransition from '../../components/common/PageTransition'
-import { FiPlus, FiBox, FiCheckCircle, FiXCircle } from 'react-icons/fi'
+import { FiPlus, FiCheckCircle, FiXCircle } from 'react-icons/fi'
 
 const AdSpaceOwnerDashboard = () => {
   const { adUser, logout } = useAdAuth()
@@ -23,7 +23,6 @@ const AdSpaceOwnerDashboard = () => {
   const [files, setFiles] = useState([])
 
   const fetchDashboardData = async () => {
-    setLoading(true)
     try {
       const res = await adSpaceAPI.getMine()
       if (res.success) {

@@ -10,15 +10,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { footerLinks } from '@data/navigation'
 import { API_BASE_URL, COMPANY, SOCIAL } from '@utils/constants'
-import { FiInstagram, FiLinkedin, FiTwitter, FiFacebook, FiYoutube } from 'react-icons/fi'
+import { FiInstagram, FiLinkedin } from 'react-icons/fi'
 import BrandLogo from '@components/common/BrandLogo'
 
 const socialIcons = [
   { icon: FiInstagram, href: SOCIAL.instagram, label: 'Instagram' },
   { icon: FiLinkedin,  href: SOCIAL.linkedin,  label: 'LinkedIn'  },
-  { icon: FiTwitter,   href: SOCIAL.twitter,   label: 'Twitter'   },
-  { icon: FiFacebook,  href: SOCIAL.facebook,  label: 'Facebook'  },
-  { icon: FiYoutube,   href: SOCIAL.youtube,   label: 'YouTube'   },
 ]
 
 const Footer = () => {
@@ -218,8 +215,8 @@ const Footer = () => {
               <li>
                 <address className="not-italic font-body text-sm text-[var(--color-text-secondary)] block">
                   ADVMEN Technology Private Limited<br />
-                  Central Business District<br />
-                  India
+                  Jharsa Village, Sector 38,<br />
+                  Gurugram, Haryana 122001, India
                 </address>
               </li>
             </ul>

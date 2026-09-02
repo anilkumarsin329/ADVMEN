@@ -7,7 +7,6 @@
 
 import { useParams, useNavigate, Link, useLocation } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
 import { gsap } from '@utils/gsapConfig'
 
 import SEOHead       from '@components/common/SEOHead'

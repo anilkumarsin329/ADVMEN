@@ -19,8 +19,6 @@ import {
   FiUsers, 
   FiCpu, 
   FiClock,
-  FiChevronDown,
-  FiChevronUp,
   FiMapPin,
   FiBriefcase,
   FiZap,
@@ -72,7 +70,6 @@ const Careers = () => {
 
   const [selectedTab, setSelectedTab] = useState('All') // 'All', 'Intern', 'Experienced'
   const [selectedDept, setSelectedDept] = useState('All')
-  const [expandedPosId, setExpandedPosId] = useState(null)
   const [positions, setPositions] = useState(defaultPositions)
 
   // Modals state
@@ -140,10 +137,6 @@ const Careers = () => {
   // Separate array groups for dual section view
   const internPositions = filteredPositions.filter(isInternRole)
   const experiencedPositions = filteredPositions.filter(pos => !isInternRole(pos))
-
-  const toggleAccordion = (id) => {
-    setExpandedPosId((prev) => (prev === id ? null : id))
-  }
 
   const [uploadingResume, setUploadingResume] = useState(false)
   const [uploadingPhoto, setUploadingPhoto] = useState(false)
@@ -233,6 +226,7 @@ const Careers = () => {
         setFormError(errData.message || 'Failed to submit application. Please try again.')
       }
     } catch (err) {
+      console.error('Job application submission error:', err)
       setFormError('Network error. Please try again.')
     } finally {
       setSubmitting(false)
@@ -263,7 +257,6 @@ const Careers = () => {
 
   // Render Card Component
   const renderPositionCard = (pos, index) => {
-    const isExpanded = expandedPosId === pos.id
     const isIntern = isInternRole(pos)
     const cardImage = getDisplayImage(pos)
 

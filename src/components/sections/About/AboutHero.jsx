@@ -11,7 +11,7 @@ import MagneticButton from '@components/ui/MagneticButton'
 const founderHighlights = [
   {
     icon: FiBriefcase,
-    text: '8-9+ years of experience in Media, Technology & Brand Communication',
+    text: '8+ years of experience in Media, Technology & Brand Communication',
   },
   {
     icon: FiTarget,
@@ -19,11 +19,11 @@ const founderHighlights = [
   },
   {
     icon: FiUsers,
-    text: "Leads the Foundation's Strategy, Technology, Media Relations & Public Outreach",
+    text: "Leads ADVMEN's Strategy, Technology, Client Relations & Business Development",
   },
   {
     icon: FiZap,
-    text: 'Passionate about leveraging technology and community participation to create sustainable social impact.',
+    text: 'Passionate about leveraging technology and data-driven strategies to deliver measurable business outcomes.',
   },
 ]
 
@@ -158,7 +158,7 @@ const AboutHero = () => {
           <div className="col-span-12 lg:col-span-5 flex justify-center lg:justify-end mt-4 lg:mt-0 lg:sticky lg:top-28">
             <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden border border-orange-500/25 shadow-[0_20px_60px_rgba(255,107,0,0.12)] bg-gray-950 group">
               <img
-                src="/about image/Advmen Founder.jpeg"
+                src="/about-image/Advmen Founder.jpeg"
                 alt="Mr. Govind Goyal — Co-Founder & Director"
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />

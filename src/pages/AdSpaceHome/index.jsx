@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { gsap } from '../../utils/gsapConfig'
 import SEOHead from '../../components/common/SEOHead'
 import PageTransition from '../../components/common/PageTransition'

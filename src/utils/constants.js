@@ -13,11 +13,12 @@ export const COMPANY = {
   name:        'ADVMEN Technologies Pvt. Ltd.',
   shortName:   'ADVMEN',
   tagline:     'We Build Brands That Dominate.',
+  description: 'ADVMEN Technologies is a premier full-service digital agency specializing in branding, web & app development, digital marketing, and performance campaigns for ambitious businesses across India.',
   email:       'info@advmen.com',
   phone:       '+91 83750 08009',
-  address:     'India',
+  address:     'Jharsa Village, Sector 38, Gurugram, Haryana 122001, India',
   website:     'https://advmen.com',
-  founded:     '2020',
+  founded:     '2026',
 }
 
 // ── API Configuration ─────────────────────────────────────────
@@ -58,6 +59,10 @@ export const getImageUrl = (path) => {
   if (!path) return ''
   let finalPath = path
 
+  if (finalPath.startsWith('data:') || finalPath.startsWith('blob:')) {
+    return finalPath
+  }
+
   // Replace legacy/stored localhost:5000 URLs with actual API_BASE_URL when on production
   if (finalPath.includes('localhost:5000') || finalPath.includes('127.0.0.1:5000')) {
     if (typeof window !== 'undefined') {
@@ -83,11 +88,8 @@ export const getImageUrl = (path) => {
 
 // ── Social Links ─────────────────────────────────────────────
 export const SOCIAL = {
-  instagram:  'https://www.instagram.com/advmen.in?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==',
-  linkedin:   'https://linkedin.com/company/advmen',
-  twitter:    'https://twitter.com/advmen',
-  facebook:   'https://facebook.com/advmen',
-  youtube:    'https://youtube.com/@advmen',
+  instagram: 'https://www.instagram.com/advmen.in?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==',
+  linkedin:  'https://linkedin.com/company/advmen',
 }
 
 // ── Navigation ───────────────────────────────────────────────
@@ -150,13 +152,6 @@ export const BREAKPOINTS = {
   xl:   1280,
   '2xl': 1536,
   '3xl': 1920,
-}
-
-// ── EmailJS Config (keys from .env) ──────────────────────────
-export const EMAILJS = {
-  serviceId:  import.meta.env.VITE_EMAILJS_SERVICE_ID  || '',
-  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
-  publicKey:  import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || '',
 }
 
 // ── SEO Defaults ─────────────────────────────────────────────

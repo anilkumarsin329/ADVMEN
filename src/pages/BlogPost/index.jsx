@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { getBlogBySlug, blogArticles } from '@data/blog'
-import { FiArrowLeft, FiShare2, FiCopy, FiX, FiMaximize2 } from 'react-icons/fi'
+import { FiArrowLeft, FiShare2, FiCopy, FiX } from 'react-icons/fi'
 import { API_BASE_URL } from '@utils/constants'
 
 const BlogPost = () => {
