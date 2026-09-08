@@ -24,15 +24,7 @@ const teamData = [
     bio: 'Leads core IT infrastructure, cloud architecture, and enterprise software engineering.',
     isPlaceholder: false,
   },
-  {
-    name: 'Divayansh Dhar Dwivedi',
-    role: 'Business Head',
-    initials: 'DDD',
-    gradient: 'linear-gradient(135deg, #FF8526 0%, #FF4500 100%)',
-    image: '/about-image/Advmen Divayansh Dhar Dwivedi Head.jpeg',
-    bio: 'Drives strategic business growth, client partnerships, and agency expansion.',
-    isPlaceholder: false,
-  },
+
   {
     name: 'Abhay Sanwal',
     role: 'Senior UI/UX Developer & TL',
