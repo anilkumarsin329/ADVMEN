@@ -7,8 +7,8 @@
  */
 
 import { useState, useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
-import { FiAlertTriangle, FiMail, FiMessageSquare } from 'react-icons/fi'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FiAlertTriangle, FiCheckCircle, FiMail, FiMessageSquare, FiX } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
 import { API_BASE_URL } from '@utils/constants'
 
@@ -33,6 +33,7 @@ const Contact = () => {
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submittedEmail, setSubmittedEmail] = useState('')
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -100,6 +101,7 @@ const Contact = () => {
       }
 
       setIsSubmitting(false)
+      setSubmittedEmail(formData.email)
       setSubmitSuccess(true)
       setFormData({
         name: '',
@@ -113,7 +115,6 @@ const Contact = () => {
         goals: '',
         message: '',
       })
-      setTimeout(() => setSubmitSuccess(false), 5000)
     } catch (error) {
       console.error('Contact Form Error:', error)
       setIsSubmitting(false)
@@ -482,21 +483,6 @@ const Contact = () => {
                 </div>
 
                 {/* Submitting Message Feedback overlays */}
-                {submitSuccess && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="p-4 rounded-xl text-sm text-center font-body font-medium"
-                    style={{
-                      background: 'rgba(255,107,0,0.08)',
-                      border: '1px solid var(--color-orange)',
-                      color: 'var(--color-orange)',
-                      boxShadow: 'var(--shadow-neu-inset)',
-                    }}
-                  >
-                    Your message was transmitted successfully. We will reply within 24 hours.
-                  </motion.div>
-                )}
 
                 {errors.submit && (
                   <motion.div
@@ -564,6 +550,70 @@ const Contact = () => {
 
       {/* Integrate the FAQ accordion */}
       <FAQSection />
+
+      {/* Thank You Popup Modal */}
+      <AnimatePresence>
+        {submitSuccess && (
+          <motion.div
+            key="thank-you-modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-black/65"
+            onClick={() => setSubmitSuccess(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.85, opacity: 0, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-md bg-[#141419] border border-[rgba(255,107,0,0.3)] rounded-3xl p-6 sm:p-8 text-white relative shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_40px_rgba(255,107,0,0.2)] flex flex-col items-center text-center overflow-hidden"
+            >
+              {/* Decorative background glow */}
+              <div className="absolute -top-16 -left-16 w-36 h-36 bg-[var(--color-orange)] opacity-20 blur-3xl rounded-full pointer-events-none" />
+              <div className="absolute -bottom-16 -right-16 w-36 h-36 bg-amber-500 opacity-15 blur-3xl rounded-full pointer-events-none" />
+
+              {/* Close Button */}
+              <button
+                onClick={() => setSubmitSuccess(false)}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1c1c24] hover:bg-[#282834] flex items-center justify-center text-slate-400 hover:text-white transition-colors border border-white/5 cursor-pointer z-10"
+                aria-label="Close thank you popup"
+              >
+                <FiX size={18} />
+              </button>
+
+              {/* Glowing Icon */}
+              <div className="w-20 h-20 rounded-full bg-[rgba(255,107,0,0.12)] border border-[rgba(255,107,0,0.35)] flex items-center justify-center mb-5 text-[var(--color-orange)] shadow-[0_0_30px_rgba(255,107,0,0.35)]">
+                <FiCheckCircle size={44} />
+              </div>
+
+              {/* Title */}
+              <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-2 tracking-tight">
+                Thank You!
+              </h3>
+
+              <p className="text-sm font-body text-slate-300 leading-relaxed mb-5">
+                Your message has been received successfully. Our team will review your inquiry and get back to you within <span className="text-[var(--color-orange)] font-semibold">24 hours</span>.
+              </p>
+
+              {submittedEmail && (
+                <div className="w-full p-3 rounded-xl bg-[#1c1c24] border border-white/5 text-xs text-slate-400 font-mono mb-6 truncate">
+                  Confirmation sent for: <span className="text-slate-200">{submittedEmail}</span>
+                </div>
+              )}
+
+              {/* Primary Action Button */}
+              <button
+                onClick={() => setSubmitSuccess(false)}
+                className="w-full py-3.5 px-6 rounded-full font-body font-bold text-sm uppercase tracking-wider text-black bg-[var(--color-orange)] hover:bg-[#ff8533] shadow-[0_4px_20px_rgba(255,107,0,0.4)] transition-all duration-300 transform active:scale-95 cursor-pointer"
+              >
+                Got It, Thanks!
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageTransition>
   )
 }
