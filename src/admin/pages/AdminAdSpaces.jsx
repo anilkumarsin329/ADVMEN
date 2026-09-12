@@ -196,7 +196,7 @@ const AdminAdSpaces = () => {
             <div className="p-6 space-y-6">
               {viewModalData.photos && viewModalData.photos.length > 0 && (
                 <div className="w-full h-64 rounded-xl overflow-hidden bg-slate-100 border" style={{ borderColor: 'var(--admin-border)' }}>
-                  <img src={getImageUrl(viewModalData.photos[0])} alt="Space" className="w-full h-full object-cover" />
+                  <img src={getImageUrl(viewModalData.photos[0]) || null} alt="Space" className="w-full h-full object-cover" />
                 </div>
               )}
               

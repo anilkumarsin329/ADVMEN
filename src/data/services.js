@@ -14,7 +14,7 @@ export const services = [
     tagline: 'High-Converting, Responsive & Modern Web Experiences',
     category: 'Web Development',
     icon: 'web',
-    image: '/Image/advmen_service1.jpeg',
+    image: '/Image/advmen_service1.webp',
     description: 'Get a modern, responsive, and professional website designed to build trust, showcase your brand, and generate more business opportunities.',
     features: [
       'Modern UI/UX Design & Micro-Animations',
@@ -39,7 +39,7 @@ export const services = [
     tagline: 'Native & Cross-Platform Mobile Applications Built for Scale',
     category: 'App Development',
     icon: 'mobile',
-    image: '/Image/advmen_service2.jpeg',
+    image: '/Image/advmen_service2.webp',
     description: 'Build powerful and scalable mobile applications for Android and iOS with modern UI/UX, secure architecture, and seamless performance designed to grow your business.',
     features: [
       'Native Android (Kotlin/Java) Development',
@@ -64,7 +64,7 @@ export const services = [
     tagline: 'Powerful, Secure & Scalable Online Stores',
     category: 'Web Development',
     icon: 'cart',
-    image: '/Image/advmen_service3.jpeg',
+    image: '/Image/advmen_service3.webp',
     description: 'Build a powerful and secure e-commerce platform with a modern shopping experience, seamless payments, product management, and scalable technology designed to grow your online business.',
     features: [
       'Custom E-Commerce Storefront & Catalog',
@@ -89,7 +89,7 @@ export const services = [
     tagline: 'Crafting Iconic Brand Identities That Command Attention',
     category: 'Branding',
     icon: 'palette',
-    image: '/Image/advmen_service4.jpeg',
+    image: '/Image/advmen_service4.webp',
     description: 'Establish a memorable brand persona with custom logos, typography systems, brand guidelines, and distinctive visual assets crafted for modern digital channels.',
     features: [
       'Logo Design & Brand Mark Creation',
@@ -114,7 +114,7 @@ export const services = [
     tagline: 'Targeted Campaigns That Drive Conversions & Revenue',
     category: 'Digital Marketing',
     icon: 'trending',
-    image: '/Image/advmen_service5.jpeg',
+    image: '/Image/advmen_service5.webp',
     description: 'Scale customer acquisition with ROI-driven performance marketing, targeted PPC ads, conversion funnel optimization, and retargeting automation.',
     features: [
       'Google Ads & Meta (FB/IG) Paid Campaigns',
@@ -139,7 +139,7 @@ export const services = [
     tagline: 'Rank Higher on Google & Attract Organic Customers',
     category: 'SEO',
     icon: 'search',
-    image: '/Image/advmen_service6.jpeg',
+    image: '/Image/advmen_service6.webp',
     description: 'Dominate Google search results with technical SEO audits, strategic keyword targeting, high-authority backlink outreach, and continuous content optimization.',
     features: [
       'Technical Site Audit & Core Web Vitals',
@@ -164,7 +164,7 @@ export const services = [
     tagline: 'Strategic Outreach, Voter Targeting & Public Sentiment',
     category: 'Marketing',
     icon: 'megaphone',
-    image: '/Image/advmen_service7.jpeg',
+    image: '/Image/advmen_service7.webp',
     description: 'Data-driven digital campaign management for political leaders, featuring targeted broadcast communication, sentiment tracking, social media outreach, and PR management.',
     features: [
       'Precision Voter Micro-Targeting',
@@ -189,7 +189,7 @@ export const services = [
     tagline: 'High-Quality Visual Storytelling & Commercial Video',
     category: 'Media',
     icon: 'video',
-    image: '/Image/advmen_service8.jpeg',
+    image: '/Image/advmen_service8.webp',
     description: 'From promotional commercials to corporate walkthroughs and 3D visual graphics, we produce captivating video content that engages audiences and boosts brand authority.',
     features: [
       'Corporate Commercials & Ad Videos',
@@ -214,7 +214,7 @@ export const services = [
     tagline: 'Persuasive Copy & Engaging Content That Converts',
     category: 'Content',
     icon: 'edit',
-    image: '/Image/advmen_service9.jpeg',
+    image: '/Image/advmen_service9.webp',
     description: 'Strategic copywriting and content creation that articulates your value proposition, drives user engagement, and turns casual visitors into loyal customers.',
     features: [
       'High-Converting Landing Page Copy',

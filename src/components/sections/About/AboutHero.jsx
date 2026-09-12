@@ -158,8 +158,10 @@ const AboutHero = () => {
           <div className="col-span-12 lg:col-span-5 flex justify-center lg:justify-end mt-4 lg:mt-0 lg:sticky lg:top-28">
             <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden border border-orange-500/25 shadow-[0_20px_60px_rgba(255,107,0,0.12)] bg-gray-950 group">
               <img
-                src="/about-image/Advmen Founder.jpeg"
+                src="/about-image/Advmen Founder.webp"
                 alt="Mr. Govind Goyal — Co-Founder & Director"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
               

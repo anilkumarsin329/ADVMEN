@@ -6,6 +6,8 @@ import SEOHead from '../../components/common/SEOHead'
 import PageTransition from '../../components/common/PageTransition'
 import { FiUpload, FiCreditCard } from 'react-icons/fi'
 
+import { loadRazorpayScript } from '../../utils/loadRazorpay'
+
 const AdSpaceAdvertiserDashboard = () => {
   const { adUser, logout } = useAdAuth()
   const [bookings, setBookings] = useState([])
@@ -31,6 +33,12 @@ const AdSpaceAdvertiserDashboard = () => {
 
   const handlePayment = async (bookingId) => {
     try {
+      const isLoaded = await loadRazorpayScript()
+      if (!isLoaded) {
+        alert('Razorpay SDK failed to load. Please check your internet connection.')
+        return
+      }
+
       // 1. Create order
       const res = await adBookingAPI.createOrder(bookingId)
       if (res.success) {

@@ -11,7 +11,7 @@ const teamData = [
     role: 'Co-Founder & Director',
     initials: 'GG',
     gradient: 'linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%)',
-    image: '/about-image/Advmen Founder.jpeg',
+    image: '/about-image/Advmen Founder.webp',
     bio: '8+ years of experience in Media, Technology & Brand Communication. Leads Strategy & Outreach.',
     isPlaceholder: false,
   },
@@ -20,7 +20,7 @@ const teamData = [
     role: 'Senior Developer & CIO',
     initials: 'AS',
     gradient: 'linear-gradient(135deg, #FF6B00 0%, #E05600 100%)',
-    image: '/about-image/Advmen Anil kumar sing Senior Developer & CIO.jpeg',
+    image: '/about-image/Advmen Anil kumar sing Senior Developer & CIO.webp',
     bio: 'Leads core IT infrastructure, cloud architecture, and enterprise software engineering.',
     isPlaceholder: false,
   },
@@ -30,7 +30,7 @@ const teamData = [
     role: 'Senior UI/UX Developer & TL',
     initials: 'AS',
     gradient: 'linear-gradient(135deg, #FF5500 0%, #FF8C38 100%)',
-    image: '/about-image/Advmen abhay UI UX developer.png',
+    image: '/about-image/Advmen abhay UI UX developer.webp',
     bio: 'Crafts pixel-perfect digital interfaces, design systems, and modern web user experiences.',
     isPlaceholder: false,
   },
@@ -39,7 +39,7 @@ const teamData = [
     role: 'Senior MERN Stack Developer',
     initials: 'KK',
     gradient: 'linear-gradient(135deg, #FF6B00 0%, #FF8526 100%)',
-    image: '/about-image/Advmen Krishna kumar Mern stack developer.jpeg',
+    image: '/about-image/Advmen Krishna kumar Mern stack developer.webp',
     bio: 'Specializes in full-stack JavaScript engineering, Node.js REST APIs, MongoDB schemas, and scalable web apps.',
     isPlaceholder: false,
   },
@@ -48,7 +48,7 @@ const teamData = [
     role: 'Senior App Developer',
     initials: 'A',
     gradient: 'linear-gradient(135deg, #FF8526 0%, #E05600 100%)',
-    image: '/about-image/Advmen Aman app developer.png',
+    image: '/about-image/Advmen Aman app developer.webp',
     bio: 'Builds high-performance native & cross-platform mobile applications for iOS and Android ecosystems.',
     isPlaceholder: false,
   },
@@ -118,6 +118,8 @@ const AboutTeam = () => {
                   <img
                     src={member.image}
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 bg-black"
                   />
                 ) : (

@@ -228,7 +228,7 @@ const Services = () => {
                       }}
                     >
                       <img
-                        src={service.image && service.image.startsWith('/') ? getImageUrl(service.image) : service.image}
+                        src={(service.image && service.image.startsWith('/')) ? getImageUrl(service.image) : (service.image || null)}
                         alt={service.title}
                         className="transition-transform duration-500 group-hover:scale-105"
                         style={{

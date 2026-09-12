@@ -501,9 +501,9 @@ const AdminCareers = () => {
                       {/* Position / Title */}
                       <td className="px-4 py-3.5 align-middle">
                         <div className="flex items-center gap-3">
-                          {item.image ? (
+                          {item.image && typeof item.image === 'string' && item.image.trim() !== '' ? (
                             <img 
-                              src={item.image} 
+                              src={getImageUrl(item.image) || item.image || null} 
                               alt={item.title} 
                               className="w-10 h-10 rounded-xl object-cover border border-slate-200 shadow-sm flex-shrink-0 bg-slate-50"
                             />
@@ -690,9 +690,9 @@ const AdminCareers = () => {
                       <span>{uploading ? `Uploading (${uploadProgress}%)...` : (formValues.image ? 'Change Uploaded Banner' : 'Upload Banner Image (PNG, JPG, GIF up to 5MB)')}</span>
                       <input type="file" className="hidden" accept="image/*" onChange={handleFileChange} disabled={uploading} />
                     </label>
-                    {formValues.image && (
+                    {formValues.image && typeof formValues.image === 'string' && formValues.image.trim() !== '' && (
                       <div className="relative group w-12 h-12 flex-shrink-0">
-                        <img src={formValues.image} alt="Preview" className="w-12 h-12 object-cover rounded-lg border border-gray-200 shadow-sm" />
+                        <img src={formValues.image || null} alt="Preview" className="w-12 h-12 object-cover rounded-lg border border-gray-200 shadow-sm" />
                         <button
                           type="button"
                           onClick={() => setFormValues({ ...formValues, image: '' })}
@@ -966,9 +966,9 @@ const AdminCareers = () => {
               </div>
 
               <div className="p-6 space-y-5">
-                {viewItemTarget.image && (
+                {viewItemTarget.image && typeof viewItemTarget.image === 'string' && viewItemTarget.image.trim() !== '' && (
                   <div className="w-full h-44 rounded-xl overflow-hidden border border-slate-200 shadow-sm">
-                    <img src={viewItemTarget.image} alt={viewItemTarget.title} className="w-full h-full object-cover" />
+                    <img src={getImageUrl(viewItemTarget.image) || viewItemTarget.image || null} alt={viewItemTarget.title} className="w-full h-full object-cover" />
                   </div>
                 )}
 

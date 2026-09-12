@@ -171,9 +171,11 @@ const AdminClients = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {clients.map(client => (
           <div key={client._id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col group">
-            <div className="h-32 bg-gray-50 flex items-center justify-center p-4 border-b border-gray-100 relative">
-              <img src={getImageUrl(client.logo)} alt={client.companyName} className="max-h-full max-w-full object-contain" />
-            </div>
+              {client.logo && typeof client.logo === 'string' && client.logo.trim() !== '' ? (
+                <img src={getImageUrl(client.logo) || null} alt={client.companyName} className="max-h-full max-w-full object-contain" />
+              ) : (
+                <span className="text-gray-400 font-bold text-lg">{client.companyName?.charAt(0) || 'C'}</span>
+              )}
             <div className="p-5 flex-1 flex flex-col">
               <h3 className="font-display font-bold text-gray-900 text-lg mb-1">{client.companyName}</h3>
               {client.description && (
@@ -260,9 +262,9 @@ const AdminClients = () => {
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">Logo *</label>
                     <div className="flex items-center gap-4">
-                      {logo ? (
+                      {logo && typeof logo === 'string' && logo.trim() !== '' ? (
                         <div className="relative w-20 h-20 rounded-lg border border-gray-200 bg-gray-50 flex items-center justify-center overflow-hidden shrink-0 p-2">
-                          <img src={getImageUrl(logo)} alt="Logo" className="max-w-full max-h-full object-contain" />
+                          <img src={getImageUrl(logo) || null} alt="Logo" className="max-w-full max-h-full object-contain" />
                           <button
                             type="button"
                             onClick={() => setLogo('')}

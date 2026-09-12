@@ -130,7 +130,7 @@ const Blog = () => {
                     className="relative w-full aspect-[16/10] rounded-xl overflow-hidden mb-6 bg-gray-900 border border-[rgba(255,107,0,0.12)]"
                   >
                     <img
-                      src={article.image}
+                      src={article.image ? (article.image.startsWith('/') ? getImageUrl(article.image) : article.image) : null}
                       alt={article.title}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

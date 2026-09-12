@@ -165,9 +165,9 @@ const Work = () => {
                         border: '1px solid rgba(255,255,255,0.04)',
                       }}
                     >
-                      {item.image ? (
+                      {item.image && typeof item.image === 'string' && item.image.trim() !== '' ? (
                         <img 
-                          src={getImageUrl(item.image)} 
+                          src={getImageUrl(item.image) || null} 
                           alt={item.title} 
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />

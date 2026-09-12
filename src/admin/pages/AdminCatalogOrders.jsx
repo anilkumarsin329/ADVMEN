@@ -236,7 +236,7 @@ const AdminCatalogOrders = () => {
                         <div className="flex items-center gap-3">
                           {order.items?.[0]?.catalogItemId?.image && (
                             <img 
-                              src={getImageUrl(order.items[0].catalogItemId.image)} 
+                              src={getImageUrl(order.items[0].catalogItemId.image) || null} 
                               alt="Item" 
                               className="w-10 h-10 rounded object-cover border"
                               style={{ borderColor: 'var(--admin-border)' }}
@@ -362,11 +362,11 @@ const AdminCatalogOrders = () => {
                  {/* Image Banner */}
                  {currentOrder.items?.[0]?.catalogItemId?.image && (
                    <div className="w-full h-48 rounded-xl overflow-hidden mb-6 bg-gray-100 border border-gray-200">
-                     <img 
-                       src={getImageUrl(currentOrder.items[0].catalogItemId.image)} 
-                       alt="Catalog Item" 
-                       className="w-full h-full object-cover"
-                     />
+                      <img 
+                        src={getImageUrl(currentOrder.items[0].catalogItemId.image) || null} 
+                        alt="Catalog Item" 
+                        className="w-full h-full object-cover"
+                      />
                    </div>
                  )}
 

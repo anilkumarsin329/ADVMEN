@@ -55,9 +55,9 @@
 
   /* ── Text Colors ──────────────────────────────────────── */
   --color-text-primary:    #F5F5F5;
-  --color-text-secondary:  #AAAAAA;
-  --color-text-tertiary:   #666666;
-  --color-text-disabled:   #444444;
+  --color-text-secondary:  #B5B5B5;
+  --color-text-tertiary:   #929298;
+  --color-text-disabled:   #5D5D63;
   --color-text-inverse:    #0A0A0A;
   --color-text-orange:     #FF6B00;
   --color-text-orange-light: #FF8C38;

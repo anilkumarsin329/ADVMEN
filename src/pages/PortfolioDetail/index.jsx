@@ -149,11 +149,13 @@ const PortfolioDetail = () => {
           <div
             className="w-full aspect-video rounded-2xl overflow-hidden relative border border-[rgba(255,107,0,0.15)] shadow-2xl bg-gray-900"
           >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
+            {project.image && typeof project.image === 'string' && project.image.trim() !== '' && (
+              <img
+                src={project.image.startsWith('/') ? getImageUrl(project.image) : project.image}
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+            )}
           </div>
         </div>
       </section>

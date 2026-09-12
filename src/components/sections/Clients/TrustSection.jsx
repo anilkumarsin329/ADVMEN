@@ -302,7 +302,7 @@ const TrustSection = () => {
                       }}
                     >
                       <img 
-                        src={getImageUrl(client.logo)} 
+                        src={getImageUrl(client.logo) || null} 
                         alt={client.companyName} 
                         style={{
                           maxHeight: '52px',

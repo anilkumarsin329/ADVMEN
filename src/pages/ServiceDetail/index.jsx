@@ -54,7 +54,7 @@ const ServiceDetail = () => {
                 : (data.featuresString ? data.featuresString.split(',').map(s => s.trim()) : localMatch?.features || []),
               image: data.image
                 ? (data.image.startsWith('/') ? getImageUrl(data.image) : data.image)
-                : (localMatch?.image || '/Image/advmen_service1.jpeg'),
+                : (localMatch?.image || '/Image/advmen_service1.webp'),
               icon: data.icon || localMatch?.icon || 'web',
               workflow: (Array.isArray(data.workflow) && data.workflow.length > 0)
                 ? data.workflow

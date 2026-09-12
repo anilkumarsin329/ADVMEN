@@ -283,7 +283,7 @@ const Careers = () => {
           className="w-full h-52 overflow-hidden relative rounded-2xl bg-[#1c1f2b] border border-[rgba(255,255,255,0.06)] cursor-pointer block"
         >
           <img 
-            src={cardImage} 
+            src={cardImage || null} 
             alt={pos.title} 
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" 
             onError={(e) => {

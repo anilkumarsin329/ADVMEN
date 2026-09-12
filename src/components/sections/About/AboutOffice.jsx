@@ -11,49 +11,49 @@ const officePhotos = [
     id: 1,
     title: 'Development & Engineering Floor',
     category: 'Engineering Zone',
-    image: '/about-image/Advmen1.jpeg',
+    image: '/about-image/Advmen1.webp',
     description: 'High-performance engineering floor equipped for deep software development and system architecture.',
   },
   {
     id: 2,
     title: 'Technology & Tech Stack Suite',
     category: 'Tech Suite',
-    image: '/about-image/Advmen2.jpeg',
+    image: '/about-image/Advmen2.webp',
     description: 'Dedicated tech setup for cloud management, backend compiling, and real-time app testing.',
   },
   {
     id: 3,
     title: 'Creative UI/UX Design Studio',
     category: 'Design Studio',
-    image: '/about-image/Advmen3.jpeg',
+    image: '/about-image/Advmen3.webp',
     description: 'Where UI layout mockups, color systems, and brand design prototypes are engineered.',
   },
   {
     id: 4,
     title: 'Executive Conference & Strategy Room',
     category: 'War Room',
-    image: '/about-image/Advmen4.jpeg',
+    image: '/about-image/Advmen4.webp',
     description: 'High-tech conference environment for client presentations and strategic roadmap planning.',
   },
   {
     id: 5,
     title: 'Brainstorming & Innovation Pods',
     category: 'Innovation Zone',
-    image: '/about-image/Advmen5.jpeg',
+    image: '/about-image/Advmen5.webp',
     description: 'Collaborative open spaces for pair programming and cross-team strategy sessions.',
   },
   {
     id: 6,
     title: 'Client Collaboration & Media Hub',
     category: 'Media Hub',
-    image: '/about-image/Advmen6.jpeg',
+    image: '/about-image/Advmen6.webp',
     description: 'Media production, video editing, and client interaction studio.',
   },
   {
     id: 7,
     title: 'Operations & Strategy HQ',
     category: 'Headquarters',
-    image: '/about-image/Advmen8.jpeg',
+    image: '/about-image/Advmen8.webp',
     description: 'Central operations hub managing project delivery and client growth strategies.',
   },
 ]
@@ -103,6 +103,8 @@ const AboutOffice = () => {
               <img
                 src={photo.image}
                 alt={photo.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
 

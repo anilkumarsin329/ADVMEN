@@ -696,9 +696,9 @@ const AdminCatalog = () => {
                     {/* Cover Photo and Details */}
                     <td className="p-4">
                       <div className="flex items-center gap-3.5 max-w-sm">
-                        {item.image ? (
+                        {item.image && typeof item.image === 'string' && item.image.trim() !== '' ? (
                           <img
-                            src={item.image}
+                            src={getImageUrl(item.image) || item.image || null}
                             alt={item.name}
                             className="w-12 h-12 rounded-xl object-cover shrink-0 border shadow-sm"
                             style={{ borderColor: 'var(--admin-border)' }}
@@ -984,8 +984,8 @@ const AdminCatalog = () => {
                     <div className="flex items-center gap-4 p-4 rounded-xl border border-dashed" style={{ borderColor: 'var(--admin-border)', background: 'var(--admin-bg)' }}>
                       {/* Thumbnail Preview */}
                       <div className="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 border bg-white flex items-center justify-center" style={{ borderColor: 'var(--admin-border)' }}>
-                        {formValues.image ? (
-                          <img src={formValues.image} alt="Preview" className="w-full h-full object-cover" />
+                        {formValues.image && typeof formValues.image === 'string' && formValues.image.trim() !== '' ? (
+                          <img src={formValues.image || null} alt="Preview" className="w-full h-full object-cover" />
                         ) : (
                           <FiImage className="text-[var(--admin-text-tertiary)]" size={24} />
                         )}
@@ -1146,9 +1146,9 @@ const AdminCatalog = () => {
               {/* Scrollable details content container */}
               <div className="flex-1 overflow-y-auto pr-1.5 space-y-5 max-h-[50vh] sm:max-h-[380px] no-scrollbar">
                 {/* Cover Photo */}
-                {viewItemTarget.image ? (
+                {viewItemTarget.image && typeof viewItemTarget.image === 'string' && viewItemTarget.image.trim() !== '' ? (
                   <img
-                    src={viewItemTarget.image}
+                    src={getImageUrl(viewItemTarget.image) || viewItemTarget.image || null}
                     alt={viewItemTarget.name}
                     className="w-full h-40 object-cover rounded-xl border shadow-sm"
                     style={{ borderColor: 'var(--admin-border)' }}

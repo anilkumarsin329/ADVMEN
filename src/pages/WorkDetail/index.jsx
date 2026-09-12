@@ -32,7 +32,7 @@ const fallbackCaseStudies = [
       { metric: '+15%', label: 'Conversion Rate' },
       { metric: '30%', label: 'Faster Load Speed' },
     ],
-    image: '/Image/advmen_service3.jpeg',
+    image: '/Image/advmen_service3.webp',
     tech: ['React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Stripe'],
     tags: ['E-Commerce', 'Web Development', 'UI/UX']
   },
@@ -50,7 +50,7 @@ const fallbackCaseStudies = [
       { metric: '+40%', label: 'Monthly Leads' },
       { metric: '+25%', label: 'Social Engagement' },
     ],
-    image: '/Image/advmen_service6.jpeg',
+    image: '/Image/advmen_service6.webp',
     tech: ['Google Ads', 'Meta Ads', 'SEO', 'Analytics', 'Funnel Design'],
     tags: ['Digital Marketing', 'Growth', 'Lead Gen']
   },
@@ -68,7 +68,7 @@ const fallbackCaseStudies = [
       { metric: '500+', label: 'App Downloads' },
       { metric: '4.5/5', label: 'Store Rating' },
     ],
-    image: '/Image/advmen_service1.jpeg',
+    image: '/Image/advmen_service1.webp',
     tech: ['React Native', 'Firebase', 'GraphQL', 'HealthKit'],
     tags: ['App Development', 'Mobile', 'Fitness']
   },
@@ -86,7 +86,7 @@ const fallbackCaseStudies = [
       { metric: '+60%', label: 'Organic Traffic' },
       { metric: 'Page 1', label: 'Keyword Rankings' },
     ],
-    image: '/Image/advmen_service9.jpeg',
+    image: '/Image/advmen_service9.webp',
     tech: ['Technical SEO', 'Content Strategy', 'Ahrefs', 'Search Console'],
     tags: ['SEO', 'Content', 'Growth']
   },
@@ -104,7 +104,7 @@ const fallbackCaseStudies = [
       { metric: '5+', label: 'Brand Assets' },
       { metric: '2 Weeks', label: 'Fast Delivery' },
     ],
-    image: '/Image/advmen_service4.jpeg',
+    image: '/Image/advmen_service4.webp',
     tech: ['Figma', 'Brand Strategy', 'UI/UX Design', 'Design Systems'],
     tags: ['Branding', 'Design System', 'UI/UX']
   },
@@ -122,7 +122,7 @@ const fallbackCaseStudies = [
       { metric: '5K+', label: 'Video Views' },
       { metric: '+20%', label: 'Engagement Lift' },
     ],
-    image: '/Image/advmen_service5.jpeg',
+    image: '/Image/advmen_service5.webp',
     tech: ['Video Production', '4K Cinema', 'Color Grading', 'Motion Graphics'],
     tags: ['Media Production', 'Video', 'Creative']
   }
@@ -315,10 +315,10 @@ const WorkDetail = () => {
               </p>
 
               {/* Hero Cover Image Banner */}
-              {details.image && (
+              {details.image && typeof details.image === 'string' && details.image.trim() !== '' && (
                 <div className="case-stagger w-full mt-6 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[16/9] max-h-[500px]">
                   <img
-                    src={getImageUrl(details.image)}
+                    src={getImageUrl(details.image) || null}
                     alt={details.title || details.client}
                     className="w-full h-full object-cover"
                   />

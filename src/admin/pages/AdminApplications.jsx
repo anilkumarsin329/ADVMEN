@@ -446,9 +446,9 @@ const AdminApplications = () => {
             >
               <div className="flex justify-between items-start pb-4 border-b border-slate-100">
                 <div className="flex items-center gap-3">
-                  {targetItem.profilePhoto ? (
+                  {targetItem.profilePhoto && typeof targetItem.profilePhoto === 'string' && targetItem.profilePhoto.trim() !== '' ? (
                     <img
-                      src={getImageUrl(targetItem.profilePhoto)}
+                      src={getImageUrl(targetItem.profilePhoto) || null}
                       alt={targetItem.name}
                       className="w-12 h-12 rounded-full object-cover border-2 border-orange-500 shadow-md"
                     />

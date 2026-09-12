@@ -329,7 +329,7 @@ const AdminCaseStudies = () => {
                   alt={item.title} 
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = '/Image/advmen_service1.jpeg';
+                    e.target.src = '/Image/advmen_service1.webp';
                   }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                 />
@@ -488,7 +488,7 @@ const AdminCaseStudies = () => {
                     alt={viewItem.title} 
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = '/Image/advmen_service1.jpeg';
+                      e.target.src = '/Image/advmen_service1.webp';
                     }}
                     className="w-full h-full object-cover" 
                   />

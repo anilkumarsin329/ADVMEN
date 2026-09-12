@@ -21,7 +21,7 @@ const PortfolioCard = ({ project }) => {
       <div className="relative w-full aspect-video overflow-hidden bg-[rgba(255,255,255,0.02)]">
         {/* Actual Image */}
         <img
-          src={getImageUrl(project.image)}
+          src={getImageUrl(project.image) || null}
           alt={project.title}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-500"

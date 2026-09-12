@@ -167,7 +167,7 @@ const Catalog = () => {
                       className="product-card"
                     >
                       <div className="product-image">
-                        <img src={item.image.startsWith('/') ? getImageUrl(item.image) : item.image} alt={item.name} loading="lazy" />
+                        <img src={item.image ? (item.image.startsWith('/') ? getImageUrl(item.image) : item.image) : null} alt={item.name} loading="lazy" />
                         <span className="category-badge">{item.category}</span>
                       </div>
                       <div className="product-info">

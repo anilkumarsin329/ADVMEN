@@ -35,14 +35,14 @@ const PreloaderInner = () => {
     if (!isLoading) return
     let current = 0
     const interval = setInterval(() => {
-      current += Math.random() * 15 + 5
+      current += Math.random() * 30 + 20
       if (current >= 100) {
         updateProgress(100)
         clearInterval(interval)
       } else {
         updateProgress(Math.floor(current))
       }
-    }, 60)
+    }, 40)
     return () => clearInterval(interval)
   }, [isLoading, updateProgress])
 
@@ -57,10 +57,10 @@ const PreloaderInner = () => {
     gsap.set(strokeRef.current, { strokeDashoffset: 600 })
 
     const tl = gsap.timeline()
-    tl.to(logoImgRef.current,  { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', delay: 0.2 })
-      .to(strokeRef.current,   { strokeDashoffset: 0, duration: 1.2, ease: 'expo.inOut' }, '-=0.4')
-      .to(taglineRef.current,  { opacity: 1, y: 0, duration: 0.6, ease: 'expo.out' }, '-=0.5')
-      .to(progressRef.current, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out' }, '-=0.3')
+    tl.to(logoImgRef.current,  { opacity: 1, y: 0, duration: 0.4, ease: 'expo.out', delay: 0.05 })
+      .to(strokeRef.current,   { strokeDashoffset: 0, duration: 0.6, ease: 'expo.inOut' }, '-=0.2')
+      .to(taglineRef.current,  { opacity: 1, y: 0, duration: 0.3, ease: 'expo.out' }, '-=0.3')
+      .to(progressRef.current, { opacity: 1, y: 0, duration: 0.3, ease: 'expo.out' }, '-=0.2')
 
     return () => tl.kill()
   }, [])
@@ -71,7 +71,7 @@ const PreloaderInner = () => {
       counterRef.current.textContent = String(progress).padStart(3, '0')
     }
     if (barFillRef.current) {
-      gsap.to(barFillRef.current, { width: `${progress}%`, duration: 0.4, ease: 'expo.out' })
+      gsap.to(barFillRef.current, { width: `${progress}%`, duration: 0.2, ease: 'expo.out' })
     }
   }, [progress])
 
@@ -79,7 +79,7 @@ const PreloaderInner = () => {
   useEffect(() => {
     if (progress < 100 || hasExited.current) return
     const elapsed  = Date.now() - startTime.current
-    const minDelay = Math.max(0, 800 - elapsed)
+    const minDelay = Math.max(0, 150 - elapsed)
 
     const timer = setTimeout(() => {
       hasExited.current = true
@@ -91,8 +91,8 @@ const PreloaderInner = () => {
 
       if (curtainRef.current && wrapperRef.current) {
         gsap.timeline({ onComplete: () => setLoadingComplete() })
-          .to(curtainRef.current, { scaleY: 1, duration: 0.7, ease: 'expo.inOut', transformOrigin: 'bottom' })
-          .to(wrapperRef.current, { opacity: 0, duration: 0.25 }, '-=0.15')
+          .to(curtainRef.current, { scaleY: 1, duration: 0.4, ease: 'expo.inOut', transformOrigin: 'bottom' })
+          .to(wrapperRef.current, { opacity: 0, duration: 0.15 }, '-=0.1')
           .set(wrapperRef.current, { display: 'none' })
       } else {
         setLoadingComplete()

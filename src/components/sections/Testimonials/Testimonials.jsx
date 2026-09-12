@@ -304,13 +304,14 @@ const Testimonials = () => {
                     />
                     <span className="relative z-10 select-none">{initialsMap[t.name] || 'C'}</span>
                     
-                    <img
-                      src={t.avatar}
-                      alt={t.name}
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                      style={{ display: t.avatar ? 'block' : 'none' }}
-                    />
+                    {t.avatar && (
+                      <img
+                        src={t.avatar}
+                        alt={t.name}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                      />
+                    )}
                   </div>
 
                   <div className="flex flex-col">

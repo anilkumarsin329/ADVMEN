@@ -56,8 +56,8 @@ export const getApiBaseUrl = () => {
 export const API_BASE_URL = getApiBaseUrl()
 
 export const getImageUrl = (path) => {
-  if (!path) return ''
-  let finalPath = path
+  if (!path || typeof path !== 'string' || !path.trim()) return null
+  let finalPath = path.trim()
 
   if (finalPath.startsWith('data:') || finalPath.startsWith('blob:')) {
     return finalPath
@@ -83,7 +83,14 @@ export const getImageUrl = (path) => {
   }
 
   const cleanPath = finalPath.startsWith('/') ? finalPath : `/${finalPath}`
-  return `${API_BASE_URL}${cleanPath}`
+
+  // Only prepend API_BASE_URL for backend uploaded files (e.g. /uploads/...)
+  if (cleanPath.startsWith('/uploads/') || cleanPath.startsWith('/api/')) {
+    return `${API_BASE_URL}${cleanPath}`
+  }
+
+  // Static frontend public assets (e.g. /clients/..., /Image/..., /about-image/...) return as-is
+  return cleanPath
 }
 
 // ── Social Links ─────────────────────────────────────────────

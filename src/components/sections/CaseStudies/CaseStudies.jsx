@@ -160,9 +160,11 @@ const CaseStudies = () => {
                     <img
                       src={getImageUrl(study.image)}
                       alt={study.title}
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = '/Image/advmen_service1.jpeg';
+                        e.target.src = '/Image/advmen_service1.webp';
                       }}
                       className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     />

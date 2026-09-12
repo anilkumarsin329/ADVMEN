@@ -157,7 +157,7 @@ const AdminAdBookings = () => {
                       <div className="flex items-center gap-3">
                         {booking.space?.images?.[0] ? (
                           <img 
-                            src={getImageUrl(booking.space.images[0])} 
+                            src={getImageUrl(booking.space.images[0]) || null} 
                             alt="Space" 
                             className="w-10 h-10 rounded object-cover border"
                             style={{ borderColor: 'var(--admin-border)' }}

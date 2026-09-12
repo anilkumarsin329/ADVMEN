@@ -19,9 +19,9 @@ const PortfolioCard = ({ item, index = 0, className }) => (
     <Link to={`/work/${item.slug}`} className="block">
       {/* Image */}
       <div className="relative overflow-hidden rounded-[var(--radius-2xl)] aspect-[4/3] bg-[var(--color-surface-2)] mb-4">
-        {item.image ? (
+        {item.image && typeof item.image === 'string' && item.image.trim() !== '' ? (
           <img
-            src={item.image}
+            src={item.image || null}
             alt={item.title}
             className="img-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.06]"
             loading="lazy"
