@@ -8,7 +8,7 @@ import { FiLinkedin, FiTwitter, FiGithub, FiUserPlus } from 'react-icons/fi'
 const teamData = [
   {
     name: 'Mr. Govind Goyal',
-    role: 'Co-Founder & Director',
+    role: 'Founder',
     initials: 'GG',
     gradient: 'linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%)',
     image: '/about-image/Advmen Founder.webp',
