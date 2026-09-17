@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiTrash2, FiMail, FiCalendar } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
-import { API_BASE_URL } from '@utils/constants'
+import { API_BASE_URL } from '../../utils/constants'
 
 const AdminNewsletter = () => {
   const { token } = useAdminAuth()

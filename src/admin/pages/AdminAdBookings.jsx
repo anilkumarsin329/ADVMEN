@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiSettings, FiX, FiBriefcase } from 'react-icons/fi'
 import { adAdminAPI } from '@utils/adApi'
-import { getImageUrl } from '@utils/constants'
+import { getImageUrl } from '../../utils/constants'
 
 const AdminAdBookings = () => {
   const [bookings, setBookings] = useState([])

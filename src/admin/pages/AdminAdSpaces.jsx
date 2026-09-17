@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { adAdminAPI } from '@utils/adApi'
 import { FiSettings, FiEye, FiCheckCircle, FiXCircle, FiX } from 'react-icons/fi'
-import { getImageUrl } from '@utils/constants'
+import { getImageUrl } from '../../utils/constants'
 
 const AdminAdSpaces = () => {
   const [spaces, setSpaces] = useState([])

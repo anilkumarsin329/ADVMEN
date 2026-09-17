@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiTrash2, FiEdit2, FiPlus, FiImage, FiAward, FiX } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
-import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { API_BASE_URL, getImageUrl } from '../../utils/constants'
 
 const AdminClients = () => {
   const { token } = useAdminAuth()

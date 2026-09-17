@@ -20,7 +20,7 @@ import {
   FiAward
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
-import { API_BASE_URL } from '@utils/constants'
+import { API_BASE_URL } from '../../utils/constants'
 
 const AdminDashboard = () => {
   const { token } = useAdminAuth()

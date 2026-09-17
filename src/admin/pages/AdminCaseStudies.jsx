@@ -6,7 +6,7 @@ import {
   FiMoreVertical, FiCheckCircle, FiTag, FiCpu
 } from 'react-icons/fi'
 import { useAdminAuth } from '@/admin/context/AdminAuthContext'
-import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { API_BASE_URL, getImageUrl } from '../../utils/constants'
 
 const CATEGORIES = [
   'Web Development',
