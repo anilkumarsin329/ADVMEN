@@ -31,7 +31,7 @@ const HeroBackground = () => {
 
       {/* High-priority enterprise 3D hero visual image */}
       <img
-        src="/Hero%20section%20image.webp"
+        src="/Hero%20section%20image.png"
         alt=""
         fetchPriority="high"
         decoding="async"
