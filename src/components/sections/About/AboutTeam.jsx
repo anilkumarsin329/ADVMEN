@@ -16,6 +16,15 @@ const teamData = [
     isPlaceholder: false,
   },
   {
+    name: 'Chirag Verma',
+    role: 'Director',
+    initials: 'CV',
+    gradient: 'linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%)',
+    image: '/about-image/Chirag Verma — Director.jpeg',
+    bio: 'Experienced in business strategy, operations, team leadership, business development, and driving organizational growth.',
+    isPlaceholder: false,
+  },
+  {
     name: 'Anil Kumar Singh',
     role: 'Senior Developer & CIO',
     initials: 'AS',
