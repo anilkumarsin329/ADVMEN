@@ -68,6 +68,7 @@ const Careers        = lazyWithRetry(() => import('@pages/Careers'))
 const CareerDetail   = lazyWithRetry(() => import('@pages/CareerDetail'))
 const PrivacyPolicy  = lazyWithRetry(() => import('@pages/PrivacyPolicy'))
 const TermsOfService = lazyWithRetry(() => import('@pages/TermsOfService'))
+const DataDeletion   = lazyWithRetry(() => import('@pages/DataDeletion'))
 const NotFound       = lazyWithRetry(() => import('@pages/NotFound'))
 
 // ── Admin Pages & Route Protections ───────────────────────────
@@ -145,6 +146,7 @@ const PublicRoutes = () => {
         <Route path="/careers/:id"      element={<CareerDetail />} />
         <Route path="/privacy-policy"   element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/data-deletion"    element={<DataDeletion />} />
 
         {/* Ad Space Module Routes */}
         <Route path="/ad-space" element={<AdSpaceHome />} />
