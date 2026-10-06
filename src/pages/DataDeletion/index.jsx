@@ -30,7 +30,7 @@ const DataDeletion = () => {
             <p className="font-mono text-xs">Last Updated: July 05, 2026</p>
 
             <p>
-              At ADVMEN Pvt. Ltd., we respect your right to control your personal data. If you have interacted with our website or connected via Facebook/Meta and wish to have your data deleted, you may submit a deletion request.
+              At ADVMEN, we respect your right to control your personal data. If you have interacted with our website or connected via Facebook/Meta and wish to have your data deleted, you may submit a deletion request.
             </p>
 
             <h3 className="font-display font-bold text-lg text-white mt-4">How to Request Data Deletion</h3>

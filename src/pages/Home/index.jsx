@@ -41,7 +41,7 @@ const Home = () => {
     </div>
 
     {/* Phase 1: About */}
-    <About />
+    {/* <About /> */}
 
     {/* Phase 2: Services */}
     <Services />

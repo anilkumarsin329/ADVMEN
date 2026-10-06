@@ -74,10 +74,10 @@ const SEOHead = ({
           },
           address: {
             '@type':           'PostalAddress',
-            streetAddress:     'Orchid Center, 3rd Floor, Golf Course Road, SEC-53',
-            addressLocality:   'Gurugram',
-            addressRegion:     'HR',
-            postalCode:        '122002',
+            streetAddress:     'T-4B-506, NX One Plot no.17, Techzone-4',
+            addressLocality:   'Greater Noida West',
+            addressRegion:     'UP',
+            postalCode:        '201308',
             addressCountry:    'IN',
           },
         })}
@@ -97,10 +97,10 @@ const SEOHead = ({
           areaServed:     ['IN', 'US', 'UK', 'CA', 'AU'],
           address: {
             '@type':           'PostalAddress',
-            streetAddress:     'Orchid Center, 3rd Floor, Golf Course Road, SEC-53',
-            addressLocality:   'Gurugram',
-            addressRegion:     'HR',
-            postalCode:        '122002',
+            streetAddress:     'T-4B-506, NX One Plot no.17, Techzone-4',
+            addressLocality:   'Greater Noida West',
+            addressRegion:     'UP',
+            postalCode:        '201308',
             addressCountry:    'IN',
           },
         })}

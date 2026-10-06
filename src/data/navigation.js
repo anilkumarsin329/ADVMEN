@@ -7,7 +7,7 @@
 
 export const navLinks = [
   { label: 'Home',     href: '/' },
-  { label: 'About',    href: '/about' },
+  // { label: 'About',    href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Catalog',  href: '/catalog' },
   { label: 'Work',     href: '/work' },
@@ -18,7 +18,7 @@ export const navLinks = [
 
 export const footerLinks = {
   company: [
-    { label: 'About Us',  href: '/about' },
+    // { label: 'About Us',  href: '/about' },
     { label: 'Our Work',  href: '/work' },
     { label: 'Blog',      href: '/blog' },
     { label: 'Careers',   href: '/careers' },

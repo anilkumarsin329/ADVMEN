@@ -31,7 +31,7 @@ const TermsOfService = () => {
           <div className="flex flex-col gap-6 text-[var(--color-text-secondary)]" style={{ lineHeight: '1.8' }}>
             <p className="font-mono text-xs">Last Updated: July 05, 2026</p>
             <p>
-              By accessing this digital platform, you agree to respect the terms of engagement of ADVMEN Pvt. Ltd.
+              By accessing this digital platform, you agree to respect the terms of engagement of ADVMEN
             </p>
             
             <h3 className="font-display font-bold text-lg text-white mt-4">1. Project Engagements</h3>

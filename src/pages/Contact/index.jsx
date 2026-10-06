@@ -186,12 +186,9 @@ const Contact = () => {
                   Headquarters
                 </h3>
                 <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
-                  ADVMEN Pvt. Ltd.<br />
-                  Orchid Center, 3rd Floor, Golf Course Road, SEC-53,<br />
-                  Gurugram, HR - 122002, IND<br />
-                  <span className="text-xs text-[var(--color-text-tertiary)] mt-2 block">
-                    Circle: Gurugram Circle-2 | Division: South City | Sub Division: SEC-56
-                  </span>
+                  ADVMEN<br />
+                  T-4B-506, NX One Plot no.17, Techzone-4<br />
+                  Greater Noida West, GAUTAM BUDDHA NAGAR, Pin 201308<br />
                 </p>
                 <div className="flex flex-col gap-3 font-body text-xs text-[var(--color-text-secondary)]">
                   <span>Mon - Fri: 9:00 AM - 6:00 PM (IST)</span>

@@ -113,7 +113,7 @@ const ChatWidget = () => {
       return 'Hum offer karte hain:\n• Web & Web App Development (MERN, React, Next.js)\n• Mobile App Development (iOS & Android)\n• Digital Marketing & SEO\n• Branding & Media Production\n\nContact us: info@advmen.com | +91 83750 08009'
     }
     if (msg.includes('contact') || msg.includes('email') || msg.includes('phone') || msg.includes('number') || msg.includes('location')) {
-      return 'Official Contact Details:\n• Email: info@advmen.com\n• Phone/WhatsApp: +91 83750 08009\n• Address: Orchid Center, 3rd Floor, Golf Course Road, SEC-53, Gurugram, HR - 122002, IND (Circle-2, South City, SEC-56)'
+      return 'Official Contact Details:\n• Email: info@advmen.com\n• Phone/WhatsApp: +91 83750 08009\n• Address: T-4B-506, NX One Plot no.17, Techzone-4 Greater Noida West, GAUTAM BUDDHA NAGAR, Pin 201308'
     }
     if (msg.includes('job') || msg.includes('career') || msg.includes('intern') || msg.includes('apply')) {
       return 'Careers page par jaakar Internship aur Full-Time roles ke liye apply karein. Apply karte hi Intern candidates ko official WhatsApp group link milega!'

@@ -10,13 +10,13 @@
 
 // ── Company Info ─────────────────────────────────────────────
 export const COMPANY = {
-  name:        'ADVMEN Pvt. Ltd.',
+  name:        'ADVMEN',
   shortName:   'ADVMEN',
   tagline:     'We Build Brands That Dominate.',
   description: 'ADVMEN is a premier full-service digital agency specializing in branding, web & app development, digital marketing, and performance campaigns for ambitious businesses across India.',
   email:       'info@advmen.com',
   phone:       '+91 83750 08009',
-  address:     'Orchid Center, 3rd Floor, Golf Course Road, SEC-53, Gurugram, HR - 122002, IND',
+  address:     'T-4B-506, NX One Plot no.17, Techzone-4 Greater Noida West Greater Noida West GAUTAM BUDDHA NAGAR , Pin 201308',
   website:     'https://advmen.com',
   founded:     '2026',
 }
