@@ -1,7 +1,7 @@
 /**
  * components/ui/Button.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Button Component
+ * ADVMEN — Button Component
  *
  * Variants: primary | secondary | ghost | outline | icon
  * Sizes:    sm | md | lg | xl

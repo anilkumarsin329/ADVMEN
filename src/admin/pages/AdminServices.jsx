@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminServices.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin services CRUD Manager Dashboard
+ * ADVMEN — Admin services CRUD Manager Dashboard
  * ─────────────────────────────────────────────────────────────
  */
 

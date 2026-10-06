@@ -1,7 +1,7 @@
 /**
  * components/layout/Navbar.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Premium Navbar (Fixed Mobile Toggle)
+ * ADVMEN — Premium Navbar (Fixed Mobile Toggle)
  *
  * ✅ Fixed bugs:
  * - Mobile menu toggle now works properly
@@ -189,7 +189,7 @@ const Navbar = () => {
             ref={logoRef}
             to="/"
             className="relative z-10 flex items-center group"
-            aria-label="ADVMEN Technologies — Home"
+            aria-label="ADVMEN — Home"
           >
             <BrandLogo />
           </Link>

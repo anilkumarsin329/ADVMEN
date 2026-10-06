@@ -1,7 +1,7 @@
 /**
  * components/common/CustomCursor.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Premium Custom Cursor
+ * ADVMEN — Premium Custom Cursor
  *
  * • Smooth GSAP lerp interpolation
  * • States: default | hover | text | drag | link | image | hidden

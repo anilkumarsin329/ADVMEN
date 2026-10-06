@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminProfile.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Profile Page
+ * ADVMEN — Admin Profile Page
  * ─────────────────────────────────────────────────────────────
  */
 

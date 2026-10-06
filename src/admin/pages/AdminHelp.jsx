@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminHelp.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Help Page
+ * ADVMEN — Admin Help Page
  * ─────────────────────────────────────────────────────────────
  */
 

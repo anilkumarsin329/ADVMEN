@@ -1,7 +1,7 @@
 /**
  * App.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Application Root
+ * ADVMEN — Application Root
  *
  * Responsibilities:
  *  1. Wraps the app in all context providers

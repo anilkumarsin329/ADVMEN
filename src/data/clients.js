@@ -1,7 +1,7 @@
 /**
  * data/clients.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Trusted Clients Data
+ * ADVMEN — Trusted Clients Data
  * ─────────────────────────────────────────────────────────────
  */
 

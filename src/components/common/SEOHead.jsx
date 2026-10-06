@@ -1,7 +1,7 @@
 /**
  * components/common/SEOHead.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — SEO Head Component
+ * ADVMEN — SEO Head Component
  *
  * Injects dynamic meta tags per page using react-helmet-async.
  * Import and use at the top of every page component.
@@ -9,7 +9,7 @@
  * Usage:
  *   <SEOHead
  *     title="About Us"
- *     description="Learn about ADVMEN Technologies..."
+ *     description="Learn about ADVMEN..."
  *   />
  * ─────────────────────────────────────────────────────────────
  */

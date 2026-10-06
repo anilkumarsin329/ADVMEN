@@ -1,7 +1,7 @@
 /**
  * components/layout/Footer.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Mega Footer
+ * ADVMEN — Mega Footer
  * Phase 11: Mega Footer complete.
  * ─────────────────────────────────────────────────────────────
  */

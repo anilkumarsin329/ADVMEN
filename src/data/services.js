@@ -1,7 +1,7 @@
 /**
  * data/services.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Primary Services Data & Helpers
+ * ADVMEN — Primary Services Data & Helpers
  * ─────────────────────────────────────────────────────────────
  */
 

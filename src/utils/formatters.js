@@ -1,7 +1,7 @@
 /**
  * utils/formatters.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — General Utility Functions
+ * ADVMEN — General Utility Functions
  * ─────────────────────────────────────────────────────────────
  */
 

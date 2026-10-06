@@ -1,7 +1,7 @@
 /**
  * utils/threeHelpers.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Three.js Utility Helpers
+ * ADVMEN — Three.js Utility Helpers
  *
  * Reusable helpers for Three.js / R3F scenes.
  * Centralises common patterns: disposal, pixel ratio,

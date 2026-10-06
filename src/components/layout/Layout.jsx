@@ -1,7 +1,7 @@
 /**
  * components/layout/Layout.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Root Layout
+ * ADVMEN — Root Layout
  *
  * • Lenis smooth scroll (synced to GSAP ScrollTrigger)
  * • ScrollProgress bar

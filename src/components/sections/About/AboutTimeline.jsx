@@ -19,7 +19,7 @@ const milestones = [
   {
     year: '2026',
     title: 'Official Incorporation & Registration',
-    description: 'ADVMEN Technologies was officially registered and incorporated as a full-service creative technology agency with an expanded leadership team.',
+    description: 'ADVMEN was officially registered and incorporated as a full-service creative technology agency with an expanded leadership team.',
   },
   {
     year: '2026+',

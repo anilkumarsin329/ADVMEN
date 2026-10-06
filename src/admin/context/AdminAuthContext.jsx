@@ -1,7 +1,7 @@
 /**
  * admin/context/AdminAuthContext.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Auth Context
+ * ADVMEN — Admin Auth Context
  * ─────────────────────────────────────────────────────────────
  */
 

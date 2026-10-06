@@ -156,7 +156,7 @@ const Testimonials = () => {
                 maxWidth: '500px',
               }}
             >
-              See what our clients say about working with ADVMEN Technologies.
+              See what our clients say about working with ADVMEN.
             </p>
           </div>
 

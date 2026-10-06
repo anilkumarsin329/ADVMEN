@@ -1,7 +1,7 @@
 /**
  * components/common/BrandLogo.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Official Brand Logo Component
+ * ADVMEN — Official Brand Logo Component
  * - Renders the complete, authentic "AM" Monogram Logo
  * - Includes exact "A D V M E N" typography & "For Every Brandman" tagline
  * - 100% Transparent blending with zero black box outline
@@ -36,7 +36,7 @@ const BrandLogo = ({
         >
           <img
             src="/ADVMEN logo.png"
-            alt="ADVMEN Technologies — For Every Brandman"
+            alt="ADVMEN — For Every Brandman"
             className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
             style={{
               mixBlendMode: 'screen',

@@ -1,7 +1,7 @@
 /**
  * pages/Services/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Services Grid Page
+ * ADVMEN — Services Grid Page
  * Fully Responsive - Mobile, Tablet, Desktop optimized
  * Smaller card sizes
  * ─────────────────────────────────────────────────────────────
@@ -93,7 +93,7 @@ const Services = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Services — ADVMEN Technologies"
+        title="Services — ADVMEN"
         description="Explore our creative design, React engineering, marketing, and SEO growth services."
       />
 

@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminLogin.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Login Page
+ * ADVMEN — Admin Login Page
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -61,8 +61,8 @@ const AdminLogin = () => {
   return (
     <>
       <SEOHead 
-        title="Admin Portal — ADVMEN Technologies" 
-        description="ADVMEN Technologies administrator access and backend portal."
+        title="Admin Portal — ADVMEN" 
+        description="ADVMEN administrator access and backend portal."
       />
 
       <div 
@@ -119,7 +119,7 @@ const AdminLogin = () => {
                 className="font-mono text-xs uppercase tracking-widest block mb-2"
                 style={{ color: 'var(--color-orange)' }}
               >
-                ADVMEN Technologies
+                ADVMEN
               </span>
               <h1 
                 className="text-2xl font-bold leading-tight"

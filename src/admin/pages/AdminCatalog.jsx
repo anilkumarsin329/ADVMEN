@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminCatalog.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Catalog CRUD Manager Dashboard
+ * ADVMEN — Admin Catalog CRUD Manager Dashboard
  * ─────────────────────────────────────────────────────────────
  */
 

@@ -1,7 +1,7 @@
 /**
  * pages/PrivacyPolicy/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Privacy Policy
+ * ADVMEN — Privacy Policy
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -11,7 +11,7 @@ import PageTransition from '@components/common/PageTransition'
 const PrivacyPolicy = () => {
   return (
     <PageTransition>
-      <SEOHead title="Privacy Policy — ADVMEN Technologies" noIndex />
+      <SEOHead title="Privacy Policy — ADVMEN" noIndex />
       <section
         className="relative w-full overflow-hidden"
         style={{
@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
           <div className="flex flex-col gap-6 text-[var(--color-text-secondary)]" style={{ lineHeight: '1.8' }}>
             <p className="font-mono text-xs">Last Updated: July 05, 2026</p>
             <p>
-              At ADVMEN Technologies Pvt. Ltd., we respect your private details. This Privacy Policy details how we accumulate, utilize, and protect search metrics and contact records provided via our contact panels.
+              At ADVMEN Pvt. Ltd., we respect your private details. This Privacy Policy details how we accumulate, utilize, and protect search metrics and contact records provided via our contact panels.
             </p>
             
             <h3 className="font-display font-bold text-lg text-white mt-4">1. Information Accumulation</h3>

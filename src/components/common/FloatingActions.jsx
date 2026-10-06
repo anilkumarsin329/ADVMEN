@@ -1,7 +1,7 @@
 /**
  * components/common/FloatingActions.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Floating Action Buttons
+ * ADVMEN — Floating Action Buttons
  *
  * • WhatsApp quick contact
  * • Phone call shortcut

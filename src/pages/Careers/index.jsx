@@ -1,7 +1,7 @@
 /**
  * pages/Careers/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Careers Page (Dedicated Intern & Experienced Sections)
+ * ADVMEN — Careers Page (Dedicated Intern & Experienced Sections)
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -373,8 +373,8 @@ const Careers = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Careers & Internships — ADVMEN Technologies"
-        description="Join ADVMEN Technologies. View open internship and experienced full-time roles across engineering, design, and growth."
+        title="Careers & Internships — ADVMEN"
+        description="Join ADVMEN. View open internship and experienced full-time roles across engineering, design, and growth."
       />
 
       <div ref={containerRef} className="w-full bg-[var(--color-black)] min-h-screen text-[var(--color-text-primary)] font-body">

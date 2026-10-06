@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminSettings.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Settings page (Coming Soon)
+ * ADVMEN — Admin Settings page (Coming Soon)
  * ─────────────────────────────────────────────────────────────
  */
 

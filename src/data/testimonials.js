@@ -1,7 +1,7 @@
 /**
  * data/testimonials.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Client Testimonials
+ * ADVMEN — Client Testimonials
  * Realistic Indian B2B client testimonials
  * ─────────────────────────────────────────────────────────────
  */

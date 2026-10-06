@@ -1,7 +1,7 @@
 /**
  * pages/CareerDetail/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Professional Job Detail Page
+ * ADVMEN — Professional Job Detail Page
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -218,7 +218,7 @@ const CareerDetail = () => {
     <PageTransition>
       <SEOHead
         title={`${job.title} (${job.type}) — ADVMEN Careers`}
-        description={`Apply for ${job.title} at ADVMEN Technologies. ${job.location}. ${job.salary || ''}`}
+        description={`Apply for ${job.title} at ADVMEN. ${job.location}. ${job.salary || ''}`}
       />
 
       <div className="w-full bg-[#0d0e12] min-h-screen text-slate-100 font-sans pt-28 pb-20">
@@ -317,7 +317,7 @@ const CareerDetail = () => {
                   About the Role
                 </h3>
                 <p className="text-slate-300 text-sm leading-relaxed">
-                  ADVMEN Technologies is looking for a passionate <strong className="text-white">{job.title}</strong> to join our high-growth team in Gurugram. In this role, you will work on live high-impact client products, collaborate directly with founders and senior engineers, and build cutting-edge web & mobile technology.
+                  ADVMEN is looking for a passionate <strong className="text-white">{job.title}</strong> to join our high-growth team in Gurugram. In this role, you will work on live high-impact client products, collaborate directly with founders and senior engineers, and build cutting-edge web & mobile technology.
                 </p>
               </div>
 

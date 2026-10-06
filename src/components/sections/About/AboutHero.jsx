@@ -83,7 +83,7 @@ const AboutHero = () => {
                 Crafting High-Impact Digital Solutions That Power Modern Businesses.
               </h1>
               <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-body font-normal max-w-2xl">
-                ADVMEN Technologies is a premier full-service digital agency built for forward-thinking brands. 
+                ADVMEN is a premier full-service digital agency built for forward-thinking brands. 
                 We combine strategic vision, web engineering, brand identity, and performance marketing to deliver 
                 tailored digital products that scale modern enterprises.
               </p>
@@ -179,7 +179,7 @@ const AboutHero = () => {
                   Mr. Govind Goyal
                 </span>
                 <span className="text-[var(--color-orange)] font-mono text-xs font-medium">
-                  Co-Founder & Director — ADVMEN Technologies
+                  Co-Founder & Director — ADVMEN
                 </span>
               </div>
 

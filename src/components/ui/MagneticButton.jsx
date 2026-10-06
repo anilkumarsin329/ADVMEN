@@ -1,7 +1,7 @@
 /**
  * components/ui/MagneticButton.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Magnetic Button
+ * ADVMEN — Magnetic Button
  *
  * Pulls toward the cursor when hovered — signature premium effect.
  * Wraps any child element with magnetic behaviour.

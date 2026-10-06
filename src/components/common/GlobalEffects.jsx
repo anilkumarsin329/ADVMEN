@@ -1,7 +1,7 @@
 /**
  * components/common/GlobalEffects.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Global Visual Effects
+ * ADVMEN — Global Visual Effects
  *
  * • Noise texture overlay (SVG filter, CSS only)
  * • Gradient mesh background orbs

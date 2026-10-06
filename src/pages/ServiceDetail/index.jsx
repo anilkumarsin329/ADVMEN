@@ -1,7 +1,7 @@
 /**
  * pages/ServiceDetail/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Dedicated Service Detail Page
+ * ADVMEN — Dedicated Service Detail Page
  * Phase 2: Dynamic Service details complete.
  * ─────────────────────────────────────────────────────────────
  */
@@ -110,7 +110,7 @@ const ServiceDetail = () => {
   return (
     <PageTransition>
       <SEOHead
-        title={`${service.title} — ADVMEN Technologies`}
+        title={`${service.title} — ADVMEN`}
         description={service.description}
       />
 

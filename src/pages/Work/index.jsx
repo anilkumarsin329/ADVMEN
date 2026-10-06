@@ -1,7 +1,7 @@
 /**
  * pages/Work/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Portfolio Grid Page
+ * ADVMEN — Portfolio Grid Page
  * Phase 5: Portfolio Grid complete.
  * ─────────────────────────────────────────────────────────────
  */
@@ -69,7 +69,7 @@ const Work = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Our Work — ADVMEN Technologies"
+        title="Our Work — ADVMEN"
         description="Explore our portfolio of high-impact web systems, creative branding cases, and digital campaigns."
       />
 

@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminContacts.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Contacts & Inquiries Management (Industrial Light Theme)
+ * ADVMEN — Admin Contacts & Inquiries Management (Industrial Light Theme)
  * ─────────────────────────────────────────────────────────────
  */
 

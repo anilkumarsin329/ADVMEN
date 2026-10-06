@@ -2,7 +2,7 @@
 /**
  * context/CursorContext.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Custom Cursor Context
+ * ADVMEN — Custom Cursor Context
  *
  * Provides cursor type state globally so any component can
  * change the cursor appearance without prop drilling.

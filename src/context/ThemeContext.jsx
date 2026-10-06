@@ -2,7 +2,7 @@
 /**
  * context/ThemeContext.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Theme Context
+ * ADVMEN — Theme Context
  *
  * Currently manages the dark luxury theme.
  * Scaffolded for future light mode toggle if needed.

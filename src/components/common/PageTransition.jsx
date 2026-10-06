@@ -1,7 +1,7 @@
 /**
  * components/common/PageTransition.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Page Transition
+ * ADVMEN — Page Transition
  *
  * • Framer Motion fade + slide for page content
  * • GSAP curtain overlay for route changes

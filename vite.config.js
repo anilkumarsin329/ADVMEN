@@ -1,7 +1,7 @@
 /**
  * vite.config.js
  * ─────────────────────────────────────────────────────────────
- * Vite configuration for ADVMEN Technologies website.
+ * Vite configuration for ADVMEN website.
  *
  * Key features:
  *  - Path aliases so imports stay clean (@/components/...)

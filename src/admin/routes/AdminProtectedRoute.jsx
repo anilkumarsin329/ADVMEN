@@ -1,7 +1,7 @@
 /**
  * admin/routes/AdminProtectedRoute.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Protected Route
+ * ADVMEN — Admin Protected Route
  * ─────────────────────────────────────────────────────────────
  */
 

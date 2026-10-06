@@ -1,5 +1,5 @@
 /**
- * Preloader.jsx — ADVMEN Technologies
+ * Preloader.jsx — ADVMEN
  * Fixed: logo ref is now only the <img> — GSAP y-animation
  * never shifts the SVG ring container, so it stays centered.
  */
@@ -108,7 +108,7 @@ const PreloaderInner = () => {
     <div
       ref={wrapperRef}
       role="status"
-      aria-label="Loading ADVMEN Technologies"
+      aria-label="Loading ADVMEN"
       aria-live="polite"
       style={{
         position:       'fixed',
@@ -219,7 +219,7 @@ const PreloaderInner = () => {
             margin:        0,
           }}
         >
-          ADVMEN TECHNOLOGIES
+          ADVMEN
         </p>
 
         {/* Progress */}

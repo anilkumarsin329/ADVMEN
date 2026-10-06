@@ -1,7 +1,7 @@
 /**
  * components/common/ChatWidget.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — AI Assistant Chat Widget (Groq LLM Powered)
+ * ADVMEN — AI Assistant Chat Widget (Groq LLM Powered)
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -12,8 +12,8 @@ import { API_BASE_URL } from '@utils/constants'
 
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || ''
 
-const SYSTEM_PROMPT = `You are ADVMEN AI, the official AI customer support & technology consultant for ADVMEN Technologies.
-ADVMEN Technologies is a premier IT solutions and digital agency offering:
+const SYSTEM_PROMPT = `You are ADVMEN AI, the official AI customer support & technology consultant for ADVMEN.
+ADVMEN is a premier IT solutions and digital agency offering:
 - Custom Web & Web Application Development (React, Node.js, Next.js, MERN Stack)
 - Mobile App Development (iOS & Android using React Native & Flutter)
 - Brand Identity Design, Graphic Design & Creative Visual Systems
@@ -33,7 +33,7 @@ Guidelines for AI:
 const ChatWidget = () => {
   const [isChatOpen, setIsChatOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { id: 1, type: 'bot', text: 'Hello! Welcome to ADVMEN Technologies. How can we assist you today?' }
+    { id: 1, type: 'bot', text: 'Hello! Welcome to ADVMEN. How can we assist you today?' }
   ])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -107,7 +107,7 @@ const ChatWidget = () => {
     // 3. Local Hinglish NLP Engine
     const msg = userQuery.toLowerCase().trim()
     if (msg.includes('tum kon') || msg.includes('aap kon') || msg.includes('kon ho') || msg.includes('who are you')) {
-      return 'Main ADVMEN Technologies ka Smart AI Assistant hu! Main aapko Web/App Development, Digital Marketing, Internships aur hiring processes ke baare me jankari deta hu. Aap kya janna chahte hain?'
+      return 'Main ADVMEN ka Smart AI Assistant hu! Main aapko Web/App Development, Digital Marketing, Internships aur hiring processes ke baare me jankari deta hu. Aap kya janna chahte hain?'
     }
     if (msg.includes('service') || msg.includes('kya karte') || msg.includes('what do you do') || msg.includes('work')) {
       return 'Hum offer karte hain:\n• Web & Web App Development (MERN, React, Next.js)\n• Mobile App Development (iOS & Android)\n• Digital Marketing & SEO\n• Branding & Media Production\n\nContact us: info@advmen.com | +91 83750 08009'
@@ -121,7 +121,7 @@ const ChatWidget = () => {
     if (msg.includes('price') || msg.includes('cost') || msg.includes('rate') || msg.includes('kitna')) {
       return 'Pricing project requirement ke anusar calculate hoti hai. Custom quote ke liye info@advmen.com par email karein ya +91 83750 08009 par call karein.'
     }
-    return 'ADVMEN Technologies me aapka swagat hai! Kisi bhi project inquiry ke liye info@advmen.com par email karein ya +91 83750 08009 par call/WhatsApp karein.'
+    return 'ADVMEN me aapka swagat hai! Kisi bhi project inquiry ke liye info@advmen.com par email karein ya +91 83750 08009 par call/WhatsApp karein.'
   }
 
   const handleSendMessage = async () => {

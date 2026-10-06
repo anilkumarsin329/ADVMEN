@@ -1,7 +1,7 @@
 /**
  * tailwind.config.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Tailwind CSS v3 Configuration
+ * ADVMEN — Tailwind CSS v3 Configuration
  * All tokens mirror CSS variables in variables.css.
  * ─────────────────────────────────────────────────────────────
  */

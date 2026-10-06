@@ -48,7 +48,7 @@ const AdSpaceAdvertiserDashboard = () => {
           key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'dummy_key',
           amount: order.amount,
           currency: order.currency,
-          name: "ADVMEN Technologies",
+          name: "ADVMEN",
           description: "Ad Space Booking",
           order_id: order.id,
           handler: async function (response) {

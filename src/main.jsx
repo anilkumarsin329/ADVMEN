@@ -1,7 +1,7 @@
 /**
  * main.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Application Entry Point
+ * ADVMEN — Application Entry Point
  *
  * Imports the global stylesheet first (critical for Tailwind
  * base styles to apply before any component renders).

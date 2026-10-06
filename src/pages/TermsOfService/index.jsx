@@ -1,7 +1,7 @@
 /**
  * pages/TermsOfService/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Terms of Service
+ * ADVMEN — Terms of Service
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -11,7 +11,7 @@ import PageTransition from '@components/common/PageTransition'
 const TermsOfService = () => {
   return (
     <PageTransition>
-      <SEOHead title="Terms of Service — ADVMEN Technologies" noIndex />
+      <SEOHead title="Terms of Service — ADVMEN" noIndex />
       <section
         className="relative w-full overflow-hidden"
         style={{
@@ -31,7 +31,7 @@ const TermsOfService = () => {
           <div className="flex flex-col gap-6 text-[var(--color-text-secondary)]" style={{ lineHeight: '1.8' }}>
             <p className="font-mono text-xs">Last Updated: July 05, 2026</p>
             <p>
-              By accessing this digital platform, you agree to respect the terms of engagement of ADVMEN Technologies Pvt. Ltd.
+              By accessing this digital platform, you agree to respect the terms of engagement of ADVMEN Pvt. Ltd.
             </p>
             
             <h3 className="font-display font-bold text-lg text-white mt-4">1. Project Engagements</h3>
@@ -41,7 +41,7 @@ const TermsOfService = () => {
 
             <h3 className="font-display font-bold text-lg text-white mt-4">2. Proprietary Intellectual Property</h3>
             <p>
-              The design layouts, code assets, custom cursor animations, WebGL setups, and SVG logo marks displayed on this platform are owned by ADVMEN Technologies and may not be copied or repurposed without direct permission.
+              The design layouts, code assets, custom cursor animations, WebGL setups, and SVG logo marks displayed on this platform are owned by ADVMEN and may not be copied or repurposed without direct permission.
             </p>
 
             <h3 className="font-display font-bold text-lg text-white mt-4">3. Governing Jurisdiction</h3>

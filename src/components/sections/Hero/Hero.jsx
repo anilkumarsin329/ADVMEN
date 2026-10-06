@@ -137,7 +137,7 @@ const Hero = () => {
     <section
       ref={sectionRef}
       className="hero-section-responsive"
-      aria-label="Hero — ADVMEN Technologies"
+      aria-label="Hero — ADVMEN"
     >
       <HeroBackground />
 
@@ -175,16 +175,6 @@ const Hero = () => {
               >
                 <span style={{ color: '#FF6B00', fontWeight: 700, letterSpacing: '0.08em' }}>
                   ADVMEN
-                </span>
-                <span
-                  style={{
-                    color: 'rgba(245, 245, 245, 0.65)',
-                    fontWeight: 400,
-                    letterSpacing: '0.06em',
-                    marginLeft: '0.35em',
-                  }}
-                >
-                  Technologies
                 </span>
               </p>
             </div>

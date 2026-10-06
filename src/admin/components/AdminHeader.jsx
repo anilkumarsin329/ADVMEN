@@ -1,7 +1,7 @@
 /**
  * admin/components/AdminHeader.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Header Component
+ * ADVMEN — Admin Header Component
  * ─────────────────────────────────────────────────────────────
  */
 

@@ -66,7 +66,7 @@ const AboutStory = () => {
               style={{ lineHeight: '1.8' }}
             >
               <p style={{ fontSize: 'clamp(0.875rem, 1.1vw, 1rem)' }}>
-                ADVMEN Technologies began as a core team of senior developers and visual designers frustrated 
+                ADVMEN began as a core team of senior developers and visual designers frustrated 
                 by average agency templates. We set out to create an engineering-first shop that respects design 
                 purity, writing clean code that executes fast, performs perfectly, and engages users with premium, 
                 fluid motion.

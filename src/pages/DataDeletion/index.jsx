@@ -1,6 +1,6 @@
 /**
  * pages/DataDeletion/index.jsx
- * ADVMEN Technologies — Data Deletion Request Page (required by Meta/Facebook)
+ * ADVMEN — Data Deletion Request Page (required by Meta/Facebook)
  */
 
 import SEOHead from '@components/common/SEOHead'
@@ -9,7 +9,7 @@ import PageTransition from '@components/common/PageTransition'
 const DataDeletion = () => {
   return (
     <PageTransition>
-      <SEOHead title="Data Deletion Request — ADVMEN Technologies" noIndex />
+      <SEOHead title="Data Deletion Request — ADVMEN" noIndex />
       <section
         className="relative w-full overflow-hidden"
         style={{
@@ -30,12 +30,12 @@ const DataDeletion = () => {
             <p className="font-mono text-xs">Last Updated: July 05, 2026</p>
 
             <p>
-              At ADVMEN Technologies Pvt. Ltd., we respect your right to control your personal data. If you have interacted with our website or connected via Facebook/Meta and wish to have your data deleted, you may submit a deletion request.
+              At ADVMEN Pvt. Ltd., we respect your right to control your personal data. If you have interacted with our website or connected via Facebook/Meta and wish to have your data deleted, you may submit a deletion request.
             </p>
 
             <h3 className="font-display font-bold text-lg text-white mt-4">How to Request Data Deletion</h3>
             <p>
-              To request deletion of your personal data collected by ADVMEN Technologies, please contact us via email with the subject line <span className="text-white font-semibold">"Data Deletion Request"</span>:
+              To request deletion of your personal data collected by ADVMEN, please contact us via email with the subject line <span className="text-white font-semibold">"Data Deletion Request"</span>:
             </p>
             <p>
               📧 <a href="mailto:info@advmen.com" className="text-[var(--color-orange)] hover:underline">info@advmen.com</a>

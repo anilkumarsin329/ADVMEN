@@ -1,7 +1,7 @@
 /**
  * pages/About/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — About Us Page
+ * ADVMEN — About Us Page
  * Phase 1: Rebuilt with fully animated custom sections.
  * ─────────────────────────────────────────────────────────────
  */
@@ -20,7 +20,7 @@ const About = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="About Us — ADVMEN Technologies"
+        title="About Us — ADVMEN"
         description="Learn about ADVMEN's story, core values, our elite team, and design culture."
       />
 

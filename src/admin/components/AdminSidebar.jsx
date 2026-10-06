@@ -1,7 +1,7 @@
 /**
  * admin/components/AdminSidebar.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Sidebar Component
+ * ADVMEN — Admin Sidebar Component
  * ─────────────────────────────────────────────────────────────
  */
 

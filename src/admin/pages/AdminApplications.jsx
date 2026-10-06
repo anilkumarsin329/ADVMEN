@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminApplications.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Job Applications Dashboard
+ * ADVMEN — Admin Job Applications Dashboard
  * ─────────────────────────────────────────────────────────────
  */
 

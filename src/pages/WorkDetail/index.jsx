@@ -1,7 +1,7 @@
 /**
  * pages/WorkDetail/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Case Study / Work Details Page
+ * ADVMEN — Case Study / Work Details Page
  * ─────────────────────────────────────────────────────────────
  */
 

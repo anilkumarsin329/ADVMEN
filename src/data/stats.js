@@ -1,7 +1,7 @@
 /**
  * data/stats.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Company Stats / Numbers
+ * ADVMEN — Company Stats / Numbers
  * ─────────────────────────────────────────────────────────────
  */
 

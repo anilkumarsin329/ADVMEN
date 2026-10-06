@@ -1,7 +1,7 @@
 /**
  * admin/components/AdminLayout.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Layout Wrapper
+ * ADVMEN — Admin Layout Wrapper
  * ─────────────────────────────────────────────────────────────
  */
 

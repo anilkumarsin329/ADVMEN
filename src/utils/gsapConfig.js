@@ -1,7 +1,7 @@
 /**
  * utils/gsapConfig.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — GSAP Global Configuration
+ * ADVMEN — GSAP Global Configuration
  *
  * Registers all GSAP plugins in one place.
  * Import this file once at the app root (main.jsx or App.jsx).

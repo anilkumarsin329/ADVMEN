@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminDashboard.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Dashboard Overview Page (Live Real-Time Data)
+ * ADVMEN — Admin Dashboard Overview Page (Live Real-Time Data)
  * ─────────────────────────────────────────────────────────────
  */
 

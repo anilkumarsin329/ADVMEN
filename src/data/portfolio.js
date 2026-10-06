@@ -1,7 +1,7 @@
 /**
  * data/portfolio.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Portfolio / Work Data
+ * ADVMEN — Portfolio / Work Data
  * Updated with optimized Unsplash HD Image URLs, Categories, and Technologies.
  * ─────────────────────────────────────────────────────────────
  */

@@ -1,7 +1,7 @@
 /**
  * pages/Contact/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Contact Us Page
+ * ADVMEN — Contact Us Page
  * Phase 10: Contact Page complete.
  * ─────────────────────────────────────────────────────────────
  */
@@ -130,7 +130,7 @@ const Contact = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Contact Us — ADVMEN Technologies"
+        title="Contact Us — ADVMEN"
         description="Get in touch with ADVMEN for project consulting, branding queries, or frontend engineering collaborations."
       />
 
@@ -186,7 +186,7 @@ const Contact = () => {
                   Headquarters
                 </h3>
                 <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
-                  ADVMEN Technologies Pvt. Ltd.<br />
+                  ADVMEN Pvt. Ltd.<br />
                   Orchid Center, 3rd Floor, Golf Course Road, SEC-53,<br />
                   Gurugram, HR - 122002, IND<br />
                   <span className="text-xs text-[var(--color-text-tertiary)] mt-2 block">
@@ -231,7 +231,7 @@ const Contact = () => {
                     </svg>
                   </a>
                   <a
-                    href="https://wa.me/918375008009?text=Hi%20ADVMEN%20Technologies%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+                    href="https://wa.me/918375008009?text=Hi%20ADVMEN%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
                     className="flex justify-between items-center group font-body text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300"
                     target="_blank"
                     rel="noreferrer"
@@ -263,7 +263,7 @@ const Contact = () => {
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="ADVMEN Technologies Location"
+                    title="ADVMEN Location"
                   />
                 </div>
               </div>

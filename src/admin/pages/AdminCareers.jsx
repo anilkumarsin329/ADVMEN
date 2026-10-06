@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminCareers.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Careers & Job Openings Management (Industrial Light Theme)
+ * ADVMEN — Admin Careers & Job Openings Management (Industrial Light Theme)
  * ─────────────────────────────────────────────────────────────
  */
 

@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminBlog.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Blog & Articles Management (Industrial Light Theme)
+ * ADVMEN — Admin Blog & Articles Management (Industrial Light Theme)
  * ─────────────────────────────────────────────────────────────
  */
 

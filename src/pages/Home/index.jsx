@@ -32,7 +32,7 @@ const Home = () => {
   <PageTransition>
     <SEOHead
       title="We Build Brands That Dominate"
-      description="ADVMEN Technologies — Premium branding, digital marketing, web & app development agency. Creating brands, building businesses, growing companies."
+      description="ADVMEN — Premium branding, digital marketing, web & app development agency. Creating brands, building businesses, growing companies."
     />
     {/* Phase 0: Hero */}
     <Hero />

@@ -1,7 +1,7 @@
 /**
  * data/navigation.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Navigation Data
+ * ADVMEN — Navigation Data
  * ─────────────────────────────────────────────────────────────
  */
 

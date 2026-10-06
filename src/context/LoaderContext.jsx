@@ -2,7 +2,7 @@
 /**
  * context/LoaderContext.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Page Loader Context
+ * ADVMEN — Page Loader Context
  *
  * Controls the global preloader state.
  * When isLoading is true, the Preloader component is visible.

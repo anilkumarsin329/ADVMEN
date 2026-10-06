@@ -1,7 +1,7 @@
 /**
  * utils/constants.js
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Global Constants
+ * ADVMEN — Global Constants
  *
  * Single source of truth for all magic strings, numbers,
  * and configuration values used across the application.
@@ -10,10 +10,10 @@
 
 // ── Company Info ─────────────────────────────────────────────
 export const COMPANY = {
-  name:        'ADVMEN Technologies Pvt. Ltd.',
+  name:        'ADVMEN Pvt. Ltd.',
   shortName:   'ADVMEN',
   tagline:     'We Build Brands That Dominate.',
-  description: 'ADVMEN Technologies is a premier full-service digital agency specializing in branding, web & app development, digital marketing, and performance campaigns for ambitious businesses across India.',
+  description: 'ADVMEN is a premier full-service digital agency specializing in branding, web & app development, digital marketing, and performance campaigns for ambitious businesses across India.',
   email:       'info@advmen.com',
   phone:       '+91 83750 08009',
   address:     'Orchid Center, 3rd Floor, Golf Course Road, SEC-53, Gurugram, HR - 122002, IND',
@@ -163,8 +163,8 @@ export const BREAKPOINTS = {
 
 // ── SEO Defaults ─────────────────────────────────────────────
 export const SEO_DEFAULTS = {
-  title:       'ADVMEN Technologies — We Build Brands That Dominate',
-  description: 'ADVMEN Technologies is a premium branding, digital marketing, web & app development, and political campaign agency helping businesses grow.',
+  title:       'ADVMEN — We Build Brands That Dominate',
+  description: 'ADVMEN is a premium branding, digital marketing, web & app development, and political campaign agency helping businesses grow.',
   keywords:    'branding, digital marketing, web development, app development, SEO, advertising, political campaigns, media production',
   ogImage:     '/images/og/og-default.jpg',
   twitterCard: 'summary_large_image',

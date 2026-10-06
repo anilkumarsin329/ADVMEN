@@ -1,5 +1,5 @@
 /**
- * About.jsx — ADVMEN Technologies
+ * About.jsx — ADVMEN
  * Premium About section with full mobile responsiveness
  * GSAP scroll-triggered animations
  */
@@ -178,7 +178,7 @@ const About = () => {
         paddingBottom: 'clamp(2rem, 5vw, 4rem)',
         background: 'var(--color-black)',
       }}
-      aria-label="About ADVMEN Technologies"
+      aria-label="About ADVMEN"
     >
       <AboutBackground />
 
@@ -261,7 +261,7 @@ const About = () => {
                   lineHeight: 'var(--leading-relaxed)',
                 }}
               >
-                ADVMEN Technologies is a full-service digital agency built for ambitious brands. We combine strategic thinking with creative execution to deliver results that matter.
+                ADVMEN is a full-service digital agency built for ambitious brands. We combine strategic thinking with creative execution to deliver results that matter.
               </p>
               <p
                 className="about-desc"

@@ -1,7 +1,7 @@
 /**
  * admin/pages/AdminPortfolio.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Admin Portfolio Management (Industrial Light Theme)
+ * ADVMEN — Admin Portfolio Management (Industrial Light Theme)
  * ─────────────────────────────────────────────────────────────
  */
 

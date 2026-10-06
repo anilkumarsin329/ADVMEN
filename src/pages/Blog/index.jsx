@@ -1,7 +1,7 @@
 /**
  * pages/Blog/index.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN Technologies — Blog Grid Page
+ * ADVMEN — Blog Grid Page
  * Fully completed.
  * ─────────────────────────────────────────────────────────────
  */
@@ -56,7 +56,7 @@ const Blog = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Blog & Insights — ADVMEN Technologies"
+        title="Blog & Insights — ADVMEN"
         description="Read technical articles on React optimization, creative design engineering, and brand strategy."
       />
 
