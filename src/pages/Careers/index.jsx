@@ -1,8 +1,8 @@
 /**
  * pages/Careers/index.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Careers Page (Dedicated Intern & Experienced Sections)
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Careers Page (Dedicated Intern & Experienced Sections)
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useEffect, useRef, useState } from 'react'
@@ -307,18 +307,18 @@ const Careers = () => {
         <div className="p-4 pt-4 flex flex-col justify-between flex-1">
           <div>
             {/* Hashtag Department */}
-            <span className="font-mono font-bold text-xs uppercase tracking-widest text-[#ff6b00] block mb-1">
+            <span className="font-mono font-bold text-xs uppercase tracking-widest text-[#E85D00] block mb-1">
               #{pos.department || 'TECH'}
             </span>
 
             {/* Job Title */}
-            <h3 className="font-display font-bold text-2xl text-white mb-2 group-hover:text-[#ff6b00] transition-colors leading-tight cursor-pointer">
+            <h3 className="font-display font-bold text-2xl text-white mb-2 group-hover:text-[#E85D00] transition-colors leading-tight cursor-pointer">
               <Link to={`/careers/${pos.id}`}>{pos.title}</Link>
             </h3>
 
             {/* Location */}
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-300 mb-4">
-              <FiMapPin className="text-[#ff6b00] flex-shrink-0" size={14} />
+              <FiMapPin className="text-[#E85D00] flex-shrink-0" size={14} />
               <span>{pos.location || 'Gurugram / Remote'}</span>
             </div>
 
@@ -371,13 +371,13 @@ const Careers = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Careers & Internships — ADVMEN"
+        title="Careers & Internships â€” ADVMEN"
         description="Join ADVMEN. View open internship and experienced full-time roles across engineering, design, and growth."
       />
 
       <div ref={containerRef} className="w-full bg-[var(--color-black)] min-h-screen text-[var(--color-text-primary)] font-body">
         
-        {/* ── HERO SECTION ── */}
+        {/* â”€â”€ HERO SECTION â”€â”€ */}
         <section 
           className="relative w-full overflow-hidden flex items-center"
           style={{
@@ -441,7 +441,7 @@ const Careers = () => {
           </div>
         </section>
 
-        {/* ── POSITIONS SECTION ── */}
+        {/* â”€â”€ POSITIONS SECTION â”€â”€ */}
         <section 
           ref={positionsRef}
           className="w-full relative"
@@ -586,7 +586,7 @@ const Careers = () => {
           </div>
         </section>
 
-        {/* ── WHY JOIN ADVMEN ── */}
+        {/* â”€â”€ WHY JOIN ADVMEN â”€â”€ */}
         <section 
           ref={perksRef}
           className="w-full relative"
@@ -643,7 +643,7 @@ const Careers = () => {
 
       </div>
 
-      {/* ── JOB DETAILS & APPLY MODALS ── */}
+      {/* â”€â”€ JOB DETAILS & APPLY MODALS â”€â”€ */}
       {typeof document !== 'undefined' && createPortal(
         <>
           <AnimatePresence>
@@ -677,11 +677,11 @@ const Careers = () => {
 
                   <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300 mb-6 bg-[#1e2230] p-3 rounded-xl border border-slate-700/50">
                     <span className="flex items-center gap-1.5 font-semibold"><FiMapPin className="text-orange-500" /> {viewModalJob.location}</span>
-                    <span>•</span>
+                    <span>â€¢</span>
                     <span className="text-amber-400 font-bold">{viewModalJob.type}</span>
                     {viewModalJob.salary && (
                       <>
-                        <span>•</span>
+                        <span>â€¢</span>
                         <span className="text-emerald-400 font-mono font-bold">{viewModalJob.salary}</span>
                       </>
                     )}
@@ -721,7 +721,7 @@ const Careers = () => {
             )}
           </AnimatePresence>
 
-          {/* ── APPLY NOW MODAL FORM & WHATSAPP SUCCESS SCREEN ── */}
+          {/* â”€â”€ APPLY NOW MODAL FORM & WHATSAPP SUCCESS SCREEN â”€â”€ */}
           <AnimatePresence>
             {applyModalJob && (
               <motion.div
@@ -755,7 +755,7 @@ const Careers = () => {
                         Apply for {applyModalJob.title}
                       </h3>
                       <p className="text-xs text-slate-400 mb-6 flex items-center gap-1.5">
-                        {isInternRole(applyModalJob) ? <span className="flex items-center gap-1 text-amber-400 font-bold"><FiAward size={12} /> Internship Track</span> : <span className="flex items-center gap-1 text-blue-400 font-bold"><FiBriefcase size={12} /> Experienced Track</span>} • {applyModalJob.department}
+                        {isInternRole(applyModalJob) ? <span className="flex items-center gap-1 text-amber-400 font-bold"><FiAward size={12} /> Internship Track</span> : <span className="flex items-center gap-1 text-blue-400 font-bold"><FiBriefcase size={12} /> Experienced Track</span>} â€¢ {applyModalJob.department}
                       </p>
 
                       {formError && (
@@ -823,7 +823,7 @@ const Careers = () => {
                                 className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-dashed border-slate-600 hover:border-orange-500 text-xs text-slate-300 flex items-center justify-between cursor-pointer transition-all"
                               >
                                 <span className="truncate max-w-[170px] font-medium">
-                                  {applicantForm.profilePhoto ? '✓ Photo Uploaded' : 'Choose Photo (JPG/PNG)'}
+                                  {applicantForm.profilePhoto ? 'âœ“ Photo Uploaded' : 'Choose Photo (JPG/PNG)'}
                                 </span>
                                 <FiUpload className="text-orange-400 flex-shrink-0" size={15} />
                               </label>
@@ -849,7 +849,7 @@ const Careers = () => {
                                 className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-dashed border-slate-600 hover:border-orange-500 text-xs text-slate-300 flex items-center justify-between cursor-pointer transition-all"
                               >
                                 <span className="truncate max-w-[170px] font-medium">
-                                  {applicantForm.resume ? '✓ Resume Uploaded' : 'Choose Resume (PDF/DOC)'}
+                                  {applicantForm.resume ? 'âœ“ Resume Uploaded' : 'Choose Resume (PDF/DOC)'}
                                 </span>
                                 <FiUpload className="text-orange-400 flex-shrink-0" size={15} />
                               </label>

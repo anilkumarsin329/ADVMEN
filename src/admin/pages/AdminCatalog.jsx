@@ -1,8 +1,8 @@
 /**
  * admin/pages/AdminCatalog.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Admin Catalog CRUD Manager Dashboard
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Admin Catalog CRUD Manager Dashboard
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useState, useEffect } from 'react'
@@ -459,16 +459,16 @@ const AdminCatalog = () => {
       <style dangerouslySetInnerHTML={{
         __html: `
         .admin-catalog-container h2 {
-          color: #121215 !important;
+          color: #141418 !important;
         }
         .admin-catalog-container h3 {
-          color: #121215 !important;
+          color: #141418 !important;
         }
         .admin-catalog-container th {
           color: #555555 !important;
         }
         .admin-catalog-container td {
-          color: #121215 !important;
+          color: #141418 !important;
         }
         .admin-catalog-container td span {
           color: inherit;
@@ -595,7 +595,7 @@ const AdminCatalog = () => {
             </div>
           </div>
           <span className="text-3xl font-extrabold font-display leading-none tracking-tight mt-2" style={{ color: 'var(--admin-text-primary)' }}>
-            ₹{averagePrice.toLocaleString()}
+            â‚¹{averagePrice.toLocaleString()}
           </span>
         </motion.div>
       </div>
@@ -738,7 +738,7 @@ const AdminCatalog = () => {
                     {/* Price */}
                     <td className="p-4">
                       <span className="font-body font-bold text-xs text-[var(--admin-text-primary)]">
-                        ₹{Number(item.price).toLocaleString()}
+                        â‚¹{Number(item.price).toLocaleString()}
                       </span>
                     </td>
 
@@ -959,7 +959,7 @@ const AdminCatalog = () => {
                     {/* Price */}
                     <div className="flex flex-col gap-1.5">
                       <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--admin-text-secondary)] font-bold">
-                        Price (₹) *
+                        Price (â‚¹) *
                       </label>
                       <input
                         type="number"
@@ -1170,7 +1170,7 @@ const AdminCatalog = () => {
                   <div className="flex flex-col">
                     <span className="font-mono text-[8px] uppercase tracking-wider text-[var(--admin-text-tertiary)] font-bold font-mono">Price</span>
                     <span className="font-body text-xs font-extrabold text-[var(--admin-text-primary)] mt-1">
-                      ₹{Number(viewItemTarget.price).toLocaleString()}
+                      â‚¹{Number(viewItemTarget.price).toLocaleString()}
                     </span>
                   </div>
                   <div className="flex flex-col col-span-2">

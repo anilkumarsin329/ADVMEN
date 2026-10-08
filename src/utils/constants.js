@@ -23,73 +23,55 @@ export const COMPANY = {
 
 // ── API Configuration ─────────────────────────────────────────
 export const getApiBaseUrl = () => {
-  let url = ''
-
   if (typeof window !== 'undefined') {
-    const { protocol, hostname } = window.location
+    const { hostname } = window.location
     if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
-      if (hostname === 'www.advmen.com' || hostname === 'advmen.com') {
-        url = 'https://advmen-backend.onrender.com'
-      } else {
-        url = `${protocol}//${hostname}`
-      }
+      return 'https://advmen-backend.onrender.com'
     }
   }
-
-  if (!url) {
-    if (import.meta.env.VITE_API_URL) {
-      url = import.meta.env.VITE_API_URL.replace(/\/$/, '')
-    }
-    // else: empty string → relative URL, Vite proxy forwards /api to localhost:5000
-  }
-
-  // Upgrade HTTP to HTTPS on live production domains (except local dev servers)
-  if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
-    if (!url.includes('localhost') && !url.includes('127.0.0.1')) {
-      url = url.replace(/^http:\/\//i, 'https://')
-    }
-  }
-
-  return url
+  return 'http://localhost:5000'
 }
 
 export const API_BASE_URL = getApiBaseUrl()
 
 export const getImageUrl = (path) => {
   if (!path || typeof path !== 'string' || !path.trim()) return null
-  let finalPath = path.trim()
+  let finalPath = path.trim().replace(/\\/g, '/')
 
   if (finalPath.startsWith('data:') || finalPath.startsWith('blob:')) {
     return finalPath
   }
 
-  // Replace legacy/stored localhost:5000 URLs with actual API_BASE_URL when on production
-  if (finalPath.includes('localhost:5000') || finalPath.includes('127.0.0.1:5000')) {
-    if (typeof window !== 'undefined') {
-      const { hostname } = window.location
-      if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
-        finalPath = finalPath.replace(/^https?:\/\/(localhost|127\.0\.0\.1):5000/i, API_BASE_URL)
-      }
-    }
+  const base = getApiBaseUrl()
+
+  // Replace any stored localhost:5000 or api.advmen.com URLs with current base
+  if (
+    finalPath.includes('localhost:5000') ||
+    finalPath.includes('127.0.0.1:5000') ||
+    finalPath.includes('api.advmen.com')
+  ) {
+    finalPath = finalPath
+      .replace(/^https?:\/\/(localhost|127\.0\.0\.1):5000/i, base)
+      .replace(/^https?:\/\/api\.advmen\.com/i, base)
   }
 
   if (finalPath.startsWith('http://') || finalPath.startsWith('https://')) {
-    if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
-      if (!finalPath.includes('localhost') && !finalPath.includes('127.0.0.1')) {
-        finalPath = finalPath.replace(/^http:\/\//i, 'https://')
-      }
-    }
     return finalPath
   }
 
   const cleanPath = finalPath.startsWith('/') ? finalPath : `/${finalPath}`
 
-  // Only prepend API_BASE_URL for backend uploaded files (e.g. /uploads/...)
+  // Backend uploaded files
   if (cleanPath.startsWith('/uploads/') || cleanPath.startsWith('/api/')) {
-    return `${API_BASE_URL}${cleanPath}`
+    return `${base}${cleanPath}`
   }
 
-  // Static frontend public assets (e.g. /clients/..., /Image/..., /about-image/...) return as-is
+  // Bare filename (no slashes) — treat as R2/media file
+  if (!finalPath.includes('/')) {
+    return `${base}/api/media/${finalPath}`
+  }
+
+  // Static frontend public assets
   return cleanPath
 }
 

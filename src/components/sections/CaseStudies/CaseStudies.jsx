@@ -1,5 +1,5 @@
 /**
- * CaseStudies.jsx — Premium Compact Case Studies Section
+ * CaseStudies.jsx â€” Premium Compact Case Studies Section
  * 
  * Features:
  * - High-impact, compact enterprise case study cards (~460px height)
@@ -181,7 +181,7 @@ const CaseStudies = () => {
                       style={{
                         background: 'rgba(18, 18, 21, 0.85)',
                         border: '1px solid rgba(255, 107, 0, 0.4)',
-                        color: '#FF6B00',
+                        color: '#E85D00',
                         backdropFilter: 'blur(8px)',
                       }}
                     >

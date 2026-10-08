@@ -1,9 +1,9 @@
 /**
  * pages/Contact/index.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Contact Us Page
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Contact Us Page
  * Phase 10: Contact Page complete.
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useState, useEffect, useRef } from 'react'
@@ -130,7 +130,7 @@ const Contact = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Contact Us — ADVMEN"
+        title="Contact Us â€” ADVMEN"
         description="Get in touch with ADVMEN for project consulting, branding queries, or frontend engineering collaborations."
       />
 
@@ -170,7 +170,7 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-20">
             
-            {/* Left Column — Contact Info Cards */}
+            {/* Left Column â€” Contact Info Cards */}
             <div className="col-span-12 lg:col-span-5 flex flex-col gap-6 sm:gap-8">
               
               {/* Address details */}
@@ -267,7 +267,7 @@ const Contact = () => {
 
             </div>
 
-            {/* Right Column — Premium Contact Form */}
+            {/* Right Column â€” Premium Contact Form */}
             <div className="col-span-12 lg:col-span-7">
               <form
                 onSubmit={handleSubmit}
@@ -291,7 +291,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
                     placeholder=""
                     required
                   />
@@ -309,7 +309,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
                     placeholder=""
                     required
                   />
@@ -327,15 +327,15 @@ const Contact = () => {
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
                       required
                     >
                       <option value="">Select budget range</option>
-                      <option value="under-50k">Under ₹50,000</option>
-                      <option value="50k-100k">₹50,000 - ₹1,00,000</option>
-                      <option value="100k-500k">₹1,00,000 - ₹5,00,000</option>
-                      <option value="500k-1m">₹5,00,000 - ₹10,00,000</option>
-                      <option value="above-1m">Above ₹10,00,000</option>
+                      <option value="under-50k">Under â‚¹50,000</option>
+                      <option value="50k-100k">â‚¹50,000 - â‚¹1,00,000</option>
+                      <option value="100k-500k">â‚¹1,00,000 - â‚¹5,00,000</option>
+                      <option value="500k-1m">â‚¹5,00,000 - â‚¹10,00,000</option>
+                      <option value="above-1m">Above â‚¹10,00,000</option>
                     </select>
                     {errors.budget && <span className="text-red-500 text-xs font-body font-medium mt-1">{errors.budget}</span>}
                   </div>
@@ -349,7 +349,7 @@ const Contact = () => {
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
                       required
                     >
                       <option value="">Select timeline</option>
@@ -374,7 +374,7 @@ const Contact = () => {
                       name="industry"
                       value={formData.industry}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
                     >
                       <option value="">Select industry</option>
                       <option value="tech">Technology</option>
@@ -397,7 +397,7 @@ const Contact = () => {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
                     >
                       <option value="">Select project type</option>
                       <option value="web-design">Web Design</option>
@@ -423,7 +423,7 @@ const Contact = () => {
                     value={formData.goals}
                     onChange={handleInputChange}
                     rows="3"
-                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300 resize-none"
+                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300 resize-none"
                     placeholder="What are your main goals for this project?"
                   />
                 </div>
@@ -440,7 +440,7 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
                       placeholder=""
                     />
                   </div>
@@ -455,7 +455,7 @@ const Contact = () => {
                       name="subject"
                       value={formData.subject}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
                       placeholder=""
                     />
                   </div>
@@ -472,7 +472,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows="5"
-                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#121215] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300 resize-none"
+                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300 resize-none"
                     placeholder=""
                     required
                   />

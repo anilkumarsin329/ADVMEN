@@ -173,7 +173,7 @@ const Navbar = () => {
           'fixed top-0 left-0 right-0 z-[1000]',
           'transition-[padding,background-color,border-color,backdrop-filter] duration-500 ease-[var(--ease-out-expo)]',
           isScrolled
-            ? 'py-3 bg-[rgba(10,10,10,0.85)] backdrop-blur-[20px] saturate-150 border-b border-[var(--color-border-subtle)]'
+            ? 'py-3 bg-[var(--color-surface-1)] backdrop-blur-[20px] saturate-150 border-b border-[var(--color-border-subtle)]'
             : 'py-5 bg-transparent'
         )}
         style={{

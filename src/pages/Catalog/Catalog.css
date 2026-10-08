@@ -1,6 +1,6 @@
 .catalog-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: linear-gradient(135deg, #141418 0%, #1a1a1a 100%);
   padding-top: 80px;
 }
 
@@ -14,7 +14,7 @@
 .header-content h1 {
   font-size: 3.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%);
+  background: linear-gradient(135deg, #E85D00 0%, #FF8C38 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -79,8 +79,8 @@
 
 .category-btn.active {
   background: linear-gradient(135deg, rgba(255, 107, 0, 0.2) 0%, rgba(255, 140, 56, 0.1) 100%);
-  border-color: #FF6B00;
-  color: #FF6B00;
+  border-color: #E85D00;
+  color: #E85D00;
   font-weight: 600;
 }
 
@@ -130,7 +130,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background: linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%);
+  background: linear-gradient(135deg, #E85D00 0%, #FF8C38 100%);
   color: white;
   padding: 4px 12px;
   border-radius: 20px;
@@ -182,7 +182,7 @@
 .price {
   font-size: 1.3rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%);
+  background: linear-gradient(135deg, #E85D00 0%, #FF8C38 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -193,7 +193,7 @@
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
-  background: linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%);
+  background: linear-gradient(135deg, #E85D00 0%, #FF8C38 100%);
   color: white;
   border: none;
   border-radius: 6px;
@@ -216,7 +216,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%);
+  background: linear-gradient(135deg, #E85D00 0%, #FF8C38 100%);
   color: white;
   border: none;
   cursor: pointer;
@@ -287,7 +287,7 @@
 }
 
 .close-btn:hover {
-  color: #FF6B00;
+  color: #E85D00;
 }
 
 .cart-items {
@@ -328,7 +328,7 @@
 
 .item-info p {
   font-size: 0.85rem;
-  color: #FF6B00;
+  color: #E85D00;
   font-weight: 600;
 }
 
@@ -344,7 +344,7 @@
 .item-controls button {
   background: none;
   border: none;
-  color: #FF6B00;
+  color: #E85D00;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -391,7 +391,7 @@
 }
 
 .amount {
-  background: linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%);
+  background: linear-gradient(135deg, #E85D00 0%, #FF8C38 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -400,7 +400,7 @@
 .checkout-btn {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%);
+  background: linear-gradient(135deg, #E85D00 0%, #FF8C38 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -430,7 +430,7 @@
 
 .close-cart-btn:hover {
   border-color: rgba(255, 107, 0, 0.5);
-  color: #FF6B00;
+  color: #E85D00;
 }
 
 /* Responsive */

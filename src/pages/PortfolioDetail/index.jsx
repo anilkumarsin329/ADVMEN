@@ -151,7 +151,7 @@ const PortfolioDetail = () => {
           >
             {project.image && typeof project.image === 'string' && project.image.trim() !== '' && (
               <img
-                src={project.image.startsWith('/') ? getImageUrl(project.image) : project.image}
+                src={getImageUrl(project.image)}
                 alt={project.title}
                 className="w-full h-full object-cover"
               />

@@ -1,12 +1,12 @@
 /**
  * styles/typography.css
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Typography System
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Typography System
  * System fonts with fallbacks for performance.
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
-/* ── Base Typography ──────────────────────────────────────── */
+/* â”€â”€ Base Typography â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -16,17 +16,17 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-weight: var(--weight-regular);
+  font-weight: var(--weight-medium);
   font-size: var(--text-body);
   line-height: var(--leading-normal);
   color: var(--color-text-primary);
   background-color: var(--color-black);
 }
 
-/* ── Heading Defaults ─────────────────────────────────────── */
+/* â”€â”€ Heading Defaults â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-extrabold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   color: var(--color-text-primary);
@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 .admin-layout-root h4, 
 .admin-layout-root h5, 
 .admin-layout-root h6 {
-  color: var(--admin-text-primary, #121215);
+  color: var(--admin-text-primary, #141418);
 }
 
 h1 { font-size: var(--text-h1); }
@@ -51,12 +51,13 @@ h6 { font-size: var(--text-h6); }
 
 p {
   font-family: var(--font-body);
+  font-weight: var(--weight-medium);
   font-size: var(--text-body);
   line-height: var(--leading-relaxed);
   color: var(--color-text-secondary);
 }
 
-/* ── Display Type Classes ─────────────────────────────────── */
+/* â”€â”€ Display Type Classes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .type-hero {
   font-family: var(--font-display);
   font-size: var(--text-hero);
@@ -106,7 +107,7 @@ p {
   letter-spacing: var(--tracking-tight);
 }
 
-/* ── Heading Type Classes ─────────────────────────────────── */
+/* â”€â”€ Heading Type Classes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .type-h1 {
   font-family: var(--font-display);
   font-size: var(--text-h1);
@@ -137,7 +138,7 @@ p {
   line-height: var(--leading-normal);
 }
 
-/* ── Body Type Classes ────────────────────────────────────── */
+/* â”€â”€ Body Type Classes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .type-body-xl {
   font-family: var(--font-body);
   font-size: var(--text-body-xl);
@@ -173,7 +174,7 @@ p {
   color: var(--color-text-tertiary);
 }
 
-/* ── Special Type Classes ─────────────────────────────────── */
+/* â”€â”€ Special Type Classes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .type-eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-caption);
@@ -199,7 +200,7 @@ p {
   letter-spacing: var(--tracking-wide);
 }
 
-/* ── Text Effect Classes ──────────────────────────────────── */
+/* â”€â”€ Text Effect Classes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .text-gradient-orange {
   background: var(--gradient-text-orange);
   background-size: 200% auto;
@@ -219,13 +220,13 @@ p {
   text-wrap: balance;
 }
 
-/* ── Selection ────────────────────────────────────────────── */
+/* â”€â”€ Selection â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 ::selection {
   background-color: rgba(255, 107, 0, 0.25);
   color: var(--color-white);
 }
 
-/* ── Responsive Hero Headline Scale ───────────────────────── */
+/* â”€â”€ Responsive Hero Headline Scale â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .hero-headline-text {
   font-size: 72px;
   font-weight: 700;

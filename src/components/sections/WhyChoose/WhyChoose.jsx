@@ -85,7 +85,9 @@ const WhyChoose = () => {
               <FiAward size={14} /> Our Values
             </span>
           </div>
-          <h2 className="section-title mt-4">Why Ambitious Brands Partner with Us</h2>
+          <h2 className="section-title mt-4">
+            Why <span className="text-orange-gradient">Ambitious Brands</span> Partner with Us
+          </h2>
           <p className="section-subtitle">
             We combine technical excellence with creative vision to deliver results that exceed expectations.
           </p>

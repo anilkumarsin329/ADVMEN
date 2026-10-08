@@ -1,5 +1,5 @@
 /**
- * About.jsx — ADVMEN
+ * About.jsx â€” ADVMEN
  * Premium About section with full mobile responsiveness
  * GSAP scroll-triggered animations
  */
@@ -231,7 +231,7 @@ const About = () => {
                       {i === 2 ? (
                         <span
                           style={{
-                            background: 'linear-gradient(90deg, #FF6B00 0%, #FF9A45 50%, #FF6B00 100%)',
+                            background: 'linear-gradient(90deg, #E85D00 0%, #FF9A45 50%, #E85D00 100%)',
                             backgroundSize: '200% auto',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
@@ -272,7 +272,7 @@ const About = () => {
                   lineHeight: 'var(--leading-relaxed)',
                 }}
               >
-                From brand identity to digital growth — we handle every touchpoint of your business with precision and purpose.
+                From brand identity to digital growth â€” we handle every touchpoint of your business with precision and purpose.
               </p>
             </div>
 

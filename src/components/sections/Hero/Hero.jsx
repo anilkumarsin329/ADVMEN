@@ -33,11 +33,11 @@ const EnterpriseButton = ({ children, to, variant = 'primary', onClick }) => {
     fontSize: '1rem',
     fontWeight: '600',
     letterSpacing: '0.01em',
-    color: '#FFFFFF',
-    background: 'linear-gradient(135deg, #FF6B00 0%, #FF8526 100%)',
+    color: 'var(--color-text-inverse, #FFE6CF)',
+    background: 'linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-light) 100%)',
     borderRadius: '12px',
-    boxShadow: '0 4px 20px rgba(255, 107, 0, 0.28)',
-    border: '1px solid rgba(255, 107, 0, 0.5)',
+    boxShadow: '0 4px 20px var(--color-glass-orange-20)',
+    border: '1px solid var(--color-border-orange)',
     transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
     textDecoration: 'none',
     cursor: 'pointer',
@@ -54,12 +54,12 @@ const EnterpriseButton = ({ children, to, variant = 'primary', onClick }) => {
     fontSize: '1rem',
     fontWeight: '600',
     letterSpacing: '0.01em',
-    color: '#F5F5F5',
-    background: 'rgba(255, 255, 255, 0.06)',
+    color: 'var(--color-text-primary, #141418)',
+    background: 'transparent',
     backdropFilter: 'blur(12px)',
     WebkitBackdropFilter: 'blur(12px)',
     borderRadius: '12px',
-    border: '1px solid rgba(255, 255, 255, 0.14)',
+    border: '1px solid var(--color-border-strong)',
     transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
     textDecoration: 'none',
     cursor: 'pointer',
@@ -78,21 +78,21 @@ const EnterpriseButton = ({ children, to, variant = 'primary', onClick }) => {
         onMouseEnter={(e) => {
           if (isPrimary) {
             e.currentTarget.style.transform = 'translateY(-2px)'
-            e.currentTarget.style.boxShadow = '0 8px 28px rgba(255, 107, 0, 0.45)'
+            e.currentTarget.style.boxShadow = '0 8px 28px var(--color-border-orange-strong)'
           } else {
             e.currentTarget.style.transform = 'translateY(-2px)'
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)'
-            e.currentTarget.style.borderColor = 'rgba(255, 107, 0, 0.35)'
+            e.currentTarget.style.background = 'var(--color-surface-1)'
+            e.currentTarget.style.borderColor = 'var(--color-border-orange)'
           }
         }}
         onMouseLeave={(e) => {
           if (isPrimary) {
             e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(255, 107, 0, 0.28)'
+            e.currentTarget.style.boxShadow = '0 4px 20px var(--color-glass-orange-20)'
           } else {
             e.currentTarget.style.transform = 'translateY(0)'
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)'
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.14)'
+            e.currentTarget.style.background = 'transparent'
+            e.currentTarget.style.borderColor = 'var(--color-border-strong)'
           }
         }}
       >
@@ -160,7 +160,7 @@ const Hero = () => {
                   display: 'block',
                   width: '24px',
                   height: '2px',
-                  background: '#FF6B00',
+                  background: 'var(--color-orange)',
                   borderRadius: '1px',
                   flexShrink: 0,
                 }}
@@ -173,7 +173,7 @@ const Hero = () => {
                   lineHeight: 1,
                 }}
               >
-                <span style={{ color: '#FF6B00', fontWeight: 700, letterSpacing: '0.08em' }}>
+                <span style={{ color: 'var(--color-orange)', fontWeight: 700, letterSpacing: '0.08em' }}>
                   ADVMEN
                 </span>
               </p>
@@ -188,7 +188,7 @@ const Hero = () => {
                   fontWeight: 800,
                   lineHeight: 1.05,
                   letterSpacing: '-0.025em',
-                  color: '#FFFFFF',
+                  color: 'var(--color-text-primary)',
                   maxWidth: '700px',
                   marginBottom: '1rem',
                   textTransform: 'uppercase',
@@ -199,7 +199,7 @@ const Hero = () => {
                 <span
                   style={{
                     display: 'inline-block',
-                    background: 'linear-gradient(135deg, #FF6B00 0%, #FFA048 100%)',
+                    background: 'linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-light) 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -214,7 +214,7 @@ const Hero = () => {
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 'clamp(0.9375rem, 1.2vw, 1.125rem)',
-                  color: 'var(--color-text-secondary, #AAAAAA)',
+                  color: 'var(--color-text-secondary)',
                   lineHeight: 1.6,
                   maxWidth: '520px',
                   fontWeight: 400,
@@ -249,7 +249,7 @@ const Hero = () => {
               <div
                 style={{
                   height: '1px',
-                  background: 'linear-gradient(90deg, rgba(255,107,0,0.35) 0%, rgba(255,255,255,0.08) 60%, transparent)',
+                  background: 'linear-gradient(90deg, var(--color-border-orange) 0%, var(--color-border-subtle) 60%, transparent)',
                   marginBottom: '0.875rem',
                 }}
                 aria-hidden="true"
@@ -258,7 +258,7 @@ const Hero = () => {
                 <p
                   style={{
                     fontSize: '0.75rem',
-                    color: 'rgba(245, 245, 245, 0.75)',
+                    color: 'var(--color-text-secondary)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.12em',
                     fontWeight: 600,

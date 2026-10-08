@@ -193,7 +193,7 @@ const Services = () => {
                     }}
                   >
                     <img
-                      src={(service.image && service.image.startsWith('/')) ? getImageUrl(service.image) : (service.image || null)}
+                      src={getImageUrl(service.image)}
                       alt={service.title}
                       width="600"
                       height="200"

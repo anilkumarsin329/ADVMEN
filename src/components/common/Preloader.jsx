@@ -1,6 +1,6 @@
 /**
- * Preloader.jsx — ADVMEN
- * Fixed: logo ref is now only the <img> — GSAP y-animation
+ * Preloader.jsx â€” ADVMEN
+ * Fixed: logo ref is now only the <img> â€” GSAP y-animation
  * never shifts the SVG ring container, so it stays centered.
  */
 
@@ -14,7 +14,7 @@ const PreloaderInner = () => {
 
   const wrapperRef  = useRef(null)
   const curtainRef  = useRef(null)
-  const logoImgRef  = useRef(null)   // only the <img> — GSAP animates this
+  const logoImgRef  = useRef(null)   // only the <img> â€” GSAP animates this
   const strokeRef   = useRef(null)
   const counterRef  = useRef(null)
   const barFillRef  = useRef(null)
@@ -46,7 +46,7 @@ const PreloaderInner = () => {
     return () => clearInterval(interval)
   }, [isLoading, updateProgress])
 
-  // Entrance — animate only logo img, tagline, progress block
+  // Entrance â€” animate only logo img, tagline, progress block
   useEffect(() => {
     if (!wrapperRef.current) return
 
@@ -137,7 +137,7 @@ const PreloaderInner = () => {
         }}
       />
 
-      {/* Center content — no transforms on this wrapper */}
+      {/* Center content â€” no transforms on this wrapper */}
       <div
         style={{
           display:        'flex',
@@ -148,7 +148,7 @@ const PreloaderInner = () => {
           zIndex:         1,
         }}
       >
-        {/* Ring + logo — ring container has explicit size so absolute SVG fills it */}
+        {/* Ring + logo â€” ring container has explicit size so absolute SVG fills it */}
         <div
           style={{
             position:       'relative',
@@ -160,7 +160,7 @@ const PreloaderInner = () => {
             flexShrink:     0,
           }}
         >
-          {/* Animated SVG ring — position absolute inside the 120×120 box */}
+          {/* Animated SVG ring â€” position absolute inside the 120Ã—120 box */}
           <svg
             width="120"
             height="120"
@@ -180,13 +180,13 @@ const PreloaderInner = () => {
             />
             <defs>
               <linearGradient id="preloaderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%"   stopColor="#FF6B00" />
+                <stop offset="0%"   stopColor="#E85D00" />
                 <stop offset="100%" stopColor="#FF8C38" />
               </linearGradient>
             </defs>
           </svg>
 
-          {/* Logo img — only this element gets GSAP y-animation */}
+          {/* Logo img â€” only this element gets GSAP y-animation */}
           <img
             ref={logoImgRef}
             src="/ADVMEN%20logo.png"

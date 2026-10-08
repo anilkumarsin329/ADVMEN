@@ -14,7 +14,7 @@ import { gsap } from '@utils/gsapConfig'
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { blogArticles } from '@data/blog'
-import { API_BASE_URL } from '@utils/constants'
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 import { cachedFetch } from '@/utils/apiCache'
 
 const Blog = () => {
@@ -128,7 +128,7 @@ const Blog = () => {
                     className="relative w-full aspect-[16/10] rounded-xl overflow-hidden mb-6 bg-gray-900 border border-[rgba(255,107,0,0.12)]"
                   >
                     <img
-                      src={article.image ? (article.image.startsWith('/') ? getImageUrl(article.image) : article.image) : null}
+                      src={getImageUrl(article.image)}
                       alt={article.title}
                       loading="lazy"
                       width="800"

@@ -1,18 +1,18 @@
 /**
  * utils/threeHelpers.js
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Three.js Utility Helpers
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Three.js Utility Helpers
  *
  * Reusable helpers for Three.js / R3F scenes.
  * Centralises common patterns: disposal, pixel ratio,
  * color conversion, and geometry helpers.
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import * as THREE from 'three'
 import { BREAKPOINTS, THREE_CONFIG } from './constants'
 
-// ── Pixel Ratio ───────────────────────────────────────────────
+// â”€â”€ Pixel Ratio â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
  * Returns a capped device pixel ratio.
  * Prevents performance issues on high-DPI screens.
@@ -20,7 +20,7 @@ import { BREAKPOINTS, THREE_CONFIG } from './constants'
 export const getSafePixelRatio = () =>
   Math.min(window.devicePixelRatio, THREE_CONFIG.maxPixelRatio)
 
-// ── Particle Count ────────────────────────────────────────────
+// â”€â”€ Particle Count â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
  * Returns appropriate particle count based on screen width.
  * Reduces load on mobile devices.
@@ -30,7 +30,7 @@ export const getParticleCount = () =>
     ? THREE_CONFIG.particleCountMobile
     : THREE_CONFIG.particleCount
 
-// ── Dispose Helper ────────────────────────────────────────────
+// â”€â”€ Dispose Helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
  * Recursively disposes all geometries, materials, and textures
  * in a Three.js object tree. Call on unmount to prevent memory leaks.
@@ -63,7 +63,7 @@ export const disposeObject = (object) => {
   })
 }
 
-// ── Color Helpers ─────────────────────────────────────────────
+// â”€â”€ Color Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
  * Converts a hex color string to a THREE.Color instance.
  * @param {string} hex - e.g. '#FF6B00'
@@ -75,10 +75,10 @@ export const BRAND_COLORS = {
   orange:      new THREE.Color('#FF6B00'),
   orangeLight: new THREE.Color('#FF8C38'),
   white:       new THREE.Color('#F5F5F5'),
-  black:       new THREE.Color('#0A0A0A'),
+  black:       new THREE.Color('#141418'),
 }
 
-// ── Geometry Helpers ──────────────────────────────────────────
+// â”€â”€ Geometry Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
  * Creates a Float32Array of random particle positions
  * within a given spread range.
@@ -111,16 +111,16 @@ export const createParticleSizes = (count, minSize = 0.01, maxSize = 0.05) => {
   return sizes
 }
 
-// ── Lerp Helper ───────────────────────────────────────────────
+// â”€â”€ Lerp Helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
- * Linear interpolation — used for smooth mouse tracking.
+ * Linear interpolation â€” used for smooth mouse tracking.
  * @param {number} start
  * @param {number} end
- * @param {number} t - interpolation factor (0–1)
+ * @param {number} t - interpolation factor (0â€“1)
  */
 export const lerp = (start, end, t) => start + (end - start) * t
 
-// ── Map Range ─────────────────────────────────────────────────
+// â”€â”€ Map Range â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
  * Maps a value from one range to another.
  * Useful for converting mouse position to 3D coordinates.

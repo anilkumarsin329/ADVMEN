@@ -1,5 +1,5 @@
 /**
- * AboutTeam.jsx — Core Leadership & Team Cards (Responsive)
+ * AboutTeam.jsx â€” Core Leadership & Team Cards (Responsive)
  */
 
 import { motion } from 'framer-motion'
@@ -10,7 +10,7 @@ const teamData = [
     name: 'Mr. Govind Goyal',
     role: 'Founder',
     initials: 'GG',
-    gradient: 'linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%)',
+    gradient: 'linear-gradient(135deg, #E85D00 0%, #FF8C38 100%)',
     image: '/about-image/Advmen Founder.webp',
     bio: '8+ years of experience in Media, Technology & Brand Communication. Leads Strategy & Outreach.',
     isPlaceholder: false,
@@ -19,8 +19,8 @@ const teamData = [
     name: 'Chirag Verma',
     role: 'Director',
     initials: 'CV',
-    gradient: 'linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%)',
-    image: '/about-image/Chirag Verma — Director.jpeg',
+    gradient: 'linear-gradient(135deg, #E85D00 0%, #FF8C38 100%)',
+    image: '/about-image/Chirag Verma â€” Director.jpeg',
     bio: 'Experienced in business strategy, operations, team leadership, business development, and driving organizational growth.',
     isPlaceholder: false,
   },
@@ -28,7 +28,7 @@ const teamData = [
     name: 'Anil Kumar Singh',
     role: 'Senior Developer & CIO',
     initials: 'AS',
-    gradient: 'linear-gradient(135deg, #FF6B00 0%, #E05600 100%)',
+    gradient: 'linear-gradient(135deg, #E85D00 0%, #E05600 100%)',
     image: '/about-image/Advmen Anil kumar sing Senior Developer & CIO.webp',
     bio: 'Leads core IT infrastructure, cloud architecture, and enterprise software engineering.',
     isPlaceholder: false,
@@ -47,7 +47,7 @@ const teamData = [
     name: 'Krishna Kumar',
     role: 'Senior MERN Stack Developer',
     initials: 'KK',
-    gradient: 'linear-gradient(135deg, #FF6B00 0%, #FF8526 100%)',
+    gradient: 'linear-gradient(135deg, #E85D00 0%, #FF8526 100%)',
     image: '/about-image/Advmen Krishna kumar Mern stack developer.webp',
     bio: 'Specializes in full-stack JavaScript engineering, Node.js REST APIs, MongoDB schemas, and scalable web apps.',
     isPlaceholder: false,

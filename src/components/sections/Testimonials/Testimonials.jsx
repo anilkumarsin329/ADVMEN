@@ -1,5 +1,5 @@
 /**
- * Testimonials.jsx — Premium Testimonials Section with Carousel
+ * Testimonials.jsx Ã¢â‚¬â€ Premium Testimonials Section with Carousel
  */
 
 import { useRef, useEffect, useState } from 'react'
@@ -18,12 +18,12 @@ const initialsMap = {
 }
 
 const gradientMap = {
-  'Rohit Sharma':        'linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%)',
-  'Priya Verma':         'linear-gradient(135deg, #0A0A0A 0%, #FF6B00 100%)',
+  'Rohit Sharma':        'linear-gradient(135deg, #E85D00 0%, #FF8C38 100%)',
+  'Priya Verma':         'linear-gradient(135deg, #141418 0%, #E85D00 100%)',
   'Advocate Suresh Tiwari': 'linear-gradient(135deg, #FF3D00 0%, #FF8C38 100%)',
-  'Ramesh Goindiacab':   'linear-gradient(135deg, #FF6B00 0%, #FFB366 100%)',
-  'Ankit Joshi':         'linear-gradient(135deg, #FF8C38 0%, #FF6B00 100%)',
-  'Divya Mishra':        'linear-gradient(135deg, #FF6B00 0%, #FF3D00 100%)',
+  'Ramesh Goindiacab':   'linear-gradient(135deg, #E85D00 0%, #FFB366 100%)',
+  'Ankit Joshi':         'linear-gradient(135deg, #FF8C38 0%, #E85D00 100%)',
+  'Divya Mishra':        'linear-gradient(135deg, #E85D00 0%, #FF3D00 100%)',
 }
 
 const Testimonials = () => {
@@ -218,7 +218,7 @@ const Testimonials = () => {
                 e.currentTarget.style.borderColor = 'rgba(255,107,0,0.15)'
               }}
             >
-              {/* Top part — rating & quote */}
+              {/* Top part Ã¢â‚¬â€ rating & quote */}
               <div className="flex flex-col gap-4">
                 {/* Stars */}
                 <div className="flex items-center gap-1.5 text-[var(--color-orange)]">
@@ -261,7 +261,7 @@ const Testimonials = () => {
                 </p>
               </div>
 
-              {/* Bottom part — Client details */}
+              {/* Bottom part Ã¢â‚¬â€ Client details */}
               <div className="flex flex-col gap-4 mt-8 pt-6 border-t border-[rgba(255,255,255,0.04)]">
                 {/* Result */}
                 <div>

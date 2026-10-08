@@ -178,7 +178,7 @@ const TrustSection = () => {
                 key={m.title}
                 className="trust-metric p-6 sm:p-7 rounded-2xl cursor-default group flex flex-col h-full"
                 style={{
-                  background: 'rgba(255,255,255,0.02)',
+                  background: 'rgba(255,255,255,0.4)',
                   border: '1px solid rgba(255,107,0,0.1)',
                   backdropFilter: 'blur(12px)',
                   transition: 'background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s',
@@ -202,7 +202,7 @@ const TrustSection = () => {
                     fontFamily: 'var(--font-display)',
                     fontSize: '1.125rem',
                     fontWeight: '700',
-                    color: '#ffffff',
+                    color: 'var(--color-text-primary)',
                     marginBottom: '0.625rem',
                   }}
                 >
@@ -213,7 +213,7 @@ const TrustSection = () => {
                   style={{
                     fontFamily: 'var(--font-body)',
                     fontSize: '0.875rem',
-                    color: 'rgba(245, 245, 245, 0.7)',
+                    color: 'var(--color-text-secondary)',
                     lineHeight: '1.6',
                   }}
                 >
@@ -273,7 +273,7 @@ const TrustSection = () => {
                       height: '110px',
                       marginRight: '1.75rem',
                       borderRadius: '1rem',
-                      background: 'rgba(255,255,255,0.03)',
+                      background: 'rgba(255,255,255,0.4)',
                       border: '1.5px solid rgba(255,107,0,0.15)',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease',

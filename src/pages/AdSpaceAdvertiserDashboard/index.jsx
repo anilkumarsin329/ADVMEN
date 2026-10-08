@@ -60,7 +60,7 @@ const AdSpaceAdvertiserDashboard = () => {
             })
             fetchBookings()
           },
-          theme: { color: "#FF6B00" }
+          theme: { color: "#E85D00" }
         }
         const rzp = new window.Razorpay(options)
         rzp.open()
@@ -90,7 +90,7 @@ const AdSpaceAdvertiserDashboard = () => {
 
   return (
     <PageTransition>
-      <SEOHead title="Advertiser Dashboard — ADVMEN" />
+      <SEOHead title="Advertiser Dashboard â€” ADVMEN" />
       <div className="min-h-screen bg-black pt-32 pb-24 text-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="flex justify-between items-center mb-12 border-b border-white/10 pb-6">
@@ -110,7 +110,7 @@ const AdSpaceAdvertiserDashboard = () => {
             <div className="text-center py-20 bg-white/5 rounded-2xl border border-white/10">
               <h3 className="text-xl mb-2">No campaigns yet</h3>
               <p className="text-slate-400 mb-4">Start by booking an ad space.</p>
-              <Link to="/ad-space/browse" className="text-orange-500 hover:underline">Find Spaces →</Link>
+              <Link to="/ad-space/browse" className="text-orange-500 hover:underline">Find Spaces â†’</Link>
             </div>
           ) : (
             <div className="space-y-6">
@@ -139,11 +139,11 @@ const AdSpaceAdvertiserDashboard = () => {
                     </div>
                     <div>
                       <div className="text-xs text-slate-500 uppercase">Budget</div>
-                      <div>₹{booking.campaign?.budget}</div>
+                      <div>â‚¹{booking.campaign?.budget}</div>
                     </div>
                     <div>
                       <div className="text-xs text-slate-500 uppercase">Amount Due</div>
-                      <div className="font-bold text-emerald-400">₹{booking.pricing?.total}</div>
+                      <div className="font-bold text-emerald-400">â‚¹{booking.pricing?.total}</div>
                     </div>
                   </div>
 
@@ -151,7 +151,7 @@ const AdSpaceAdvertiserDashboard = () => {
                   <div className="pt-4 border-t border-white/10 flex gap-4">
                     {booking.status === 'payment_pending' && (
                       <button onClick={() => handlePayment(booking._id)} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-bold flex items-center gap-2">
-                        <FiCreditCard /> Pay ₹{booking.pricing?.total}
+                        <FiCreditCard /> Pay â‚¹{booking.pricing?.total}
                       </button>
                     )}
                     

@@ -1,8 +1,8 @@
 /**
  * admin/pages/AdminCareers.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Admin Careers & Job Openings Management (Industrial Light Theme)
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Admin Careers & Job Openings Management (Industrial Light Theme)
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useState, useEffect } from 'react'
@@ -363,7 +363,7 @@ const AdminCareers = () => {
             </button>
             <button
               onClick={handleOpenAddModal}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#ff6b00] hover:bg-[#e05e00] text-white font-bold text-sm shadow-sm transition-all"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#E85D00] hover:bg-[#e05e00] text-white font-bold text-sm shadow-sm transition-all"
             >
               <FiPlus size={18} /> Add Job Opening
             </button>
@@ -785,7 +785,7 @@ const AdminCareers = () => {
                     <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Salary Range / Package</label>
                     <input
                       type="text"
-                      placeholder="e.g. ₹6 - ₹12 LPA or Stipend: ₹15k/mo"
+                      placeholder="e.g. â‚¹6 - â‚¹12 LPA or Stipend: â‚¹15k/mo"
                       value={formValues.salary}
                       onChange={(e) => setFormValues({ ...formValues, salary: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
@@ -837,7 +837,7 @@ const AdminCareers = () => {
                       <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Stipend</label>
                       <input
                         type="text"
-                        placeholder="e.g. Unpaid / ₹5000/mo"
+                        placeholder="e.g. Unpaid / â‚¹5000/mo"
                         value={formValues.stipend}
                         onChange={(e) => setFormValues({ ...formValues, stipend: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
@@ -847,7 +847,7 @@ const AdminCareers = () => {
                       <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Certificate</label>
                       <input
                         type="text"
-                        placeholder="e.g. Yes — Successful Completion"
+                        placeholder="e.g. Yes â€” Successful Completion"
                         value={formValues.certificate}
                         onChange={(e) => setFormValues({ ...formValues, certificate: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
@@ -867,7 +867,7 @@ const AdminCareers = () => {
                       <label className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Registration Fee</label>
                       <input
                         type="text"
-                        placeholder="e.g. No / ₹499 one-time"
+                        placeholder="e.g. No / â‚¹499 one-time"
                         value={formValues.registrationFee}
                         onChange={(e) => setFormValues({ ...formValues, registrationFee: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-lg text-sm bg-white border border-gray-300 outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all"
@@ -988,7 +988,7 @@ const AdminCareers = () => {
                   <div>
                     <span className="text-[10px] font-bold uppercase text-slate-400 block">Status</span>
                     <span className={`text-xs font-bold ${viewItemTarget.isActive !== false ? 'text-emerald-600' : 'text-slate-500'}`}>
-                      {viewItemTarget.isActive !== false ? '● Active Opening' : '○ Closed'}
+                      {viewItemTarget.isActive !== false ? 'â— Active Opening' : 'â—‹ Closed'}
                     </span>
                   </div>
                 </div>

@@ -1,8 +1,8 @@
 /**
  * admin/pages/AdminProfile.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Admin Profile Page
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Admin Profile Page
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useState } from 'react'
@@ -130,7 +130,7 @@ const AdminProfile = () => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="bg-[#e6e6ec] text-[#121215] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
+                    className="bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
                     required
                   />
                 </div>
@@ -142,7 +142,7 @@ const AdminProfile = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="bg-[#e6e6ec] text-[#121215] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
+                    className="bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
                     required
                   />
                 </div>
@@ -190,8 +190,8 @@ const AdminProfile = () => {
                   type="password"
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="bg-[#e6e6ec] text-[#121215] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
+                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                  className="bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
                   required
                 />
               </div>
@@ -205,8 +205,8 @@ const AdminProfile = () => {
                     type="password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    placeholder="••••••••"
-                    className="bg-[#e6e6ec] text-[#121215] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
+                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                    className="bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
                     required
                   />
                 </div>
@@ -218,8 +218,8 @@ const AdminProfile = () => {
                     type="password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="••••••••"
-                    className="bg-[#e6e6ec] text-[#121215] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
+                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                    className="bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
                     required
                   />
                 </div>

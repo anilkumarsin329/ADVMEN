@@ -1,5 +1,5 @@
 /**
- * HeroBackground.jsx — High-Performance Enterprise Hero Background
+ * HeroBackground.jsx â€” High-Performance Enterprise Hero Background
  * Optimized LCP image loading + smooth responsive gradient overlay
  */
 
@@ -17,28 +17,16 @@ const HeroBackground = () => {
         zIndex: 0,
         pointerEvents: 'none',
         overflow: 'hidden',
+        background: 'var(--color-black)'
       }}
     >
-      {/* Dark surface fallback */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'var(--color-surface-0, #121215)',
-          zIndex: 0,
-        }}
-      />
-
-      {/* High-priority enterprise 3D hero visual image */}
+      {/* Main Hero Background Image */}
       <img
-        src="/Hero%20section%20image.png"
-        alt=""
-        fetchPriority="high"
-        decoding="async"
-        loading="eager"
-        width="1920"
-        height="1080"
+        src="/Hero section image.webp"
+        alt="Background Graphic"
         className="hero-bg-image"
+        loading="eager"
+        decoding="async"
         style={{
           position: 'absolute',
           top: 0,
@@ -46,34 +34,14 @@ const HeroBackground = () => {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          objectPosition: '85% center',
-          zIndex: 1,
-          display: 'block',
+          objectPosition: 'center',
+          opacity: 0.8,
+          mixBlendMode: 'multiply',
+          zIndex: 0,
+          pointerEvents: 'none'
         }}
       />
-
-      {/* Dark gradient overlay for crystal-clear readability */}
-      <div
-        className="hero-bg-overlay"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 2,
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Top & bottom subtle darkening vignette */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(180deg, rgba(18, 18, 21, 0.35) 0%, transparent 20%, transparent 80%, rgba(18, 18, 21, 0.5) 100%)',
-          zIndex: 2,
-          pointerEvents: 'none',
-        }}
-      />
-
+      
       {/* Subtle ambient orange brand glow */}
       <div
         style={{
@@ -84,8 +52,8 @@ const HeroBackground = () => {
           height: '45vw',
           maxHeight: '520px',
           maxWidth: '520px',
-          background: 'radial-gradient(circle, rgba(255, 107, 0, 0.08) 0%, rgba(255, 107, 0, 0) 70%)',
-          zIndex: 3,
+          background: 'radial-gradient(circle, var(--color-glass-orange-20) 0%, transparent 70%)',
+          zIndex: 1,
           pointerEvents: 'none',
         }}
       />
@@ -94,5 +62,3 @@ const HeroBackground = () => {
 }
 
 export default HeroBackground
-
-

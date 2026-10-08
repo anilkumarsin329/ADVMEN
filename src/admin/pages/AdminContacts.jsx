@@ -1,8 +1,8 @@
 /**
  * admin/pages/AdminContacts.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Admin Contacts & Inquiries Management (Industrial Light Theme)
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Admin Contacts & Inquiries Management (Industrial Light Theme)
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useState, useEffect } from 'react'
@@ -571,7 +571,7 @@ const AdminContacts = () => {
               <div className="sticky bottom-0 px-3 py-3 lg:px-4 border-t border-gray-100 flex justify-between items-center bg-white rounded-b-[24px]">
                 <a
                   href={`mailto:${viewItemTarget.email}?subject=Re: ${encodeURIComponent(viewItemTarget.subject || 'ADVMEN Inquiry')}`}
-                  className="px-5 py-2 rounded-lg text-xs font-bold bg-[#ff6b00] text-white hover:bg-[#e05e00] transition-all flex items-center gap-2 shadow-sm"
+                  className="px-5 py-2 rounded-lg text-xs font-bold bg-[#E85D00] text-white hover:bg-[#e05e00] transition-all flex items-center gap-2 shadow-sm"
                 >
                   <FiMail size={14} /> Reply via Email
                 </a>

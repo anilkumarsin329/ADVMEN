@@ -1,8 +1,8 @@
 /**
  * admin/pages/AdminServices.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Admin services CRUD Manager Dashboard
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Admin services CRUD Manager Dashboard
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useState, useEffect } from 'react'
@@ -459,16 +459,16 @@ const AdminServices = () => {
       {/* Dynamic light-theme visual style overrides to prevent dark-theme white text inheritance */}
       <style dangerouslySetInnerHTML={{__html: `
         .admin-services-container h2 {
-          color: #121215 !important;
+          color: #141418 !important;
         }
         .admin-services-container h3 {
-          color: #121215 !important;
+          color: #141418 !important;
         }
         .admin-services-container th {
           color: #555555 !important;
         }
         .admin-services-container td {
-          color: #121215 !important;
+          color: #141418 !important;
         }
         .admin-services-container td span {
           color: inherit;
@@ -1151,7 +1151,7 @@ const AdminServices = () => {
                   <div className="flex flex-col">
                     <span className="font-mono text-[8px] uppercase tracking-wider text-[var(--admin-text-tertiary)] font-bold font-mono">Price</span>
                     <span className="font-body text-xs font-extrabold text-[var(--admin-text-primary)] mt-1">
-                      ₹{Number(viewItemTarget.price).toLocaleString()}
+                      â‚¹{Number(viewItemTarget.price).toLocaleString()}
                     </span>
                   </div>
                   <div className="flex flex-col col-span-2">

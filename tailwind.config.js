@@ -24,12 +24,12 @@ export default {
       // ── Colors ─────────────────────────────────────────────
       colors: {
         brand: {
-          black:          '#0A0A0A',
-          orange:         '#FF6B00',
-          'orange-light': '#FF8C38',
-          'orange-dark':  '#CC5500',
-          'orange-deeper':'#A34400',
-          white:          '#F5F5F5',
+          black:          '#141418',
+          orange:         '#E85D00',
+          'orange-light': '#FF7B1A',
+          'orange-dark':  '#CC5200',
+          'orange-deeper':'#993D00',
+          white:          '#FFE6CF',
         },
         surface: {
           0: '#0A0A0A',
@@ -61,9 +61,9 @@ export default {
 
       // ── Typography ─────────────────────────────────────────
       fontFamily: {
-        display: ['Clash Display', 'sans-serif'],
-        body:    ['Satoshi', 'sans-serif'],
-        mono:    ['Space Grotesk', 'monospace'],
+        display: ['Space Grotesk', 'sans-serif'],
+        body:    ['Figtree', 'sans-serif'],
+        mono:    ['IBM Plex Mono', 'monospace'],
       },
 
       fontSize: {

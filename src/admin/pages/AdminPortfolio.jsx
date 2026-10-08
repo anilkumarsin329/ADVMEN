@@ -1,8 +1,8 @@
 /**
  * admin/pages/AdminPortfolio.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Admin Portfolio Management (Industrial Light Theme)
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Admin Portfolio Management (Industrial Light Theme)
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useState, useEffect } from 'react'
@@ -357,7 +357,7 @@ const AdminPortfolio = () => {
             </button>
             <button
               onClick={handleOpenAddModal}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#ff6b00] hover:bg-[#e05e00] text-white font-bold text-sm shadow-sm transition-all"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#E85D00] hover:bg-[#e05e00] text-white font-bold text-sm shadow-sm transition-all"
             >
               <FiPlus size={18} /> Add Project
             </button>
@@ -913,7 +913,7 @@ const AdminPortfolio = () => {
                   <div>
                     <span className="text-[10px] font-bold uppercase text-slate-400 block">Status</span>
                     <span className={`text-xs font-bold ${viewItemTarget.isActive !== false ? 'text-emerald-600' : 'text-slate-500'}`}>
-                      {viewItemTarget.isActive !== false ? '● Active' : '○ Draft'}
+                      {viewItemTarget.isActive !== false ? 'â— Active' : 'â—‹ Draft'}
                     </span>
                   </div>
                 </div>

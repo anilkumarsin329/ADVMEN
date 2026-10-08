@@ -1,5 +1,5 @@
 /**
- * AboutHero.jsx — Executive Founder Profile & Leadership Section
+ * AboutHero.jsx â€” Executive Founder Profile & Leadership Section
  */
 
 import { useEffect, useRef } from 'react'
@@ -57,7 +57,7 @@ const AboutHero = () => {
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left Column — Company Intro First, Then Founder Details */}
+          {/* Left Column â€” Company Intro First, Then Founder Details */}
           <div className="col-span-12 lg:col-span-7 flex flex-col gap-6">
             
             {/* Eyebrow */}
@@ -71,7 +71,7 @@ const AboutHero = () => {
               </span>
             </div>
 
-            {/* 1️⃣ COMPANY INTRODUCTION FIRST */}
+            {/* 1ï¸âƒ£ COMPANY INTRODUCTION FIRST */}
             <div className="about-hero-stagger space-y-3">
               <h1
                 className="font-display font-bold text-white tracking-tight"
@@ -92,7 +92,7 @@ const AboutHero = () => {
             {/* Subtle Divider */}
             <div className="about-hero-stagger w-full h-px bg-gradient-to-r from-orange-500/30 via-white/10 to-transparent my-0.5" />
 
-            {/* 2️⃣ FOUNDER SECTION (Chota Founder Intro) */}
+            {/* 2ï¸âƒ£ FOUNDER SECTION (Chota Founder Intro) */}
             <div className="about-hero-stagger flex flex-col gap-4 bg-white/[0.02] border border-white/10 p-5 sm:p-6 rounded-2xl backdrop-blur-sm relative overflow-hidden">
               {/* Background ambient glow decoration */}
               <div 
@@ -144,7 +144,7 @@ const AboutHero = () => {
               <MagneticButton strength={0.25}>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF6B00] to-[#FF8533] text-white font-semibold text-sm shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#E85D00] to-[#FF8533] text-white font-semibold text-sm shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
                 >
                   <span>LET'S TALK</span>
                   <FiArrowRight size={16} />
@@ -154,12 +154,12 @@ const AboutHero = () => {
 
           </div>
 
-          {/* Right Column — Founder Portrait Frame */}
+          {/* Right Column â€” Founder Portrait Frame */}
           <div className="col-span-12 lg:col-span-5 flex justify-center lg:justify-end mt-4 lg:mt-0 lg:sticky lg:top-28">
             <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden border border-orange-500/25 shadow-[0_20px_60px_rgba(255,107,0,0.12)] bg-gray-950 group">
               <img
                 src="/about-image/Advmen Founder.webp"
-                alt="Mr. Govind Goyal — Co-Founder & Director"
+                alt="Mr. Govind Goyal â€” Co-Founder & Director"
                 loading="lazy"
                 decoding="async"
                 width="380"
@@ -181,7 +181,7 @@ const AboutHero = () => {
                   Mr. Govind Goyal
                 </span>
                 <span className="text-[var(--color-orange)] font-mono text-xs font-medium">
-                  Co-Founder & Director — ADVMEN
+                  Co-Founder & Director â€” ADVMEN
                 </span>
               </div>
 

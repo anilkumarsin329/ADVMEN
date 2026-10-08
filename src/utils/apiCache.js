@@ -4,11 +4,14 @@
  */
 
 const TTL_MS = 10 * 60 * 1000 // 10 minutes
+const CACHE_VERSION = 'v2'
 
 const memCache = {}
 
 export const cachedFetch = async (url) => {
   const now = Date.now()
+
+  const cacheKey = `apicache:${CACHE_VERSION}:${url}`
 
   // 1. Check in-memory cache first (fastest)
   if (memCache[url] && now - memCache[url].ts < TTL_MS) {
@@ -17,7 +20,7 @@ export const cachedFetch = async (url) => {
 
   // 2. Check sessionStorage (survives page navigation within same tab)
   try {
-    const stored = sessionStorage.getItem(`apicache:${url}`)
+    const stored = sessionStorage.getItem(cacheKey)
     if (stored) {
       const parsed = JSON.parse(stored)
       if (now - parsed.ts < TTL_MS) {
@@ -36,7 +39,7 @@ export const cachedFetch = async (url) => {
   memCache[url] = entry
 
   try {
-    sessionStorage.setItem(`apicache:${url}`, JSON.stringify(entry))
+    sessionStorage.setItem(cacheKey, JSON.stringify(entry))
   } catch (_) {}
 
   return data

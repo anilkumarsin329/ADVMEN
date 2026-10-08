@@ -296,7 +296,7 @@ const CareerDetail = () => {
               {job.image && (
                 <div className="w-full h-72 sm:h-96 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative bg-black">
                   <img 
-                    src={job.image.startsWith('/') ? getImageUrl(job.image) : job.image} 
+                    src={getImageUrl(job.image)} 
                     alt={job.title} 
                     className="w-full h-full object-cover object-center"
                     onError={(e) => {

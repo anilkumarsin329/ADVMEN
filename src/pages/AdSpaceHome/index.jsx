@@ -71,7 +71,7 @@ const AdSpaceHome = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Rent Premium Advertising Spaces — ADVMEN"
+        title="Rent Premium Advertising Spaces â€” ADVMEN"
         description="Discover and rent premium physical and digital advertising spaces across the city."
       />
 
@@ -178,7 +178,7 @@ const AdSpaceHome = () => {
       </section>
       
       {/* How it works */}
-      <section className="py-24 bg-[#0a0a0a] relative border-t border-white/5">
+      <section className="py-24 bg-[#141418] relative border-t border-white/5">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-display font-bold text-white mb-4">How It Works</h2>

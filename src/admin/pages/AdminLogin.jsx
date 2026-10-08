@@ -1,8 +1,8 @@
 /**
  * admin/pages/AdminLogin.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Admin Login Page
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Admin Login Page
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useState, useEffect } from 'react'
@@ -61,7 +61,7 @@ const AdminLogin = () => {
   return (
     <>
       <SEOHead 
-        title="Admin Portal — ADVMEN" 
+        title="Admin Portal â€” ADVMEN" 
         description="ADVMEN administrator access and backend portal."
       />
 
@@ -149,7 +149,7 @@ const AdminLogin = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-[#e6e6ec] text-[#121215] border border-transparent rounded-xl p-3.5 font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] transition-all duration-300"
+                  className="w-full bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3.5 font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] transition-all duration-300"
                   placeholder="admin@advmen.com"
                   required
                 />
@@ -170,8 +170,8 @@ const AdminLogin = () => {
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full bg-[#e6e6ec] text-[#121215] border border-transparent rounded-xl p-3.5 pr-11 font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] transition-all duration-300"
-                    placeholder="••••••••"
+                    className="w-full bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3.5 pr-11 font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] transition-all duration-300"
+                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                     required
                   />
                   <button

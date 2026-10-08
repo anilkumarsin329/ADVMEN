@@ -1,11 +1,11 @@
 /**
  * components/common/BrandLogo.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Official Brand Logo Component
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Official Brand Logo Component
  * - Renders the complete, authentic "AM" Monogram Logo
  * - Includes exact "A D V M E N" typography & "For Every Brandman" tagline
  * - 100% Transparent blending with zero black box outline
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import React from 'react'
@@ -36,7 +36,7 @@ const BrandLogo = ({
         >
           <img
             src="/ADVMEN logo.png"
-            alt="ADVMEN — For Every Brandman"
+            alt="ADVMEN â€” For Every Brandman"
             className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
             style={{
               mixBlendMode: 'screen',
@@ -51,9 +51,9 @@ const BrandLogo = ({
 
   return (
     <div className={`inline-flex items-center gap-3 select-none group ${className}`}>
-      {/* ── AM Monogram Icon SVG ── */}
+      {/* â”€â”€ AM Monogram Icon SVG â”€â”€ */}
       <div className="relative flex items-center justify-center flex-shrink-0">
-        <div className="absolute -inset-1 rounded-full bg-[#FF6B00]/25 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        <div className="absolute -inset-1 rounded-full bg-[#E85D00]/25 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
         <svg
           className={`${imgHeight} w-auto relative z-10 transition-transform duration-300 group-hover:scale-105`}
@@ -79,7 +79,7 @@ const BrandLogo = ({
           {/* Orange 'M' Inner V-Valley */}
           <path
             d="M50 38L70 68L88 28"
-            stroke="#FF6B00"
+            stroke="#E85D00"
             strokeWidth="9"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -94,7 +94,7 @@ const BrandLogo = ({
         </svg>
       </div>
 
-      {/* ── Typography Column ── */}
+      {/* â”€â”€ Typography Column â”€â”€ */}
       <div className="flex flex-col justify-center leading-none">
         {/* ADVMEN with Chevron A and Orange M */}
         <div className="flex items-center gap-1 font-display font-black text-white text-lg sm:text-xl tracking-[0.2em]" style={{ letterSpacing: '0.2em' }}>

@@ -1,25 +1,25 @@
 /**
  * styles/globals.css
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Global Stylesheet Entry Point
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Global Stylesheet Entry Point
  *
  * PostCSS rule: @import must precede all other statements.
- * Order: @import → @tailwind → @layer
- * ─────────────────────────────────────────────────────────────
+ * Order: @import â†’ @tailwind â†’ @layer
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
-/* ── Design System Imports (must be first) ────────────────── */
+/* â”€â”€ Design System Imports (must be first) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @import './variables.css';
 @import './typography.css';
 @import './animations.css';
 @import './utilities.css';
 
-/* ── Tailwind Directives ──────────────────────────────────── */
+/* â”€â”€ Tailwind Directives â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ── Base Reset ───────────────────────────────────────────── */
+/* â”€â”€ Base Reset â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @layer base {
 
   *, *::before, *::after {
@@ -67,10 +67,10 @@
   svg { display: block; }
 }
 
-/* ── Component Classes ────────────────────────────────────── */
+/* â”€â”€ Component Classes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @layer components {
 
-  /* ── Layout ─────────────────────────────────────────────── */
+  /* â”€â”€ Layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .section {
     @apply relative w-full overflow-hidden;
     padding-top: var(--section-padding-y);
@@ -84,7 +84,7 @@
     padding-right: var(--container-padding);
   }
 
-  /* ── Buttons ─────────────────────────────────────────────── */
+  /* â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .btn {
     @apply inline-flex items-center justify-center gap-2 font-semibold
            transition-all select-none whitespace-nowrap;
@@ -214,7 +214,7 @@
     height: var(--btn-height-lg);
   }
 
-  /* ── Typography Components ───────────────────────────────── */
+  /* â”€â”€ Typography Components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .eyebrow {
     display: block;
     font-family: var(--font-mono);
@@ -234,7 +234,6 @@
     line-height: var(--leading-tight);
     letter-spacing: var(--tracking-tight);
     color: var(--color-text-primary);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(255, 255, 255, 0.05);
   }
 
   .section-subtitle {
@@ -244,10 +243,9 @@
     color: var(--color-text-secondary);
     max-width: 580px;
     margin-top: var(--space-4);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
   }
 
-  /* ── Cards ───────────────────────────────────────────────── */
+  /* â”€â”€ Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .card {
     background: var(--color-surface-1);
     border: 1px solid rgba(255, 255, 255, 0.015);
@@ -258,25 +256,25 @@
   }
 
   .card:hover {
-    border-color: rgba(255, 255, 255, 0.03);
-    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-orange);
+    box-shadow: 0 12px 32px rgba(232, 93, 0, 0.15);
     transform: translateY(-2px);
   }
 
   .card-glass {
-    background: rgba(22, 22, 27, 0.6);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
     transition: all var(--transition-base) var(--ease-out-expo);
     overflow: hidden;
   }
 
   .card-glass:hover {
-    border-color: rgba(255, 107, 0, 0.25);
-    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-orange);
+    box-shadow: 0 12px 32px rgba(232, 93, 0, 0.15);
     transform: translateY(-2px);
   }
 
@@ -296,7 +294,7 @@
     transform: translateY(-2px);
   }
 
-  /* ── Form Elements ───────────────────────────────────────── */
+  /* â”€â”€ Form Elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .input {
     @apply w-full;
     height: var(--input-height);
@@ -359,7 +357,7 @@
     border-color: var(--color-success);
   }
 
-  /* ── Badge / Tag ─────────────────────────────────────────── */
+  /* â”€â”€ Badge / Tag â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .badge {
     @apply inline-flex items-center gap-1;
     padding: var(--space-1) var(--space-3);
@@ -427,7 +425,7 @@
     background: var(--color-glass-orange-8);
   }
 
-  /* ── Section Heading Component ───────────────────────────── */
+  /* â”€â”€ Section Heading Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .section-header {
     @apply relative;
     margin-bottom: var(--space-16);
@@ -443,7 +441,7 @@
   }
 }
 
-/* ── Enterprise Hero Section Layout & Overlays ─────────────── */
+/* â”€â”€ Enterprise Hero Section Layout & Overlays â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .hero-section-responsive {
   position: relative;
   width: 100%;
@@ -468,7 +466,7 @@
 .hero-bg-overlay {
   background: linear-gradient(
     90deg,
-    #121215 0%,
+    #141418 0%,
     rgba(18, 18, 21, 0.97) 42%,
     rgba(18, 18, 21, 0.84) 62%,
     rgba(18, 18, 21, 0.45) 85%,

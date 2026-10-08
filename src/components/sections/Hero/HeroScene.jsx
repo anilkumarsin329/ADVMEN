@@ -1,6 +1,6 @@
 /**
- * HeroScene.jsx — Premium React Three Fiber scene
- * Reduced object size (65–70% of space), soft orange glow,
+ * HeroScene.jsx â€” Premium React Three Fiber scene
+ * Reduced object size (65â€“70% of space), soft orange glow,
  * floating particles, smooth mouse interaction, 60 FPS target.
  */
 
@@ -9,7 +9,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { MeshTransmissionMaterial, Float } from '@react-three/drei'
 import { lerp } from '@utils/threeHelpers'
 
-// Global mouse — single listener, shared across instances
+// Global mouse â€” single listener, shared across instances
 const mouse = { x: 0, y: 0 }
 if (typeof window !== 'undefined') {
   window.addEventListener(
@@ -22,28 +22,28 @@ if (typeof window !== 'undefined') {
   )
 }
 
-// ── Particle Data Pre-generation ─────────────────────────────
+// â”€â”€ Particle Data Pre-generation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const PARTICLE_COUNT = 160
 const PARTICLE_DATA = (() => {
   const pos = new Float32Array(PARTICLE_COUNT * 3)
   const sz  = new Float32Array(PARTICLE_COUNT)
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     // Spread wide enough to fill full viewport at fov 50, z=7
-    // Visible width at z=0 ≈ 2 * tan(25°) * 7 ≈ 6.5 units each side
-    pos[i * 3]     = (Math.random() - 0.5) * 22   // x: ±11
-    pos[i * 3 + 1] = (Math.random() - 0.5) * 16   // y: ±8
-    pos[i * 3 + 2] = (Math.random() - 0.5) * 10   // z: ±5 (depth)
+    // Visible width at z=0 â‰ˆ 2 * tan(25Â°) * 7 â‰ˆ 6.5 units each side
+    pos[i * 3]     = (Math.random() - 0.5) * 22   // x: Â±11
+    pos[i * 3 + 1] = (Math.random() - 0.5) * 16   // y: Â±8
+    pos[i * 3 + 2] = (Math.random() - 0.5) * 10   // z: Â±5 (depth)
     sz[i]          = 0.015 + Math.random() * 0.03
   }
   return { positions: pos, sizes: sz }
 })()
 
-// ── Soft orange glow plane behind the object ──────────────────
+// â”€â”€ Soft orange glow plane behind the object â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const GlowPlane = () => (
   <mesh position={[0, 0, -2.5]}>
     <planeGeometry args={[8, 8]} />
     <meshBasicMaterial
-      color="#FF6B00"
+      color="#E85D00"
       transparent
       opacity={0.04}
       depthWrite={false}
@@ -51,7 +51,7 @@ const GlowPlane = () => (
   </mesh>
 )
 
-// ── Main abstract shape ────────────────────────────────────────
+// â”€â”€ Main abstract shape â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const AbstractShape = () => {
   const meshRef   = useRef(null)
   const groupRef  = useRef(null)
@@ -66,7 +66,7 @@ const AbstractShape = () => {
     }
 
     if (groupRef.current) {
-      // Smooth mouse parallax — reduced intensity
+      // Smooth mouse parallax â€” reduced intensity
       targetRot.current.x = lerp(targetRot.current.x, mouse.y * 0.18, 0.04)
       targetRot.current.y = lerp(targetRot.current.y, mouse.x * 0.18, 0.04)
       groupRef.current.rotation.x = targetRot.current.x
@@ -82,7 +82,7 @@ const AbstractShape = () => {
         floatIntensity={0.6}
         floatingRange={[-0.12, 0.12]}
       >
-        {/* Core torus knot — scaled down to ~65% */}
+        {/* Core torus knot â€” scaled down to ~65% */}
         <mesh ref={meshRef} scale={0.52} castShadow>
           <torusKnotGeometry args={[1, 0.3, 200, 24, 2, 3]} />
           <MeshTransmissionMaterial
@@ -97,7 +97,7 @@ const AbstractShape = () => {
             distortion={0.08}
             distortionScale={0.15}
             temporalDistortion={0.04}
-            color="#FF6B00"
+            color="#E85D00"
             attenuationColor="#FF8C38"
             attenuationDistance={0.6}
           />
@@ -106,7 +106,7 @@ const AbstractShape = () => {
         {/* Outer wireframe ring */}
         <mesh rotation={[Math.PI / 2, 0, 0]} scale={0.52}>
           <torusGeometry args={[1.85, 0.007, 8, 100]} />
-          <meshBasicMaterial color="#FF6B00" transparent opacity={0.22} />
+          <meshBasicMaterial color="#E85D00" transparent opacity={0.22} />
         </mesh>
 
         {/* Second tilted ring */}
@@ -119,7 +119,7 @@ const AbstractShape = () => {
   )
 }
 
-// ── Floating ambient particles ─────────────────────────────────
+// â”€â”€ Floating ambient particles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const AmbientParticles = () => {
   const ref = useRef(null)
   const { positions, sizes } = PARTICLE_DATA
@@ -149,18 +149,18 @@ const AmbientParticles = () => {
   )
 }
 
-// ── Scene lighting ─────────────────────────────────────────────
+// â”€â”€ Scene lighting â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const SceneLights = () => (
   <>
     <ambientLight intensity={0.45} />
-    <pointLight position={[5,  5,  5]}  intensity={3.2} color="#FF6B00" />
+    <pointLight position={[5,  5,  5]}  intensity={3.2} color="#E85D00" />
     <pointLight position={[-5, -3, -5]} intensity={1.8} color="#FF8C38" />
     <pointLight position={[0,  8,  2]}  intensity={1.2} color="#ffffff" />
     <pointLight position={[3, -5,  4]}  intensity={0.6} color="#FF4500" />
   </>
 )
 
-// ── Canvas wrapper ─────────────────────────────────────────────
+// â”€â”€ Canvas wrapper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const HeroScene = () => (
   <Canvas
     camera={{ position: [0, 0, 7], fov: 50 }}

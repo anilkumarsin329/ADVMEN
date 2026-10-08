@@ -1,8 +1,8 @@
 /**
  * admin/pages/AdminBlog.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Admin Blog & Articles Management (Industrial Light Theme)
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Admin Blog & Articles Management (Industrial Light Theme)
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useState, useEffect } from 'react'
@@ -354,7 +354,7 @@ const AdminBlog = () => {
             </button>
             <button
               onClick={handleOpenAddModal}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#ff6b00] hover:bg-[#e05e00] text-white font-bold text-sm shadow-sm transition-all"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#E85D00] hover:bg-[#e05e00] text-white font-bold text-sm shadow-sm transition-all"
             >
               <FiPlus size={18} /> Add Blog Post
             </button>
@@ -526,7 +526,7 @@ const AdminBlog = () => {
                         <div className="flex items-center gap-1 text-[11px] text-slate-400 mt-0.5 pl-4.5">
                           <FiCalendar size={11} />
                           <span>{item.date || 'Recent'}</span>
-                          <span className="text-slate-300">•</span>
+                          <span className="text-slate-300">â€¢</span>
                           <span>{item.readTime || '5 min'}</span>
                         </div>
                       </td>
@@ -865,7 +865,7 @@ const AdminBlog = () => {
                   <div>
                     <span className="text-[10px] font-bold uppercase text-slate-400 block">Status</span>
                     <span className={`text-xs font-bold ${viewItemTarget.isActive !== false ? 'text-emerald-600' : 'text-slate-500'}`}>
-                      {viewItemTarget.isActive !== false ? '● Published' : '○ Draft'}
+                      {viewItemTarget.isActive !== false ? 'â— Published' : 'â—‹ Draft'}
                     </span>
                   </div>
                 </div>

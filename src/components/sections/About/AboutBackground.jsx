@@ -1,6 +1,6 @@
 /**
  * AboutBackground.jsx
- * Subtle dark background — consistent with Hero but more subdued.
+ * Subtle dark background â€” consistent with Hero but more subdued.
  * Content is always the focus here.
  */
 
@@ -13,7 +13,7 @@ const AboutBackground = () => (
     {/* Base */}
     <div
       className="absolute inset-0"
-      style={{ background: 'linear-gradient(180deg, #121215 0%, #160f0c 50%, #121215 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #141418 0%, #160f0c 50%, #141418 100%)' }}
     />
 
     {/* Subtle grid */}

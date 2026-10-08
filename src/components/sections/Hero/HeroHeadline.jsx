@@ -1,5 +1,5 @@
 /**
- * HeroHeadline.jsx — Premium GSAP line-by-line reveal
+ * HeroHeadline.jsx â€” Premium GSAP line-by-line reveal
  * Each line slides up from a clip mask independently.
  * "POWERFUL" gets a premium animated orange gradient.
  */
@@ -53,7 +53,7 @@ const HeroHeadline = ({ onComplete }) => {
               style={
                 line.gradient
                   ? {
-                      background: 'linear-gradient(90deg, #FF6B00 0%, #FF9A45 40%, #FF6B00 100%)',
+                      background: 'linear-gradient(90deg, #E85D00 0%, #FF9A45 40%, #E85D00 100%)',
                       backgroundSize: '200% auto',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',

@@ -27,8 +27,8 @@ const HeroGrowthGraph = () => {
         <svg viewBox="0 0 600 350" className="absolute inset-0 w-full h-full overflow-visible">
           <defs>
             <linearGradient id="heroGraphGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#FF6B00" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#FF6B00" stopOpacity="0.0" />
+              <stop offset="0%" stopColor="#E85D00" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#E85D00" stopOpacity="0.0" />
             </linearGradient>
             <filter id="heroGraphGlow" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur stdDeviation="8" result="blur" />
@@ -56,7 +56,7 @@ const HeroGrowthGraph = () => {
             transition={{ duration: 2, delay: 0.2, ease: 'easeInOut' }}
             d="M 20,250 C 100,250 150,180 250,190 C 350,200 400,100 500,120 C 560,130 580,50 580,50"
             fill="none"
-            stroke="#FF6B00"
+            stroke="#E85D00"
             strokeWidth="5"
             strokeLinecap="round"
             filter="url(#heroGraphGlowIntense)"
@@ -91,7 +91,7 @@ const HeroGrowthGraph = () => {
                 cy={point.cy}
                 r="12"
                 fill="none"
-                stroke="#FF6B00"
+                stroke="#E85D00"
                 strokeWidth="2"
               />
               {/* Core Node */}
@@ -102,7 +102,7 @@ const HeroGrowthGraph = () => {
                 cx={point.cx}
                 cy={point.cy}
                 r={point.isMax ? "10" : "8"}
-                fill="#121215"
+                fill="#141418"
                 stroke="#FFD5B8"
                 strokeWidth="3"
                 filter="url(#heroGraphGlowIntense)"

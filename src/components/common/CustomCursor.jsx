@@ -1,14 +1,14 @@
 /**
  * components/common/CustomCursor.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Premium Custom Cursor
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Premium Custom Cursor
  *
- * • Smooth GSAP lerp interpolation
- * • States: default | hover | text | drag | link | image | hidden
- * • Magnetic pull on [data-magnetic] elements
- * • Desktop only — hidden on touch devices
- * • Zero layout impact (fixed, pointer-events-none)
- * ─────────────────────────────────────────────────────────────
+ * â€¢ Smooth GSAP lerp interpolation
+ * â€¢ States: default | hover | text | drag | link | image | hidden
+ * â€¢ Magnetic pull on [data-magnetic] elements
+ * â€¢ Desktop only â€” hidden on touch devices
+ * â€¢ Zero layout impact (fixed, pointer-events-none)
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { useEffect, useRef, useContext } from 'react'
@@ -33,7 +33,7 @@ const CustomCursor = () => {
     const ring = ringRef.current
     if (!dot || !ring) return
 
-    // ── Mouse tracking ───────────────────────────────────────
+    // â”€â”€ Mouse tracking â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const onMouseMove = (e) => {
       mouse.current = { x: e.clientX, y: e.clientY }
       // Snap dot immediately
@@ -48,7 +48,7 @@ const CustomCursor = () => {
     document.addEventListener('mouseleave', onMouseLeave)
     document.addEventListener('mouseenter', onMouseEnter)
 
-    // ── Lerp ring ────────────────────────────────────────────
+    // â”€â”€ Lerp ring â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const lerp = (a, b, t) => a + (b - a) * t
 
     const animate = () => {
@@ -59,7 +59,7 @@ const CustomCursor = () => {
     }
     rafId.current = requestAnimationFrame(animate)
 
-    // ── Cursor state detection ───────────────────────────────
+    // â”€â”€ Cursor state detection â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const handleEnter = (e) => {
       const el = e.target.closest('[data-cursor]')
       if (el) {
@@ -77,7 +77,7 @@ const CustomCursor = () => {
     document.addEventListener('mouseover', handleEnter)
     document.addEventListener('mouseout',  handleLeave)
 
-    // ── Mouse down/up for drag state ─────────────────────────
+    // â”€â”€ Mouse down/up for drag state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const onDown = () => {
       if (cursorType !== 'text') setCursor('drag')
     }
@@ -101,12 +101,12 @@ const CustomCursor = () => {
   // Never render on touch devices
   if (typeof window !== 'undefined' && isTouchDevice()) return null
 
-  // ── Cursor state styles ────────────────────────────────────
+  // â”€â”€ Cursor state styles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const isHover = cursorType === 'hover' || cursorType === 'link' || cursorType === 'image'
 
   return (
     <>
-      {/* ── Precision dot — snaps instantly to cursor ─────── */}
+      {/* â”€â”€ Precision dot â€” snaps instantly to cursor â”€â”€â”€â”€â”€â”€â”€ */}
       <div
         ref={dotRef}
         aria-hidden="true"
@@ -130,7 +130,7 @@ const CustomCursor = () => {
         }}
       />
 
-      {/* ── Outer ring — lags behind for premium feel ─────── */}
+      {/* â”€â”€ Outer ring â€” lags behind for premium feel â”€â”€â”€â”€â”€â”€â”€ */}
       <div
         ref={ringRef}
         aria-hidden="true"
@@ -159,7 +159,7 @@ const CustomCursor = () => {
           justifyContent: 'center',
         }}
       >
-        {/* Arrow icon — visible on hover state */}
+        {/* Arrow icon â€” visible on hover state */}
         {isHover && (
           <svg
             width="14"
@@ -171,7 +171,7 @@ const CustomCursor = () => {
           >
             <path
               d="M3 7h8M7.5 3.5L11 7l-3.5 3.5"
-              stroke="#FF6B00"
+              stroke="#E85D00"
               strokeWidth="1.4"
               strokeLinecap="round"
               strokeLinejoin="round"
