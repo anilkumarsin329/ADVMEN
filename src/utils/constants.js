@@ -78,7 +78,7 @@ export const getImageUrl = (path) => {
 // ── Social Links ─────────────────────────────────────────────
 export const SOCIAL = {
   instagram: 'https://www.instagram.com/advmen.in?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==',
-  linkedin:  'https://linkedin.com/company/advmen',
+  linkedin:  'https://www.linkedin.com/in/govind-goyal-5653643b6/',
 }
 
 // ── Navigation ───────────────────────────────────────────────

@@ -101,7 +101,7 @@ const Work = () => {
                 letterSpacing: '-0.02em',
               }}
             >
-              Immersive Digital <span className="text-orange-gradient">Products</span> & Brands.
+              Proof, not promises.
             </h1>
           </div>
 

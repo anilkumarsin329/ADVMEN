@@ -20,7 +20,7 @@ const HeroScrollIndicator = () => (
       style={{
         width: '22px',
         height: '36px',
-        border: '1.5px solid rgba(255,255,255,0.18)',
+        border: '1.5px solid var(--color-border-strong)',
         borderRadius: '11px',
       }}
     >

@@ -13,6 +13,7 @@ import CaseStudies from '@components/sections/CaseStudies/CaseStudies'
 import TrustSection from '@components/sections/Clients/TrustSection'
 import Testimonials from '@components/sections/Testimonials/Testimonials'
 import FAQSection from '@components/sections/FAQ/FAQSection'
+import Pricing from '@pages/Pricing'
 
 const Home = () => {
   const location = useLocation()
@@ -63,6 +64,9 @@ const Home = () => {
 
     {/* Phase 7: Testimonials */}
     <Testimonials />
+
+    {/* Phase 8: Pricing */}
+    <Pricing isPage={false} />
 
     {/* Phase 9: FAQ */}
     <FAQSection />

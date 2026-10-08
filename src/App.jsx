@@ -30,6 +30,7 @@ import '@/utils/gsapConfig'
 import Layout        from '@components/layout/Layout'
 import Preloader     from '@components/common/Preloader'
 import GlobalEffects from '@components/common/GlobalEffects'
+import PageTransition from '@components/common/PageTransition'
 
 // ── Lazy Load Wrapper with Retry ──────────────────────────────
 // Automatically reloads the page once if a ChunkLoadError occurs 
@@ -66,7 +67,8 @@ const Catalog        = lazyWithRetry(() => import('@pages/Catalog'))
 const Contact        = lazyWithRetry(() => import('@pages/Contact'))
 const Careers        = lazyWithRetry(() => import('@pages/Careers'))
 const CareerDetail   = lazyWithRetry(() => import('@pages/CareerDetail'))
-const PrivacyPolicy  = lazyWithRetry(() => import('@pages/PrivacyPolicy'))
+const Pricing        = lazyWithRetry(() => import('@pages/Pricing'))
+ const PrivacyPolicy  = lazyWithRetry(() => import('@pages/PrivacyPolicy'))
 const TermsOfService = lazyWithRetry(() => import('@pages/TermsOfService'))
 const DataDeletion   = lazyWithRetry(() => import('@pages/DataDeletion'))
 const NotFound       = lazyWithRetry(() => import('@pages/NotFound'))
@@ -141,6 +143,7 @@ const PublicRoutes = () => {
         <Route path="/blog"             element={<Blog />} />
         <Route path="/blog/:slug"       element={<BlogPost />} />
         <Route path="/catalog"          element={<Catalog />} />
+        <Route path="/pricing"          element={<PageTransition><Pricing /></PageTransition>} />
         <Route path="/contact"          element={<Contact />} />
         <Route path="/careers"          element={<Careers />} />
         <Route path="/careers/:id"      element={<CareerDetail />} />

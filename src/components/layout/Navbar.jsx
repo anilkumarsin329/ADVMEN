@@ -234,7 +234,7 @@ const Navbar = () => {
               to="/contact"
               className="btn-primary btn-sm group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-full"
             >
-              Get Started
+              Get Audit
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
                 <path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -289,9 +289,8 @@ const Navbar = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-[9998] flex flex-col lg:hidden"
+            className="fixed inset-0 z-[9998] flex flex-col lg:hidden bg-[var(--color-surface-0)]"
             style={{
-              background: 'rgba(10,10,10,0.97)',
               backdropFilter: 'blur(24px)',
               paddingTop: 'env(safe-area-inset-top)',
             }}

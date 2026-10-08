@@ -278,6 +278,79 @@ const ServiceDetail = () => {
             </div>
           </section>
 
+          {/* SEO Three Layers Section — only for SEO service */}
+          {(service.slug === 'seo' || service.id === 'seo') && (
+            <section className="mb-20">
+              <div className="mb-10">
+                <span className="eyebrow">Our Approach</span>
+                <h2 className="section-title mt-4">One Team. Three Search Layers.</h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                {[
+                  { layer: 'LAYER 01', title: 'SEO', desc: 'Technical health, content and links for classic rankings.' },
+                  { layer: 'LAYER 02', title: 'AEO', desc: 'Direct answers, FAQ schema and snippets for answer boxes.' },
+                  { layer: 'LAYER 03', title: 'GEO', desc: 'Entities and citations so LLMs recommend you by name.' },
+                ].map((item) => (
+                  <div
+                    key={item.layer}
+                    style={{
+                      padding: '2rem',
+                      borderRadius: '1rem',
+                      background: 'rgba(255,255,255,0.01)',
+                      border: '1px solid rgba(255,107,0,0.15)',
+                      backdropFilter: 'blur(12px)',
+                    }}
+                  >
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--color-orange)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: '0.75rem' }}>
+                      {item.layer}
+                    </span>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-text-primary)', marginBottom: '0.75rem' }}>
+                      {item.title}
+                    </h3>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* We Specialise In */}
+              <div
+                style={{
+                  padding: '2rem',
+                  borderRadius: '1rem',
+                  background: 'rgba(255,107,0,0.04)',
+                  border: '1px solid rgba(255,107,0,0.15)',
+                }}
+              >
+                <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>
+                  We Specialise In
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+                  {['Healthcare', 'Real Estate', 'E-Commerce / D2C', 'Education / Edtech', 'Beauty'].map(tag => (
+                    <span
+                      key={tag}
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.75rem',
+                        color: 'var(--color-text-secondary)',
+                        background: 'rgba(255,255,255,0.04)',
+                        border: '1px solid rgba(255,255,255,0.08)',
+                        padding: '0.4rem 1rem',
+                        borderRadius: '20px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.06em',
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
           {/* Execution Timeline / Workflow */}
           <div className="mb-24">
             <div className="mb-12">

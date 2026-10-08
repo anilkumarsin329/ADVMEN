@@ -149,19 +149,8 @@ const Portfolio = () => {
               marginBottom: '1rem',
             }}
           >
-            Our Work Speaks Volumes
+            Proof, not promises.
           </h2>
-          <p
-            className="portfolio-desc"
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'clamp(0.875rem, 1.2vw, 1rem)',
-              color: 'var(--color-text-secondary)',
-              lineHeight: 'var(--leading-relaxed)',
-            }}
-          >
-            Explore our portfolio of premium digital projects that have transformed businesses and exceeded expectations.
-          </p>
         </div>
 
         {/* Filter Buttons */}

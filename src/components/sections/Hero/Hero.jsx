@@ -54,12 +54,10 @@ const EnterpriseButton = ({ children, to, variant = 'primary', onClick }) => {
     fontSize: '1rem',
     fontWeight: '600',
     letterSpacing: '0.01em',
-    color: 'var(--color-text-primary, #141418)',
+    color: 'var(--color-orange)',
     background: 'transparent',
-    backdropFilter: 'blur(12px)',
-    WebkitBackdropFilter: 'blur(12px)',
     borderRadius: '12px',
-    border: '1px solid var(--color-border-strong)',
+    border: '1.5px solid var(--color-orange)',
     transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
     textDecoration: 'none',
     cursor: 'pointer',
@@ -81,8 +79,8 @@ const EnterpriseButton = ({ children, to, variant = 'primary', onClick }) => {
             e.currentTarget.style.boxShadow = '0 8px 28px var(--color-border-orange-strong)'
           } else {
             e.currentTarget.style.transform = 'translateY(-2px)'
-            e.currentTarget.style.background = 'var(--color-surface-1)'
-            e.currentTarget.style.borderColor = 'var(--color-border-orange)'
+            e.currentTarget.style.background = 'rgba(232,93,0,0.08)'
+            e.currentTarget.style.borderColor = 'var(--color-orange-dark)'
           }
         }}
         onMouseLeave={(e) => {
@@ -92,7 +90,7 @@ const EnterpriseButton = ({ children, to, variant = 'primary', onClick }) => {
           } else {
             e.currentTarget.style.transform = 'translateY(0)'
             e.currentTarget.style.background = 'transparent'
-            e.currentTarget.style.borderColor = 'var(--color-border-strong)'
+            e.currentTarget.style.borderColor = 'var(--color-orange)'
           }
         }}
       >
@@ -194,8 +192,8 @@ const Hero = () => {
                   textTransform: 'uppercase',
                 }}
               >
-                We Build Digital<br />
-                Experiences That<br />
+                Your Customers<br />
+                Ask AI First.{' '}
                 <span
                   style={{
                     display: 'inline-block',
@@ -205,7 +203,7 @@ const Hero = () => {
                     backgroundClip: 'text',
                   }}
                 >
-                  Drive Business Growth.
+                  Get Named In The Answer.
                 </span>
               </h1>
 
@@ -213,14 +211,14 @@ const Hero = () => {
               <p
                 style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: 'clamp(0.9375rem, 1.2vw, 1.125rem)',
-                  color: 'var(--color-text-secondary)',
+                  fontSize: 'clamp(1rem, 1.2vw, 1.15rem)',
+                  color: 'var(--color-text-primary)',
                   lineHeight: 1.6,
-                  maxWidth: '520px',
-                  fontWeight: 400,
+                  maxWidth: '540px',
+                  fontWeight: 600,
                 }}
               >
-                We build high-performance websites, applications, and digital solutions that help ambitious businesses grow.
+                ADVMEN runs <span style={{ color: 'var(--color-orange)', fontWeight: 800 }}>SEO, AEO and GEO</span> so your brand shows up in <span style={{ color: 'var(--color-orange)', fontWeight: 800 }}>Google, AI Overviews, ChatGPT</span> and <span style={{ color: 'var(--color-orange)', fontWeight: 800 }}>Perplexity</span>.
               </p>
             </div>
 
@@ -243,6 +241,8 @@ const Hero = () => {
                 <span>View Case Studies</span>
               </EnterpriseButton>
             </div>
+
+
 
             {/* Trust Signals */}
             <div className="hero-stagger pt-1">
@@ -273,9 +273,52 @@ const Hero = () => {
           </div>
 
           {/* ── RIGHT COLUMN: Visual Anchor Space on Desktop ───── */}
-          <div className="hidden lg:block lg:col-span-6 h-full relative" aria-hidden="true">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <HeroGrowthGraph />
+          <div className="col-span-12 lg:col-span-6 h-full relative flex flex-col justify-end lg:justify-center items-center lg:items-end mt-12 lg:mt-0" aria-hidden="true">
+
+            {/* AI Citation Mockup Card */}
+            <div className="hero-stagger relative z-10 w-full max-w-[480px] lg:mt-32 lg:mr-8 xl:mr-16">
+              <div
+                style={{
+                  background: 'rgba(255,255,255,0.4)',
+                  border: '1px solid rgba(255,107,0,0.2)',
+                  borderRadius: '14px',
+                  padding: '1.25rem 1.5rem',
+                  backdropFilter: 'blur(16px)',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+                }}
+              >
+                {/* Query bar */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+                  <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--color-text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>AI Search</span>
+                  <span style={{ flex: 1, height: '1px', background: 'rgba(200,200,200,0.3)' }} />
+                  <span style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', color: 'var(--color-orange)', background: 'rgba(255,107,0,0.1)', padding: '3px 10px', borderRadius: '20px', border: '1px solid rgba(255,107,0,0.2)', fontWeight: 600 }}>cited ✓</span>
+                </div>
+
+                {/* Query */}
+                <p style={{ fontSize: '0.85rem', fontFamily: 'var(--font-mono)', color: 'var(--color-text-secondary)', marginBottom: '0.75rem', fontWeight: 500 }}>
+                  &gt; best digital marketing agency in Delhi?
+                </p>
+
+                {/* AI Answer */}
+                <p style={{ fontSize: '0.9rem', fontFamily: 'var(--font-body)', color: 'var(--color-text-primary)', lineHeight: 1.6, marginBottom: '1rem', fontWeight: 600 }}>
+                  For digital growth, top picks are{' '}
+                  <span style={{ color: 'var(--color-text-secondary)', fontWeight: 500 }}>Competitor</span>,{' '}
+                  <span style={{ color: 'var(--color-orange)', fontWeight: 800, fontSize: '0.95rem' }}>ADVMEN</span>{' '}
+                  and{' '}
+                  <span style={{ color: 'var(--color-text-secondary)', fontWeight: 500 }}>Competitor</span>.{' '}
+                  ADVMEN is known for <span style={{ color: 'var(--color-orange)', fontWeight: 800 }}>SEO, AEO & GEO-driven</span> brand visibility.
+                </p>
+
+                {/* Source + Industries */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  <span style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', color: 'var(--color-orange)', fontWeight: 600 }}>source: advmen.com</span>
+                  <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
+                    {['healthcare', 'real estate', 'e-commerce', 'edtech'].map(tag => (
+                      <span key={tag} style={{ fontSize: '0.6rem', fontFamily: 'var(--font-mono)', color: 'var(--color-text-secondary)', background: 'rgba(255,255,255,0.5)', border: '1px solid rgba(200,200,200,0.5)', padding: '2px 8px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
