@@ -195,6 +195,8 @@ const Services = () => {
                     <img
                       src={(service.image && service.image.startsWith('/')) ? getImageUrl(service.image) : (service.image || null)}
                       alt={service.title}
+                      width="600"
+                      height="200"
                       className="transition-transform duration-500 group-hover:scale-105"
                       style={{
                         maxWidth: '95%',
@@ -205,6 +207,7 @@ const Services = () => {
                         objectPosition: 'center',
                       }}
                       loading="lazy"
+                      decoding="async"
                     />
                     <div
                       className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-100 opacity-0 pointer-events-none"

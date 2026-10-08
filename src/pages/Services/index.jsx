@@ -240,6 +240,8 @@ const Services = () => {
                           objectPosition: 'center',
                         }}
                         loading="lazy"
+                        width="400"
+                        height="300"
                       />
                       {/* Image Overlay */}
                       <div

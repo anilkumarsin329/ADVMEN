@@ -133,6 +133,8 @@ const Blog = () => {
                       src={article.image ? (article.image.startsWith('/') ? getImageUrl(article.image) : article.image) : null}
                       alt={article.title}
                       loading="lazy"
+                      width="800"
+                      height="500"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded bg-[rgba(18,18,21,0.85)] border border-[rgba(255,107,0,0.3)] backdrop-blur-sm text-[0.65rem] font-mono text-[var(--color-orange)] uppercase tracking-wider">

@@ -129,6 +129,8 @@ const AboutTeam = () => {
                     alt={member.name}
                     loading="lazy"
                     decoding="async"
+                    width="400"
+                    height="300"
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 bg-black"
                   />
                 ) : (

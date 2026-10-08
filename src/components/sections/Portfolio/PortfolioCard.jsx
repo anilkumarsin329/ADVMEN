@@ -19,12 +19,18 @@ const PortfolioCard = ({ project }) => {
     >
       {/* Image Container */}
       <div className="relative w-full aspect-video overflow-hidden bg-[rgba(255,255,255,0.02)]">
+        {/* Skeleton */}
+        <div className="absolute inset-0 bg-[rgba(255,255,255,0.04)] animate-pulse" />
         {/* Actual Image */}
         <img
           src={getImageUrl(project.image) || null}
           alt={project.title}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-500"
+          decoding="async"
+          fetchPriority="low"
+          width="800"
+          height="450"
+          className="w-full h-full object-cover transition-transform duration-500 relative z-10"
           style={{
             transform: isHovered ? 'scale(1.05)' : 'scale(1)',
           }}

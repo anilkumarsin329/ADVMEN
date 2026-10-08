@@ -38,7 +38,7 @@ const LazyImage = ({
         })
       },
       {
-        rootMargin: '50px',
+        rootMargin: '300px',
         threshold: 0.01,
       }
     )

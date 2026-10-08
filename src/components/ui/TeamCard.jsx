@@ -22,6 +22,8 @@ const TeamCard = ({ member, index = 0, className }) => (
           alt={member.name}
           className="img-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
           loading="lazy"
+          width="300"
+          height="400"
         />
       ) : (
         <div className="absolute-fill bg-[var(--gradient-mesh)] flex items-center justify-center">

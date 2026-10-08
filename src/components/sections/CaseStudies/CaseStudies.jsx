@@ -160,6 +160,8 @@ const CaseStudies = () => {
                       alt={study.title}
                       loading="lazy"
                       decoding="async"
+                      width="800"
+                      height="500"
                       onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = '/Image/advmen_service1.webp';

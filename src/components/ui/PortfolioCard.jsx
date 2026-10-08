@@ -25,6 +25,8 @@ const PortfolioCard = ({ item, index = 0, className }) => (
             alt={item.title}
             className="img-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.06]"
             loading="lazy"
+            width="400"
+            height="300"
           />
         ) : (
           <div className="absolute-fill bg-[var(--gradient-mesh)] flex items-center justify-center">

@@ -263,6 +263,8 @@ const ServiceDetail = () => {
                     src={service.image}
                     alt={service.title}
                     loading="lazy"
+                    width="800"
+                    height="500"
                     className="relative z-10 w-full h-auto max-h-[450px] md:max-h-[490px] object-contain mx-auto rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]"
                   />
                 ) : (

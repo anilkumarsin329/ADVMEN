@@ -162,6 +162,8 @@ const AboutHero = () => {
                 alt="Mr. Govind Goyal — Co-Founder & Director"
                 loading="lazy"
                 decoding="async"
+                width="380"
+                height="475"
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
               

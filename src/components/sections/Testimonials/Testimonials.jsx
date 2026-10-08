@@ -309,6 +309,8 @@ const Testimonials = () => {
                         src={t.avatar}
                         alt={t.name}
                         loading="lazy"
+                        width="64"
+                        height="64"
                         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                       />
                     )}
