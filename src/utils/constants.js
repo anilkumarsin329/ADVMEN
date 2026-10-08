@@ -29,7 +29,7 @@ export const getApiBaseUrl = () => {
     const { protocol, hostname } = window.location
     if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
       if (hostname === 'www.advmen.com' || hostname === 'advmen.com') {
-        url = `${protocol}//api.advmen.com`
+        url = 'https://advmen-backend.onrender.com'
       } else {
         url = `${protocol}//${hostname}`
       }
