@@ -15,6 +15,7 @@ import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 // removed static imports
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@/utils/apiCache'
 
 const Work = () => {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -26,15 +27,12 @@ const Work = () => {
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/portfolio`)
-        if (res.ok) {
-          const data = await res.json()
-          if (Array.isArray(data)) {
-            setPortfolioData(data)
-            const uniqueCats = ['All', ...new Set(data.map(item => item.category))]
-            setCategories(uniqueCats)
-            return
-          }
+        const data = await cachedFetch(`${API_BASE_URL}/api/portfolio`)
+        if (Array.isArray(data)) {
+          setPortfolioData(data)
+          const uniqueCats = ['All', ...new Set(data.map(item => item.category))]
+          setCategories(uniqueCats)
+          return
         }
       } catch (err) {
         console.warn('API error:', err)

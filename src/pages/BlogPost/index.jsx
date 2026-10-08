@@ -10,6 +10,7 @@ import PageTransition from '@components/common/PageTransition'
 import { getBlogBySlug, blogArticles } from '@data/blog'
 import { FiArrowLeft, FiShare2, FiCopy, FiX } from 'react-icons/fi'
 import { API_BASE_URL } from '@utils/constants'
+import { cachedFetch } from '@/utils/apiCache'
 
 const BlogPost = () => {
   const { slug } = useParams()
@@ -21,12 +22,9 @@ const BlogPost = () => {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/blog/${slug}`)
-        if (response.ok) {
-          const data = await response.json()
-          if (data && data.title) {
-            setArticle({ ...data, id: data._id || data.id })
-          }
+        const data = await cachedFetch(`${API_BASE_URL}/api/blog/${slug}`)
+        if (data && data.title) {
+          setArticle({ ...data, id: data._id || data.id })
         }
       } catch (err) {
         console.warn('API error fetching post by slug:', err)

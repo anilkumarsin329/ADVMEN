@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiShoppingCart, FiX, FiPlus, FiMinus, FiCheck } from 'react-icons/fi'
 // removed static imports
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@/utils/apiCache'
 import './Catalog.css'
 
 const Catalog = () => {
@@ -25,15 +26,12 @@ const Catalog = () => {
   useEffect(() => {
     const fetchCatalog = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/catalog`)
-        if (response.ok) {
-          const data = await response.json()
-          if (Array.isArray(data)) {
-            const formattedData = data.map(item => ({ ...item, id: item._id || item.id }))
-            setItems(formattedData)
-            const uniqueCats = ['All', ...new Set(formattedData.map(item => item.category))]
-            setCategoriesList(uniqueCats)
-          }
+        const data = await cachedFetch(`${API_BASE_URL}/api/catalog`)
+        if (Array.isArray(data)) {
+          const formattedData = data.map(item => ({ ...item, id: item._id || item.id }))
+          setItems(formattedData)
+          const uniqueCats = ['All', ...new Set(formattedData.map(item => item.category))]
+          setCategoriesList(uniqueCats)
         }
       } catch (err) {
         console.warn('Backend catalog API offline, falling back to static local data:', err)

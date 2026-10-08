@@ -14,6 +14,7 @@ import PageTransition from '@components/common/PageTransition'
 import ServiceIcon   from '@components/sections/Services/ServiceIcon'
 import { getServiceBySlug } from '@data/services'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@/utils/apiCache'
 import { FiX } from 'react-icons/fi'
 
 const defaultWorkflowSteps = [
@@ -41,10 +42,8 @@ const ServiceDetail = () => {
     const fetchServiceData = async () => {
       try {
         const fetchSlug = encodeURIComponent(slug || '')
-        const res = await fetch(`${API_BASE_URL}/api/services/${fetchSlug}`)
-        if (res.ok) {
-          const data = await res.json()
-          if (data && (data.title || data.name) && isMounted) {
+        const data = await cachedFetch(`${API_BASE_URL}/api/services/${fetchSlug}`)
+        if (data && (data.title || data.name) && isMounted) {
             setServiceData({
               ...localMatch,
               ...data,
@@ -61,7 +60,6 @@ const ServiceDetail = () => {
                 : (localMatch?.workflow || defaultWorkflowSteps)
             })
           }
-        }
       } catch (err) {
         console.warn('API error fetching service detail:', err)
       }

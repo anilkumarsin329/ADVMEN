@@ -13,6 +13,7 @@ import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@/utils/apiCache'
 
 import { portfolioProjects } from '@data/portfolio'
 
@@ -140,25 +141,26 @@ const WorkDetail = () => {
     const fetchDetails = async () => {
       try {
         // First try Case Studies API endpoint
-        let res = await fetch(`${API_BASE_URL}/api/case-studies/${slug}`)
-        if (res.ok) {
-          const data = await res.json()
+        let success = false;
+        try {
+          const data = await cachedFetch(`${API_BASE_URL}/api/case-studies/${slug}`)
           if (data.data) {
             setDetails(data.data)
-            return
+            success = true;
           } else if (data.title) {
             setDetails(data)
-            return
+            success = true;
           }
-        }
+        } catch (e) {}
+
+        if (success) return;
         
         // Next try Portfolio API endpoint
-        res = await fetch(`${API_BASE_URL}/api/portfolio/${slug}`)
-        if (res.ok) {
-          const data = await res.json()
+        try {
+          const data = await cachedFetch(`${API_BASE_URL}/api/portfolio/${slug}`)
           setDetails(data)
           return
-        }
+        } catch (e) {}
 
         // Fallback to static items
         const fallback = fallbackCaseStudies.find(

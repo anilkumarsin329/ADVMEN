@@ -234,7 +234,6 @@ const App = () => (
             <ThemeProvider>
               <BrowserRouter>
                 <GlobalEffects />
-                <Preloader />
                 <RootRouter />
               </BrowserRouter>
             </ThemeProvider>

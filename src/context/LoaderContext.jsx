@@ -15,9 +15,9 @@ import { createContext, useState, useCallback } from 'react'
 export const LoaderContext = createContext(null)
 
 export const LoaderProvider = ({ children }) => {
-  const [isLoading,     setIsLoading]     = useState(true)
-  const [progress,      setProgress]      = useState(0)
-  const [startEntrance, setStartEntrance] = useState(false)
+  const [isLoading,     setIsLoading]     = useState(false)
+  const [progress,      setProgress]      = useState(100)
+  const [startEntrance, setStartEntrance] = useState(true)
 
   const setLoadingComplete = useCallback(() => {
     setProgress(100)

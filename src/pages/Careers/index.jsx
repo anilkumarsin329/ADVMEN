@@ -34,6 +34,7 @@ import {
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@/utils/apiCache'
 
 const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/FyTxa7MaOOkC2qXelS2kzj?s=cl&p=a&mlu=4'
 
@@ -94,12 +95,9 @@ const Careers = () => {
   useEffect(() => {
     const fetchCareers = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/careers`)
-        if (res.ok) {
-          const data = await res.json()
-          if (Array.isArray(data) && data.length > 0) {
-            setPositions(data.map((item, idx) => ({ ...item, id: item._id || item.id || `pos-${idx}` })))
-          }
+        const data = await cachedFetch(`${API_BASE_URL}/api/careers`)
+        if (Array.isArray(data) && data.length > 0) {
+          setPositions(data.map((item, idx) => ({ ...item, id: item._id || item.id || `pos-${idx}` })))
         }
       } catch (err) {
         console.warn('Backend careers fetch error:', err)

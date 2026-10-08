@@ -31,6 +31,7 @@ import {
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@/utils/apiCache'
 
 const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/FyTxa7MaOOkC2qXelS2kzj?s=cl&p=a&mlu=4'
 
@@ -75,14 +76,11 @@ const CareerDetail = () => {
     const fetchJobDetail = async () => {
       setLoading(true)
       try {
-        const res = await fetch(`${API_BASE_URL}/api/careers/${id}`)
-        if (res.ok) {
-          const data = await res.json()
-          if (data && (data._id || data.id)) {
-            setJob({ ...data, id: data._id || data.id })
-            setLoading(false)
-            return
-          }
+        const data = await cachedFetch(`${API_BASE_URL}/api/careers/${id}`)
+        if (data && (data._id || data.id)) {
+          setJob({ ...data, id: data._id || data.id })
+          setLoading(false)
+          return
         }
       } catch (err) {
         console.warn('API error, falling back to local dataset:', err)

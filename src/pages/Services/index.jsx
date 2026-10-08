@@ -15,6 +15,7 @@ import { gsap } from '@utils/gsapConfig'
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@/utils/apiCache'
 
 const Services = () => {
   const headerRef = useRef(null)
@@ -26,13 +27,8 @@ const Services = () => {
   useEffect(() => {
     const loadServices = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/services`)
-        if (res.ok) {
-          const data = await res.json()
-          setServicesData(Array.isArray(data) ? data : [])
-        } else {
-          setServicesData([])
-        }
+        const data = await cachedFetch(`${API_BASE_URL}/api/services`)
+        setServicesData(Array.isArray(data) ? data : [])
       } catch (err) {
         console.warn('API connection failed for Services:', err)
         setServicesData([])

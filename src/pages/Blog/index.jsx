@@ -15,6 +15,7 @@ import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { blogArticles } from '@data/blog'
 import { API_BASE_URL } from '@utils/constants'
+import { cachedFetch } from '@/utils/apiCache'
 
 const Blog = () => {
   const headerRef = useRef(null)
@@ -23,12 +24,9 @@ const Blog = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/blog`)
-        if (res.ok) {
-          const data = await res.json()
-          if (Array.isArray(data) && data.length > 0) {
-            setArticles(data.map(item => ({ ...item, id: item._id || item.id })))
-          }
+        const data = await cachedFetch(`${API_BASE_URL}/api/blog`)
+        if (Array.isArray(data) && data.length > 0) {
+          setArticles(data.map(item => ({ ...item, id: item._id || item.id })))
         }
       } catch (err) {
         console.warn('Backend blog API error:', err)
