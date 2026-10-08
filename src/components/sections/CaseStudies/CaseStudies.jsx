@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 import { FiTrendingUp } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@utils/apiCache'
 
 const CaseStudies = () => {
   const sectionRef = useRef(null)
@@ -23,11 +24,8 @@ const CaseStudies = () => {
   useEffect(() => {
     const fetchCaseStudies = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/case-studies`)
-        const data = await response.json()
-        if (response.ok && data.data) {
-          setCaseStudies(data.data)
-        }
+        const data = await cachedFetch(`${API_BASE_URL}/api/case-studies`)
+        if (data?.data) setCaseStudies(data.data)
       } catch (err) {
         console.warn('Failed to fetch case studies:', err)
       } finally {

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import { FiLayers } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@utils/apiCache'
 import { services as defaultServices } from '@data/services'
 
 const Services = () => {
@@ -20,10 +21,9 @@ const Services = () => {
   useEffect(() => {
     const loadServices = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/services`)
-        if (res.ok) {
-          const data = await res.json()
-          setServicesData(Array.isArray(data) && data.length > 0 ? data : defaultServices)
+        const res = await cachedFetch(`${API_BASE_URL}/api/services`)
+        if (res) {
+          setServicesData(Array.isArray(res) && res.length > 0 ? res : defaultServices)
         } else {
           setServicesData(defaultServices)
         }

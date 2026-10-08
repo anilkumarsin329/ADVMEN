@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { gsap } from '@utils/gsapConfig'
 import MarqueeLib from 'react-fast-marquee'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@utils/apiCache'
 import { FiTrendingUp, FiShield, FiClock, FiCheckCircle, FiArrowRight, FiGitBranch, FiZap, FiAward, FiDollarSign, FiShoppingCart } from 'react-icons/fi'
 import { stats } from '@data/stats'
 import { defaultClients } from '@data/clients'
@@ -27,8 +28,7 @@ const TrustSection = () => {
   const [clientLogos, setClientLogos] = useState(defaultClients)
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/clients`)
-      .then(res => res.json())
+    cachedFetch(`${API_BASE_URL}/api/clients`)
       .then(data => {
         if (Array.isArray(data) && data.length > 0) setClientLogos(data)
       })

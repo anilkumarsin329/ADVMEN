@@ -8,6 +8,7 @@ import { FiBriefcase } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
 import { portfolioCategories } from '@data/portfolio'
 import { API_BASE_URL } from '@utils/constants'
+import { cachedFetch } from '@utils/apiCache'
 import PortfolioCard from './PortfolioCard'
 
 const Portfolio = () => {
@@ -19,12 +20,9 @@ const Portfolio = () => {
 
   // Fetch portfolio items from database
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/portfolio`)
-      .then(res => res.json())
+    cachedFetch(`${API_BASE_URL}/api/portfolio`)
       .then(data => {
-        if (Array.isArray(data)) {
-          setProjects(data)
-        }
+        if (Array.isArray(data)) setProjects(data)
         setIsLoading(false)
       })
       .catch(err => {
