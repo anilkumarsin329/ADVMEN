@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom'
 const plans = [
   {
     name: 'STARTER',
-    subtitle: 'SEO Package',
-    inr: '₹5K–₹8K',
-    usd: '$60–$90',
-    aed: 'AED 1,500–2,250',
+    subtitle: 'SEO Foundation',
+    inr: '₹30K–45K',
+    usd: '$400–600',
+    eur: '€350–550',
+    aed: 'AED 1,500–2,200',
     scope: 'per month',
     tag: null,
     features: [
@@ -21,9 +22,10 @@ const plans = [
   },
   {
     name: 'GROWTH',
-    subtitle: 'SEO + AEO + AI Overview',
-    inr: '₹15K–₹25K',
-    usd: '$180–$300',
+    subtitle: 'SEO + AEO',
+    inr: '₹70K–1.2L',
+    usd: '$900–1,500',
+    eur: '€800–1,350',
     aed: 'AED 3,300–5,500',
     scope: 'per month',
     tag: 'Most Popular',
@@ -37,11 +39,12 @@ const plans = [
     ],
   },
   {
-    name: 'ENTERPRISE',
+    name: 'DOMINATE',
     subtitle: 'SEO + AEO + GEO',
-    inr: '₹25K–₹50K',
-    usd: '$300–$600',
-    aed: 'AED 5,500–12,500',
+    inr: '₹1.5L–3L',
+    usd: '$2,000–3,500',
+    eur: '€1,800–3,200',
+    aed: 'AED 7,350–12,850',
     scope: 'per month',
     tag: 'Best Value',
     features: [
@@ -90,7 +93,7 @@ const Pricing = ({ isPage = true }) => (
           <h1
             style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: '1rem' }}
           >
-            Clear pricing in INR and USD
+            Clear pricing in INR, USD, EUR & AED
           </h1>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)', color: 'var(--color-text-secondary)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.6 }}>
             No hidden fees. No surprises. Pick a plan and let's get to work.
@@ -129,6 +132,7 @@ const Pricing = ({ isPage = true }) => (
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, color: 'var(--color-text-primary)', lineHeight: 1 }}>{plan.inr}</span>
               </div>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{plan.usd} / month</p>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(255,107,0,0.7)', marginBottom: '0.25rem' }}>{plan.eur} / month</p>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(255,107,0,0.7)', marginBottom: '0.25rem' }}>{plan.aed} / month</p>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'rgba(255,255,255,0.3)', marginBottom: '1.75rem', letterSpacing: '0.05em' }}>{plan.scope}</p>
 

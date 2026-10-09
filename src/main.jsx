@@ -15,6 +15,10 @@ import { createRoot } from 'react-dom/client'
 import '@/styles/globals.css'
 
 import App from './App.jsx'
+import { warmupBackend } from '@/utils/warmupBackend'
+
+// Wake up Render.com backend immediately on page load
+warmupBackend()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
