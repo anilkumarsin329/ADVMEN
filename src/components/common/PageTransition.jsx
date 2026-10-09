@@ -1,40 +1,16 @@
-/**
- * components/common/PageTransition.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Page Transition
- *
- * • Framer Motion fade + slide for page content
- * • GSAP curtain overlay for route changes
- * • No flicker — curtain covers before unmount
- * ─────────────────────────────────────────────────────────────
- */
-
 import { motion } from 'framer-motion'
 
 const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 16,
-    filter: 'blur(4px)',
-  },
+  initial: { opacity: 0, y: 12 },
   enter: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 0.55,
-      ease: [0.16, 1, 0.3, 1],
-      when: 'beforeChildren',
-    },
+    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
   },
   exit: {
     opacity: 0,
-    y: -12,
-    filter: 'blur(4px)',
-    transition: {
-      duration: 0.3,
-      ease: [0.7, 0, 0.84, 0],
-    },
+    y: -8,
+    transition: { duration: 0.25, ease: [0.7, 0, 0.84, 0] },
   },
 }
 

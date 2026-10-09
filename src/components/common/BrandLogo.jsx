@@ -18,7 +18,7 @@ const BrandLogo = ({
       <img
         src="/ADVMEN logo.png"
         alt="ADVMEN"
-        className={`${imgSize} object-contain transition-transform duration-300 group-hover:scale-105`}
+        className={`${imgSize} object-cover rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-105`}
         draggable="false"
       />
       {/* Brand Name */}
@@ -35,19 +35,6 @@ const BrandLogo = ({
           }}
         >
           ADV<span style={{ color: 'var(--color-orange)' }}>M</span>EN
-        </span>
-        <span
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.5rem',
-            letterSpacing: '0.12em',
-            color: 'var(--color-text-tertiary)',
-            textTransform: 'uppercase',
-            marginTop: '3px',
-            lineHeight: 1,
-          }}
-        >
-          Technologies
         </span>
       </div>
     </div>

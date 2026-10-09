@@ -108,9 +108,7 @@ const TrustSection = () => {
           height: '600px',
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%)',
-          filter: 'blur(80px)',
           pointerEvents: 'none',
-          animation: 'float 8s ease-in-out infinite',
         }}
       />
       <div
@@ -122,10 +120,8 @@ const TrustSection = () => {
           width: '500px',
           height: '500px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%)',
-          filter: 'blur(80px)',
+          background: 'radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)',
           pointerEvents: 'none',
-          animation: 'float 10s ease-in-out infinite reverse',
         }}
       />
 
@@ -262,9 +258,8 @@ const TrustSection = () => {
             {clientLogos.length > 0 && (
               <Marquee gradient={false} speed={40} pauseOnHover>
                 {clientLogos.map((client, i) => (
-                  <motion.div
+                  <div
                     key={client._id || i}
-                    whileHover={{ scale: 1.04, y: -4 }}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -276,8 +271,8 @@ const TrustSection = () => {
                       background: 'rgba(255,255,255,0.4)',
                       border: '1.5px solid rgba(255,107,0,0.15)',
                       cursor: 'pointer',
-                      transition: 'all 0.3s ease',
-                      padding: '0.85rem'
+                      transition: 'border-color 0.3s ease',
+                      padding: '0.85rem',
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = 'rgba(255,107,0,0.4)'
@@ -329,7 +324,7 @@ const TrustSection = () => {
                         {client.companyName}
                       </span>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </Marquee>
             )}
@@ -389,13 +384,6 @@ const TrustSection = () => {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(30px); }
-        }
-      `}</style>
     </section>
   )
 }

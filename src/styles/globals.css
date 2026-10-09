@@ -31,6 +31,9 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
   }
 
   body {
@@ -38,6 +41,7 @@
     color: var(--color-text-primary);
     font-family: var(--font-body);
     overflow-x: hidden;
+    overscroll-behavior: none;
   }
 
   ul, ol { list-style: none; }
@@ -75,6 +79,8 @@
     @apply relative w-full overflow-hidden;
     padding-top: var(--section-padding-y);
     padding-bottom: var(--section-padding-y);
+    contain: paint;
+    will-change: transform;
   }
 
   .container {

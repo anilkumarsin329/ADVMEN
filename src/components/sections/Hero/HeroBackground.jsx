@@ -23,9 +23,9 @@ const HeroBackground = () => {
       {/* Main Hero Background Image */}
       <img
         src="/Hero section image.webp"
-        alt="Background Graphic"
+        alt=""
         className="hero-bg-image"
-        loading="eager"
+        fetchpriority="high"
         decoding="async"
         style={{
           position: 'absolute',
@@ -35,24 +35,23 @@ const HeroBackground = () => {
           height: '100%',
           objectFit: 'cover',
           objectPosition: 'center',
-          opacity: 0.8,
+          opacity: 0.6,
           mixBlendMode: 'multiply',
           zIndex: 0,
-          pointerEvents: 'none'
+          pointerEvents: 'none',
+          willChange: 'auto',
         }}
       />
-      
-      {/* Subtle ambient orange brand glow */}
       <div
         style={{
           position: 'absolute',
-          top: '25%',
+          top: '20%',
           left: '-5%',
-          width: '45vw',
-          height: '45vw',
-          maxHeight: '520px',
-          maxWidth: '520px',
-          background: 'radial-gradient(circle, var(--color-glass-orange-20) 0%, transparent 70%)',
+          width: '40vw',
+          height: '40vw',
+          maxHeight: '480px',
+          maxWidth: '480px',
+          background: 'radial-gradient(circle, rgba(232,93,0,0.12) 0%, transparent 70%)',
           zIndex: 1,
           pointerEvents: 'none',
         }}

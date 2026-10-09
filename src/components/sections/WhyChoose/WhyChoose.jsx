@@ -65,9 +65,7 @@ const WhyChoose = () => {
           height: '500px',
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%)',
-          filter: 'blur(80px)',
           pointerEvents: 'none',
-          animation: 'float 8s ease-in-out infinite',
         }}
       />
       <div
@@ -79,10 +77,8 @@ const WhyChoose = () => {
           width: '400px',
           height: '400px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)',
-          filter: 'blur(80px)',
+          background: 'radial-gradient(circle, rgba(255,107,0,0.04) 0%, transparent 70%)',
           pointerEvents: 'none',
-          animation: 'float 10s ease-in-out infinite reverse',
         }}
       />
 
@@ -184,13 +180,6 @@ const WhyChoose = () => {
           })}
         </div>
       </div>
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(30px); }
-        }
-      `}</style>
     </section>
   )
 }

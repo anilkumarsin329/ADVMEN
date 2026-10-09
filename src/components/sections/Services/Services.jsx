@@ -119,8 +119,8 @@ const Services = ({ isPage = false }) => {
       aria-label="Our Services"
     >
       {/* Background glows */}
-      <div aria-hidden="true" style={{ position: 'absolute', top: '20%', left: '10%', width: 'clamp(300px, 50vw, 600px)', height: 'clamp(300px, 50vw, 600px)', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none', animation: 'float 8s ease-in-out infinite' }} />
-      <div aria-hidden="true" style={{ position: 'absolute', bottom: '10%', right: '5%', width: 'clamp(250px, 40vw, 500px)', height: 'clamp(250px, 40vw, 500px)', borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none', animation: 'float 10s ease-in-out infinite reverse' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', top: '20%', left: '10%', width: 'clamp(300px, 50vw, 600px)', height: 'clamp(300px, 50vw, 600px)', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', bottom: '10%', right: '5%', width: 'clamp(250px, 40vw, 500px)', height: 'clamp(250px, 40vw, 500px)', borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-10" style={{ zIndex: 1, maxWidth: '100%' }}>
 
@@ -238,10 +238,6 @@ const Services = ({ isPage = false }) => {
       </div>
 
       <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(30px); }
-        }
         @media (max-width: 640px) {
           .service-card { transition: transform 0.3s ease; }
           .service-card:active { transform: scale(0.98); }
