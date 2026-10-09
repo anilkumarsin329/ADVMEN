@@ -72,6 +72,7 @@ const Pricing        = lazyWithRetry(() => import('@pages/Pricing'))
 const TermsOfService = lazyWithRetry(() => import('@pages/TermsOfService'))
 const DataDeletion   = lazyWithRetry(() => import('@pages/DataDeletion'))
 const NotFound       = lazyWithRetry(() => import('@pages/NotFound'))
+const MarketPage     = lazyWithRetry(() => import('@pages/MarketPage'))
 
 // ── Admin Pages & Route Protections ───────────────────────────
 import AdminProtectedRoute from '@/admin/routes/AdminProtectedRoute'
@@ -137,6 +138,11 @@ const PublicRoutes = () => {
         <Route path="/about"            element={<About />} />
         <Route path="/services"         element={<Services />} />
         <Route path="/services/:slug"   element={<ServiceDetail />} />
+        <Route path="/services/:category/:subSlug" element={<ServiceDetail />} />
+        <Route path="/digital-marketing-services-india" element={<MarketPage market="india" />} />
+        <Route path="/digital-marketing-services-usa" element={<MarketPage market="usa" />} />
+        <Route path="/digital-marketing-services-uae" element={<MarketPage market="uae" />} />
+        <Route path="/digital-marketing-services-europe" element={<MarketPage market="europe" />} />
         <Route path="/work"             element={<Work />} />
         <Route path="/work/:slug"       element={<WorkDetail />} />
         <Route path="/portfolio/:slug"  element={<PortfolioDetail />} />

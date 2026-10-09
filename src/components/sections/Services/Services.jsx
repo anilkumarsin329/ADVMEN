@@ -138,13 +138,13 @@ const Services = ({ isPage = false }) => {
             className="services-headline font-display font-bold"
             style={{ fontSize: 'clamp(1.5rem, 5vw, 3rem)', lineHeight: 1.1, letterSpacing: '-0.02em', color: 'var(--color-text-primary)', marginBottom: 'clamp(0.75rem, 2vw, 1.5rem)' }}
           >
-            Our Capabilities
+            Our Digital Marketing Services India
           </h2>
           <p
             className="services-desc"
             style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.875rem, 2vw, 1.125rem)', color: 'var(--color-text-secondary)', lineHeight: '1.6', maxWidth: '90%' }}
           >
-            High-Performance Solutions Built for Growth. We craft modular systems, clean interfaces, and organic traffic growth tools tailored to start-ups and large enterprises.
+            Online visibility is no longer limited to ranking on Google. Your customers should find you everywhere: search results, instant answers, local listings, social media, AI search, even chatbots. ADVMEN Technologies helps you build a presence that works.
           </p>
         </div>
 

@@ -13,12 +13,13 @@ const plans = [
     scope: 'per month',
     tag: null,
     features: [
-      'Technical audit',
-      'On-page optimization up to 10 pages',
-      'Google Business Profile',
-      'Keyword research',
-      'Monthly report',
+      'Technical SEO Audit',
+      'On-Page Optimization for up to 10 pages',
+      'Google Business Profile optimization where applicable',
+      '4 Content Pieces',
+      'Monthly Performance Report',
     ],
+    cta: 'Get Started',
   },
   {
     name: 'GROWTH',
@@ -31,12 +32,15 @@ const plans = [
     tag: 'Most Popular',
     features: [
       'Everything in Starter',
-      'Schema markup',
-      'AI-focused content & keyword targeting',
-      '5 social posts/month',
-      'Link building & competitor research',
-      'Weekly strategy call',
+      'Schema Implementation',
+      'FAQ & Answer Optimization',
+      'Featured Snippet Targeting',
+      '8 Content Pieces',
+      'Link Building',
+      'Conversion Tracking',
+      'Bi-Weekly Strategy Calls',
     ],
+    cta: 'Choose Growth',
   },
   {
     name: 'DOMINATE',
@@ -49,12 +53,14 @@ const plans = [
     tag: 'Best Value',
     features: [
       'Everything in Growth',
-      'AI search visibility (GEO)',
-      'Advanced schema & technical SEO',
-      '12 social posts/month',
-      'CRO & monthly reporting',
-      'Lead and revenue tracking',
+      'AI Search Visibility Tracking',
+      'Brand Mention & Citation Building',
+      '12+ Content Pieces',
+      'Conversion Rate Optimization',
+      'Weekly Reporting',
+      'Dedicated Account Manager',
     ],
+    cta: 'Discuss Your Growth Plan',
   },
 ]
 
@@ -65,6 +71,14 @@ const Pricing = ({ isPage = true }) => (
         <SEOHead
           title="Pricing — ADVMEN"
           description="Clear, transparent pricing in INR and USD. Choose the plan that fits your growth goals."
+          schemaType="pricing"
+          canonical="https://www.advmen.com/pricing"
+          schemaData={{
+            breadcrumbs: [
+              { name: 'Home', url: 'https://advmen.com/' },
+              { name: 'Pricing', url: 'https://advmen.com/pricing' }
+            ]
+          }}
         />
       </>
     )}
@@ -165,7 +179,7 @@ const Pricing = ({ isPage = true }) => (
                 onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255,107,0,0.25)' }}
                 onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
               >
-                Get Started
+                {plan.cta || 'Get Started'}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </Link>
             </div>
@@ -173,7 +187,10 @@ const Pricing = ({ isPage = true }) => (
         </div>
 
         {/* Bottom note */}
-        <p style={{ textAlign: 'center', marginTop: '3rem', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
+        <p style={{ textAlign: 'center', marginTop: '3rem', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-secondary)', maxWidth: '800px', margin: '3rem auto 0 auto', lineHeight: '1.6' }}>
+          Pricing Note: Package prices are indicative starting ranges. Final pricing depends on scope, competition, website size, content volume, target market, and required deliverables. Currency conversions are rounded for website display and may be reviewed periodically.
+        </p>
+        <p style={{ textAlign: 'center', marginTop: '1.5rem', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
           Need a custom plan?{' '}
           <Link to="/contact" style={{ color: 'var(--color-orange)', textDecoration: 'none', fontWeight: 600 }}>Talk to us →</Link>
         </p>

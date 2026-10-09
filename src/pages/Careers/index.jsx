@@ -368,8 +368,16 @@ const Careers = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Careers & Internships â€” ADVMEN"
+        title="Careers & Internships — ADVMEN"
         description="Join ADVMEN. View open internship and experienced full-time roles across engineering, design, and growth."
+        schemaType="careers"
+        canonical="https://advmen.com/careers"
+        schemaData={{
+          breadcrumbs: [
+            { name: 'Home', url: 'https://advmen.com/' },
+            { name: 'Careers', url: 'https://advmen.com/careers' }
+          ]
+        }}
       />
 
       <div ref={containerRef} className="w-full bg-[var(--color-black)] min-h-screen text-[var(--color-text-primary)] font-body">

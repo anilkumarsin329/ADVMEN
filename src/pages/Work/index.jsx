@@ -69,6 +69,14 @@ const Work = () => {
       <SEOHead
         title="Our Work — ADVMEN"
         description="Explore our portfolio of high-impact web systems, creative branding cases, and digital campaigns."
+        schemaType="work"
+        canonical="https://advmen.com/work"
+        schemaData={{
+          breadcrumbs: [
+            { name: 'Home', url: 'https://advmen.com/' },
+            { name: 'Work', url: 'https://advmen.com/work' }
+          ]
+        }}
       />
 
       <section

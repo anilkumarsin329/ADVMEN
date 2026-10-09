@@ -130,8 +130,16 @@ const Contact = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Contact Us â€” ADVMEN"
+        title="Contact Us — ADVMEN"
         description="Get in touch with ADVMEN for project consulting, branding queries, or frontend engineering collaborations."
+        schemaType="contact"
+        canonical="https://advmen.com/contact"
+        schemaData={{
+          breadcrumbs: [
+            { name: 'Home', url: 'https://advmen.com/' },
+            { name: 'Contact', url: 'https://advmen.com/contact' }
+          ]
+        }}
       />
 
       <section

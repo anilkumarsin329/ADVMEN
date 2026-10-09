@@ -1,19 +1,3 @@
-/**
- * components/common/SEOHead.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — SEO Head Component
- *
- * Injects dynamic meta tags per page using react-helmet-async.
- * Import and use at the top of every page component.
- *
- * Usage:
- *   <SEOHead
- *     title="About Us"
- *     description="Learn about ADVMEN..."
- *   />
- * ─────────────────────────────────────────────────────────────
- */
-
 import { Helmet } from 'react-helmet-async'
 import { SEO_DEFAULTS, COMPANY } from '@utils/constants'
 
@@ -24,11 +8,186 @@ const SEOHead = ({
   ogImage     = SEO_DEFAULTS.ogImage,
   canonical,
   noIndex     = false,
-  schemaType  = 'Organization',
+  schemaType  = 'home',
+  schemaData  = {},
 }) => {
+  const alreadyHasBrand = title && (title.includes('| ADVMEN') || title.includes('| Advmen'))
   const fullTitle = title
-    ? `${title} | ${COMPANY.shortName}`
+    ? (alreadyHasBrand ? title : `${title} | ${COMPANY.shortName}`)
     : SEO_DEFAULTS.title
+
+  // 1. Core Base Entities (Always Present)
+  const organizationSchema = {
+    '@type': 'Organization',
+    '@id': `${COMPANY.website}/#organization`,
+    name: COMPANY.name,
+    url: COMPANY.website,
+    logo: `${COMPANY.website}/ADVMEN logo.png`,
+    description: COMPANY.description,
+    email: COMPANY.email,
+    telephone: COMPANY.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Orchid Center, 3rd Floor, Golf Course Road, SEC-53',
+      addressLocality: 'Gurugram',
+      addressRegion: 'HR',
+      postalCode: '122002',
+      addressCountry: 'IN',
+    },
+    sameAs: [
+      'https://www.linkedin.com/company/advmen-technologies',
+      'https://www.instagram.com/advmen.in?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==',
+      'https://twitter.com/advmen_tech',
+    ]
+  }
+
+  const websiteSchema = {
+    '@type': 'WebSite',
+    '@id': `${COMPANY.website}/#website`,
+    name: COMPANY.name,
+    url: COMPANY.website,
+    publisher: { '@id': `${COMPANY.website}/#organization` }
+  }
+
+  // Helper for BreadcrumbList
+  const buildBreadcrumbList = (breadcrumbs) => {
+    if (!breadcrumbs || !breadcrumbs.length) return null
+    return {
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((bc, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: bc.name,
+        item: bc.url,
+      }))
+    }
+  }
+
+  // Helper for FAQPage
+  const buildFaqPage = (faqs) => {
+    if (!faqs || !faqs.length) return null
+    return {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer
+        }
+      }))
+    }
+  }
+
+  const schemas = [
+    { '@context': 'https://schema.org', ...organizationSchema },
+    { '@context': 'https://schema.org', ...websiteSchema }
+  ]
+
+  // Add schemas conditionally based on schemaType
+  if (schemaType === 'home') {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: fullTitle,
+      url: canonical || COMPANY.website,
+      isPartOf: { '@id': `${COMPANY.website}/#website` }
+    })
+    if (schemaData.faqs) {
+      schemas.push({ '@context': 'https://schema.org', ...buildFaqPage(schemaData.faqs) })
+    }
+  } else if (schemaType === 'service' || schemaType === 'market') {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: schemaData.serviceName || title,
+      serviceType: schemaData.serviceName || title,
+      url: canonical,
+      description: description,
+      provider: { '@id': `${COMPANY.website}/#organization` },
+      ...(schemaData.areaServed && { areaServed: schemaData.areaServed })
+    })
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: fullTitle,
+      url: canonical,
+      isPartOf: { '@id': `${COMPANY.website}/#website` }
+    })
+    if (schemaData.breadcrumbs) {
+      schemas.push({ '@context': 'https://schema.org', ...buildBreadcrumbList(schemaData.breadcrumbs) })
+    }
+    if (schemaData.faqs) {
+      schemas.push({ '@context': 'https://schema.org', ...buildFaqPage(schemaData.faqs) })
+    }
+  } else if (schemaType === 'article') {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      author: schemaData.articleAuthor ? {
+        '@type': 'Person',
+        name: schemaData.articleAuthor
+      } : undefined,
+      datePublished: schemaData.articleDate,
+      dateModified: schemaData.articleModifiedDate || schemaData.articleDate,
+      publisher: { '@id': `${COMPANY.website}/#organization` }
+    })
+    if (schemaData.breadcrumbs) {
+      schemas.push({ '@context': 'https://schema.org', ...buildBreadcrumbList(schemaData.breadcrumbs) })
+    }
+  } else if (schemaType === 'work' || schemaType === 'collection' || schemaType === 'careers') {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: fullTitle,
+      url: canonical,
+      isPartOf: { '@id': `${COMPANY.website}/#website` }
+    })
+    if (schemaType !== 'careers') {
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement: schemaData.items || []
+      })
+    }
+    if (schemaData.breadcrumbs) {
+      schemas.push({ '@context': 'https://schema.org', ...buildBreadcrumbList(schemaData.breadcrumbs) })
+    }
+  } else if (schemaType === 'contact') {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      name: fullTitle,
+      url: canonical,
+      isPartOf: { '@id': `${COMPANY.website}/#website` }
+    })
+    if (schemaData.breadcrumbs) {
+      schemas.push({ '@context': 'https://schema.org', ...buildBreadcrumbList(schemaData.breadcrumbs) })
+    }
+  } else if (schemaType === 'jobPosting') {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      title: schemaData.jobTitle || title,
+      description: description,
+      hiringOrganization: { '@id': `${COMPANY.website}/#organization` },
+      datePosted: schemaData.datePosted,
+      validThrough: schemaData.validThrough,
+      jobLocation: schemaData.jobLocation
+    })
+  } else if (schemaType === 'pricing') {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: fullTitle,
+      url: canonical,
+      isPartOf: { '@id': `${COMPANY.website}/#website` }
+    })
+    if (schemaData.breadcrumbs) {
+      schemas.push({ '@context': 'https://schema.org', ...buildBreadcrumbList(schemaData.breadcrumbs) })
+    }
+  }
 
   return (
     <Helmet>
@@ -45,6 +204,7 @@ const SEOHead = ({
       <meta property="og:image"       content={ogImage} />
       <meta property="og:type"        content="website" />
       <meta property="og:site_name"   content={COMPANY.name} />
+      {canonical && <meta property="og:url" content={canonical} />}
 
       {/* ── Twitter Card ─────────────────────────────────── */}
       <meta name="twitter:card"        content={SEO_DEFAULTS.twitterCard} />
@@ -52,83 +212,12 @@ const SEOHead = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image"       content={ogImage} />
 
-      {/* ── JSON-LD Organisation Schema ──────────────────── */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          '@context':   'https://schema.org',
-          '@type':      'Organization',
-          name:         COMPANY.name,
-          url:          COMPANY.website,
-          logo:         `${COMPANY.website}/ADVMEN logo.png`,
-          description:  COMPANY.description,
-          sameAs:       [
-            'https://www.linkedin.com/company/advmen-technologies',
-            'https://www.instagram.com/advmen.in?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==',
-            'https://twitter.com/advmen_tech',
-          ],
-          contactPoint: {
-            '@type':       'ContactPoint',
-            telephone:     COMPANY.phone,
-            contactType:   'customer service',
-            email:         'hello@advmen.com',
-          },
-          address: {
-            '@type':           'PostalAddress',
-            streetAddress:     'T-4B-506, NX One Plot no.17, Techzone-4',
-            addressLocality:   'Greater Noida West',
-            addressRegion:     'UP',
-            postalCode:        '201308',
-            addressCountry:    'IN',
-          },
-        })}
-      </script>
-
-      {/* ── JSON-LD LocalBusiness Schema ────────────────── */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          '@context':     'https://schema.org',
-          '@type':        'LocalBusiness',
-          name:           COMPANY.name,
-          image:          `${COMPANY.website}/ADVMEN logo.png`,
-          description:    description,
-          url:            COMPANY.website,
-          telephone:      COMPANY.phone,
-          priceRange:     '$$',
-          areaServed:     ['IN', 'US', 'UK', 'CA', 'AU'],
-          address: {
-            '@type':           'PostalAddress',
-            streetAddress:     'T-4B-506, NX One Plot no.17, Techzone-4',
-            addressLocality:   'Greater Noida West',
-            addressRegion:     'UP',
-            postalCode:        '201308',
-            addressCountry:    'IN',
-          },
-        })}
-      </script>
-
-      {/* ── JSON-LD BreadcrumbList Schema ──────────────── */}
-      {canonical && (
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context':   'https://schema.org',
-            '@type':      'BreadcrumbList',
-            itemListElement: [
-              {
-                '@type':    'ListItem',
-                position:   1,
-                name:       'Home',
-                item:       COMPANY.website,
-              },
-              {
-                '@type':    'ListItem',
-                position:   2,
-                name:       title || 'Page',
-                item:       canonical,
-              },
-            ],
-          })}
+      {/* ── JSON-LD Schemas ──────────────────────────────── */}
+      {schemas.map((schema, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(schema)}
         </script>
-      )}
+      ))}
     </Helmet>
   )
 }

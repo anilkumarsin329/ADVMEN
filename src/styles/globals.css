@@ -445,7 +445,7 @@
   width: 100%;
   min-height: 100svh;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   overflow: hidden;
 }
 
@@ -453,12 +453,12 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  height: 100%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-top: calc(var(--navbar-height, 80px) + clamp(1.25rem, 3vh, 2.5rem));
-  padding-bottom: clamp(1.5rem, 3.5vh, 2.5rem);
+  padding-bottom: clamp(6rem, 10vh, 8rem);
 }
 
 .hero-bg-overlay {

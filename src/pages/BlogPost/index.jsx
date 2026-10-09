@@ -68,6 +68,17 @@ const BlogPost = () => {
       <SEOHead
         title={`${article.title} — ADVMEN Blog`}
         description={article.excerpt}
+        schemaType="article"
+        canonical={`https://advmen.com/blog/${slug}`}
+        schemaData={{
+          articleAuthor: article.author,
+          articleDate: article.date,
+          breadcrumbs: [
+            { name: 'Home', url: 'https://advmen.com/' },
+            { name: 'Blog', url: 'https://advmen.com/blog' },
+            { name: article.title, url: `https://advmen.com/blog/${slug}` }
+          ]
+        }}
       />
 
       {/* Back Button */}

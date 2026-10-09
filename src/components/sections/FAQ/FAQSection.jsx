@@ -7,24 +7,52 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const faqData = [
   {
-    question: 'What is your typical project timeline?',
-    answer: 'Timeline spans between 4 to 12 weeks depending on scope complexity. A custom brand identity usually requires 4-6 weeks, while a bespoke React/Next.js corporate website requires 8-12 weeks from mapping to production release.',
+    question: 'What services does ADVMEN offer?',
+    answer: 'ADVMEN offers 360 digital marketing services, including SEO, AEO, GEO, web development and e-commerce, mobile app development, AI-powered search optimization, digital marketing, API integrations, and custom digital solutions.',
   },
   {
-    question: 'Do you work with early startups or only enterprises?',
-    answer: 'We collaborate with both. For early-stage startups, we focus on launching high-speed MVPs, interactive SaaS front-ends, and clear brand identity. For enterprises, we audit existing system architectures, build headless migrations, and design scalable design libraries.',
+    question: 'Does ADVMEN provide digital marketing services in India?',
+    answer: 'Indeed. Whether you are a startup in India or an established business willing to grow your brand digitally, ADVMEN provides digital marketing in India and beyond.',
   },
   {
-    question: 'What technologies do you use for web development?',
-    answer: 'We build primarily using React 19, Vite, Next.js, and Tailwind CSS. For interactive 3D assets, we integrate Three.js, React Three Fiber, and custom WebGL engines. For page transitions and scroll physics, we configure GSAP, Framer Motion, and Lenis.',
+    question: 'Does ADVMEN work with international businesses?',
+    answer: 'Absolutely. ADVMEN collaborates with international businesses, creating digital solutions that fit different markets, audiences, and business goals.',
   },
   {
-    question: 'How do you handle project communication?',
-    answer: 'We set up dedicated Slack channels for instant technical syncs, share Figma workspace files for design feedback, and run bi-weekly video sprint reviews to walk through deployment updates.',
+    question: 'What is the difference between SEO, AEO and GEO?',
+    answer: 'SEO improves visibility on search engines. AEO helps your content show up in direct-answer queries, while GEO focuses on visibility across AI-driven search results.',
   },
   {
-    question: 'Do you provide post-launch support and hosting?',
-    answer: 'Yes. We offer monthly maintenance packages covering core package updates, cloud server configurations, threat monitoring, and technical SEO updates to keep your search ranking status stable.',
+    question: 'How does ADVMEN help businesses appear in AI search results?',
+    answer: 'ADVMEN uses AI search optimization, structured content, entity-focused strategies, and GEO techniques to boost your brand\'s presence in AI-powered search results.',
+  },
+  {
+    question: 'What is AI search optimization?',
+    answer: 'AI search optimization makes your content more relevant and understandable to AI-powered search platforms. It improves the chances of being referenced in AI-generated answers.',
+  },
+  {
+    question: 'Does ADVMEN provide website development services?',
+    answer: 'Yes. ADVMEN builds websites that focus on performance, usability, scalability, SEO, and your business needs.',
+  },
+  {
+    question: 'What types of websites does ADVMEN develop?',
+    answer: 'ADVMEN develops business sites, corporate websites, service platforms, portfolios, e-commerce sites, web portals, and custom digital platforms.',
+  },
+  {
+    question: 'Does ADVMEN build e-commerce websites?',
+    answer: 'Yes. ADVMEN develops e-commerce websites complete with product catalogs, payment gateways, integrations, responsive designs, and scalable features.',
+  },
+  {
+    question: 'Does ADVMEN develop Android and iOS apps?',
+    answer: 'Yes, ADVMEN designs and develops Android and iOS apps for speed, smooth user experience, and flawless integration with your digital presence.',
+  },
+  {
+    question: 'What types of mobile applications does ADVMEN build?',
+    answer: 'ADVMEN delivers Android app development, iOS app development, cross-platform app development, custom mobile app development, business & enterprise apps, e-commerce apps, booking & service apps, API & backend integration, UI/UX design, and app performance optimization.',
+  },
+  {
+    question: 'Does ADVMEN provide API and third-party integrations?',
+    answer: 'Yes. ADVMEN provides API development and third-party integrations to connect websites, mobile applications, e-commerce platforms, and custom digital products.',
   },
 ]
 
@@ -126,7 +154,7 @@ const FAQSection = () => {
           {/* Left Title */}
           <div className="col-span-1 md:col-span-2 lg:col-span-4 flex flex-col gap-4 md:gap-6">
             <span className="eyebrow text-xs md:text-sm">FAQ</span>
-            <h2 className="section-title text-2xl md:text-3xl lg:text-4xl">Got Questions?</h2>
+            <h2 className="section-title text-2xl md:text-3xl lg:text-4xl">Frequently Asked Questions</h2>
             <p
               style={{
                 fontFamily: 'var(--font-body)',
@@ -135,7 +163,7 @@ const FAQSection = () => {
                 lineHeight: '1.6',
               }}
             >
-              Here are answers to the most common questions regarding our process, technologies, and pricing structures.
+              Everything you need to know about our digital marketing and technology services.
             </p>
           </div>
 

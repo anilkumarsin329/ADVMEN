@@ -192,19 +192,7 @@ const Hero = () => {
                   textTransform: 'uppercase',
                 }}
               >
-                Your Customers<br />
-                Ask AI First.{' '}
-                <span
-                  style={{
-                    display: 'inline-block',
-                    background: 'linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-light) 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  Get Named In The Answer.
-                </span>
+                Leading Digital Growth & Technology Agency in India
               </h1>
 
               {/* Supporting Text */}
@@ -214,18 +202,22 @@ const Hero = () => {
                   fontSize: 'clamp(1rem, 1.2vw, 1.15rem)',
                   color: 'var(--color-text-primary)',
                   lineHeight: 1.6,
-                  maxWidth: '540px',
+                  maxWidth: '600px',
                   fontWeight: 600,
                 }}
               >
-                ADVMEN runs <span style={{ color: 'var(--color-orange)', fontWeight: 800 }}>SEO, AEO and GEO</span> so your brand shows up in <span style={{ color: 'var(--color-orange)', fontWeight: 800 }}>Google, AI Overviews, ChatGPT</span> and <span style={{ color: 'var(--color-orange)', fontWeight: 800 }}>Perplexity</span>.
+                Make your brand easier to find. Easier to understand. Easier to trust.
+                <br /><br />
+                Your customers are searching, comparing, and even turning to AI for answers. Is your business showing up when it counts?
+                <br /><br />
+                ADVMEN integrates SEO, AEO, GEO, content, branding, digital marketing, website development, and mobile app development to make sure people can find, understand, and choose your business across search engines, answer-driven results, and AI-powered search experiences.
               </p>
             </div>
 
             {/* CTA Buttons */}
             <div className="hero-stagger flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <EnterpriseButton to="/contact" variant="primary">
-                <span>Book a Strategy Call</span>
+                <span>Get a Free Growth Audit</span>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                   <path
                     d="M3.75 9h10.5M9.75 4.5l4.5 4.5-4.5 4.5"
@@ -237,8 +229,8 @@ const Hero = () => {
                 </svg>
               </EnterpriseButton>
 
-              <EnterpriseButton to="/work" variant="secondary">
-                <span>View Case Studies</span>
+              <EnterpriseButton to="/services" variant="secondary">
+                <span>Explore Our Services</span>
               </EnterpriseButton>
             </div>
 
@@ -276,7 +268,7 @@ const Hero = () => {
           <div className="col-span-12 lg:col-span-6 h-full relative flex flex-col justify-end lg:justify-center items-center lg:items-end mt-12 lg:mt-0" aria-hidden="true">
 
             {/* AI Citation Mockup Card */}
-            <div className="hero-stagger relative z-10 w-full max-w-[480px] lg:mt-32 lg:mr-8 xl:mr-16">
+            <div className="hero-stagger relative z-10 w-full max-w-[480px] lg:mt-0 lg:mr-8 xl:mr-16">
               <div
                 style={{
                   background: 'rgba(255,255,255,0.4)',

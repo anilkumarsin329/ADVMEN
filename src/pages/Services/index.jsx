@@ -7,6 +7,14 @@ const ServicesPage = () => (
     <SEOHead
       title="Services — ADVMEN"
       description="Explore our creative design, React engineering, marketing, and SEO growth services."
+      schemaType="collection"
+      canonical="https://advmen.com/services"
+      schemaData={{
+        breadcrumbs: [
+          { name: 'Home', url: 'https://advmen.com/' },
+          { name: 'Services', url: 'https://advmen.com/services' }
+        ]
+      }}
     />
     <Services isPage={true} />
   </PageTransition>

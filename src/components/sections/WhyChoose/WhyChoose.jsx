@@ -8,28 +8,40 @@ import { FiZap, FiTarget, FiEye, FiTrendingUp, FiAward } from 'react-icons/fi'
 
 const values = [
   {
-    title: 'Engineering-First',
-    desc: 'We write performant, clean React/Next.js architectures with zero bloating, targeting high speeds.',
+    title: 'Synergy',
+    desc: 'SEO, AEO, GEO, content, branding, performance marketing, and web solutions work together as one connected growth strategy.',
     icon: FiZap,
     number: '01',
   },
   {
-    title: 'Design Purity',
-    desc: 'We honor your brand guidelines and Figma layouts down to the single pixel, ensuring high-fidelity results.',
-    icon: FiEye,
+    title: 'Reach',
+    desc: 'India-first expertise with the capability to support brands targeting competitive international markets across the USA, UAE & Europe.',
+    icon: FiTrendingUp,
     number: '02',
   },
   {
-    title: 'Full Transparency',
-    desc: 'Work directly with senior developers and creative directors. No account management bloat or hidden overhead.',
-    icon: FiTarget,
+    title: 'Visibility',
+    desc: 'Visibility beyond traditional rankings, including answer-based and AI-powered search experiences.',
+    icon: FiEye,
     number: '03',
   },
   {
-    title: 'Scale & Performance',
-    desc: 'Systems designed to load fast, rank high on search engines, and handle enterprise-level user traffic.',
-    icon: FiTrendingUp,
+    title: 'Intelligence',
+    desc: 'Real data and insights so you can target the right traffic, get genuine leads, boost conversions, and drive business results.',
+    icon: FiTarget,
     number: '04',
+  },
+  {
+    title: 'Impact',
+    desc: 'Connecting visibility with purposeful digital experiences created to guide audiences from discovery to meaningful action.',
+    icon: FiAward,
+    number: '05',
+  },
+  {
+    title: 'Precision',
+    desc: 'Every strategy starts with understanding your audience, competition, search behaviour, market, and your real business goals.',
+    icon: FiTarget,
+    number: '06',
   },
 ]
 
@@ -86,7 +98,7 @@ const WhyChoose = () => {
             </span>
           </div>
           <h2 className="section-title mt-4">
-            Why <span className="text-orange-gradient">Ambitious Brands</span> Partner with Us
+            Not Just Another Agency. <span className="text-orange-gradient">Here's Why ADVMEN Leads</span>
           </h2>
           <p className="section-subtitle">
             We combine technical excellence with creative vision to deliver results that exceed expectations.
@@ -94,7 +106,7 @@ const WhyChoose = () => {
         </div>
 
         {/* Values Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {values.map((val, i) => {
             const Icon = val.icon
             return (

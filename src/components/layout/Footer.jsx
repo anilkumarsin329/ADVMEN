@@ -1,17 +1,14 @@
 /**
  * components/layout/Footer.jsx
  * ─────────────────────────────────────────────────────────────
- * ADVMEN — Mega Footer
- * Phase 11: Mega Footer complete.
+ * ADVMEN — Clean & Responsive Footer
  * ─────────────────────────────────────────────────────────────
  */
 
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { footerLinks } from '@data/navigation'
-import { API_BASE_URL, COMPANY, SOCIAL } from '@utils/constants'
-import { FiInstagram, FiLinkedin } from 'react-icons/fi'
-import BrandLogo from '@components/common/BrandLogo'
+import { COMPANY, SOCIAL } from '@utils/constants'
+import { FiInstagram, FiLinkedin, FiArrowUp } from 'react-icons/fi'
 
 const socialIcons = [
   { icon: FiInstagram, href: SOCIAL.instagram, label: 'Instagram' },
@@ -20,47 +17,6 @@ const socialIcons = [
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
-  const [email, setEmail] = useState('')
-  const [successMsg, setSuccessMsg] = useState('')
-  const [error, setError] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const handleSubscribe = async (e) => {
-    e.preventDefault()
-    if (!email.trim()) {
-      setError('Email address is required')
-      return
-    }
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      setError('Please provide a valid email')
-      return
-    }
-
-    setIsSubmitting(true)
-    setError('')
-    
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/newsletter/subscribe`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim() }),
-      })
-      
-      const data = await response.json()
-      
-      if (response.ok && data.success) {
-        setSuccessMsg(data.message || 'Subscribed successfully. Welcome to ADVMEN Briefings!')
-        setEmail('')
-        setTimeout(() => setSuccessMsg(''), 5000)
-      } else {
-        setError(data.error || 'Failed to subscribe')
-      }
-    } catch (err) {
-      setError('A network error occurred. Please try again.')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
 
   const handleBackToTop = () => {
     window.scrollTo({
@@ -71,116 +27,50 @@ const Footer = () => {
 
   return (
     <footer
-      className="relative border-t border-[rgba(255,255,255,0.04)]"
+      className="relative w-full px-6 md:px-12 py-16 md:py-24"
       style={{
         background: 'var(--color-black)',
       }}
       aria-label="Footer"
     >
-      {/* Accent Orange line */}
-      <div
-        className="h-[1px] w-full"
-        style={{
-          background: 'linear-gradient(90deg, transparent 0%, var(--color-orange) 50%, transparent 100%)',
-          opacity: 0.8,
-        }}
-      />
-
-      <div className="container py-20 relative z-10">
+      <div className="container max-w-[1400px] mx-auto">
         
-        {/* Top Segment: Brand & Newsletter */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-[rgba(255,255,255,0.04)] mb-16 items-start">
-          
-          <div className="lg:col-span-5 flex flex-col gap-5">
-            <Link to="/" className="inline-block" data-cursor="hover">
-              <BrandLogo size="normal" />
-            </Link>
-            <p
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: 'var(--text-small)',
-                color: 'var(--color-text-secondary)',
-                lineHeight: '1.65',
-                maxWidth: '380px',
-              }}
-            >
-              We design visual systems and engineer high-performance platforms that capture attention, engage audiences, and build equity for ambitious brands.
-            </p>
-          </div>
-
-          {/* Newsletter Input Form */}
-          <div className="lg:col-span-7 flex flex-col gap-4">
-            <h4
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.75rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                color: 'var(--color-orange)',
-              }}
-            >
-              Subscribe to our Briefings
-            </h4>
-            <form onSubmit={handleSubscribe} className="relative flex flex-col sm:flex-row gap-3 max-w-lg w-full">
-              <input
-                id="newsletter-email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value)
-                  if (error) setError('')
-                }}
-                className="flex-1 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.06)] rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-[var(--color-orange)] transition-colors duration-300"
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`btn-primary py-3 px-6 text-sm whitespace-nowrap ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'shine'}`}
-                data-cursor="hover"
-              >
-                {isSubmitting ? 'Joining...' : 'Join List'}
-              </button>
-            </form>
-            {error && <span className="font-mono text-xs text-red-500">{error}</span>}
-            {successMsg && (
-              <span className="font-mono text-xs text-[var(--color-orange)]">
-                {successMsg}
-              </span>
-            )}
-          </div>
-
+        {/* Company Description */}
+        <div className="mb-12 max-w-3xl">
+          <p className="font-body text-sm font-medium text-[var(--color-text-secondary)] leading-relaxed">
+            ADVMEN Technologies connects strategy, creativity, and state-of-the-art technology to build digital experiences that attract audiences, earn trust, and create growth.
+          </p>
         </div>
 
-        {/* Middle Segment: Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-16">
+        {/* Main Links Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-24 items-start">
           
           {/* Quick Links */}
-          <div className="flex flex-col gap-6">
-            <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]">
+          <div className="lg:col-span-6 flex flex-col">
+            <h4 className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-text-secondary)] mb-6">
               Quick Links
             </h4>
-            <div className="flex flex-col sm:flex-row gap-8 sm:gap-16">
-              <ul className="flex flex-col gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+              {/* Company Links */}
+              <ul className="flex flex-col gap-4">
                 {footerLinks.company.map((link) => (
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300"
+                      className="font-body text-sm font-medium text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors duration-300"
                     >
                       {link.label}
                     </Link>
                   </li>
                 ))}
               </ul>
-              <ul className="flex flex-col gap-3">
+              {/* Services Links */}
+              <ul className="flex flex-col gap-4">
                 {footerLinks.services.map((link) => (
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300"
+                      className="font-body text-sm font-medium text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors duration-300"
                     >
                       {link.label}
                     </Link>
@@ -190,16 +80,16 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Contact */}
-          <div className="flex flex-col gap-6">
-            <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]">
+          {/* Contact Info */}
+          <div className="lg:col-span-4 flex flex-col">
+            <h4 className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-text-secondary)] mb-6">
               Contact
             </h4>
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-5 text-sm font-medium text-[var(--color-text-primary)]">
               <li>
                 <a
                   href={`mailto:${COMPANY.email}`}
-                  className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300 block"
+                  className="hover:text-[var(--color-orange)] transition-colors duration-300"
                 >
                   {COMPANY.email}
                 </a>
@@ -207,27 +97,27 @@ const Footer = () => {
               <li>
                 <a
                   href={`tel:${COMPANY.phone}`}
-                  className="font-body text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] transition-colors duration-300 block"
+                  className="hover:text-[var(--color-orange)] transition-colors duration-300"
                 >
                   {COMPANY.phone}
                 </a>
               </li>
-              <li>
-                <address className="not-italic font-body text-sm text-[var(--color-text-secondary)] block leading-relaxed">
-                  ADVMEN<br />
-                  T-4B-506, NX One Plot no.17, Techzone-4<br />
-                  Greater Noida West, GAUTAM BUDDHA NAGAR, Pin 201308
-                </address>
+              <li className="text-xs text-[var(--color-text-secondary)] font-normal pt-1">
+                Serving In: India | USA | Canada | UAE | Australia | UK | Oman | GCC
+              </li>
+              <li className="leading-relaxed pt-2">
+                ADVMEN Technologies Private Limited<br />
+                Orchid Center, 3rd Floor, Golf Course Road, SEC-53, Gurugram, HR - 122002, India
               </li>
             </ul>
           </div>
 
-          {/* Social connections */}
-          <div className="flex flex-col gap-6">
-            <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--color-text-tertiary)]">
+          {/* Follow Us */}
+          <div className="lg:col-span-2 flex flex-col">
+            <h4 className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-text-secondary)] mb-6">
               Follow Us
             </h4>
-            <div className="flex items-center gap-3.5">
+            <div className="flex gap-5">
               {socialIcons.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -235,10 +125,10 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.06)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] hover:border-[var(--color-orange)] transition-all duration-300 bg-[rgba(255,255,255,0.01)]"
+                  className="text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors duration-300"
                   data-cursor="hover"
                 >
-                  <Icon size={16} />
+                  <Icon size={20} strokeWidth={2} />
                 </a>
               ))}
             </div>
@@ -246,36 +136,29 @@ const Footer = () => {
 
         </div>
 
-        {/* Bottom Segment: Copyright & Back-to-top */}
-        <div className="pt-8 border-t border-[rgba(255,255,255,0.04)] flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="font-body text-xs text-[var(--color-text-tertiary)]">
-            © {currentYear} {COMPANY.name}. All rights reserved.
-          </p>
+        {/* Bottom Section: Copyright & Legal */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-body font-medium text-[var(--color-text-tertiary)] w-full">
+          <p>© {currentYear} {COMPANY.name}. All rights reserved.</p>
 
-          <div className="flex items-center gap-8">
-            <div className="flex items-center gap-5">
-              {footerLinks.legal.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className="font-body text-xs text-[var(--color-text-tertiary)] hover:text-[var(--color-text-secondary)] transition-colors duration-300"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-
-            {/* Back to top scroll button */}
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+            {footerLinks.legal.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="hover:text-[var(--color-text-primary)] transition-colors duration-300"
+              >
+                {link.label}
+              </Link>
+            ))}
+            
             <button
               onClick={handleBackToTop}
-              className="flex items-center gap-2 text-xs font-mono text-[var(--color-text-tertiary)] hover:text-[var(--color-orange)] transition-colors duration-300"
+              className="flex items-center gap-1.5 hover:text-[var(--color-orange)] font-mono uppercase tracking-widest transition-colors duration-300 ml-2"
               aria-label="Scroll back to top"
               data-cursor="hover"
             >
               <span>TOP</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M7 11V3M3.5 6.5L7 3l3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <FiArrowUp size={14} />
             </button>
           </div>
         </div>

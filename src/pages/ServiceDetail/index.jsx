@@ -6,14 +6,14 @@
  * ─────────────────────────────────────────────────────────────
  */
 
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import ServiceIcon   from '@components/sections/Services/ServiceIcon'
 import { getServiceBySlug } from '@data/services'
-import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { API_BASE_URL, getImageUrl, COMPANY } from '@utils/constants'
 import { cachedFetch } from '@/utils/apiCache'
 import { FiX } from 'react-icons/fi'
 
@@ -24,24 +24,27 @@ const defaultWorkflowSteps = [
 ]
 
 const ServiceDetail = () => {
-  const { slug }   = useParams()
-  let decodedSlug = slug
+  const { slug, category, subSlug }   = useParams()
+  const location = useLocation()
+  
+  const currentSlug = subSlug || slug
+  let decodedSlug = currentSlug
   try {
-    decodedSlug = decodeURIComponent(slug || '')
+    decodedSlug = decodeURIComponent(currentSlug || '')
   } catch {
     /* ignore decode error */
   }
 
-  const fallback = getServiceBySlug(slug) || getServiceBySlug(decodedSlug)
+  const fallback = getServiceBySlug(currentSlug) || getServiceBySlug(decodedSlug)
   const [serviceData, setServiceData] = useState(fallback)
 
   useEffect(() => {
     let isMounted = true
-    const localMatch = getServiceBySlug(slug) || getServiceBySlug(decodedSlug)
+    const localMatch = getServiceBySlug(currentSlug) || getServiceBySlug(decodedSlug)
 
     const fetchServiceData = async () => {
       try {
-        const fetchSlug = encodeURIComponent(slug || '')
+        const fetchSlug = encodeURIComponent(currentSlug || '')
         const data = await cachedFetch(`${API_BASE_URL}/api/services/${fetchSlug}`)
         if (data && (data.title || data.name) && isMounted) {
             setServiceData({
@@ -65,7 +68,7 @@ const ServiceDetail = () => {
 
     fetchServiceData()
     return () => { isMounted = false }
-  }, [slug, decodedSlug])
+  }, [currentSlug, decodedSlug])
 
   const [isImageModalOpen, setIsImageModalOpen] = useState(false)
 
@@ -79,7 +82,7 @@ const ServiceDetail = () => {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [isImageModalOpen])
 
-  const service = serviceData || getServiceBySlug(slug) || getServiceBySlug(decodedSlug)
+  const service = serviceData || getServiceBySlug(currentSlug) || getServiceBySlug(decodedSlug)
 
   if (!service) {
     return (
@@ -103,11 +106,24 @@ const ServiceDetail = () => {
     )
   }
 
+  const canonicalUrl = `${COMPANY.website}${location.pathname}`
+
   return (
     <PageTransition>
       <SEOHead
         title={`${service.title} — ADVMEN`}
         description={service.description}
+        schemaType="service"
+        canonical={canonicalUrl}
+        schemaData={{
+          serviceName: service.title,
+          breadcrumbs: [
+            { name: 'Home', url: COMPANY.website },
+            { name: 'Services', url: `${COMPANY.website}/services` },
+            { name: service.title, url: canonicalUrl }
+          ],
+          faqs: service.faqs
+        }}
       />
 
       <section

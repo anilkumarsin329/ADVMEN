@@ -29,11 +29,29 @@ const Home = () => {
     }
   }, [location.state])
 
+  const homeFaqs = [
+    { question: "What services does ADVMEN offer?", answer: "ADVMEN offers 360 digital marketing services, including SEO, AEO, GEO, web development and e-commerce, mobile app development, AI-powered search optimization, digital marketing, API integrations, and custom digital solutions." },
+    { question: "Does ADVMEN provide digital marketing services in India?", answer: "Indeed. Whether you are a startup in India or an established business willing to grow your brand digitally, ADVMEN provides digital marketing in India and beyond." },
+    { question: "Does ADVMEN work with international businesses?", answer: "Absolutely. ADVMEN collaborates with international businesses, creating digital solutions that fit different markets, audiences, and business goals." },
+    { question: "What is the difference between SEO, AEO and GEO?", answer: "SEO improves visibility on search engines. AEO helps your content show up in direct-answer queries, while GEO focuses on visibility across AI-driven search results." },
+    { question: "How does ADVMEN help businesses appear in AI search results?", answer: "ADVMEN uses AI search optimization, structured content, entity-focused strategies, and GEO techniques to boost your brand's presence in AI-powered search results." },
+    { question: "What is AI search optimization?", answer: "AI search optimization makes your content more relevant and understandable to AI-powered search platforms. It improves the chances of being referenced in AI-generated answers." },
+    { question: "Does ADVMEN provide website development services?", answer: "Yes. ADVMEN builds websites that focus on performance, usability, scalability, SEO, and your business needs." },
+    { question: "What types of websites does ADVMEN develop?", answer: "ADVMEN develops business sites, corporate websites, service platforms, portfolios, e-commerce sites, web portals, and custom digital platforms." },
+    { question: "Does ADVMEN build e-commerce websites?", answer: "Yes. ADVMEN develops e-commerce websites complete with product catalogs, payment gateways, integrations, responsive designs, and scalable features." },
+    { question: "Does ADVMEN develop Android and iOS apps?", answer: "Yes, ADVMEN designs and develops Android and iOS apps for speed, smooth user experience, and flawless integration with your digital presence." },
+    { question: "What types of mobile applications does ADVMEN build?", answer: "ADVMEN delivers Android app development, iOS app development, cross-platform app development, custom mobile app development, business & enterprise apps, e-commerce apps, booking & service apps, API & backend integration, UI/UX design, and app performance optimization." },
+    { question: "Does ADVMEN provide API and third-party integrations?", answer: "Yes. ADVMEN provides API development and third-party integrations to connect websites, mobile applications, e-commerce platforms, and custom digital products." }
+  ];
+
   return (
   <PageTransition>
     <SEOHead
-      title="We Build Brands That Dominate"
-      description="ADVMEN — Premium branding, digital marketing, web & app development agency. Creating brands, building businesses, growing companies."
+      title="Digital Marketing & Technology Agency in India | ADVMEN"
+      description="ADVMEN is a digital marketing and technology agency in India offering SEO, AEO, GEO, AI search optimization, branding, web development and mobile app development."
+      schemaType="home"
+      canonical="https://www.advmen.com/"
+      schemaData={{ faqs: homeFaqs }}
     />
     {/* Phase 0: Hero */}
     <Hero />
