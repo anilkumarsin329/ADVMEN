@@ -233,15 +233,12 @@ const Careers = () => {
 
   // Helper to safely resolve high-res image URLs
   const getDisplayImage = (pos) => {
-    if (!pos) return 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=675&fit=crop&q=80'
-    let img = pos.image || pos.imageUrl || ''
-    if (img && typeof img === 'string') {
-      if (img.startsWith('/uploads') || img.startsWith('/api/media')) {
-        return getImageUrl(img)
-      }
-      if (img.startsWith('http://') || img.startsWith('https://')) {
-        return img
-      }
+    const fallback = 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=675&fit=crop&q=80'
+    if (!pos) return fallback
+
+    const img = pos.image || pos.imageUrl || ''
+    if (img && typeof img === 'string' && img.trim()) {
+      return getImageUrl(img) || fallback
     }
 
     const deptImages = {
@@ -250,7 +247,7 @@ const Careers = () => {
       'Marketing': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop&q=80',
       'Sales': 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=675&fit=crop&q=80',
     }
-    return deptImages[pos.department] || 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=675&fit=crop&q=80'
+    return deptImages[pos.department] || fallback
   }
 
   // Render Card Component
@@ -281,7 +278,7 @@ const Careers = () => {
           className="w-full h-52 overflow-hidden relative rounded-2xl bg-[#1c1f2b] border border-[rgba(255,255,255,0.06)] cursor-pointer block"
         >
           <img 
-            src={cardImage || null} 
+            src={cardImage} 
             alt={pos.title} 
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" 
             onError={(e) => {
