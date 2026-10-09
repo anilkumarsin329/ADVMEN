@@ -98,9 +98,9 @@
   --gradient-fade-top:     linear-gradient(0deg, transparent 0%, var(--color-black) 100%);
 
   /* ── Typography ───────────────────────────────────────── */
-  --font-display:          'Space Grotesk', sans-serif;
-  --font-body:             'Figtree', sans-serif;
-  --font-mono:             'IBM Plex Mono', monospace;
+  --font-display:          'Outfit', sans-serif;
+  --font-body:             'Plus Jakarta Sans', sans-serif;
+  --font-mono:             'JetBrains Mono', monospace;
 
   /* ── Font Sizes — Display Scale ───────────────────────── */
   --text-hero:             8rem;       /* 128px — hero headline */
