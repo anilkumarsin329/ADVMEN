@@ -54,11 +54,20 @@ export default defineConfig(({ mode }) => {
           if (id.includes('three') || id.includes('@react-three')) {
             return 'vendor-three'
           }
-          if (id.includes('gsap') || id.includes('framer-motion')) {
-            return 'vendor-animation'
+          if (id.includes('gsap')) {
+            return 'vendor-gsap'
           }
-          if (id.includes('react-dom') || id.includes('react-router-dom') || (id.includes('node_modules/react/') )) {
+          if (id.includes('framer-motion')) {
+            return 'vendor-framer'
+          }
+          if (id.includes('lenis')) {
+            return 'vendor-lenis'
+          }
+          if (id.includes('react-dom') || id.includes('react-router-dom') || id.includes('node_modules/react/')) {
             return 'vendor-react'
+          }
+          if (id.includes('node_modules')) {
+            return 'vendor-misc'
           }
         },
       },

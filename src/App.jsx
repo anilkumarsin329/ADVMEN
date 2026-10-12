@@ -32,6 +32,7 @@ import Preloader     from '@components/common/Preloader'
 import GlobalEffects from '@components/common/GlobalEffects'
 import PageTransition from '@components/common/PageTransition'
 
+
 // ── Lazy Load Wrapper with Retry ──────────────────────────────
 // Automatically reloads the page once if a ChunkLoadError occurs 
 // (common after a new production deployment).
@@ -242,6 +243,7 @@ const App = () => (
           <CursorProvider>
             <ThemeProvider>
               <BrowserRouter>
+                <Preloader />
                 <GlobalEffects />
                 <RootRouter />
               </BrowserRouter>

@@ -1,19 +1,20 @@
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 import Hero from '@components/sections/Hero/Hero'
 import HeroMarquee from '@components/sections/Hero/HeroMarquee'
-import About from '@components/sections/About/About'
-import Services from '@components/sections/Services/Services'
-import WhyChoose from '@components/sections/WhyChoose/WhyChoose'
-import WorkingProcess from '@components/sections/Process/WorkingProcess'
-import Portfolio from '@components/sections/Portfolio/Portfolio'
-import CaseStudies from '@components/sections/CaseStudies/CaseStudies'
-import TrustSection from '@components/sections/Clients/TrustSection'
-import Testimonials from '@components/sections/Testimonials/Testimonials'
-import FAQSection from '@components/sections/FAQ/FAQSection'
-import Pricing from '@pages/Pricing'
+
+// Below-fold sections — lazy loaded to reduce initial bundle
+const Services      = lazy(() => import('@components/sections/Services/Services'))
+const WhyChoose     = lazy(() => import('@components/sections/WhyChoose/WhyChoose'))
+const WorkingProcess = lazy(() => import('@components/sections/Process/WorkingProcess'))
+const Portfolio     = lazy(() => import('@components/sections/Portfolio/Portfolio'))
+const CaseStudies   = lazy(() => import('@components/sections/CaseStudies/CaseStudies'))
+const TrustSection  = lazy(() => import('@components/sections/Clients/TrustSection'))
+const Testimonials  = lazy(() => import('@components/sections/Testimonials/Testimonials'))
+const FAQSection    = lazy(() => import('@components/sections/FAQ/FAQSection'))
+const Pricing       = lazy(() => import('@pages/Pricing'))
 
 const Home = () => {
   const location = useLocation()
@@ -59,35 +60,34 @@ const Home = () => {
       <HeroMarquee />
     </div>
 
-    {/* Phase 1: About */}
-    {/* <About /> */}
+    <Suspense fallback={null}>
+      {/* Phase 2: Services */}
+      <Services />
 
-    {/* Phase 2: Services */}
-    <Services />
+      {/* Phase 3: Why Choose ADVMEN */}
+      <WhyChoose />
 
-    {/* Phase 3: Why Choose ADVMEN */}
-    <WhyChoose />
+      {/* Phase 4: Working Process */}
+      <WorkingProcess />
 
-    {/* Phase 4: Working Process */}
-    <WorkingProcess />
+      {/* Phase 5: Portfolio */}
+      <Portfolio />
 
-    {/* Phase 5: Portfolio */}
-    <Portfolio />
+      {/* Phase 5.5: Case Studies - NEW */}
+      <CaseStudies />
 
-    {/* Phase 5.5: Case Studies - NEW */}
-    <CaseStudies />
+      {/* Phase 6: Clients */}
+      <TrustSection />
 
-    {/* Phase 6: Clients */}
-    <TrustSection />
+      {/* Phase 7: Testimonials */}
+      <Testimonials />
 
-    {/* Phase 7: Testimonials */}
-    <Testimonials />
+      {/* Phase 8: Pricing */}
+      <Pricing isPage={false} />
 
-    {/* Phase 8: Pricing */}
-    <Pricing isPage={false} />
-
-    {/* Phase 9: FAQ */}
-    <FAQSection />
+      {/* Phase 9: FAQ */}
+      <FAQSection />
+    </Suspense>
 
     {/* Phase 10: Contact - on dedicated page */}
     {/* Phase 11: Footer - in Layout */}

@@ -28,12 +28,13 @@
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
       html, body { height: 100%; }
-      body { background: #FFE6CF; color: #141418; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+      body { background: #141418; color: #141418; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
       #root { min-height: 100vh; }
+      /* Show black screen immediately — matches preloader bg, no flash */
       #root:empty::before {
         content: '';
         position: fixed; inset: 0;
-        background: #FFE6CF;
+        background: #141418;
         z-index: 9999;
       }
     </style>

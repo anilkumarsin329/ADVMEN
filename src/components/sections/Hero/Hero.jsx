@@ -44,7 +44,7 @@ const Hero = () => {
       <div
         ref={leftRef}
         className="container hero-container-responsive"
-        style={{ opacity: startEntrance ? 1 : 0 }}
+      style={{ opacity: startEntrance ? 1 : 0 }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center w-full">
 

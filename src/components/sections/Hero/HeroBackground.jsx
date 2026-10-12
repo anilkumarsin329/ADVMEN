@@ -25,7 +25,7 @@ const HeroBackground = () => {
         src="/Hero section image.webp"
         alt=""
         className="hero-bg-image"
-        fetchpriority="high"
+        fetchPriority="high"
         decoding="async"
         style={{
           position: 'absolute',
