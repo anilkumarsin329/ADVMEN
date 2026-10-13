@@ -10,7 +10,7 @@
  * ─────────────────────────────────────────────────────────────
  */
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
 import { gsap, ScrollTrigger } from '@utils/gsapConfig'
@@ -24,13 +24,31 @@ const Layout = ({ children }) => {
   const lenisRef = useRef(null)
   const location = useLocation()
 
-  // Scroll to top on route change
+  // Never let the browser restore a stale scroll offset between routes
   useEffect(() => {
-    window.scrollTo(0, 0)
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true })
+    if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual'
+  }, [])
+
+  // Always land at the top of the new page (route + query change).
+  // Runs before paint, then re-asserts after the exit/enter transition so a
+  // long page that shrinks/grows can't leave the viewport mid-page.
+  useLayoutEffect(() => {
+    if (location.hash) return
+    const html = document.documentElement
+    const toTop = () => {
+      html.style.scrollBehavior = 'auto'
+      window.scrollTo(0, 0)
+      html.scrollTop = 0
+      document.body.scrollTop = 0
+      const lenis = lenisRef.current
+      if (lenis) lenis.scrollTo(0, { immediate: true, force: true })
+      ScrollTrigger.refresh()
     }
-  }, [location.pathname])
+    toTop()
+    const t1 = setTimeout(toTop, 60)
+    const t2 = setTimeout(() => { toTop(); html.style.scrollBehavior = '' }, 420)
+    return () => { clearTimeout(t1); clearTimeout(t2) }
+  }, [location.pathname, location.search, location.hash])
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -43,6 +61,7 @@ const Layout = ({ children }) => {
     })
 
     lenisRef.current = lenis
+    window.__lenis = lenis
 
     // Sync Lenis scroll position to GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update)
@@ -55,6 +74,7 @@ const Layout = ({ children }) => {
     return () => {
       gsap.ticker.remove(onTick)
       lenis.destroy()
+      if (window.__lenis === lenis) window.__lenis = null
     }
   }, [])
 

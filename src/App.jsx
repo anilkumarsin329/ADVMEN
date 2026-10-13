@@ -31,6 +31,7 @@ import Layout        from '@components/layout/Layout'
 import Preloader     from '@components/common/Preloader'
 import GlobalEffects from '@components/common/GlobalEffects'
 import PageTransition from '@components/common/PageTransition'
+import ErrorBoundary from '@components/common/ErrorBoundary'
 
 
 // ── Lazy Load Wrapper with Retry ──────────────────────────────
@@ -227,9 +228,11 @@ const RootRouter = () => {
 
   return (
     <Layout>
-      <Suspense fallback={<PageFallback />}>
-        <PublicRoutes />
-      </Suspense>
+      <ErrorBoundary resetKey={location.pathname}>
+        <Suspense fallback={<PageFallback />}>
+          <PublicRoutes />
+        </Suspense>
+      </ErrorBoundary>
     </Layout>
   )
 }

@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { getProjectBySlug } from '@data/portfolio'
+import { getImageUrl } from '@utils/constants'
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi'
 
 const PortfolioDetail = () => {

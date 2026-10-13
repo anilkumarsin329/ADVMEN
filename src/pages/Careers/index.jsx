@@ -486,7 +486,6 @@ const Careers = () => {
                       key={tab.id}
                       onClick={() => {
                         setSelectedTab(tab.id)
-                        setExpandedPosId(null)
                       }}
                       className="px-5 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center gap-2"
                       style={{
@@ -512,7 +511,6 @@ const Careers = () => {
                   key={dept}
                   onClick={() => {
                     setSelectedDept(dept)
-                    setExpandedPosId(null)
                   }}
                   className="px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer"
                   style={{

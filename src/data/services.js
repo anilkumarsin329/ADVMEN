@@ -157,6 +157,146 @@ export const services = [
     ]
   },
   {
+    id: 'aeo-geo',
+    slug: 'aeo-geo',
+    aliases: ['ai-search-optimization', 'aeo-and-geo', 'ai-seo'],
+    title: 'AEO & GEO / AI Search Optimization',
+    tagline: 'Be the Answer in Search, Answer Engines & AI Platforms',
+    category: 'SEO',
+    icon: 'search',
+    image: '/Image/advmen_service10.webp',
+    description: 'Search is becoming increasingly conversational. Audiences are using AI tools to dig into brands. Our AEO and GEO services help you showcase your expertise so search engines, answer engines, and AI systems pick up exactly what you offer.',
+    features: [
+      'Conversational query research',
+      'Search-intent analysis',
+      'Entity optimization',
+      'Topical authority',
+      'FAQ and question-led content',
+      'Schema and structured data',
+      'Author and brand credibility signals',
+      'Internal linking and site architecture',
+      'Relevant third-party mentions',
+      'AI search visibility monitoring'
+    ],
+    technologies: ['Schema.org', 'Google Search Console', 'ChatGPT', 'Perplexity', 'Google AI Overviews'],
+    workflow: [
+      { step: '01', title: 'Query & Intent Research', desc: 'Mapping the conversational questions your customers actually ask search engines and AI tools.' },
+      { step: '02', title: 'Entity & Authority Build-Out', desc: 'Clarifying who you are, what you offer, and the credibility signals that back it up.' },
+      { step: '03', title: 'Answer-Ready Content & Schema', desc: 'Question-led content, FAQ markup and structured data that answer engines can read and cite.' },
+      { step: '04', title: 'AI Visibility Monitoring', desc: 'Tracking how your brand is represented and cited across AI-driven search experiences.' }
+    ]
+  },
+  {
+    id: 'performance-marketing',
+    slug: 'performance-marketing',
+    aliases: ['paid-media', 'paid-ads', 'ppc'],
+    title: 'Performance Marketing',
+    tagline: 'Paid Media That Does More Than Rack Up Views',
+    category: 'Digital Marketing',
+    icon: 'marketing',
+    image: '/Image/advmen_service5.webp',
+    description: 'Paid media should do more than rack up views. We run performance-driven campaigns shaped by your actual business goals, your audience, and the channels that matter. From campaign planning and creative direction to optimization and reporting, we align paid acquisition with the wider digital strategy.',
+    features: [
+      'Paid Search',
+      'Social Ads',
+      'Campaign Strategy',
+      'Conversion Optimization',
+      'Performance Analytics'
+    ],
+    technologies: ['Google Ads', 'Meta Ads', 'LinkedIn Ads', 'GA4', 'Looker Studio'],
+    workflow: [
+      { step: '01', title: 'Goal & Audience Mapping', desc: 'Defining acquisition targets, audiences and the channels worth your budget.' },
+      { step: '02', title: 'Campaign Strategy & Creative', desc: 'Planning campaigns, messaging and creative direction around real business objectives.' },
+      { step: '03', title: 'Launch & Optimization', desc: 'Testing, refining and scaling what works while cutting what does not.' },
+      { step: '04', title: 'Reporting & Analytics', desc: 'Transparent performance reporting tied to leads, conversions and revenue signals.' }
+    ]
+  },
+  {
+    id: 'social-media-marketing',
+    slug: 'social-media-marketing',
+    aliases: ['social-media', 'smm'],
+    title: 'Social Media Marketing',
+    tagline: 'Build Familiarity, Conversations & a Lasting Presence',
+    category: 'Digital Marketing',
+    icon: 'marketing',
+    image: '/Image/advmen_service7.webp',
+    description: 'Social media is where brands build familiarity, drive conversations and stay connected to your audience. Our social media marketing in India is a combination of strategy, creative content planning, publishing and performance tracking to build a real and lasting digital presence.',
+    features: [
+      'Social Media Strategy',
+      'Content Planning',
+      'Content Calendars',
+      'Creative Direction',
+      'Platform Management',
+      'Audience Engagement',
+      'Performance Analysis'
+    ],
+    technologies: ['Instagram', 'LinkedIn', 'Facebook', 'YouTube', 'Meta Business Suite'],
+    workflow: [
+      { step: '01', title: 'Strategy & Positioning', desc: 'Choosing the platforms, themes and voice that fit your brand and audience.' },
+      { step: '02', title: 'Content Planning & Calendars', desc: 'Planning creative content and publishing calendars around what your audience responds to.' },
+      { step: '03', title: 'Publishing & Engagement', desc: 'Managing platforms and engaging with your audience consistently.' },
+      { step: '04', title: 'Performance Analysis', desc: 'Measuring reach, engagement and conversions to keep refining the plan.' }
+    ]
+  },
+  {
+    id: 'content-marketing',
+    slug: 'content-marketing',
+    aliases: ['content-marketing-agency', 'seo-content'],
+    title: 'Content Marketing',
+    tagline: 'Content That Puts Your Audience First',
+    category: 'Content',
+    icon: 'content',
+    image: '/Image/advmen_service9.webp',
+    description: 'Good content must be more than just filler on a website. We are a content marketing agency in India that puts your audience first. We create content based on what people are searching for and what your brand stands for.',
+    features: [
+      'Content Strategy & Planning',
+      'SEO Content & Blog Writing',
+      'Website & Service Page Content',
+      'Leadership & Authority Content',
+      'AEO & AI-Search Content',
+      'Content Refresh & Optimisation',
+      'Content Distribution & Repurposing',
+      'Content Performance & Insights'
+    ],
+    technologies: ['Ahrefs', 'SEMrush', 'Google Search Console', 'Notion', 'WordPress'],
+    workflow: [
+      { step: '01', title: 'Audience & Search Research', desc: 'Understanding what people search for and where your brand can genuinely help.' },
+      { step: '02', title: 'Content Strategy & Planning', desc: 'Building topic clusters, editorial calendars and clear content goals.' },
+      { step: '03', title: 'Create & Optimise', desc: 'Writing and refreshing content for search, answer engines and real readers.' },
+      { step: '04', title: 'Distribute & Measure', desc: 'Repurposing across channels and tracking performance to guide the next cycle.' }
+    ]
+  },
+  {
+    id: 'website-development',
+    slug: 'website-development',
+    aliases: ['website-development-company-in-india', 'web-design-development'],
+    title: 'Website Development',
+    tagline: 'Your Digital Headquarters, Built to Convert',
+    category: 'Web Development',
+    icon: 'web',
+    image: '/Image/advmen_service1.webp',
+    description: 'Think of your website as your digital headquarters. We combine smart design, usability, solid performance and a strong technical foundation to build responsive, modern, conversion-focused sites.',
+    features: [
+      'Custom Website Development',
+      'Business Website Development',
+      'Corporate Website Development',
+      'Healthcare Website Development',
+      'E-commerce Development',
+      'Landing Page Development',
+      'UI/UX Design',
+      'Website Performance Optimization',
+      'CMS Development',
+      'API Integration'
+    ],
+    technologies: ['React', 'Next.js', 'Node.js', 'WordPress', 'Shopify'],
+    workflow: [
+      { step: '01', title: 'Discovery & Planning', desc: 'Clarifying goals, audience, structure and technical requirements.' },
+      { step: '02', title: 'UI/UX Design', desc: 'Designing responsive, usable interfaces built around conversion journeys.' },
+      { step: '03', title: 'Development & Integration', desc: 'Building on a solid technical foundation with CMS, APIs and integrations.' },
+      { step: '04', title: 'Performance, QA & Launch', desc: 'Speed optimization, cross-device testing and a clean production launch.' }
+    ]
+  },
+  {
     id: 'political-campaigns',
     slug: 'political-campaigns',
     aliases: ['political-digital-campaigns', 'campaign-management'],
@@ -236,21 +376,128 @@ export const services = [
 /**
  * Find service item by slug, id, or alias
  */
+
+// ── Sub-service pages: /services/<parent>/<sub> ────────────────────────────
+const SUB_PAGE_DEFS = {
+  'website-development/business': {
+    title: 'Business Website Development',
+    tagline: 'A Professional Website That Builds Trust and Brings Enquiries',
+    description: 'We build business websites that explain what you do clearly, build credibility with first-time visitors and turn that attention into enquiries — fast, responsive and easy to manage.',
+    features: ['Clear service and about pages', 'Mobile-first responsive design', 'SEO-ready structure', 'Lead and enquiry forms', 'Fast loading performance'],
+  },
+  'website-development/corporate': {
+    title: 'Corporate Website Development',
+    tagline: 'Scalable Websites for Established Organisations',
+    description: 'Corporate websites need structure, consistency and room to grow. We design and build scalable sites that present your organisation, leadership and offerings with clarity.',
+    features: ['Scalable multi-section architecture', 'CMS for team-managed content', 'Brand-consistent design system', 'Investor, careers and news sections', 'Security and performance best practices'],
+  },
+  'website-development/healthcare': {
+    title: 'Healthcare Website Development',
+    tagline: 'Clear, Accessible and Trustworthy for Patients',
+    description: 'Healthcare websites should be easy to understand and easy to act on. We build clear, accessible sites for clinics, hospitals and practitioners with patient-friendly journeys.',
+    features: ['Doctor and department pages', 'Appointment and enquiry flows', 'Accessible, readable design', 'Local SEO foundations', 'Fast, mobile-friendly experience'],
+  },
+  'website-development/ecommerce': {
+    title: 'E-commerce Development',
+    tagline: 'Online Stores Built for Conversion and Scale',
+    description: 'ADVMEN develops e-commerce websites complete with product catalogs, payment gateways, integrations, responsive designs, and scalable features.',
+    features: ['Product catalogs and filters', 'Payment gateway integration', 'Order and inventory integrations', 'Responsive checkout experience', 'Scalable architecture'],
+  },
+  'website-development/landing-page': {
+    title: 'Landing Page Development',
+    tagline: 'Purpose-Built Pages for Campaigns and Offers',
+    description: 'Purpose-built digital experiences designed to support specific campaigns, offers, and conversion journeys — focused, fast and measurable.',
+    features: ['Single-goal page structure', 'Conversion-focused copy and layout', 'Fast loading and mobile-first', 'Form and tracking integration', 'A/B-test friendly build'],
+  },
+  'app-development/android': {
+    title: 'Android App Development',
+    tagline: 'Fast, Reliable Apps for the Android Ecosystem',
+    description: 'We design and develop Android apps built for speed, smooth user experience and flawless integration with your digital presence.',
+    features: ['Native and modern Android development', 'Material-style UI/UX design', 'API and backend integration', 'Play Store release support', 'Performance optimization'],
+  },
+  'app-development/ios': {
+    title: 'iOS App Development',
+    tagline: 'Polished Apps for iPhone and iPad',
+    description: 'We design and develop iOS apps with a smooth user experience, clean interface and reliable integration with your backend and digital products.',
+    features: ['Native iOS development', 'Human-interface-aligned UI/UX', 'API and backend integration', 'App Store release support', 'Performance optimization'],
+  },
+  'app-development/cross-platform': {
+    title: 'Cross-Platform App Development',
+    tagline: 'One Codebase, Android and iOS',
+    description: 'Cross-platform development lets you reach Android and iOS users from a single codebase, with consistent design and efficient delivery.',
+    features: ['Single codebase for both platforms', 'Consistent UI/UX', 'Faster delivery cycles', 'API and backend integration', 'Performance tuning'],
+  },
+  'app-development/custom-mobile-app': {
+    title: 'Custom Mobile App Development',
+    tagline: 'Mobile Products Built Around Your Idea',
+    description: 'From first concept to launch, we build custom mobile applications shaped around your users, workflows and business goals.',
+    features: ['Product discovery and scoping', 'Custom UI/UX design', 'Scalable architecture', 'Third-party integrations', 'Testing and launch support'],
+  },
+  'app-development/business-enterprise': {
+    title: 'Business & Enterprise Apps',
+    tagline: 'Mobile Tools for Teams and Operations',
+    description: 'We build business and enterprise applications that streamline operations, connect teams and integrate with the systems you already use.',
+    features: ['Workflow and operations apps', 'Role-based access', 'System and API integration', 'Secure data handling', 'Scalable architecture'],
+  },
+  'app-development/ecommerce-app': {
+    title: 'E-commerce Apps',
+    tagline: 'Shopping Experiences That Fit in a Pocket',
+    description: 'We build e-commerce apps with product browsing, secure checkout and integrations that make buying simple on mobile.',
+    features: ['Catalog and search', 'Cart and secure checkout', 'Payment gateway integration', 'Order tracking', 'Backend and inventory integration'],
+  },
+  'app-development/booking-service-app': {
+    title: 'Booking & Service Apps',
+    tagline: 'Let Customers Book in a Few Taps',
+    description: 'We build booking and service apps that handle scheduling, availability and payments with a simple customer journey.',
+    features: ['Slot and availability management', 'Customer and provider flows', 'Payments and confirmations', 'Notifications and reminders', 'Admin dashboard'],
+  },
+  'app-development/api-backend-integration': {
+    title: 'API & Backend Integration',
+    tagline: 'Connect Your Apps, Websites and Platforms',
+    description: 'ADVMEN provides API development and third-party integrations to connect websites, mobile applications, e-commerce platforms, and custom digital products.',
+    features: ['REST API design and development', 'Third-party service integration', 'Authentication and security', 'Data sync across platforms', 'Documentation and monitoring'],
+  },
+}
+
+const subPageKey = (s) => String(s || '').trim().toLowerCase().replace(/^\/+|\/+$/g, '')
+
+export const getSubPages = (parentSlug) =>
+  Object.keys(SUB_PAGE_DEFS)
+    .filter((k) => k.startsWith(subPageKey(parentSlug) + '/'))
+    .map((k) => ({ slug: k, title: SUB_PAGE_DEFS[k].title, href: '/services/' + k }))
+
+export const getParentService = (compositeSlug) => {
+  const parent = subPageKey(compositeSlug).split('/')[0]
+  return services.find((s) => s.slug === parent) || null
+}
+
+const buildSubPage = (key) => {
+  const def = SUB_PAGE_DEFS[key]
+  const parent = getParentService(key)
+  if (!def || !parent) return null
+  return {
+    ...parent,
+    ...def,
+    id: key,
+    slug: key,
+    aliases: [],
+    parentSlug: parent.slug,
+    technologies: parent.technologies,
+    workflow: parent.workflow,
+  }
+}
+
 const SLUG_ALIASES = {
-  'aeo-geo': 'seo',
-  'ai-search-optimization': 'seo',
-  'seo-geo-optimization': 'seo',
-  'content-marketing': 'content-creation',
-  'performance-marketing': 'digital-marketing',
-  'social-media-marketing': 'digital-marketing',
-  'social-media-management': 'digital-marketing',
-  'website-development': 'web-development',
-  'professional-website-design': 'web-development',
+  'seo-geo-optimization': 'aeo-geo',
+  'social-media-management': 'social-media-marketing',
+  'professional-website-design': 'website-development',
   'branding-logo-design': 'branding',
 }
 
 export const getServiceBySlug = (slugInput) => {
   if (!slugInput) return null
+  const compositeKey = subPageKey(slugInput)
+  if (compositeKey.includes('/')) return buildSubPage(compositeKey)
   const slug = SLUG_ALIASES[String(slugInput).trim().toLowerCase()] || slugInput
   const raw = String(slug).trim()
   let decoded = raw

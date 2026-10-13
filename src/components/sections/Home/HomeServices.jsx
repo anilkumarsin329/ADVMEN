@@ -3,8 +3,11 @@
  * Our Digital Marketing Services India
  */
 
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
+import { cachedFetch } from '@utils/apiCache'
 import SectionHeader from './SectionHeader'
 
 const SERVICES = [
@@ -12,6 +15,7 @@ const SERVICES = [
     title: 'SEO',
     image: '/Image/advmen_service6.webp',
     href: '/services/seo',
+    apiSlug: 'seo-geo-optimization',
     desc: 'Our SEO services in India go way beyond chasing keyword rankings. We combine technical SEO, smart intent research, content strategy, on-page fixes, internal linking, structured data, local and ecommerce SEO, digital PR, and building your digital authority.',
     label: 'Key capabilities',
     items: ['Technical SEO', 'Keyword & Search Intent Research', 'On-Page SEO', 'Content Strategy', 'Internal Linking', 'Structured Data', 'Local SEO', 'Ecommerce SEO', 'Digital PR', 'Authority Building'],
@@ -20,6 +24,7 @@ const SERVICES = [
     title: 'AEO & GEO / AI Search Optimization',
     image: '/Image/advmen_service10.webp',
     href: '/services/aeo-geo',
+    apiSlug: 'seo-geo-optimization',
     desc: 'Search is becoming increasingly conversational. Audiences are using AI tools to dig into brands. Our AEO and GEO services help you showcase your expertise so search engines, answer engines, and AI systems pick up exactly what you offer.',
     items: ['Conversational query research', 'Search-intent analysis', 'Entity optimization', 'Topical authority', 'FAQ and question-led content', 'Schema and structured data', 'Author and brand credibility signals', 'Internal linking and site architecture', 'Relevant third-party mentions', 'AI search visibility monitoring'],
   },
@@ -27,6 +32,7 @@ const SERVICES = [
     title: 'Branding',
     image: '/Image/advmen_service4.webp',
     href: '/services/branding',
+    apiSlug: 'branding-logo-design',
     desc: 'A real brand is so much more than just a logo. We help businesses craft a unified look and voice across all the digital platforms. From brand strategy and identity to supporting digital assets, we bring consistency to how your business looks, communicates, and presents its value.',
     items: ['Brand Strategy', 'Brand Identity', 'Logo Design', 'Visual Systems', 'Digital Brand Assets', 'Brand Communication'],
   },
@@ -41,6 +47,7 @@ const SERVICES = [
     title: 'Social Media Marketing',
     image: '/Image/advmen_service7.webp',
     href: '/services/social-media-marketing',
+    apiSlug: 'social-media-management',
     desc: 'Social media is where brands build familiarity, drive conversations and stay connected to your audience. Our social media marketing in India is a combination of strategy, creative content planning, publishing and performance tracking to build a real and lasting digital presence.',
     items: ['Social Media Strategy', 'Content Planning', 'Content Calendars', 'Creative Direction', 'Platform Management', 'Audience Engagement', 'Performance Analysis'],
   },
@@ -55,6 +62,7 @@ const SERVICES = [
     title: 'Website Development',
     image: '/Image/advmen_service1.webp',
     href: '/services/website-development',
+    apiSlug: 'professional-website-design',
     desc: 'Think of your website as your digital headquarters. We combine smart design, usability, solid performance and a strong technical foundation to build responsive, modern, conversion-focused sites.',
     items: ['Custom Website Development', 'Business Website Development', 'Corporate Website Development', 'Healthcare Website Development', 'E-commerce Development', 'Landing Page Development', 'UI/UX Design', 'Website Performance Optimization', 'CMS Development', 'API Integration'],
   },
@@ -62,6 +70,7 @@ const SERVICES = [
     title: 'App Development',
     image: '/Image/advmen_service2.webp',
     href: '/services/app-development',
+    apiSlug: 'app-development',
     desc: 'We design and develop scalable mobile applications for startups, businesses and enterprises. From customer-facing mobile apps to custom business applications, ADVMEN combines UI/UX, development, API integration and performance optimization to build reliable digital products.',
     items: ['Android App Development', 'iOS App Development', 'Cross-Platform App Development', 'Custom Mobile App Development', 'Business & Enterprise Apps', 'E-commerce Apps', 'Booking & Service Apps', 'API & Backend Integration', 'UI/UX Design', 'App Performance Optimization'],
   },
@@ -73,97 +82,113 @@ const ArrowIcon = () => (
   </svg>
 )
 
-const HomeServices = () => (
-  <section
-    id="services-section"
-    className="relative w-full"
-    style={{ background: 'var(--color-black)', padding: 'clamp(3.5rem, 8vw, 6rem) 0' }}
-    aria-label="Our digital marketing services in India"
-  >
-    <div className="container">
-      <SectionHeader
-        eyebrow="What We Do"
-        title="Our Digital Marketing Services India"
-        subtitle="SEO, AEO, GEO, branding, performance, social, content, websites and apps — built to work together as one growth system."
-      />
+const HomeServices = () => {
+  const [apiImages, setApiImages] = useState({})
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 lg:gap-6">
-        {SERVICES.map((s, i) => (
-          <motion.article
-            key={s.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, delay: (i % 4) * 0.07 }}
-            className="card group flex flex-col"
-          >
-            <Link
-              to={s.href}
-              data-cursor="hover"
-              aria-label={`${s.title} — learn more`}
-              className="block overflow-hidden"
-              style={{ height: '150px', borderBottom: '2px solid var(--color-ink)', background: 'var(--color-surface-2)' }}
-            >
-              <img
-                src={s.image}
-                alt={s.title}
-                width="480"
-                height="150"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </Link>
+  // Use the illustrated service artwork from the CMS when it exists
+  useEffect(() => {
+    let alive = true
+    cachedFetch(`${API_BASE_URL}/api/services`)
+      .then((res) => {
+        if (!alive || !Array.isArray(res)) return
+        const map = {}
+        res.forEach((r) => { if (r.slug && r.image) map[r.slug] = getImageUrl(r.image) })
+        setApiImages(map)
+      })
+      .catch(() => {})
+    return () => { alive = false }
+  }, [])
 
-            <div className="flex flex-col flex-grow" style={{ padding: '1rem 1.1rem 1.1rem' }}>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-orange)' }}>
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h3 style={{ fontSize: '1.05rem', lineHeight: 1.25 }}>{s.title}</h3>
-              </div>
+  return (
+    <section
+      id="services-section"
+      className="relative w-full"
+      style={{ background: 'var(--color-black)', padding: 'clamp(3.5rem, 8vw, 6rem) 0' }}
+      aria-label="Our digital marketing services in India"
+    >
+      <div className="container">
+        <SectionHeader
+          eyebrow="What We Do"
+          title="Our Digital Marketing Services India"
+          subtitle="SEO, AEO, GEO, branding, performance, social, content, websites and apps — built to work together as one growth system."
+        />
 
-              <p className="line-clamp-3" style={{ fontSize: '0.85rem', lineHeight: 1.55, marginBottom: '0.85rem' }}>
-                {s.desc}
-              </p>
-
-              <ul className="flex flex-wrap gap-1.5 mb-4">
-                {s.items.slice(0, 3).map((item) => (
-                  <li
-                    key={item}
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.66rem',
-                      fontWeight: 500,
-                      color: 'var(--color-ink)',
-                      border: '1.5px solid var(--color-ink)',
-                      borderRadius: '9999px',
-                      padding: '0.12rem 0.55rem',
-                    }}
-                  >
-                    {item}
-                  </li>
-                ))}
-                {s.items.length > 3 && (
-                  <li style={{ fontFamily: 'var(--font-mono)', fontSize: '0.66rem', fontWeight: 700, color: 'var(--color-orange)', padding: '0.12rem 0.2rem' }}>
-                    +{s.items.length - 3} more
-                  </li>
-                )}
-              </ul>
-
-              <Link
-                to={s.href}
-                className="btn-outline btn-sm mt-auto self-start"
-                data-cursor="hover"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+          {SERVICES.map((svc, i) => {
+            const img = (svc.apiSlug && apiImages[svc.apiSlug]) || svc.image
+            return (
+              <motion.div
+                key={svc.title}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
+                className="service-card group"
               >
-                Learn More <ArrowIcon />
-              </Link>
-            </div>
-          </motion.article>
-        ))}
+                <Link to={svc.href} className="block h-full cursor-pointer" data-cursor="hover">
+                  <div
+                    className="card-glass flex flex-col h-full"
+                    style={{ minHeight: '470px', background: 'var(--color-surface-1)' }}
+                  >
+                    {/* Image */}
+                    <div
+                      className="relative w-full flex items-center justify-center overflow-hidden flex-shrink-0"
+                      style={{
+                        height: 'clamp(160px, 28vw, 210px)',
+                        background: 'var(--color-surface-2)',
+                        borderBottom: '2px solid var(--color-ink)',
+                      }}
+                    >
+                      <img
+                        src={img}
+                        alt={svc.title}
+                        width="600"
+                        height="210"
+                        loading="lazy"
+                        decoding="async"
+                        className="transition-transform duration-500 group-hover:scale-105"
+                        style={{ maxWidth: '92%', maxHeight: '92%', width: 'auto', height: 'auto', objectFit: 'contain' }}
+                      />
+                    </div>
+
+                    {/* Body */}
+                    <div className="p-5 flex flex-col flex-grow">
+                      <div className="text-xs font-mono font-bold tracking-widest mb-2" style={{ color: 'var(--color-orange)' }}>
+                        {String(i + 1).padStart(2, '0')}
+                      </div>
+                      <h3
+                        className="font-display font-bold mb-2 transition-colors duration-300 group-hover:text-[var(--color-orange)]"
+                        style={{ color: 'var(--color-text-primary)', lineHeight: 1.2, fontSize: '1.2rem' }}
+                      >
+                        {svc.title}
+                      </h3>
+                      <p className="mb-4 flex-grow" style={{ color: 'var(--color-text-secondary)', lineHeight: 1.55, fontSize: '0.9rem' }}>
+                        {svc.desc}
+                      </p>
+
+                      <div className="space-y-1.5 mb-4 pt-3" style={{ borderTop: '1.5px solid var(--color-border-subtle)' }}>
+                        {svc.items.slice(0, 3).map((item) => (
+                          <div key={item} className="flex items-start gap-2 text-xs">
+                            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-1" style={{ background: 'var(--color-orange)' }} />
+                            <span style={{ color: 'var(--color-text-secondary)' }} className="leading-tight">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center gap-2 mt-auto transition-transform duration-300 group-hover:translate-x-1" style={{ color: 'var(--color-orange)' }}>
+                        <span className="text-sm font-semibold">Learn More</span>
+                        <ArrowIcon />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            )
+          })}
+        </div>
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
 
 export default HomeServices

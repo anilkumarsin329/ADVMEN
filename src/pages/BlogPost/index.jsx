@@ -9,7 +9,7 @@ import SEOHead from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import { getBlogBySlug, blogArticles } from '@data/blog'
 import { FiArrowLeft, FiShare2, FiCopy, FiX } from 'react-icons/fi'
-import { API_BASE_URL } from '@utils/constants'
+import { API_BASE_URL, getImageUrl } from '@utils/constants'
 import { cachedFetch } from '@/utils/apiCache'
 
 const BlogPost = () => {

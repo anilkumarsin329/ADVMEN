@@ -173,11 +173,11 @@ const Navbar = () => {
           'fixed top-0 left-0 right-0 z-[1000]',
           'transition-[padding,background-color,border-color,backdrop-filter] duration-500 ease-[var(--ease-out-expo)]',
           isScrolled
-            ? 'py-3 bg-[var(--color-black)] border-b-2 border-[var(--color-ink)]'
-            : 'py-5 bg-[var(--color-black)] border-b-2 border-[var(--color-ink)]'
+            ? 'py-2.5 lg:py-3 bg-[var(--color-black)] border-b-2 border-[var(--color-ink)]'
+            : 'py-3 lg:py-5 bg-[var(--color-black)] border-b-2 border-[var(--color-ink)]'
         )}
         style={{
-          paddingTop: `max(1.25rem, env(safe-area-inset-top))`,
+          paddingTop: `max(0.625rem, env(safe-area-inset-top))`,
           pointerEvents: 'auto',
           opacity: startEntrance ? 1 : 0,
         }}

@@ -29,7 +29,6 @@
   }
 
   html {
-    scroll-behavior: smooth;
     overflow-x: hidden;
     overflow-x: clip;
     -webkit-font-smoothing: antialiased;
@@ -414,7 +413,7 @@
 
   .hero-container-responsive {
     justify-content: flex-start !important;
-    padding-top: calc(var(--navbar-height, 64px) + 0.75rem) !important;
+    padding-top: calc(var(--navbar-height, 72px) + 1.25rem) !important;
     padding-bottom: 2rem !important;
   }
 
@@ -448,3 +447,9 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
+
+/* ── Home page section bands (alternating rhythm) ─────────────────── */
+.home-band { position: relative; border-block: 2px solid var(--color-ink); }
+.home-band--tint  { background: var(--color-surface-2); }
+.home-band--light { background: var(--color-surface-1); }
+.home-band > section { background: transparent !important; border: 0 !important; }

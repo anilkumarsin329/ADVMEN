@@ -37,7 +37,7 @@ const AboutStory = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8 }}
-            className="col-span-12 lg:col-span-7 flex flex-col gap-6"
+            className="col-span-1 lg:col-span-7 flex flex-col gap-6"
           >
             <div className="flex items-center gap-3">
               <span className="w-8 h-px bg-[var(--color-orange)]" />
@@ -80,7 +80,7 @@ const AboutStory = () => {
           </motion.div>
 
           {/* Right Column — Mission & Vision Cards */}
-          <div className="col-span-12 lg:col-span-5 flex flex-col gap-6 justify-center">
+          <div className="col-span-1 lg:col-span-5 flex flex-col gap-6 justify-center">
             
             {/* Mission Card */}
             <motion.div

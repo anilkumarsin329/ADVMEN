@@ -71,38 +71,38 @@ const Home = () => {
       <VisibilityIntro />
 
       {/* Section 3: Strategic vision → measurable impact */}
-      <StrategicVision />
+      <div className="home-band home-band--tint"><StrategicVision /></div>
 
       {/* Section 4: Not just another agency (6 pillars) */}
       <WhyChoose />
 
       {/* Section 5: Digital marketing services India */}
-      <HomeServices />
+      <div className="home-band home-band--light"><HomeServices /></div>
 
       {/* Section 6: 4D growth framework */}
       <WorkingProcess />
 
       {/* Section 7: India & global markets */}
-      <MarketsSection />
+      <div className="home-band home-band--tint"><MarketsSection /></div>
 
       {/* Section 8: Pricing + add-ons */}
       <Pricing isPage={false} />
 
       {/* Section 9: Our work */}
-      <Portfolio />
+      <div className="home-band home-band--light"><Portfolio /></div>
 
       {/* Section 10: Results / case studies */}
       <CaseStudies />
 
       {/* Section 11: Industries we serve */}
-      <IndustriesSection />
+      <div className="home-band home-band--tint"><IndustriesSection /></div>
 
       {/* Existing social-proof blocks (not in the content brief) */}
-      <TrustSection />
+      <div className="home-band home-band--light"><TrustSection /></div>
       <Testimonials />
 
       {/* Section 12: FAQ */}
-      <FAQSection />
+      <div className="home-band home-band--tint"><FAQSection /></div>
 
       {/* Section 13: Closing CTA */}
       <HomeCTA />

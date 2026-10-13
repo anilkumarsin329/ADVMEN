@@ -158,7 +158,7 @@ const CaseStudies = () => {
 
         {/* Compact Case Studies Grid (3 Columns) */}
         <div id="case-studies-section" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
-          {caseStudies.map((study) => (
+          {caseStudies.slice(0, 3).map((study) => (
             <div key={study._id || study.id} className="case-study-card group flex flex-col h-full">
               <div
                 className="relative card-glass flex flex-col justify-between h-full"

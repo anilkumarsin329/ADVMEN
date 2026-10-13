@@ -48,7 +48,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center w-full">
 
           {/* ── LEFT: Text ─────────────────────────────────────── */}
-          <div className="col-span-12 lg:col-span-7 flex flex-col gap-6 lg:gap-8">
+          <div className="col-span-1 lg:col-span-7 flex flex-col gap-6 lg:gap-8">
 
             {/* Eyebrow */}
             <div className="hero-stagger flex items-center gap-3">
@@ -183,7 +183,7 @@ const Hero = () => {
           </div>
 
           {/* ── RIGHT: AI Card ──────────────────────────────────── */}
-          <div className="col-span-12 lg:col-span-5 flex justify-center lg:justify-end mt-12 lg:mt-0" aria-hidden="true">
+          <div className="col-span-1 lg:col-span-5 flex justify-center lg:justify-end mt-12 lg:mt-0" aria-hidden="true">
             <div className="hero-stagger w-full max-w-[400px]">
               <div style={{
                 background: 'var(--color-surface-1)',

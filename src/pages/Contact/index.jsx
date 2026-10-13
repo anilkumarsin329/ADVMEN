@@ -179,7 +179,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-20">
             
             {/* Left Column â€” Contact Info Cards */}
-            <div className="col-span-12 lg:col-span-5 flex flex-col gap-6 sm:gap-8">
+            <div className="col-span-1 lg:col-span-5 flex flex-col gap-6 sm:gap-8">
               
               {/* Address details */}
               <div
@@ -276,7 +276,7 @@ const Contact = () => {
             </div>
 
             {/* Right Column â€” Premium Contact Form */}
-            <div className="col-span-12 lg:col-span-7">
+            <div className="col-span-1 lg:col-span-7">
               <form
                 onSubmit={handleSubmit}
                 className="p-5 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl flex flex-col gap-6"

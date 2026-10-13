@@ -12,7 +12,7 @@ import { motion } from 'framer-motion'
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
 import ServiceIcon   from '@components/sections/Services/ServiceIcon'
-import { getServiceBySlug } from '@data/services'
+import { getServiceBySlug, getSubPages } from '@data/services'
 import { API_BASE_URL, getImageUrl, COMPANY } from '@utils/constants'
 import { cachedFetch } from '@/utils/apiCache'
 import { FiX } from 'react-icons/fi'
@@ -27,7 +27,7 @@ const ServiceDetail = () => {
   const { slug, category, subSlug }   = useParams()
   const location = useLocation()
   
-  const currentSlug = subSlug || slug
+  const currentSlug = subSlug && category ? `${category}/${subSlug}` : (subSlug || slug)
   let decodedSlug = currentSlug
   try {
     decodedSlug = decodeURIComponent(currentSlug || '')
@@ -162,7 +162,7 @@ const ServiceDetail = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
             
             {/* Left Col — Info */}
-            <div className="col-span-12 lg:col-span-7 flex flex-col gap-6">
+            <div className="col-span-1 lg:col-span-7 flex flex-col gap-6">
               <div className="flex items-center gap-4">
                 <div
                   className="p-3 rounded-lg"
@@ -199,7 +199,7 @@ const ServiceDetail = () => {
             </div>
 
             {/* Right Col — Bullet Capabilities Card */}
-            <div className="col-span-12 lg:col-span-5">
+            <div className="col-span-1 lg:col-span-5">
               <div
                 className="p-8 rounded-2xl cursor-default"
                 style={{
@@ -243,6 +243,30 @@ const ServiceDetail = () => {
             </div>
 
           </div>
+
+          {/* Related / sub-service links */}
+          {(() => {
+            const parentKey = service.parentSlug || service.slug
+            const related = getSubPages(parentKey).filter((r) => r.slug !== service.slug)
+            if (related.length === 0) return null
+            return (
+              <section className="mb-16" aria-label="Related services">
+                <h2 className="section-title" style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)', marginBottom: '1.25rem' }}>
+                  {service.parentSlug ? 'More ' + (getServiceBySlug(service.parentSlug)?.title || 'Services') : 'Explore Specialised Services'}
+                </h2>
+                <div className="flex flex-wrap gap-3">
+                  {service.parentSlug && (
+                    <Link to={'/services/' + service.parentSlug} className="tag" data-cursor="hover">
+                      ← {getServiceBySlug(service.parentSlug)?.title}
+                    </Link>
+                  )}
+                  {related.map((r) => (
+                    <Link key={r.slug} to={r.href} className="tag" data-cursor="hover">{r.title}</Link>
+                  ))}
+                </div>
+              </section>
+            )
+          })()}
 
           {/* Featured Image Banner - Industrial Grand Design (Zero Cropping) */}
           <section className="mb-20">

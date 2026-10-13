@@ -135,7 +135,8 @@ const FloatingActions = () => {
   }, [])
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    if (window.__lenis) window.__lenis.scrollTo(0, { duration: 1.1 })
+    else window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const whatsappNumber = COMPANY.phone.replace(/\D/g, '')

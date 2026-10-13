@@ -58,7 +58,7 @@ const AboutHero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Left Column â€” Company Intro First, Then Founder Details */}
-          <div className="col-span-12 lg:col-span-7 flex flex-col gap-6">
+          <div className="col-span-1 lg:col-span-7 flex flex-col gap-6">
             
             {/* Eyebrow */}
             <div className="about-hero-stagger flex items-center gap-3">
@@ -155,7 +155,7 @@ const AboutHero = () => {
           </div>
 
           {/* Right Column — Founder Portrait Frame */}
-          <div className="col-span-12 lg:col-span-5 flex justify-center lg:justify-end mt-4 lg:mt-0 lg:sticky lg:top-28">
+          <div className="col-span-1 lg:col-span-5 flex justify-center lg:justify-end mt-4 lg:mt-0 lg:sticky lg:top-28">
             <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden border border-orange-500/25 shadow-[0_20px_60px_rgba(232,93,4,0.12)] bg-[var(--color-surface-1)] group">
               <img
                 src="/about-image/Advmen Founder.webp"
