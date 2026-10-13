@@ -58,7 +58,7 @@ const AboutStats = ({ isPage = false }) => {
       <section
         className="relative w-full py-16"
         style={{
-          background: 'linear-gradient(180deg, var(--color-black) 0%, rgba(255,107,0,0.02) 50%, var(--color-black) 100%)',
+          background: 'linear-gradient(180deg, var(--color-black) 0%, rgba(232,93,4,0.02) 50%, var(--color-black) 100%)',
         }}
         aria-label="Impact Stats"
       >
@@ -70,23 +70,23 @@ const AboutStats = ({ isPage = false }) => {
                 className="about-stat-item flex flex-col items-center justify-center p-6 text-center rounded-2xl transition-[border-color,background-color,box-shadow,transform] duration-300"
                 style={{
                   background: 'var(--color-surface-1)',
-                  border: '1px solid rgba(255, 255, 255, 0.015)',
+                  border: '1px solid var(--color-border-subtle)',
                   boxShadow: 'var(--shadow-neu-convex)',
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 107, 0, 0.2)'
+                  e.currentTarget.style.borderColor = 'rgba(232, 93, 4, 0.2)'
                   e.currentTarget.style.boxShadow = 'var(--shadow-neu-convex-lg)'
                   e.currentTarget.style.transform = 'translateY(-2px)'
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.015)'
+                  e.currentTarget.style.borderColor = 'var(--color-border-subtle)'
                   e.currentTarget.style.boxShadow = 'var(--shadow-neu-convex)'
                   e.currentTarget.style.transform = 'translateY(0)'
                 }}
               >
                 <h2
                   className="text-[3.25rem] lg:text-[4rem] font-bold tracking-tight text-[var(--color-text-primary)] leading-none mb-3"
-                  style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7), -1px -1px 2px rgba(255, 255, 255, 0.05)' }}
+                  style={{ textShadow: 'none' }}
                 >
                   <Counter value={stat.value} suffix={stat.suffix} isStatic={stat.isStatic} />
                 </h2>
@@ -97,7 +97,7 @@ const AboutStats = ({ isPage = false }) => {
                     color: 'var(--color-text-tertiary)',
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
+                    textShadow: 'none',
                   }}
                 >
                   {stat.label}
@@ -119,23 +119,23 @@ const AboutStats = ({ isPage = false }) => {
           className="about-stat-item flex flex-col gap-2 p-5 rounded-2xl transition-[border-color,background-color,box-shadow,transform] duration-300"
           style={{
             background: 'var(--color-surface-1)',
-            border: '1px solid rgba(255, 255, 255, 0.015)',
+            border: '1px solid var(--color-border-subtle)',
             boxShadow: 'var(--shadow-neu-convex)',
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.borderColor = 'rgba(255, 107, 0, 0.2)'
+            e.currentTarget.style.borderColor = 'rgba(232, 93, 4, 0.2)'
             e.currentTarget.style.boxShadow = 'var(--shadow-neu-convex-lg)'
             e.currentTarget.style.transform = 'translateY(-2px)'
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.015)'
+            e.currentTarget.style.borderColor = 'var(--color-border-subtle)'
             e.currentTarget.style.boxShadow = 'var(--shadow-neu-convex)'
             e.currentTarget.style.transform = 'translateY(0)'
           }}
         >
           <span
             className="text-3xl font-extrabold text-[var(--color-orange)]"
-            style={{ textShadow: '0 0 10px rgba(255, 107, 0, 0.25), 1px 1px 2px rgba(0, 0, 0, 0.8)' }}
+            style={{ textShadow: 'none' }}
           >
             <Counter value={stat.value} suffix={stat.suffix} isStatic={stat.isStatic} />
           </span>
@@ -146,7 +146,7 @@ const AboutStats = ({ isPage = false }) => {
               color: 'var(--color-text-secondary)',
               textTransform: 'uppercase',
               letterSpacing: '0.08em',
-              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
+              textShadow: 'none',
             }}
           >
             {stat.label}

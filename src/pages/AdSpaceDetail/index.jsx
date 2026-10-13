@@ -66,7 +66,7 @@ const AdSpaceDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex justify-center items-center">
+      <div className="min-h-screen bg-paper flex justify-center items-center">
         <div className="spinner" />
       </div>
     )
@@ -74,7 +74,7 @@ const AdSpaceDetail = () => {
 
   if (!space) {
     return (
-      <div className="min-h-screen bg-black flex justify-center items-center text-white">
+      <div className="min-h-screen bg-paper flex justify-center items-center text-ink">
         <h2>Ad Space not found</h2>
       </div>
     )
@@ -84,7 +84,7 @@ const AdSpaceDetail = () => {
     <PageTransition>
       <SEOHead title={`${space.title} — ADVMEN`} description={space.description} />
 
-      <div className="min-h-screen bg-black pt-32 pb-24 text-white">
+      <div className="min-h-screen bg-paper pt-32 pb-24 text-ink">
         <div className="container mx-auto px-4 max-w-6xl">
           
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
@@ -93,19 +93,19 @@ const AdSpaceDetail = () => {
                 <span className="px-3 py-1 bg-orange-500/20 text-orange-400 text-xs font-bold rounded-full border border-orange-500/30 uppercase tracking-wider">
                   {space.spaceType}
                 </span>
-                <span className="px-3 py-1 bg-white/5 text-slate-300 text-xs font-bold rounded-full border border-white/10 uppercase tracking-wider">
+                <span className="px-3 py-1 bg-ink/5 text-gray-800 text-xs font-bold rounded-full border border-ink/25 uppercase tracking-wider">
                   {space.status}
                 </span>
               </div>
-              <h1 className="text-4xl font-display font-bold text-white mb-2">{space.title}</h1>
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
+              <h1 className="text-4xl font-display font-bold text-ink mb-2">{space.title}</h1>
+              <div className="flex items-center gap-2 text-gray-700 text-sm">
                 <FiMapPin className="text-orange-500" />
                 {space.location?.address}, {space.location?.city}, {space.location?.state}
               </div>
             </div>
             <button 
               onClick={handleBookClick}
-              className="px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white font-bold rounded-xl transition-colors shadow-lg shadow-orange-600/20"
+              className="px-6 py-3 bg-orange-600 hover:bg-orange-500 text-ink font-bold rounded-xl transition-colors shadow-lg shadow-orange-600/20"
             >
               {adUser?.role === 'advertiser' ? 'Book This Space' : 'Login to Book'}
             </button>
@@ -115,7 +115,7 @@ const AdSpaceDetail = () => {
             {/* Left Column - Gallery & Description */}
             <div className="lg:col-span-2 space-y-8">
               {/* Main Image */}
-              <div className="w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden bg-white/5 border border-white/10">
+              <div className="w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden bg-ink/5 border border-ink/25">
                 <img 
                   src={getImageUrl(space.photos?.[0]) || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=800&fit=crop'} 
                   alt={space.title}
@@ -124,17 +124,17 @@ const AdSpaceDetail = () => {
               </div>
 
               {/* Description */}
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                <h3 className="text-xl font-bold mb-4 border-b border-white/10 pb-4">About this Space</h3>
-                <p className="text-slate-300 text-sm leading-relaxed whitespace-pre-wrap">
+              <div className="p-6 rounded-2xl bg-ink/5 border border-ink/25">
+                <h3 className="text-xl font-bold mb-4 border-b border-ink/25 pb-4">About this Space</h3>
+                <p className="text-gray-800 text-sm leading-relaxed whitespace-pre-wrap">
                   {space.description}
                 </p>
               </div>
 
               {/* Map Placeholder */}
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <div className="p-6 rounded-2xl bg-ink/5 border border-ink/25">
                 <h3 className="text-xl font-bold mb-4">Location</h3>
-                <div className="w-full h-64 bg-slate-800 rounded-xl flex items-center justify-center text-slate-500">
+                <div className="w-full h-64 bg-surface-2 rounded-xl flex items-center justify-center text-gray-600">
                   Interactive Map Placeholder
                 </div>
               </div>
@@ -143,22 +143,22 @@ const AdSpaceDetail = () => {
             {/* Right Column - Details */}
             <div className="space-y-6">
               {/* Pricing */}
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <div className="p-6 rounded-2xl bg-ink/5 border border-ink/25">
                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><FiDollarSign className="text-orange-500" /> Pricing</h3>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center py-2 border-b border-white/10">
-                    <span className="text-slate-400 text-sm">Monthly</span>
+                  <div className="flex justify-between items-center py-2 border-b border-ink/25">
+                    <span className="text-gray-700 text-sm">Monthly</span>
                     <span className="font-mono font-bold text-emerald-400">₹{space.pricing?.monthly}</span>
                   </div>
                   {space.pricing?.weekly && (
-                    <div className="flex justify-between items-center py-2 border-b border-white/10">
-                      <span className="text-slate-400 text-sm">Weekly</span>
+                    <div className="flex justify-between items-center py-2 border-b border-ink/25">
+                      <span className="text-gray-700 text-sm">Weekly</span>
                       <span className="font-mono font-bold text-emerald-400">₹{space.pricing?.weekly}</span>
                     </div>
                   )}
                   {space.pricing?.daily && (
                     <div className="flex justify-between items-center py-2">
-                      <span className="text-slate-400 text-sm">Daily</span>
+                      <span className="text-gray-700 text-sm">Daily</span>
                       <span className="font-mono font-bold text-emerald-400">₹{space.pricing?.daily}</span>
                     </div>
                   )}
@@ -166,39 +166,39 @@ const AdSpaceDetail = () => {
               </div>
 
               {/* Dimensions */}
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <div className="p-6 rounded-2xl bg-ink/5 border border-ink/25">
                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><FiMaximize className="text-orange-500" /> Dimensions</h3>
                 <div className="flex items-center gap-4">
-                  <div className="text-center p-4 bg-black rounded-xl border border-white/10 flex-1">
-                    <div className="text-xs text-slate-500 uppercase font-mono mb-1">Width</div>
+                  <div className="text-center p-4 bg-paper rounded-xl border border-ink/25 flex-1">
+                    <div className="text-xs text-gray-600 uppercase font-mono mb-1">Width</div>
                     <div className="font-bold">{space.dimensions?.width} {space.dimensions?.unit}</div>
                   </div>
-                  <div className="text-center p-4 bg-black rounded-xl border border-white/10 flex-1">
-                    <div className="text-xs text-slate-500 uppercase font-mono mb-1">Height</div>
+                  <div className="text-center p-4 bg-paper rounded-xl border border-ink/25 flex-1">
+                    <div className="text-xs text-gray-600 uppercase font-mono mb-1">Height</div>
                     <div className="font-bold">{space.dimensions?.height} {space.dimensions?.unit}</div>
                   </div>
                 </div>
               </div>
 
               {/* Audience */}
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <div className="p-6 rounded-2xl bg-ink/5 border border-ink/25">
                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><FiUsers className="text-orange-500" /> Audience</h3>
                 <div className="space-y-4">
                   <div>
-                    <div className="text-xs text-slate-500 uppercase font-mono mb-1">Estimated Daily Traffic</div>
+                    <div className="text-xs text-gray-600 uppercase font-mono mb-1">Estimated Daily Traffic</div>
                     <div className="font-bold text-lg">{space.audience?.dailyTraffic?.toLocaleString() || 'N/A'}</div>
                   </div>
                   <div>
-                    <div className="text-xs text-slate-500 uppercase font-mono mb-1">Demographics</div>
-                    <div className="text-sm text-slate-300">{space.audience?.demographics || 'N/A'}</div>
+                    <div className="text-xs text-gray-600 uppercase font-mono mb-1">Demographics</div>
+                    <div className="text-sm text-gray-800">{space.audience?.demographics || 'N/A'}</div>
                   </div>
                 </div>
               </div>
 
               {/* Calendar placeholder */}
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <div className="p-6 rounded-2xl bg-ink/5 border border-ink/25">
                 <h3 className="text-lg font-bold mb-4">Availability</h3>
-                <div className="text-sm text-slate-400">Select dates when booking to confirm availability.</div>
+                <div className="text-sm text-gray-700">Select dates when booking to confirm availability.</div>
               </div>
 
               {/* Booking Form */}
@@ -209,35 +209,35 @@ const AdSpaceDetail = () => {
               )}
 
               {showBookingForm && !bookingSuccess && (
-                <div className="p-6 rounded-2xl bg-white/5 border border-orange-500/30">
+                <div className="p-6 rounded-2xl bg-ink/5 border border-orange-500/30">
                   <h3 className="text-lg font-bold mb-4 text-orange-400">Book This Space</h3>
                   {bookingError && (
                     <div className="mb-3 p-3 bg-red-500/20 border border-red-500/40 text-red-400 text-xs rounded-lg">{bookingError}</div>
                   )}
                   <form onSubmit={handleBooking} className="space-y-3">
                     <div>
-                      <label className="block text-xs text-slate-400 mb-1">Campaign Name</label>
-                      <input required value={booking.campaignName} onChange={e => setBooking({...booking, campaignName: e.target.value})} className="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:border-orange-500 outline-none" />
+                      <label className="block text-xs text-gray-700 mb-1">Campaign Name</label>
+                      <input required value={booking.campaignName} onChange={e => setBooking({...booking, campaignName: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-xl px-3 py-2 text-sm text-ink focus:border-orange-500 outline-none" />
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs text-slate-400 mb-1">Start Date</label>
-                        <input required type="date" value={booking.startDate} onChange={e => setBooking({...booking, startDate: e.target.value})} className="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:border-orange-500 outline-none" />
+                        <label className="block text-xs text-gray-700 mb-1">Start Date</label>
+                        <input required type="date" value={booking.startDate} onChange={e => setBooking({...booking, startDate: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-xl px-3 py-2 text-sm text-ink focus:border-orange-500 outline-none" />
                       </div>
                       <div>
-                        <label className="block text-xs text-slate-400 mb-1">End Date</label>
-                        <input required type="date" value={booking.endDate} onChange={e => setBooking({...booking, endDate: e.target.value})} className="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:border-orange-500 outline-none" />
+                        <label className="block text-xs text-gray-700 mb-1">End Date</label>
+                        <input required type="date" value={booking.endDate} onChange={e => setBooking({...booking, endDate: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-xl px-3 py-2 text-sm text-ink focus:border-orange-500 outline-none" />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-xs text-slate-400 mb-1">Budget (₹)</label>
-                      <input type="number" value={booking.budget} onChange={e => setBooking({...booking, budget: e.target.value})} className="w-full bg-black border border-white/20 rounded-xl px-3 py-2 text-sm text-white focus:border-orange-500 outline-none" />
+                      <label className="block text-xs text-gray-700 mb-1">Budget (₹)</label>
+                      <input type="number" value={booking.budget} onChange={e => setBooking({...booking, budget: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-xl px-3 py-2 text-sm text-ink focus:border-orange-500 outline-none" />
                     </div>
                     <div className="flex gap-2 pt-2">
-                      <button type="submit" disabled={bookingLoading} className="flex-1 py-2.5 bg-orange-600 hover:bg-orange-500 text-white font-bold rounded-xl text-sm disabled:opacity-50">
+                      <button type="submit" disabled={bookingLoading} className="flex-1 py-2.5 bg-orange-600 hover:bg-orange-500 text-ink font-bold rounded-xl text-sm disabled:opacity-50">
                         {bookingLoading ? 'Sending...' : 'Send Booking Request'}
                       </button>
-                      <button type="button" onClick={() => setShowBookingForm(false)} className="px-4 py-2.5 bg-white/10 text-white rounded-xl text-sm hover:bg-white/20">
+                      <button type="button" onClick={() => setShowBookingForm(false)} className="px-4 py-2.5 bg-ink/10 text-ink rounded-xl text-sm hover:bg-ink/20">
                         Cancel
                       </button>
                     </div>

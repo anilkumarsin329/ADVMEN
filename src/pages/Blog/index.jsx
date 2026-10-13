@@ -120,11 +120,11 @@ const Blog = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.8, delay: i * 0.1 }}
-                whileHover={{ y: -6, borderColor: 'rgba(255,107,0,0.2)' }}
+                whileHover={{ y: -6, borderColor: 'rgba(232,93,4,0.2)' }}
                 className="group relative flex flex-col justify-between p-6 rounded-2xl cursor-default"
                 style={{
-                  background: 'rgba(255,255,255,0.01)',
-                  border: '1px solid rgba(255,255,255,0.03)',
+                  background: 'var(--color-surface-1)',
+                  border: '1px solid var(--color-border-subtle)',
                   backdropFilter: 'blur(12px)',
                   transition: 'border-color 0.4s ease',
                   minHeight: '400px',
@@ -133,7 +133,7 @@ const Blog = () => {
                 <div>
                   {/* Article Thumbnail Image */}
                   <div
-                    className="relative w-full aspect-[16/10] rounded-xl overflow-hidden mb-6 bg-gray-900 border border-[rgba(255,107,0,0.12)]"
+                    className="relative w-full aspect-[16/10] rounded-xl overflow-hidden mb-6 bg-[var(--color-surface-2)] border border-[rgba(232,93,4,0.15)]"
                   >
                     <img
                       src={getImageUrl(article.image)}
@@ -143,7 +143,7 @@ const Blog = () => {
                       height="500"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded bg-[rgba(18,18,21,0.85)] border border-[rgba(255,107,0,0.3)] backdrop-blur-sm text-[0.65rem] font-mono text-[var(--color-orange)] uppercase tracking-wider">
+                    <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded bg-[rgba(255,229,204,0.85)] border border-[rgba(232,93,4,0.3)] backdrop-blur-sm text-[0.65rem] font-mono text-[var(--color-orange)] uppercase tracking-wider">
                       {article.category}
                     </div>
                   </div>
@@ -151,7 +151,7 @@ const Blog = () => {
                   {/* Metadata line */}
                   <div className="flex items-center gap-3 font-mono text-[0.68rem] text-[var(--color-text-tertiary)] uppercase tracking-wider mb-3">
                     <span>{article.date}</span>
-                    <span className="w-1 h-1 rounded-full bg-[rgba(255,255,255,0.15)]" />
+                    <span className="w-1 h-1 rounded-full bg-[rgba(17,17,17,0.15)]" />
                     <span>{article.readTime}</span>
                   </div>
 
@@ -185,7 +185,7 @@ const Blog = () => {
                 </div>
 
                 {/* Footer read link */}
-                <div className="mt-8 pt-4 border-t border-[rgba(255,255,255,0.03)] flex justify-between items-center">
+                <div className="mt-8 pt-4 border-t border-[var(--color-border-subtle)] flex justify-between items-center">
                   <span className="font-mono text-[0.68rem] uppercase tracking-wider text-[var(--color-text-tertiary)]">
                     By {article.author}
                   </span>

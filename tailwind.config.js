@@ -23,20 +23,22 @@ export default {
 
       // ── Colors ─────────────────────────────────────────────
       colors: {
+        ink:   'rgb(var(--rgb-ink) / <alpha-value>)',
+        paper: 'rgb(var(--rgb-paper) / <alpha-value>)',
         brand: {
-          black:          '#141418',
-          orange:         '#E85D00',
-          'orange-light': '#FF7B1A',
-          'orange-dark':  '#CC5200',
-          'orange-deeper':'#993D00',
-          white:          '#FFE6CF',
+          black:          '#FFE5CC',
+          orange:         '#E85D04',
+          'orange-light': '#FF7A1A',
+          'orange-dark':  '#C94F00',
+          'orange-deeper':'#A63F00',
+          white:          '#111111',
         },
         surface: {
-          0: '#0A0A0A',
-          1: '#111111',
-          2: '#161616',
-          3: '#1A1A1A',
-          4: '#222222',
+          0: '#FFE5CC',
+          1: '#FFF0E0',
+          2: '#FFD9B8',
+          3: '#FFEBD6',
+          4: '#FFF7EE',
         },
         gray: {
           950: '#080808',
@@ -61,9 +63,9 @@ export default {
 
       // ── Typography ─────────────────────────────────────────
       fontFamily: {
-        display: ['Space Grotesk', 'sans-serif'],
-        body:    ['Figtree', 'sans-serif'],
-        mono:    ['IBM Plex Mono', 'monospace'],
+        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        body:    ['Space Grotesk', 'system-ui', 'sans-serif'],
+        mono:    ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
 
       fontSize: {
@@ -165,35 +167,35 @@ export default {
 
       // ── Box Shadows ────────────────────────────────────────
       boxShadow: {
-        'xs':           '0 1px 2px rgba(0,0,0,0.4)',
-        'sm':           '0 2px 8px rgba(0,0,0,0.4)',
-        'md':           '0 4px 16px rgba(0,0,0,0.5)',
-        'lg':           '0 8px 32px rgba(0,0,0,0.6)',
-        'xl':           '0 16px 48px rgba(0,0,0,0.7)',
-        '2xl':          '0 24px 64px rgba(0,0,0,0.8)',
-        'card':         '0 2px 12px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04)',
-        'card-hover':   '0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,107,0,0.15)',
-        'card-orange':  '0 4px 24px rgba(255,107,0,0.15), 0 0 0 1px rgba(255,107,0,0.12)',
-        'glow-xs':      '0 0 12px rgba(255,107,0,0.20)',
-        'glow-orange':  '0 0 30px rgba(255,107,0,0.30)',
-        'glow-lg':      '0 0 60px rgba(255,107,0,0.40)',
-        'glow-xl':      '0 0 100px rgba(255,107,0,0.50)',
-        'glow-white':   '0 0 30px rgba(255,255,255,0.08)',
-        'inner-glow':   'inset 0 0 30px rgba(255,107,0,0.08)',
-        'inner-subtle': 'inset 0 1px 0 rgba(255,255,255,0.06)',
+        'xs':           '2px 2px 0 #111111',
+        'sm':           '3px 3px 0 #111111',
+        'md':           '4px 4px 0 #111111',
+        'lg':           '6px 6px 0 #111111',
+        'xl':           '8px 8px 0 #111111',
+        '2xl':          '10px 10px 0 #111111',
+        'card':         '4px 4px 0 #111111',
+        'card-hover':   '6px 6px 0 #E85D04',
+        'card-orange':  '4px 4px 0 #E85D04',
+        'glow-xs':      '2px 2px 0 #111111',
+        'glow-orange':  '4px 4px 0 #111111',
+        'glow-lg':      '6px 6px 0 #111111',
+        'glow-xl':      '8px 8px 0 #111111',
+        'glow-white':   '0 0 0 transparent',
+        'inner-glow':   'inset 0 0 0 transparent',
+        'inner-subtle': 'inset 0 0 0 transparent',
       },
 
       // ── Background Images ──────────────────────────────────
       backgroundImage: {
-        'gradient-orange':    'linear-gradient(90deg, #FF6B00 0%, #FF8C38 100%)',
-        'gradient-orange-135':'linear-gradient(135deg, #FF6B00 0%, #FF8C38 100%)',
-        'gradient-hero':      'linear-gradient(135deg, #0A0A0A 0%, #140800 50%, #0A0A0A 100%)',
-        'gradient-card':      'linear-gradient(180deg, transparent 0%, rgba(10,10,10,0.95) 100%)',
-        'gradient-radial-orange': 'radial-gradient(ellipse at 50% 0%, rgba(255,107,0,0.18) 0%, transparent 65%)',
-        'gradient-radial-center': 'radial-gradient(ellipse at center, rgba(255,107,0,0.12) 0%, transparent 70%)',
-        'gradient-fade-bottom': 'linear-gradient(180deg, transparent 0%, #0A0A0A 100%)',
-        'gradient-fade-top':    'linear-gradient(0deg, transparent 0%, #0A0A0A 100%)',
-        'gradient-shine':     'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%)',
+        'gradient-orange':    'linear-gradient(90deg, #E85D04 0%, #FF7A1A 100%)',
+        'gradient-orange-135':'linear-gradient(135deg, #E85D04 0%, #FF7A1A 100%)',
+        'gradient-hero':      'linear-gradient(135deg, #FFE5CC 0%, #FFD9B8 50%, #FFE5CC 100%)',
+        'gradient-card':      'linear-gradient(180deg, transparent 0%, rgba(255,229,204,0.95) 100%)',
+        'gradient-radial-orange': 'radial-gradient(ellipse at 50% 0%, rgba(232,93,4,0.18) 0%, transparent 65%)',
+        'gradient-radial-center': 'radial-gradient(ellipse at center, rgba(232,93,4,0.12) 0%, transparent 70%)',
+        'gradient-fade-bottom': 'linear-gradient(180deg, transparent 0%, #FFE5CC 100%)',
+        'gradient-fade-top':    'linear-gradient(0deg, transparent 0%, #FFE5CC 100%)',
+        'gradient-shine':     'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%)',
       },
 
       // ── Z-index ────────────────────────────────────────────
@@ -251,8 +253,8 @@ export default {
           '100%': { opacity: '1', transform: 'scale(1)' },
         },
         'pulse-glow': {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(255,107,0,0.25)' },
-          '50%':      { boxShadow: '0 0 60px rgba(255,107,0,0.60)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(232,93,4,0.25)' },
+          '50%':      { boxShadow: '0 0 60px rgba(232,93,4,0.60)' },
         },
         'marquee': {
           '0%':   { transform: 'translateX(0)' },
@@ -275,8 +277,8 @@ export default {
           '100%': { backgroundPosition:  '200% center' },
         },
         'border-pulse': {
-          '0%, 100%': { borderColor: 'rgba(255,107,0,0.3)' },
-          '50%':      { borderColor: 'rgba(255,107,0,0.8)' },
+          '0%, 100%': { borderColor: 'rgba(232,93,4,0.3)' },
+          '50%':      { borderColor: 'rgba(232,93,4,0.8)' },
         },
       },
 

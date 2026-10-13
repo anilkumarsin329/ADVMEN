@@ -60,7 +60,7 @@ const Layout = ({ children }) => {
 
   return (
     <div
-      className="relative min-h-screen overflow-x-hidden"
+      className="relative min-h-screen overflow-x-clip"
       style={{ background: 'var(--color-black)' }}
     >
       {/* Scroll progress indicator */}

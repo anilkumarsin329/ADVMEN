@@ -236,8 +236,22 @@ export const services = [
 /**
  * Find service item by slug, id, or alias
  */
-export const getServiceBySlug = (slug) => {
-  if (!slug) return null
+const SLUG_ALIASES = {
+  'aeo-geo': 'seo',
+  'ai-search-optimization': 'seo',
+  'seo-geo-optimization': 'seo',
+  'content-marketing': 'content-creation',
+  'performance-marketing': 'digital-marketing',
+  'social-media-marketing': 'digital-marketing',
+  'social-media-management': 'digital-marketing',
+  'website-development': 'web-development',
+  'professional-website-design': 'web-development',
+  'branding-logo-design': 'branding',
+}
+
+export const getServiceBySlug = (slugInput) => {
+  if (!slugInput) return null
+  const slug = SLUG_ALIASES[String(slugInput).trim().toLowerCase()] || slugInput
   const raw = String(slug).trim()
   let decoded = raw
   try {

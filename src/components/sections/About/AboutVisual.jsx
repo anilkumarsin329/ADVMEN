@@ -75,7 +75,7 @@ const CapabilityCard = ({ icon, label, desc, className }) => {
         padding:        '1rem 1.25rem',
         borderRadius:   '16px',
         background:     'var(--color-surface-1)',
-        border:         '1px solid rgba(255, 255, 255, 0.015)',
+        border:         '1px solid var(--color-border-subtle)',
         boxShadow:      'var(--shadow-neu-convex)',
         cursor:         'default',
         transition:     'border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease',
@@ -83,12 +83,12 @@ const CapabilityCard = ({ icon, label, desc, className }) => {
         minHeight:      '80px',
       }}
       onMouseEnter={e => {
-        e.currentTarget.style.borderColor = 'rgba(255,107,0,0.25)'
-        e.currentTarget.style.boxShadow   = '0 8px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 107, 0, 0.08)'
+        e.currentTarget.style.borderColor = 'rgba(232,93,4,0.25)'
+        e.currentTarget.style.boxShadow   = '0 8px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(232, 93, 4, 0.08)'
         e.currentTarget.style.transform   = 'translateY(-3px)'
       }}
       onMouseLeave={e => {
-        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.015)'
+        e.currentTarget.style.borderColor = 'var(--color-border-subtle)'
         e.currentTarget.style.boxShadow   = 'var(--shadow-neu-convex)'
         e.currentTarget.style.transform   = 'translateY(0)'
       }}
@@ -148,7 +148,7 @@ const AboutVisual = () => {
         aria-hidden="true"
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[380px] h-[280px] sm:h-[380px] rounded-full pointer-events-none filter blur-[40px]"
         style={{
-          background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(232,93,4,0.06) 0%, transparent 70%)',
         }}
       />
 

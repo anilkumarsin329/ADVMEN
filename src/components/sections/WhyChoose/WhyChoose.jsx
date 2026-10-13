@@ -64,7 +64,7 @@ const WhyChoose = () => {
           width: '500px',
           height: '500px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(232,93,4,0.08) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
@@ -77,7 +77,7 @@ const WhyChoose = () => {
           width: '400px',
           height: '400px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,107,0,0.04) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(232,93,4,0.04) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
@@ -90,15 +90,12 @@ const WhyChoose = () => {
             <span
               className="badge-orange"
             >
-              <FiAward size={14} /> Our Values
+              <FiAward size={14} /> Why ADVMEN
             </span>
           </div>
           <h2 className="section-title mt-4">
             Not Just Another Agency. <span className="text-orange-gradient">Here's Why ADVMEN Leads</span>
           </h2>
-          <p className="section-subtitle">
-            We combine technical excellence with creative vision to deliver results that exceed expectations.
-          </p>
         </div>
 
         {/* Values Grid */}

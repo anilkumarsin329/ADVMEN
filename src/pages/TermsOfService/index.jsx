@@ -34,17 +34,17 @@ const TermsOfService = () => {
               By accessing this digital platform, you agree to respect the terms of engagement of ADVMEN
             </p>
             
-            <h3 className="font-display font-bold text-lg text-white mt-4">1. Project Engagements</h3>
+            <h3 className="font-display font-bold text-lg text-ink mt-4">1. Project Engagements</h3>
             <p>
               All service inquiries, timeline schedules, and design deliverables are governed under dedicated technical contracts signed between client teams and ADVMEN leadership.
             </p>
 
-            <h3 className="font-display font-bold text-lg text-white mt-4">2. Proprietary Intellectual Property</h3>
+            <h3 className="font-display font-bold text-lg text-ink mt-4">2. Proprietary Intellectual Property</h3>
             <p>
               The design layouts, code assets, custom cursor animations, WebGL setups, and SVG logo marks displayed on this platform are owned by ADVMEN and may not be copied or repurposed without direct permission.
             </p>
 
-            <h3 className="font-display font-bold text-lg text-white mt-4">3. Governing Jurisdiction</h3>
+            <h3 className="font-display font-bold text-lg text-ink mt-4">3. Governing Jurisdiction</h3>
             <p>
               These Terms of Service are governed and audited according to the corporate laws of India, under Mohali/Punjab jurisdiction limits.
             </p>

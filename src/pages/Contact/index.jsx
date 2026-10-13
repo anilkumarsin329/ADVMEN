@@ -187,7 +187,7 @@ const Contact = () => {
                 style={{
                   background: 'var(--color-surface-1)',
                   boxShadow: 'var(--shadow-neu-convex)',
-                  border: '1px solid rgba(255, 255, 255, 0.02)',
+                  border: '1px solid rgba(17, 17, 17, 0.02)',
                 }}
               >
                 <h3 className="font-display font-bold text-lg text-[var(--color-text-primary)] mb-4">
@@ -210,7 +210,7 @@ const Contact = () => {
                 style={{
                   background: 'var(--color-surface-1)',
                   boxShadow: 'var(--shadow-neu-convex)',
-                  border: '1px solid rgba(255, 255, 255, 0.02)',
+                  border: '1px solid rgba(17, 17, 17, 0.02)',
                 }}
               >
                 <h3 className="font-display font-bold text-lg text-[var(--color-text-primary)] mb-4">
@@ -255,7 +255,7 @@ const Contact = () => {
                 style={{
                   background: 'var(--color-surface-1)',
                   boxShadow: 'var(--shadow-neu-convex)',
-                  border: '1px solid rgba(255, 255, 255, 0.02)',
+                  border: '1px solid rgba(17, 17, 17, 0.02)',
                   padding: '6px',
                 }}
               >
@@ -283,7 +283,7 @@ const Contact = () => {
                 style={{
                   background: 'var(--color-surface-1)',
                   boxShadow: 'var(--shadow-neu-convex-lg)',
-                  border: '1px solid rgba(255, 255, 255, 0.02)',
+                  border: '1px solid var(--color-border-subtle)',
                 }}
                 noValidate
               >
@@ -299,8 +299,8 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
-                    placeholder=""
+                    className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(232,93,4,0.25)] transition-all duration-300"
+                    placeholder="Your Name"
                     required
                   />
                   {errors.name && <span className="text-red-500 text-xs font-body font-medium mt-1">{errors.name}</span>}
@@ -317,8 +317,8 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
-                    placeholder=""
+                    className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(232,93,4,0.25)] transition-all duration-300"
+                    placeholder="you@company.com"
                     required
                   />
                   {errors.email && <span className="text-red-500 text-xs font-body font-medium mt-1">{errors.email}</span>}
@@ -335,15 +335,15 @@ const Contact = () => {
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(232,93,4,0.25)] transition-all duration-300 [&>option]:bg-[var(--color-surface-2)] [&>option]:text-[var(--color-text-primary)]"
                       required
                     >
                       <option value="">Select budget range</option>
-                      <option value="under-50k">Under â‚¹50,000</option>
-                      <option value="50k-100k">â‚¹50,000 - â‚¹1,00,000</option>
-                      <option value="100k-500k">â‚¹1,00,000 - â‚¹5,00,000</option>
-                      <option value="500k-1m">â‚¹5,00,000 - â‚¹10,00,000</option>
-                      <option value="above-1m">Above â‚¹10,00,000</option>
+                      <option value="under-50k">Under ₹50,000</option>
+                      <option value="50k-100k">₹50,000 - ₹1,00,000</option>
+                      <option value="100k-500k">₹1,00,000 - ₹5,00,000</option>
+                      <option value="500k-1m">₹5,00,000 - ₹10,00,000</option>
+                      <option value="above-1m">Above ₹10,00,000</option>
                     </select>
                     {errors.budget && <span className="text-red-500 text-xs font-body font-medium mt-1">{errors.budget}</span>}
                   </div>
@@ -357,7 +357,7 @@ const Contact = () => {
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(232,93,4,0.25)] transition-all duration-300 [&>option]:bg-[var(--color-surface-2)] [&>option]:text-[var(--color-text-primary)]"
                       required
                     >
                       <option value="">Select timeline</option>
@@ -382,7 +382,7 @@ const Contact = () => {
                       name="industry"
                       value={formData.industry}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(232,93,4,0.25)] transition-all duration-300 [&>option]:bg-[var(--color-surface-2)] [&>option]:text-[var(--color-text-primary)]"
                     >
                       <option value="">Select industry</option>
                       <option value="tech">Technology</option>
@@ -405,7 +405,7 @@ const Contact = () => {
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
+                      className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(232,93,4,0.25)] transition-all duration-300 [&>option]:bg-[var(--color-surface-2)] [&>option]:text-[var(--color-text-primary)]"
                     >
                       <option value="">Select project type</option>
                       <option value="web-design">Web Design</option>
@@ -431,7 +431,7 @@ const Contact = () => {
                     value={formData.goals}
                     onChange={handleInputChange}
                     rows="3"
-                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300 resize-none"
+                    className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(232,93,4,0.25)] transition-all duration-300 resize-none"
                     placeholder="What are your main goals for this project?"
                   />
                 </div>
@@ -448,8 +448,8 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
-                      placeholder=""
+                      className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(232,93,4,0.25)] transition-all duration-300"
+                      placeholder="+91 98765 43210"
                     />
                   </div>
 
@@ -463,8 +463,8 @@ const Contact = () => {
                       name="subject"
                       value={formData.subject}
                       onChange={handleInputChange}
-                      className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300"
-                      placeholder=""
+                      className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(232,93,4,0.25)] transition-all duration-300"
+                      placeholder="Project Inquiry"
                     />
                   </div>
                 </div>
@@ -480,8 +480,8 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows="5"
-                    className="w-full bg-[#e6e6ec] border border-transparent rounded-xl p-3.5 text-[#141418] font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] focus:shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8),_0_0_8px_rgba(255,107,0,0.35)] transition-all duration-300 resize-none"
-                    placeholder=""
+                    className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(232,93,4,0.25)] transition-all duration-300 resize-none"
+                    placeholder="Tell us about your project, goals, and any specific requirements..."
                     required
                   />
                   {errors.message && <span className="text-red-500 text-xs font-body font-medium mt-1">{errors.message}</span>}
@@ -495,8 +495,8 @@ const Contact = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="p-4 rounded-xl text-sm font-body font-medium flex flex-col gap-3"
                     style={{
-                      background: 'rgba(255,107,0,0.08)',
-                      border: '1px solid rgba(255,107,0,0.4)',
+                      background: 'rgba(232,93,4,0.08)',
+                      border: '1px solid rgba(232,93,4,0.4)',
                       color: '#F5F5F5',
                       boxShadow: 'var(--shadow-neu-inset)',
                     }}
@@ -512,7 +512,7 @@ const Contact = () => {
                           href={`mailto:info@advmen.com?subject=${encodeURIComponent(submitErrorDetails.formData.subject || `Inquiry from ${submitErrorDetails.formData.name}`)}&body=${encodeURIComponent(
                             `Name: ${submitErrorDetails.formData.name}\nEmail: ${submitErrorDetails.formData.email}\nPhone: ${submitErrorDetails.formData.phone}\nBudget: ${submitErrorDetails.formData.budget}\nTimeline: ${submitErrorDetails.formData.timeline}\nIndustry: ${submitErrorDetails.formData.industry}\nProject Type: ${submitErrorDetails.formData.projectType}\nGoals: ${submitErrorDetails.formData.goals}\n\nMessage:\n${submitErrorDetails.formData.message}`
                           )}`}
-                          className="px-4 py-2 rounded-lg bg-[var(--color-orange)] text-white font-semibold text-xs transition-all hover:opacity-90 inline-flex items-center gap-1.5"
+                          className="px-4 py-2 rounded-lg bg-[var(--color-orange)] text-ink font-semibold text-xs transition-all hover:opacity-90 inline-flex items-center gap-1.5"
                         >
                           <FiMail size={14} /> Send Direct Email (info@advmen.com)
                         </a>
@@ -522,7 +522,7 @@ const Contact = () => {
                           )}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-4 py-2 rounded-lg bg-[#25D366] text-white font-semibold text-xs transition-all hover:opacity-90 inline-flex items-center gap-1.5"
+                          className="px-4 py-2 rounded-lg bg-[#25D366] text-ink font-semibold text-xs transition-all hover:opacity-90 inline-flex items-center gap-1.5"
                         >
                           <FiMessageSquare size={14} /> Send via WhatsApp
                         </a>
@@ -535,7 +535,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 px-6 rounded-full font-body font-bold text-sm uppercase tracking-wider text-[var(--color-orange-light)] bg-[var(--color-surface-1)] border border-[rgba(255,107,0,0.15)] shadow-[var(--shadow-neu-convex)] transition-all duration-300 hover:scale-[0.98] hover:shadow-[var(--shadow-neu-inset-glow)] hover:text-[var(--color-orange)] active:scale-[0.96] active:shadow-[var(--shadow-neu-inset)] disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4"
+                  className="w-full py-4 px-6 rounded-full font-body font-bold text-sm uppercase tracking-wider text-[var(--color-orange-light)] bg-[var(--color-surface-1)] border border-[rgba(232,93,4,0.15)] shadow-[var(--shadow-neu-convex)] transition-all duration-300 hover:scale-[0.98] hover:shadow-[var(--shadow-neu-inset-glow)] hover:text-[var(--color-orange)] active:scale-[0.96] active:shadow-[var(--shadow-neu-inset)] disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-4"
                   data-cursor="hover"
                 >
                   {isSubmitting ? (
@@ -564,7 +564,7 @@ const Contact = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-black/65"
+            className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-paper/65"
             onClick={() => setSubmitSuccess(false)}
           >
             <motion.div
@@ -573,7 +573,7 @@ const Contact = () => {
               exit={{ scale: 0.85, opacity: 0, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md bg-[#141419] border border-[rgba(255,107,0,0.3)] rounded-3xl p-6 sm:p-8 text-white relative shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_40px_rgba(255,107,0,0.2)] flex flex-col items-center text-center overflow-hidden"
+              className="w-full max-w-md bg-[#FFF0E0] border border-[rgba(232,93,4,0.3)] rounded-3xl p-6 sm:p-8 text-ink relative shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_40px_rgba(232,93,4,0.2)] flex flex-col items-center text-center overflow-hidden"
             >
               {/* Decorative background glow */}
               <div className="absolute -top-16 -left-16 w-36 h-36 bg-[var(--color-orange)] opacity-20 blur-3xl rounded-full pointer-events-none" />
@@ -582,36 +582,36 @@ const Contact = () => {
               {/* Close Button */}
               <button
                 onClick={() => setSubmitSuccess(false)}
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1c1c24] hover:bg-[#282834] flex items-center justify-center text-slate-400 hover:text-white transition-colors border border-white/5 cursor-pointer z-10"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#FFD9B8] hover:bg-[#FFC999] flex items-center justify-center text-gray-700 hover:text-ink transition-colors border border-ink/25 cursor-pointer z-10"
                 aria-label="Close thank you popup"
               >
                 <FiX size={18} />
               </button>
 
               {/* Glowing Icon */}
-              <div className="w-20 h-20 rounded-full bg-[rgba(255,107,0,0.12)] border border-[rgba(255,107,0,0.35)] flex items-center justify-center mb-5 text-[var(--color-orange)] shadow-[0_0_30px_rgba(255,107,0,0.35)]">
+              <div className="w-20 h-20 rounded-full bg-[rgba(232,93,4,0.12)] border border-[rgba(232,93,4,0.35)] flex items-center justify-center mb-5 text-[var(--color-orange)] shadow-[0_0_30px_rgba(232,93,4,0.35)]">
                 <FiCheckCircle size={44} />
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-2 tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-display font-bold text-ink mb-2 tracking-tight">
                 Thank You!
               </h3>
 
-              <p className="text-sm font-body text-slate-300 leading-relaxed mb-5">
+              <p className="text-sm font-body text-gray-800 leading-relaxed mb-5">
                 Your message has been received successfully. Our team will review your inquiry and get back to you within <span className="text-[var(--color-orange)] font-semibold">24 hours</span>.
               </p>
 
               {submittedEmail && (
-                <div className="w-full p-3 rounded-xl bg-[#1c1c24] border border-white/5 text-xs text-slate-400 font-mono mb-6 truncate">
-                  Confirmation sent for: <span className="text-slate-200">{submittedEmail}</span>
+                <div className="w-full p-3 rounded-xl bg-[#FFD9B8] border border-ink/25 text-xs text-gray-700 font-mono mb-6 truncate">
+                  Confirmation sent for: <span className="text-ink">{submittedEmail}</span>
                 </div>
               )}
 
               {/* Primary Action Button */}
               <button
                 onClick={() => setSubmitSuccess(false)}
-                className="w-full py-3.5 px-6 rounded-full font-body font-bold text-sm uppercase tracking-wider text-black bg-[var(--color-orange)] hover:bg-[#ff8533] shadow-[0_4px_20px_rgba(255,107,0,0.4)] transition-all duration-300 transform active:scale-95 cursor-pointer"
+                className="w-full py-3.5 px-6 rounded-full font-body font-bold text-sm uppercase tracking-wider text-black bg-[var(--color-orange)] hover:bg-[#FF7A1A] shadow-[0_4px_20px_rgba(232,93,4,0.4)] transition-all duration-300 transform active:scale-95 cursor-pointer"
               >
                 Got It, Thanks!
               </button>

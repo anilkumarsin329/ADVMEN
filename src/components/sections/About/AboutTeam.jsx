@@ -10,7 +10,7 @@ const teamData = [
     name: 'Mr. Govind Goyal',
     role: 'Founder',
     initials: 'GG',
-    gradient: 'linear-gradient(135deg, #E85D00 0%, #FF8C38 100%)',
+    gradient: 'linear-gradient(135deg, #C94F00 0%, #FF7A1A 100%)',
     image: '/about-image/Advmen Founder.webp',
     bio: '8+ years of experience in Media, Technology & Brand Communication. Leads Strategy & Outreach.',
     isPlaceholder: false,
@@ -19,7 +19,7 @@ const teamData = [
     name: 'Chirag Verma',
     role: 'Director',
     initials: 'CV',
-    gradient: 'linear-gradient(135deg, #E85D00 0%, #FF8C38 100%)',
+    gradient: 'linear-gradient(135deg, #C94F00 0%, #FF7A1A 100%)',
     image: '/about-image/Chirag Verma â€” Director.jpeg',
     bio: 'Experienced in business strategy, operations, team leadership, business development, and driving organizational growth.',
     isPlaceholder: false,
@@ -28,7 +28,7 @@ const teamData = [
     name: 'Anil Kumar Singh',
     role: 'Senior Developer & CIO',
     initials: 'AS',
-    gradient: 'linear-gradient(135deg, #E85D00 0%, #E05600 100%)',
+    gradient: 'linear-gradient(135deg, #C94F00 0%, #E05600 100%)',
     image: '/about-image/Advmen Anil kumar sing Senior Developer & CIO.webp',
     bio: 'Leads core IT infrastructure, cloud architecture, and enterprise software engineering.',
     isPlaceholder: false,
@@ -38,7 +38,7 @@ const teamData = [
     name: 'Abhay Sanwal',
     role: 'Senior UI/UX Developer & TL',
     initials: 'AS',
-    gradient: 'linear-gradient(135deg, #FF5500 0%, #FF8C38 100%)',
+    gradient: 'linear-gradient(135deg, #FF5500 0%, #FF7A1A 100%)',
     image: '/about-image/Advmen abhay UI UX developer.webp',
     bio: 'Crafts pixel-perfect digital interfaces, design systems, and modern web user experiences.',
     isPlaceholder: false,
@@ -47,7 +47,7 @@ const teamData = [
     name: 'Krishna Kumar',
     role: 'Senior MERN Stack Developer',
     initials: 'KK',
-    gradient: 'linear-gradient(135deg, #E85D00 0%, #FF8526 100%)',
+    gradient: 'linear-gradient(135deg, #C94F00 0%, #FF8526 100%)',
     image: '/about-image/Advmen Krishna kumar Mern stack developer.webp',
     bio: 'Specializes in full-stack JavaScript engineering, Node.js REST APIs, MongoDB schemas, and scalable web apps.',
     isPlaceholder: false,
@@ -88,14 +88,14 @@ const AboutTeam = () => {
             OUR LEADERSHIP & TEAM
           </span>
           <h2 
-            className="section-title mt-2 font-display font-bold text-gray-100"
+            className="section-title mt-2 font-display font-bold text-gray-800"
             style={{
               fontSize: 'clamp(1.75rem, 4vw, 3rem)',
             }}
           >
             The Minds Behind ADVMEN
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base mt-2 max-w-xl">
+          <p className="text-gray-700 text-sm sm:text-base mt-2 max-w-xl">
             Meet the engineers, strategists, and designers driving innovation and business growth.
           </p>
         </div>
@@ -112,16 +112,16 @@ const AboutTeam = () => {
               whileHover={{ y: -6 }}
               className="group relative flex flex-col p-5 sm:p-6 rounded-2xl cursor-default transition-all duration-300"
               style={{
-                background: 'rgba(255,255,255,0.02)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: 'var(--color-surface-1)',
+                border: '1px solid var(--color-border-subtle)',
                 backdropFilter: 'blur(12px)',
               }}
             >
               
               {/* Image Container */}
               <div
-                className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-black flex items-center justify-center border border-white/10"
-                style={{ background: '#000000' }}
+                className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-paper flex items-center justify-center border border-ink/25"
+                style={{ background: 'var(--color-surface-2)' }}
               >
                 {member.image ? (
                   <img
@@ -131,10 +131,10 @@ const AboutTeam = () => {
                     decoding="async"
                     width="400"
                     height="300"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 bg-black"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 bg-paper"
                   />
                 ) : (
-                  <div className="flex flex-col items-center justify-center p-6 text-center text-gray-500">
+                  <div className="flex flex-col items-center justify-center p-6 text-center text-gray-600">
                     <div className="w-14 h-14 rounded-full bg-orange-500/10 border border-orange-500/20 text-[var(--color-orange)] flex items-center justify-center mb-2">
                       <FiUserPlus size={24} />
                     </div>
@@ -149,7 +149,7 @@ const AboutTeam = () => {
                   <div 
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                      background: 'linear-gradient(to top, rgba(18, 18, 21, 0.7) 0%, transparent 50%)',
+                      background: 'linear-gradient(to top, rgba(255, 229, 204, 0.7) 0%, transparent 50%)',
                     }}
                   />
                 )}
@@ -158,13 +158,13 @@ const AboutTeam = () => {
               {/* Info */}
               <div className="flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="text-lg font-bold font-display text-gray-100 group-hover:text-[var(--color-orange)] transition-colors">
+                  <h3 className="text-lg font-bold font-display text-gray-800 group-hover:text-[var(--color-orange)] transition-colors">
                     {member.name}
                   </h3>
                   <div className="text-xs font-mono font-semibold text-[var(--color-orange)] uppercase tracking-wider mt-0.5">
                     {member.role}
                   </div>
-                  <p className="text-xs text-gray-400 mt-2.5 leading-relaxed font-body">
+                  <p className="text-xs text-gray-700 mt-2.5 leading-relaxed font-body">
                     {member.bio}
                   </p>
                 </div>

@@ -1,8 +1,8 @@
-/**
+﻿/**
  * admin/components/AdminSidebar.jsx
- * ─────────────────────────────────────────────────────────────
- * ADVMEN — Admin Sidebar Component
- * ─────────────────────────────────────────────────────────────
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * ADVMEN â€” Admin Sidebar Component
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
  */
 
 import { NavLink } from 'react-router-dom'
@@ -70,12 +70,12 @@ const AdminSidebarContent = ({ isCollapsed, toggleSidebar }) => {
         borderRight: '1px solid rgba(255, 255, 255, 0.03)',
       }}
     >
-      {/* Top Section — Logo & Mobile Close */}
+      {/* Top Section â€” Logo & Mobile Close */}
       <div className={`flex items-center px-2 mb-8 shrink-0 ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full overflow-hidden flex items-center justify-center p-1 bg-neutral-900 border border-[rgba(255,107,0,0.4)] shadow-md shrink-0">
               <img 
-                src="/ADVMEN logo.png" 
+                src="/ADVMEN%20logo.png" 
                 alt="ADVMEN Logo" 
                 className="w-full h-full object-contain"
                 style={{ mixBlendMode: 'screen' }}
@@ -211,7 +211,7 @@ const AdminSidebarContent = ({ isCollapsed, toggleSidebar }) => {
           </div>
         </div>
 
-      {/* Bottom Section — Tabs */}
+      {/* Bottom Section â€” Tabs */}
       <div className="flex flex-col gap-1.5 border-t pt-4 mt-auto shrink-0" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
         {bottomNavigationItems.map((item) => {
           const Icon = item.icon
@@ -265,7 +265,7 @@ const AdminSidebarContent = ({ isCollapsed, toggleSidebar }) => {
 const AdminSidebar = ({ isOpen, toggleSidebar, isCollapsed }) => {
   return (
     <>
-      {/* Desktop Sidebar — Fixed Left */}
+      {/* Desktop Sidebar â€” Fixed Left */}
       <aside 
         className="hidden lg:block fixed top-0 bottom-0 left-0 z-30 h-screen transition-all duration-300"
         style={{ width: isCollapsed ? '70px' : '260px' }}
@@ -277,7 +277,7 @@ const AdminSidebar = ({ isOpen, toggleSidebar, isCollapsed }) => {
         />
       </aside>
 
-      {/* Mobile Drawer Sidebar — Animated Overlay + Drawer Container */}
+      {/* Mobile Drawer Sidebar â€” Animated Overlay + Drawer Container */}
       <AnimatePresence>
         {isOpen && (
           <div className="lg:hidden fixed inset-0 z-40 flex">
@@ -315,3 +315,5 @@ const AdminSidebar = ({ isOpen, toggleSidebar, isCollapsed }) => {
 }
 
 export default AdminSidebar
+
+

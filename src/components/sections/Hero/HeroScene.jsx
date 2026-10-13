@@ -43,7 +43,7 @@ const GlowPlane = () => (
   <mesh position={[0, 0, -2.5]}>
     <planeGeometry args={[8, 8]} />
     <meshBasicMaterial
-      color="#E85D00"
+      color="#C94F00"
       transparent
       opacity={0.04}
       depthWrite={false}
@@ -97,8 +97,8 @@ const AbstractShape = () => {
             distortion={0.08}
             distortionScale={0.15}
             temporalDistortion={0.04}
-            color="#E85D00"
-            attenuationColor="#FF8C38"
+            color="#C94F00"
+            attenuationColor="#FF7A1A"
             attenuationDistance={0.6}
           />
         </mesh>
@@ -106,13 +106,13 @@ const AbstractShape = () => {
         {/* Outer wireframe ring */}
         <mesh rotation={[Math.PI / 2, 0, 0]} scale={0.52}>
           <torusGeometry args={[1.85, 0.007, 8, 100]} />
-          <meshBasicMaterial color="#E85D00" transparent opacity={0.22} />
+          <meshBasicMaterial color="#C94F00" transparent opacity={0.22} />
         </mesh>
 
         {/* Second tilted ring */}
         <mesh rotation={[Math.PI / 3, Math.PI / 5, 0]} scale={0.52}>
           <torusGeometry args={[2.15, 0.004, 8, 100]} />
-          <meshBasicMaterial color="#FF8C38" transparent opacity={0.1} />
+          <meshBasicMaterial color="#FF7A1A" transparent opacity={0.1} />
         </mesh>
       </Float>
     </group>
@@ -153,8 +153,8 @@ const AmbientParticles = () => {
 const SceneLights = () => (
   <>
     <ambientLight intensity={0.45} />
-    <pointLight position={[5,  5,  5]}  intensity={3.2} color="#E85D00" />
-    <pointLight position={[-5, -3, -5]} intensity={1.8} color="#FF8C38" />
+    <pointLight position={[5,  5,  5]}  intensity={3.2} color="#C94F00" />
+    <pointLight position={[-5, -3, -5]} intensity={1.8} color="#FF7A1A" />
     <pointLight position={[0,  8,  2]}  intensity={1.2} color="#ffffff" />
     <pointLight position={[3, -5,  4]}  intensity={0.6} color="#FF4500" />
   </>

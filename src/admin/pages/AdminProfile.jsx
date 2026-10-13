@@ -130,7 +130,7 @@ const AdminProfile = () => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
+                    className="bg-[var(--color-surface-4)] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-3 font-body text-xs shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(255,107,0,0.25)] transition-all"
                     required
                   />
                 </div>
@@ -142,7 +142,7 @@ const AdminProfile = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
+                    className="bg-[var(--color-surface-4)] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-3 font-body text-xs shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(255,107,0,0.25)] transition-all"
                     required
                   />
                 </div>
@@ -158,7 +158,7 @@ const AdminProfile = () => {
                 </button>
 
                 {saved && (
-                  <span className="text-xs text-emerald-600 font-semibold flex items-center gap-1">
+                  <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1">
                     <FiCheck size={14} /> Profile updated successfully
                   </span>
                 )}
@@ -190,8 +190,8 @@ const AdminProfile = () => {
                   type="password"
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
-                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
-                  className="bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
+                  placeholder="••••••••"
+                  className="bg-[var(--color-surface-4)] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-3 font-body text-xs shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(255,107,0,0.25)] transition-all"
                   required
                 />
               </div>
@@ -205,8 +205,8 @@ const AdminProfile = () => {
                     type="password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
-                    className="bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
+                    placeholder="••••••••"
+                    className="bg-[var(--color-surface-4)] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-3 font-body text-xs shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(255,107,0,0.25)] transition-all"
                     required
                   />
                 </div>
@@ -218,8 +218,8 @@ const AdminProfile = () => {
                     type="password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
-                    className="bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3 font-body text-xs shadow-[inset_2px_2px_4px_rgba(0,0,0,0.1),_inset_-2px_-2px_4px_rgba(255,255,255,0.7)] focus:outline-none focus:border-[rgba(255,107,0,0.25)] transition-all"
+                    placeholder="••••••••"
+                    className="bg-[var(--color-surface-4)] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] border border-[var(--color-border-subtle)] rounded-xl p-3 font-body text-xs shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(255,107,0,0.25)] transition-all"
                     required
                   />
                 </div>

@@ -33,9 +33,9 @@ const DataDeletion = () => {
               At ADVMEN, we respect your right to control your personal data. If you have interacted with our website or connected via Facebook/Meta and wish to have your data deleted, you may submit a deletion request.
             </p>
 
-            <h3 className="font-display font-bold text-lg text-white mt-4">How to Request Data Deletion</h3>
+            <h3 className="font-display font-bold text-lg text-ink mt-4">How to Request Data Deletion</h3>
             <p>
-              To request deletion of your personal data collected by ADVMEN, please contact us via email with the subject line <span className="text-white font-semibold">"Data Deletion Request"</span>:
+              To request deletion of your personal data collected by ADVMEN, please contact us via email with the subject line <span className="text-ink font-semibold">"Data Deletion Request"</span>:
             </p>
             <p>
               📧 <a href="mailto:info@advmen.com" className="text-[var(--color-orange)] hover:underline">info@advmen.com</a>
@@ -48,17 +48,17 @@ const DataDeletion = () => {
               <li>Description of the data you want deleted</li>
             </ul>
 
-            <h3 className="font-display font-bold text-lg text-white mt-4">What Data We Delete</h3>
+            <h3 className="font-display font-bold text-lg text-ink mt-4">What Data We Delete</h3>
             <p>
               Upon a verified request, we will delete all personal information associated with you including contact form submissions, newsletter subscriptions, and any analytics identifiers linked to your profile.
             </p>
 
-            <h3 className="font-display font-bold text-lg text-white mt-4">Processing Time</h3>
+            <h3 className="font-display font-bold text-lg text-ink mt-4">Processing Time</h3>
             <p>
-              We will process your request within <span className="text-white font-semibold">30 business days</span> and send a confirmation to your email once the deletion is complete.
+              We will process your request within <span className="text-ink font-semibold">30 business days</span> and send a confirmation to your email once the deletion is complete.
             </p>
 
-            <h3 className="font-display font-bold text-lg text-white mt-4">Contact Us</h3>
+            <h3 className="font-display font-bold text-lg text-ink mt-4">Contact Us</h3>
             <p>
               For any questions regarding data deletion, reach us at{' '}
               <a href="mailto:info@advmen.com" className="text-[var(--color-orange)] hover:underline">info@advmen.com</a>{' '}

@@ -71,7 +71,7 @@ const LazyImage = ({
     >
       {!isLoaded && (
         <div
-          className="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-[rgba(255,255,255,0.02)] animate-pulse"
+          className="absolute inset-0 bg-gradient-to-br from-[rgba(17,17,17,0.05)] to-[rgba(17,17,17,0.02)] animate-pulse"
           style={{
             backdropFilter: 'blur(8px)',
           }}

@@ -173,8 +173,8 @@ const Navbar = () => {
           'fixed top-0 left-0 right-0 z-[1000]',
           'transition-[padding,background-color,border-color,backdrop-filter] duration-500 ease-[var(--ease-out-expo)]',
           isScrolled
-            ? 'py-3 bg-[var(--color-surface-1)] backdrop-blur-[20px] saturate-150 border-b border-[var(--color-border-subtle)]'
-            : 'py-5 bg-transparent'
+            ? 'py-3 bg-[var(--color-black)] border-b-2 border-[var(--color-ink)]'
+            : 'py-5 bg-[var(--color-black)] border-b-2 border-[var(--color-ink)]'
         )}
         style={{
           paddingTop: `max(1.25rem, env(safe-area-inset-top))`,
@@ -203,9 +203,9 @@ const Navbar = () => {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  'relative font-body text-sm font-medium tracking-wide',
+                  'relative font-mono text-sm font-medium',
                   'transition-colors duration-300 py-2 group',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded px-2',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-paper rounded px-2',
                   isActive(link.href)
                     ? 'text-[var(--color-text-primary)]'
                     : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
@@ -232,7 +232,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               to="/contact"
-              className="btn-primary btn-sm group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-full"
+              className="btn-secondary btn-sm group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-paper rounded-full"
             >
               Get Audit
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
@@ -302,7 +302,7 @@ const Navbar = () => {
             {/* Glow */}
             <div
               className="absolute top-0 right-0 w-96 h-96 pointer-events-none"
-              style={{ background: 'radial-gradient(circle at 80% 20%, rgba(255,107,0,0.08) 0%, transparent 60%)' }}
+              style={{ background: 'radial-gradient(circle at 80% 20%, rgba(232,93,4,0.08) 0%, transparent 60%)' }}
               aria-hidden="true"
             />
 

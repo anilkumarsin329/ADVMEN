@@ -22,7 +22,7 @@ const AboutStory = () => {
           width: 'clamp(300px, 70vw, 800px)',
           height: 'clamp(200px, 40vw, 500px)',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,107,0,0.015) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(232,93,4,0.015) 0%, transparent 70%)',
           filter: 'blur(100px)',
           zIndex: 0,
         }}
@@ -62,7 +62,7 @@ const AboutStory = () => {
             </h2>
 
             <div 
-              className="flex flex-col gap-6 text-[rgba(255,255,255,0.7)]" 
+              className="flex flex-col gap-6 text-[var(--color-text-secondary)]" 
               style={{ lineHeight: '1.8' }}
             >
               <p style={{ fontSize: 'clamp(0.875rem, 1.1vw, 1rem)' }}>
@@ -88,11 +88,11 @@ const AboutStory = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              whileHover={{ y: -4, borderColor: 'rgba(255,107,0,0.3)' }}
+              whileHover={{ y: -4, borderColor: 'rgba(232,93,4,0.3)' }}
               className="p-6 sm:p-8 rounded-2xl cursor-default"
               style={{
-                background: 'rgba(255,255,255,0.01)',
-                border: '1px solid rgba(255,255,255,0.04)',
+                background: 'var(--color-surface-1)',
+                border: '1px solid var(--color-border-subtle)',
                 backdropFilter: 'blur(16px)',
                 transition: 'border-color 0.4s ease',
               }}
@@ -128,11 +128,11 @@ const AboutStory = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              whileHover={{ y: -4, borderColor: 'rgba(255,107,0,0.3)' }}
+              whileHover={{ y: -4, borderColor: 'rgba(232,93,4,0.3)' }}
               className="p-6 sm:p-8 rounded-2xl cursor-default"
               style={{
-                background: 'rgba(255,255,255,0.01)',
-                border: '1px solid rgba(255,255,255,0.04)',
+                background: 'var(--color-surface-1)',
+                border: '1px solid var(--color-border-subtle)',
                 backdropFilter: 'blur(16px)',
                 transition: 'border-color 0.4s ease',
               }}

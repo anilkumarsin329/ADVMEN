@@ -43,81 +43,94 @@ const Footer = () => {
         </div>
 
         {/* Main Links Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-24 items-start">
-          
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16 items-start">
+
           {/* Quick Links */}
-          <div className="lg:col-span-6 flex flex-col">
+          <nav className="lg:col-span-2 flex flex-col" aria-label="Quick links">
             <h4 className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-text-secondary)] mb-6">
               Quick Links
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
-              {/* Company Links */}
-              <ul className="flex flex-col gap-4">
-                {footerLinks.company.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      to={link.href}
-                      className="font-body text-sm font-medium text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              {/* Services Links */}
-              <ul className="flex flex-col gap-4">
-                {footerLinks.services.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      to={link.href}
-                      className="font-body text-sm font-medium text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+            <ul className="flex flex-col gap-4">
+              {footerLinks.company.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="font-body text-sm font-medium text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-          {/* Contact Info */}
+          {/* Services */}
+          <nav className="lg:col-span-3 flex flex-col" aria-label="Services">
+            <h4 className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-text-secondary)] mb-6">
+              Services
+            </h4>
+            <ul className="flex flex-col gap-4">
+              {footerLinks.services.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="font-body text-sm font-medium text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Markets */}
+          <nav className="lg:col-span-3 flex flex-col" aria-label="Markets">
+            <h4 className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-text-secondary)] mb-6">
+              Markets
+            </h4>
+            <ul className="flex flex-col gap-4">
+              {footerLinks.markets.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="font-body text-sm font-medium text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Contact */}
           <div className="lg:col-span-4 flex flex-col">
             <h4 className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-text-secondary)] mb-6">
               Contact
             </h4>
-            <ul className="flex flex-col gap-5 text-sm font-medium text-[var(--color-text-primary)]">
-              <li>
-                <a
-                  href={`mailto:${COMPANY.email}`}
-                  className="hover:text-[var(--color-orange)] transition-colors duration-300"
-                >
-                  {COMPANY.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${COMPANY.phone}`}
-                  className="hover:text-[var(--color-orange)] transition-colors duration-300"
-                >
-                  {COMPANY.phone}
-                </a>
-              </li>
-              <li className="text-xs text-[var(--color-text-secondary)] font-normal pt-1">
-                Serving In: India | USA | Canada | UAE | Australia | UK | Oman | GCC
-              </li>
-              <li className="leading-relaxed pt-2">
+            <address className="not-italic flex flex-col gap-4 text-sm font-medium text-[var(--color-text-primary)]">
+              <span className="leading-relaxed">
                 ADVMEN Technologies Private Limited<br />
-                Orchid Center, 3rd Floor, Golf Course Road, SEC-53, Gurugram, HR - 122002, India
-              </li>
-            </ul>
-          </div>
+                Orchid Center, 3rd Floor, Golf Course Road, SEC-53,<br />
+                Gurugram, HR - 122002, India
+              </span>
+              <a
+                href={`mailto:${COMPANY.email}`}
+                className="hover:text-[var(--color-orange)] transition-colors duration-300"
+              >
+                Email: {COMPANY.email}
+              </a>
+              <a
+                href={`tel:${COMPANY.phone.replace(/\s/g, '')}`}
+                className="hover:text-[var(--color-orange)] transition-colors duration-300"
+              >
+                Phone: {COMPANY.phone}
+              </a>
+            </address>
 
-          {/* Follow Us */}
-          <div className="lg:col-span-2 flex flex-col">
-            <h4 className="font-mono text-xs font-extrabold uppercase tracking-[0.2em] text-[var(--color-text-secondary)] mb-6">
-              Follow Us
-            </h4>
-            <div className="flex gap-5">
+            <div className="flex items-center gap-5 mt-6">
+              <Link to="/contact" className="btn-primary btn-sm" data-cursor="hover">
+                Let&apos;s Talk
+              </Link>
               {socialIcons.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}

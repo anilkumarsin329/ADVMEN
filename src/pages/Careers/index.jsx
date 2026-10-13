@@ -266,16 +266,16 @@ const Careers = () => {
         transition={{ duration: 0.4 }}
         whileHover={{ 
           y: -6, 
-          borderColor: 'rgba(255, 107, 0, 0.4)', 
-          boxShadow: '0 10px 30px rgba(255, 107, 0, 0.15)' 
+          borderColor: 'rgba(232, 93, 4, 0.4)', 
+          boxShadow: '0 10px 30px rgba(232, 93, 4, 0.15)' 
         }}
-        className="group flex flex-col justify-between transition-all duration-300 relative overflow-hidden rounded-[24px] border border-[rgba(255,255,255,0.08)] bg-[#12141a] p-4 shadow-xl"
+        className="group flex flex-col justify-between transition-all duration-300 relative overflow-hidden rounded-[24px] border border-[rgba(17,17,17,0.08)] bg-[#FFF0E0] p-4 shadow-xl"
         data-cursor="hover"
       >
         {/* Banner Image Container */}
         <Link 
           to={`/careers/${pos.id}`}
-          className="w-full h-52 overflow-hidden relative rounded-2xl bg-[#1c1f2b] border border-[rgba(255,255,255,0.06)] cursor-pointer block"
+          className="w-full h-52 overflow-hidden relative rounded-2xl bg-[#FFD9B8] border border-[rgba(17,17,17,0.06)] cursor-pointer block"
         >
           <img 
             src={cardImage} 
@@ -286,7 +286,7 @@ const Careers = () => {
               e.target.src = 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=675&fit=crop&q=80'
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#12141a] via-transparent to-transparent opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FFF0E0] via-transparent to-transparent opacity-80" />
           
           {/* Floating Level Badge */}
           <div className="absolute top-3.5 right-3.5 z-10">
@@ -304,25 +304,25 @@ const Careers = () => {
         <div className="p-4 pt-4 flex flex-col justify-between flex-1">
           <div>
             {/* Hashtag Department */}
-            <span className="font-mono font-bold text-xs uppercase tracking-widest text-[#E85D00] block mb-1">
+            <span className="font-mono font-bold text-xs uppercase tracking-widest text-[#C94F00] block mb-1">
               #{pos.department || 'TECH'}
             </span>
 
             {/* Job Title */}
-            <h3 className="font-display font-bold text-2xl text-white mb-2 group-hover:text-[#E85D00] transition-colors leading-tight cursor-pointer">
+            <h3 className="font-display font-bold text-2xl text-ink mb-2 group-hover:text-[#C94F00] transition-colors leading-tight cursor-pointer">
               <Link to={`/careers/${pos.id}`}>{pos.title}</Link>
             </h3>
 
             {/* Location */}
-            <div className="flex items-center gap-2 text-xs font-semibold text-slate-300 mb-4">
-              <FiMapPin className="text-[#E85D00] flex-shrink-0" size={14} />
+            <div className="flex items-center gap-2 text-xs font-semibold text-gray-800 mb-4">
+              <FiMapPin className="text-[#C94F00] flex-shrink-0" size={14} />
               <span>{pos.location || 'Gurugram / Remote'}</span>
             </div>
 
             {/* Skill / Experience Pills */}
             <div className="flex flex-wrap gap-2 mb-3">
               {Array.isArray(pos.experience) && pos.experience.map((exp, idx) => (
-                <span key={`exp-${idx}`} className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-white/5 border border-white/10 text-slate-300">
+                <span key={`exp-${idx}`} className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-ink/5 border border-ink/25 text-gray-800">
                   {exp}
                 </span>
               ))}
@@ -343,17 +343,17 @@ const Careers = () => {
           </div>
 
           {/* Action Buttons: VIEW DETAILS & APPLY NOW */}
-          <div className="mt-4 pt-4 border-t border-white/10 flex items-center gap-3">
+          <div className="mt-4 pt-4 border-t border-ink/25 flex items-center gap-3">
             <Link
               to={`/careers/${pos.id}`}
-              className="flex-1 py-2.5 px-3 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white font-mono text-xs uppercase tracking-wider font-bold transition-all text-center"
+              className="flex-1 py-2.5 px-3 rounded-xl border border-ink/40 bg-ink/5 hover:bg-ink/10 text-ink font-mono text-xs uppercase tracking-wider font-bold transition-all text-center"
               data-cursor="hover"
             >
               View Details
             </Link>
             <button
               onClick={() => openApplyModal(pos)}
-              className="flex-1 py-2.5 px-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-md shadow-orange-600/20 text-center cursor-pointer"
+              className="flex-1 py-2.5 px-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-ink font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-md shadow-orange-600/20 text-center cursor-pointer"
               data-cursor="hover"
             >
               Apply Now
@@ -460,7 +460,7 @@ const Careers = () => {
           <div className="container">
             
             {/* Header & Tabs */}
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12 border-b border-[rgba(255,255,255,0.08)] pb-8">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12 border-b border-[rgba(17,17,17,0.08)] pb-8">
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <span className="w-8 h-px bg-[var(--color-orange)]" />
@@ -491,8 +491,8 @@ const Careers = () => {
                       className="px-5 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center gap-2"
                       style={{
                         background: selectedTab === tab.id ? 'var(--color-orange)' : 'var(--color-surface-1)',
-                        color: selectedTab === tab.id ? '#ffffff' : 'var(--color-text-secondary)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
+                        color: selectedTab === tab.id ? 'var(--color-ink)' : 'var(--color-text-secondary)',
+                        border: '1px solid rgba(17, 17, 17, 0.08)',
                         boxShadow: selectedTab === tab.id ? '0 0 20px var(--color-glow-orange-sm)' : 'none',
                       }}
                     >
@@ -506,7 +506,7 @@ const Careers = () => {
 
             {/* Department Pills */}
             <div className="flex flex-wrap gap-2.5 mb-12">
-              <span className="text-xs font-mono uppercase text-slate-400 self-center mr-2">Department:</span>
+              <span className="text-xs font-mono uppercase text-gray-700 self-center mr-2">Department:</span>
               {departments.map((dept) => (
                 <button
                   key={dept}
@@ -516,9 +516,9 @@ const Careers = () => {
                   }}
                   className="px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer"
                   style={{
-                    background: selectedDept === dept ? 'rgba(255, 107, 0, 0.15)' : 'rgba(255, 255, 255, 0.03)',
+                    background: selectedDept === dept ? 'rgba(232, 93, 4, 0.15)' : 'rgba(17, 17, 17, 0.03)',
                     color: selectedDept === dept ? 'var(--color-orange)' : 'var(--color-text-secondary)',
-                    border: selectedDept === dept ? '1px solid rgba(255, 107, 0, 0.4)' : '1px solid rgba(255, 255, 255, 0.05)',
+                    border: selectedDept === dept ? '1px solid rgba(232, 93, 4, 0.4)' : '1px solid rgba(17, 17, 17, 0.05)',
                   }}
                 >
                   {dept}
@@ -534,17 +534,17 @@ const Careers = () => {
                     <FiAward size={20} />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-lg text-white">
+                    <h3 className="font-display font-bold text-lg text-ink">
                       Internship & Entry-Level Programs
                     </h3>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-gray-700">
                       Designed for students, freshers (0-1 yr), and early-career developers & designers ready for live project exposure.
                     </p>
                   </div>
                 </div>
 
                 {internPositions.length === 0 ? (
-                  <div className="p-8 rounded-2xl border border-dashed border-slate-800 text-center text-slate-500 text-xs">
+                  <div className="p-8 rounded-2xl border border-dashed border-ink/30 text-center text-gray-600 text-xs">
                     No internship openings currently listed for this department.
                   </div>
                 ) : (
@@ -565,17 +565,17 @@ const Careers = () => {
                     <FiBriefcase size={20} />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-lg text-white">
+                    <h3 className="font-display font-bold text-lg text-ink">
                       Experienced & Senior Professional Roles
                     </h3>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-gray-700">
                       For developers, designers, and growth managers with 1+ to 3+ years of experience leading projects.
                     </p>
                   </div>
                 </div>
 
                 {experiencedPositions.length === 0 ? (
-                  <div className="p-8 rounded-2xl border border-dashed border-slate-800 text-center text-slate-500 text-xs">
+                  <div className="p-8 rounded-2xl border border-dashed border-ink/30 text-center text-gray-600 text-xs">
                     No experienced openings currently listed for this department.
                   </div>
                 ) : (
@@ -624,11 +624,11 @@ const Careers = () => {
                     className="card p-6 flex flex-col gap-4 text-left transition-colors duration-300"
                     style={{
                       background: 'var(--color-surface-1)',
-                      border: '1px solid rgba(255, 255, 255, 0.03)',
+                      border: '1px solid rgba(17, 17, 17, 0.03)',
                       boxShadow: 'var(--shadow-neu-convex)',
                     }}
                   >
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[var(--color-glass-orange-8)] border border-[rgba(255,107,0,0.15)] text-[var(--color-orange)] text-xl shadow-neu-convex">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[var(--color-glass-orange-8)] border border-[rgba(232,93,4,0.15)] text-[var(--color-orange)] text-xl shadow-neu-convex">
                       <IconComponent />
                     </div>
                     <div>
@@ -658,7 +658,7 @@ const Careers = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-black/40"
+                className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-paper/40"
                 onClick={() => setViewModalJob(null)}
               >
                 <motion.div
@@ -666,27 +666,27 @@ const Careers = () => {
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.95, opacity: 0 }}
                   onClick={(e) => e.stopPropagation()}
-                  className="w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-[#161824] border border-slate-700/60 border-t-4 border-t-orange-500 rounded-[24px] p-6 sm:p-8 text-white relative shadow-2xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  className="w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-[var(--color-surface-1)] border border-[var(--color-border-subtle)] border-t-4 border-t-[var(--color-orange)] rounded-[24px] p-6 sm:p-8 text-ink relative shadow-2xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                 >
                   <button 
                     onClick={() => setViewModalJob(null)}
-                    className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+                    className="absolute top-6 right-6 w-9 h-9 rounded-full bg-[var(--color-surface-2)] hover:bg-[var(--color-surface-3)] flex items-center justify-center text-gray-800 hover:text-ink transition-colors"
                   >
                     <FiX size={20} />
                   </button>
 
-                  <span className="font-mono text-xs uppercase tracking-widest text-orange-500 font-bold block mb-2">
+                  <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-orange)] font-bold block mb-2">
                     #{viewModalJob.department || 'TECH'}
                   </span>
-                  <h2 className="text-3xl font-display font-bold mb-3 leading-tight text-white">{viewModalJob.title}</h2>
+                  <h2 className="text-3xl font-display font-bold mb-3 leading-tight text-ink">{viewModalJob.title}</h2>
 
-                  <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300 mb-6 bg-[#1e2230] p-3 rounded-xl border border-slate-700/50">
-                    <span className="flex items-center gap-1.5 font-semibold"><FiMapPin className="text-orange-500" /> {viewModalJob.location}</span>
-                    <span>â€¢</span>
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-gray-800 mb-6 bg-[var(--color-surface-2)] p-3 rounded-xl border border-[var(--color-border-subtle)]">
+                    <span className="flex items-center gap-1.5 font-semibold"><FiMapPin className="text-[var(--color-orange)]" /> {viewModalJob.location}</span>
+                    <span>•</span>
                     <span className="text-amber-400 font-bold">{viewModalJob.type}</span>
                     {viewModalJob.salary && (
                       <>
-                        <span>â€¢</span>
+                        <span>•</span>
                         <span className="text-emerald-400 font-mono font-bold">{viewModalJob.salary}</span>
                       </>
                     )}
@@ -695,8 +695,8 @@ const Careers = () => {
                   {/* Responsibilities */}
                   {Array.isArray(viewModalJob.responsibilities) && viewModalJob.responsibilities.length > 0 && (
                     <div className="mb-6">
-                      <h4 className="font-mono text-xs uppercase tracking-wider text-slate-400 font-bold mb-3">Key Responsibilities</h4>
-                      <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-300 leading-relaxed">
+                      <h4 className="font-mono text-xs uppercase tracking-wider text-gray-700 font-bold mb-3">Key Responsibilities</h4>
+                      <ul className="list-disc pl-5 space-y-1.5 text-xs text-gray-800 leading-relaxed">
                         {viewModalJob.responsibilities.map((r, i) => <li key={i}>{r}</li>)}
                       </ul>
                     </div>
@@ -705,18 +705,18 @@ const Careers = () => {
                   {/* Requirements */}
                   {Array.isArray(viewModalJob.requirements) && viewModalJob.requirements.length > 0 && (
                     <div className="mb-6">
-                      <h4 className="font-mono text-xs uppercase tracking-wider text-slate-400 font-bold mb-3">Requirements & Qualifications</h4>
-                      <ul className="list-disc pl-5 space-y-1.5 text-xs text-slate-300 leading-relaxed">
+                      <h4 className="font-mono text-xs uppercase tracking-wider text-gray-700 font-bold mb-3">Requirements & Qualifications</h4>
+                      <ul className="list-disc pl-5 space-y-1.5 text-xs text-gray-800 leading-relaxed">
                         {viewModalJob.requirements.map((req, i) => <li key={i}>{req}</li>)}
                       </ul>
                     </div>
                   )}
 
                   {/* Apply Button inside View Details Modal */}
-                  <div className="pt-4 border-t border-slate-700/60 flex justify-end gap-3">
+                  <div className="pt-4 border-t border-ink/30 flex justify-end gap-3">
                     <button
                       onClick={() => openApplyModal(viewModalJob)}
-                      className="w-full py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 font-mono text-xs uppercase tracking-widest font-bold text-white shadow-lg transition-all text-center cursor-pointer"
+                      className="w-full py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 font-mono text-xs uppercase tracking-widest font-bold text-ink shadow-lg transition-all text-center cursor-pointer"
                     >
                       Apply for this Position Now
                     </button>
@@ -734,7 +734,7 @@ const Careers = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-black/40"
+                className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-paper/40"
                 onClick={() => setApplyModalJob(null)}
               >
                 <motion.div
@@ -742,25 +742,25 @@ const Careers = () => {
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.95, opacity: 0 }}
                   onClick={(e) => e.stopPropagation()}
-                  className="w-full max-w-lg bg-[#161824] border border-slate-700/60 border-t-4 border-t-orange-500 rounded-[24px] p-6 sm:p-8 text-white relative shadow-2xl max-h-[90vh] overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                  className="w-full max-w-lg bg-[var(--color-surface-1)] border border-[var(--color-border-subtle)] border-t-4 border-t-[var(--color-orange)] rounded-[24px] p-6 sm:p-8 text-ink relative shadow-2xl max-h-[90vh] overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                 >
                   <button 
                     onClick={() => setApplyModalJob(null)}
-                    className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+                    className="absolute top-6 right-6 w-9 h-9 rounded-full bg-[var(--color-surface-2)] hover:bg-[var(--color-surface-3)] flex items-center justify-center text-gray-800 hover:text-ink transition-colors"
                   >
                     <FiX size={20} />
                   </button>
 
                   {!submitSuccess ? (
                     <div>
-                      <span className="font-mono text-xs uppercase tracking-widest text-orange-500 font-bold block mb-1">
+                      <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-orange)] font-bold block mb-1">
                         Application Form
                       </span>
-                      <h3 className="text-2xl font-bold font-display text-white mb-1">
+                      <h3 className="text-2xl font-bold font-display text-ink mb-1">
                         Apply for {applyModalJob.title}
                       </h3>
-                      <p className="text-xs text-slate-400 mb-6 flex items-center gap-1.5">
-                        {isInternRole(applyModalJob) ? <span className="flex items-center gap-1 text-amber-400 font-bold"><FiAward size={12} /> Internship Track</span> : <span className="flex items-center gap-1 text-blue-400 font-bold"><FiBriefcase size={12} /> Experienced Track</span>} â€¢ {applyModalJob.department}
+                      <p className="text-xs text-gray-700 mb-6 flex items-center gap-1.5">
+                        {isInternRole(applyModalJob) ? <span className="flex items-center gap-1 text-amber-400 font-bold"><FiAward size={12} /> Internship Track</span> : <span className="flex items-center gap-1 text-blue-400 font-bold"><FiBriefcase size={12} /> Experienced Track</span>} • {applyModalJob.department}
                       </p>
 
                       {formError && (
@@ -772,38 +772,38 @@ const Careers = () => {
 
                       <form onSubmit={handleApplySubmit} className="space-y-4">
                         <div>
-                          <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">Full Name *</label>
+                          <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">Full Name *</label>
                           <input
                             type="text"
                             required
                             placeholder="e.g. Rahul Sharma"
                             value={applicantForm.name}
                             onChange={(e) => setApplicantForm({ ...applicantForm, name: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all font-medium"
+                            className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all font-medium"
                           />
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
-                            <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">Email Address *</label>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">Email Address *</label>
                             <input
                               type="email"
                               required
                               placeholder="e.g. rahul@gmail.com"
                               value={applicantForm.email}
                               onChange={(e) => setApplicantForm({ ...applicantForm, email: e.target.value })}
-                              className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all font-medium"
+                              className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all font-medium"
                             />
                           </div>
                           <div>
-                            <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">WhatsApp / Phone *</label>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">WhatsApp / Phone *</label>
                             <input
                               type="tel"
                               required
                               placeholder="e.g. +91 9876543210"
                               value={applicantForm.phone}
                               onChange={(e) => setApplicantForm({ ...applicantForm, phone: e.target.value })}
-                              className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all font-medium"
+                              className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all font-medium"
                             />
                           </div>
                         </div>
@@ -811,7 +811,7 @@ const Careers = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           {/* Profile Photo File Upload */}
                           <div>
-                            <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold flex items-center justify-between">
+                            <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold flex items-center justify-between">
                               <span>Profile Photo</span>
                               {uploadingPhoto && <span className="text-[10px] text-orange-400 font-mono animate-pulse">Uploading...</span>}
                             </label>
@@ -825,10 +825,10 @@ const Careers = () => {
                               />
                               <label
                                 htmlFor="photo-upload-main"
-                                className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-dashed border-slate-600 hover:border-orange-500 text-xs text-slate-300 flex items-center justify-between cursor-pointer transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-dashed border-[var(--color-border-subtle)] hover:border-[var(--color-orange)] text-xs text-gray-800 flex items-center justify-between cursor-pointer transition-all"
                               >
                                 <span className="truncate max-w-[170px] font-medium">
-                                  {applicantForm.profilePhoto ? 'âœ“ Photo Uploaded' : 'Choose Photo (JPG/PNG)'}
+                                  {applicantForm.profilePhoto ? '✓ Photo Uploaded' : 'Choose Photo (JPG/PNG)'}
                                 </span>
                                 <FiUpload className="text-orange-400 flex-shrink-0" size={15} />
                               </label>
@@ -837,7 +837,7 @@ const Careers = () => {
 
                           {/* Resume File Upload */}
                           <div>
-                            <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold flex items-center justify-between">
+                            <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold flex items-center justify-between">
                               <span>Upload Resume *</span>
                               {uploadingResume && <span className="text-[10px] text-orange-400 font-mono animate-pulse">Uploading...</span>}
                             </label>
@@ -851,10 +851,10 @@ const Careers = () => {
                               />
                               <label
                                 htmlFor="resume-upload-main"
-                                className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-dashed border-slate-600 hover:border-orange-500 text-xs text-slate-300 flex items-center justify-between cursor-pointer transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-dashed border-[var(--color-border-subtle)] hover:border-[var(--color-orange)] text-xs text-gray-800 flex items-center justify-between cursor-pointer transition-all"
                               >
                                 <span className="truncate max-w-[170px] font-medium">
-                                  {applicantForm.resume ? 'âœ“ Resume Uploaded' : 'Choose Resume (PDF/DOC)'}
+                                  {applicantForm.resume ? '✓ Resume Uploaded' : 'Choose Resume (PDF/DOC)'}
                                 </span>
                                 <FiUpload className="text-orange-400 flex-shrink-0" size={15} />
                               </label>
@@ -864,42 +864,42 @@ const Careers = () => {
 
                         {/* Portfolio / LinkedIn URL */}
                         <div>
-                          <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">Portfolio / LinkedIn Link</label>
+                          <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">Portfolio / LinkedIn Link</label>
                           <input
                             type="url"
                             placeholder="https://linkedin.com/in/... or https://github.com/..."
                             value={applicantForm.portfolio}
                             onChange={(e) => setApplicantForm({ ...applicantForm, portfolio: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all font-medium"
+                            className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all font-medium"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">Experience / Status</label>
+                          <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">Experience / Status</label>
                           <input
                             type="text"
                             placeholder="e.g. Student / Fresher 2026 or 2 yrs Experience"
                             value={applicantForm.experience}
                             onChange={(e) => setApplicantForm({ ...applicantForm, experience: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all font-medium"
+                            className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all font-medium"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">Cover Letter / Message</label>
+                          <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">Cover Letter / Message</label>
                           <textarea
                             rows={3}
                             placeholder="Briefly tell us why you are interested in this role..."
                             value={applicantForm.coverLetter}
                             onChange={(e) => setApplicantForm({ ...applicantForm, coverLetter: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all resize-none font-medium"
+                            className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all resize-none font-medium"
                           />
                         </div>
 
                         <button
                           type="submit"
                           disabled={submitting}
-                          className="w-full py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-mono text-xs uppercase tracking-widest font-bold transition-all shadow-lg shadow-orange-600/20 flex items-center justify-center gap-2 mt-2 cursor-pointer"
+                          className="w-full py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-ink font-mono text-xs uppercase tracking-widest font-bold transition-all shadow-lg shadow-orange-600/20 flex items-center justify-center gap-2 mt-2 cursor-pointer"
                         >
                           <FiSend size={14} />
                           <span>{submitting ? 'Submitting Application...' : 'Submit Application Now'}</span>
@@ -914,9 +914,9 @@ const Careers = () => {
                       </div>
 
                       <div>
-                        <h3 className="text-2xl font-bold font-display text-white mb-2">Application Submitted Successfully</h3>
-                        <p className="text-xs text-slate-300 leading-relaxed max-w-sm mx-auto">
-                          Thank you, <strong className="text-white">{applicantForm.name}</strong>! Your application for <strong className="text-orange-400">{applyModalJob.title}</strong> has been received by our hiring team.
+                        <h3 className="text-2xl font-bold font-display text-ink mb-2">Application Submitted Successfully</h3>
+                        <p className="text-xs text-gray-800 leading-relaxed max-w-sm mx-auto">
+                          Thank you, <strong className="text-ink">{applicantForm.name}</strong>! Your application for <strong className="text-orange-400">{applyModalJob.title}</strong> has been received by our hiring team.
                         </p>
                       </div>
 
@@ -933,7 +933,7 @@ const Careers = () => {
                             </div>
                           </div>
 
-                          <p className="text-xs text-slate-300 leading-relaxed">
+                          <p className="text-xs text-gray-800 leading-relaxed">
                             Please join our official WhatsApp group for instant onboarding updates, task assignments, and direct communication with mentors:
                           </p>
 
@@ -941,21 +941,21 @@ const Careers = () => {
                             href={WHATSAPP_GROUP_LINK}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 text-center cursor-pointer"
+                            className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-ink font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 text-center cursor-pointer"
                           >
                             <FiExternalLink size={16} />
                             <span>Join Official WhatsApp Group Now</span>
                           </a>
                         </div>
                       ) : (
-                        <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-xs text-slate-300">
+                        <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-xs text-gray-800">
                           Our HR team will review your application and contact you via email or phone shortly for the next interview rounds.
                         </div>
                       )}
 
                       <button
                         onClick={() => setApplyModalJob(null)}
-                        className="w-full py-2.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white font-mono text-xs uppercase tracking-wider font-bold transition-all"
+                        className="w-full py-2.5 rounded-xl border border-ink/40 bg-ink/5 hover:bg-ink/10 text-ink font-mono text-xs uppercase tracking-wider font-bold transition-all"
                       >
                         Close Window
                       </button>

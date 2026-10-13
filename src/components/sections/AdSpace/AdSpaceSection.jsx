@@ -81,7 +81,7 @@ const AdSpaceSection = () => {
           filter: 'grayscale(20%)'
         }}
       />
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/90 via-black/60 to-black/90" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-paper/90 via-paper/60 to-paper/90" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
@@ -97,21 +97,21 @@ const AdSpaceSection = () => {
           {/* Subtle Background Orb */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[150px] sm:w-[400px] sm:h-[200px] bg-orange-500/20 blur-[100px] sm:blur-[120px] rounded-[100%] pointer-events-none -z-10 mix-blend-screen" />
           
-          <h2 className="adspace-stagger section-title max-w-5xl mb-6 text-white font-display relative z-10 w-full px-4"
+          <h2 className="adspace-stagger section-title max-w-5xl mb-6 text-ink font-display relative z-10 w-full px-4"
             style={{
               fontSize: 'clamp(2rem, 4.5vw, 4.2rem)',
               lineHeight: 1.1,
               fontWeight: 900,
               letterSpacing: '-0.02em',
               textTransform: 'uppercase',
-              textShadow: '0 4px 20px rgba(0,0,0,0.8)'
+              textShadow: 'none'
             }}
           >
             Advertise Smarter.<br />
             <span 
               style={{
                 display: 'inline-block',
-                backgroundImage: 'linear-gradient(135deg, #FF8C38 0%, #FFB775 100%)',
+                backgroundImage: 'linear-gradient(135deg, #FF7A1A 0%, #FFB775 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -121,7 +121,7 @@ const AdSpaceSection = () => {
             </span>
           </h2>
 
-          <p className="adspace-stagger max-w-3xl mb-12 sm:mb-16 text-slate-300 relative z-10 mx-auto px-2"
+          <p className="adspace-stagger max-w-3xl mb-12 sm:mb-16 text-gray-800 relative z-10 mx-auto px-2"
             style={{ 
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(0.95rem, 1.5vw, 1.25rem)',
@@ -140,15 +140,15 @@ const AdSpaceSection = () => {
               key={idx} 
               className="adspace-stagger flex flex-col items-center text-center p-8 rounded-2xl transition-all duration-300 hover:scale-105"
               style={{
-                background: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid rgba(255, 107, 0, 0.15)',
+                background: 'rgba(17, 17, 17, 0.02)',
+                border: '1px solid rgba(232, 93, 4, 0.15)',
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',
               }}
             >
               <div className="text-5xl mb-6 text-orange-500">{feature.icon}</div>
-              <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{feature.desc}</p>
+              <h3 className="text-xl font-bold text-ink mb-4">{feature.title}</h3>
+              <p className="text-gray-700 text-sm leading-relaxed">{feature.desc}</p>
             </div>
           ))}
         </div>
@@ -156,7 +156,7 @@ const AdSpaceSection = () => {
         <div className="adspace-stagger">
           <Link 
             to="/ad-space" 
-            className="px-8 py-4 bg-orange-600 hover:bg-orange-500 text-white font-bold rounded-xl transition-colors shadow-lg shadow-orange-600/20 text-lg"
+            className="px-8 py-4 bg-orange-600 hover:bg-orange-500 text-ink font-bold rounded-xl transition-colors shadow-lg shadow-orange-600/20 text-lg"
           >
             Explore Ad Spaces
           </Link>

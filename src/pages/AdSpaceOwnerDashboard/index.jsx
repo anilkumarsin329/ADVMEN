@@ -87,17 +87,17 @@ const AdSpaceOwnerDashboard = () => {
     } catch(err) { console.error(err) }
   }
 
-  if (loading) return <div className="min-h-screen bg-black flex justify-center items-center"><div className="spinner" /></div>
+  if (loading) return <div className="min-h-screen bg-paper flex justify-center items-center"><div className="spinner" /></div>
 
   return (
     <PageTransition>
       <SEOHead title="Owner Dashboard — ADVMEN" />
-      <div className="min-h-screen bg-black pt-32 pb-24 text-white">
+      <div className="min-h-screen bg-paper pt-32 pb-24 text-ink">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="flex justify-between items-center mb-8">
             <div>
               <h1 className="text-3xl font-display font-bold">Owner Dashboard</h1>
-              <p className="text-slate-400">Welcome, {adUser.name}. Total Earnings: <span className="text-emerald-400 font-bold">₹{adUser.earnings}</span></p>
+              <p className="text-gray-700">Welcome, {adUser.name}. Total Earnings: <span className="text-emerald-400 font-bold">₹{adUser.earnings}</span></p>
             </div>
             <div className="flex gap-4">
               <button onClick={() => setShowForm(!showForm)} className="btn-primary flex items-center gap-2">
@@ -108,42 +108,42 @@ const AdSpaceOwnerDashboard = () => {
           </div>
 
           {showForm && (
-            <div className="mb-12 p-6 rounded-2xl bg-white/5 border border-white/10">
+            <div className="mb-12 p-6 rounded-2xl bg-ink/5 border border-ink/25">
               <h2 className="text-xl font-bold mb-4">List New Ad Space</h2>
               <form onSubmit={handleCreateSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">Title</label>
-                  <input required value={formData.title} onChange={e=>setFormData({...formData, title: e.target.value})} className="w-full bg-black border border-white/20 rounded-lg p-2 text-sm text-white" />
+                  <label className="block text-xs text-gray-700 mb-1">Title</label>
+                  <input required value={formData.title} onChange={e=>setFormData({...formData, title: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-lg p-2 text-sm text-ink" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">Space Type</label>
-                  <select value={formData.spaceType} onChange={e=>setFormData({...formData, spaceType: e.target.value})} className="w-full bg-black border border-white/20 rounded-lg p-2 text-sm text-white">
+                  <label className="block text-xs text-gray-700 mb-1">Space Type</label>
+                  <select value={formData.spaceType} onChange={e=>setFormData({...formData, spaceType: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-lg p-2 text-sm text-ink">
                     <option>Wall</option><option>Shop/Storefront</option><option>Building</option><option>Digital Screen</option><option>Vehicle</option><option>Website/App</option><option>Other</option>
                   </select>
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-xs text-slate-400 mb-1">Description</label>
-                  <textarea required value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-black border border-white/20 rounded-lg p-2 text-sm text-white" />
+                  <label className="block text-xs text-gray-700 mb-1">Description</label>
+                  <textarea required value={formData.description} onChange={e=>setFormData({...formData, description: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-lg p-2 text-sm text-ink" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">City</label>
-                  <input required value={formData.city} onChange={e=>setFormData({...formData, city: e.target.value})} className="w-full bg-black border border-white/20 rounded-lg p-2 text-sm text-white" />
+                  <label className="block text-xs text-gray-700 mb-1">City</label>
+                  <input required value={formData.city} onChange={e=>setFormData({...formData, city: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-lg p-2 text-sm text-ink" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">State</label>
-                  <input required value={formData.state} onChange={e=>setFormData({...formData, state: e.target.value})} className="w-full bg-black border border-white/20 rounded-lg p-2 text-sm text-white" />
+                  <label className="block text-xs text-gray-700 mb-1">State</label>
+                  <input required value={formData.state} onChange={e=>setFormData({...formData, state: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-lg p-2 text-sm text-ink" />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-xs text-slate-400 mb-1">Address</label>
-                  <input required value={formData.address} onChange={e=>setFormData({...formData, address: e.target.value})} className="w-full bg-black border border-white/20 rounded-lg p-2 text-sm text-white" />
+                  <label className="block text-xs text-gray-700 mb-1">Address</label>
+                  <input required value={formData.address} onChange={e=>setFormData({...formData, address: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-lg p-2 text-sm text-ink" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">Monthly Price (₹)</label>
-                  <input type="number" required value={formData.monthlyPrice} onChange={e=>setFormData({...formData, monthlyPrice: e.target.value})} className="w-full bg-black border border-white/20 rounded-lg p-2 text-sm text-white" />
+                  <label className="block text-xs text-gray-700 mb-1">Monthly Price (₹)</label>
+                  <input type="number" required value={formData.monthlyPrice} onChange={e=>setFormData({...formData, monthlyPrice: e.target.value})} className="w-full bg-paper border border-ink/40 rounded-lg p-2 text-sm text-ink" />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-1">Photos (Up to 5)</label>
-                  <input type="file" multiple accept="image/*" onChange={e=>setFiles(e.target.files)} className="w-full bg-black border border-white/20 rounded-lg p-1.5 text-sm text-white" />
+                  <label className="block text-xs text-gray-700 mb-1">Photos (Up to 5)</label>
+                  <input type="file" multiple accept="image/*" onChange={e=>setFiles(e.target.files)} className="w-full bg-paper border border-ink/40 rounded-lg p-1.5 text-sm text-ink" />
                 </div>
                 <div className="md:col-span-2 flex justify-end gap-2 mt-4">
                   <button type="button" onClick={() => setShowForm(false)} className="btn-secondary text-sm">Cancel</button>
@@ -156,18 +156,18 @@ const AdSpaceOwnerDashboard = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* My Spaces */}
             <div>
-              <h2 className="text-xl font-bold mb-4 border-b border-white/10 pb-2">My Spaces</h2>
-              {spaces.length === 0 ? <p className="text-slate-400">No spaces listed yet.</p> : (
+              <h2 className="text-xl font-bold mb-4 border-b border-ink/25 pb-2">My Spaces</h2>
+              {spaces.length === 0 ? <p className="text-gray-700">No spaces listed yet.</p> : (
                 <div className="space-y-4">
                   {spaces.map(space => (
-                    <div key={space._id} className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                    <div key={space._id} className="p-4 rounded-xl bg-ink/5 border border-ink/25 flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <div className="w-16 h-16 bg-slate-800 rounded-lg overflow-hidden">
+                        <div className="w-16 h-16 bg-surface-2 rounded-lg overflow-hidden">
                           <img src={getImageUrl(space.photos?.[0]) || null} className="w-full h-full object-cover" alt="" />
                         </div>
                         <div>
                           <h3 className="font-bold">{space.title}</h3>
-                          <p className="text-xs text-slate-400">{space.status} | {space.isApproved ? 'Approved' : 'Pending Admin'}</p>
+                          <p className="text-xs text-gray-700">{space.status} | {space.isApproved ? 'Approved' : 'Pending Admin'}</p>
                         </div>
                       </div>
                       <div className="font-bold text-emerald-400">₹{space.pricing?.monthly}</div>
@@ -179,16 +179,16 @@ const AdSpaceOwnerDashboard = () => {
 
             {/* Bookings */}
             <div>
-              <h2 className="text-xl font-bold mb-4 border-b border-white/10 pb-2">Booking Requests</h2>
-              {bookings.length === 0 ? <p className="text-slate-400">No booking requests.</p> : (
+              <h2 className="text-xl font-bold mb-4 border-b border-ink/25 pb-2">Booking Requests</h2>
+              {bookings.length === 0 ? <p className="text-gray-700">No booking requests.</p> : (
                 <div className="space-y-4">
                   {bookings.map(booking => (
-                    <div key={booking._id} className="p-4 rounded-xl bg-white/5 border border-orange-500/30">
+                    <div key={booking._id} className="p-4 rounded-xl bg-ink/5 border border-orange-500/30">
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="font-bold text-orange-400">{booking.campaign?.name}</h3>
-                        <span className="text-xs px-2 py-1 bg-white/10 rounded font-bold uppercase">{booking.status}</span>
+                        <span className="text-xs px-2 py-1 bg-ink/10 rounded font-bold uppercase">{booking.status}</span>
                       </div>
-                      <p className="text-sm text-slate-300 mb-2">Advertiser: {booking.advertiser?.name}</p>
+                      <p className="text-sm text-gray-800 mb-2">Advertiser: {booking.advertiser?.name}</p>
                       <div className="flex justify-between text-sm mb-4">
                         <span>Total: ₹{booking.pricing?.total}</span>
                         <span>Your Payout: <span className="text-emerald-400 font-bold">₹{booking.pricing?.ownerPayout}</span></span>

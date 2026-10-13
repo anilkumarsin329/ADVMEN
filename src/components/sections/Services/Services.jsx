@@ -89,18 +89,18 @@ const Services = ({ isPage = false }) => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {LAYERS.map((item) => (
-          <div key={item.layer} style={{ padding: '1.75rem', borderRadius: '1rem', background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,107,0,0.15)', backdropFilter: 'blur(12px)' }}>
+          <div key={item.layer} style={{ padding: '1.75rem', borderRadius: '1rem', background: 'var(--color-surface-1)', border: '1px solid var(--color-border-subtle)', backdropFilter: 'blur(12px)' }}>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: 'var(--color-orange)', letterSpacing: '0.12em', textTransform: 'uppercase', display: 'block', marginBottom: '0.6rem' }}>{item.layer}</span>
             <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-text-primary)', marginBottom: '0.6rem' }}>{item.title}</h3>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>{item.desc}</p>
           </div>
         ))}
       </div>
-      <div style={{ padding: '2rem 2.5rem', borderRadius: '1rem', background: 'rgba(255,107,0,0.04)', border: '1px solid rgba(255,107,0,0.15)' }}>
+      <div style={{ padding: '2rem 2.5rem', borderRadius: '1rem', background: 'rgba(232,93,4,0.04)', border: '1px solid rgba(232,93,4,0.15)' }}>
         <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '1.25rem', fontWeight: 700 }}>We Specialise In</p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
           {SPECIALISE.map(tag => (
-            <span key={tag} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--color-orange)', background: 'rgba(255,107,0,0.1)', border: '1px solid rgba(255,107,0,0.3)', padding: '0.55rem 1.25rem', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>{tag}</span>
+            <span key={tag} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--color-orange)', background: 'rgba(232,93,4,0.1)', border: '1px solid rgba(232,93,4,0.3)', padding: '0.55rem 1.25rem', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>{tag}</span>
           ))}
         </div>
       </div>
@@ -119,8 +119,8 @@ const Services = ({ isPage = false }) => {
       aria-label="Our Services"
     >
       {/* Background glows */}
-      <div aria-hidden="true" style={{ position: 'absolute', top: '20%', left: '10%', width: 'clamp(300px, 50vw, 600px)', height: 'clamp(300px, 50vw, 600px)', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
-      <div aria-hidden="true" style={{ position: 'absolute', bottom: '10%', right: '5%', width: 'clamp(250px, 40vw, 500px)', height: 'clamp(250px, 40vw, 500px)', borderRadius: '50%', background: 'radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', top: '20%', left: '10%', width: 'clamp(300px, 50vw, 600px)', height: 'clamp(300px, 50vw, 600px)', borderRadius: '50%', background: 'radial-gradient(circle, rgba(232,93,4,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', bottom: '10%', right: '5%', width: 'clamp(250px, 40vw, 500px)', height: 'clamp(250px, 40vw, 500px)', borderRadius: '50%', background: 'radial-gradient(circle, rgba(232,93,4,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-10" style={{ zIndex: 1, maxWidth: '100%' }}>
 
@@ -129,7 +129,7 @@ const Services = ({ isPage = false }) => {
           <div className="inline-block mb-3 sm:mb-4">
             <span
               className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold tracking-widest uppercase inline-flex items-center gap-1.5"
-              style={{ background: 'rgba(255, 107, 0, 0.1)', border: '1px solid rgba(255, 107, 0, 0.3)', color: 'var(--color-orange)' }}
+              style={{ background: 'rgba(232, 93, 4, 0.1)', border: '1px solid rgba(232, 93, 4, 0.3)', color: 'var(--color-orange)' }}
             >
               <FiLayers size={14} /> Our Expertise
             </span>
@@ -158,12 +158,12 @@ const Services = ({ isPage = false }) => {
             <div key={service.id || service._id} className="service-card group">
               <Link to={`/services/${service.slug}`} className="block h-full cursor-pointer">
                 <div
-                  className="relative card-glass flex flex-col h-full transition-all duration-300 hover:border-[rgba(255,107,0,0.3)] hover:shadow-xl"
+                  className="relative card-glass flex flex-col h-full transition-all duration-300 hover:border-[rgba(232,93,4,0.3)] hover:shadow-xl"
                   style={{ minHeight: '400px', background: 'var(--color-surface-1)' }}
                 >
                   <div
                     className="relative w-full flex items-center justify-center overflow-hidden flex-shrink-0"
-                    style={{ height: 'clamp(140px, 35vw, 200px)', background: 'linear-gradient(135deg, rgba(30,30,30,0.8) 0%, rgba(20,20,20,0.8) 100%)', borderBottom: '1px solid rgba(255,107,0,0.1)' }}
+                    style={{ height: 'clamp(140px, 35vw, 200px)', background: 'linear-gradient(135deg, rgba(255,240,224,0.9) 0%, rgba(255,229,204,0.95) 100%)', borderBottom: '1px solid rgba(232,93,4,0.15)' }}
                   >
                     <img
                       src={getImageUrl(service.image)}
@@ -173,7 +173,7 @@ const Services = ({ isPage = false }) => {
                       style={{ maxWidth: '95%', maxHeight: '95%', width: 'auto', height: 'auto', objectFit: 'contain', objectPosition: 'center' }}
                       loading="lazy" decoding="async"
                     />
-                    <div className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-100 opacity-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(255,107,0,0.15) 0%, rgba(0,0,0,0.4) 100%)' }} />
+                    <div className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-100 opacity-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(232,93,4,0.15) 0%, rgba(0,0,0,0.4) 100%)' }} />
                   </div>
 
                   <div className="p-3 sm:p-4 md:p-5 flex flex-col flex-grow">
@@ -186,7 +186,7 @@ const Services = ({ isPage = false }) => {
                     <p className="mb-2 sm:mb-3 flex-grow transition-colors duration-300" style={{ color: 'var(--color-text-secondary)', lineHeight: '1.4', fontSize: 'clamp(0.75rem, 1.2vw, 0.85rem)' }}>
                       {service.description}
                     </p>
-                    <div className="space-y-1 sm:space-y-1.5 mb-2 sm:mb-3 pt-2 sm:pt-3 border-t border-[rgba(255,255,255,0.05)]">
+                    <div className="space-y-1 sm:space-y-1.5 mb-2 sm:mb-3 pt-2 sm:pt-3 border-t border-[rgba(17,17,17,0.05)]">
                       {Array.isArray(service.features) && service.features.slice(0, 3).map((feature, i) => (
                         <div key={i} className="flex items-start gap-2 text-xs">
                           <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-125 mt-0.5" style={{ background: 'var(--color-orange)' }} />
@@ -218,9 +218,9 @@ const Services = ({ isPage = false }) => {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.8, delay: 0.1 }}
             className="mt-16 sm:mt-20 p-6 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8"
-            style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)' }}
+            style={{ background: 'var(--color-surface-1)', border: '1px solid var(--color-border-subtle)', backdropFilter: 'blur(16px)' }}
           >
-            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-60 sm:w-80 h-60 sm:h-80 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(255,107,0,0.04) 0%, transparent 70%)', filter: 'blur(50px)' }} />
+            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-60 sm:w-80 h-60 sm:h-80 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(232,93,4,0.04) 0%, transparent 70%)', filter: 'blur(50px)' }} />
             <div className="relative z-10 flex flex-col gap-3 max-w-xl">
               <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.25rem, 4vw, 1.75rem)', fontWeight: 'var(--weight-bold)', color: 'var(--color-text-primary)' }}>
                 Need a Bespoke Solution?

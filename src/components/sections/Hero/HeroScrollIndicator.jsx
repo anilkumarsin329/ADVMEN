@@ -33,7 +33,7 @@ const HeroScrollIndicator = () => (
           borderRadius: '50%',
           background: 'var(--color-orange)',
           marginTop: '6px',
-          boxShadow: '0 0 8px rgba(255,107,0,0.9)',
+          boxShadow: '0 0 8px rgba(232,93,4,0.9)',
         }}
       />
     </div>

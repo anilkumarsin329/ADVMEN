@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 
 const BrandLogo = ({
   mode = 'image',
@@ -16,7 +16,7 @@ const BrandLogo = ({
     <div className={`inline-flex items-center gap-2.5 select-none group ${className}`}>
       {/* Logo Image */}
       <img
-        src="/ADVMEN logo.png"
+        src="/ADVMEN%20logo.png"
         alt="ADVMEN"
         className={`${imgSize} object-cover rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-105`}
         draggable="false"
@@ -42,3 +42,4 @@ const BrandLogo = ({
 }
 
 export default BrandLogo
+

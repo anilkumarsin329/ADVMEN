@@ -79,10 +79,10 @@ const AboutOffice = () => {
               OUR WORKSPACE & CULTURE
             </span>
           </div>
-          <h2 className="section-title mt-2 font-display font-bold text-gray-100 text-2xl sm:text-4xl">
+          <h2 className="section-title mt-2 font-display font-bold text-gray-800 text-2xl sm:text-4xl">
             Inside the ADVMEN Ecosystem
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base mt-2 max-w-xl">
+          <p className="text-gray-700 text-sm sm:text-base mt-2 max-w-xl">
             Explore our state-of-the-art office infrastructure where engineering meets design excellence.
           </p>
         </div>
@@ -97,7 +97,7 @@ const AboutOffice = () => {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
               onClick={() => setSelectedPhoto(photo)}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer bg-gray-900 border border-white/10 hover:border-orange-500/40 transition-all duration-500"
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer bg-[var(--color-surface-1)] border border-[var(--color-border-subtle)] hover:border-orange-500/40 transition-all duration-500"
             >
               {/* Photo */}
               <img
@@ -114,26 +114,26 @@ const AboutOffice = () => {
               <div 
                 className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-90"
                 style={{
-                  background: 'linear-gradient(to top, rgba(18, 18, 21, 0.9) 0%, rgba(18, 18, 21, 0.2) 60%, transparent 100%)',
+                  background: 'linear-gradient(to top, rgba(255, 229, 204, 0.95) 0%, rgba(255, 229, 204, 0.2) 60%, transparent 100%)',
                 }}
               />
 
               {/* Category Pill */}
-              <span className="absolute top-3 left-3 px-3 py-1 bg-black/80 backdrop-blur-md border border-orange-500/30 text-[var(--color-orange)] font-mono text-[10px] font-bold uppercase tracking-wider rounded-full">
+              <span className="absolute top-3 left-3 px-3 py-1 bg-paper/80 backdrop-blur-md border border-orange-500/30 text-[var(--color-orange)] font-mono text-[10px] font-bold uppercase tracking-wider rounded-full">
                 {photo.category}
               </span>
 
               {/* Zoom Icon */}
-              <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-paper/60 backdrop-blur-md text-ink flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <FiMaximize2 size={14} />
               </div>
 
               {/* Bottom Details */}
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <h3 className="font-display font-bold text-base text-gray-100 group-hover:text-[var(--color-orange)] transition-colors line-clamp-1">
+              <div className="absolute bottom-4 left-4 right-4 text-ink">
+                <h3 className="font-display font-bold text-base text-gray-800 group-hover:text-[var(--color-orange)] transition-colors line-clamp-1">
                   {photo.title}
                 </h3>
-                <p className="text-xs text-gray-400 mt-1 line-clamp-1">
+                <p className="text-xs text-gray-700 mt-1 line-clamp-1">
                   {photo.description}
                 </p>
               </div>
@@ -151,33 +151,33 @@ const AboutOffice = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedPhoto(null)}
-              className="absolute inset-0 bg-black/85 backdrop-blur-md"
+              className="absolute inset-0 bg-paper/85 backdrop-blur-md"
             />
             
             <motion.div 
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative max-w-4xl w-full bg-gray-900 border border-white/10 rounded-2xl overflow-hidden shadow-2xl z-10 flex flex-col"
+              className="relative max-w-4xl w-full bg-[var(--color-surface-1)] border border-[var(--color-border-subtle)] rounded-2xl overflow-hidden shadow-2xl z-10 flex flex-col"
             >
               {/* Lightbox Header */}
-              <div className="p-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+              <div className="p-4 border-b border-ink/25 flex items-center justify-between bg-paper/40">
                 <div>
                   <span className="text-[var(--color-orange)] font-mono text-xs font-bold uppercase tracking-wider">
                     {selectedPhoto.category}
                   </span>
-                  <h3 className="text-white font-bold text-lg">{selectedPhoto.title}</h3>
+                  <h3 className="text-ink font-bold text-lg">{selectedPhoto.title}</h3>
                 </div>
                 <button 
                   onClick={() => setSelectedPhoto(null)}
-                  className="p-2 text-gray-400 hover:text-white rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                  className="p-2 text-gray-700 hover:text-ink rounded-lg bg-ink/5 hover:bg-ink/10 transition-colors"
                 >
                   <FiX size={20} />
                 </button>
               </div>
 
               {/* Lightbox Image */}
-              <div className="relative aspect-video w-full bg-black">
+              <div className="relative aspect-video w-full bg-paper">
                 <img 
                   src={selectedPhoto.image} 
                   alt={selectedPhoto.title}
@@ -186,7 +186,7 @@ const AboutOffice = () => {
               </div>
 
               {/* Lightbox Description */}
-              <div className="p-4 bg-black/60 text-gray-300 text-sm">
+              <div className="p-4 bg-paper/60 text-gray-800 text-sm">
                 {selectedPhoto.description}
               </div>
             </motion.div>

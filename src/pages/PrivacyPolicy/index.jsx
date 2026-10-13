@@ -34,17 +34,17 @@ const PrivacyPolicy = () => {
               At ADVMEN, we respect your private details. This Privacy Policy details how we accumulate, utilize, and protect search metrics and contact records provided via our contact panels.
             </p>
             
-            <h3 className="font-display font-bold text-lg text-white mt-4">1. Information Accumulation</h3>
+            <h3 className="font-display font-bold text-lg text-ink mt-4">1. Information Accumulation</h3>
             <p>
               We collect contact information (Full Name, Email Address, Phone Number, Subject, Message details) directly when you transmit project inquiries via our contact form or subscribe to our briefings.
             </p>
 
-            <h3 className="font-display font-bold text-lg text-white mt-4">2. Technical Analytics</h3>
+            <h3 className="font-display font-bold text-lg text-ink mt-4">2. Technical Analytics</h3>
             <p>
               We run technical scripts (such as Google Analytics) to audit traffic records, browser specifications, and user interactions to continuously optimize page rendering latency.
             </p>
 
-            <h3 className="font-display font-bold text-lg text-white mt-4">3. Data Preservation</h3>
+            <h3 className="font-display font-bold text-lg text-ink mt-4">3. Data Preservation</h3>
             <p>
               All records are stored on secure cloud databases protected by server-side firewall systems and encryption keys. We do not sell or lease your records to third-party marketing services.
             </p>

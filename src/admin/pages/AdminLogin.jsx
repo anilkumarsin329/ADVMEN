@@ -1,8 +1,8 @@
-/**
+﻿/**
  * admin/pages/AdminLogin.jsx
- * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
- * ADVMEN â€” Admin Login Page
- * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+ * ADVMEN Ã¢â‚¬â€ Admin Login Page
+ * Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
  */
 
 import { useState, useEffect } from 'react'
@@ -61,7 +61,7 @@ const AdminLogin = () => {
   return (
     <>
       <SEOHead 
-        title="Admin Portal â€” ADVMEN" 
+        title="Admin Portal Ã¢â‚¬â€ ADVMEN" 
         description="ADVMEN administrator access and backend portal."
       />
 
@@ -99,14 +99,14 @@ const AdminLogin = () => {
             style={{
               background: 'var(--color-surface-1)',
               boxShadow: 'var(--shadow-neu-convex)',
-              border: '1px solid rgba(255, 255, 255, 0.03)',
+              border: '1px solid var(--color-border-subtle)',
               borderRadius: '24px',
               padding: '48px',
             }}
           >
             <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center p-2 mb-6 bg-neutral-900 border-2 border-[var(--color-orange)]/40 shadow-[0_0_20px_rgba(255,107,0,0.25)] mx-auto">
               <img 
-                src="/ADVMEN logo.png" 
+                src="/ADVMEN%20logo.png" 
                 alt="ADVMEN Logo" 
                 className="w-full h-full object-contain"
                 style={{ mixBlendMode: 'screen' }}
@@ -149,7 +149,7 @@ const AdminLogin = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3.5 font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] transition-all duration-300"
+                  className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(255,107,0,0.25)] transition-all duration-300"
                   placeholder="admin@advmen.com"
                   required
                 />
@@ -170,14 +170,14 @@ const AdminLogin = () => {
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full bg-[#e6e6ec] text-[#141418] border border-transparent rounded-xl p-3.5 pr-11 font-body text-sm shadow-[inset_3px_3px_6px_rgba(0,0,0,0.12),_inset_-3px_-3px_6px_rgba(255,255,255,0.8)] focus:outline-none focus:border-[rgba(255,107,0,0.3)] transition-all duration-300"
+                    className="w-full bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl p-3.5 pr-11 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] font-body text-sm shadow-[var(--shadow-neu-inset)] focus:outline-none focus:border-[var(--color-orange)] focus:shadow-[0_0_12px_rgba(255,107,0,0.25)] transition-all duration-300"
                     placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors cursor-pointer flex items-center justify-center"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors cursor-pointer flex items-center justify-center"
                     tabIndex={-1}
                     data-cursor="hover"
                     aria-label={showPassword ? "Hide password" : "Show password"}
@@ -226,3 +226,5 @@ const AdminLogin = () => {
 }
 
 export default AdminLogin
+
+

@@ -161,26 +161,26 @@ const ChatWidget = () => {
             exit={{ opacity: 0, scale: 0.85, y: 20 }}
             className="absolute bottom-20 left-0 w-80 sm:w-96 max-h-[460px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
             style={{
-              background: '#121420',
-              border: '1px solid rgba(255, 107, 0, 0.3)',
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)',
+              background: 'var(--color-surface-1)',
+              border: '1px solid rgba(232, 93, 4, 0.35)',
+              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.75)',
             }}
           >
             {/* Header */}
             <div
-              className="p-4 border-b flex justify-between items-center bg-[#181b2c]"
-              style={{ borderColor: 'rgba(255, 107, 0, 0.2)' }}
+              className="p-4 border-b flex justify-between items-center bg-[var(--color-surface-2)]"
+              style={{ borderColor: 'rgba(232, 93, 4, 0.2)' }}
             >
               <div>
-                <h3 className="font-bold text-white text-base flex items-center gap-2 font-display">
-                  <FiMessageCircle size={18} className="text-orange-500" />
+                <h3 className="font-bold text-ink text-base flex items-center gap-2 font-display">
+                  <FiMessageCircle size={18} className="text-[var(--color-orange)]" />
                   Let's Talk
                 </h3>
-                <p className="text-[11px] text-slate-400">ADVMEN Smart AI Support</p>
+                <p className="text-[11px] text-[var(--color-text-tertiary)]">ADVMEN Smart AI Support</p>
               </div>
               <button
                 onClick={() => setIsChatOpen(false)}
-                className="text-slate-400 hover:text-white transition-colors"
+                className="text-[var(--color-text-secondary)] hover:text-ink transition-colors"
               >
                 <FiX size={20} />
               </button>
@@ -198,8 +198,8 @@ const ChatWidget = () => {
                   <div
                     className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-xs leading-relaxed whitespace-pre-wrap ${
                       msg.type === 'user'
-                        ? 'bg-orange-600 text-white rounded-br-none shadow-md font-medium'
-                        : 'bg-[#1c2033] text-slate-200 border border-slate-700/60 rounded-bl-none font-sans'
+                        ? 'bg-[var(--color-orange)] text-ink rounded-br-none shadow-md font-medium'
+                        : 'bg-[var(--color-surface-2)] text-[var(--color-text-primary)] border border-[var(--color-border-subtle)] rounded-bl-none font-body'
                     }`}
                   >
                     {msg.text}
@@ -210,11 +210,11 @@ const ChatWidget = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="flex gap-1.5 p-2 bg-[#1c2033] rounded-xl w-16 border border-slate-700/60"
+                  className="flex gap-1.5 p-2 bg-[var(--color-surface-2)] rounded-xl w-16 border border-[var(--color-border-subtle)]"
                 >
-                  <div className="w-2 h-2 rounded-full bg-orange-500 animate-bounce" />
-                  <div className="w-2 h-2 rounded-full bg-orange-500 animate-bounce" style={{ animationDelay: '0.15s' }} />
-                  <div className="w-2 h-2 rounded-full bg-orange-500 animate-bounce" style={{ animationDelay: '0.3s' }} />
+                  <div className="w-2 h-2 rounded-full bg-[var(--color-orange)] animate-bounce" />
+                  <div className="w-2 h-2 rounded-full bg-[var(--color-orange)] animate-bounce" style={{ animationDelay: '0.15s' }} />
+                  <div className="w-2 h-2 rounded-full bg-[var(--color-orange)] animate-bounce" style={{ animationDelay: '0.3s' }} />
                 </motion.div>
               )}
               <div ref={messagesEndRef} />
@@ -222,8 +222,8 @@ const ChatWidget = () => {
 
             {/* Input Box */}
             <div
-              className="p-3 border-t bg-[#161826] flex gap-2"
-              style={{ borderColor: 'rgba(255, 107, 0, 0.2)' }}
+              className="p-3 border-t bg-[var(--color-surface-2)] flex gap-2"
+              style={{ borderColor: 'rgba(232, 93, 4, 0.2)' }}
             >
               <input
                 id="chat-input"
@@ -235,12 +235,12 @@ const ChatWidget = () => {
                 onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Ask ADVMEN AI anything..."
                 disabled={isLoading}
-                className="flex-1 bg-[#1e2235] border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-400 outline-none focus:border-orange-500 transition-colors font-medium"
+                className="flex-1 bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] rounded-xl px-3.5 py-2 text-xs text-ink placeholder-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-colors font-medium"
               />
               <button
                 onClick={handleSendMessage}
                 disabled={isLoading || !input.trim()}
-                className="px-3 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white disabled:opacity-50 transition-all flex items-center justify-center cursor-pointer shadow-md"
+                className="px-3 py-2 rounded-xl bg-[var(--color-orange)] hover:bg-[#FF7A1A] text-ink disabled:opacity-50 transition-all flex items-center justify-center cursor-pointer shadow-md"
               >
                 <FiSend size={15} />
               </button>
@@ -251,11 +251,11 @@ const ChatWidget = () => {
 
       {/* Main Floating "Let's Talk" Button */}
       <motion.button
-        className="px-5 py-3 rounded-full flex items-center justify-center gap-2 shadow-xl text-white font-semibold text-sm backdrop-blur-md border transition-all cursor-pointer"
+        className="px-5 py-3 rounded-full flex items-center justify-center gap-2 shadow-xl text-ink font-semibold text-sm backdrop-blur-md border transition-all cursor-pointer"
         style={{
-          background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.9) 0%, rgba(234, 88, 12, 0.95) 100%)',
-          borderColor: 'rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 8px 25px rgba(249, 115, 22, 0.4)',
+          background: 'linear-gradient(135deg, #E85D04 0%, #FF7A1A 100%)',
+          borderColor: 'rgba(17, 17, 17, 0.2)',
+          boxShadow: '0 8px 25px rgba(232, 93, 4, 0.4)',
         }}
         onClick={() => setIsChatOpen(!isChatOpen)}
         whileHover={{ scale: 1.05 }}

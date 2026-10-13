@@ -15,6 +15,12 @@ const TrustSection  = lazy(() => import('@components/sections/Clients/TrustSecti
 const Testimonials  = lazy(() => import('@components/sections/Testimonials/Testimonials'))
 const FAQSection    = lazy(() => import('@components/sections/FAQ/FAQSection'))
 const Pricing       = lazy(() => import('@pages/Pricing'))
+const VisibilityIntro  = lazy(() => import('@components/sections/Home/VisibilityIntro'))
+const StrategicVision  = lazy(() => import('@components/sections/Home/StrategicVision'))
+const HomeServices     = lazy(() => import('@components/sections/Home/HomeServices'))
+const MarketsSection   = lazy(() => import('@components/sections/Home/MarketsSection'))
+const IndustriesSection = lazy(() => import('@components/sections/Home/IndustriesSection'))
+const HomeCTA          = lazy(() => import('@components/sections/Home/HomeCTA'))
 
 const Home = () => {
   const location = useLocation()
@@ -38,7 +44,7 @@ const Home = () => {
     { question: "How does ADVMEN help businesses appear in AI search results?", answer: "ADVMEN uses AI search optimization, structured content, entity-focused strategies, and GEO techniques to boost your brand's presence in AI-powered search results." },
     { question: "What is AI search optimization?", answer: "AI search optimization makes your content more relevant and understandable to AI-powered search platforms. It improves the chances of being referenced in AI-generated answers." },
     { question: "Does ADVMEN provide website development services?", answer: "Yes. ADVMEN builds websites that focus on performance, usability, scalability, SEO, and your business needs." },
-    { question: "What types of websites does ADVMEN develop?", answer: "ADVMEN develops business sites, corporate websites, service platforms, portfolios, e-commerce sites, web portals, and custom digital platforms." },
+    { question: "What types of websites does ADVMEN develop?", answer: "ADVMEN is the leading website development company in India, creating business sites, corporate websites, service platforms, portfolios, e-commerce sites, web portals, and custom digital platforms." },
     { question: "Does ADVMEN build e-commerce websites?", answer: "Yes. ADVMEN develops e-commerce websites complete with product catalogs, payment gateways, integrations, responsive designs, and scalable features." },
     { question: "Does ADVMEN develop Android and iOS apps?", answer: "Yes, ADVMEN designs and develops Android and iOS apps for speed, smooth user experience, and flawless integration with your digital presence." },
     { question: "What types of mobile applications does ADVMEN build?", answer: "ADVMEN delivers Android app development, iOS app development, cross-platform app development, custom mobile app development, business & enterprise apps, e-commerce apps, booking & service apps, API & backend integration, UI/UX design, and app performance optimization." },
@@ -61,36 +67,47 @@ const Home = () => {
     </div>
 
     <Suspense fallback={null}>
-      {/* Phase 2: Services */}
-      <Services />
+      {/* Section 2: Data-backed digital strategies */}
+      <VisibilityIntro />
 
-      {/* Phase 3: Why Choose ADVMEN */}
+      {/* Section 3: Strategic vision → measurable impact */}
+      <StrategicVision />
+
+      {/* Section 4: Not just another agency (6 pillars) */}
       <WhyChoose />
 
-      {/* Phase 4: Working Process */}
+      {/* Section 5: Digital marketing services India */}
+      <HomeServices />
+
+      {/* Section 6: 4D growth framework */}
       <WorkingProcess />
 
-      {/* Phase 5: Portfolio */}
-      <Portfolio />
+      {/* Section 7: India & global markets */}
+      <MarketsSection />
 
-      {/* Phase 5.5: Case Studies - NEW */}
-      <CaseStudies />
-
-      {/* Phase 6: Clients */}
-      <TrustSection />
-
-      {/* Phase 7: Testimonials */}
-      <Testimonials />
-
-      {/* Phase 8: Pricing */}
+      {/* Section 8: Pricing + add-ons */}
       <Pricing isPage={false} />
 
-      {/* Phase 9: FAQ */}
+      {/* Section 9: Our work */}
+      <Portfolio />
+
+      {/* Section 10: Results / case studies */}
+      <CaseStudies />
+
+      {/* Section 11: Industries we serve */}
+      <IndustriesSection />
+
+      {/* Existing social-proof blocks (not in the content brief) */}
+      <TrustSection />
+      <Testimonials />
+
+      {/* Section 12: FAQ */}
       <FAQSection />
+
+      {/* Section 13: Closing CTA */}
+      <HomeCTA />
     </Suspense>
 
-    {/* Phase 10: Contact - on dedicated page */}
-    {/* Phase 11: Footer - in Layout */}
   </PageTransition>
   )
 }

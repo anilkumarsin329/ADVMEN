@@ -126,7 +126,7 @@ const CustomCursor = () => {
           marginTop:     '-2.5px',
           opacity:       isVisible ? (isHover ? 0 : 1) : 0,
           transition:    'opacity 0.2s ease',
-          boxShadow:     '0 0 6px rgba(255,107,0,0.8)',
+          boxShadow:     '0 0 6px rgba(232,93,4,0.8)',
         }}
       />
 
@@ -142,8 +142,8 @@ const CustomCursor = () => {
           height:         isHover ? '48px' : '32px',
           borderRadius:   '50%',
           border:         isHover
-            ? '1.5px solid rgba(255,107,0,0.9)'
-            : '1px solid rgba(255,107,0,0.55)',
+            ? '1.5px solid rgba(232,93,4,0.9)'
+            : '1px solid rgba(232,93,4,0.55)',
           pointerEvents:  'none',
           zIndex:         'var(--z-cursor)',
           transform:      'translate(-200px, -200px)',
@@ -152,7 +152,7 @@ const CustomCursor = () => {
           marginTop:      isHover ? '-24px' : '-16px',
           opacity:        isVisible ? 1 : 0,
           transition:     'width 0.3s cubic-bezier(0.16,1,0.3,1), height 0.3s cubic-bezier(0.16,1,0.3,1), margin 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, opacity 0.3s ease, background 0.3s ease',
-          background:     isHover ? 'rgba(255,107,0,0.06)' : 'transparent',
+          background:     isHover ? 'rgba(232,93,4,0.06)' : 'transparent',
           backdropFilter: isHover ? 'blur(2px)' : 'none',
           display:        'flex',
           alignItems:     'center',
@@ -171,7 +171,7 @@ const CustomCursor = () => {
           >
             <path
               d="M3 7h8M7.5 3.5L11 7l-3.5 3.5"
-              stroke="#E85D00"
+              stroke="#C94F00"
               strokeWidth="1.4"
               strokeLinecap="round"
               strokeLinejoin="round"

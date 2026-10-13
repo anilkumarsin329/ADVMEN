@@ -3,6 +3,7 @@
  * Better animations, visual hierarchy, and interactive elements
  */
 
+import { Link } from 'react-router-dom'
 import { useRef, useEffect, useState } from 'react'
 import { FiBriefcase } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
@@ -117,7 +118,7 @@ const Portfolio = () => {
           width: '900px',
           height: '900px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,107,0,0.07) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(232,93,4,0.07) 0%, transparent 70%)',
           filter: 'blur(100px)',
           pointerEvents: 'none',
           animation: 'pulse-slow 6s ease-in-out infinite',
@@ -131,12 +132,12 @@ const Portfolio = () => {
             <span
               className="px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase inline-flex items-center gap-1.5"
               style={{
-                background: 'rgba(255, 107, 0, 0.1)',
-                border: '1px solid rgba(255, 107, 0, 0.3)',
+                background: 'rgba(232, 93, 4, 0.1)',
+                border: '1px solid rgba(232, 93, 4, 0.3)',
                 color: 'var(--color-orange)',
               }}
             >
-              <FiBriefcase size={14} /> Case Studies
+              <FiBriefcase size={14} /> Our Work
             </span>
           </div>
           <h2
@@ -149,8 +150,17 @@ const Portfolio = () => {
               marginBottom: '1rem',
             }}
           >
-            Proof, not promises.
+            Digital Experiences Built Around Real Business Needs
           </h2>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)', color: 'var(--color-text-secondary)', lineHeight: 1.7, marginBottom: '0.75rem' }}>
+            Every project starts somewhere: a business challenge, a missed opportunity, a clunky customer journey or an idea waiting to become a product.
+          </p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
+            We navigate those starting points into purposeful digital experiences across web, ecommerce, applications, AI, and beyond.
+          </p>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--color-orange)', marginTop: '1.5rem' }}>
+            Selected Work
+          </p>
         </div>
 
         {/* Filter Buttons */}
@@ -169,31 +179,31 @@ const Portfolio = () => {
                 padding: '0.7rem 1.4rem',
                 borderRadius: '12px',
                 border: activeCategory === category.id
-                  ? '1.5px solid rgba(255,107,0,0.8)'
-                  : '1.5px solid rgba(255,255,255,0.15)',
+                  ? '1.5px solid rgba(232,93,4,0.8)'
+                  : '1px solid var(--color-border-subtle)',
                 background: activeCategory === category.id
-                  ? 'rgba(255,107,0,0.2)'
-                  : 'rgba(255,255,255,0.02)',
+                  ? 'rgba(232,93,4,0.2)'
+                  : 'var(--color-surface-1)',
                 color: activeCategory === category.id
                   ? 'var(--color-orange)'
                   : 'var(--color-text-secondary)',
                 cursor: 'pointer',
                 backdropFilter: 'blur(10px)',
                 boxShadow: activeCategory === category.id
-                  ? '0 0 20px rgba(255,107,0,0.15)'
+                  ? '0 0 20px rgba(232,93,4,0.15)'
                   : 'none',
               }}
               onMouseEnter={(e) => {
                 if (activeCategory !== category.id) {
-                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.4)'
-                  e.currentTarget.style.background = 'rgba(255,107,0,0.08)'
+                  e.currentTarget.style.borderColor = 'rgba(232,93,4,0.4)'
+                  e.currentTarget.style.background = 'rgba(232,93,4,0.08)'
                   e.currentTarget.style.color = 'var(--color-text-primary)'
                 }
               }}
               onMouseLeave={(e) => {
                 if (activeCategory !== category.id) {
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.02)'
+                  e.currentTarget.style.borderColor = 'var(--color-border-subtle)'
+                  e.currentTarget.style.background = 'var(--color-surface-1)'
                   e.currentTarget.style.color = 'var(--color-text-secondary)'
                 }
               }}
@@ -215,20 +225,20 @@ const Portfolio = () => {
               <div
                 className="relative h-full rounded-2xl overflow-hidden cursor-pointer"
                 style={{
-                  background: 'rgba(255,255,255,0.02)',
-                  border: '1px solid rgba(255,107,0,0.15)',
+                  background: 'var(--color-surface-1)',
+                  border: '1px solid rgba(232,93,4,0.15)',
                   backdropFilter: 'blur(10px)',
                   transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.4)'
-                  e.currentTarget.style.background = 'rgba(255,107,0,0.05)'
-                  e.currentTarget.style.boxShadow = '0 20px 60px rgba(255,107,0,0.2)'
+                  e.currentTarget.style.borderColor = 'rgba(232,93,4,0.4)'
+                  e.currentTarget.style.background = 'rgba(232,93,4,0.06)'
+                  e.currentTarget.style.boxShadow = '0 20px 60px rgba(232,93,4,0.2)'
                   e.currentTarget.style.transform = 'translateY(-8px)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.15)'
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.02)'
+                  e.currentTarget.style.borderColor = 'rgba(232,93,4,0.15)'
+                  e.currentTarget.style.background = 'var(--color-surface-1)'
                   e.currentTarget.style.boxShadow = 'none'
                   e.currentTarget.style.transform = 'translateY(0)'
                 }}
@@ -254,6 +264,10 @@ const Portfolio = () => {
             </p>
           </div>
         )}
+
+        <div className="flex justify-center" style={{ marginTop: 'clamp(2rem, 5vw, 3.5rem)' }}>
+          <Link to="/work" className="btn-primary btn-lg" data-cursor="hover">View Our Case Studies</Link>
+        </div>
       </div>
 
       <style>{`

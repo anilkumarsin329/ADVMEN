@@ -94,7 +94,7 @@ const CaseStudies = () => {
           width: 'clamp(300px, 50vw, 600px)',
           height: 'clamp(300px, 50vw, 600px)',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(232,93,4,0.06) 0%, transparent 70%)',
           filter: 'blur(80px)',
           pointerEvents: 'none',
         }}
@@ -107,12 +107,12 @@ const CaseStudies = () => {
             <span
               className="px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase inline-flex items-center gap-1.5"
               style={{
-                background: 'rgba(255, 107, 0, 0.1)',
-                border: '1px solid rgba(255, 107, 0, 0.3)',
+                background: 'rgba(232, 93, 4, 0.1)',
+                border: '1px solid rgba(232, 93, 4, 0.3)',
                 color: 'var(--color-orange)',
               }}
             >
-              <FiTrendingUp size={14} /> Results That Matter
+              <FiTrendingUp size={14} /> Results That Speak for Themselves
             </span>
           </div>
           <h2
@@ -125,7 +125,7 @@ const CaseStudies = () => {
               marginBottom: '0.875rem',
             }}
           >
-            Case Studies & Success Stories
+            Because Good Strategy Should Show Up in the Numbers.
           </h2>
           <p
             className="case-desc"
@@ -137,8 +137,23 @@ const CaseStudies = () => {
               maxWidth: '620px',
             }}
           >
-            See how we've helped ambitious businesses achieve measurable growth through strategic solutions and expert execution.
+            Clicks are nice. Rankings are useful. But in the end, it’s all about what your digital marketing agency in India does for your brand.
           </p>
+          <p
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 'clamp(0.9375rem, 1.25vw, 1.125rem)',
+              color: 'var(--color-text-secondary)',
+              lineHeight: '1.6',
+              maxWidth: '620px',
+              marginTop: '0.75rem',
+            }}
+          >
+            No false claims. No meaningless stats pretending to be wins. Just honest work, concrete challenges, and proof you can see.
+          </p>
+          <Link to="/work" className="btn-secondary btn-md" style={{ marginTop: '1.5rem' }} data-cursor="hover">
+            View Case Studies
+          </Link>
         </div>
 
         {/* Compact Case Studies Grid (3 Columns) */}
@@ -154,7 +169,7 @@ const CaseStudies = () => {
               >
                 <div>
                   {/* Top Image Banner */}
-                  <div className="relative w-full aspect-[16/10] sm:h-60 overflow-hidden bg-gray-950">
+                  <div className="relative w-full aspect-[16/10] sm:h-60 overflow-hidden bg-paper">
                     <img
                       src={getImageUrl(study.image)}
                       alt={study.title}
@@ -171,7 +186,7 @@ const CaseStudies = () => {
                     <div
                       className="absolute inset-0 pointer-events-none"
                       style={{
-                        background: 'linear-gradient(to top, rgba(18, 18, 21, 0.5) 0%, transparent 40%)',
+                        background: 'linear-gradient(to top, rgba(255, 229, 204, 0.6) 0%, transparent 40%)',
                       }}
                     />
 
@@ -179,9 +194,9 @@ const CaseStudies = () => {
                     <span
                       className="absolute top-3 left-3 px-3 py-1 rounded-full text-[0.675rem] font-bold tracking-wider uppercase z-10"
                       style={{
-                        background: 'rgba(18, 18, 21, 0.85)',
-                        border: '1px solid rgba(255, 107, 0, 0.4)',
-                        color: '#E85D00',
+                        background: 'rgba(255, 229, 204, 0.85)',
+                        border: '1px solid rgba(232, 93, 4, 0.4)',
+                        color: 'var(--color-orange)',
                         backdropFilter: 'blur(8px)',
                       }}
                     >
@@ -228,8 +243,8 @@ const CaseStudies = () => {
                           key={idx}
                           className="p-3 rounded-xl flex flex-col justify-center"
                           style={{
-                            background: 'rgba(255, 107, 0, 0.06)',
-                            border: '1px solid rgba(255, 107, 0, 0.14)',
+                            background: 'rgba(232, 93, 4, 0.06)',
+                            border: '1px solid rgba(232, 93, 4, 0.14)',
                           }}
                         >
                           <span className="font-display font-bold text-lg text-[var(--color-orange)]">
@@ -252,20 +267,20 @@ const CaseStudies = () => {
                   <Link
                     to={`/work/${study.slug || `case-study-${study.id}`}`}
                     state={{ from: 'case-studies' }}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold text-white transition-all duration-300"
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold text-ink transition-all duration-300"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.95) 0%, rgba(255, 140, 0, 0.9) 100%)',
-                      border: '1px solid rgba(255, 107, 0, 0.4)',
-                      boxShadow: '0 4px 16px rgba(255, 107, 0, 0.2)',
+                      background: 'linear-gradient(135deg, rgba(232, 93, 4, 0.95) 0%, rgba(255, 140, 0, 0.9) 100%)',
+                      border: '1px solid rgba(232, 93, 4, 0.4)',
+                      boxShadow: '0 4px 16px rgba(232, 93, 4, 0.2)',
                       textDecoration: 'none',
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-2px)'
-                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 107, 0, 0.35)'
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(232, 93, 4, 0.35)'
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.boxShadow = '0 4px 16px rgba(255, 107, 0, 0.2)'
+                      e.currentTarget.style.boxShadow = '0 4px 16px rgba(232, 93, 4, 0.2)'
                     }}
                   >
                     Read Full Case Study
@@ -283,8 +298,8 @@ const CaseStudies = () => {
         <div
           className="relative rounded-2xl overflow-hidden p-8 sm:p-12 text-center"
           style={{
-            background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.08) 0%, rgba(255, 107, 0, 0.03) 100%)',
-            border: '1.5px solid rgba(255, 107, 0, 0.2)',
+            background: 'linear-gradient(135deg, rgba(232, 93, 4, 0.08) 0%, rgba(232, 93, 4, 0.03) 100%)',
+            border: '1.5px solid rgba(232, 93, 4, 0.2)',
             backdropFilter: 'blur(10px)',
           }}
         >
@@ -318,18 +333,18 @@ const CaseStudies = () => {
               gap: '0.5rem',
               padding: '0.875rem 2rem',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.95) 0%, rgba(255, 140, 0, 0.9) 100%)',
-              color: '#fff',
+              background: 'linear-gradient(135deg, rgba(232, 93, 4, 0.95) 0%, rgba(255, 140, 0, 0.9) 100%)',
+              color: 'var(--color-text-primary)',
               fontSize: '1rem',
               fontWeight: '600',
               textDecoration: 'none',
               transition: 'all 0.3s ease',
-              border: '1px solid rgba(255, 107, 0, 0.4)',
+              border: '1px solid rgba(232, 93, 4, 0.4)',
               cursor: 'pointer',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow = '0 16px 40px rgba(255, 107, 0, 0.3)'
+              e.currentTarget.style.boxShadow = '0 16px 40px rgba(232, 93, 4, 0.3)'
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)'

@@ -36,7 +36,7 @@ const faqData = [
   },
   {
     question: 'What types of websites does ADVMEN develop?',
-    answer: 'ADVMEN develops business sites, corporate websites, service platforms, portfolios, e-commerce sites, web portals, and custom digital platforms.',
+    answer: 'ADVMEN is the leading website development company in India, creating business sites, corporate websites, service platforms, portfolios, e-commerce sites, web portals, and custom digital platforms.',
   },
   {
     question: 'Does ADVMEN build e-commerce websites?',
@@ -142,7 +142,7 @@ const FAQSection = () => {
           width: '800px',
           height: '800px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(232,93,4,0.06) 0%, transparent 70%)',
           filter: 'blur(60px)',
           pointerEvents: 'none',
         }}

@@ -42,7 +42,7 @@ const ScrollProgress = () => {
         transformOrigin: 'left',
         scaleX: 0,
         willChange: 'transform',
-        boxShadow: '0 0 8px rgba(255,107,0,0.5)',
+        boxShadow: '0 0 8px rgba(232,93,4,0.5)',
         pointerEvents: 'none',
       }}
     />

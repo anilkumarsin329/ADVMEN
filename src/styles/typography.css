@@ -16,7 +16,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-regular);
   font-size: var(--text-body);
   line-height: var(--leading-normal);
   color: var(--color-text-primary);
@@ -26,9 +26,9 @@ body {
 /* â”€â”€ Heading Defaults â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: var(--weight-extrabold);
+  font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: -0.03em;
   color: var(--color-text-primary);
 }
 
@@ -51,7 +51,7 @@ h6 { font-size: var(--text-h6); }
 
 p {
   font-family: var(--font-body);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-regular);
   font-size: var(--text-body);
   line-height: var(--leading-relaxed);
   color: var(--color-text-secondary);
@@ -179,7 +179,7 @@ p {
   font-family: var(--font-mono);
   font-size: var(--text-caption);
   font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-widest);
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--color-orange);
 }
@@ -188,7 +188,7 @@ p {
   font-family: var(--font-mono);
   font-size: var(--text-label);
   font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-ultra);
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--color-text-tertiary);
 }
@@ -210,7 +210,7 @@ p {
 }
 
 .text-gradient-white {
-  background: linear-gradient(135deg, #FFFFFF 0%, #888888 100%);
+  background: linear-gradient(135deg, #111111 0%, #55504A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -222,8 +222,8 @@ p {
 
 /* â”€â”€ Selection â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 ::selection {
-  background-color: rgba(255, 107, 0, 0.25);
-  color: var(--color-white);
+  background-color: rgba(232, 93, 4, 0.35);
+  color: var(--color-ink);
 }
 
 /* â”€â”€ Responsive Hero Headline Scale â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */

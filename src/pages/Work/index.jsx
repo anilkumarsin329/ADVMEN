@@ -121,10 +121,10 @@ const Work = () => {
                 onClick={() => setActiveCategory(cat)}
                 className="px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider transition-all duration-300"
                 style={{
-                  background: activeCategory === cat ? 'var(--gradient-orange)' : 'rgba(255,255,255,0.02)',
+                  background: activeCategory === cat ? 'var(--gradient-orange)' : 'var(--color-surface-1)',
                   border: '1px solid',
-                  borderColor: activeCategory === cat ? 'transparent' : 'rgba(255,255,255,0.05)',
-                  color: activeCategory === cat ? 'var(--color-black)' : 'var(--color-text-secondary)',
+                  borderColor: activeCategory === cat ? 'transparent' : 'var(--color-border-subtle)',
+                  color: activeCategory === cat ? 'var(--color-ink)' : 'var(--color-text-secondary)',
                   fontWeight: activeCategory === cat ? 'bold' : 'normal',
                 }}
               >
@@ -157,8 +157,8 @@ const Work = () => {
                     to={`/work/${item.slug}`}
                     className="group relative flex flex-col p-4 rounded-2xl"
                     style={{
-                      background: 'rgba(255,255,255,0.01)',
-                      border: '1px solid rgba(255,255,255,0.03)',
+                      background: 'var(--color-surface-1)',
+                      border: '1px solid var(--color-border-subtle)',
                       backdropFilter: 'blur(12px)',
                     }}
                     data-cursor="hover"
@@ -167,8 +167,8 @@ const Work = () => {
                     <div
                       className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-5 flex items-center justify-center"
                       style={{
-                        background: 'linear-gradient(135deg, #111 0%, #1c0b00 100%)',
-                        border: '1px solid rgba(255,255,255,0.04)',
+                        background: 'linear-gradient(135deg, #FFF0E0 0%, #FFD9B8 100%)',
+                        border: '1px solid rgba(17,17,17,0.04)',
                       }}
                     >
                       {item.image && typeof item.image === 'string' && item.image.trim() !== '' ? (

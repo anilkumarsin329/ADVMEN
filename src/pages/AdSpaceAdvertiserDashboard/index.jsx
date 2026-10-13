@@ -60,7 +60,7 @@ const AdSpaceAdvertiserDashboard = () => {
             })
             fetchBookings()
           },
-          theme: { color: "#E85D00" }
+          theme: { color: "#C94F00" }
         }
         const rzp = new window.Razorpay(options)
         rzp.open()
@@ -86,17 +86,17 @@ const AdSpaceAdvertiserDashboard = () => {
     }
   }
 
-  if (loading) return <div className="min-h-screen bg-black flex justify-center items-center"><div className="spinner" /></div>
+  if (loading) return <div className="min-h-screen bg-paper flex justify-center items-center"><div className="spinner" /></div>
 
   return (
     <PageTransition>
       <SEOHead title="Advertiser Dashboard â€” ADVMEN" />
-      <div className="min-h-screen bg-black pt-32 pb-24 text-white">
+      <div className="min-h-screen bg-paper pt-32 pb-24 text-ink">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="flex justify-between items-center mb-12 border-b border-white/10 pb-6">
+          <div className="flex justify-between items-center mb-12 border-b border-ink/25 pb-6">
             <div>
               <h1 className="text-3xl font-display font-bold">Advertiser Dashboard</h1>
-              <p className="text-slate-400">Welcome, {adUser.name}. Manage your campaigns here.</p>
+              <p className="text-gray-700">Welcome, {adUser.name}. Manage your campaigns here.</p>
             </div>
             <div className="flex gap-4">
               <Link to="/ad-space/browse" className="btn-primary">Browse Spaces</Link>
@@ -107,50 +107,50 @@ const AdSpaceAdvertiserDashboard = () => {
           <h2 className="text-2xl font-bold mb-6">My Campaigns</h2>
           
           {bookings.length === 0 ? (
-            <div className="text-center py-20 bg-white/5 rounded-2xl border border-white/10">
+            <div className="text-center py-20 bg-ink/5 rounded-2xl border border-ink/25">
               <h3 className="text-xl mb-2">No campaigns yet</h3>
-              <p className="text-slate-400 mb-4">Start by booking an ad space.</p>
+              <p className="text-gray-700 mb-4">Start by booking an ad space.</p>
               <Link to="/ad-space/browse" className="text-orange-500 hover:underline">Find Spaces â†’</Link>
             </div>
           ) : (
             <div className="space-y-6">
               {bookings.map(booking => (
-                <div key={booking._id} className="p-6 rounded-2xl bg-white/5 border border-[rgba(255,107,0,0.15)]">
+                <div key={booking._id} className="p-6 rounded-2xl bg-ink/5 border border-[rgba(232,93,4,0.15)]">
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
                     <div>
                       <h3 className="text-xl font-bold text-orange-400">{booking.campaign?.name}</h3>
-                      <Link to={`/ad-space/${booking.space?._id}`} className="text-sm text-slate-400 hover:text-white underline">
+                      <Link to={`/ad-space/${booking.space?._id}`} className="text-sm text-gray-700 hover:text-ink underline">
                         Space: {booking.space?.title}
                       </Link>
                     </div>
-                    <div className="px-3 py-1 bg-white/10 rounded-full text-xs font-bold uppercase tracking-wider">
+                    <div className="px-3 py-1 bg-ink/10 rounded-full text-xs font-bold uppercase tracking-wider">
                       Status: <span className="text-orange-400">{booking.status}</span>
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                     <div>
-                      <div className="text-xs text-slate-500 uppercase">Start Date</div>
+                      <div className="text-xs text-gray-600 uppercase">Start Date</div>
                       <div>{new Date(booking.campaign?.startDate).toLocaleDateString()}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500 uppercase">End Date</div>
+                      <div className="text-xs text-gray-600 uppercase">End Date</div>
                       <div>{new Date(booking.campaign?.endDate).toLocaleDateString()}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500 uppercase">Budget</div>
+                      <div className="text-xs text-gray-600 uppercase">Budget</div>
                       <div>â‚¹{booking.campaign?.budget}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500 uppercase">Amount Due</div>
+                      <div className="text-xs text-gray-600 uppercase">Amount Due</div>
                       <div className="font-bold text-emerald-400">â‚¹{booking.pricing?.total}</div>
                     </div>
                   </div>
 
                   {/* Actions based on status */}
-                  <div className="pt-4 border-t border-white/10 flex gap-4">
+                  <div className="pt-4 border-t border-ink/25 flex gap-4">
                     {booking.status === 'payment_pending' && (
-                      <button onClick={() => handlePayment(booking._id)} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-bold flex items-center gap-2">
+                      <button onClick={() => handlePayment(booking._id)} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-ink rounded-lg font-bold flex items-center gap-2">
                         <FiCreditCard /> Pay â‚¹{booking.pricing?.total}
                       </button>
                     )}
@@ -160,11 +160,11 @@ const AdSpaceAdvertiserDashboard = () => {
                         {activeUpload === booking._id ? (
                           <form onSubmit={(e) => handleUploadCreatives(e, booking._id)} className="flex items-center gap-2">
                             <input type="file" multiple accept="image/*,video/*" onChange={e=>setFiles(e.target.files)} className="text-sm" />
-                            <button type="submit" className="px-3 py-1 bg-orange-600 text-white rounded text-sm">Upload</button>
-                            <button type="button" onClick={() => setActiveUpload(null)} className="px-3 py-1 bg-slate-700 text-white rounded text-sm">Cancel</button>
+                            <button type="submit" className="px-3 py-1 bg-orange-600 text-ink rounded text-sm">Upload</button>
+                            <button type="button" onClick={() => setActiveUpload(null)} className="px-3 py-1 bg-surface-2 text-ink rounded text-sm">Cancel</button>
                           </form>
                         ) : (
-                          <button onClick={() => setActiveUpload(booking._id)} className="px-4 py-2 bg-orange-600 hover:bg-orange-500 text-white rounded-lg font-bold flex items-center gap-2">
+                          <button onClick={() => setActiveUpload(booking._id)} className="px-4 py-2 bg-orange-600 hover:bg-orange-500 text-ink rounded-lg font-bold flex items-center gap-2">
                             <FiUpload /> Upload Ad Creatives
                           </button>
                         )}
@@ -172,7 +172,7 @@ const AdSpaceAdvertiserDashboard = () => {
                     )}
 
                     {['ad_uploaded', 'admin_verified', 'live'].includes(booking.status) && (
-                      <div className="text-sm text-slate-400 flex items-center gap-2">
+                      <div className="text-sm text-gray-700 flex items-center gap-2">
                         <FiUpload className="text-emerald-500" /> Creatives uploaded ({booking.creatives?.length} files)
                       </div>
                     )}

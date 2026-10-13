@@ -318,7 +318,7 @@ const WorkDetail = () => {
 
               {/* Hero Cover Image Banner */}
               {details.image && typeof details.image === 'string' && details.image.trim() !== '' && (
-                <div className="case-stagger w-full mt-6 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[16/9] max-h-[500px]">
+                <div className="case-stagger w-full mt-6 rounded-2xl overflow-hidden border border-ink/25 shadow-2xl aspect-[16/9] max-h-[500px]">
                   <img
                     src={getImageUrl(details.image) || null}
                     alt={details.title || details.client}
@@ -434,8 +434,8 @@ const WorkDetail = () => {
                         style={{
                           padding: '1.5rem',
                           borderRadius: '1rem',
-                          background: 'rgba(255,107,0,0.02)',
-                          border: '1px solid rgba(255,107,0,0.1)',
+                          background: 'rgba(232,93,4,0.02)',
+                          border: '1px solid rgba(232,93,4,0.1)',
                           textAlign: 'center',
                         }}
                       >
@@ -474,8 +474,8 @@ const WorkDetail = () => {
                 <div
                   className="p-8 rounded-2xl cursor-default"
                   style={{
-                    background: 'rgba(255,255,255,0.01)',
-                    border: '1px solid rgba(255,255,255,0.04)',
+                    background: 'var(--color-surface-1)',
+                    border: '1px solid var(--color-border-subtle)',
                     backdropFilter: 'blur(16px)',
                   }}
                 >
@@ -548,7 +548,7 @@ const WorkDetail = () => {
                           href={details.projectLink || details.projectUrl || details.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full px-4 py-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg"
+                          className="w-full px-4 py-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-ink font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg"
                         >
                           <span>View Live Project</span>
                           <FiExternalLink size={14} />
@@ -563,8 +563,8 @@ const WorkDetail = () => {
                   <div
                     className="p-8 rounded-2xl cursor-default"
                     style={{
-                      background: 'rgba(255,255,255,0.01)',
-                      border: '1px solid rgba(255,255,255,0.04)',
+                      background: 'var(--color-surface-1)',
+                      border: '1px solid var(--color-border-subtle)',
                       backdropFilter: 'blur(16px)',
                     }}
                   >
@@ -585,8 +585,8 @@ const WorkDetail = () => {
                           key={t}
                           className="px-3 py-1 rounded-full font-mono text-[0.68rem] uppercase"
                           style={{
-                            background: 'rgba(255,255,255,0.03)',
-                            border: '1px solid rgba(255,255,255,0.06)',
+                            background: 'var(--color-surface-2)',
+                            border: '1px solid var(--color-border-subtle)',
                             color: 'var(--color-text-secondary)',
                           }}
                         >
@@ -602,8 +602,8 @@ const WorkDetail = () => {
                   <div
                     className="p-8 rounded-2xl cursor-default"
                     style={{
-                      background: 'rgba(255,255,255,0.01)',
-                      border: '1px solid rgba(255,255,255,0.04)',
+                      background: 'var(--color-surface-1)',
+                      border: '1px solid var(--color-border-subtle)',
                       backdropFilter: 'blur(16px)',
                     }}
                   >
@@ -624,8 +624,8 @@ const WorkDetail = () => {
                           key={t}
                           className="px-3 py-1 rounded-full font-mono text-[0.68rem] uppercase"
                           style={{
-                            background: 'rgba(255,255,255,0.03)',
-                            border: '1px solid rgba(255,255,255,0.06)',
+                            background: 'var(--color-surface-2)',
+                            border: '1px solid var(--color-border-subtle)',
                             color: 'var(--color-text-secondary)',
                           }}
                         >

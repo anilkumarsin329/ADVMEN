@@ -18,12 +18,12 @@ const initialsMap = {
 }
 
 const gradientMap = {
-  'Rohit Sharma':        'linear-gradient(135deg, #E85D00 0%, #FF8C38 100%)',
-  'Priya Verma':         'linear-gradient(135deg, #141418 0%, #E85D00 100%)',
-  'Advocate Suresh Tiwari': 'linear-gradient(135deg, #FF3D00 0%, #FF8C38 100%)',
-  'Ramesh Goindiacab':   'linear-gradient(135deg, #E85D00 0%, #FFB366 100%)',
-  'Ankit Joshi':         'linear-gradient(135deg, #FF8C38 0%, #E85D00 100%)',
-  'Divya Mishra':        'linear-gradient(135deg, #E85D00 0%, #FF3D00 100%)',
+  'Rohit Sharma':        'linear-gradient(135deg, #E85D04 0%, #FF7A1A 100%)',
+  'Priya Verma':         'linear-gradient(135deg, #111111 0%, #E85D04 100%)',
+  'Advocate Suresh Tiwari': 'linear-gradient(135deg, #FF3D00 0%, #FF7A1A 100%)',
+  'Ramesh Goindiacab':   'linear-gradient(135deg, #E85D04 0%, #FFB366 100%)',
+  'Ankit Joshi':         'linear-gradient(135deg, #FF7A1A 0%, #E85D04 100%)',
+  'Divya Mishra':        'linear-gradient(135deg, #E85D04 0%, #FF3D00 100%)',
 }
 
 const Testimonials = () => {
@@ -124,7 +124,7 @@ const Testimonials = () => {
           width: '800px',
           height: '800px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(232,93,4,0.06) 0%, transparent 70%)',
           filter: 'blur(60px)',
           pointerEvents: 'none',
         }}
@@ -165,10 +165,10 @@ const Testimonials = () => {
             <div className="flex gap-3">
               <button
                 onClick={handlePrev}
-                className="p-3 rounded-lg transition-all duration-300 hover:bg-[rgba(255,107,0,0.15)]"
+                className="p-3 rounded-lg transition-all duration-300 hover:bg-[rgba(232,93,4,0.15)]"
                 style={{
-                  background: 'rgba(255,107,0,0.08)',
-                  border: '1px solid rgba(255,107,0,0.15)',
+                  background: 'rgba(232,93,4,0.08)',
+                  border: '1px solid rgba(232,93,4,0.15)',
                   color: 'var(--color-orange)',
                   cursor: 'pointer',
                 }}
@@ -178,10 +178,10 @@ const Testimonials = () => {
               </button>
               <button
                 onClick={handleNext}
-                className="p-3 rounded-lg transition-all duration-300 hover:bg-[rgba(255,107,0,0.15)]"
+                className="p-3 rounded-lg transition-all duration-300 hover:bg-[rgba(232,93,4,0.15)]"
                 style={{
-                  background: 'rgba(255,107,0,0.08)',
-                  border: '1px solid rgba(255,107,0,0.15)',
+                  background: 'rgba(232,93,4,0.08)',
+                  border: '1px solid rgba(232,93,4,0.15)',
                   color: 'var(--color-orange)',
                   cursor: 'pointer',
                 }}
@@ -204,18 +204,18 @@ const Testimonials = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="testimonial-card p-6 sm:p-8 rounded-2xl cursor-default flex flex-col justify-between"
               style={{
-                background: 'rgba(255,255,255,0.01)',
-                border: '1px solid rgba(255,107,0,0.15)',
+                background: 'var(--color-surface-1)',
+                border: '1px solid var(--color-border-subtle)',
                 backdropFilter: 'blur(12px)',
                 minHeight: '380px',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
-                e.currentTarget.style.borderColor = 'rgba(255,107,0,0.3)'
+                e.currentTarget.style.background = 'var(--color-surface-2)'
+                e.currentTarget.style.borderColor = 'rgba(232,93,4,0.35)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.01)'
-                e.currentTarget.style.borderColor = 'rgba(255,107,0,0.15)'
+                e.currentTarget.style.background = 'var(--color-surface-1)'
+                e.currentTarget.style.borderColor = 'var(--color-border-subtle)'
               }}
             >
               {/* Top part Ã¢â‚¬â€ rating & quote */}
@@ -235,8 +235,8 @@ const Testimonials = () => {
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.65rem',
                     color: 'var(--color-orange)',
-                    background: 'rgba(255,107,0,0.1)',
-                    border: '1px solid rgba(255,107,0,0.2)',
+                    background: 'rgba(232,93,4,0.1)',
+                    border: '1px solid rgba(232,93,4,0.2)',
                     padding: '0.35rem 0.75rem',
                     borderRadius: '4px',
                     textTransform: 'uppercase',
@@ -262,7 +262,7 @@ const Testimonials = () => {
               </div>
 
               {/* Bottom part Ã¢â‚¬â€ Client details */}
-              <div className="flex flex-col gap-4 mt-8 pt-6 border-t border-[rgba(255,255,255,0.04)]">
+              <div className="flex flex-col gap-4 mt-8 pt-6 border-t border-[rgba(17,17,17,0.04)]">
                 {/* Result */}
                 <div>
                   <div
@@ -295,7 +295,7 @@ const Testimonials = () => {
                   <div
                     className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center font-display font-bold text-xs text-[var(--color-white)] relative flex-shrink-0"
                     style={{
-                      border: '1.5px solid rgba(255,255,255,0.08)',
+                      border: '1.5px solid rgba(17,17,17,0.08)',
                     }}
                   >
                     <div
@@ -351,8 +351,8 @@ const Testimonials = () => {
               onClick={handlePrev}
               className="p-3 rounded-lg transition-all duration-300"
               style={{
-                background: 'rgba(255,107,0,0.08)',
-                border: '1px solid rgba(255,107,0,0.15)',
+                background: 'rgba(232,93,4,0.08)',
+                border: '1px solid rgba(232,93,4,0.15)',
                 color: 'var(--color-orange)',
                 cursor: 'pointer',
               }}
@@ -375,7 +375,7 @@ const Testimonials = () => {
                     width: '44px',
                     height: '44px',
                     borderRadius: '22px',
-                    background: i === currentIndex ? 'var(--color-orange)' : 'rgba(255,107,0,0.2)',
+                    background: i === currentIndex ? 'var(--color-orange)' : 'rgba(232,93,4,0.2)',
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
@@ -393,8 +393,8 @@ const Testimonials = () => {
               onClick={handleNext}
               className="p-3 rounded-lg transition-all duration-300"
               style={{
-                background: 'rgba(255,107,0,0.08)',
-                border: '1px solid rgba(255,107,0,0.15)',
+                background: 'rgba(232,93,4,0.08)',
+                border: '1px solid rgba(232,93,4,0.15)',
                 color: 'var(--color-orange)',
                 cursor: 'pointer',
               }}

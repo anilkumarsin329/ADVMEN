@@ -139,7 +139,7 @@ const ServiceDetail = () => {
         <div
           className="absolute top-0 right-0 w-[50vw] h-[50vh] pointer-events-none"
           style={{
-            background: 'radial-gradient(circle, rgba(255,107,0,0.03) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(232,93,4,0.03) 0%, transparent 70%)',
             filter: 'blur(80px)',
           }}
         />
@@ -167,8 +167,8 @@ const ServiceDetail = () => {
                 <div
                   className="p-3 rounded-lg"
                   style={{
-                    background: 'rgba(255,107,0,0.04)',
-                    border: '1px solid rgba(255,107,0,0.08)',
+                    background: 'rgba(232,93,4,0.04)',
+                    border: '1px solid rgba(232,93,4,0.08)',
                   }}
                 >
                   <ServiceIcon name={service.icon} size={28} />
@@ -203,8 +203,8 @@ const ServiceDetail = () => {
               <div
                 className="p-8 rounded-2xl cursor-default"
                 style={{
-                  background: 'rgba(255,255,255,0.01)',
-                  border: '1px solid rgba(255,255,255,0.04)',
+                  background: 'var(--color-surface-1)',
+                  border: '1px solid var(--color-border-subtle)',
                   backdropFilter: 'blur(16px)',
                 }}
               >
@@ -253,7 +253,7 @@ const ServiceDetail = () => {
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
                 onClick={() => setIsImageModalOpen(true)}
-                className="relative w-full rounded-2xl overflow-hidden border border-[rgba(255,107,0,0.25)] shadow-2xl bg-[#090a0f] flex items-center justify-center p-3 sm:p-6 cursor-pointer group min-h-[260px] max-h-[480px] md:max-h-[520px]"
+                className="relative w-full rounded-2xl overflow-hidden border border-[rgba(232,93,4,0.25)] shadow-2xl bg-[#FFE5CC] flex items-center justify-center p-3 sm:p-6 cursor-pointer group min-h-[260px] max-h-[480px] md:max-h-[520px]"
                 title="Click to expand full image"
               >
                 {/* Ambient Blurred Glow Background */}
@@ -267,7 +267,7 @@ const ServiceDetail = () => {
                 )}
 
                 {/* Industrial Glass Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none z-0" />
+                <div className="absolute inset-0 bg-gradient-to-b from-paper/40 via-transparent to-paper/60 pointer-events-none z-0" />
 
                 {/* Main Foreground Image - object-contain prevents ANY cropping */}
                 {service.image ? (
@@ -280,11 +280,11 @@ const ServiceDetail = () => {
                     className="relative z-10 w-full h-auto max-h-[450px] md:max-h-[490px] object-contain mx-auto rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]"
                   />
                 ) : (
-                  <div className="py-20 text-center text-gray-500 font-mono text-sm relative z-10">No Graphic Image Available</div>
+                  <div className="py-20 text-center text-gray-600 font-mono text-sm relative z-10">No Graphic Image Available</div>
                 )}
 
                 {/* Hover Click-to-Expand Indicator Badge */}
-                <div className="absolute bottom-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-black/80 border border-[rgba(255,107,0,0.3)] text-xs font-mono text-gray-200 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center gap-2 pointer-events-none backdrop-blur-md shadow-lg">
+                <div className="absolute bottom-4 right-4 z-20 px-3.5 py-1.5 rounded-lg bg-paper/80 border border-[rgba(232,93,4,0.3)] text-xs font-mono text-gray-800 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center gap-2 pointer-events-none backdrop-blur-md shadow-lg">
                   <svg className="w-3.5 h-3.5 text-[var(--color-orange)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                   </svg>
@@ -313,8 +313,8 @@ const ServiceDetail = () => {
                     style={{
                       padding: '2rem',
                       borderRadius: '1rem',
-                      background: 'rgba(255,255,255,0.01)',
-                      border: '1px solid rgba(255,107,0,0.15)',
+                      background: 'var(--color-surface-1)',
+                      border: '1px solid rgba(232,93,4,0.2)',
                       backdropFilter: 'blur(12px)',
                     }}
                   >
@@ -336,8 +336,8 @@ const ServiceDetail = () => {
                 style={{
                   padding: '2rem',
                   borderRadius: '1rem',
-                  background: 'rgba(255,107,0,0.04)',
-                  border: '1px solid rgba(255,107,0,0.15)',
+                  background: 'rgba(232,93,4,0.04)',
+                  border: '1px solid rgba(232,93,4,0.15)',
                 }}
               >
                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--color-orange)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>
@@ -351,8 +351,8 @@ const ServiceDetail = () => {
                         fontFamily: 'var(--font-mono)',
                         fontSize: '0.75rem',
                         color: 'var(--color-text-secondary)',
-                        background: 'rgba(255,255,255,0.04)',
-                        border: '1px solid rgba(255,255,255,0.08)',
+                        background: 'var(--color-surface-2)',
+                        border: '1px solid var(--color-border-subtle)',
                         padding: '0.4rem 1rem',
                         borderRadius: '20px',
                         textTransform: 'uppercase',
@@ -380,8 +380,8 @@ const ServiceDetail = () => {
                   key={stepData.step}
                   className="p-8 rounded-2xl flex flex-col gap-4"
                   style={{
-                    background: 'rgba(255,255,255,0.01)',
-                    border: '1px solid rgba(255,255,255,0.03)',
+                    background: 'var(--color-surface-1)',
+                    border: '1px solid var(--color-border-subtle)',
                     backdropFilter: 'blur(12px)',
                   }}
                 >
@@ -423,8 +423,8 @@ const ServiceDetail = () => {
             transition={{ duration: 0.8 }}
             className="p-8 lg:p-12 rounded-3xl relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8"
             style={{
-              background: 'rgba(255,255,255,0.015)',
-              border: '1px solid rgba(255,255,255,0.04)',
+              background: 'var(--color-surface-1)',
+              border: '1px solid var(--color-border-subtle)',
               backdropFilter: 'blur(16px)',
             }}
           >
@@ -466,7 +466,7 @@ const ServiceDetail = () => {
       {/* Fullscreen Image Lightbox Modal */}
       {isImageModalOpen && service.image && (
         <div 
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
+          className="fixed inset-0 z-50 bg-paper/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
           onClick={() => setIsImageModalOpen(false)}
         >
           <div 
@@ -476,14 +476,14 @@ const ServiceDetail = () => {
             {/* Close Button */}
             <button
               onClick={() => setIsImageModalOpen(false)}
-              className="absolute -top-12 right-0 sm:right-2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 z-10 flex items-center justify-center border border-white/10"
+              className="absolute -top-12 right-0 sm:right-2 p-2 rounded-full bg-ink/10 hover:bg-ink/20 text-ink transition-all duration-200 z-10 flex items-center justify-center border border-ink/25"
               title="Close (Esc)"
             >
               <FiX size={24} />
             </button>
 
             {/* Expanded Full Resolution Image */}
-            <div className="w-full h-full flex items-center justify-center overflow-auto rounded-2xl border border-[rgba(255,107,0,0.3)] bg-black/70 shadow-2xl p-2 sm:p-4">
+            <div className="w-full h-full flex items-center justify-center overflow-auto rounded-2xl border border-[rgba(232,93,4,0.3)] bg-paper/70 shadow-2xl p-2 sm:p-4">
               <img
                 src={service.image}
                 alt={service.title}
@@ -492,7 +492,7 @@ const ServiceDetail = () => {
             </div>
             
             {/* Caption */}
-            <div className="mt-3 text-center text-xs font-mono text-gray-400 max-w-xl truncate">
+            <div className="mt-3 text-center text-xs font-mono text-gray-700 max-w-xl truncate">
               {service.title}
             </div>
           </div>

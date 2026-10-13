@@ -18,9 +18,9 @@ const PortfolioCard = ({ project }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image Container */}
-      <div className="relative w-full aspect-video overflow-hidden bg-[rgba(255,255,255,0.02)]">
+      <div className="relative w-full aspect-video overflow-hidden bg-[rgba(17,17,17,0.02)]">
         {/* Skeleton */}
-        <div className="absolute inset-0 bg-[rgba(255,255,255,0.04)] animate-pulse" />
+        <div className="absolute inset-0 bg-[rgba(17,17,17,0.04)] animate-pulse" />
         {/* Actual Image */}
         <img
           src={getImageUrl(project.image) || null}
@@ -53,7 +53,7 @@ const PortfolioCard = ({ project }) => {
               fontFamily: 'var(--font-mono)',
               fontSize: '0.65rem',
               color: 'var(--color-white)',
-              background: 'rgba(255,107,0,0.8)',
+              background: 'rgba(232,93,4,0.8)',
               padding: '0.4rem 0.8rem',
               borderRadius: '4px',
               textTransform: 'uppercase',
@@ -78,7 +78,7 @@ const PortfolioCard = ({ project }) => {
               width: '40px',
               height: '40px',
               borderRadius: '50%',
-              background: 'rgba(255,107,0,0.9)',
+              background: 'rgba(232,93,4,0.9)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -94,19 +94,19 @@ const PortfolioCard = ({ project }) => {
       <div
         className="p-6 transition-all duration-500"
         style={{
-          background: 'rgba(255,255,255,0.01)',
-          border: '1px solid rgba(255,107,0,0.15)',
+          background: 'var(--color-surface-1)',
+          border: '1px solid var(--color-border-subtle)',
           backdropFilter: 'blur(12px)',
           borderTop: 'none',
           borderRadius: '0 0 1rem 1rem',
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
-          e.currentTarget.style.borderColor = 'rgba(255,107,0,0.3)'
+          e.currentTarget.style.background = 'var(--color-surface-2)'
+          e.currentTarget.style.borderColor = 'rgba(232,93,4,0.35)'
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'rgba(255,255,255,0.01)'
-          e.currentTarget.style.borderColor = 'rgba(255,107,0,0.15)'
+          e.currentTarget.style.background = 'var(--color-surface-1)'
+          e.currentTarget.style.borderColor = 'var(--color-border-subtle)'
         }}
       >
         {/* Title */}
@@ -145,8 +145,8 @@ const PortfolioCard = ({ project }) => {
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.65rem',
                 color: 'var(--color-text-tertiary)',
-                background: 'rgba(255,107,0,0.05)',
-                border: '1px solid rgba(255,107,0,0.1)',
+                background: 'rgba(232,93,4,0.05)',
+                border: '1px solid rgba(232,93,4,0.1)',
                 padding: '0.3rem 0.6rem',
                 borderRadius: '4px',
                 textTransform: 'uppercase',

@@ -13,7 +13,7 @@ const AboutBackground = () => (
     {/* Base */}
     <div
       className="absolute inset-0"
-      style={{ background: 'linear-gradient(180deg, #141418 0%, #160f0c 50%, #141418 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #FFE5CC 0%, #FFD9B8 50%, #FFE5CC 100%)' }}
     />
 
     {/* Subtle grid */}
@@ -21,8 +21,8 @@ const AboutBackground = () => (
       className="absolute inset-0"
       style={{
         backgroundImage: `
-          linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px)
+          linear-gradient(rgba(17,17,17,0.012) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(17,17,17,0.012) 1px, transparent 1px)
         `,
         backgroundSize: '80px 80px',
         maskImage: 'radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 100%)',
@@ -39,7 +39,7 @@ const AboutBackground = () => (
         width: '45vw',
         height: '45vw',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,107,0,0.06) 0%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(232,93,4,0.06) 0%, transparent 65%)',
         filter: 'blur(80px)',
       }}
     />

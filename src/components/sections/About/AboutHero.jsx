@@ -74,7 +74,7 @@ const AboutHero = () => {
             {/* 1ï¸âƒ£ COMPANY INTRODUCTION FIRST */}
             <div className="about-hero-stagger space-y-3">
               <h1
-                className="font-display font-bold text-white tracking-tight"
+                className="font-display font-bold text-ink tracking-tight"
                 style={{
                   fontSize: 'clamp(2rem, 3.8vw, 3.25rem)',
                   lineHeight: 1.12,
@@ -82,7 +82,7 @@ const AboutHero = () => {
               >
                 Crafting High-Impact Digital Solutions That Power Modern Businesses.
               </h1>
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-body font-normal max-w-2xl">
+              <p className="text-gray-800 text-sm sm:text-base leading-relaxed font-body font-normal max-w-2xl">
                 ADVMEN is a premier full-service digital agency built for forward-thinking brands. 
                 We combine strategic vision, web engineering, brand identity, and performance marketing to deliver 
                 tailored digital products that scale modern enterprises.
@@ -93,22 +93,22 @@ const AboutHero = () => {
             <div className="about-hero-stagger w-full h-px bg-gradient-to-r from-orange-500/30 via-white/10 to-transparent my-0.5" />
 
             {/* 2ï¸âƒ£ FOUNDER SECTION (Chota Founder Intro) */}
-            <div className="about-hero-stagger flex flex-col gap-4 bg-white/[0.02] border border-white/10 p-5 sm:p-6 rounded-2xl backdrop-blur-sm relative overflow-hidden">
+            <div className="about-hero-stagger flex flex-col gap-4 bg-white/[0.02] border border-ink/25 p-5 sm:p-6 rounded-2xl backdrop-blur-sm relative overflow-hidden">
               {/* Background ambient glow decoration */}
               <div 
                 className="absolute -top-12 -right-12 w-40 h-40 rounded-full pointer-events-none"
                 style={{
-                  background: 'radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, rgba(232,93,4,0.08) 0%, transparent 70%)',
                 }}
               />
 
               {/* Founder Name & Title Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-ink/25 pb-3">
                 <div>
                   <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--color-orange)] mb-0.5">
                     FOUNDER & DIRECTOR
                   </div>
-                  <h2 className="font-display font-bold text-white text-xl sm:text-2xl tracking-tight">
+                  <h2 className="font-display font-bold text-ink text-xl sm:text-2xl tracking-tight">
                     Mr. Govind Goyal
                   </h2>
                 </div>
@@ -125,12 +125,12 @@ const AboutHero = () => {
                   return (
                     <div 
                       key={index}
-                      className="flex items-start gap-3 p-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-orange-500/30 transition-all duration-300 shadow-sm"
+                      className="flex items-start gap-3 p-3 rounded-xl border border-ink/25 bg-white/[0.02] hover:bg-white/[0.05] hover:border-orange-500/30 transition-all duration-300 shadow-sm"
                     >
                       <div className="w-8 h-8 rounded-lg bg-orange-500/15 border border-orange-500/25 text-[var(--color-orange)] flex items-center justify-center shrink-0 mt-0.5">
                         <Icon size={15} />
                       </div>
-                      <p className="text-gray-200 text-xs leading-relaxed font-body font-normal">
+                      <p className="text-gray-800 text-xs leading-relaxed font-body font-normal">
                         {item.text}
                       </p>
                     </div>
@@ -144,7 +144,7 @@ const AboutHero = () => {
               <MagneticButton strength={0.25}>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#E85D00] to-[#FF8533] text-white font-semibold text-sm shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#E85D04] to-[#FF7A1A] text-ink font-semibold text-sm shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
                 >
                   <span>LET'S TALK</span>
                   <FiArrowRight size={16} />
@@ -154,12 +154,12 @@ const AboutHero = () => {
 
           </div>
 
-          {/* Right Column â€” Founder Portrait Frame */}
+          {/* Right Column — Founder Portrait Frame */}
           <div className="col-span-12 lg:col-span-5 flex justify-center lg:justify-end mt-4 lg:mt-0 lg:sticky lg:top-28">
-            <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden border border-orange-500/25 shadow-[0_20px_60px_rgba(255,107,0,0.12)] bg-gray-950 group">
+            <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden border border-orange-500/25 shadow-[0_20px_60px_rgba(232,93,4,0.12)] bg-[var(--color-surface-1)] group">
               <img
                 src="/about-image/Advmen Founder.webp"
-                alt="Mr. Govind Goyal â€” Co-Founder & Director"
+                alt="Mr. Govind Goyal — Co-Founder & Director"
                 loading="lazy"
                 decoding="async"
                 width="380"
@@ -171,24 +171,24 @@ const AboutHero = () => {
               <div 
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(to top, rgba(18, 18, 21, 0.7) 0%, rgba(18, 18, 21, 0.1) 50%, transparent 100%)',
+                  background: 'linear-gradient(to top, rgba(255, 229, 204, 0.7) 0%, rgba(255, 229, 204, 0.1) 50%, transparent 100%)',
                 }}
               />
 
               {/* Bottom Caption Overlay */}
-              <div className="absolute bottom-5 left-5 right-5 bg-black/70 backdrop-blur-md p-3.5 rounded-2xl border border-white/10 flex flex-col gap-0.5">
-                <span className="text-white font-display font-bold text-base">
+              <div className="absolute bottom-5 left-5 right-5 bg-paper/70 backdrop-blur-md p-3.5 rounded-2xl border border-ink/25 flex flex-col gap-0.5">
+                <span className="text-ink font-display font-bold text-base">
                   Mr. Govind Goyal
                 </span>
                 <span className="text-[var(--color-orange)] font-mono text-xs font-medium">
-                  Co-Founder & Director â€” ADVMEN
+                  Co-Founder & Director — ADVMEN
                 </span>
               </div>
 
               {/* Floating Leadership Badge */}
-              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-orange-500/40 flex items-center gap-2 shadow-lg">
+              <div className="absolute top-4 left-4 bg-paper/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-orange-500/40 flex items-center gap-2 shadow-lg">
                 <FiAward className="text-[var(--color-orange)]" size={14} />
-                <span className="text-white font-mono text-xs font-bold">
+                <span className="text-ink font-mono text-xs font-bold">
                   Leadership & Vision
                 </span>
               </div>

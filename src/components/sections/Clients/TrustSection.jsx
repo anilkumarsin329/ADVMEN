@@ -107,7 +107,7 @@ const TrustSection = () => {
           width: '600px',
           height: '600px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(232,93,4,0.08) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
@@ -120,7 +120,7 @@ const TrustSection = () => {
           width: '500px',
           height: '500px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59,130,246,0.04) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(232,93,4,0.04) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
@@ -132,8 +132,8 @@ const TrustSection = () => {
             <span
               className="px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase inline-flex items-center gap-1.5"
               style={{
-                background: 'rgba(255, 107, 0, 0.1)',
-                border: '1px solid rgba(255, 107, 0, 0.3)',
+                background: 'rgba(232, 93, 4, 0.1)',
+                border: '1px solid rgba(232, 93, 4, 0.3)',
                 color: 'var(--color-orange)',
               }}
             >
@@ -174,19 +174,19 @@ const TrustSection = () => {
                 key={m.title}
                 className="trust-metric p-6 sm:p-7 rounded-2xl cursor-default group flex flex-col h-full"
                 style={{
-                  background: 'rgba(255,255,255,0.4)',
-                  border: '1px solid rgba(255,107,0,0.1)',
+                  background: 'var(--color-surface-1)',
+                  border: '1px solid rgba(232,93,4,0.15)',
                   backdropFilter: 'blur(12px)',
                   transition: 'background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)'
-                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.3)'
-                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(255,107,0,0.08)'
+                  e.currentTarget.style.borderColor = 'rgba(232,93,4,0.3)'
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(232,93,4,0.08)'
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.1)'
+                  e.currentTarget.style.borderColor = 'rgba(232,93,4,0.1)'
                   e.currentTarget.style.boxShadow = 'none'
                 }}
               >
@@ -249,8 +249,8 @@ const TrustSection = () => {
           <div
             style={{
               borderRadius: '1.5rem',
-              border: '1px solid rgba(255,107,0,0.15)',
-              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid var(--color-border-subtle)',
+              background: 'var(--color-surface-1)',
               padding: '2rem 0',
               overflow: 'hidden',
             }}
@@ -268,21 +268,21 @@ const TrustSection = () => {
                       height: '110px',
                       marginRight: '1.75rem',
                       borderRadius: '1rem',
-                      background: 'rgba(255,255,255,0.4)',
-                      border: '1.5px solid rgba(255,107,0,0.15)',
+                      background: 'var(--color-surface-1)',
+                      border: '1.5px solid rgba(232,93,4,0.15)',
                       cursor: 'pointer',
-                      transition: 'border-color 0.3s ease',
+                      transition: 'border-color 0.3s ease, background 0.3s ease',
                       padding: '0.85rem',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(255,107,0,0.4)'
-                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(255,107,0,0.15)'
-                      e.currentTarget.style.background = 'rgba(255,107,0,0.05)'
+                      e.currentTarget.style.borderColor = 'rgba(232,93,4,0.4)'
+                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(232,93,4,0.15)'
+                      e.currentTarget.style.background = 'rgba(232,93,4,0.08)'
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(255,107,0,0.15)'
+                      e.currentTarget.style.borderColor = 'rgba(232,93,4,0.15)'
                       e.currentTarget.style.boxShadow = 'none'
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
+                      e.currentTarget.style.background = 'var(--color-surface-1)'
                     }}
                   >
                     <div
@@ -342,19 +342,19 @@ const TrustSection = () => {
                 style={{
                   padding: '1.5rem',
                   borderRadius: '1rem',
-                  background: 'rgba(255,107,0,0.05)',
-                  border: '1px solid rgba(255,107,0,0.15)',
+                  background: 'rgba(232,93,4,0.05)',
+                  border: '1px solid rgba(232,93,4,0.15)',
                   textAlign: 'center',
                   transition: 'all 0.3s ease',
                   cursor: 'default',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,107,0,0.12)'
-                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.3)'
+                  e.currentTarget.style.background = 'rgba(232,93,4,0.12)'
+                  e.currentTarget.style.borderColor = 'rgba(232,93,4,0.3)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,107,0,0.05)'
-                  e.currentTarget.style.borderColor = 'rgba(255,107,0,0.15)'
+                  e.currentTarget.style.background = 'rgba(232,93,4,0.05)'
+                  e.currentTarget.style.borderColor = 'rgba(232,93,4,0.15)'
                 }}
               >
                 <div

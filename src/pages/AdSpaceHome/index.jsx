@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from '../../utils/gsapConfig'
 import SEOHead from '../../components/common/SEOHead'
 import PageTransition from '../../components/common/PageTransition'
@@ -94,12 +95,12 @@ const AdSpaceHome = () => {
             filter: 'grayscale(30%)'
           }}
         />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/80 via-black/50 to-black" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-paper/80 via-paper/50 to-paper" />
 
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
           
           <div className="w-full flex justify-start mb-8 mt-4 ad-stagger">
-            <Link to="/" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-orange-500 transition-colors font-bold bg-white/5 px-4 py-2 rounded-full border border-white/10 hover:border-orange-500/50 backdrop-blur-md">
+            <Link to="/" className="inline-flex items-center gap-2 text-sm text-gray-700 hover:text-orange-500 transition-colors font-bold bg-ink/5 px-4 py-2 rounded-full border border-ink/25 hover:border-orange-500/50 backdrop-blur-md">
               <FiArrowLeft /> Back to Main Website
             </Link>
           </div>
@@ -128,49 +129,49 @@ const AdSpaceHome = () => {
           </p>
 
           <div className="ad-stagger flex flex-wrap justify-center gap-6 mb-16">
-            <Link to="/ad-space/owner/register" className="bg-orange-600 hover:bg-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:-translate-y-1 shadow-[0_0_30px_rgba(255,107,0,0.3)] hover:shadow-[0_0_40px_rgba(255,107,0,0.5)]">
+            <Link to="/ad-space/owner/register" className="bg-[var(--color-orange)] hover:bg-[#FF7A1A] text-ink px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:-translate-y-1 shadow-[0_0_30px_rgba(232,93,4,0.3)] hover:shadow-[0_0_40px_rgba(232,93,4,0.5)]">
               List Your Space
             </Link>
-            <Link to="/ad-space/browse" className="bg-white hover:bg-gray-200 text-black px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:-translate-y-1 shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]">
+            <Link to="/ad-space/browse" className="bg-[var(--color-surface-1)] hover:bg-[var(--color-surface-2)] text-ink border border-[var(--color-border-subtle)] hover:border-[var(--color-orange)] px-8 py-4 rounded-xl font-bold text-lg transition-all transform hover:-translate-y-1 shadow-[var(--shadow-neu-convex)] hover:shadow-[0_0_25px_rgba(232,93,4,0.25)]">
               Find Ad Space
             </Link>
           </div>
 
           {/* Stats Bar */}
-          <div className="ad-stagger grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-5xl mx-auto p-6 rounded-2xl border border-[rgba(255,107,0,0.15)] bg-white/5 backdrop-blur-md">
+          <div className="ad-stagger grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-5xl mx-auto p-6 rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-1)] backdrop-blur-md">
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-display font-bold text-white">{stats.totalSpaces}+</span>
-              <span className="text-xs text-slate-400 font-mono mt-1 uppercase tracking-wider text-center">Total Spaces</span>
+              <span className="text-3xl font-display font-bold text-ink">{stats.totalSpaces}+</span>
+              <span className="text-xs text-gray-700 font-mono mt-1 uppercase tracking-wider text-center">Total Spaces</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-display font-bold text-white">50+</span>
-              <span className="text-xs text-slate-400 font-mono mt-1 uppercase tracking-wider text-center">Cities</span>
+              <span className="text-3xl font-display font-bold text-ink">50+</span>
+              <span className="text-xs text-gray-700 font-mono mt-1 uppercase tracking-wider text-center">Cities</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-display font-bold text-white">{stats.activeCampaigns}+</span>
-              <span className="text-xs text-slate-400 font-mono mt-1 uppercase tracking-wider text-center">Active Campaigns</span>
+              <span className="text-3xl font-display font-bold text-ink">{stats.activeCampaigns}+</span>
+              <span className="text-xs text-gray-700 font-mono mt-1 uppercase tracking-wider text-center">Active Campaigns</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-3xl font-display font-bold text-white">100%</span>
-              <span className="text-xs text-slate-400 font-mono mt-1 uppercase tracking-wider text-center">Happy Clients</span>
+              <span className="text-3xl font-display font-bold text-ink">100%</span>
+              <span className="text-xs text-gray-700 font-mono mt-1 uppercase tracking-wider text-center">Happy Clients</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* How it works & Space Types */}
-      <section className="py-24 bg-black relative">
+      <section className="py-24 bg-paper relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold text-white mb-4">Explore Space Types</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">Find the perfect medium for your next advertising campaign.</p>
+            <h2 className="text-4xl font-display font-bold text-ink mb-4">Explore Space Types</h2>
+            <p className="text-gray-700 max-w-2xl mx-auto">Find the perfect medium for your next advertising campaign.</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6 max-w-6xl mx-auto">
             {spaceTypes.map((type, i) => (
-              <Link to={`/ad-space/browse?type=${type.title}`} key={i} className="group p-6 rounded-2xl border border-[rgba(255,107,0,0.15)] bg-white/5 hover:bg-white/10 transition-all flex flex-col items-center text-center backdrop-blur-md">
-                <span className="text-5xl mb-4 group-hover:scale-110 transition-transform text-orange-500">{type.icon}</span>
-                <h3 className="text-lg font-bold text-white group-hover:text-orange-500 transition-colors">{type.title}</h3>
+              <Link to={`/ad-space/browse?type=${type.title}`} key={i} className="group p-6 rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-1)] hover:bg-[var(--color-surface-2)] hover:border-[var(--color-orange)] transition-all flex flex-col items-center text-center backdrop-blur-md">
+                <span className="text-5xl mb-4 group-hover:scale-110 transition-transform text-[var(--color-orange)]">{type.icon}</span>
+                <h3 className="text-lg font-bold text-ink group-hover:text-[var(--color-orange)] transition-colors">{type.title}</h3>
               </Link>
             ))}
           </div>
@@ -178,27 +179,27 @@ const AdSpaceHome = () => {
       </section>
       
       {/* How it works */}
-      <section className="py-24 bg-[#141418] relative border-t border-white/5">
+      <section className="py-24 bg-[var(--color-surface-1)] relative border-t border-[var(--color-border-subtle)]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-display font-bold text-white mb-4">How It Works</h2>
+            <h2 className="text-4xl font-display font-bold text-ink mb-4">How It Works</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="text-center p-6">
               <div className="w-16 h-16 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
-              <h3 className="text-xl font-bold text-white mb-3">List or Browse</h3>
-              <p className="text-slate-400 text-sm">Owners list their available spaces. Advertisers browse and filter by location and price.</p>
+              <h3 className="text-xl font-bold text-ink mb-3">List or Browse</h3>
+              <p className="text-gray-700 text-sm">Owners list their available spaces. Advertisers browse and filter by location and price.</p>
             </div>
             <div className="text-center p-6">
               <div className="w-16 h-16 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
-              <h3 className="text-xl font-bold text-white mb-3">Book & Pay</h3>
-              <p className="text-slate-400 text-sm">Send a booking request. Once approved by the owner, pay securely via Razorpay.</p>
+              <h3 className="text-xl font-bold text-ink mb-3">Book & Pay</h3>
+              <p className="text-gray-700 text-sm">Send a booking request. Once approved by the owner, pay securely via Razorpay.</p>
             </div>
             <div className="text-center p-6">
               <div className="w-16 h-16 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
-              <h3 className="text-xl font-bold text-white mb-3">Go Live & Earn</h3>
-              <p className="text-slate-400 text-sm">Upload creatives. We verify them and put the ad live. Owners earn their payout automatically.</p>
+              <h3 className="text-xl font-bold text-ink mb-3">Go Live & Earn</h3>
+              <p className="text-gray-700 text-sm">Upload creatives. We verify them and put the ad live. Owners earn their payout automatically.</p>
             </div>
           </div>
         </div>

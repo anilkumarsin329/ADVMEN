@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+﻿import { Helmet } from 'react-helmet-async'
 import { SEO_DEFAULTS, COMPANY } from '@utils/constants'
 
 const SEOHead = ({
@@ -22,7 +22,7 @@ const SEOHead = ({
     '@id': `${COMPANY.website}/#organization`,
     name: COMPANY.name,
     url: COMPANY.website,
-    logo: `${COMPANY.website}/ADVMEN logo.png`,
+    logo: `${COMPANY.website}/ADVMEN%20logo.png`,
     description: COMPANY.description,
     email: COMPANY.email,
     telephone: COMPANY.phone,
@@ -191,14 +191,14 @@ const SEOHead = ({
 
   return (
     <Helmet>
-      {/* ── Primary Meta ─────────────────────────────────── */}
+      {/* â”€â”€ Primary Meta â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords"    content={keywords} />
       {canonical && <link rel="canonical" href={canonical} />}
       {noIndex   && <meta name="robots" content="noindex, nofollow" />}
 
-      {/* ── Open Graph ───────────────────────────────────── */}
+      {/* â”€â”€ Open Graph â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <meta property="og:title"       content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image"       content={ogImage} />
@@ -206,13 +206,13 @@ const SEOHead = ({
       <meta property="og:site_name"   content={COMPANY.name} />
       {canonical && <meta property="og:url" content={canonical} />}
 
-      {/* ── Twitter Card ─────────────────────────────────── */}
+      {/* â”€â”€ Twitter Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <meta name="twitter:card"        content={SEO_DEFAULTS.twitterCard} />
       <meta name="twitter:title"       content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image"       content={ogImage} />
 
-      {/* ── JSON-LD Schemas ──────────────────────────────── */}
+      {/* â”€â”€ JSON-LD Schemas â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {schemas.map((schema, i) => (
         <script key={i} type="application/ld+json">
           {JSON.stringify(schema)}
@@ -223,3 +223,5 @@ const SEOHead = ({
 }
 
 export default SEOHead
+
+

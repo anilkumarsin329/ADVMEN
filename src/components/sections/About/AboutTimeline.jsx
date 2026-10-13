@@ -95,7 +95,7 @@ const AboutTimeline = () => {
           {/* Vertical Track Line — Gray Background */}
           <div
             className="absolute left-4 lg:left-1/2 -translate-x-1/2 top-4 bottom-4 w-0.5"
-            style={{ background: 'rgba(255,255,255,0.06)' }}
+            style={{ background: 'rgba(17,17,17,0.06)' }}
             aria-hidden="true"
           />
 
@@ -105,7 +105,7 @@ const AboutTimeline = () => {
             className="absolute left-4 lg:left-1/2 -translate-x-1/2 top-4 bottom-4 w-0.5 origin-top"
             style={{
               background: 'var(--gradient-orange)',
-              boxShadow: '0 0 10px rgba(255,107,0,0.8)',
+              boxShadow: '0 0 10px rgba(232,93,4,0.8)',
             }}
             aria-hidden="true"
           />
@@ -125,7 +125,7 @@ const AboutTimeline = () => {
                     className="absolute left-4 lg:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full flex items-center justify-center"
                     style={{
                       background: 'var(--color-black)',
-                      border: '2px solid rgba(255,255,255,0.15)',
+                      border: '2px solid rgba(17,17,17,0.15)',
                       zIndex: 3,
                     }}
                   >
@@ -151,8 +151,8 @@ const AboutTimeline = () => {
                     <div
                       className="p-6 rounded-2xl cursor-default text-left"
                       style={{
-                        background: 'rgba(255,255,255,0.015)',
-                        border: '1px solid rgba(255,255,255,0.03)',
+                        background: 'var(--color-surface-1)',
+                        border: '1px solid var(--color-border-subtle)',
                         backdropFilter: 'blur(12px)',
                         display: 'inline-block',
                         width: '100%',

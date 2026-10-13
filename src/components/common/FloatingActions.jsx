@@ -106,7 +106,11 @@ const FloatingActions = () => {
 
   // Show scroll-to-top after 400px
   useEffect(() => {
-    const onScroll = () => setShowScrollTop(window.scrollY > 400)
+    const onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop || 0
+      setShowScrollTop(y > 300)
+    }
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -156,7 +160,7 @@ const FloatingActions = () => {
           label="WhatsApp"
           href={whatsappUrl}
           color="#25D366"
-          className="text-white"
+          className="text-ink"
         />
       </motion.div>
 
@@ -176,9 +180,9 @@ const FloatingActions = () => {
                 icon={<ArrowUpIcon />}
                 label="Back to Top"
                 onClick={scrollToTop}
-                color="var(--color-surface-3)"
-                className="text-[var(--color-text-secondary)] opacity-60 hover:opacity-100 hover:text-[var(--color-text-primary)] border border-[var(--color-border-subtle)]"
-                size="sm"
+                color="var(--color-ink)"
+                className="text-[var(--color-paper)] border-2 border-[var(--color-ink)] hover:bg-[var(--color-orange)] hover:text-[var(--color-ink)]"
+                size="default"
               />
             </motion.div>
           )}
@@ -196,7 +200,7 @@ const FloatingActions = () => {
             label="Call Us"
             href={callUrl}
             color="var(--color-orange)"
-            className="text-white"
+            className="text-ink"
           />
         </motion.div>
       </div>

@@ -1,18 +1,15 @@
 /**
- * WorkingProcess.jsx — 7-Step Agency Execution Process
+ * WorkingProcess.jsx — Our 4D Growth Framework (Discover · Develop · Distribute · Drive)
  */
 
 import { useEffect, useRef } from 'react'
 import { gsap } from '@utils/gsapConfig'
 
 const steps = [
-  { num: '01', title: 'Discovery', desc: 'Auditing existing systems, mapping project goals, specs, and outlining milestones.' },
-  { num: '02', title: 'Strategy', desc: 'Selecting tech stack architecture, creating navigation models, and visual directions.' },
-  { num: '03', title: 'Design', desc: 'Refining wireframes into high-fidelity custom design systems and user journey paths.' },
-  { num: '04', title: 'Development', desc: 'Writing clean, semantic React code and setting up responsive API systems.' },
-  { num: '05', title: 'Testing', desc: 'Performing speed optimization audits, cross-device QA verification, and security checks.' },
-  { num: '06', title: 'Launch', desc: 'Domain mapping, setting up hosting services, and pushing final files to production.' },
-  { num: '07', title: 'Support', desc: 'Continuous performance monitoring, analytics tracking, and scaling updates.' },
+  { num: '01', title: 'Discover', desc: 'We dig into your market, study your audience, check out competitors, understand search habits, and clarify your business goals.' },
+  { num: '02', title: 'Develop', desc: 'We build a game plan that fits: SEO, content, branding, your website, and digital strategies tailored to the real opportunities.' },
+  { num: '03', title: 'Distribute', desc: 'We put your brand where your audience actually spends time, like search engines, social platforms, content hubs.' },
+  { num: '04', title: 'Drive', desc: 'We measure quality traffic, leads, conversions, and any other signals that show business growth. Our team uses that data to keep tuning your strategy.' },
 ]
 
 const WorkingProcess = () => {
@@ -47,14 +44,22 @@ const WorkingProcess = () => {
       style={{
         background: 'var(--color-black)',
       }}
-      aria-label="Working Process"
+      aria-label="Our 4D Growth Framework"
     >
       <div className="container relative z-10">
         
         {/* Title */}
         <div className="max-w-3xl mb-20">
-          <span className="eyebrow">How We Work</span>
-          <h2 className="section-title mt-4">A Systematic Approach to Digital Execution</h2>
+          <span className="eyebrow">Our 4D Growth Framework</span>
+          <h2 className="section-title mt-4">A Structured Approach to Digital Growth</h2>
+          <p className="section-subtitle">
+            Good digital marketing is rarely the result of one isolated campaign. It’s about really knowing your audience,
+            the competition, and your own goals. You build solid foundations, get your message out the right way, and keep
+            learning from what works (and what doesn’t).
+          </p>
+          <p className="section-subtitle" style={{ color: 'var(--color-text-primary)', fontWeight: 600 }}>
+            Our 4D framework keeps that process connected.
+          </p>
         </div>
 
         {/* Timeline Stack */}
@@ -62,7 +67,7 @@ const WorkingProcess = () => {
           {/* Vertical progression line */}
           <div
             className="absolute left-6 lg:left-1/2 -translate-x-1/2 top-4 bottom-4 w-px"
-            style={{ background: 'rgba(255,255,255,0.06)' }}
+            style={{ background: 'rgba(17,17,17,0.06)' }}
             aria-hidden="true"
           />
 
@@ -71,7 +76,7 @@ const WorkingProcess = () => {
             className="absolute left-6 lg:left-1/2 -translate-x-1/2 top-4 bottom-4 w-px origin-top"
             style={{
               background: 'var(--gradient-orange)',
-              boxShadow: '0 0 8px rgba(255,107,0,0.6)',
+              boxShadow: '0 0 8px rgba(232,93,4,0.6)',
             }}
             aria-hidden="true"
           />
@@ -90,12 +95,12 @@ const WorkingProcess = () => {
                     className="absolute left-[28px] lg:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-125"
                     style={{
                       background: 'var(--color-black)',
-                      border: '2px solid rgba(255,107,0,0.4)',
+                      border: '2px solid rgba(232,93,4,0.4)',
                       zIndex: 3,
-                      boxShadow: '0 0 10px rgba(255,107,0,0.2)',
+                      boxShadow: '0 0 10px rgba(232,93,4,0.2)',
                     }}
                   >
-                    <div className="w-2 h-2 rounded-full bg-[var(--color-orange)] transition-all duration-300 group-hover:shadow-[0_0_8px_rgba(255,107,0,0.8)]" />
+                    <div className="w-2 h-2 rounded-full bg-[var(--color-orange)] transition-all duration-300 group-hover:shadow-[0_0_8px_rgba(232,93,4,0.8)]" />
                   </div>
 
                   {/* Left or Right Content Block */}

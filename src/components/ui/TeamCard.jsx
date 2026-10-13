@@ -35,7 +35,7 @@ const TeamCard = ({ member, index = 0, className }) => (
 
       {/* Social overlay */}
       {member.socials && (
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-5 gap-3">
+        <div className="absolute inset-0 bg-gradient-to-t from-paper/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-5 gap-3">
           {member.socials.map((s) => (
             <a
               key={s.platform}
@@ -43,7 +43,7 @@ const TeamCard = ({ member, index = 0, className }) => (
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.platform}
-              className="btn-icon btn-icon-sm bg-[var(--color-glass-white-12)] border-white/20 text-white hover:bg-[var(--color-orange)] hover:border-[var(--color-orange)]"
+              className="btn-icon btn-icon-sm bg-[var(--color-glass-white-12)] border-ink/40 text-ink hover:bg-[var(--color-orange)] hover:border-[var(--color-orange)]"
             >
               {s.icon}
             </a>

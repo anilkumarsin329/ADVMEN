@@ -66,16 +66,16 @@ export const disposeObject = (object) => {
 // â”€â”€ Color Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 /**
  * Converts a hex color string to a THREE.Color instance.
- * @param {string} hex - e.g. '#FF6B00'
+ * @param {string} hex - e.g. '#E85D04'
  */
 export const hexToThreeColor = (hex) => new THREE.Color(hex)
 
 /** Brand colors as THREE.Color instances */
 export const BRAND_COLORS = {
-  orange:      new THREE.Color('#FF6B00'),
-  orangeLight: new THREE.Color('#FF8C38'),
-  white:       new THREE.Color('#F5F5F5'),
-  black:       new THREE.Color('#141418'),
+  orange:      new THREE.Color('#E85D04'),
+  orangeLight: new THREE.Color('#FF7A1A'),
+  white:       new THREE.Color('#FFFFFF'),
+  black:       new THREE.Color('#0A0A0A'),
 }
 
 // â”€â”€ Geometry Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€

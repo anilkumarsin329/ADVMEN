@@ -224,7 +224,7 @@ const Catalog = () => {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+              className="fixed inset-0 bg-paper/50 backdrop-blur-sm z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -306,46 +306,46 @@ const Catalog = () => {
         {showCheckoutModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-paper/80 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowCheckoutModal(false)}
             />
             <motion.div
-              className="relative bg-[var(--color-surface-1)] w-full max-w-lg rounded-2xl p-6 md:p-8 border border-[rgba(255,255,255,0.05)] shadow-2xl"
+              className="relative bg-[var(--color-surface-1)] w-full max-w-lg rounded-2xl p-6 md:p-8 border border-[rgba(17,17,17,0.05)] shadow-2xl"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
             >
               <button 
                 onClick={() => setShowCheckoutModal(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+                className="absolute top-4 right-4 text-gray-700 hover:text-ink transition-colors"
               >
                 <FiX size={24} />
               </button>
               
-              <h2 className="text-2xl font-bold font-display mb-6 text-white">Complete Your Booking</h2>
+              <h2 className="text-2xl font-bold font-display mb-6 text-ink">Complete Your Booking</h2>
               
               <form onSubmit={handleCheckoutSubmit} className="flex flex-col gap-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs uppercase tracking-wider text-gray-400 font-bold">Name *</label>
+                    <label className="text-xs uppercase tracking-wider text-gray-700 font-bold">Name *</label>
                     <input 
                       type="text" required
                       value={checkoutForm.clientName}
                       onChange={e => setCheckoutForm({...checkoutForm, clientName: e.target.value})}
-                      className="bg-[var(--color-black)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[var(--color-orange)]"
+                      className="bg-[var(--color-black)] border border-[rgba(17,17,17,0.1)] rounded-lg px-4 py-2.5 text-sm text-ink focus:outline-none focus:border-[var(--color-orange)]"
                       placeholder="John Doe"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs uppercase tracking-wider text-gray-400 font-bold">Email *</label>
+                    <label className="text-xs uppercase tracking-wider text-gray-700 font-bold">Email *</label>
                     <input 
                       type="email" required
                       value={checkoutForm.clientEmail}
                       onChange={e => setCheckoutForm({...checkoutForm, clientEmail: e.target.value})}
-                      className="bg-[var(--color-black)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[var(--color-orange)]"
+                      className="bg-[var(--color-black)] border border-[rgba(17,17,17,0.1)] rounded-lg px-4 py-2.5 text-sm text-ink focus:outline-none focus:border-[var(--color-orange)]"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -353,47 +353,47 @@ const Catalog = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs uppercase tracking-wider text-gray-400 font-bold">Phone *</label>
+                    <label className="text-xs uppercase tracking-wider text-gray-700 font-bold">Phone *</label>
                     <input 
                       type="tel" required
                       value={checkoutForm.clientPhone}
                       onChange={e => setCheckoutForm({...checkoutForm, clientPhone: e.target.value})}
-                      className="bg-[var(--color-black)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[var(--color-orange)]"
+                      className="bg-[var(--color-black)] border border-[rgba(17,17,17,0.1)] rounded-lg px-4 py-2.5 text-sm text-ink focus:outline-none focus:border-[var(--color-orange)]"
                       placeholder="+91 9876543210"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs uppercase tracking-wider text-gray-400 font-bold">Company (Optional)</label>
+                    <label className="text-xs uppercase tracking-wider text-gray-700 font-bold">Company (Optional)</label>
                     <input 
                       type="text"
                       value={checkoutForm.clientCompany}
                       onChange={e => setCheckoutForm({...checkoutForm, clientCompany: e.target.value})}
-                      className="bg-[var(--color-black)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[var(--color-orange)]"
+                      className="bg-[var(--color-black)] border border-[rgba(17,17,17,0.1)] rounded-lg px-4 py-2.5 text-sm text-ink focus:outline-none focus:border-[var(--color-orange)]"
                       placeholder="Your Company"
                     />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs uppercase tracking-wider text-gray-400 font-bold">Project Requirements *</label>
+                  <label className="text-xs uppercase tracking-wider text-gray-700 font-bold">Project Requirements *</label>
                   <textarea 
                     required rows={3}
                     value={checkoutForm.requirements}
                     onChange={e => setCheckoutForm({...checkoutForm, requirements: e.target.value})}
-                    className="bg-[var(--color-black)] border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[var(--color-orange)] resize-none"
+                    className="bg-[var(--color-black)] border border-[rgba(17,17,17,0.1)] rounded-lg px-4 py-2.5 text-sm text-ink focus:outline-none focus:border-[var(--color-orange)] resize-none"
                     placeholder="Briefly describe your project needs..."
                   />
                 </div>
 
-                <div className="flex justify-between items-center mt-4 pt-4 border-t border-[rgba(255,255,255,0.05)]">
-                  <div className="text-gray-400 text-sm">Total Amount: <span className="text-white font-bold text-lg">₹{totalPrice.toLocaleString()}</span></div>
+                <div className="flex justify-between items-center mt-4 pt-4 border-t border-[rgba(17,17,17,0.05)]">
+                  <div className="text-gray-700 text-sm">Total Amount: <span className="text-ink font-bold text-lg">₹{totalPrice.toLocaleString()}</span></div>
                   <button 
                     type="submit" disabled={isSubmitting}
-                    className={`px-6 py-3 rounded-lg font-bold uppercase tracking-wider text-xs transition-colors flex items-center justify-center min-w-[140px] ${isSubmitting ? 'bg-[var(--color-orange)]/70 text-white cursor-not-allowed' : 'bg-[var(--color-orange)] hover:bg-[#e65c00] text-white cursor-pointer'}`}
+                    className={`px-6 py-3 rounded-lg font-bold uppercase tracking-wider text-xs transition-colors flex items-center justify-center min-w-[140px] ${isSubmitting ? 'bg-[var(--color-orange)]/70 text-ink cursor-not-allowed' : 'bg-[var(--color-orange)] hover:bg-[#C94F00] text-ink cursor-pointer'}`}
                   >
                     {isSubmitting ? (
                       <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 rounded-full border-2 border-t-transparent border-white animate-spin" />
+                        <div className="w-4 h-4 rounded-full border-2 border-t-transparent border-ink animate-spin" />
                         <span>Submitting...</span>
                       </div>
                     ) : (

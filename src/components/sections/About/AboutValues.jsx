@@ -97,8 +97,8 @@ const AboutValues = () => {
               whileHover={{ y: -4 }}
               className="p-6 sm:p-8 rounded-2xl cursor-default group"
               style={{
-                background: 'rgba(255,255,255,0.01)',
-                border: '1px solid rgba(255,255,255,0.04)',
+                background: 'var(--color-surface-1)',
+                border: '1px solid var(--color-border-subtle)',
                 backdropFilter: 'blur(16px)',
                 transition: 'all 0.4s ease',
               }}

@@ -136,7 +136,7 @@ const BlogPost = () => {
                 style={{
                   width: '1px',
                   height: '16px',
-                  background: 'rgba(255,255,255,0.1)',
+                  background: 'rgba(17,17,17,0.1)',
                 }}
               />
               <span
@@ -168,7 +168,7 @@ const BlogPost = () => {
             </h1>
 
             {/* Author & Share */}
-            <div className="flex justify-between items-center pt-4 border-t border-[rgba(255,255,255,0.05)]">
+            <div className="flex justify-between items-center pt-4 border-t border-[var(--color-border-subtle)]">
               <div>
                 <div
                   style={{
@@ -198,8 +198,8 @@ const BlogPost = () => {
                   onClick={handleCopyLink}
                   className="p-2 rounded-lg transition-all duration-300"
                   style={{
-                    background: 'rgba(255,107,0,0.08)',
-                    border: '1px solid rgba(255,107,0,0.15)',
+                    background: 'rgba(232,93,4,0.08)',
+                    border: '1px solid rgba(232,93,4,0.15)',
                     color: 'var(--color-orange)',
                     cursor: 'pointer',
                   }}
@@ -210,8 +210,8 @@ const BlogPost = () => {
                 <button
                   className="p-2 rounded-lg transition-all duration-300"
                   style={{
-                    background: 'rgba(255,107,0,0.08)',
-                    border: '1px solid rgba(255,107,0,0.15)',
+                    background: 'rgba(232,93,4,0.08)',
+                    border: '1px solid rgba(232,93,4,0.15)',
                     color: 'var(--color-orange)',
                     cursor: 'pointer',
                   }}
@@ -236,7 +236,7 @@ const BlogPost = () => {
           <div className="max-w-4xl mx-auto">
             <div 
               onClick={() => setIsImageModalOpen(true)}
-              className="relative w-full rounded-2xl overflow-hidden border border-[rgba(255,107,0,0.2)] shadow-2xl bg-[#090a0f] flex items-center justify-center p-2 sm:p-4 cursor-pointer group min-h-[240px] max-h-[480px] md:max-h-[520px]"
+              className="relative w-full rounded-2xl overflow-hidden border border-[rgba(232,93,4,0.2)] shadow-2xl bg-[#FFE5CC] flex items-center justify-center p-2 sm:p-4 cursor-pointer group min-h-[240px] max-h-[480px] md:max-h-[520px]"
               title="Click to view full image"
             >
               {/* Ambient blurred glow background */}
@@ -257,11 +257,11 @@ const BlogPost = () => {
                   className="relative z-10 w-full h-auto max-h-[450px] md:max-h-[490px] object-contain mx-auto rounded-xl transition-transform duration-300 group-hover:scale-[1.01]"
                 />
               ) : (
-                <div className="py-16 text-center text-gray-500 font-mono text-sm">No Image Available</div>
+                <div className="py-16 text-center text-gray-600 font-mono text-sm">No Image Available</div>
               )}
 
               {/* Hover Badge for zoom hint */}
-              <div className="absolute bottom-3 right-3 z-20 px-3 py-1.5 rounded-lg bg-black/70 border border-white/10 text-xs font-mono text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5 pointer-events-none backdrop-blur-md">
+              <div className="absolute bottom-3 right-3 z-20 px-3 py-1.5 rounded-lg bg-paper/70 border border-ink/25 text-xs font-mono text-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-1.5 pointer-events-none backdrop-blur-md">
                 <svg className="w-3.5 h-3.5 text-[var(--color-orange)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
                 </svg>
@@ -299,7 +299,7 @@ const BlogPost = () => {
               </div>
 
               {/* Tags */}
-              <div className="mt-8 pt-8 border-t border-[rgba(255,255,255,0.05)]">
+              <div className="mt-8 pt-8 border-t border-[var(--color-border-subtle)]">
                 <div className="flex flex-wrap gap-2">
                   {article.tags.map((tag) => (
                     <span
@@ -308,8 +308,8 @@ const BlogPost = () => {
                         fontFamily: 'var(--font-mono)',
                         fontSize: '0.7rem',
                         color: 'var(--color-orange)',
-                        background: 'rgba(255,107,0,0.08)',
-                        border: '1px solid rgba(255,107,0,0.15)',
+                        background: 'rgba(232,93,4,0.08)',
+                        border: '1px solid rgba(232,93,4,0.15)',
                         padding: '0.4rem 0.8rem',
                         borderRadius: '4px',
                         textTransform: 'uppercase',
@@ -330,8 +330,8 @@ const BlogPost = () => {
                 style={{
                   padding: '1.5rem',
                   borderRadius: '1rem',
-                  background: 'rgba(255,255,255,0.01)',
-                  border: '1px solid rgba(255,107,0,0.15)',
+                  background: 'var(--color-surface-1)',
+                  border: '1px solid var(--color-border-subtle)',
                   backdropFilter: 'blur(12px)',
                   marginBottom: '2rem',
                 }}
@@ -426,8 +426,8 @@ const BlogPost = () => {
                   style={{
                     padding: '1.5rem',
                     borderRadius: '1rem',
-                    background: 'rgba(255,255,255,0.01)',
-                    border: '1px solid rgba(255,107,0,0.15)',
+                    background: 'var(--color-surface-1)',
+                    border: '1px solid var(--color-border-subtle)',
                     backdropFilter: 'blur(12px)',
                   }}
                 >
@@ -447,10 +447,10 @@ const BlogPost = () => {
                       <Link
                         key={related.id}
                         to={`/blog/${related.slug}`}
-                        className="group p-3 rounded-lg transition-all duration-300 hover:bg-[rgba(255,107,0,0.08)]"
+                        className="group p-3 rounded-lg transition-all duration-300 hover:bg-[rgba(232,93,4,0.08)]"
                         style={{
-                          background: 'rgba(255,255,255,0.01)',
-                          border: '1px solid rgba(255,107,0,0.1)',
+                          background: 'var(--color-surface-2)',
+                          border: '1px solid var(--color-border-subtle)',
                         }}
                       >
                         <div
@@ -491,7 +491,7 @@ const BlogPost = () => {
           paddingTop: '4rem',
           paddingBottom: '4rem',
           background: 'var(--color-black)',
-          borderTop: '1px solid rgba(255,107,0,0.1)',
+          borderTop: '1px solid rgba(232,93,4,0.1)',
         }}
       >
         <div className="container">
@@ -499,8 +499,8 @@ const BlogPost = () => {
             style={{
               padding: '2rem',
               borderRadius: '1rem',
-              background: 'rgba(255,107,0,0.05)',
-              border: '1px solid rgba(255,107,0,0.15)',
+              background: 'rgba(232,93,4,0.05)',
+              border: '1px solid rgba(232,93,4,0.15)',
               textAlign: 'center',
             }}
           >
@@ -548,7 +548,7 @@ const BlogPost = () => {
       {/* Fullscreen Image Preview Lightbox Modal */}
       {isImageModalOpen && article.image && (
         <div 
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
+          className="fixed inset-0 z-50 bg-paper/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
           onClick={() => setIsImageModalOpen(false)}
         >
           <div 
@@ -558,14 +558,14 @@ const BlogPost = () => {
             {/* Close Button */}
             <button
               onClick={() => setIsImageModalOpen(false)}
-              className="absolute -top-12 right-0 sm:right-2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-200 z-10 flex items-center justify-center"
+              className="absolute -top-12 right-0 sm:right-2 p-2 rounded-full bg-ink/10 hover:bg-ink/20 text-ink transition-all duration-200 z-10 flex items-center justify-center"
               title="Close (Esc)"
             >
               <FiX size={24} />
             </button>
 
             {/* Expanded Full Image */}
-            <div className="w-full h-full flex items-center justify-center overflow-auto rounded-2xl border border-white/10 bg-black/50 shadow-2xl p-2">
+            <div className="w-full h-full flex items-center justify-center overflow-auto rounded-2xl border border-ink/25 bg-paper/50 shadow-2xl p-2">
               {article.image && typeof article.image === 'string' && article.image.trim() !== '' && (
                 <img
                   src={getImageUrl(article.image)}
@@ -576,7 +576,7 @@ const BlogPost = () => {
             </div>
             
             {/* Caption */}
-            <div className="mt-3 text-center text-xs font-mono text-gray-400 max-w-xl truncate">
+            <div className="mt-3 text-center text-xs font-mono text-gray-700 max-w-xl truncate">
               {article.title}
             </div>
           </div>

@@ -64,6 +64,24 @@ const plans = [
   },
 ]
 
+const addOns = [
+  {
+    title: 'Performance Ads Management',
+    prices: ['From ₹25K/month + ad spend', 'From $300/month + ad spend'],
+    desc: 'Campaign management designed around defined acquisition and performance objectives.',
+  },
+  {
+    title: 'Conversion-Focused Website / Landing Page',
+    prices: ['From ₹40K one-time', 'From $500 one-time'],
+    desc: 'Purpose-built digital experiences designed to support specific campaigns, offers, and conversion journeys.',
+  },
+  {
+    title: 'AI Visibility Audit',
+    prices: ['₹15K one-time', '$200 one-time'],
+    desc: "A focused review of your brand's current visibility and representation across relevant AI-driven search experiences.",
+  },
+]
+
 const Pricing = ({ isPage = true }) => (
   <>
     {isPage && (
@@ -92,7 +110,7 @@ const Pricing = ({ isPage = true }) => (
       }}
     >
       {/* Glow */}
-      <div aria-hidden="true" style={{ position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)', width: 'clamp(400px, 60vw, 800px)', height: 'clamp(400px, 60vw, 800px)', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,107,0,0.07) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)', width: 'clamp(400px, 60vw, 800px)', height: 'clamp(400px, 60vw, 800px)', borderRadius: '50%', background: 'radial-gradient(circle, rgba(232,93,4,0.07) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
 
       <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-10" style={{ zIndex: 1, maxWidth: '100%' }}>
 
@@ -100,17 +118,27 @@ const Pricing = ({ isPage = true }) => (
         <div className="text-center mb-14 sm:mb-16">
           <span
             className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-4"
-            style={{ background: 'rgba(255,107,0,0.1)', border: '1px solid rgba(255,107,0,0.3)', color: 'var(--color-orange)' }}
+            style={{ background: 'rgba(232,93,4,0.1)', border: '1px solid rgba(232,93,4,0.3)', color: 'var(--color-orange)' }}
           >
             Transparent Pricing
           </span>
-          <h1
-            style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: '1rem' }}
-          >
-            Clear pricing in INR, USD, EUR & AED
-          </h1>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)', color: 'var(--color-text-secondary)', maxWidth: '520px', margin: '0 auto', lineHeight: 1.6 }}>
-            No hidden fees. No surprises. Pick a plan and let's get to work.
+          {isPage ? (
+            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: '1rem' }}>
+              Digital Marketing Pricing for India &amp; Global Markets
+            </h1>
+          ) : (
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: '1rem' }}>
+              Digital Marketing Pricing for India &amp; Global Markets
+            </h2>
+          )}
+          <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 600, color: 'var(--color-orange)', marginBottom: '1rem' }}>
+            Choose Your Plan. Build Brand at Your Pace.
+          </p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)', color: 'var(--color-text-secondary)', maxWidth: '680px', margin: '0 auto 0.75rem', lineHeight: 1.6 }}>
+            The right investment depends on your website’s complexity, your market, content needs, competitors, and how aggressively you want to grow.
+          </p>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)', color: 'var(--color-text-secondary)', maxWidth: '680px', margin: '0 auto', lineHeight: 1.6 }}>
+            We offer clear packages as a starting range. We’ll confirm your price after learning your requirements and defining the appropriate scope.
           </p>
         </div>
 
@@ -123,8 +151,8 @@ const Pricing = ({ isPage = true }) => (
                 position: 'relative',
                 padding: '2rem',
                 borderRadius: '1.25rem',
-                background: plan.tag === 'Most Popular' ? 'rgba(255,107,0,0.06)' : 'rgba(255,255,255,0.01)',
-                border: plan.tag === 'Most Popular' ? '1.5px solid rgba(255,107,0,0.4)' : '1px solid rgba(255,107,0,0.15)',
+                background: plan.tag === 'Most Popular' ? 'rgba(232,93,4,0.08)' : 'var(--color-surface-1)',
+                border: plan.tag === 'Most Popular' ? '1.5px solid rgba(232,93,4,0.5)' : '1px solid var(--color-border-subtle)',
                 backdropFilter: 'blur(12px)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -132,7 +160,7 @@ const Pricing = ({ isPage = true }) => (
             >
               {/* Tag */}
               {plan.tag && (
-                <span style={{ position: 'absolute', top: '-0.75rem', left: '50%', transform: 'translateX(-50%)', background: 'var(--color-orange)', color: '#000', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.3rem 1rem', borderRadius: '20px', whiteSpace: 'nowrap' }}>
+                <span style={{ position: 'absolute', top: '-0.75rem', left: '50%', transform: 'translateX(-50%)', background: 'var(--color-orange)', color: 'var(--color-text-primary)', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.3rem 1rem', borderRadius: '20px', whiteSpace: 'nowrap' }}>
                   {plan.tag}
                 </span>
               )}
@@ -146,12 +174,12 @@ const Pricing = ({ isPage = true }) => (
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, color: 'var(--color-text-primary)', lineHeight: 1 }}>{plan.inr}</span>
               </div>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{plan.usd} / month</p>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(255,107,0,0.7)', marginBottom: '0.25rem' }}>{plan.eur} / month</p>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(255,107,0,0.7)', marginBottom: '0.25rem' }}>{plan.aed} / month</p>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'rgba(255,255,255,0.3)', marginBottom: '1.75rem', letterSpacing: '0.05em' }}>{plan.scope}</p>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(232,93,4,0.85)', marginBottom: '0.25rem' }}>{plan.eur} / month</p>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(232,93,4,0.85)', marginBottom: '0.25rem' }}>{plan.aed} / month</p>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-text-tertiary)', marginBottom: '1.75rem', letterSpacing: '0.05em' }}>{plan.scope}</p>
 
               {/* Divider */}
-              <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', marginBottom: '1.5rem' }} />
+              <div style={{ height: '1px', background: 'var(--color-border-subtle)', marginBottom: '1.5rem' }} />
 
               {/* Features */}
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', flexGrow: 1 }}>
@@ -169,14 +197,14 @@ const Pricing = ({ isPage = true }) => (
                 style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
                   marginTop: '2rem', padding: '0.875rem 1.5rem', borderRadius: '12px',
-                  background: plan.tag === 'Most Popular' ? 'linear-gradient(135deg, rgba(255,107,0,0.95), rgba(255,140,0,0.9))' : 'rgba(255,107,0,0.08)',
-                  border: '1px solid rgba(255,107,0,0.4)',
-                  color: plan.tag === 'Most Popular' ? '#000' : 'var(--color-orange)',
+                  background: plan.tag === 'Most Popular' ? 'linear-gradient(135deg, rgba(232,93,4,0.95), rgba(255,122,26,0.95))' : 'rgba(232,93,4,0.08)',
+                  border: '1px solid rgba(232,93,4,0.4)',
+                  color: plan.tag === 'Most Popular' ? 'var(--color-ink)' : 'var(--color-orange)',
                   fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700,
                   textTransform: 'uppercase', letterSpacing: '0.08em', textDecoration: 'none',
                   transition: 'all 0.3s ease',
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255,107,0,0.25)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(232,93,4,0.25)' }}
                 onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
               >
                 {plan.cta || 'Get Started'}
@@ -187,13 +215,49 @@ const Pricing = ({ isPage = true }) => (
         </div>
 
         {/* Bottom note */}
-        <p style={{ textAlign: 'center', marginTop: '3rem', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-secondary)', maxWidth: '800px', margin: '3rem auto 0 auto', lineHeight: '1.6' }}>
-          Pricing Note: Package prices are indicative starting ranges. Final pricing depends on scope, competition, website size, content volume, target market, and required deliverables. Currency conversions are rounded for website display and may be reviewed periodically.
+        <p style={{ textAlign: 'center', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-secondary)', maxWidth: '800px', margin: '3rem auto 0 auto', lineHeight: '1.6' }}>
+          <strong style={{ color: 'var(--color-text-primary)' }}>Pricing Note:</strong> Package prices are indicative starting ranges. Final pricing depends on scope, competition, website size, content volume, target market, and required deliverables. Currency conversions are rounded for website display and may be reviewed periodically.
         </p>
-        <p style={{ textAlign: 'center', marginTop: '1.5rem', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>
-          Need a custom plan?{' '}
-          <Link to="/contact" style={{ color: 'var(--color-orange)', textDecoration: 'none', fontWeight: 600 }}>Talk to us →</Link>
-        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4" style={{ marginTop: '2rem' }}>
+          {!isPage && (
+            <Link to="/pricing" className="btn-outline btn-lg" data-cursor="hover">View Full Pricing</Link>
+          )}
+          <Link to="/contact" className="btn-primary btn-lg" data-cursor="hover">Get a Free Growth Audit</Link>
+        </div>
+
+        {/* Add-ons */}
+        <div style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', textAlign: 'center', marginBottom: '2rem' }}>
+            Optional Digital Growth Add-Ons
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {addOns.map((a) => (
+              <div
+                key={a.title}
+                style={{
+                  padding: '1.75rem',
+                  border: '2px solid var(--color-ink)',
+                  borderRadius: '1rem',
+                  background: 'var(--color-surface-1)',
+                  boxShadow: '4px 4px 0 var(--color-ink)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.6rem',
+                }}
+              >
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 700, color: 'var(--color-text-primary)' }}>{a.title}</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.15rem' }}>
+                  {a.prices.map((p) => (
+                    <span key={p} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-orange)' }}>{p}</span>
+                  ))}
+                </div>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>{a.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
       </div>
     </section>

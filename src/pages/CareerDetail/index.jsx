@@ -195,7 +195,7 @@ const CareerDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0a0b0e] flex items-center justify-center text-white">
+      <div className="min-h-screen bg-[#FFE5CC] flex items-center justify-center text-ink">
         <div className="w-8 h-8 border-3 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
       </div>
     )
@@ -203,7 +203,7 @@ const CareerDetail = () => {
 
   if (!job) {
     return (
-      <div className="min-h-screen bg-[#0a0b0e] flex flex-col items-center justify-center text-white gap-4">
+      <div className="min-h-screen bg-[#FFE5CC] flex flex-col items-center justify-center text-ink gap-4">
         <h2 className="text-2xl font-bold">Position Not Found</h2>
         <Link to="/careers" className="btn-primary">Back to Careers</Link>
       </div>
@@ -219,38 +219,38 @@ const CareerDetail = () => {
         description={`Apply for ${job.title} at ADVMEN. ${job.location}. ${job.salary || ''}`}
       />
 
-      <div className="w-full bg-[#0d0e12] min-h-screen text-slate-100 font-sans pt-28 pb-20">
+      <div className="w-full bg-[#FFE5CC] min-h-screen text-ink font-body pt-28 pb-20">
         
         {/* ── BREADCRUMB & HEADER SECTION ── */}
-        <div className="border-b border-white/10 bg-[#11131a] py-10">
+        <div className="border-b border-ink/25 bg-[#FFF0E0] py-10">
           <div className="container max-w-6xl">
             
             {/* Back Button */}
             <button
               onClick={() => navigate('/careers')}
-              className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-orange-500 transition-colors uppercase tracking-wider mb-6"
+              className="inline-flex items-center gap-2 text-xs font-mono text-gray-700 hover:text-orange-500 transition-colors uppercase tracking-wider mb-6"
             >
               <FiArrowLeft size={16} />
               <span>Back to All Careers</span>
             </button>
 
             {/* Breadcrumb Path */}
-            <div className="flex items-center gap-2 text-xs text-slate-400 font-mono mb-4">
-              <Link to="/careers" className="hover:text-white">Careers</Link>
+            <div className="flex items-center gap-2 text-xs text-gray-700 font-mono mb-4">
+              <Link to="/careers" className="hover:text-ink">Careers</Link>
               <FiChevronRight size={12} />
               <span className="text-orange-500 font-bold">#{job.department.toUpperCase()}</span>
               <FiChevronRight size={12} />
-              <span className="text-slate-200 truncate">{job.title}</span>
+              <span className="text-ink truncate">{job.title}</span>
             </div>
 
             {/* Title & Key Specs Bar */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
               <div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-white tracking-tight leading-tight">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-ink tracking-tight leading-tight">
                   {job.title}
                 </h1>
 
-                <div className="flex flex-wrap items-center gap-4 mt-4 text-xs font-semibold text-slate-300">
+                <div className="flex flex-wrap items-center gap-4 mt-4 text-xs font-semibold text-gray-800">
                   <span className={`px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 border ${
                     isIntern ? 'bg-amber-500/20 text-amber-300 border-amber-500/40' : 'bg-blue-500/20 text-blue-300 border-blue-500/40'
                   }`}>
@@ -258,7 +258,7 @@ const CareerDetail = () => {
                     {job.type || 'Full-Time'}
                   </span>
 
-                  <span className="flex items-center gap-1.5 text-slate-300 bg-white/5 px-3.5 py-1.5 rounded-full border border-white/10">
+                  <span className="flex items-center gap-1.5 text-gray-800 bg-ink/5 px-3.5 py-1.5 rounded-full border border-ink/25">
                     <FiMapPin size={14} className="text-orange-500" />
                     {job.location || 'Gurugram / Remote'}
                   </span>
@@ -275,7 +275,7 @@ const CareerDetail = () => {
               {/* Primary Apply Action Button */}
               <button
                 onClick={openApplyModal}
-                className="py-4 px-8 rounded-2xl bg-orange-600 hover:bg-orange-500 text-white font-mono text-xs uppercase tracking-widest font-bold shadow-xl shadow-orange-600/25 transition-all self-start lg:self-auto flex items-center gap-2 cursor-pointer"
+                className="py-4 px-8 rounded-2xl bg-orange-600 hover:bg-orange-500 text-ink font-mono text-xs uppercase tracking-widest font-bold shadow-xl shadow-orange-600/25 transition-all self-start lg:self-auto flex items-center gap-2 cursor-pointer"
               >
                 <FiSend size={16} />
                 <span>Apply for Position</span>
@@ -294,7 +294,7 @@ const CareerDetail = () => {
               
               {/* Banner Image */}
               {job.image && (
-                <div className="w-full h-72 sm:h-96 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative bg-black">
+                <div className="w-full h-72 sm:h-96 rounded-3xl overflow-hidden border border-ink/25 shadow-2xl relative bg-paper">
                   <img 
                     src={getImageUrl(job.image)} 
                     alt={job.title} 
@@ -304,31 +304,31 @@ const CareerDetail = () => {
                       e.target.src = 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=675&fit=crop&q=80'
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0e12] via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#FFE5CC] via-transparent to-transparent opacity-80" />
                 </div>
               )}
 
               {/* Role Overview */}
-              <div className="bg-[#14161f] p-8 rounded-3xl border border-white/10 shadow-xl space-y-4">
-                <h3 className="text-xl font-bold font-display text-white flex items-center gap-2">
+              <div className="bg-[var(--color-surface-1)] p-8 rounded-3xl border border-[var(--color-border-subtle)] shadow-xl space-y-4">
+                <h3 className="text-xl font-bold font-display text-ink flex items-center gap-2">
                   <span className="w-2 h-6 bg-orange-500 rounded-full"></span>
                   About the Role
                 </h3>
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  ADVMEN is looking for a passionate <strong className="text-white">{job.title}</strong> to join our high-growth team in Gurugram. In this role, you will work on live high-impact client products, collaborate directly with founders and senior engineers, and build cutting-edge web & mobile technology.
+                <p className="text-gray-800 text-sm leading-relaxed">
+                  ADVMEN is looking for a passionate <strong className="text-ink">{job.title}</strong> to join our high-growth team in Gurugram. In this role, you will work on live high-impact client products, collaborate directly with founders and senior engineers, and build cutting-edge web & mobile technology.
                 </p>
               </div>
 
               {/* Key Responsibilities */}
               {Array.isArray(job.responsibilities) && job.responsibilities.length > 0 && (
-                <div className="bg-[#14161f] p-8 rounded-3xl border border-white/10 shadow-xl space-y-6">
-                  <h3 className="text-xl font-bold font-display text-white flex items-center gap-2">
+                <div className="bg-[var(--color-surface-1)] p-8 rounded-3xl border border-[var(--color-border-subtle)] shadow-xl space-y-6">
+                  <h3 className="text-xl font-bold font-display text-ink flex items-center gap-2">
                     <span className="w-2 h-6 bg-orange-500 rounded-full"></span>
                     Key Responsibilities
                   </h3>
                   <div className="space-y-3">
                     {job.responsibilities.map((resp, idx) => (
-                      <div key={idx} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
+                      <div key={idx} className="flex items-start gap-3 text-gray-800 text-sm leading-relaxed">
                         <FiCheckCircle className="text-emerald-400 mt-1 flex-shrink-0" size={16} />
                         <span>{resp}</span>
                       </div>
@@ -339,14 +339,14 @@ const CareerDetail = () => {
 
               {/* Requirements & Qualifications */}
               {Array.isArray(job.requirements) && job.requirements.length > 0 && (
-                <div className="bg-[#14161f] p-8 rounded-3xl border border-white/10 shadow-xl space-y-6">
-                  <h3 className="text-xl font-bold font-display text-white flex items-center gap-2">
+                <div className="bg-[var(--color-surface-1)] p-8 rounded-3xl border border-[var(--color-border-subtle)] shadow-xl space-y-6">
+                  <h3 className="text-xl font-bold font-display text-ink flex items-center gap-2">
                     <span className="w-2 h-6 bg-orange-500 rounded-full"></span>
                     Requirements & Qualifications
                   </h3>
                   <div className="space-y-3">
                     {job.requirements.map((req, idx) => (
-                      <div key={idx} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
+                      <div key={idx} className="flex items-start gap-3 text-gray-800 text-sm leading-relaxed">
                         <span className="w-2 h-2 rounded-full bg-orange-500 mt-2 flex-shrink-0" />
                         <span>{req}</span>
                       </div>
@@ -357,8 +357,8 @@ const CareerDetail = () => {
 
               {/* Tech Stack & Required Skills */}
               {Array.isArray(job.skills) && job.skills.length > 0 && (
-                <div className="bg-[#14161f] p-8 rounded-3xl border border-white/10 shadow-xl space-y-4">
-                  <h3 className="text-xl font-bold font-display text-white flex items-center gap-2">
+                <div className="bg-[var(--color-surface-1)] p-8 rounded-3xl border border-[var(--color-border-subtle)] shadow-xl space-y-4">
+                  <h3 className="text-xl font-bold font-display text-ink flex items-center gap-2">
                     <span className="w-2 h-6 bg-orange-500 rounded-full"></span>
                     Required Skills & Technologies
                   </h3>
@@ -376,39 +376,39 @@ const CareerDetail = () => {
               )}
 
               {/* What You Get / Perks */}
-              <div className="bg-[#14161f] p-8 rounded-3xl border border-white/10 shadow-xl space-y-6">
-                <h3 className="text-xl font-bold font-display text-white flex items-center gap-2">
+              <div className="bg-[var(--color-surface-1)] p-8 rounded-3xl border border-[var(--color-border-subtle)] shadow-xl space-y-6">
+                <h3 className="text-xl font-bold font-display text-ink flex items-center gap-2">
                   <span className="w-2 h-6 bg-orange-500 rounded-full"></span>
                   Why Work With ADVMEN?
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-1">
-                    <div className="font-bold text-white text-sm flex items-center gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-gray-800">
+                  <div className="p-4 rounded-2xl bg-ink/5 border border-ink/25 space-y-1">
+                    <div className="font-bold text-ink text-sm flex items-center gap-2">
                       <FiZap className="text-orange-500" size={16} />
                       <span>Live Client Exposure</span>
                     </div>
-                    <p className="text-slate-400">Work directly on real-world production codebases and client deliverables.</p>
+                    <p className="text-gray-700">Work directly on real-world production codebases and client deliverables.</p>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-1">
-                    <div className="font-bold text-white text-sm flex items-center gap-2">
+                  <div className="p-4 rounded-2xl bg-ink/5 border border-ink/25 space-y-1">
+                    <div className="font-bold text-ink text-sm flex items-center gap-2">
                       <FiStar className="text-amber-400" size={16} />
                       <span>Mentorship & Guidance</span>
                     </div>
-                    <p className="text-slate-400">Learn from seasoned senior full-stack developers and design leads.</p>
+                    <p className="text-gray-700">Learn from seasoned senior full-stack developers and design leads.</p>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-1">
-                    <div className="font-bold text-white text-sm flex items-center gap-2">
+                  <div className="p-4 rounded-2xl bg-ink/5 border border-ink/25 space-y-1">
+                    <div className="font-bold text-ink text-sm flex items-center gap-2">
                       <FiAward className="text-emerald-400" size={16} />
                       <span>Offer Letter & Certificate</span>
                     </div>
-                    <p className="text-slate-400">Official completion certificates, letter of recommendation & PPO opportunities.</p>
+                    <p className="text-gray-700">Official completion certificates, letter of recommendation & PPO opportunities.</p>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-1">
-                    <div className="font-bold text-white text-sm flex items-center gap-2">
+                  <div className="p-4 rounded-2xl bg-ink/5 border border-ink/25 space-y-1">
+                    <div className="font-bold text-ink text-sm flex items-center gap-2">
                       <FiTarget className="text-blue-400" size={16} />
                       <span>Competitive Incentives</span>
                     </div>
-                    <p className="text-slate-400">Performance bonuses, monthly stipends, and growth incentives.</p>
+                    <p className="text-gray-700">Performance bonuses, monthly stipends, and growth incentives.</p>
                   </div>
                 </div>
               </div>
@@ -419,72 +419,72 @@ const CareerDetail = () => {
             <div className="space-y-6">
               
               {/* Sticky Summary Card */}
-              <div className="bg-[#14161f] p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl sticky top-32 space-y-6">
-                <h3 className="font-display font-bold text-lg text-white border-b border-white/10 pb-4">
+              <div className="bg-[var(--color-surface-1)] p-6 sm:p-8 rounded-3xl border border-[var(--color-border-subtle)] shadow-2xl sticky top-32 space-y-6">
+                <h3 className="font-display font-bold text-lg text-ink border-b border-ink/25 pb-4">
                   Job Overview
                 </h3>
 
                 <div className="space-y-4 text-xs">
                   <div>
-                    <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Department</span>
-                    <span className="font-bold text-white text-sm">{job.department}</span>
+                    <span className="font-mono text-gray-700 uppercase text-[10px] block font-bold">Department</span>
+                    <span className="font-bold text-ink text-sm">{job.department}</span>
                   </div>
 
                   <div>
-                    <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Role Level / Track</span>
+                    <span className="font-mono text-gray-700 uppercase text-[10px] block font-bold">Role Level / Track</span>
                     <span className="font-bold text-amber-400 text-sm">{job.type} ({isIntern ? 'Entry-Level' : 'Experienced'})</span>
                   </div>
 
                   <div>
-                    <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Location</span>
-                    <span className="font-bold text-white text-sm">{job.location}</span>
+                    <span className="font-mono text-gray-700 uppercase text-[10px] block font-bold">Location</span>
+                    <span className="font-bold text-ink text-sm">{job.location}</span>
                   </div>
 
                   <div>
-                    <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Salary Package / Stipend</span>
+                    <span className="font-mono text-gray-700 uppercase text-[10px] block font-bold">Salary Package / Stipend</span>
                     <span className="font-bold text-emerald-400 font-mono text-sm">{job.salary || 'Best in Industry'}</span>
                   </div>
 
                   {isIntern && job.duration && (
                     <div>
-                      <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Duration</span>
-                      <span className="font-bold text-white text-sm">{job.duration}</span>
+                      <span className="font-mono text-gray-700 uppercase text-[10px] block font-bold">Duration</span>
+                      <span className="font-bold text-ink text-sm">{job.duration}</span>
                     </div>
                   )}
 
                   {isIntern && job.stipend && (
                     <div>
-                      <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Stipend</span>
+                      <span className="font-mono text-gray-700 uppercase text-[10px] block font-bold">Stipend</span>
                       <span className="font-bold text-emerald-400 font-mono text-sm">{job.stipend}</span>
                     </div>
                   )}
 
                   {isIntern && job.certificate && (
                     <div>
-                      <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Certificate</span>
-                      <span className="font-bold text-white text-sm">{job.certificate}</span>
+                      <span className="font-mono text-gray-700 uppercase text-[10px] block font-bold">Certificate</span>
+                      <span className="font-bold text-ink text-sm">{job.certificate}</span>
                     </div>
                   )}
 
                   {isIntern && job.workMode && (
                     <div>
-                      <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Work Mode</span>
-                      <span className="font-bold text-white text-sm">{job.workMode}</span>
+                      <span className="font-mono text-gray-700 uppercase text-[10px] block font-bold">Work Mode</span>
+                      <span className="font-bold text-ink text-sm">{job.workMode}</span>
                     </div>
                   )}
 
                   {isIntern && job.registrationFee && (
                     <div>
-                      <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Registration Fee</span>
-                      <span className="font-bold text-white text-sm">{job.registrationFee}</span>
+                      <span className="font-mono text-gray-700 uppercase text-[10px] block font-bold">Registration Fee</span>
+                      <span className="font-bold text-ink text-sm">{job.registrationFee}</span>
                     </div>
                   )}
 
                   <div>
-                    <span className="font-mono text-slate-400 uppercase text-[10px] block font-bold">Experience Range</span>
+                    <span className="font-mono text-gray-700 uppercase text-[10px] block font-bold">Experience Range</span>
                     <div className="flex flex-wrap gap-1 mt-1">
                       {Array.isArray(job.experience) && job.experience.map((exp, idx) => (
-                        <span key={idx} className="px-2 py-0.5 rounded text-[10px] bg-white/5 border border-white/10 text-slate-300 font-mono">
+                        <span key={idx} className="px-2 py-0.5 rounded text-[10px] bg-ink/5 border border-ink/25 text-gray-800 font-mono">
                           {exp}
                         </span>
                       ))}
@@ -492,10 +492,10 @@ const CareerDetail = () => {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/10 space-y-3">
+                <div className="pt-4 border-t border-ink/25 space-y-3">
                   <button
                     onClick={openApplyModal}
-                    className="w-full py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-mono text-xs uppercase tracking-widest font-bold shadow-lg shadow-orange-600/25 transition-all text-center flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-ink font-mono text-xs uppercase tracking-widest font-bold shadow-lg shadow-orange-600/25 transition-all text-center flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <FiSend size={14} />
                     <span>Apply for this Role</span>
@@ -525,7 +525,7 @@ const CareerDetail = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-black/40"
+              className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-paper/40"
               onClick={() => setIsApplyModalOpen(false)}
             >
               <motion.div
@@ -533,24 +533,24 @@ const CareerDetail = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.95, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-lg bg-[#161824] border border-slate-700/60 border-t-4 border-t-orange-500 rounded-[24px] p-6 sm:p-8 text-white relative shadow-2xl max-h-[90vh] overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                className="w-full max-w-lg bg-[var(--color-surface-1)] border border-[var(--color-border-subtle)] border-t-4 border-t-[var(--color-orange)] rounded-[24px] p-6 sm:p-8 text-ink relative shadow-2xl max-h-[90vh] overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               >
                 <button 
                   onClick={() => setIsApplyModalOpen(false)}
-                  className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors"
+                  className="absolute top-6 right-6 w-9 h-9 rounded-full bg-[var(--color-surface-2)] hover:bg-[var(--color-surface-3)] flex items-center justify-center text-gray-800 hover:text-ink transition-colors"
                 >
                   <FiX size={20} />
                 </button>
 
                 {!submitSuccess ? (
                   <div>
-                    <span className="font-mono text-xs uppercase tracking-widest text-orange-500 font-bold block mb-1">
+                    <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-orange)] font-bold block mb-1">
                       Application Form
                     </span>
-                    <h3 className="text-2xl font-bold font-display text-white mb-1">
+                    <h3 className="text-2xl font-bold font-display text-ink mb-1">
                       Apply for {job.title}
                     </h3>
-                    <p className="text-xs text-slate-400 mb-6 flex items-center gap-1.5">
+                    <p className="text-xs text-gray-700 mb-6 flex items-center gap-1.5">
                       {isInternRole(job) ? <span className="inline-flex items-center gap-1 text-amber-400 font-bold"><FiAward size={12} /> Internship Track</span> : <span className="inline-flex items-center gap-1 text-blue-400 font-bold"><FiBriefcase size={12} /> Experienced Track</span>} • {job.department}
                     </p>
 
@@ -563,38 +563,38 @@ const CareerDetail = () => {
 
                     <form onSubmit={handleApplySubmit} className="space-y-4">
                       <div>
-                        <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">Full Name *</label>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">Full Name *</label>
                         <input
                           type="text"
                           required
                           placeholder="e.g. Rahul Sharma"
                           value={applicantForm.name}
                           onChange={(e) => setApplicantForm({ ...applicantForm, name: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all font-medium"
+                          className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all font-medium"
                         />
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">Email Address *</label>
+                          <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">Email Address *</label>
                           <input
                             type="email"
                             required
                             placeholder="e.g. rahul@gmail.com"
                             value={applicantForm.email}
                             onChange={(e) => setApplicantForm({ ...applicantForm, email: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all font-medium"
+                            className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all font-medium"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">WhatsApp / Phone *</label>
+                          <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">WhatsApp / Phone *</label>
                           <input
                             type="tel"
                             required
                             placeholder="e.g. +91 9876543210"
                             value={applicantForm.phone}
                             onChange={(e) => setApplicantForm({ ...applicantForm, phone: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all font-medium"
+                            className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all font-medium"
                           />
                         </div>
                       </div>
@@ -602,7 +602,7 @@ const CareerDetail = () => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {/* Profile Photo File Upload */}
                         <div>
-                          <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold flex items-center justify-between">
+                          <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold flex items-center justify-between">
                             <span>Profile Photo</span>
                             {uploadingPhoto && <span className="text-[10px] text-orange-400 font-mono animate-pulse">Uploading...</span>}
                           </label>
@@ -616,7 +616,7 @@ const CareerDetail = () => {
                             />
                             <label
                               htmlFor="photo-upload-detail"
-                              className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-dashed border-slate-600 hover:border-orange-500 text-xs text-slate-300 flex items-center justify-between cursor-pointer transition-all"
+                              className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-dashed border-[var(--color-border-subtle)] hover:border-[var(--color-orange)] text-xs text-gray-800 flex items-center justify-between cursor-pointer transition-all"
                             >
                               <span className="truncate max-w-[170px] font-medium">
                                 {applicantForm.profilePhoto ? '✓ Photo Uploaded' : 'Choose Photo (JPG/PNG)'}
@@ -628,7 +628,7 @@ const CareerDetail = () => {
 
                         {/* Resume File Upload */}
                         <div>
-                          <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold flex items-center justify-between">
+                          <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold flex items-center justify-between">
                             <span>Upload Resume *</span>
                             {uploadingResume && <span className="text-[10px] text-orange-400 font-mono animate-pulse">Uploading...</span>}
                           </label>
@@ -642,7 +642,7 @@ const CareerDetail = () => {
                             />
                             <label
                               htmlFor="resume-upload-detail"
-                              className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-dashed border-slate-600 hover:border-orange-500 text-xs text-slate-300 flex items-center justify-between cursor-pointer transition-all"
+                              className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-dashed border-[var(--color-border-subtle)] hover:border-[var(--color-orange)] text-xs text-gray-800 flex items-center justify-between cursor-pointer transition-all"
                             >
                               <span className="truncate max-w-[170px] font-medium">
                                 {applicantForm.resume ? '✓ Resume Uploaded' : 'Choose Resume (PDF/DOC)'}
@@ -655,42 +655,42 @@ const CareerDetail = () => {
 
                       {/* Portfolio / LinkedIn URL */}
                       <div>
-                        <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">Portfolio / LinkedIn Link</label>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">Portfolio / LinkedIn Link</label>
                         <input
                           type="url"
                           placeholder="https://linkedin.com/in/... or https://github.com/..."
                           value={applicantForm.portfolio}
                           onChange={(e) => setApplicantForm({ ...applicantForm, portfolio: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all font-medium"
+                          className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all font-medium"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">Experience / Status</label>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">Experience / Status</label>
                         <input
                           type="text"
                           placeholder="e.g. Student / Fresher 2026 or 2 yrs Experience"
                           value={applicantForm.experience}
                           onChange={(e) => setApplicantForm({ ...applicantForm, experience: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all font-medium"
+                          className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all font-medium"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-1.5 font-bold">Cover Letter / Message</label>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-gray-800 mb-1.5 font-bold">Cover Letter / Message</label>
                         <textarea
                           rows={3}
                           placeholder="Briefly tell us why you are interested in this role..."
                           value={applicantForm.coverLetter}
                           onChange={(e) => setApplicantForm({ ...applicantForm, coverLetter: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-[#1e2230] border border-slate-700 text-sm text-white placeholder-slate-500 outline-none focus:border-orange-500 transition-all resize-none font-medium"
+                          className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-4)] border border-[var(--color-border-subtle)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] outline-none focus:border-[var(--color-orange)] transition-all resize-none font-medium"
                         />
                       </div>
 
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="w-full py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-mono text-xs uppercase tracking-widest font-bold transition-all shadow-lg shadow-orange-600/20 flex items-center justify-center gap-2 mt-2 cursor-pointer"
+                        className="w-full py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-ink font-mono text-xs uppercase tracking-widest font-bold transition-all shadow-lg shadow-orange-600/20 flex items-center justify-center gap-2 mt-2 cursor-pointer"
                       >
                         <FiSend size={14} />
                         <span>{submitting ? 'Submitting Application...' : 'Submit Application Now'}</span>
@@ -705,9 +705,9 @@ const CareerDetail = () => {
                     </div>
 
                     <div>
-                      <h3 className="text-2xl font-bold font-display text-white mb-2">Application Submitted Successfully</h3>
-                      <p className="text-xs text-slate-300 leading-relaxed max-w-sm mx-auto">
-                        Thank you, <strong className="text-white">{applicantForm.name}</strong>! Your application for <strong className="text-orange-400">{job.title}</strong> has been received by our hiring team.
+                      <h3 className="text-2xl font-bold font-display text-ink mb-2">Application Submitted Successfully</h3>
+                      <p className="text-xs text-gray-800 leading-relaxed max-w-sm mx-auto">
+                        Thank you, <strong className="text-ink">{applicantForm.name}</strong>! Your application for <strong className="text-orange-400">{job.title}</strong> has been received by our hiring team.
                       </p>
                     </div>
 
@@ -723,7 +723,7 @@ const CareerDetail = () => {
                         </div>
                       </div>
 
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="text-xs text-gray-800 leading-relaxed">
                         Please join our official WhatsApp group for instant onboarding updates, task assignments, and direct communication with mentors:
                       </p>
 
@@ -731,7 +731,7 @@ const CareerDetail = () => {
                         href={WHATSAPP_GROUP_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 text-center cursor-pointer"
+                        className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-ink font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 text-center cursor-pointer"
                       >
                         <FiExternalLink size={16} />
                         <span>Join Official WhatsApp Group Now</span>
@@ -740,7 +740,7 @@ const CareerDetail = () => {
 
                     <button
                       onClick={() => setIsApplyModalOpen(false)}
-                      className="w-full py-2.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white font-mono text-xs uppercase tracking-wider font-bold transition-all"
+                      className="w-full py-2.5 rounded-xl border border-ink/40 bg-ink/5 hover:bg-ink/10 text-ink font-mono text-xs uppercase tracking-wider font-bold transition-all"
                     >
                       Close Window
                     </button>

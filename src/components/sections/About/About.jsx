@@ -34,7 +34,7 @@ const useRipple = () => {
       left: `${e.clientX - rect.left - size / 2}px`,
       top: `${e.clientY - rect.top - size / 2}px`,
       borderRadius: '50%',
-      background: 'rgba(255,255,255,0.15)',
+      background: 'rgba(17,17,17,0.15)',
       transform: 'scale(0)',
       animation: 'rippleEffect 0.6s ease-out forwards',
       pointerEvents: 'none',
@@ -231,7 +231,7 @@ const About = () => {
                       {i === 2 ? (
                         <span
                           style={{
-                            background: 'linear-gradient(90deg, #E85D00 0%, #FF9A45 50%, #E85D00 100%)',
+                            background: 'linear-gradient(90deg, #C94F00 0%, #FF9A45 50%, #C94F00 100%)',
                             backgroundSize: '200% auto',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
@@ -284,8 +284,8 @@ const About = () => {
                   className="about-pillar inline-flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300"
                   style={{
                     background: 'var(--color-surface-1)',
-                    border: '1px solid rgba(255, 255, 255, 0.015)',
-                    boxShadow: '3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(255, 255, 255, 0.015)',
+                    border: '1px solid var(--color-border-subtle)',
+                    boxShadow: '3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(17, 17, 17, 0.015)',
                     fontFamily: 'var(--font-mono)',
                     fontSize: 'clamp(0.6rem, 0.9vw, 0.75rem)',
                     color: 'var(--color-orange-light)',
@@ -293,15 +293,15 @@ const About = () => {
                     textTransform: 'uppercase',
                     whiteSpace: 'nowrap',
                     cursor: 'default',
-                    textShadow: '1px 1px 1px rgba(0, 0, 0, 0.8)',
+                    textShadow: 'none',
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = 'rgba(255,107,0,0.2)'
+                    e.currentTarget.style.borderColor = 'rgba(232,93,4,0.2)'
                     e.currentTarget.style.boxShadow = 'inset 2px 2px 4px rgba(0,0,0,0.5)'
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.015)'
-                    e.currentTarget.style.boxShadow = '3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(255, 255, 255, 0.015)'
+                    e.currentTarget.style.borderColor = 'var(--color-border-subtle)'
+                    e.currentTarget.style.boxShadow = '3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(17, 17, 17, 0.015)'
                   }}
                 >
                   <span
@@ -350,7 +350,7 @@ const About = () => {
           className="about-divider w-full"
           style={{
             height: '1px',
-            background: 'linear-gradient(90deg, rgba(255,107,0,0.15), rgba(255,255,255,0.02) 60%, transparent)',
+            background: 'linear-gradient(90deg, rgba(232,93,4,0.25), var(--color-border-subtle) 60%, transparent)',
             marginTop: 'clamp(1.25rem, 2.5vw, 2rem)',
             marginBottom: 'clamp(1rem, 2vw, 1.5rem)',
           }}

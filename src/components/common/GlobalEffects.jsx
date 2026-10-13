@@ -38,7 +38,7 @@ const GlobalEffects = () => (
         width: '55vw',
         height: '55vw',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,107,0,0.04) 0%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(232,93,4,0.08) 0%, transparent 65%)',
       }} />
       <div style={{
         position: 'absolute',
@@ -47,7 +47,7 @@ const GlobalEffects = () => (
         width: '45vw',
         height: '45vw',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(204,85,0,0.03) 0%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(255,122,26,0.06) 0%, transparent 65%)',
       }} />
     </div>
   </>

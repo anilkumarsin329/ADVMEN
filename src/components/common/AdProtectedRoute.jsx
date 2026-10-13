@@ -6,7 +6,7 @@ const AdProtectedRoute = ({ allowedRoles }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="min-h-screen flex items-center justify-center bg-paper">
         <div className="spinner" />
       </div>
     )

@@ -53,7 +53,7 @@ const HeroHeadline = ({ onComplete }) => {
               style={
                 line.gradient
                   ? {
-                      background: 'linear-gradient(90deg, #E85D00 0%, #FF9A45 40%, #E85D00 100%)',
+                      background: 'linear-gradient(90deg, #C94F00 0%, #FF9A45 40%, #C94F00 100%)',
                       backgroundSize: '200% auto',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',

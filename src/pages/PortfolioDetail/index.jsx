@@ -147,7 +147,7 @@ const PortfolioDetail = () => {
       >
         <div className="container">
           <div
-            className="w-full aspect-video rounded-2xl overflow-hidden relative border border-[rgba(255,107,0,0.15)] shadow-2xl bg-gray-900"
+            className="w-full aspect-video rounded-2xl overflow-hidden relative border border-[rgba(232,93,4,0.15)] shadow-2xl bg-surface-2"
           >
             {project.image && typeof project.image === 'string' && project.image.trim() !== '' && (
               <img
@@ -240,8 +240,8 @@ const PortfolioDetail = () => {
                     style={{
                       padding: '1.5rem',
                       borderRadius: '1rem',
-                      background: 'rgba(255,107,0,0.05)',
-                      border: '1px solid rgba(255,107,0,0.1)',
+                      background: 'rgba(232,93,4,0.05)',
+                      border: '1px solid rgba(232,93,4,0.1)',
                     }}
                   >
                     <h3
@@ -272,8 +272,8 @@ const PortfolioDetail = () => {
                     style={{
                       padding: '1.5rem',
                       borderRadius: '1rem',
-                      background: 'rgba(255,107,0,0.1)',
-                      border: '1px solid rgba(255,107,0,0.2)',
+                      background: 'rgba(232,93,4,0.1)',
+                      border: '1px solid rgba(232,93,4,0.2)',
                     }}
                   >
                     <h3
@@ -309,8 +309,8 @@ const PortfolioDetail = () => {
                 style={{
                   padding: '1.5rem',
                   borderRadius: '1rem',
-                  background: 'rgba(255,255,255,0.01)',
-                  border: '1px solid rgba(255,107,0,0.15)',
+                  background: 'var(--color-surface-1)',
+                  border: '1px solid var(--color-border-subtle)',
                   backdropFilter: 'blur(12px)',
                 }}
               >
@@ -360,8 +360,8 @@ const PortfolioDetail = () => {
                 style={{
                   padding: '1.5rem',
                   borderRadius: '1rem',
-                  background: 'rgba(255,255,255,0.01)',
-                  border: '1px solid rgba(255,107,0,0.15)',
+                  background: 'var(--color-surface-1)',
+                  border: '1px solid var(--color-border-subtle)',
                   backdropFilter: 'blur(12px)',
                 }}
               >
@@ -383,11 +383,11 @@ const PortfolioDetail = () => {
                       style={{
                         fontFamily: 'var(--font-mono)',
                         fontSize: '0.7rem',
-                        color: 'var(--color-text-tertiary)',
-                        background: 'rgba(255,107,0,0.05)',
-                        border: '1px solid rgba(255,107,0,0.1)',
+                        color: 'var(--color-text-secondary)',
+                        background: 'var(--color-surface-2)',
+                        border: '1px solid var(--color-border-subtle)',
                         padding: '0.4rem 0.8rem',
-                        borderRadius: '4px',
+                        borderRadius: '6px',
                         textTransform: 'uppercase',
                         letterSpacing: '0.05em',
                       }}
@@ -404,8 +404,8 @@ const PortfolioDetail = () => {
                   style={{
                     padding: '1.5rem',
                     borderRadius: '1rem',
-                    background: 'rgba(255,107,0,0.05)',
-                    border: '1px solid rgba(255,107,0,0.15)',
+                    background: 'var(--color-surface-1)',
+                    border: '1px solid rgba(232,93,4,0.25)',
                   }}
                 >
                   <p

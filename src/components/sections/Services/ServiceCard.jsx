@@ -8,20 +8,20 @@ const ServiceCard = ({ service }) => {
     <div
       className="group relative flex flex-col justify-between p-6 sm:p-8 h-auto sm:h-80 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg"
       style={{
-        background: 'rgba(255,255,255,0.01)',
-        border: '1px solid rgba(255,107,0,0.15)',
+        background: 'var(--color-surface-1)',
+        border: '1px solid var(--color-border-subtle)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         cursor: 'default',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
-        e.currentTarget.style.borderColor = 'rgba(255,107,0,0.3)'
-        e.currentTarget.style.boxShadow = '0 12px 48px rgba(0,0,0,0.3), 0 0 24px rgba(255,107,0,0.12)'
+        e.currentTarget.style.background = 'var(--color-surface-2)'
+        e.currentTarget.style.borderColor = 'rgba(232,93,4,0.35)'
+        e.currentTarget.style.boxShadow = '0 12px 48px rgba(0,0,0,0.5), 0 0 24px rgba(232,93,4,0.15)'
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.background = 'rgba(255,255,255,0.01)'
-        e.currentTarget.style.borderColor = 'rgba(255,107,0,0.15)'
+        e.currentTarget.style.background = 'var(--color-surface-1)'
+        e.currentTarget.style.borderColor = 'var(--color-border-subtle)'
         e.currentTarget.style.boxShadow = 'none'
       }}
     >
@@ -29,17 +29,17 @@ const ServiceCard = ({ service }) => {
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at 10% 10%, rgba(255,107,0,0.08) 0%, transparent 60%)',
+          background: 'radial-gradient(circle at 10% 10%, rgba(232,93,4,0.08) 0%, transparent 60%)',
         }}
       />
 
       {/* Top - Icon */}
       <div className="flex justify-between items-start relative z-10 mb-6">
         <div
-          className="p-3 sm:p-3.5 rounded-xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[rgba(255,107,0,0.12)]"
+          className="p-3 sm:p-3.5 rounded-xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[rgba(232,93,4,0.12)]"
           style={{
-            background: 'rgba(255,107,0,0.08)',
-            border: '1px solid rgba(255,107,0,0.15)',
+            background: 'rgba(232,93,4,0.08)',
+            border: '1px solid rgba(232,93,4,0.15)',
           }}
         >
           {isReactIcon ? <IconComponent size={24} color="var(--color-orange)" /> : <span>{service.icon}</span>}
@@ -83,7 +83,7 @@ const ServiceCard = ({ service }) => {
       </div>
 
       {/* Features */}
-      <div className="relative z-10 mt-6 pt-6 border-t border-[rgba(255,255,255,0.05)]">
+      <div className="relative z-10 mt-6 pt-6 border-t border-[rgba(17,17,17,0.05)]">
         <div className="flex flex-wrap gap-2">
           {service.features.map((feature, i) => (
             <span
@@ -92,8 +92,8 @@ const ServiceCard = ({ service }) => {
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.65rem',
                 color: 'var(--color-text-tertiary)',
-                background: 'rgba(255,107,0,0.05)',
-                border: '1px solid rgba(255,107,0,0.1)',
+                background: 'rgba(232,93,4,0.05)',
+                border: '1px solid rgba(232,93,4,0.1)',
                 padding: '0.35rem 0.75rem',
                 borderRadius: '6px',
                 textTransform: 'uppercase',

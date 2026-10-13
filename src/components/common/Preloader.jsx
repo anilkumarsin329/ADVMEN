@@ -1,6 +1,6 @@
-/**
- * Preloader.jsx â€” ADVMEN
- * Fixed: logo ref is now only the <img> â€” GSAP y-animation
+﻿/**
+ * Preloader.jsx Ã¢â‚¬â€ ADVMEN
+ * Fixed: logo ref is now only the <img> Ã¢â‚¬â€ GSAP y-animation
  * never shifts the SVG ring container, so it stays centered.
  */
 
@@ -14,7 +14,7 @@ const PreloaderInner = () => {
 
   const wrapperRef  = useRef(null)
   const curtainRef  = useRef(null)
-  const logoImgRef  = useRef(null)   // only the <img> â€” GSAP animates this
+  const logoImgRef  = useRef(null)   // only the <img> Ã¢â‚¬â€ GSAP animates this
   const strokeRef   = useRef(null)
   const counterRef  = useRef(null)
   const barFillRef  = useRef(null)
@@ -46,7 +46,7 @@ const PreloaderInner = () => {
     return () => clearInterval(interval)
   }, [isLoading, updateProgress])
 
-  // Entrance â€” animate only logo img, tagline, progress block
+  // Entrance Ã¢â‚¬â€ animate only logo img, tagline, progress block
   useEffect(() => {
     if (!wrapperRef.current) return
 
@@ -132,12 +132,12 @@ const PreloaderInner = () => {
         style={{
           position:      'absolute',
           inset:         0,
-          background:    'radial-gradient(ellipse 55% 45% at 50% 50%, rgba(255,107,0,0.07) 0%, transparent 70%)',
+          background:    'radial-gradient(ellipse 55% 45% at 50% 50%, rgba(232,93,4,0.07) 0%, transparent 70%)',
           pointerEvents: 'none',
         }}
       />
 
-      {/* Center content â€” no transforms on this wrapper */}
+      {/* Center content Ã¢â‚¬â€ no transforms on this wrapper */}
       <div
         style={{
           display:        'flex',
@@ -148,7 +148,7 @@ const PreloaderInner = () => {
           zIndex:         1,
         }}
       >
-        {/* Ring + logo â€” ring container has explicit size so absolute SVG fills it */}
+        {/* Ring + logo Ã¢â‚¬â€ ring container has explicit size so absolute SVG fills it */}
         <div
           style={{
             position:       'relative',
@@ -160,7 +160,7 @@ const PreloaderInner = () => {
             flexShrink:     0,
           }}
         >
-          {/* Animated SVG ring â€” position absolute inside the 120Ã—120 box */}
+          {/* Animated SVG ring Ã¢â‚¬â€ position absolute inside the 120Ãƒâ€”120 box */}
           <svg
             width="120"
             height="120"
@@ -180,13 +180,13 @@ const PreloaderInner = () => {
             />
             <defs>
               <linearGradient id="preloaderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%"   stopColor="#E85D00" />
-                <stop offset="100%" stopColor="#FF8C38" />
+                <stop offset="0%"   stopColor="#C94F00" />
+                <stop offset="100%" stopColor="#FF7A1A" />
               </linearGradient>
             </defs>
           </svg>
 
-          {/* Logo img â€” only this element gets GSAP y-animation */}
+          {/* Logo img Ã¢â‚¬â€ only this element gets GSAP y-animation */}
           <img
             ref={logoImgRef}
             src="/ADVMEN%20logo.png"
@@ -199,8 +199,8 @@ const PreloaderInner = () => {
               height:     '76px',
               objectFit:  'contain',
               borderRadius: '50%',
-              border:     '1.5px solid rgba(255, 107, 0, 0.3)',
-              background: 'rgba(255, 107, 0, 0.05)',
+              border:     '1.5px solid rgba(232, 93, 4, 0.3)',
+              background: 'rgba(232, 93, 4, 0.05)',
               padding:    '8px',
             }}
           />
@@ -280,7 +280,7 @@ const PreloaderInner = () => {
                 width:        '0%',
                 background:   'var(--gradient-orange)',
                 borderRadius: '999px',
-                boxShadow:    '0 0 8px rgba(255,107,0,0.6)',
+                boxShadow:    '0 0 8px rgba(232,93,4,0.6)',
               }}
             />
           </div>
@@ -311,3 +311,5 @@ const Preloader = () => {
 }
 
 export default Preloader
+
+
