@@ -178,7 +178,7 @@ const AboutOffice = () => {
 
               {/* Lightbox Image */}
               <div className="relative aspect-video w-full bg-paper">
-                <img 
+                <img loading="lazy" decoding="async" 
                   src={selectedPhoto.image} 
                   alt={selectedPhoto.title}
                   className="w-full h-full object-contain" 

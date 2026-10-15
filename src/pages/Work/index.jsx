@@ -172,7 +172,7 @@ const Work = () => {
                       }}
                     >
                       {item.image && typeof item.image === 'string' && item.image.trim() !== '' ? (
-                        <img 
+                        <img loading="lazy" decoding="async" 
                           src={getImageUrl(item.image) || null} 
                           alt={item.title} 
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

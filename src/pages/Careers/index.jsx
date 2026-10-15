@@ -277,7 +277,7 @@ const Careers = () => {
           to={`/careers/${pos.id}`}
           className="w-full h-52 overflow-hidden relative rounded-2xl bg-[#FFD9B8] border border-[rgba(17,17,17,0.06)] cursor-pointer block"
         >
-          <img 
+          <img loading="lazy" decoding="async" 
             src={cardImage} 
             alt={pos.title} 
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" 

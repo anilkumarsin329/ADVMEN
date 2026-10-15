@@ -163,7 +163,7 @@ const AdSpaceOwnerDashboard = () => {
                     <div key={space._id} className="p-4 rounded-xl bg-ink/5 border border-ink/25 flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <div className="w-16 h-16 bg-surface-2 rounded-lg overflow-hidden">
-                          <img src={getImageUrl(space.photos?.[0]) || null} className="w-full h-full object-cover" alt="" />
+                          <img loading="lazy" decoding="async" src={getImageUrl(space.photos?.[0]) || null} className="w-full h-full object-cover" alt="" />
                         </div>
                         <div>
                           <h3 className="font-bold">{space.title}</h3>

@@ -241,8 +241,8 @@ const BlogPost = () => {
             >
               {/* Ambient blurred glow background */}
               {article.image && typeof article.image === 'string' && article.image.trim() !== '' && (
-                <img
-                  src={getImageUrl(article.image)}
+                <img loading="lazy" decoding="async"
+                  src={getImageUrl(article.image, 1280)}
                   alt=""
                   aria-hidden="true"
                   className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-25 scale-110 pointer-events-none select-none transition-opacity duration-300 group-hover:opacity-40"
@@ -251,8 +251,8 @@ const BlogPost = () => {
 
               {/* Main image with object-contain to prevent cropping */}
               {article.image && typeof article.image === 'string' && article.image.trim() !== '' ? (
-                <img
-                  src={getImageUrl(article.image)}
+                <img loading="lazy" decoding="async"
+                  src={getImageUrl(article.image, 1280)}
                   alt={article.title}
                   className="relative z-10 w-full h-auto max-h-[450px] md:max-h-[490px] object-contain mx-auto rounded-xl transition-transform duration-300 group-hover:scale-[1.01]"
                 />
@@ -567,8 +567,8 @@ const BlogPost = () => {
             {/* Expanded Full Image */}
             <div className="w-full h-full flex items-center justify-center overflow-auto rounded-2xl border border-ink/25 bg-paper/50 shadow-2xl p-2">
               {article.image && typeof article.image === 'string' && article.image.trim() !== '' && (
-                <img
-                  src={getImageUrl(article.image)}
+                <img loading="lazy" decoding="async"
+                  src={getImageUrl(article.image, 1280)}
                   alt={article.title}
                   className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-xl shadow-2xl select-none"
                 />

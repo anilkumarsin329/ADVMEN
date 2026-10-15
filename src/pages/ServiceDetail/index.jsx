@@ -54,7 +54,7 @@ const ServiceDetail = () => {
               features: (Array.isArray(data.features) && data.features.length > 0)
                 ? data.features
                 : (data.featuresString ? data.featuresString.split(',').map(s => s.trim()) : localMatch?.features || []),
-              image: data.image ? getImageUrl(data.image) : (localMatch?.image || '/Image/advmen_service1.webp'),
+              image: data.image ? getImageUrl(data.image, 1280) : (localMatch?.image || '/Image/advmen_service1.webp'),
               icon: data.icon || localMatch?.icon || 'web',
               workflow: (Array.isArray(data.workflow) && data.workflow.length > 0)
                 ? data.workflow
@@ -282,7 +282,7 @@ const ServiceDetail = () => {
               >
                 {/* Ambient Blurred Glow Background */}
                 {service.image && (
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={service.image}
                     alt=""
                     aria-hidden="true"
@@ -508,7 +508,7 @@ const ServiceDetail = () => {
 
             {/* Expanded Full Resolution Image */}
             <div className="w-full h-full flex items-center justify-center overflow-auto rounded-2xl border border-[rgba(232,93,4,0.3)] bg-paper/70 shadow-2xl p-2 sm:p-4">
-              <img
+              <img loading="lazy" decoding="async"
                 src={service.image}
                 alt={service.title}
                 className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-xl shadow-2xl select-none"

@@ -319,8 +319,8 @@ const WorkDetail = () => {
               {/* Hero Cover Image Banner */}
               {details.image && typeof details.image === 'string' && details.image.trim() !== '' && (
                 <div className="case-stagger w-full mt-6 rounded-2xl overflow-hidden border border-ink/25 shadow-2xl aspect-[16/9] max-h-[500px]">
-                  <img
-                    src={getImageUrl(details.image) || null}
+                  <img loading="lazy" decoding="async"
+                    src={getImageUrl(details.image, 1280) || null}
                     alt={details.title || details.client}
                     className="w-full h-full object-cover"
                   />

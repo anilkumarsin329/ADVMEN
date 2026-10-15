@@ -144,7 +144,7 @@ const AdSpaceBrowse = () => {
                   {spaces.map(space => (
                     <div key={space._id} className="group flex flex-col rounded-2xl bg-ink/5 border border-[rgba(232,93,4,0.15)] overflow-hidden hover:border-orange-500/40 transition-colors">
                       <Link to={`/ad-space/${space._id}`} className="block h-48 bg-surface-2 relative overflow-hidden">
-                        <img 
+                        <img loading="lazy" decoding="async" 
                           src={getImageUrl(space.photos?.[0]) || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&q=80'} 
                           alt={space.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

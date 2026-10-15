@@ -296,8 +296,8 @@ const TrustSection = () => {
                         height: '100%'
                       }}
                     >
-                      <img 
-                        src={getImageUrl(client.logo) || null} 
+                      <img loading="lazy" decoding="async" 
+                        src={getImageUrl(client.logo, 320) || null} 
                         alt={client.companyName} 
                         style={{
                           maxHeight: '52px',

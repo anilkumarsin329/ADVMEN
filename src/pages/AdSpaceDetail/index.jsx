@@ -116,8 +116,8 @@ const AdSpaceDetail = () => {
             <div className="lg:col-span-2 space-y-8">
               {/* Main Image */}
               <div className="w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden bg-ink/5 border border-ink/25">
-                <img 
-                  src={getImageUrl(space.photos?.[0]) || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=800&fit=crop'} 
+                <img loading="lazy" decoding="async" 
+                  src={getImageUrl(space.photos?.[0], 1280) || 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=800&fit=crop'} 
                   alt={space.title}
                   className="w-full h-full object-cover"
                 />

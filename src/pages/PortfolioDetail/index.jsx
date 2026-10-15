@@ -151,8 +151,8 @@ const PortfolioDetail = () => {
             className="w-full aspect-video rounded-2xl overflow-hidden relative border border-[rgba(232,93,4,0.15)] shadow-2xl bg-surface-2"
           >
             {project.image && typeof project.image === 'string' && project.image.trim() !== '' && (
-              <img
-                src={getImageUrl(project.image)}
+              <img loading="lazy" decoding="async"
+                src={getImageUrl(project.image, 1280)}
                 alt={project.title}
                 className="w-full h-full object-cover"
               />

@@ -34,7 +34,15 @@ export const getApiBaseUrl = () => {
 
 export const API_BASE_URL = getApiBaseUrl()
 
-export const getImageUrl = (path) => {
+// Backend media (/api/media/...) is resized to WebP on the server. `width` picks
+// the size bucket (cards ≈ 800, detail/hero ≈ 1280). Pass null for the original.
+const withWidth = (url, width) => {
+  if (!width || typeof url !== 'string') return url
+  if (!/\/api\/media\/[^?#]+\.(png|jpe?g|webp)$/i.test(url)) return url
+  return `${url}?w=${width}`
+}
+
+export const getImageUrl = (path, width = 800) => {
   if (!path || typeof path !== 'string' || !path.trim()) return null
   let finalPath = path.trim().replace(/\\/g, '/')
 
@@ -56,19 +64,19 @@ export const getImageUrl = (path) => {
   }
 
   if (finalPath.startsWith('http://') || finalPath.startsWith('https://')) {
-    return finalPath
+    return withWidth(finalPath, width)
   }
 
   const cleanPath = finalPath.startsWith('/') ? finalPath : `/${finalPath}`
 
   // Backend uploaded files
   if (cleanPath.startsWith('/uploads/') || cleanPath.startsWith('/api/')) {
-    return `${base}${cleanPath}`
+    return withWidth(`${base}${cleanPath}`, width)
   }
 
   // Bare filename (no slashes) — treat as R2/media file
   if (!finalPath.includes('/')) {
-    return `${base}/api/media/${finalPath}`
+    return withWidth(`${base}/api/media/${finalPath}`, width)
   }
 
   // Static frontend public assets

@@ -136,7 +136,7 @@ const Blog = () => {
                     className="relative w-full aspect-[16/10] rounded-xl overflow-hidden mb-6 bg-[var(--color-surface-2)] border border-[rgba(232,93,4,0.15)]"
                   >
                     <img
-                      src={getImageUrl(article.image)}
+                      src={getImageUrl(article.image, 640)}
                       alt={article.title}
                       loading="lazy"
                       width="800"
