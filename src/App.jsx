@@ -150,7 +150,8 @@ const PublicRoutes = () => {
         <Route path="/portfolio/:slug"  element={<PortfolioDetail />} />
         <Route path="/blog"             element={<Blog />} />
         <Route path="/blog/:slug"       element={<BlogPost />} />
-        <Route path="/catalog"          element={<Catalog />} />
+        {/* Catalog disabled for public — re-enable by restoring: <Route path="/catalog" element={<Catalog />} /> */}
+        <Route path="/catalog"          element={<Navigate to="/" replace />} />
         <Route path="/pricing"          element={<PageTransition><Pricing /></PageTransition>} />
         <Route path="/contact"          element={<Contact />} />
         <Route path="/careers"          element={<Careers />} />

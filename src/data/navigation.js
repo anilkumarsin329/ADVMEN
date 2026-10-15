@@ -9,7 +9,8 @@ export const navLinks = [
   { label: 'Home',     href: '/' },
   // { label: 'About',    href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Catalog',  href: '/catalog' },
+  // Catalog hidden from public nav for now — re-enable when ready
+  // { label: 'Catalog',  href: '/catalog' },
   { label: 'Work',     href: '/work' },
   { label: 'Pricing',  href: '/pricing' },
   { label: 'Careers',  href: '/careers' },

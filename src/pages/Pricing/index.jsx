@@ -1,88 +1,15 @@
 import SEOHead from '@components/common/SEOHead'
-import PageTransition from '@components/common/PageTransition'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { pricingTabs, pricingData, pricingNote } from '@data/pricing'
 
-const plans = [
-  {
-    name: 'STARTER',
-    subtitle: 'SEO Foundation',
-    inr: '₹30K–45K',
-    usd: '$400–600',
-    eur: '€350–550',
-    aed: 'AED 1,500–2,200',
-    scope: 'per month',
-    tag: null,
-    features: [
-      'Technical SEO Audit',
-      'On-Page Optimization for up to 10 pages',
-      'Google Business Profile optimization where applicable',
-      '4 Content Pieces',
-      'Monthly Performance Report',
-    ],
-    cta: 'Get Started',
-  },
-  {
-    name: 'GROWTH',
-    subtitle: 'SEO + AEO',
-    inr: '₹70K–1.2L',
-    usd: '$900–1,500',
-    eur: '€800–1,350',
-    aed: 'AED 3,300–5,500',
-    scope: 'per month',
-    tag: 'Most Popular',
-    features: [
-      'Everything in Starter',
-      'Schema Implementation',
-      'FAQ & Answer Optimization',
-      'Featured Snippet Targeting',
-      '8 Content Pieces',
-      'Link Building',
-      'Conversion Tracking',
-      'Bi-Weekly Strategy Calls',
-    ],
-    cta: 'Choose Growth',
-  },
-  {
-    name: 'DOMINATE',
-    subtitle: 'SEO + AEO + GEO',
-    inr: '₹1.5L–3L',
-    usd: '$2,000–3,500',
-    eur: '€1,800–3,200',
-    aed: 'AED 7,350–12,850',
-    scope: 'per month',
-    tag: 'Best Value',
-    features: [
-      'Everything in Growth',
-      'AI Search Visibility Tracking',
-      'Brand Mention & Citation Building',
-      '12+ Content Pieces',
-      'Conversion Rate Optimization',
-      'Weekly Reporting',
-      'Dedicated Account Manager',
-    ],
-    cta: 'Discuss Your Growth Plan',
-  },
-]
+const Pricing = ({ isPage = true }) => {
+  const [activeTab, setActiveTab] = useState(pricingTabs[0])
+  // On the home page only the monthly bundles are shown; /pricing has every tab
+  const tab = isPage ? activeTab : pricingTabs[0]
+  const plans = pricingData[tab]
 
-const addOns = [
-  {
-    title: 'Performance Ads Management',
-    prices: ['From ₹25K/month + ad spend', 'From $300/month + ad spend'],
-    desc: 'Campaign management designed around defined acquisition and performance objectives.',
-  },
-  {
-    title: 'Conversion-Focused Website / Landing Page',
-    prices: ['From ₹40K one-time', 'From $500 one-time'],
-    desc: 'Purpose-built digital experiences designed to support specific campaigns, offers, and conversion journeys.',
-  },
-  {
-    title: 'AI Visibility Audit',
-    prices: ['₹15K one-time', '$200 one-time'],
-    desc: "A focused review of your brand's current visibility and representation across relevant AI-driven search experiences.",
-  },
-]
-
-const Pricing = ({ isPage = true }) => (
+  return (
   <>
     {isPage && (
       <>
@@ -124,35 +51,64 @@ const Pricing = ({ isPage = true }) => (
           </span>
           {isPage ? (
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: '1rem' }}>
-              Digital Marketing Pricing for India &amp; Global Markets
+              ADVMEN Pricing 2026
             </h1>
           ) : (
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: '1rem' }}>
-              Digital Marketing Pricing for India &amp; Global Markets
+              ADVMEN Pricing 2026
             </h2>
           )}
           <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 600, color: 'var(--color-orange)', marginBottom: '1rem' }}>
-            Choose Your Plan. Build Brand at Your Pace.
+            Starting rates in INR, USD and AED.
           </p>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)', color: 'var(--color-text-secondary)', maxWidth: '680px', margin: '0 auto 0.75rem', lineHeight: 1.6 }}>
-            The right investment depends on your website’s complexity, your market, content needs, competitors, and how aggressively you want to grow.
+            Choose a bundle or pick individual services. GST extra.
           </p>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)', color: 'var(--color-text-secondary)', maxWidth: '680px', margin: '0 auto', lineHeight: 1.6 }}>
-            We offer clear packages as a starting range. We’ll confirm your price after learning your requirements and defining the appropriate scope.
+            Final quote is confirmed after we understand your requirements and scope.
           </p>
         </div>
 
+        {/* Tabs */}
+        {isPage && (
+          <div role="tablist" aria-label="Pricing categories" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.5rem', marginBottom: '2.5rem' }}>
+            {pricingTabs.map((t) => {
+              const on = t === tab
+              return (
+                <button
+                  key={t}
+                  type="button"
+                  role="tab"
+                  aria-selected={on}
+                  onClick={() => setActiveTab(t)}
+                  style={{
+                    fontFamily: 'var(--font-mono)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase',
+                    cursor: 'pointer', padding: '0.6rem 1.1rem', borderRadius: '999px',
+                    border: '1px solid rgba(232,93,4,0.35)',
+                    background: on ? 'var(--color-orange)' : 'transparent',
+                    color: on ? 'var(--color-ink)' : 'var(--color-orange)',
+                    fontWeight: on ? 700 : 500,
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  {t}
+                </button>
+              )
+            })}
+          </div>
+        )}
+
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid gap-6 max-w-6xl mx-auto" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 290px), 1fr))', paddingTop: '0.75rem' }}>
           {plans.map((plan) => (
             <div
-              key={plan.name}
+              key={`${tab}-${plan.name}`}
               style={{
                 position: 'relative',
                 padding: '2rem',
                 borderRadius: '1.25rem',
-                background: plan.tag === 'Most Popular' ? 'rgba(232,93,4,0.08)' : 'var(--color-surface-1)',
-                border: plan.tag === 'Most Popular' ? '1.5px solid rgba(232,93,4,0.5)' : '1px solid var(--color-border-subtle)',
+                background: plan.tag ? 'rgba(232,93,4,0.08)' : 'var(--color-surface-1)',
+                border: plan.tag ? '1.5px solid rgba(232,93,4,0.5)' : '1px solid var(--color-border-subtle)',
                 backdropFilter: 'blur(12px)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -171,12 +127,11 @@ const Pricing = ({ isPage = true }) => (
 
               {/* Price */}
               <div style={{ marginBottom: '0.5rem' }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, color: 'var(--color-text-primary)', lineHeight: 1 }}>{plan.inr}</span>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, color: 'var(--color-text-primary)', lineHeight: 1 }}>₹{plan.inr}{plan.plus ? '+' : ''}</span>
               </div>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>{plan.usd} / month</p>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(232,93,4,0.85)', marginBottom: '0.25rem' }}>{plan.eur} / month</p>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(232,93,4,0.85)', marginBottom: '0.25rem' }}>{plan.aed} / month</p>
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-text-tertiary)', marginBottom: '1.75rem', letterSpacing: '0.05em' }}>{plan.scope}</p>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.25rem' }}>${plan.usd}{plan.plus ? '+' : ''}{plan.unitLabel}</p>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'rgba(232,93,4,0.85)', marginBottom: '0.25rem' }}>AED {plan.aed}{plan.plus ? '+' : ''}{plan.unitLabel}</p>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--color-text-tertiary)', marginBottom: '1.75rem', letterSpacing: '0.05em' }}>{plan.unitWords}</p>
 
               {/* Divider */}
               <div style={{ height: '1px', background: 'var(--color-border-subtle)', marginBottom: '1.5rem' }} />
@@ -194,12 +149,13 @@ const Pricing = ({ isPage = true }) => (
               {/* CTA */}
               <Link
                 to="/contact"
+                state={{ plan: plan.name }}
                 style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
                   marginTop: '2rem', padding: '0.875rem 1.5rem', borderRadius: '12px',
-                  background: plan.tag === 'Most Popular' ? 'linear-gradient(135deg, rgba(232,93,4,0.95), rgba(255,122,26,0.95))' : 'rgba(232,93,4,0.08)',
+                  background: plan.tag ? 'linear-gradient(135deg, rgba(232,93,4,0.95), rgba(255,122,26,0.95))' : 'rgba(232,93,4,0.08)',
                   border: '1px solid rgba(232,93,4,0.4)',
-                  color: plan.tag === 'Most Popular' ? 'var(--color-ink)' : 'var(--color-orange)',
+                  color: plan.tag ? 'var(--color-ink)' : 'var(--color-orange)',
                   fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700,
                   textTransform: 'uppercase', letterSpacing: '0.08em', textDecoration: 'none',
                   transition: 'all 0.3s ease',
@@ -207,7 +163,7 @@ const Pricing = ({ isPage = true }) => (
                 onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(232,93,4,0.25)' }}
                 onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
               >
-                {plan.cta || 'Get Started'}
+                {plan.tag ? `Choose ${plan.name.split(' ')[0]}` : 'Get Started'}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </Link>
             </div>
@@ -216,7 +172,7 @@ const Pricing = ({ isPage = true }) => (
 
         {/* Bottom note */}
         <p style={{ textAlign: 'center', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-secondary)', maxWidth: '800px', margin: '3rem auto 0 auto', lineHeight: '1.6' }}>
-          <strong style={{ color: 'var(--color-text-primary)' }}>Pricing Note:</strong> Package prices are indicative starting ranges. Final pricing depends on scope, competition, website size, content volume, target market, and required deliverables. Currency conversions are rounded for website display and may be reviewed periodically.
+          <strong style={{ color: 'var(--color-text-primary)' }}>Pricing Note:</strong> {pricingNote}
         </p>
 
         {/* CTAs */}
@@ -227,41 +183,10 @@ const Pricing = ({ isPage = true }) => (
           <Link to="/contact" className="btn-primary btn-lg" data-cursor="hover">Get a Free Growth Audit</Link>
         </div>
 
-        {/* Add-ons */}
-        <div style={{ marginTop: 'clamp(3rem, 6vw, 5rem)' }}>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', textAlign: 'center', marginBottom: '2rem' }}>
-            Optional Digital Growth Add-Ons
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {addOns.map((a) => (
-              <div
-                key={a.title}
-                style={{
-                  padding: '1.75rem',
-                  border: '2px solid var(--color-ink)',
-                  borderRadius: '1rem',
-                  background: 'var(--color-surface-1)',
-                  boxShadow: '4px 4px 0 var(--color-ink)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.6rem',
-                }}
-              >
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 700, color: 'var(--color-text-primary)' }}>{a.title}</h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.15rem' }}>
-                  {a.prices.map((p) => (
-                    <span key={p} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-orange)' }}>{p}</span>
-                  ))}
-                </div>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>{a.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   </>
-)
+  )
+}
 
 export default Pricing

@@ -372,6 +372,7 @@ const Navbar = () => {
                 exit={{ opacity: 0, y: 20 }}
                 className="flex flex-col gap-4 pt-8"
               >
+                {/* Catalog button hidden for now — re-enable when catalog goes live
                 <Link 
                   to="/catalog" 
                   onClick={handleMenuItemClick}
@@ -379,6 +380,7 @@ const Navbar = () => {
                 >
                   View Catalog
                 </Link>
+                */}
                 <Link 
                   to="/contact" 
                   onClick={handleMenuItemClick}
