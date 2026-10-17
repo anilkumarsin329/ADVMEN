@@ -21,6 +21,21 @@ import { COMPANY } from '@utils/constants'
 import { cn } from '@utils/formatters'
 import { gsap } from '@utils/gsapConfig'
 import BrandLogo from '@components/common/BrandLogo'
+import { cachedFetch } from '@utils/apiCache'
+import { FiChevronDown } from 'react-icons/fi'
+
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+
+const FALLBACK_SERVICES = [
+  { _id: '1', title: 'SEO Services',               slug: 'seo' },
+  { _id: '2', title: 'AEO & GEO Services',          slug: 'aeo-geo' },
+  { _id: '3', title: 'Branding',                    slug: 'branding' },
+  { _id: '4', title: 'Performance Marketing',       slug: 'performance-marketing' },
+  { _id: '5', title: 'Social Media Marketing',      slug: 'social-media-marketing' },
+  { _id: '6', title: 'Content Marketing',           slug: 'content-marketing' },
+  { _id: '7', title: 'Website Development',         slug: 'website-development' },
+  { _id: '8', title: 'App Development',             slug: 'app-development' },
+]
 
 // ── Mobile menu link animation variants ───────────────────────
 const menuItemVariants = {
@@ -46,6 +61,11 @@ const overlayVariants = {
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
+  const [services, setServices] = useState(FALLBACK_SERVICES)
+  const servicesRef = useRef(null)
+  const servicesTimeoutRef = useRef(null)
   const location = useLocation()
   const navRef = useRef(null)
   const logoRef = useRef(null)
@@ -135,6 +155,27 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [isMobileOpen])
 
+  // ── Fetch services for dropdown ──────────────────────────
+  useEffect(() => {
+    cachedFetch(`${API_BASE}/api/services`)
+      .then((data) => {
+        const list = Array.isArray(data) ? data : data?.services || data?.data || []
+        if (list.length > 0) setServices(list)
+      })
+      .catch(() => {})
+  }, [])
+
+  // ── Close services dropdown on outside click ──────────────
+  useEffect(() => {
+    const handler = (e) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target)) {
+        setServicesOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
   const { startEntrance } = useContext(LoaderContext)
 
   // ── GSAP entrance animation ───────────────────────────────
@@ -198,34 +239,102 @@ const Navbar = () => {
             className="hidden lg:flex items-center gap-6 xl:gap-10"
             aria-label="Main navigation"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={cn(
-                  'relative font-mono text-sm font-medium',
-                  'transition-colors duration-300 py-2 group',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-paper rounded px-2',
-                  isActive(link.href)
-                    ? 'text-[var(--color-text-primary)]'
-                    : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
-                )}
-              >
-                {link.label}
-                {/* Animated underline */}
-                <span
+            {navLinks.map((link) => {
+              if (link.label === 'Services') {
+                return (
+                  <div
+                    key={link.href}
+                    ref={servicesRef}
+                    className="relative"
+                    onMouseEnter={() => {
+                      clearTimeout(servicesTimeoutRef.current)
+                      setServicesOpen(true)
+                    }}
+                    onMouseLeave={() => {
+                      servicesTimeoutRef.current = setTimeout(() => setServicesOpen(false), 150)
+                    }}
+                  >
+                    <Link
+                      to={link.href}
+                      className={cn(
+                        'relative font-mono text-sm font-medium flex items-center gap-1',
+                        'transition-colors duration-300 py-2 group',
+                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] rounded px-2',
+                        isActive(link.href)
+                          ? 'text-[var(--color-text-primary)]'
+                          : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
+                      )}
+                    >
+                      {link.label}
+                      <FiChevronDown
+                        size={14}
+                        className={cn('transition-transform duration-300', servicesOpen ? 'rotate-180' : '')}
+                      />
+                      <span
+                        className={cn(
+                          'absolute -bottom-1 left-1/2 -translate-x-1/2 h-px rounded-full bg-[var(--color-orange)]',
+                          'transition-all duration-300 ease-[var(--ease-out-expo)]',
+                          isActive(link.href) ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
+                        )}
+                        aria-hidden="true"
+                      />
+                    </Link>
+
+                    <AnimatePresence>
+                      {servicesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                          className="absolute top-full left-0 mt-2 w-64 rounded-xl border border-[var(--color-border-subtle)] overflow-hidden"
+                          style={{ background: 'var(--color-surface-1)', boxShadow: '0 16px 40px rgba(0,0,0,0.4)' }}
+                        >
+                          {services.map((svc) => (
+                            <Link
+                              key={svc._id || svc.slug}
+                              to={`/services/${svc.slug}`}
+                              onClick={() => setServicesOpen(false)}
+                              className="flex items-center px-4 py-3 text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] hover:bg-[rgba(255,107,0,0.06)] transition-colors duration-200 border-b border-[var(--color-border-subtle)] last:border-0"
+                            >
+                              {svc.title}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )
+              }
+
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
                   className={cn(
-                    'absolute -bottom-1 left-1/2 -translate-x-1/2 h-px rounded-full',
-                    'bg-[var(--color-orange)]',
-                    'transition-all duration-300 ease-[var(--ease-out-expo)]',
+                    'relative font-mono text-sm font-medium',
+                    'transition-colors duration-300 py-2 group',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] focus-visible:ring-offset-2 focus-visible:ring-offset-paper rounded px-2',
                     isActive(link.href)
-                      ? 'w-full opacity-100'
-                      : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
+                      ? 'text-[var(--color-text-primary)]'
+                      : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]'
                   )}
-                  aria-hidden="true"
-                />
-              </Link>
-            ))}
+                >
+                  {link.label}
+                  <span
+                    className={cn(
+                      'absolute -bottom-1 left-1/2 -translate-x-1/2 h-px rounded-full',
+                      'bg-[var(--color-orange)]',
+                      'transition-all duration-300 ease-[var(--ease-out-expo)]',
+                      isActive(link.href)
+                        ? 'w-full opacity-100'
+                        : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
+                    )}
+                    aria-hidden="true"
+                  />
+                </Link>
+              )
+            })}
           </nav>
 
           {/* ── Desktop CTA ───────────────────────────────── */}
@@ -331,36 +440,75 @@ const Navbar = () => {
                     animate="visible"
                     exit="exit"
                   >
-                    <Link
-                      to={link.href}
-                      onClick={handleMenuItemClick}
-                      className={cn(
-                        'group flex items-center justify-between py-4',
-                        'border-b border-[var(--color-border-subtle)]',
-                        'transition-colors duration-300',
-                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] rounded px-2',
-                        isActive(link.href) ? 'text-[var(--color-orange)]' : ''
-                      )}
-                    >
-                      <span
+                    {link.label === 'Services' ? (
+                      <div className="border-b border-[var(--color-border-subtle)]">
+                        <button
+                          type="button"
+                          onClick={() => setMobileServicesOpen(p => !p)}
+                          className="group flex items-center justify-between py-4 w-full px-2 focus-visible:outline-none"
+                        >
+                          <span className={cn(
+                            'font-display font-bold text-2xl sm:text-[2.5rem] leading-none tracking-tight transition-colors duration-300',
+                            isActive(link.href) ? 'text-[var(--color-orange)]' : 'text-[var(--color-text-primary)] group-hover:text-[var(--color-orange)]'
+                          )}>
+                            {link.label}
+                          </span>
+                          <FiChevronDown
+                            size={22}
+                            className={cn('text-[var(--color-text-tertiary)] transition-transform duration-300', mobileServicesOpen ? 'rotate-180 text-[var(--color-orange)]' : '')}
+                          />
+                        </button>
+                        <AnimatePresence>
+                          {mobileServicesOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                              className="overflow-hidden"
+                            >
+                              <div className="flex flex-col gap-1 pb-4 pl-2">
+                                {services.map((svc) => (
+                                  <Link
+                                    key={svc._id || svc.slug}
+                                    to={`/services/${svc.slug}`}
+                                    onClick={handleMenuItemClick}
+                                    className="text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] py-2 transition-colors duration-200"
+                                  >
+                                    → {svc.title}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        onClick={handleMenuItemClick}
                         className={cn(
-                          'font-display font-bold text-2xl sm:text-[2.5rem] leading-none tracking-tight',
+                          'group flex items-center justify-between py-4',
+                          'border-b border-[var(--color-border-subtle)]',
                           'transition-colors duration-300',
-                          isActive(link.href)
-                            ? 'text-[var(--color-orange)]'
-                            : 'text-[var(--color-text-primary)] group-hover:text-[var(--color-orange)]'
+                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-orange)] rounded px-2',
+                          isActive(link.href) ? 'text-[var(--color-orange)]' : ''
                         )}
                       >
-                        {link.label}
-                      </span>
-                      <svg
-                        width="20" height="20" viewBox="0 0 20 20" fill="none"
-                        className="text-[var(--color-text-tertiary)] group-hover:text-[var(--color-orange)] group-hover:translate-x-1 transition-all duration-300"
-                        aria-hidden="true"
-                      >
-                        <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </Link>
+                        <span className={cn(
+                          'font-display font-bold text-2xl sm:text-[2.5rem] leading-none tracking-tight transition-colors duration-300',
+                          isActive(link.href) ? 'text-[var(--color-orange)]' : 'text-[var(--color-text-primary)] group-hover:text-[var(--color-orange)]'
+                        )}>
+                          {link.label}
+                        </span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                          className="text-[var(--color-text-tertiary)] group-hover:text-[var(--color-orange)] group-hover:translate-x-1 transition-all duration-300"
+                          aria-hidden="true"
+                        >
+                          <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
               </nav>
