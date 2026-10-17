@@ -36,7 +36,7 @@ const Footer = () => {
         {/* Logo + Company Description */}
         <div className="mb-12 max-w-3xl">
           <img
-            src="/ADVMEN_logo.png"
+            src="/ADVMEN logo.png"
             alt="ADVMEN"
             className="h-10 w-auto mb-6 object-contain"
             loading="lazy"
