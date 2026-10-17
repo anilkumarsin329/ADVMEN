@@ -33,8 +33,14 @@ const Footer = () => {
     >
       <div className="container max-w-[1400px] mx-auto">
         
-        {/* Company Description */}
+        {/* Logo + Company Description */}
         <div className="mb-12 max-w-3xl">
+          <img
+            src="/ADVMEN_logo.png"
+            alt="ADVMEN"
+            className="h-10 w-auto mb-6 object-contain"
+            loading="lazy"
+          />
           <p className="font-body text-sm font-medium text-[var(--color-text-secondary)] leading-relaxed">
             ADVMEN Technologies connects strategy, creativity, and state-of-the-art technology to build digital experiences that attract audiences, earn trust, and create growth.
           </p>
