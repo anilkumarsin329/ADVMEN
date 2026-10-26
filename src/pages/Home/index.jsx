@@ -14,7 +14,6 @@ const CaseStudies   = lazy(() => import('@components/sections/CaseStudies/CaseSt
 const TrustSection  = lazy(() => import('@components/sections/Clients/TrustSection'))
 const Testimonials  = lazy(() => import('@components/sections/Testimonials/Testimonials'))
 const FAQSection    = lazy(() => import('@components/sections/FAQ/FAQSection'))
-const HomePricing   = lazy(() => import('@components/sections/Home/HomePricing'))
 const VisibilityIntro  = lazy(() => import('@components/sections/Home/VisibilityIntro'))
 const StrategicVision  = lazy(() => import('@components/sections/Home/StrategicVision'))
 const HomeServices     = lazy(() => import('@components/sections/Home/HomeServices'))
@@ -85,9 +84,6 @@ const Home = () => {
 
       {/* Section 7: India & global markets */}
       <div className="home-band home-band--tint"><MarketsSection /></div>
-
-      {/* Section 8: Pricing + add-ons */}
-      <HomePricing />
 
       {/* Section 9: Our work */}
       <div className="home-band home-band--light"><Portfolio /></div>
