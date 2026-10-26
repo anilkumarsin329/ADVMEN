@@ -6,6 +6,7 @@
  */
 
 import { Link } from 'react-router-dom'
+import BrandLogo from '@components/common/BrandLogo'
 import { footerLinks } from '@data/navigation'
 import { useServices, splitServices } from '@utils/useServices'
 import { COMPANY, SOCIAL } from '@utils/constants'
@@ -38,12 +39,9 @@ const Footer = () => {
         
         {/* Logo + Company Description */}
         <div className="mb-12 max-w-3xl">
-          <img
-            src="/ADVMEN logo.png"
-            alt="ADVMEN"
-            className="h-10 w-auto mb-6 object-contain"
-            loading="lazy"
-          />
+          <Link to="/" className="inline-block mb-6" aria-label="ADVMEN — Home" data-cursor="hover">
+            <BrandLogo size="large" />
+          </Link>
           <p className="font-body text-sm font-medium text-[var(--color-text-secondary)] leading-relaxed">
             ADVMEN Technologies connects strategy, creativity, and state-of-the-art technology to build digital experiences that attract audiences, earn trust, and create growth.
           </p>

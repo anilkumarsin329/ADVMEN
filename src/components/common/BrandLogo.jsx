@@ -17,8 +17,11 @@ const BrandLogo = ({
       {/* Logo Image */}
       <img
         src="/ADVMEN%20logo.png"
-        alt="ADVMEN"
-        className={`${imgSize} object-cover rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-105`}
+        alt="ADVMEN logo"
+        width="48"
+        height="48"
+        className={`${imgSize} flex-shrink-0 object-cover rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-105`}
+        style={{ border: '2px solid var(--color-ink)' }}
         draggable="false"
       />
       {/* Brand Name */}
