@@ -20,8 +20,8 @@ const Pricing = ({ isPage = true }) => {
           canonical="https://www.advmen.com/pricing"
           schemaData={{
             breadcrumbs: [
-              { name: 'Home', url: 'https://advmen.com/' },
-              { name: 'Pricing', url: 'https://advmen.com/pricing' }
+              { name: 'Home', url: 'https://www.advmen.com/' },
+              { name: 'Pricing', url: 'https://www.advmen.com/pricing' }
             ]
           }}
         />

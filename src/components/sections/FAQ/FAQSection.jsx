@@ -4,6 +4,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { autoLink } from '@utils/autoLink'
 
 const faqData = [
   {
@@ -98,14 +99,16 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
             className="overflow-hidden"
           >
             <p
+              onClick={(e) => e.stopPropagation()}
               style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: 'clamp(0.85rem, 1.5vw, 0.92rem)',
                 color: 'var(--color-text-secondary)',
                 lineHeight: '1.6',
+                cursor: 'auto',
               }}
             >
-              {answer}
+              {autoLink(answer)}
             </p>
           </motion.div>
         )}

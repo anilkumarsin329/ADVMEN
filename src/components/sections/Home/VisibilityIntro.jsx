@@ -4,18 +4,19 @@
  */
 
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import SectionHeader from './SectionHeader'
 
 const CHANNELS = [
-  'Search Engine Optimization (SEO)',
-  'Answer Engine Optimization (AEO)',
-  'Generative Engine Optimization (GEO)',
-  'AI Search Optimization',
-  'Content Marketing',
-  'Branding & Strategy',
-  'Performance Marketing',
-  'Social Media',
-  'Websites & App Development',
+  { label: 'Search Engine Optimization (SEO)', to: '/services/seo' },
+  { label: 'Answer Engine Optimization (AEO)', to: '/services/aeo-geo' },
+  { label: 'Generative Engine Optimization (GEO)', to: '/services/aeo-geo' },
+  { label: 'AI Search Optimization', to: '/services/aeo-geo' },
+  { label: 'Content Marketing', to: '/services/content-marketing' },
+  { label: 'Branding & Strategy', to: '/services/branding' },
+  { label: 'Performance Marketing', to: '/services/performance-marketing' },
+  { label: 'Social Media', to: '/services/social-media-marketing' },
+  { label: 'Websites & App Development', to: '/services/website-development' },
 ]
 
 const VisibilityIntro = () => (
@@ -58,7 +59,7 @@ const VisibilityIntro = () => (
         <ul className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-3" aria-label="What we cover">
           {CHANNELS.map((item, i) => (
             <motion.li
-              key={item}
+              key={item.label}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
@@ -77,7 +78,9 @@ const VisibilityIntro = () => (
               }}
             >
               <span aria-hidden="true" style={{ opacity: 0.6 }}>{String(i + 1).padStart(2, '0')}</span>
-              {item}
+              <Link to={item.to} style={{ color: 'inherit', textDecoration: 'none' }} data-cursor="hover">
+                {item.label}
+              </Link>
             </motion.li>
           ))}
         </ul>

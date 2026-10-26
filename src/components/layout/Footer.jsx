@@ -7,16 +7,19 @@
 
 import { Link } from 'react-router-dom'
 import { footerLinks } from '@data/navigation'
+import { useServices, splitServices } from '@utils/useServices'
 import { COMPANY, SOCIAL } from '@utils/constants'
-import { FiInstagram, FiLinkedin, FiArrowUp } from 'react-icons/fi'
+import { FiInstagram, FiLinkedin, FiFacebook, FiArrowUp } from 'react-icons/fi'
 
 const socialIcons = [
+  { icon: FiFacebook,  href: SOCIAL.facebook,  label: 'Facebook'  },
   { icon: FiInstagram, href: SOCIAL.instagram, label: 'Instagram' },
   { icon: FiLinkedin,  href: SOCIAL.linkedin,  label: 'LinkedIn'  },
 ]
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const services = splitServices(useServices())
 
   const handleBackToTop = () => {
     if (window.__lenis) window.__lenis.scrollTo(0, { duration: 1.1 })
@@ -74,13 +77,13 @@ const Footer = () => {
               Services
             </h4>
             <ul className="flex flex-col gap-4">
-              {footerLinks.services.map((link) => (
-                <li key={link.href}>
+              {services.map((svc) => (
+                <li key={svc._id || svc.slug}>
                   <Link
-                    to={link.href}
+                    to={`/services/${svc.slug}`}
                     className="font-body text-sm font-medium text-[var(--color-text-primary)] hover:text-[var(--color-orange)] transition-colors duration-300"
                   >
-                    {link.label}
+                    {svc.title}
                   </Link>
                 </li>
               ))}

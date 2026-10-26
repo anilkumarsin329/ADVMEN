@@ -13,6 +13,9 @@ import { gsap } from '@utils/gsapConfig'
 
 import SEOHead       from '@components/common/SEOHead'
 import PageTransition from '@components/common/PageTransition'
+import MobileApps from '@components/sections/Work/MobileApps'
+import UgcVideos from '@components/sections/Work/UgcVideos'
+import GoIndiaCabCaseStudy from '@components/sections/Work/GoIndiaCabCaseStudy'
 // removed static imports
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
 import { cachedFetch } from '@/utils/apiCache'
@@ -70,11 +73,11 @@ const Work = () => {
         title="Our Work — ADVMEN"
         description="Explore our portfolio of high-impact web systems, creative branding cases, and digital campaigns."
         schemaType="work"
-        canonical="https://advmen.com/work"
+        canonical="https://www.advmen.com/work"
         schemaData={{
           breadcrumbs: [
-            { name: 'Home', url: 'https://advmen.com/' },
-            { name: 'Work', url: 'https://advmen.com/work' }
+            { name: 'Home', url: 'https://www.advmen.com/' },
+            { name: 'Work', url: 'https://www.advmen.com/work' }
           ]
         }}
       />
@@ -266,6 +269,12 @@ const Work = () => {
 
         </div>
       </section>
+
+      <div style={{ background: 'var(--color-black)' }}>
+        <MobileApps />
+        <UgcVideos />
+        <GoIndiaCabCaseStudy />
+      </div>
     </PageTransition>
   )
 }

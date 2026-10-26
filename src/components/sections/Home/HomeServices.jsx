@@ -76,6 +76,15 @@ const SERVICES = [
   },
 ]
 
+const DEEP_LINKS = [
+  { label: 'Android App Development', to: '/services/app-development/android' },
+  { label: 'iOS App Development', to: '/services/app-development/ios' },
+  { label: 'Professional Website Design', to: '/services/website-development' },
+  { label: 'Social Media Management', to: '/services/social-media-marketing' },
+  { label: 'Digital Marketing Pricing', to: '/pricing' },
+  { label: 'View All Services', to: '/services' },
+]
+
 const ArrowIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
@@ -186,6 +195,27 @@ const HomeServices = () => {
             )
           })}
         </div>
+
+        {/* Deep links to specific service pages (App Development sub-pages etc.) */}
+        <nav className="mt-10" aria-label="More service pages">
+          <p className="text-xs font-mono font-bold tracking-widest uppercase mb-3" style={{ color: 'var(--color-text-tertiary)' }}>
+            Explore more services
+          </p>
+          <ul className="flex flex-wrap gap-3">
+            {DEEP_LINKS.map((l) => (
+              <li key={l.to}>
+                <Link
+                  to={l.to}
+                  className="inline-block text-sm font-semibold transition-colors duration-300 hover:text-[var(--color-orange)]"
+                  style={{ color: 'var(--color-text-primary)', border: '2px solid var(--color-ink)', borderRadius: '9999px', padding: '0.4rem 1rem' }}
+                  data-cursor="hover"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </section>
   )

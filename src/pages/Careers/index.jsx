@@ -371,11 +371,11 @@ const Careers = () => {
         title="Careers & Internships — ADVMEN"
         description="Join ADVMEN. View open internship and experienced full-time roles across engineering, design, and growth."
         schemaType="careers"
-        canonical="https://advmen.com/careers"
+        canonical="https://www.advmen.com/careers"
         schemaData={{
           breadcrumbs: [
-            { name: 'Home', url: 'https://advmen.com/' },
-            { name: 'Careers', url: 'https://advmen.com/careers' }
+            { name: 'Home', url: 'https://www.advmen.com/' },
+            { name: 'Careers', url: 'https://www.advmen.com/careers' }
           ]
         }}
       />

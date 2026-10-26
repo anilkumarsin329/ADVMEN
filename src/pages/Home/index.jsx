@@ -14,7 +14,7 @@ const CaseStudies   = lazy(() => import('@components/sections/CaseStudies/CaseSt
 const TrustSection  = lazy(() => import('@components/sections/Clients/TrustSection'))
 const Testimonials  = lazy(() => import('@components/sections/Testimonials/Testimonials'))
 const FAQSection    = lazy(() => import('@components/sections/FAQ/FAQSection'))
-const Pricing       = lazy(() => import('@pages/Pricing'))
+const HomePricing   = lazy(() => import('@components/sections/Home/HomePricing'))
 const VisibilityIntro  = lazy(() => import('@components/sections/Home/VisibilityIntro'))
 const StrategicVision  = lazy(() => import('@components/sections/Home/StrategicVision'))
 const HomeServices     = lazy(() => import('@components/sections/Home/HomeServices'))
@@ -57,6 +57,7 @@ const Home = () => {
       title="Digital Marketing & Technology Agency in India | ADVMEN"
       description="ADVMEN is a digital marketing and technology agency in India offering SEO, AEO, GEO, AI search optimization, branding, web development and mobile app development."
       schemaType="home"
+      keywords="digital marketing agency in India, digital marketing company in India, digital marketing services India, AI search optimization, website development in India, mobile app development in India, digital marketing services UAE, digital marketing services Europe, digital marketing services USA"
       canonical="https://www.advmen.com/"
       schemaData={{ faqs: homeFaqs }}
     />
@@ -86,7 +87,7 @@ const Home = () => {
       <div className="home-band home-band--tint"><MarketsSection /></div>
 
       {/* Section 8: Pricing + add-ons */}
-      <Pricing isPage={false} />
+      <HomePricing />
 
       {/* Section 9: Our work */}
       <div className="home-band home-band--light"><Portfolio /></div>

@@ -35,7 +35,8 @@ const SEOHead = ({
       addressCountry: 'IN',
     },
     sameAs: [
-      'https://www.linkedin.com/company/advmen-technologies',
+      'https://www.linkedin.com/company/advmen-technologies/',
+      'https://www.facebook.com/profile.php?id=61591797981658',
       'https://www.instagram.com/advmen.in?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==',
       'https://twitter.com/advmen_tech',
     ]
@@ -196,7 +197,9 @@ const SEOHead = ({
       <meta name="description" content={description} />
       <meta name="keywords"    content={keywords} />
       {canonical && <link rel="canonical" href={canonical} />}
-      {noIndex   && <meta name="robots" content="noindex, nofollow" />}
+      {noIndex
+        ? <meta name="robots" content="noindex, nofollow" />
+        : <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />}
 
       {/* â”€â”€ Open Graph â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <meta property="og:title"       content={fullTitle} />

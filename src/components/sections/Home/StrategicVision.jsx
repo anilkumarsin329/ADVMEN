@@ -4,7 +4,9 @@
  */
 
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import SectionHeader from './SectionHeader'
+import { autoLink, LINK_STYLE } from '@utils/autoLink'
 
 const PARAGRAPHS = [
   'We’re here to help brands build strong digital foundations, communicate their value with clarity, and create meaningful visibility across traditional search and emerging AI-powered discovery.',
@@ -38,8 +40,9 @@ const StrategicVision = () => (
             transition={{ duration: 0.6, delay: 0.1 }}
             style={{ fontSize: '1.0625rem', lineHeight: 1.75, marginTop: '1.25rem', color: 'var(--color-text-primary)', fontWeight: 500 }}
           >
-            ADVMEN Technologies is a digital marketing company in India built around the changing way people search,
-            evaluate, and choose businesses.
+            ADVMEN Technologies is a{' '}
+            <Link to="/digital-marketing-services-india" style={LINK_STYLE}>digital marketing company in India</Link>{' '}
+            built around the changing way people search, evaluate, and choose businesses.
           </motion.p>
         </div>
 
@@ -53,7 +56,7 @@ const StrategicVision = () => (
               transition={{ duration: 0.55, delay: i * 0.08 }}
               style={{ fontSize: '1.0625rem', lineHeight: 1.75 }}
             >
-              {text}
+              {autoLink(text)}
             </motion.p>
           ))}
 

@@ -8,11 +8,11 @@ const ServicesPage = () => (
       title="Digital Marketing Services | SEO, Web & Technology | ADVMEN"
       description="Get digital marketing, SEO, AEO, GEO, web design, mobile app, e-commerce, branding, social media, UI/UX, and custom CRM services from ADVMEN Technologies."
       schemaType="collection"
-      canonical="https://advmen.com/services"
+      canonical="https://www.advmen.com/services"
       schemaData={{
         breadcrumbs: [
-          { name: 'Home', url: 'https://advmen.com/' },
-          { name: 'Services', url: 'https://advmen.com/services' }
+          { name: 'Home', url: 'https://www.advmen.com/' },
+          { name: 'Services', url: 'https://www.advmen.com/services' }
         ],
         faqs: SERVICES_FAQS
       }}

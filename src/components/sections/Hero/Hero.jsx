@@ -6,6 +6,7 @@ import { gsap } from '@utils/gsapConfig'
 import HeroBackground from './HeroBackground'
 import HeroStats from './HeroStats'
 import MagneticButton from '@components/ui/MagneticButton'
+import { LINK_STYLE } from '@utils/autoLink'
 
 const CHIPS = ['SEO', 'AEO', 'GEO', 'AI Search', 'Web Dev', 'App Dev', 'Branding', 'Performance']
 
@@ -81,16 +82,39 @@ const Hero = () => {
             </div>
 
             {/* Supporting copy */}
-            <p className="hero-stagger" style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'clamp(1rem, 1.4vw, 1.15rem)',
-              color: 'var(--color-text-secondary)',
-              lineHeight: 1.65,
-              maxWidth: '600px',
-              fontWeight: 400,
-            }}>
-              ADVMEN combines SEO, AEO, GEO, content, branding, digital marketing, and web &amp; app development to help your business get discovered and chosen across search engines and AI platforms.
-            </p>
+            <div className="hero-stagger flex flex-col gap-3" style={{ maxWidth: '640px' }}>
+              <p style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.1rem, 1.7vw, 1.35rem)',
+                fontWeight: 600,
+                color: 'var(--color-text-primary)',
+                lineHeight: 1.4,
+              }}>
+                Make your brand easier to find. Easier to understand. Easier to trust.
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)',
+                color: 'var(--color-text-secondary)',
+                lineHeight: 1.65,
+              }}>
+                Your customers are searching, comparing, and even turning to AI for answers. Is your business showing up when it counts?
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)',
+                color: 'var(--color-text-secondary)',
+                lineHeight: 1.65,
+              }}>
+                ADVMEN integrates <Link to="/services/seo" style={LINK_STYLE}>SEO</Link>,{' '}
+                <Link to="/services/aeo-geo" style={LINK_STYLE}>AEO</Link>,{' '}
+                <Link to="/services/aeo-geo" style={LINK_STYLE}>GEO</Link>,{' '}
+                <Link to="/services/content-marketing" style={LINK_STYLE}>content</Link>,{' '}
+                <Link to="/services/branding" style={LINK_STYLE}>branding</Link>, digital marketing,{' '}
+                <Link to="/services/website-development" style={LINK_STYLE}>website development</Link>, and{' '}
+                <Link to="/services/app-development" style={LINK_STYLE}>mobile app development</Link> to make sure people can find, understand, and choose your business across search engines, answer-driven results, and AI-powered search experiences.
+              </p>
+            </div>
 
             {/* Service Chips */}
             <div className="hero-stagger flex flex-wrap gap-2">

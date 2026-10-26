@@ -57,11 +57,11 @@ const Blog = () => {
         title="Blog & Insights — ADVMEN"
         description="Read technical articles on React optimization, creative design engineering, and brand strategy."
         schemaType="collection"
-        canonical="https://advmen.com/blog"
+        canonical="https://www.advmen.com/blog"
         schemaData={{
           breadcrumbs: [
-            { name: 'Home', url: 'https://advmen.com/' },
-            { name: 'Blog', url: 'https://advmen.com/blog' }
+            { name: 'Home', url: 'https://www.advmen.com/' },
+            { name: 'Blog', url: 'https://www.advmen.com/blog' }
           ]
         }}
       />

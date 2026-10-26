@@ -133,11 +133,11 @@ const Contact = () => {
         title="Contact Us — ADVMEN"
         description="Get in touch with ADVMEN for project consulting, branding queries, or frontend engineering collaborations."
         schemaType="contact"
-        canonical="https://advmen.com/contact"
+        canonical="https://www.advmen.com/contact"
         schemaData={{
           breadcrumbs: [
-            { name: 'Home', url: 'https://advmen.com/' },
-            { name: 'Contact', url: 'https://advmen.com/contact' }
+            { name: 'Home', url: 'https://www.advmen.com/' },
+            { name: 'Contact', url: 'https://www.advmen.com/contact' }
           ]
         }}
       />

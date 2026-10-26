@@ -6,6 +6,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SectionHeader from './SectionHeader'
+import { LINK_STYLE } from '@utils/autoLink'
 
 const MARKETS = [
   {
@@ -58,11 +59,14 @@ const MarketsSection = () => (
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 mb-12">
         <p style={{ fontSize: '1.0625rem', lineHeight: 1.75 }}>
-          India sits at the centre of our digital marketing offerings. We create digital marketing strategies that help
+          <Link to="/digital-marketing-services-india" style={LINK_STYLE}>India</Link> sits at the centre of our digital marketing offerings. We create digital marketing strategies that help
           businesses stand out and grow, even as the market shifts and new trends pop up.
         </p>
         <p style={{ fontSize: '1.0625rem', lineHeight: 1.75 }}>
-          Our team also works with brands looking to make an impact in the USA, UAE, and Europe. Our strategists dive
+          Our team also works with brands looking to make an impact in the{' '}
+          <Link to="/digital-marketing-services-usa" style={LINK_STYLE}>USA</Link>,{' '}
+          <Link to="/digital-marketing-services-uae" style={LINK_STYLE}>UAE</Link>, and{' '}
+          <Link to="/digital-marketing-services-europe" style={LINK_STYLE}>Europe</Link>. Our strategists dive
           into each market, understand local audiences, competition, and search behaviour.
         </p>
       </div>
