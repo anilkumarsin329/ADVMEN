@@ -234,6 +234,16 @@ const WorkDetail = () => {
       <SEOHead
         title={`${details.client} Case Study — ADVMEN`}
         description={details.tagline}
+        schemaType="project"
+        schemaData={{
+          projectName: `${details.client} — ${details.title}`,
+          about: details.category,
+          breadcrumbs: [
+            { name: 'Home', url: 'https://www.advmen.com/' },
+            { name: 'Work', url: 'https://www.advmen.com/work' },
+            { name: details.client, url: `https://www.advmen.com/work/${details.slug}` }
+          ]
+        }}
       />
 
       <div

@@ -75,6 +75,10 @@ const Work = () => {
         schemaType="work"
         canonical="https://www.advmen.com/work"
         schemaData={{
+          itemsName: 'ADVMEN case studies and projects',
+          items: portfolioData
+            .filter((p) => p.slug && p.title)
+            .map((p) => ({ name: p.title, url: `https://www.advmen.com/work/${p.slug}` })),
           breadcrumbs: [
             { name: 'Home', url: 'https://www.advmen.com/' },
             { name: 'Work', url: 'https://www.advmen.com/work' }

@@ -79,7 +79,7 @@ const SERVICES = [
 const DEEP_LINKS = [
   { label: 'Android App Development', to: '/services/app-development/android' },
   { label: 'iOS App Development', to: '/services/app-development/ios' },
-  { label: 'Professional Website Design', to: '/services/website-development' },
+  { label: 'Professional Website Design', to: '/services/professional-website-design' },
   { label: 'Social Media Management', to: '/services/social-media-marketing' },
   { label: 'Digital Marketing Pricing', to: '/pricing' },
   { label: 'View All Services', to: '/services' },

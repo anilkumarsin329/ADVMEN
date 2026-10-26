@@ -29,6 +29,16 @@ const PortfolioDetail = () => {
       <SEOHead
         title={`${project.title} — Case Study | ADVMEN`}
         description={project.description}
+        schemaType="project"
+        schemaData={{
+          projectName: project.title,
+          about: project.category,
+          breadcrumbs: [
+            { name: 'Home', url: 'https://www.advmen.com/' },
+            { name: 'Work', url: 'https://www.advmen.com/work' },
+            { name: project.title, url: `https://www.advmen.com/portfolio/${project.slug}` }
+          ]
+        }}
       />
 
       {/* Back Button */}

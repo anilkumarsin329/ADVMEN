@@ -19,6 +19,12 @@ const Pricing = ({ isPage = true }) => {
           schemaType="pricing"
           canonical="https://www.advmen.com/pricing"
           schemaData={{
+            catalog: {
+              name: 'ADVMEN service pricing — starting rates (INR, GST extra)',
+              items: pricingTabs.flatMap((t) =>
+                pricingData[t].map((p) => ({ name: p.name, minPrice: parseFloat(String(p.inr).replace(/,/g, '')), currency: 'INR' }))
+              ),
+            },
             breadcrumbs: [
               { name: 'Home', url: 'https://www.advmen.com/' },
               { name: 'Pricing', url: 'https://www.advmen.com/pricing' }

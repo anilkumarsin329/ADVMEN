@@ -22,6 +22,13 @@ const About = () => {
       <SEOHead
         title="About Us — ADVMEN"
         description="Learn about ADVMEN's story, core values, our elite team, and design culture."
+        schemaType="about"
+        schemaData={{
+          breadcrumbs: [
+            { name: 'Home', url: 'https://www.advmen.com/' },
+            { name: 'About', url: 'https://www.advmen.com/about' }
+          ]
+        }}
       />
 
       {/* Main About Sequence */}

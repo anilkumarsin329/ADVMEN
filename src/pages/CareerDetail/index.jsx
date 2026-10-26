@@ -217,6 +217,18 @@ const CareerDetail = () => {
       <SEOHead
         title={`${job.title} (${job.type}) — ADVMEN Careers`}
         description={`Apply for ${job.title} at ADVMEN. ${job.location}. ${job.salary || ''}`}
+        schemaType="jobPosting"
+        schemaData={{
+          jobTitle: job.title,
+          department: job.department,
+          datePosted: job.createdAt || job.postedAt,
+          employmentType: /intern/i.test(`${job.type} ${job.title}`) ? 'INTERN' : /part/i.test(job.type || '') ? 'PART_TIME' : 'FULL_TIME',
+          breadcrumbs: [
+            { name: 'Home', url: 'https://www.advmen.com/' },
+            { name: 'Careers', url: 'https://www.advmen.com/careers' },
+            { name: job.title, url: `https://www.advmen.com/careers/${job.id}` }
+          ]
+        }}
       />
 
       <div className="w-full bg-[#FFE5CC] min-h-screen text-ink font-body pt-28 pb-20">

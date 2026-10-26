@@ -73,6 +73,8 @@ const BlogPost = () => {
         schemaData={{
           articleAuthor: article.author,
           articleDate: article.date,
+          articleSection: article.category,
+          image: article.image,
           breadcrumbs: [
             { name: 'Home', url: 'https://www.advmen.com/' },
             { name: 'Blog', url: 'https://www.advmen.com/blog' },

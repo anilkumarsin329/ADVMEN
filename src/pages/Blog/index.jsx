@@ -59,6 +59,10 @@ const Blog = () => {
         schemaType="collection"
         canonical="https://www.advmen.com/blog"
         schemaData={{
+          itemsName: 'ADVMEN blog articles',
+          items: articles
+            .filter((a) => a.slug && a.title)
+            .map((a) => ({ name: a.title, url: `https://www.advmen.com/blog/${a.slug}` })),
           breadcrumbs: [
             { name: 'Home', url: 'https://www.advmen.com/' },
             { name: 'Blog', url: 'https://www.advmen.com/blog' }

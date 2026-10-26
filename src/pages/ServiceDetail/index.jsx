@@ -16,6 +16,10 @@ import { getServiceBySlug, getSubPages } from '@data/services'
 import { API_BASE_URL, getImageUrl, COMPANY } from '@utils/constants'
 import { cachedFetch } from '@/utils/apiCache'
 import { FiX } from 'react-icons/fi'
+import ProfessionalWebsiteDesign from './ProfessionalWebsiteDesign'
+
+// URLs that render the dedicated Professional Website Design landing page
+const PRO_DESIGN_SLUGS = ['professional-website-design', 'website-design', 'web-design']
 
 const defaultWorkflowSteps = [
   { step: '01', title: 'Discovery & Mapping', desc: 'We align on requirements, audit existing architectures, and design strategic blueprints.' },
@@ -84,6 +88,10 @@ const ServiceDetail = () => {
 
   const service = serviceData || getServiceBySlug(currentSlug) || getServiceBySlug(decodedSlug)
 
+  if (PRO_DESIGN_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
+    return <ProfessionalWebsiteDesign />
+  }
+
   if (!service) {
     return (
       <div
@@ -122,7 +130,9 @@ const ServiceDetail = () => {
             { name: 'Services', url: `${COMPANY.website}/services` },
             { name: service.title, url: canonicalUrl }
           ],
-          faqs: service.faqs
+          faqs: service.faqs,
+          features: service.features,
+          image: service.image && service.image.startsWith('/') ? `${COMPANY.website}${service.image}` : service.image
         }}
       />
 

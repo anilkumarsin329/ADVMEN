@@ -157,6 +157,6 @@ export const SEO_DEFAULTS = {
   title:       'ADVMEN — We Build Brands That Dominate',
   description: 'ADVMEN is a premium branding, digital marketing, web & app development, and political campaign agency helping businesses grow.',
   keywords:    'digital marketing agency in India, digital marketing company in India, digital marketing services India, AI search optimization, website development in India, mobile app development in India, SEO, AEO, GEO',
-  ogImage:     '/images/og/og-default.jpg',
+  ogImage:     'https://www.advmen.com/Hero%20section%20image.webp',
   twitterCard: 'summary_large_image',
 }
