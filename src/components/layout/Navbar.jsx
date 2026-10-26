@@ -37,6 +37,30 @@ const FALLBACK_SERVICES = [
   { _id: '8', title: 'App Development',             slug: 'app-development' },
 ]
 
+// Combined services are shown as two separate dropdown entries
+const SPLIT_SERVICES = [
+  {
+    test: /seo\s*(&|and)\s*geo/i,
+    items: [
+      { title: 'SEO Optimization', slug: 'seo' },
+      { title: 'GEO Optimization', slug: 'aeo-geo' },
+    ],
+  },
+  {
+    test: /android\s*(&|and)\s*ios/i,
+    items: [
+      { title: 'Android App Development', slug: 'app-development/android' },
+      { title: 'iOS App Development',     slug: 'app-development/ios' },
+    ],
+  },
+]
+
+const splitServices = (list) =>
+  list.flatMap((svc) => {
+    const rule = SPLIT_SERVICES.find((r) => r.test.test(svc.title || ''))
+    return rule ? rule.items.map((item) => ({ ...item, _id: item.slug })) : [svc]
+  })
+
 // ── Mobile menu link animation variants ───────────────────────
 const menuItemVariants = {
   hidden: { opacity: 0, x: -40 },
@@ -290,10 +314,12 @@ const Navbar = () => {
                           className="absolute top-full left-0 mt-2 w-64 rounded-xl border border-[var(--color-border-subtle)] overflow-hidden"
                           style={{ background: 'var(--color-surface-1)', boxShadow: '0 16px 40px rgba(0,0,0,0.4)' }}
                         >
-                          {services.map((svc) => (
+                          {splitServices(services).map((svc) => (
                             <Link
                               key={svc._id || svc.slug}
                               to={`/services/${svc.slug}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               onClick={() => setServicesOpen(false)}
                               className="flex items-center px-4 py-3 text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] hover:bg-[rgba(255,107,0,0.06)] transition-colors duration-200 border-b border-[var(--color-border-subtle)] last:border-0"
                             >
@@ -468,10 +494,12 @@ const Navbar = () => {
                               className="overflow-hidden"
                             >
                               <div className="flex flex-col gap-1 pb-4 pl-2">
-                                {services.map((svc) => (
+                                {splitServices(services).map((svc) => (
                                   <Link
                                     key={svc._id || svc.slug}
                                     to={`/services/${svc.slug}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     onClick={handleMenuItemClick}
                                     className="text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] py-2 transition-colors duration-200"
                                   >
