@@ -21,6 +21,14 @@ const APPS = [
     features: ['Add and manage services', 'Manage booking requests', 'Customer and booking info', 'Instant booking notifications'],
     href: 'https://play.google.com/store/apps/details?id=com.advmen.partnerApp&pcampaignid=web_share',
   },
+  {
+    kind: 'Nonprofit / Cow Welfare App',
+    name: 'Gausevamaatrseva',
+    image: '/App%20Image/Gauseva%20app.jpeg',
+    desc: 'A simple digital platform for supporting cow care and welfare initiatives, with convenient online donations and campaign information.',
+    features: ['Easy online donations', 'Payment gateway integration', 'Donation and campaign information', 'User-friendly mobile interface'],
+    href: 'https://play.google.com/store/apps/details?id=com.gauseva.appdh',
+  },
 ]
 
 const MobileApps = () => (
