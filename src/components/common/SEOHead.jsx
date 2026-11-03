@@ -33,10 +33,13 @@ const SEOHead = ({
   ogImage     = SEO_DEFAULTS.ogImage,
   canonical,
   noIndex     = false,
+  robots,
   schemaType  = 'page',
   schemaData  = {},
 }) => {
   const { pathname } = useLocation()
+  // `robots` overrides the default directive, e.g. "noindex, follow" for pages that should stay out of the index
+  const blocked = noIndex || /noindex/i.test(robots || '')
   const alreadyHasBrand = title && /[|—–-]\s*ADVMEN/i.test(title)
   const fullTitle = title
     ? (alreadyHasBrand ? title : `${title} | ${COMPANY.shortName}`)
@@ -122,8 +125,8 @@ const SEOHead = ({
       <meta name="description" content={description} />
       <meta name="keywords"    content={keywords} />
       <link rel="canonical" href={url} />
-      {noIndex
-        ? <meta name="robots" content="noindex, nofollow" />
+      {blocked
+        ? <meta name="robots" content={robots || 'noindex, nofollow'} />
         : <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />}
 
       {/* ── Open Graph ─────────────────────────────────────────── */}
@@ -142,7 +145,7 @@ const SEOHead = ({
       <meta name="twitter:image"       content={ogImage} />
 
       {/* ── JSON-LD (single linked graph) ──────────────────────── */}
-      {!noIndex && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
+      {!blocked && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
     </Helmet>
   )
 }

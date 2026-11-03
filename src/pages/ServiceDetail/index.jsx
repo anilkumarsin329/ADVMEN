@@ -17,9 +17,13 @@ import { API_BASE_URL, getImageUrl, COMPANY } from '@utils/constants'
 import { cachedFetch } from '@/utils/apiCache'
 import { FiX } from 'react-icons/fi'
 import ProfessionalWebsiteDesign from './ProfessionalWebsiteDesign'
+import AndroidAppDevelopment from './AndroidAppDevelopment'
 
 // URLs that render the dedicated Professional Website Design landing page
 const PRO_DESIGN_SLUGS = ['professional-website-design', 'website-design', 'web-design']
+
+// URLs that render the dedicated Android App Development landing page
+const ANDROID_SLUGS = ['android-app-development', 'app-development/android']
 
 const defaultWorkflowSteps = [
   { step: '01', title: 'Discovery & Mapping', desc: 'We align on requirements, audit existing architectures, and design strategic blueprints.' },
@@ -90,6 +94,10 @@ const ServiceDetail = () => {
 
   if (PRO_DESIGN_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
     return <ProfessionalWebsiteDesign />
+  }
+
+  if (ANDROID_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
+    return <AndroidAppDevelopment />
   }
 
   if (!service) {

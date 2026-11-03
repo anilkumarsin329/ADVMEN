@@ -16,6 +16,8 @@ import PageTransition from '@components/common/PageTransition'
 import MobileApps from '@components/sections/Work/MobileApps'
 import UgcVideos from '@components/sections/Work/UgcVideos'
 import GoIndiaCabCaseStudy from '@components/sections/Work/GoIndiaCabCaseStudy'
+import WorkHero from '@components/sections/Work/WorkHero'
+import { featuredCaseStudies } from '@data/caseStudies'
 // removed static imports
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
 import { cachedFetch } from '@/utils/apiCache'
@@ -70,15 +72,19 @@ const Work = () => {
   return (
     <PageTransition>
       <SEOHead
-        title="Our Work — ADVMEN"
-        description="Explore our portfolio of high-impact web systems, creative branding cases, and digital campaigns."
+        title="Our Work: Websites, Apps & AI Search Growth | ADVMEN"
+        description="See what ADVMEN has built: websites, Android apps, SEO, AEO/GEO AI-search visibility, branding and UGC video for ambitious brands. Explore our case studies."
+        keywords="ADVMEN portfolio, website development case studies, Android app development projects, SEO case study, AEO GEO AI search visibility, Go India Cab, Norozz, UGC video, branding"
         schemaType="work"
         canonical="https://www.advmen.com/work"
         schemaData={{
           itemsName: 'ADVMEN case studies and projects',
-          items: portfolioData
-            .filter((p) => p.slug && p.title)
-            .map((p) => ({ name: p.title, url: `https://www.advmen.com/work/${p.slug}` })),
+          items: [
+            ...featuredCaseStudies.map((c) => ({ name: c.title, url: `https://www.advmen.com/work/${c.slug}` })),
+            ...portfolioData
+              .filter((p) => p.slug && p.title)
+              .map((p) => ({ name: p.title, url: `https://www.advmen.com/work/${p.slug}` })),
+          ],
           breadcrumbs: [
             { name: 'Home', url: 'https://www.advmen.com/' },
             { name: 'Work', url: 'https://www.advmen.com/work' }
@@ -86,11 +92,14 @@ const Work = () => {
         }}
       />
 
+      <WorkHero />
+
       <section
+        id="work-grid"
         ref={headerRef}
         className="relative w-full overflow-hidden"
         style={{
-          paddingTop: 'calc(var(--navbar-height) + 4rem)',
+          paddingTop: '4rem',
           paddingBottom: '6rem',
           background: 'var(--color-black)',
         }}
@@ -107,7 +116,7 @@ const Work = () => {
               </span>
             </div>
 
-            <h1
+            <h2
               className="work-stagger section-title"
               style={{
                 fontSize: 'clamp(2.5rem, 4.5vw, 4rem)',
@@ -117,7 +126,7 @@ const Work = () => {
               }}
             >
               Proof, not promises.
-            </h1>
+            </h2>
           </div>
 
           {/* Category Filters */}

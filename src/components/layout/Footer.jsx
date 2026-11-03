@@ -118,6 +118,11 @@ const Footer = () => {
                 Orchid Center, 3rd Floor, Golf Course Road, SEC-53,<br />
                 Gurugram, HR - 122002, India
               </span>
+              <span className="leading-relaxed">
+                T-4B-506, NX One Plot no.17, Techzone-4,<br />
+                Greater Noida West, Gautam Buddha Nagar,<br />
+                Pin 201308, India
+              </span>
               <a
                 href={`mailto:${COMPANY.email}`}
                 className="hover:text-[var(--color-orange)] transition-colors duration-300"

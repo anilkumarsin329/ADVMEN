@@ -190,9 +190,9 @@ const Contact = () => {
                   border: '1px solid rgba(17, 17, 17, 0.02)',
                 }}
               >
-                <h3 className="font-display font-bold text-lg text-[var(--color-text-primary)] mb-4">
+                <h2 className="font-display font-bold text-lg text-[var(--color-text-primary)] mb-4">
                   Headquarters
-                </h3>
+                </h2>
                 <p className="font-body text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6">
                   ADVMEN<br />
                   T-4B-506, NX One Plot no.17, Techzone-4<br />
@@ -213,9 +213,9 @@ const Contact = () => {
                   border: '1px solid rgba(17, 17, 17, 0.02)',
                 }}
               >
-                <h3 className="font-display font-bold text-lg text-[var(--color-text-primary)] mb-4">
+                <h2 className="font-display font-bold text-lg text-[var(--color-text-primary)] mb-4">
                   Direct Connections
-                </h3>
+                </h2>
                 <div className="flex flex-col gap-4">
                   <a
                     href="mailto:info@advmen.com"

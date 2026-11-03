@@ -6,6 +6,7 @@ import { pricingTabs, pricingData, pricingNote } from '@data/pricing'
 const Pricing = ({ isPage = true }) => {
   const [activeTab, setActiveTab] = useState(pricingTabs[0])
   // On the home page only the monthly bundles are shown; /pricing has every tab
+  const PlanHeading = isPage ? 'h2' : 'h3'
   const tab = isPage ? activeTab : pricingTabs[0]
   const plans = pricingData[tab]
 
@@ -128,7 +129,7 @@ const Pricing = ({ isPage = true }) => {
               )}
 
               {/* Plan name */}
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--color-orange)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>{plan.name}</p>
+              <PlanHeading style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--color-orange)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>{plan.name}</PlanHeading>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '1rem' }}>{plan.subtitle}</p>
 
               {/* Price */}

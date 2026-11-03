@@ -16,118 +16,9 @@ import { API_BASE_URL, getImageUrl } from '@utils/constants'
 import { cachedFetch } from '@/utils/apiCache'
 
 import { portfolioProjects } from '@data/portfolio'
+import { featuredCaseStudies } from '@data/caseStudies'
 
-const fallbackCaseStudies = [
-  ...portfolioProjects,
-  {
-    id: 1,
-    slug: 'case-study-1',
-    title: 'E-Commerce Platform Redesign',
-    client: 'TechStore Inc.',
-    category: 'Web Development',
-    tagline: 'Complete e-commerce platform redesign with modern UI, optimized checkout flow, and mobile-first performance.',
-    description: 'Complete e-commerce platform redesign with modern UI, optimized checkout flow, and mobile-first performance.',
-    challenge: 'Legacy e-commerce store was suffering from slow page load speeds, high cart abandonment, and poor mobile user experience.',
-    solution: 'Designed and built a modern headless e-commerce application with React and Next.js, featuring instantaneous page transitions and optimized checkout.',
-    results: [
-      { metric: '+15%', label: 'Conversion Rate' },
-      { metric: '30%', label: 'Faster Load Speed' },
-    ],
-    image: '/Image/advmen_service3.webp',
-    tech: ['React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Stripe'],
-    tags: ['E-Commerce', 'Web Development', 'UI/UX']
-  },
-  {
-    id: 2,
-    slug: 'case-study-2',
-    title: 'Digital Marketing Campaign',
-    client: 'Fashion Brand Co.',
-    category: 'Digital Marketing',
-    tagline: 'Integrated digital marketing campaign driving multi-channel lead acquisition and brand awareness.',
-    description: 'Integrated digital marketing campaign driving multi-channel lead acquisition and brand awareness.',
-    challenge: 'Brand lacked multi-channel digital visibility and high customer acquisition cost across paid channels.',
-    solution: 'Implemented targeted social media ad campaigns, influencer marketing partnerships, and data-driven conversion funnel optimization.',
-    results: [
-      { metric: '+40%', label: 'Monthly Leads' },
-      { metric: '+25%', label: 'Social Engagement' },
-    ],
-    image: '/Image/advmen_service6.webp',
-    tech: ['Google Ads', 'Meta Ads', 'SEO', 'Analytics', 'Funnel Design'],
-    tags: ['Digital Marketing', 'Growth', 'Lead Gen']
-  },
-  {
-    id: 3,
-    slug: 'case-study-3',
-    title: 'Mobile App Development',
-    client: 'FitLife Technologies',
-    category: 'App Development',
-    tagline: 'Cross-platform fitness mobile application built with real-time tracking and active community features.',
-    description: 'Cross-platform fitness mobile application built with real-time tracking and active community features.',
-    challenge: 'Users needed a seamless, real-time activity tracker with social features that worked offline.',
-    solution: 'Built a cross-platform mobile application using React Native with local caching, health API integrations, and community leaderboards.',
-    results: [
-      { metric: '500+', label: 'App Downloads' },
-      { metric: '4.5/5', label: 'Store Rating' },
-    ],
-    image: '/Image/advmen_service1.webp',
-    tech: ['React Native', 'Firebase', 'GraphQL', 'HealthKit'],
-    tags: ['App Development', 'Mobile', 'Fitness']
-  },
-  {
-    id: 4,
-    slug: 'case-study-4',
-    title: 'SEO & Content Strategy',
-    client: 'Global Tech Solutions',
-    category: 'SEO & Content',
-    tagline: 'Technical SEO overhaul, keyword mapping, and content optimization positioning client on Page 1.',
-    description: 'Technical SEO overhaul, keyword mapping, and content optimization positioning client on Page 1.',
-    challenge: 'Low domain authority and organic search visibility compared to established market competitors.',
-    solution: 'Executed a complete technical SEO audit, restructured site architecture, and launched high-converting content hubs.',
-    results: [
-      { metric: '+60%', label: 'Organic Traffic' },
-      { metric: 'Page 1', label: 'Keyword Rankings' },
-    ],
-    image: '/Image/advmen_service9.webp',
-    tech: ['Technical SEO', 'Content Strategy', 'Ahrefs', 'Search Console'],
-    tags: ['SEO', 'Content', 'Growth']
-  },
-  {
-    id: 5,
-    slug: 'case-study-5',
-    title: 'Brand Identity & Design System',
-    client: 'StartUp Ventures Inc.',
-    category: 'Branding',
-    tagline: 'Complete brand guidelines, visual identity design system, and UI kit for high-impact market launch.',
-    description: 'Complete brand guidelines, visual identity design system, and UI kit for high-impact market launch.',
-    challenge: 'Inconsistent brand messaging and lack of a structured UI component library for upcoming products.',
-    solution: 'Crafted a holistic brand strategy, logo guidelines, typography, and a comprehensive Figma design system.',
-    results: [
-      { metric: '5+', label: 'Brand Assets' },
-      { metric: '2 Weeks', label: 'Fast Delivery' },
-    ],
-    image: '/Image/advmen_service4.webp',
-    tech: ['Figma', 'Brand Strategy', 'UI/UX Design', 'Design Systems'],
-    tags: ['Branding', 'Design System', 'UI/UX']
-  },
-  {
-    id: 6,
-    slug: 'case-study-6',
-    title: 'Video Production & Media',
-    client: 'Premium Lifestyle Brand',
-    category: 'Media Production',
-    tagline: 'High-converting video production and lifestyle product photography for social media campaigns.',
-    description: 'High-converting video production and lifestyle product photography for social media campaigns.',
-    challenge: 'Low ad engagement rates on social channels due to generic stock imagery.',
-    solution: 'Produced high-definition lifestyle promotional videos and commercial product photography tailored for high-converting ads.',
-    results: [
-      { metric: '5K+', label: 'Video Views' },
-      { metric: '+20%', label: 'Engagement Lift' },
-    ],
-    image: '/Image/advmen_service5.webp',
-    tech: ['Video Production', '4K Cinema', 'Color Grading', 'Motion Graphics'],
-    tags: ['Media Production', 'Video', 'Creative']
-  }
-]
+const fallbackCaseStudies = [...portfolioProjects, ...featuredCaseStudies]
 
 const WorkDetail = () => {
   const { slug } = useParams()
@@ -229,11 +120,16 @@ const WorkDetail = () => {
 
   if (!details) return null
 
+  const heroText = details.tagline || details.summary || details.description
+  const results = details.results?.length
+    ? details.results
+    : (details.metrics || []).map(m => ({ metric: m.value, label: m.label }))
+
   return (
     <PageTransition>
       <SEOHead
         title={`${details.client} Case Study — ADVMEN`}
-        description={details.tagline}
+        description={heroText}
         schemaType="project"
         schemaData={{
           projectName: `${details.client} — ${details.title}`,
@@ -323,7 +219,7 @@ const WorkDetail = () => {
                   maxWidth: '700px',
                 }}
               >
-                {details.tagline || details.description}
+                {heroText}
               </p>
 
               {/* Hero Cover Image Banner */}
@@ -425,7 +321,7 @@ const WorkDetail = () => {
                 )}
 
                 {/* Results Grid */}
-                {details.results && details.results.length > 0 && (
+                {results.length > 0 && (
                   <div className="flex flex-col gap-6">
                     <h2
                       style={{
@@ -437,8 +333,8 @@ const WorkDetail = () => {
                     >
                       Results & Impact
                     </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    {details.results.map((res, idx) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {results.map((res, idx) => (
                       <div
                         key={idx}
                         style={{
@@ -475,6 +371,59 @@ const WorkDetail = () => {
                     ))}
                   </div>
                 </div>
+                )}
+
+                {/* Detailed sections */}
+                {details.sections?.map((sec) => (
+                  <div key={sec.heading} className="flex flex-col gap-4">
+                    <h2
+                      style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '1.5rem',
+                        fontWeight: 'var(--weight-bold)',
+                        color: 'var(--color-text-primary)',
+                      }}
+                    >
+                      {sec.heading}
+                    </h2>
+                    {sec.body && (
+                      <p style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-secondary)', lineHeight: '1.75' }}>
+                        {sec.body}
+                      </p>
+                    )}
+                    {sec.points?.length > 0 && (
+                      <ul className="flex flex-col gap-3">
+                        {sec.points.map((pt) => (
+                          <li
+                            key={pt}
+                            className="flex gap-3"
+                            style={{ fontFamily: 'var(--font-body)', color: 'var(--color-text-secondary)', lineHeight: '1.65' }}
+                          >
+                            <span
+                              aria-hidden="true"
+                              style={{ marginTop: '0.55rem', width: 6, height: 6, borderRadius: '50%', background: 'var(--color-orange)', flexShrink: 0 }}
+                            />
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+
+                {details.note && (
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.85rem',
+                      color: 'var(--color-text-tertiary)',
+                      lineHeight: '1.6',
+                      borderLeft: '2px solid rgba(232,93,4,0.4)',
+                      paddingLeft: '1rem',
+                    }}
+                  >
+                    {details.note}
+                  </p>
                 )}
               </div>
 
@@ -523,6 +472,44 @@ const WorkDetail = () => {
                           }}
                         >
                           {details.client}
+                        </div>
+                      </div>
+                    )}
+                    {details.industry && (
+                      <div>
+                        <div
+                          style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '0.7rem',
+                            color: 'var(--color-text-tertiary)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.05em',
+                            marginBottom: '0.25rem',
+                          }}
+                        >
+                          Industry
+                        </div>
+                        <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.92rem', color: 'var(--color-text-primary)' }}>
+                          {details.industry}
+                        </div>
+                      </div>
+                    )}
+                    {details.scope && (
+                      <div>
+                        <div
+                          style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '0.7rem',
+                            color: 'var(--color-text-tertiary)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.05em',
+                            marginBottom: '0.25rem',
+                          }}
+                        >
+                          Scope
+                        </div>
+                        <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.92rem', color: 'var(--color-text-primary)' }}>
+                          {details.scope}
                         </div>
                       </div>
                     )}

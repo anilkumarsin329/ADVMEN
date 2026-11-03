@@ -14,6 +14,7 @@ import { FiTrendingUp } from 'react-icons/fi'
 import { gsap } from '@utils/gsapConfig'
 import { API_BASE_URL, getImageUrl } from '@utils/constants'
 import { cachedFetch } from '@utils/apiCache'
+import { featuredCaseStudies } from '@data/caseStudies'
 
 const CaseStudies = () => {
   const sectionRef = useRef(null)
@@ -25,9 +26,10 @@ const CaseStudies = () => {
     const fetchCaseStudies = async () => {
       try {
         const data = await cachedFetch(`${API_BASE_URL}/api/case-studies`)
-        if (data?.data) setCaseStudies(data.data)
+        setCaseStudies(data?.data?.length ? data.data : featuredCaseStudies)
       } catch (err) {
         console.warn('Failed to fetch case studies:', err)
+        setCaseStudies(featuredCaseStudies)
       } finally {
         setLoading(false)
       }
@@ -183,13 +185,6 @@ const CaseStudies = () => {
                       }}
                       className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background: 'linear-gradient(to top, rgba(255, 229, 204, 0.6) 0%, transparent 40%)',
-                      }}
-                    />
-
                     {/* Category Pill */}
                     <span
                       className="absolute top-3 left-3 px-3 py-1 rounded-full text-[0.675rem] font-bold tracking-wider uppercase z-10"
@@ -238,7 +233,7 @@ const CaseStudies = () => {
 
                     {/* Highlight Metrics Grid (2 Badges) */}
                     <div className="grid grid-cols-2 gap-3 pt-3">
-                      {study.metrics.map((m, idx) => (
+                      {(study.metrics || []).map((m, idx) => (
                         <div
                           key={idx}
                           className="p-3 rounded-xl flex flex-col justify-center"

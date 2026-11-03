@@ -161,7 +161,7 @@ const Blog = () => {
 
                   {/* Title Link */}
                   <Link to={`/blog/${article.slug}`} className="block group/title">
-                    <h3
+                    <h2
                       className="group-hover/title:text-[var(--color-orange)] transition-colors duration-300 mb-3"
                       style={{
                         fontFamily: 'var(--font-display)',
@@ -172,7 +172,7 @@ const Blog = () => {
                       }}
                     >
                       {article.title}
-                    </h3>
+                    </h2>
                   </Link>
 
                   {/* Excerpt */}

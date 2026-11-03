@@ -142,6 +142,7 @@ const MarketPage = ({ market }) => {
         title={data.title}
         description={data.description}
         schemaType="market"
+        robots={data.slug === 'digital-marketing-services-india' ? undefined : 'noindex, follow'}
         canonical={`${COMPANY.website}/${data.slug}`}
         schemaData={{
           serviceName: data.title,

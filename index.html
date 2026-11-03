@@ -20,9 +20,6 @@
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
 
-    <!-- Resource hints for faster loading -->
-    <link rel="prefetch" href="/fonts/" />
-
     <!-- Performance: Disable prefetch for unused routes -->
     <!-- Critical CSS: prevent blank flash before JS loads -->
     <style>
@@ -31,6 +28,7 @@
       body { min-height: 100%; }
       body { background: #0A0A0A; color: #FFFFFF; font-family: 'Space Grotesk', system-ui, sans-serif; }
       #root { min-height: 100vh; }
+      #prerender-overlay { position: absolute; top: 0; left: 0; right: 0; z-index: 10000; background: var(--color-black, #FFE5CC); }
       #root:empty::before {
         content: '';
         position: fixed; inset: 0;
@@ -40,37 +38,42 @@
     </style>
 
     <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-    <!-- Meta Pixel Code -->
+    <!-- Analytics (Meta Pixel + GA4): loaded after the page is interactive — on first user input,
+         or 4s after load — so they stay off the critical path / TBT. -->
     <script>
-      window.addEventListener('DOMContentLoaded', function() {
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1523501636197524');
-        fbq('track', 'PageView');
-      });
-    </script>
-    <!-- End Meta Pixel Code -->
+      (function () {
+        var started = false;
+        function start() {
+          if (started) return;
+          started = true;
+          ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) { window.removeEventListener(e, start); });
 
-    <!-- Google tag (gtag.js) -->
-    <script>
-      window.addEventListener('load', function() {
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-H1RWGDNX2Y';
-        s.async = true;
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'G-H1RWGDNX2Y');
-      });
+          // Meta Pixel
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1523501636197524');
+          fbq('track', 'PageView');
+
+          // Google tag (gtag.js)
+          var g = document.createElement('script');
+          g.src = 'https://www.googletagmanager.com/gtag/js?id=G-H1RWGDNX2Y';
+          g.async = true;
+          document.head.appendChild(g);
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-H1RWGDNX2Y');
+        }
+        ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) { window.addEventListener(e, start, { passive: true, once: true }); });
+        window.addEventListener('load', function () { setTimeout(start, 4000); });
+      })();
     </script>
     <!-- Static Organization + WebSite JSON-LD for crawlers that do not run JavaScript.
          Generated from src/utils/schema.js — keep in sync. Per-page schema is added by SEOHead. -->
