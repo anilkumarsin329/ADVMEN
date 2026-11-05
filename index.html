@@ -62,13 +62,14 @@
 
           // Google tag (gtag.js)
           var g = document.createElement('script');
-          g.src = 'https://www.googletagmanager.com/gtag/js?id=G-H1RWGDNX2Y';
+          g.src = 'https://www.googletagmanager.com/gtag/js?id=G-8VCXJYVZY4';
           g.async = true;
           document.head.appendChild(g);
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
           gtag('js', new Date());
+          gtag('config', 'G-8VCXJYVZY4');
           gtag('config', 'G-H1RWGDNX2Y');
         }
         ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) { window.addEventListener(e, start, { passive: true, once: true }); });
