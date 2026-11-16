@@ -18,9 +18,9 @@ import { COMPANY } from '@utils/constants'
 const PAGE_PATH = '/services/app-development/android'
 const CANONICAL = `${COMPANY.website}${PAGE_PATH}`
 
-const TITLE = 'Android App Development Services | Custom Android Apps | ADVMEN'
+const TITLE = 'Mobile App Development Services | ADVMEN'
 const DESCRIPTION =
-  'Build reliable, user-focused Android applications with ADVMEN. Explore custom Android app development, UI/UX, integrations, testing, and ongoing support.'
+  'Turn your app idea into reality with ADVMEN. We develop custom Android and iOS applications with user-friendly designs and scalable functionality.'
 const KEYWORDS =
   'Android app development services, Android app development, custom Android app development, Android application development, Android mobile app development, Android app developers, Android app development company, custom Android application development, business app development, Android UI/UX design, Android app design and development, native Android app development, Android app testing, Android app maintenance and support, enterprise Android app development, Android app development solutions, affordable Android app development services, Android application development company, scalable Android app development, Android app integration, Android app modernization'
 

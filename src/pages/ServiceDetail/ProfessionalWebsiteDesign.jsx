@@ -17,9 +17,9 @@ import { COMPANY } from '@utils/constants'
 const PAGE_PATH = '/services/professional-website-design'
 const CANONICAL = `${COMPANY.website}${PAGE_PATH}`
 
-const TITLE = 'Professional Website Design Services | ADVMEN Technologies'
+const TITLE = 'Website Design & Development Services | ADVMEN'
 const DESCRIPTION =
-  'Get a responsive, professional website that’s built for your business. ADVMEN offers custom design, UI/UX, e-commerce, and complete redesign services built around your business goals.'
+  'Build a professional, responsive and SEO-friendly website with ADVMEN. We provide custom website design and development for businesses of all sizes.'
 const KEYWORDS =
   'professional website design services, website design and development, custom website design, professional website development, business website design, responsive web design, WordPress website development, e-commerce website development, website redesign services, UI/UX design services, SEO-friendly website design'
 

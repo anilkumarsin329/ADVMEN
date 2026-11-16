@@ -448,6 +448,107 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 
+/* ── Quill Rich Text Editor overrides (Admin only) ────────────── */
+.ql-toolbar.ql-snow {
+  border-radius: 0.5rem 0.5rem 0 0;
+  border-color: #d1d5db !important;
+  background: #f9fafb;
+}
+.ql-container.ql-snow {
+  border-radius: 0 0 0.5rem 0.5rem;
+  border-color: #d1d5db !important;
+  min-height: 180px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+.ql-editor { min-height: 180px; color: #1e293b; }
+.ql-editor.ql-blank::before { color: #94a3b8; font-style: normal; }
+
+/* ── Blog Content Prose Styles ─────────────────────────────────────── */
+.blog-content {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.blog-content h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.blog-content h2 { font-size: clamp(1.3rem, 2.5vw, 1.75rem); }
+.blog-content h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
+.blog-content h4 { font-size: 1.1rem; }
+
+.blog-content p {
+  margin-bottom: 1.25rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.blog-content a,
+.blog-content a:visited {
+  color: var(--color-orange) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+.blog-content a:hover { opacity: 0.75; }
+
+.blog-content ul,
+.blog-content ol {
+  margin: 1rem 0 1.25rem 1.5rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+.blog-content ul { list-style: disc !important; }
+.blog-content ol { list-style: decimal !important; }
+.blog-content li { margin-bottom: 0.4rem; display: list-item !important; }
+
+/* Quill generates .ql-indent and data-list attributes for lists */
+.blog-content .ql-indent-1 { padding-left: 2rem; }
+.blog-content .ql-indent-2 { padding-left: 4rem; }
+
+.blog-content strong, .blog-content b {
+  font-weight: var(--weight-bold);
+  color: var(--color-text-primary);
+}
+
+.blog-content em, .blog-content i { font-style: italic; }
+
+.blog-content blockquote {
+  border-left: 3px solid var(--color-orange);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  background: rgba(232,93,4,0.06);
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.blog-content pre,
+.blog-content code {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  background: rgba(255,255,255,0.06);
+  border-radius: 0.375rem;
+}
+.blog-content pre {
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-border-subtle);
+}
+.blog-content code { padding: 0.15rem 0.4rem; }
+.blog-content pre code { padding: 0; background: none; }
+
 /* ── Home page section bands (alternating rhythm) ─────────────────── */
 .home-band { position: relative; border-block: 2px solid var(--color-ink); }
 .home-band--tint  { background: var(--color-surface-2); }

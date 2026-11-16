@@ -286,19 +286,17 @@ const BlogPost = () => {
             {/* Main Content */}
             <div className="lg:col-span-8">
               <div
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '1rem',
-                  color: 'var(--color-text-secondary)',
-                  lineHeight: '1.8',
+                className="blog-content"
+                dangerouslySetInnerHTML={{
+                  __html: article.content && article.content.includes('<')
+                    ? article.content
+                    : article.content
+                        ?.split('\n\n')
+                        .filter(Boolean)
+                        .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
+                        .join('') || ''
                 }}
-              >
-                {article.content.split('\n\n').map((paragraph, i) => (
-                  <p key={i} style={{ marginBottom: '1.5rem', whiteSpace: 'pre-wrap' }}>
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
+              />
 
               {/* Tags */}
               <div className="mt-8 pt-8 border-t border-[var(--color-border-subtle)]">
