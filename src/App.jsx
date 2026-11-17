@@ -91,8 +91,6 @@ const AdminServices  = lazyWithRetry(() => import('@/admin/pages/AdminServices')
 const AdminSettings  = lazyWithRetry(() => import('@/admin/pages/AdminSettings'))
 const AdminProfile   = lazyWithRetry(() => import('@/admin/pages/AdminProfile'))
 const AdminHelp      = lazyWithRetry(() => import('@/admin/pages/AdminHelp'))
-const AdminCatalog   = lazyWithRetry(() => import('@/admin/pages/AdminCatalog'))
-const AdminCatalogOrders = lazyWithRetry(() => import('@/admin/pages/AdminCatalogOrders'))
 const AdminNewsletter = lazyWithRetry(() => import('@/admin/pages/AdminNewsletter'))
 const AdminClients    = lazyWithRetry(() => import('@/admin/pages/AdminClients'))
 const AdminCaseStudies = lazyWithRetry(() => import('@/admin/pages/AdminCaseStudies'))
@@ -199,8 +197,6 @@ const AdminRoutes = () => (
       <Route path="settings"     element={<AdminLayout><AdminSettings /></AdminLayout>} />
       <Route path="profile"      element={<AdminLayout><AdminProfile /></AdminLayout>} />
       <Route path="help"         element={<AdminLayout><AdminHelp /></AdminLayout>} />
-      <Route path="catalog"      element={<AdminLayout><AdminCatalog /></AdminLayout>} />
-      <Route path="catalog-orders" element={<AdminLayout><AdminCatalogOrders /></AdminLayout>} />
       <Route path="ad-spaces"    element={<AdminLayout><AdminAdSpaces /></AdminLayout>} />
       <Route path="ad-bookings"  element={<AdminLayout><AdminAdBookings /></AdminLayout>} />
       <Route path="ad-users"     element={<AdminLayout><AdminAdUsers /></AdminLayout>} />
