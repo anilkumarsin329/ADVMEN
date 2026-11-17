@@ -206,7 +206,7 @@ const AdminBlog = () => {
         body: JSON.stringify(payload)
       })
       if (res.ok) { showToast(currentItem ? 'Article updated!' : 'Article created!'); setIsModalOpen(false); fetchBlogData() }
-      else { const d = await res.json(); showToast(d.message || 'Save failed', 'error') }
+      else { const d = await res.json(); console.error('Blog save error:', d); showToast(d.message || 'Save failed', 'error') }
     } catch { showToast('Connection error', 'error') }
     finally { setIsSaving(false) }
   }
