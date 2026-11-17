@@ -146,7 +146,8 @@ const AdminBlog = () => {
 
   const handleTitleChange = (e) => {
     const val = e.target.value
-    const autoSlug = val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
+    const base = val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
+    const autoSlug = currentItem ? prev.slug : `${base}-${Date.now().toString(36)}`
     setFormValues(prev => ({ ...prev, title: val, slug: currentItem ? prev.slug : autoSlug }))
   }
 
