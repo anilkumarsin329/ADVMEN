@@ -196,7 +196,8 @@ const AdminBlog = () => {
   const handleSaveItem = async () => {
     if (!validateForm()) return
     setIsSaving(true)
-    const payload = { ...formValues, tags: formValues.tagsString ? formValues.tagsString.split(',').map(s => s.trim()).filter(Boolean) : [] }
+    const { tagsString, ...rest } = formValues
+    const payload = { ...rest, tags: tagsString ? tagsString.split(',').map(s => s.trim()).filter(Boolean) : [] }
     try {
       const url = currentItem ? `${API_BASE_URL}/api/blog/${currentItem.id}` : `${API_BASE_URL}/api/blog`
       const res = await fetch(url, {
