@@ -288,13 +288,34 @@ const BlogPost = () => {
               <div
                 className="blog-content"
                 dangerouslySetInnerHTML={{
-                  __html: article.content && article.content.includes('<')
-                    ? article.content
-                    : article.content
-                        ?.split('\n\n')
-                        .filter(Boolean)
-                        .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
-                        .join('') || ''
+                  __html: article.content
+                    ? article.content.includes('<')
+                      ? article.content
+                      : article.content
+                          .split('\n')
+                          .map(line => {
+                            if (/^#{1,6}\s/.test(line)) {
+                              const level = line.match(/^(#{1,6})\s/)[1].length
+                              const text = line.replace(/^#{1,6}\s+/, '')
+                              const tag = level <= 2 ? 'h2' : level === 3 ? 'h3' : 'h4'
+                              return `<${tag}>${text}</${tag}>`
+                            }
+                            if (/^[-•*]\s/.test(line)) return `<li>${line.replace(/^[-•*]\s+/, '')}</li>`
+                            if (/^\d+\.\s/.test(line)) return `<li>${line.replace(/^\d+\.\s+/, '')}</li>`
+                            if (line.trim() === '') return '__BLANK__'
+                            return line
+                          })
+                          .join('\n')
+                          .replace(/((<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>')
+                          .split('__BLANK__')
+                          .map(block => {
+                            const t = block.trim()
+                            if (!t) return ''
+                            if (t.startsWith('<h') || t.startsWith('<ul') || t.startsWith('<ol')) return t
+                            return `<p>${t.replace(/\n/g, ' ')}</p>`
+                          })
+                          .join('')
+                    : ''
                 }}
               />
 
