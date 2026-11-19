@@ -157,7 +157,7 @@ const AEOGEOOptimization = () => (
       keywords={KEYWORDS}
       schemaType="service"
       canonical={CANONICAL}
-      ogImage={`${COMPANY.website}/Image/advmen_service10.webp`}
+      ogImage={`${COMPANY.website}/Image/ADVMEN AEO & GEO Optimization.png`}
       schemaData={{
         serviceName: 'AEO and GEO Optimization Services',
         areaServed: ['India', 'United States', 'United Arab Emirates', 'Europe'],
@@ -170,7 +170,7 @@ const AEOGEOOptimization = () => (
         features: SERVICES.map((s) => s.title),
         items: AUDIENCES.map((name) => ({ name })),
         itemsName: 'Who our AEO and GEO optimization services are built for',
-        image: `${COMPANY.website}/Image/advmen_service10.webp`,
+        image: `${COMPANY.website}/Image/ADVMEN AEO & GEO Optimization.png`,
         howTo: {
           name: 'How ADVMEN delivers AEO and GEO optimization from baseline to refinement',
           description: "ADVMEN's five-stage AI visibility workflow: discovery and baseline, audit, roadmap, implementation, and monitoring.",
@@ -217,7 +217,7 @@ const AEOGEOOptimization = () => (
           <div className="lg:col-span-5">
             <div className="flex items-center justify-center p-6" style={{ background: 'var(--color-surface-2)', border: '2px solid var(--color-ink)', borderRadius: '1.25rem', boxShadow: '6px 6px 0 var(--color-ink)' }}>
               <img
-                src="/Image/advmen_service10.webp"
+                src="/Image/ADVMEN AEO & GEO Optimization.png"
                 alt="AI assistant answer panel citing a brand as a recommended source"
                 width="600"
                 height="420"
