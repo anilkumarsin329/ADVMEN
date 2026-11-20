@@ -134,6 +134,7 @@ const RELATED = [
   { label: 'Healthcare Websites', to: '/services/website-development/healthcare' },
   { label: 'Landing Pages', to: '/services/website-development/landing-page' },
   { label: 'Website Design', to: '/services/professional-website-design' },
+  { label: 'UI/UX Design', to: '/services/ui-ux-design' },
   { label: 'Android App Development', to: '/services/app-development/android' },
   { label: 'iOS App Development', to: '/services/app-development/ios' },
   { label: 'SEO Services', to: '/services/seo' },

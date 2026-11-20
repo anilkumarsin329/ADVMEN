@@ -60,6 +60,7 @@ const Home           = lazyWithRetry(() => import('@pages/Home'))
 const About          = lazyWithRetry(() => import('@pages/About'))
 const Services       = lazyWithRetry(() => import('@pages/Services'))
 const ServiceDetail  = lazyWithRetry(() => import('@pages/ServiceDetail'))
+const UIUXDesignPage = lazyWithRetry(() => import('@pages/ServiceDetail/UIUXDesign'))
 const Work           = lazyWithRetry(() => import('@pages/Work'))
 const WorkDetail     = lazyWithRetry(() => import('@pages/WorkDetail'))
 const PortfolioDetail = lazyWithRetry(() => import('@pages/PortfolioDetail'))
@@ -137,6 +138,15 @@ const PublicRoutes = () => {
         <Route path="/"                 element={<Home />} />
         <Route path="/about"            element={<About />} />
         <Route path="/services"         element={<Services />} />
+        <Route path="/services/ui-ux-design"           element={<UIUXDesignPage />} />
+        <Route path="/services/ui-ux-design-services"  element={<UIUXDesignPage />} />
+        <Route path="/services/ui-ux"                  element={<UIUXDesignPage />} />
+        <Route path="/services/ux-design"              element={<UIUXDesignPage />} />
+        <Route path="/services/ui-design"              element={<UIUXDesignPage />} />
+        <Route path="/services/user-experience-design" element={<UIUXDesignPage />} />
+        <Route path="/services/product-design"         element={<UIUXDesignPage />} />
+        <Route path="/services/professional-graphic-design-services" element={<Navigate to="/services/graphic-design" replace />} />
+        <Route path="/services/crm-development" element={<Navigate to="/services/custom-crm-development" replace />} />
         <Route path="/services/:slug"   element={<ServiceDetail />} />
         <Route path="/services/:category/:subSlug" element={<ServiceDetail />} />
         <Route path="/digital-marketing-services-india" element={<MarketPage market="india" />} />

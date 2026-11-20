@@ -271,8 +271,6 @@ const Navbar = () => {
                             <Link
                               key={svc._id || svc.slug}
                               to={`/services/${svc.slug}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
                               onClick={() => setServicesOpen(false)}
                               className="flex items-center px-4 py-3 text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] hover:bg-[rgba(255,107,0,0.06)] transition-colors duration-200 border-b border-[var(--color-border-subtle)] last:border-0"
                             >
@@ -451,8 +449,6 @@ const Navbar = () => {
                                   <Link
                                     key={svc._id || svc.slug}
                                     to={`/services/${svc.slug}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
                                     onClick={handleMenuItemClick}
                                     className="text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-orange)] py-2 transition-colors duration-200"
                                   >

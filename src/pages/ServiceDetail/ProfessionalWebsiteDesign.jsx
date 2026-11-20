@@ -115,6 +115,7 @@ const RELATED = [
   { label: 'E-Commerce Websites', to: '/services/website-development/ecommerce' },
   { label: 'Healthcare Websites', to: '/services/website-development/healthcare' },
   { label: 'Landing Pages', to: '/services/website-development/landing-page' },
+  { label: 'UI/UX Design', to: '/services/ui-ux-design' },
   { label: 'Android App Development', to: '/services/app-development/android' },
   { label: 'iOS App Development', to: '/services/app-development/ios' },
   { label: 'SEO Optimization', to: '/services/seo' },

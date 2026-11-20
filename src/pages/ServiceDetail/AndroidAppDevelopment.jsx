@@ -125,7 +125,7 @@ const RELATED = [
   { label: 'API & Backend Integration', to: '/services/app-development/api-backend-integration' },
   { label: 'Website Development', to: '/services/website-development' },
   { label: 'E-commerce Development', to: '/services/website-development/ecommerce' },
-  { label: 'UI/UX Design', to: '/services/professional-website-design' },
+  { label: 'UI/UX Design', to: '/services/ui-ux-design' },
   { label: 'Digital Marketing', to: '/digital-marketing-services-india' },
   { label: 'SEO Services', to: '/services/seo' },
   { label: 'AEO & GEO / AI Search', to: '/services/aeo-geo' },

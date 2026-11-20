@@ -128,6 +128,7 @@ const RELATED = [
   { label: 'E-Commerce Development', to: '/services/website-development/ecommerce' },
   { label: 'Android App Development', to: '/services/app-development/android' },
   { label: 'iOS App Development', to: '/services/app-development/ios' },
+  { label: 'UI/UX Design', to: '/services/ui-ux-design' },
   { label: 'SEO Services', to: '/services/seo' },
   { label: 'AEO & GEO / AI Search', to: '/services/aeo-geo' },
   { label: 'Performance Marketing', to: '/services/performance-marketing' },

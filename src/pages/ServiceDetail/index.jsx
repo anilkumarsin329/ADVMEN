@@ -24,6 +24,9 @@ import BrandingLogoDesign from './BrandingLogoDesign'
 import SocialMediaManagement from './SocialMediaManagement'
 import SEOServices from './SEOServices'
 import AEOGEOOptimization from './AEOGEOOptimization'
+import UIUXDesign from './UIUXDesign'
+import GraphicDesign from './GraphicDesign'
+import CustomCRMDevelopment from './CustomCRMDevelopment'
 
 // URLs that render the dedicated Professional Website Design landing page
 const PRO_DESIGN_SLUGS = ['professional-website-design', 'website-design', 'web-design']
@@ -33,6 +36,19 @@ const ANDROID_SLUGS = ['android-app-development', 'app-development/android']
 
 // URLs that render the dedicated iOS App Development landing page
 const IOS_SLUGS = ['ios-app-development', 'app-development/ios']
+
+// URLs that render the dedicated UI/UX Design landing page
+const UIUX_SLUGS = [
+  'ui-ux-design',
+  'ui-ux-design-services',
+  'ui-ux',
+  'ux-design',
+  'ui-design',
+  'user-experience-design',
+  'user-interface-design',
+  'product-design',
+  'usability-testing',
+]
 
 // URLs that render the dedicated AEO & GEO Optimization landing page
 const AEO_GEO_SLUGS = [
@@ -69,6 +85,31 @@ const SMM_SLUGS = [
   'instagram-management',
   'linkedin-management',
   'social-media-management-services',
+]
+
+// URLs that render the dedicated Custom CRM Development landing page
+const CRM_SLUGS = [
+  'custom-crm-development',
+  'crm-development',
+  'crm-software-development',
+  'custom-crm-solutions',
+  'sales-crm-development',
+  'crm-dashboard-development',
+  'crm-integration-services',
+  'crm-workflow-automation',
+]
+
+// URLs that render the dedicated Graphic Design landing page
+const GRAPHIC_DESIGN_SLUGS = [
+  'graphic-design',
+  'graphic-design-services',
+  'professional-graphic-design',
+  'professional-graphic-design-services',
+  'marketing-collateral-design',
+  'brand-collateral-design',
+  'presentation-design',
+  'brochure-design',
+  'flyer-design',
 ]
 
 // URLs that render the dedicated Branding & Logo Design landing page
@@ -111,35 +152,15 @@ const resolveSlug = (slug, category, subSlug) => {
   try { return { current, decoded: decodeURIComponent(current || '') } } catch { return { current, decoded: current } }
 }
 
-// ── Dedicated-page router (renders before any hooks) ─────────
-const DedicatedPageRouter = ({ slug, category, subSlug }) => {
-  const { decoded } = resolveSlug(slug, category, subSlug)
-  const s = String(decoded || '').toLowerCase()
-  if (PRO_DESIGN_SLUGS.includes(s))  return <ProfessionalWebsiteDesign />
-  if (ANDROID_SLUGS.includes(s))     return <AndroidAppDevelopment />
-  if (IOS_SLUGS.includes(s))         return <IOSAppDevelopment />
-  if (ECOMMERCE_SLUGS.includes(s))   return <EcommerceWebsiteDevelopment />
-  if (BRANDING_SLUGS.includes(s))    return <BrandingLogoDesign />
-  if (SMM_SLUGS.includes(s))         return <SocialMediaManagement />
-  if (SEO_SLUGS.includes(s))          return <SEOServices />
-  if (AEO_GEO_SLUGS.includes(s))      return <AEOGEOOptimization />
-  return null
-}
-
-const ServiceDetail = () => {
-  const { slug, category, subSlug }   = useParams()
+// ── Generic fallback page (only mounts when no dedicated page matches) ──
+const GenericServiceDetail = () => {
+  const { slug, category, subSlug } = useParams()
   const location = useLocation()
-
-  // Render dedicated pages BEFORE any hooks (avoids hook-order issues)
-  const dedicated = DedicatedPageRouter({ slug, category, subSlug })
-
   const { current: currentSlug, decoded: decodedSlug } = resolveSlug(slug, category, subSlug)
-
   const fallback = getServiceBySlug(currentSlug) || getServiceBySlug(decodedSlug)
-  const [serviceData, setServiceData] = useState(dedicated ? null : fallback)
+  const [serviceData, setServiceData] = useState(fallback)
 
   useEffect(() => {
-    if (dedicated) return
     let isMounted = true
     const localMatch = getServiceBySlug(currentSlug) || getServiceBySlug(decodedSlug)
 
@@ -184,41 +205,6 @@ const ServiceDetail = () => {
   }, [isImageModalOpen])
 
   const service = serviceData || getServiceBySlug(currentSlug) || getServiceBySlug(decodedSlug)
-
-  // Return dedicated page after hooks (hooks must always run in same order)
-  if (dedicated) return dedicated
-
-  if (PRO_DESIGN_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
-    return <ProfessionalWebsiteDesign />
-  }
-
-  if (ANDROID_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
-    return <AndroidAppDevelopment />
-  }
-
-  if (IOS_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
-    return <IOSAppDevelopment />
-  }
-
-  if (ECOMMERCE_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
-    return <EcommerceWebsiteDevelopment />
-  }
-
-  if (BRANDING_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
-    return <BrandingLogoDesign />
-  }
-
-  if (SMM_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
-    return <SocialMediaManagement />
-  }
-
-  if (SEO_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
-    return <SEOServices />
-  }
-
-  if (AEO_GEO_SLUGS.includes(String(decodedSlug || '').toLowerCase())) {
-    return <AEOGEOOptimization />
-  }
 
   if (!service) {
     return (
@@ -662,6 +648,26 @@ const ServiceDetail = () => {
       )}
     </PageTransition>
   )
+}
+
+// ── Main router — picks dedicated or generic ────────────────
+const ServiceDetail = () => {
+  const { slug, category, subSlug } = useParams()
+  const { decoded } = resolveSlug(slug, category, subSlug)
+  const s = String(decoded || '').toLowerCase()
+
+  if (PRO_DESIGN_SLUGS.includes(s))  return <ProfessionalWebsiteDesign />
+  if (ANDROID_SLUGS.includes(s))     return <AndroidAppDevelopment />
+  if (IOS_SLUGS.includes(s))         return <IOSAppDevelopment />
+  if (ECOMMERCE_SLUGS.includes(s))   return <EcommerceWebsiteDevelopment />
+  if (BRANDING_SLUGS.includes(s))    return <BrandingLogoDesign />
+  if (SMM_SLUGS.includes(s))         return <SocialMediaManagement />
+  if (SEO_SLUGS.includes(s))         return <SEOServices />
+  if (AEO_GEO_SLUGS.includes(s))     return <AEOGEOOptimization />
+  if (UIUX_SLUGS.includes(s))        return <UIUXDesign />
+  if (GRAPHIC_DESIGN_SLUGS.includes(s)) return <GraphicDesign />
+  if (CRM_SLUGS.includes(s))            return <CustomCRMDevelopment />
+  return <GenericServiceDetail />
 }
 
 export default ServiceDetail

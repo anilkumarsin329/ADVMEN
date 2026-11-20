@@ -9,14 +9,15 @@ import { cachedFetch } from '@utils/apiCache'
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 export const FALLBACK_SERVICES = [
-  { _id: '1', title: 'SEO Services',               slug: 'seo' },
-  { _id: '2', title: 'AEO & GEO Services',          slug: 'aeo-geo' },
-  { _id: '3', title: 'Branding',                    slug: 'branding' },
-  { _id: '4', title: 'Performance Marketing',       slug: 'performance-marketing' },
-  { _id: '5', title: 'Social Media Marketing',      slug: 'social-media-marketing' },
-  { _id: '6', title: 'Content Marketing',           slug: 'content-marketing' },
-  { _id: '7', title: 'Website Development',         slug: 'website-development' },
-  { _id: '8', title: 'App Development',             slug: 'app-development' },
+  { _id: '1',  title: 'SEO Services',               slug: 'seo' },
+  { _id: '2',  title: 'AEO & GEO Services',          slug: 'aeo-geo' },
+  { _id: '3',  title: 'Branding',                    slug: 'branding' },
+  { _id: '4',  title: 'Performance Marketing',       slug: 'performance-marketing' },
+  { _id: '5',  title: 'Social Media Marketing',      slug: 'social-media-marketing' },
+  { _id: '6',  title: 'Content Marketing',           slug: 'content-marketing' },
+  { _id: '7',  title: 'Website Development',         slug: 'website-development' },
+  { _id: '8',  title: 'App Development',             slug: 'app-development' },
+  { _id: '9',  title: 'UI/UX Design Services',       slug: 'ui-ux-design-services' },
 ]
 
 // Combined services are shown as two separate entries

@@ -147,6 +147,7 @@ const RELATED = [
   { label: 'Professional Website Design', to: '/services/professional-website-design' },
   { label: 'E-Commerce Development', to: '/services/website-development/ecommerce' },
   { label: 'Branding & Logo Design', to: '/services/branding' },
+  { label: 'UI/UX Design', to: '/services/ui-ux-design' },
   { label: 'Android App Development', to: '/services/app-development/android' },
   { label: 'iOS App Development', to: '/services/app-development/ios' },
   { label: 'Our Work', to: '/work' },

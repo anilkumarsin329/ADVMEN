@@ -293,15 +293,47 @@ export const services = [
     ]
   },
   {
+    id: 'ui-ux-design',
+    slug: 'ui-ux-design',
+    aliases: ['ui-ux', 'ux-design', 'ui-design', 'user-experience-design', 'user-interface-design', 'product-design', 'usability-testing'],
+    title: 'UI/UX Design Services',
+    tagline: 'Turn Clicks into Clarity with Research-Led Design',
+    category: 'Design',
+    icon: 'palette',
+    image: '/Image/advmen_service10.webp',
+    description: 'Make your website or app easier to use with UI/UX design services covering research, wireframes, prototypes, testing, and handoff. Book a review.',
+    features: [
+      'Discovery and Research',
+      'User Journeys and Flows',
+      'Information Architecture',
+      'Wireframing and Prototyping',
+      'Visual and Interface Design',
+      'Website UI UX Design',
+      'Mobile App UI UX Design',
+      'Accessibility and Inclusive Design',
+      'Usability Testing',
+      'Product Design Services',
+      'Design Systems',
+      'Developer Handoff',
+    ],
+    technologies: ['Figma', 'Adobe XD', 'Maze', 'Hotjar', 'Miro'],
+    workflow: [
+      { step: '01', title: 'Discover', desc: 'We learn your business goals, audience, constraints, and current experience.' },
+      { step: '02', title: 'Research and Define', desc: 'We gather user insight, map journeys, and define the problems worth solving first.' },
+      { step: '03', title: 'Design and Prototype', desc: 'We apply your brand, build the interface, and connect screens into a clickable prototype.' },
+      { step: '04', title: 'Test, Refine and Hand Off', desc: 'We run testing sessions, improve the design, then deliver organized files and specifications.' },
+    ]
+  },
+  {
     id: 'website-development',
     slug: 'website-development',
     aliases: ['website-development-company-in-india', 'web-design-development'],
-    title: 'UI/UX Design',
+    title: 'Website Development',
     tagline: 'Your Digital Headquarters, Built to Convert',
     category: 'Web Development',
     icon: 'web',
     image: '/Image/advmen_service1.webp',
-    description: 'Create better digital experiences with ADVMEN\'s UI/UX design services. Get intuitive interfaces, user-friendly layouts, smooth navigation and engaging designs.',
+    description: 'Build a professional, responsive and SEO-friendly website with ADVMEN. Custom website design and development for businesses of all sizes.',
     features: [
       'Custom Website Development',
       'Business Website Development',
@@ -567,8 +599,7 @@ const SLUG_ALIASES = {
   'brand-strategy': 'branding',
   'rebranding': 'branding',
   'business-branding': 'branding',
-  'ui-ux-design': 'website-development',
-  'uiux-design': 'website-development',
+
   'ecommerce-website-development': 'e-commerce-solutions',
   'e-commerce-website-development': 'e-commerce-solutions',
   'e-commerce-development': 'e-commerce-solutions',
@@ -609,8 +640,6 @@ export const getServiceBySlug = (slugInput) => {
         sId === cleanRaw ||
         sId === cleanDecoded ||
         sId === slugified ||
-        sTitle === cleanDecoded ||
-        sTitleSlug === slugified ||
         (Array.isArray(s.aliases) &&
           s.aliases.some(
             (a) =>
